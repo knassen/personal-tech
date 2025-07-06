@@ -1,0 +1,60 @@
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.12.49.56;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<BASE HREF="http://192.168.50.172/~knassen/umich/www/awk.html">
+<TITLE>awk sites</TITLE>
+</HEAD>
+<BODY>
+<BLOCKQUOTE>
+<H2>awk sites</H2>
+<HR SIZE=3>
+
+<DL>
+<DD><A HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/computer-lang/awk-faq/faq.html">The awk FAQ</A></DD>
+
+</DL>
+<HR SIZE=3>
+
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d4 1
+a4 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/awk.html">
+@

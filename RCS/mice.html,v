@@ -1,18 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://www-personal.umich.edu/~knassen/mice.html">
 <META name="description" content="A little about myself...">
 <TITLE>This picture's apparently good for scaring mice...</TITLE>
 </HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafara" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
 <BR>
 <BLOCKQUOTE>
 
 <H2>This picture's apparently good for scaring mice...</H2>
 
-<IMG SRC="/personal-tech/gif/1975kent.jpg" ALT="[Kent Nassen, c19754 65K JPEG]" BORDER="0"> <FONT SIZE="-2">yk</FONT>
+<IMG SRC="gif/1975kent.jpg" ALT="[Kent Nassen, c19754 65K JPEG]" BORDER="0"> <FONT SIZE="-2">yk</FONT>
 <P>
 <STRONG>Kent Nassen</STRONG> c.1974
 <HR SIZE=3 NOSHADE WIDTH="100%">
@@ -156,9 +179,10 @@ h--- r+++ y+++<BR>
 <A HREF="http://www.ebb.org/ungeek/">the Geek Code Decoder Page</A>)
 
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
 <FONT SIZE=-1>Last Modified: Wed Apr 14 20:09:17 EDT 1999
 </FONT>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@

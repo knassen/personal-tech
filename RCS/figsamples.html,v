@@ -1,8 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.3;
+access;
+symbols;
+locks
+	knassen:1.3; strict;
+comment	@# @;
+
+
+1.3
+date	2025.07.03.03.32.20;	author knassen;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2025.07.03.03.23.08;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/figsamples.html">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/figsamples.html">
 <META name="description" content="FIGlet Font Conversions & Designs by Kent Nassen">
 <TITLE>FIGlet Font Conversions and Designs by Kent Nassen</TITLE>
 </HEAD>
@@ -29,7 +62,7 @@ on a local BBS system (and that's how tombstone.flf got its name).
 <P>
 <A HREF="figfonts/bell.flf"><B>Bell</B></A>
 This font is based on the upper case letters designed by Joshua Bell 
-(jsbell@acs.ucalgary.ca).  I've added the lower case letters and punctuation,
+(jsbell@@acs.ucalgary.ca).  I've added the lower case letters and punctuation,
 plus a few touch-ups along the way to make things work a bit better
 with FIGlet.
 </BLOCKQUOTE>
@@ -45,7 +78,7 @@ with FIGlet.
 
 <BLOCKQUOTE>
 <A HREF="figfonts/broadway.flf"><B>Broadway</B></A>
-This font design is by io80034@maine.maine.edu, based on the classic
+This font design is by io80034@@maine.maine.edu, based on the classic
 font of the same name.
 </BLOCKQUOTE>
 <PRE>
@@ -76,7 +109,7 @@ font of the same name.
 <BLOCKQUOTE>
 <A HREF="figfonts/crawford.flf"><B>Crawford</B></A>
 This has got to be one of my all-time favorite Rowan Crawford 
-(s1171180@giaeb.cc.monash.edu.au) ASCII fonts.
+(s1171180@@giaeb.cc.monash.edu.au) ASCII fonts.
 </BLOCKQUOTE>
 
 <PRE>
@@ -92,7 +125,7 @@ This has got to be one of my all-time favorite Rowan Crawford
 
 <BLOCKQUOTE>
 <A HREF="figfonts/cyberlarge.flf"><B>CyberLarge</B></A>
-One of three fonts in Lennert Stock's (stock@fwi.uva.nl) Cyberfont series.
+One of three fonts in Lennert Stock's (stock@@fwi.uva.nl) Cyberfont series.
 </BLOCKQUOTE>
 <PRE>
  _______ __   __ ______  _______  ______        _______  ______  ______ _______
@@ -124,7 +157,7 @@ The smallest font in the Cyberfont series by Lennert Stock.
 
 <BLOCKQUOTE>
 <A HREF="figfonts/double.flf"><B>Double</B></A>
-Font design by Peter Weighill (stuce@csv.warwick.ac.uk).
+Font design by Peter Weighill (stuce@@csv.warwick.ac.uk).
 </BLOCKQUOTE>
 <PRE>
     ____     ___   __ __ ____  __     ____
@@ -136,7 +169,7 @@ Font design by Peter Weighill (stuce@csv.warwick.ac.uk).
 
 <BLOCKQUOTE>
 <A HREF="figfonts/isometric1.flf"><B>Isometric1</B></A>
-Another interesting font series from Lennert Stock (stock@fwi.uva.nl).
+Another interesting font series from Lennert Stock (stock@@fwi.uva.nl).
 There are four rotations.  I suppose I could have called them
 something more descriptive of their rotations (front/back/left/right/
 sideways/backwards...) but I wimped out and just called them
@@ -212,7 +245,7 @@ sideways/backwards...) but I wimped out and just called them
 
 <BLOCKQUOTE>
 <A HREF="figfonts/os2.flf"><B>OS/2</B></A> 
-This one's mine based on a .signature by Peter Kay (P.J.Kay@iti.salford.ac.uk).
+This one's mine based on a .signature by Peter Kay (P.J.Kay@@iti.salford.ac.uk).
 I started with the "OS/2" .sig and went from there, adding characters.  It
 wasn't a real difficult font to edit, but a few characters were a bit tedious
 to get "right."
@@ -231,7 +264,7 @@ to get "right."
 
 <BLOCKQUOTE>
 <A HREF="figfonts/rowancap.flf"><B>Rowancap</B></A>
-Another Rowan Crawford (s1171180@giaeb.cc.monash.edu.au) design.
+Another Rowan Crawford (s1171180@@giaeb.cc.monash.edu.au) design.
 </BLOCKQUOTE>
 <PRE>
    
@@ -247,15 +280,15 @@ Another Rowan Crawford (s1171180@giaeb.cc.monash.edu.au) design.
 <A HREF="figfonts/sblood.flf"><B>Sblood</B></A> This is a fun one.  For
 a while on rec.arts.ascii and alt.ascii-art these dripping blood/poison
 fonts were all the rage.  This smaller version of blood (or poison, a
-similar font) was designed by David Issel (dissel@nunic.nu.edu). 
+similar font) was designed by David Issel (dissel@@nunic.nu.edu). 
 </BLOCKQUOTE>
 
 <!-- Check out <A HREF="http://nunic.nu.edu/~dissel/asciiart.html?">David's ASCII Art Page</A>, too. -->
 <PRE>
 
-    @@@@@@ @@@@@@@  @@@       @@@@@@   @@@@@@  @@@@@@@ 
-   !@@     @@!  @@@ @@!      @@!  @@@ @@!  @@@ @@!  @@@
-    !@@!!  @!@!@!@  @!!      @!@  !@! @!@  !@! @!@  !@!
+    @@@@@@@@@@@@ @@@@@@@@@@@@@@  @@@@@@       @@@@@@@@@@@@   @@@@@@@@@@@@  @@@@@@@@@@@@@@ 
+   !@@@@     @@@@!  @@@@@@ @@@@!      @@@@!  @@@@@@ @@@@!  @@@@@@ @@@@!  @@@@@@
+    !@@@@!!  @@!@@!@@!@@  @@!!      @@!@@  !@@! @@!@@  !@@! @@!@@  !@@!
        !:! !!:  !!! !!:      !!:  !!! !!:  !!! !!:  !!!
    ::.: :  :: : ::  : ::.: :  : :. :   : :. :  :: :  :
 
@@ -266,7 +299,7 @@ one so much, I've been using for my .signature for several years (which
 found its way into Sven Gucke's 
 <A HREF="http://www.math.fu-berlin.de/~guckes/afw/sig.collection"> net
 .sig collection</A>).  The design credit goes to Bas Meijer
-(bas@damek.kth.se), who posted one of the more interesting newsgroup
+(bas@@damek.kth.se), who posted one of the more interesting newsgroup
 comments I've seen in rec.arts.ascii (see the comments in the full
 font).  I filled in the rest of the characters (pretty easy, eh?).  Try
 this font with <A HREF="ftp://ftp.internexus.net/pub/figlet/program/windows/">Paul
@@ -284,7 +317,7 @@ have to add that Return key, though!
 
 <BLOCKQUOTE>
 <A HREF="figfonts/stacey.flf"><B>Stacey</B></A>
-This is a design by davidstacey@BIX.com (davidstacey on BIX).
+This is a design by davidstacey@@BIX.com (davidstacey on BIX).
 </BLOCKQUOTE>
 <PRE>
 
@@ -311,7 +344,7 @@ first designs.  Almost all the characters in this font are my design.
                                       
 <BLOCKQUOTE>
 <A HREF="figfonts/usaflag.flf"><B>USAFlag</B></A>
-Another of David Issel's (dissel@nunic.nu.edu) font designs.
+Another of David Issel's (dissel@@nunic.nu.edu) font designs.
 </BLOCKQUOTE>
 <PRE>
 
@@ -325,7 +358,7 @@ Another of David Issel's (dissel@nunic.nu.edu) font designs.
 
 <BLOCKQUOTE>
 <A HREF="figfonts/whimsy.flf"><B>Whimsy</B></A>
-Whimsy is a font design contrived by llyra@serv.net 
+Whimsy is a font design contrived by llyra@@serv.net 
 while wasting time at work, she says.  Let's hope her boss doesn't care...
 </BLOCKQUOTE>
 <PRE>
@@ -360,7 +393,7 @@ That's all for now, folks!
 </PRE>
 <BLOCKQUOTE>
 <HR SIZE=3>
-<A HREF="figlet.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's FIGlet Page</A>
+<A HREF="figlet.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's FIGlet Page</A>
 <P>
 Last update: Fri Jan  1 08:58:42 EST 1999
 </BLOCKQUOTE>
@@ -368,3 +401,29 @@ Last update: Fri Jan  1 08:58:42 EST 1999
 
 </BODY>
 </HTML>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d5 1
+a5 1
+<BASE HREF="192.168.50.172/~knassen/umich/html/figsamples.html">
+d10 1
+a10 1
+<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/figsamples.html">
+@

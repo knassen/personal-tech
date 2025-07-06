@@ -1,8 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.3;
+access;
+symbols;
+locks
+	knassen:1.3; strict;
+comment	@# @;
+
+
+1.3
+date	2025.07.04.22.37.57;	author knassen;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2025.07.04.01.42.25;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@New URL for Figlet main site.
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/figlet.html">
 <META name="description" content="FIGlet Fonts and Links">
 <TITLE>FIGlet Fonts & Sites</TITLE>
 </HEAD>
@@ -50,7 +83,7 @@ made a few corrections here and there, or added some characters at the
 request of grex users in other words).</DT>
 <DD><BR></DD>
 
-<DT><A HREF="http://www.figlet.org"><IMG SRC="/personal-tech/gif/figlet.gif" 
+<DT><A HREF="http://www.figlet.org"><IMG SRC="gif/figlet.gif" 
 ALT="" ALIGN=MIDDLE BORDER="0" WIDTH=64 HEIGHT=42> <STRONG>FIGlet Home Page (Ian Chai)</STRONG></A><BR>
 Answers the questions "What is FIGlet?" "Why does FIGlet exist?" and "Where do I get FIGlet?"
 This is the main site for all FIGlet activities, including standard and contributed fonts,
@@ -103,7 +136,7 @@ periodically.  It tells how to subscribe and unsubscribe from the
 mail list, as well as how to reach the main FIGlet site.</DT>
 <DD><BR></DD>
 
-<DT><A HREF="http://www.reference.com/cgi-bin/pn/listarch?list=FIGLET-L@postoffice.cso.uiuc.edu"><STRONG>FIGlet Mail List Archive</STRONG></A><BR>
+<DT><A HREF="http://www.reference.com/cgi-bin/pn/listarch?list=FIGLET-L@@postoffice.cso.uiuc.edu"><STRONG>FIGlet Mail List Archive</STRONG></A><BR>
 An archive of postings to the Figlet-L mail list.</DT>
 <DD><BR></DD>
 
@@ -129,7 +162,7 @@ moderation, there is a lot of garbage to sort through.</DT>
 A <STRONG>very</STRONG> large ASCII art site.</DT>
 </DL>
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER="0" WIDTH=24 HEIGHT=24>  Back to Kent's Home Page</A><BR>
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER="0" WIDTH=24 HEIGHT=24>  Back to Kent's Home Page</A><BR>
 
 <FONT SIZE=-1>
 Last modified: Fri Jan  1 09:51:32 EST 1999
@@ -138,3 +171,29 @@ Last modified: Fri Jan  1 09:51:32 EST 1999
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d53 1
+a53 1
+<DT><A HREF="http://st-www.cs.uiuc.edu/users/chai/figlet.html"><IMG SRC="gif/figlet.gif" 
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/figlet.html">
+a133 2
+This FIGlet page has been visited <IMG SRC="http://wwwcgi.itd.umich.edu/cgi-bin/counter?link=http://www-personal.umich.edu/~knassen/figlet.html" ALT="37"> times since December 26, 1997.<BR> 
+<!-- since June 8, 1997 -->
+@

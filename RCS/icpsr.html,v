@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.12.49.56;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/icpsr.html">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/icpsr.html">
 <META name="description" content="Sites Related to ICPSR & Social Research">
 <TITLE>ICPSR-related Sites/Social Research</TITLE>
 </HEAD>
@@ -10,9 +38,9 @@
 <BODY BACKGROUND="gif/canvas.jpg">
 <BR>
 <BLOCKQUOTE>
-<H2><IMG ALIGN="BOTTOM" SRC="/personal-tech/gif/icpsrmed.gif" BORDER="0" ALT="" WIDTH="89" HEIGHT=52>
+<H2><IMG ALIGN="BOTTOM" SRC="gif/icpsrmed.gif" BORDER="0" ALT="" WIDTH="89" HEIGHT=52>
 <I>ICPSR-related Sites/Social Research</I>
-<IMG SRC="/personal-tech/gif/felixthe.gif" ALIGN=RIGHT ALT="Felix the Cat, pacing" BORDER=0></H2>
+<IMG SRC="gif/felixthe.gif" ALIGN=RIGHT ALT="Felix the Cat, pacing" BORDER=0></H2>
 "<STRONG>ICPSR</STRONG>" stands for the <STRONG>I</STRONG>nter-university
 <STRONG>C</STRONG>onsortium for <STRONG>P</STRONG>olitical and
 <STRONG>S</STRONG>ocial <STRONG>R</STRONG>esearch.  This non-profit,
@@ -86,10 +114,22 @@ work at ICPSR.
 <LI><A HREF="http://www.leo.org/cgi-bin/dict-search">LEO German&lt;-&gt;English Dictionary</A><BR></LI>
 </UL>
 <HR SIZE=3 NOSHADE WIDTH="70%" ALIGN=LEFT>
-<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
 
 <FONT SIZE=-1>Last modified: Sat Dec 27 17:06:25 EST 1997
 </FONT>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/icpsr.html">
+@

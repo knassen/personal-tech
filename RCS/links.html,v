@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.01.17.05.13;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@Fix more links to be local.
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
 <TITLE>Links to Other Places</TITLE>
-<BASE HREF="/personal-tech/links.html">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/links.html">
 </HEAD>
 
 <BODY BACKGROUND="gif/canvas.jpg">
@@ -41,7 +69,7 @@ substring searches, case-sensitive searches, etc.</FONT></LI>
 </UL-->
 
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="/personal-tech/index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Home Page</A><BR>
+<A HREF="http://192.168.50.172/~knassen/umich/html/index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Home Page</A><BR>
 <FONT SIZE=-1>
 Last modified: Sat Nov 28 13:19:44 EST 1998
 </FONT>
@@ -49,3 +77,24 @@ Last modified: Sat Nov 28 13:19:44 EST 1998
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/links.html">
+d37 1
+a37 1
+<LI><A HREF="http://ftpsearch.lycos.com/"><STRONG>Lycos Fast FTP Search</STRONG></A>
+d41 1
+a41 1
+</UL>
+d44 1
+a44 1
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Home Page</A><BR>
+@

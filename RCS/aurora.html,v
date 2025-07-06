@@ -1,11 +1,59 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.6;
+access;
+symbols;
+locks
+	knassen:1.6; strict;
+comment	@# @;
+
+
+1.6
+date	2025.07.04.17.50.48;	author knassen;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2025.07.04.17.45.00;	author knassen;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2025.07.04.17.36.26;	author knassen;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2025.07.04.14.53.01;	author knassen;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2025.07.04.13.52.40;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
    <META name="editor" content="The Aurora Text Editor">
    <META name="description" content="Kent Nassen's Aurora Text Editor Pages">
    <META name="keywords" content="editor, Aurora editor, Aurora text editor, nuText, nText, macros, column-editing, fast, programmable, DOS, win32, win95, winNT, Aurora/32 Aurora/DOS">
-   <BASE HREF="/personal-tech/">
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/aurora.html">
    <TITLE>The Aurora Text Editor</TITLE>
 </HEAD>
 
@@ -131,46 +179,7 @@ list</A> for further specifics on the DOS version. Check out the rest of
 this Aurora site, too!  --Kent Nassen
 
 <P>
-<FONT SIZE="+1"><STRONG>What's (Sorta) New:</STRONG></FONT><BR>
-Aurora as Open Source: I've heard from one of the members of the Aurora
-community that Jeff has decided he will not release the Aurora code as
-open-source. [kn, Feb 24, 2003].
-
-<P>Aurora32 on Unix: Verrrry interesting...Aurora32 can be run using Wine
-(well, wineconsole) and the File Manager then seems to work okay (no
-crashing). I have a relatively old version of Wine, even (20020804), but
-it worked. This was on FreeBSD 4.7-STABLE. [kn, Jan 18, 2003]
-
-<P>Aurora32 More Notes about Win2K: In reviewing the Aurora mail list
-archives from 1997, someone mentioned the fmgr option for the Window
-Style 1 setup in the configuration menu causes a crash if selected. So,
-this File Manager crash apparently has been there from the start and is
-not related specifically or entirely to Win2K [kn, Jan 13, 2003].
-Aurora32 Notes about Win2K: While I have been able to run Aurora32 under
-Win2K, you can cause a repeatable crash, in my experience, by using the
-File Manager to load files. Invoking the File Manager from the "File"
-pull down menu or starting the editor with the File Manager on the
-opening screen will lead to a crash when a file is selected. Avoid the
-File Manager and you stand a chance of editing. Aurora32 was programmed
-to run under previous versions of Win32 and in my opinion needs to be
-updated to deal with known Aurora32 bugs and whatever compatibility
-issues have been introduced in Win2K vs prior OS releases. I was able
-to edit files once they were loaded via the "File|Open" menu using an
-explicit path and filename. Another way I was able to load and edit
-files is to use the "Tree" macro to navigate to the file. Tree can be
-found either in the Macro List or in the File pull-down menu. Although
-Tree looks a lot like the file manager when running and probably uses
-many of the same functions, it does load the file(s) for me instead of
-crashing. I have commented out the "File Manager" item in the File menu
-(see menu.aml) so that I am not tempted to select it and I have Aurora32
-open to a new file instead of a File Manager window. The DOS version of
-Aurora appears to run well under Win2K, so that is an alternative (but
-it limits your window size). [kn, Jan 11-17, 2003].
-
-<P>Moved log-type messages about this site to a <A HREF="aurora/aurora-log.html">separate page</A> [12/22/01].
-
-<P>Local links to the three Aurora v3.0+ distributions (386+ DOS, 8086 DOS,
-and Win32 console) have been provided [12/22/01].
+<FONT SIZE="+1"><STRONG>What's New:</STRONG></FONT><BR>
 
 <STRONG>New Macros Added:</STRONG>
 <A HREF="aurora/mydearc.zip">
@@ -213,7 +222,7 @@ I am a satisfied registered user of this software and am in no other way
 connected with NuText Systems, nText Research, the Aurora Editor, or 
 its author.  Unless stated otherwise, the opinions expressed here are
 mine alone.<BR>
-<A HREF="mailto: knassen@NOWAYAMSPAYumich.edu (Kent Nassen)">--Kent Nassen</A>
+<A HREF="mailto: knassen@@NOWAYAMSPAYumich.edu (Kent Nassen)">--Kent Nassen</A>
 </FONT>
 <HR SIZE=3 NOSHADE WIDTH="100%">
 
@@ -223,3 +232,103 @@ Last modified: Fri Jul  4 13:50:15 EDT 2025
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d101 1
+a101 1
+continuing the development of the Aurora editor. If you would like to be
+d106 1
+a106 1
+an edu institution--KN 12/14/01
+d182 1
+a182 1
+Last modified: Wed Mar 31 07:58:00 EST 1999
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d32 1
+a32 1
+still runs, even on XP and Vista. What you find here are my own personal
+d35 1
+a35 1
+(which I no longer do). --KN
+d39 4
+a42 4
+systems.</STRONG> See the DosBox web site where you can find versions
+of DosBox for Windows, Mac OS-X, several Linux distributions, FreeBSD,
+OS/2, and several other operating systems. Also there are some tools and
+language add-ons there.
+d44 1
+a44 1
+<P>A couple things to note: one is that DosBox limits you to 63Mb of
+@
+
+
+1.3
+log
+@Add text and formatting from the Wayback Maching version of this
+page.
+@
+text
+@d63 1
+a63 1
+xE "Your Name"
+d66 3
+a68 3
+
+<LI>Exit Aurora and start it back up. Your name should be registered.
+    <P>This is quite interesting because it does not require any tools to implement other than Aurora itself.
+a69 1
+</UL>
+d98 1
+a98 1
+A plea to Jeff to release Aurora as open source software.
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d21 2
+a22 2
+supported. The web ntext site is now questionable (has a self-signed
+certificate.)</STRONG>
+d24 86
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 1
+a8 1
+   <BASE HREF="http://www-personal.umich.edu/~knassen/aurora.html">
+d20 4
+d71 1
+a71 1
+<STRONG><A HREF="http://ntext.net">ntext.net</A></STRONG>. NOTE: this is
+d74 1
+a74 1
+Aurora's author [Oct 20, 1997].
+a95 5
+This Aurora page has been visited 
+<IMG SRC="http://wwwcgi.itd.umich.edu/cgi-bin/counter?link=http://www-personal.umich.edu/~knassen/aurora.html" ALT="877" BORDER=0> times since December 26, 1997.  
+<!-- since June 5, 1997 -->
+<BR><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>
+To Kent's Home Page</A><BR> 
+@

@@ -1,11 +1,39 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.12.49.56;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
    <META name="editor" content="The Aurora Text Editor -- Download & Other Information">
    <META name="description" content="Kent Nassen's Aurora Download & Other Information Page">
    <META name="keywords" content="editor, Aurora editor, Aurora text editor, nuText, nText, macros, column-editing, fast, programmable, DOS, win32, win95, winNT, Aurora/32 Aurora/DOS">
-   <BASE HREF="/personal-tech/">
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/ainfo.html">
    <TITLE>The Aurora Editor -- Download & Other Information</TITLE>
 </HEAD>
 <BODY BACKGROUND="gif/canvas.jpg">
@@ -64,16 +92,16 @@ automatically have had their subscriptions moved to John's server.
 <P>
 This mail list uses the V-MailServer software, and you may (I
 haven't tried it) be able to subscribe by sending an e-mail to 
-<A HREF="mailto:listserv@ccs.covici.com">listserv@ccs.covici.com</A> 
+<A HREF="mailto:listserv@@ccs.covici.com">listserv@@ccs.covici.com</A> 
 with the message "SUBSCRIBE aurora [Your real name]". Otherwise, send a
-request to <!--A HREF="mailto:tarigan@sfu.ca">tarigan@sfu.ca</A--> 
-<A HREF="mailto:covici@ccs.covici.com">John Covici</A> the Aurora mail 
+request to <!--A HREF="mailto:tarigan@@sfu.ca">tarigan@@sfu.ca</A--> 
+<A HREF="mailto:covici@@ccs.covici.com">John Covici</A> the Aurora mail 
 list administrator.
 <P>
 Responses to the Aurora mail list itself (NOT subscription requests or 
 unsubscribe requests: they should go to the listserver) should be sent to
-<!--A HREF="mailto:aurora-editor@sfu.ca">aurora-editor@sfu.ca</A-->
-<A HREF="mailto:aurora@ccs.covici.com">aurora@ccs.covici.com</A>.
+<!--A HREF="mailto:aurora-editor@@sfu.ca">aurora-editor@@sfu.ca</A-->
+<A HREF="mailto:aurora@@ccs.covici.com">aurora@@ccs.covici.com</A>.
 <P>Also see <A HREF="http://www.geocities.com/Tokyo/Garden/7676/">Glen Tarigan's
 web page</A>.  Glen was our long-time list administrator until he found out
 that his ISP wouldn't allow mail lists.  Thanks to Glen for all his efforts.
@@ -139,7 +167,7 @@ Opinion</STRONG></A></DT>
 [<STRONG><A HREF="#archive">Mail List Archive</A></STRONG>]
 [<STRONG><A HREF="#links">Aurora Links</A></STRONG>]
 
-<P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  To Kent's Home Page</A>
+<P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  To Kent's Home Page</A>
 
 <FONT SIZE="-1">
 Last-modified: Wed Jan  6 11:28:20 EST 1999
@@ -148,3 +176,15 @@ Last-modified: Wed Jan  6 11:28:20 EST 1999
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 1
+a8 1
+   <BASE HREF="http://www-personal.umich.edu/~knassen/ainfo.html">
+@

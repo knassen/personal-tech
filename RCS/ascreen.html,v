@@ -1,7 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
-   <BASE HREF="/personal-tech/">
+   <BASE HREF="http://www-personal.umich.edu/~knassen/ascreen.html">
    <TITLE>Aurora Editor Screen Shots</TITLE>
 </HEAD>
 <BODY BACKGROUND="gif/canvas.jpg">
@@ -57,8 +80,9 @@ Another handy feature of the Aurora editor is its built-in hex editor mode...</L
 [<STRONG><A HREF="ainfo.html#archive">Mail List Archive</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#links">Aurora Links</A></STRONG>]
 
-<P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  To Kent's Home Page</A>
+<P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  To Kent's Home Page</A>
 
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@

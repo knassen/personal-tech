@@ -1,10 +1,38 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.02.23.35.14;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
 <META name="description" content="vi Information & Resources">
 <META name="keywords" content="vi editor free elvis vile vim xvi nvi lemmy winvi">
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/vi.html">
 <TITLE>vi Information & Resources</TITLE>
 </HEAD>
 
@@ -24,8 +52,8 @@ working on Unix systems. After trying pico and emacs, I settled on vi in
 Since then I've found my choice to have been reasonable in terms of my
 original criteria. In addition to this vi page, I also have a <A
 HREF="vim/index.html"><STRONG>Vim page</STRONG></A> devoted to my
-favorite vi editor.  <A HREF="mailto: knassen@NOWAYAMSPAYumich.edu (Kent
-Nassen)"> --Kent Nassen, knassen@NOWAYAMSPAYumich.edu</A>
+favorite vi editor.  <A HREF="mailto: knassen@@NOWAYAMSPAYumich.edu (Kent
+Nassen)"> --Kent Nassen, knassen@@NOWAYAMSPAYumich.edu</A>
 
 <P>
 <H2><STRONG>A Short Description of vi</STRONG></H2>
@@ -176,7 +204,7 @@ the comp.editors tip collection. Here is my unofficial HTML version of the
 <STRONG><A HREF="http://www.cs.vu.nl/~tmgil/vi.html">
 <FONT SIZE="+1">vi Lover's Home Page</FONT></A></STRONG><BR> 
 
-The place for all things vi, by Thomer M. Gil (tmgil@cs.vu.nl). Links
+The place for all things vi, by Thomer M. Gil (tmgil@@cs.vu.nl). Links
 to many vi resources, sources, binaries, stories, FAQs, manuals, and
 tutorials. <EM>Highly recommended!</EM>
 
@@ -220,7 +248,7 @@ fixes and many improvements to the editor in general. In comparison to
 Vim 4.x, the 5.x versions offer syntax highlighting for many languages,
 a GUI interface (gvim), pull-down menus, an internal scripting language,
 and the opportunity to include perl or python as an interpreter. Bram
-Moolenaar (mool@oce.nl) is the principal author of VIM and coordinator
+Moolenaar (mool@@oce.nl) is the principal author of VIM and coordinator
 of VIM programming efforts. <A HREF="gif/vim50m.gif">[v5.0 SCREEN SHOT
 12K GIF]</A>
 
@@ -253,7 +281,7 @@ FAQ.
 <FONT SIZE="+1">Elvis (ftp alternate, faster)</FONT></A></STRONG><BR>
 Elvis <A HREF="gif/elvis21c3.gif">[V2.0 SCREEN SHOT 14K GIF]</A>is
 a <STRONG>free</STRONG> vi clone written by Steve Kirkendall
-(kirkenda@cs.pdx.edu) that offers multiple buffers, multiple windows,
+(kirkenda@@cs.pdx.edu) that offers multiple buffers, multiple windows,
 and multiple display modes. In its most recent incarnation (beta test
 v2.1g -- this is the first 2.1 beta, meaning all 2.1 features have been
 added and the only changes will be bug fixes) it provides a very nice
@@ -395,11 +423,11 @@ similar color schemes in my .Xdefaults file.] </FONT></BLOCKQUOTE>
 "vi.html" 409 lines, 19975 characters 
 </STRONG><BR></FONT>
 &nbsp;
-<A HREF="http://www.darryl.com/vi.html"><IMG SRC="/personal-tech/gif/vipower2.gif" ALIGN="RIGHT" ALT="This Site
+<A HREF="http://www.darryl.com/vi.html"><IMG SRC="gif/vipower2.gif" ALIGN="RIGHT" ALT="This Site
  is vi Powered" BORDER="0" WIDTH=123 HEIGHT=36></A>
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <FONT SIZE=3>
-<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24> Back to Kent's Home Page</A><BR>
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24> Back to Kent's Home Page</A><BR>
 
 <FONT SIZE=-1>
 Last modified: Sun Apr 25 10:27:09 EDT 1999
@@ -407,3 +435,21 @@ Last modified: Sun Apr 25 10:27:09 EDT 1999
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d7 1
+a7 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/vi.html">
+d11 1
+a11 1
+<BODY BACKGROUND="gif/textur7a.jpg" TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+a402 2
+
+This vi page has been visited <IMG SRC="http://wwwcgi.itd.umich.edu/cgi-bin/counter?link=http://www-personal.umich.edu/~knassen/vi.html" ALT="312"> times since December 26, 1997.</FONT><BR>
+@

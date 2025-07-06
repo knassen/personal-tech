@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.12.49.56;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/apple2.html">
 <META name="description" content="Apple II Sites">
 <TITLE>Apple II Sites and Information</TITLE>
 </HEAD>
@@ -27,8 +55,8 @@ they sure don't build and document computers like this any more.
 If anyone has a SCSI card for an Apple II (Apple High Speed or RamFast) 
 for sale, let me know, I might be interested (I'm looking to attach a
 500 meg SCSI drive to one of my IIgs machines and a 50 meg SCSI to the
-other IIgs).  --Kent Nassen <A HREF="mailto:knassen@nospampleez.umich.edu">
-(knassen@nospampleeze.umich.edu)</A> [remove the obvious bad part of the 
+other IIgs).  --Kent Nassen <A HREF="mailto:knassen@@nospampleez.umich.edu">
+(knassen@@nospampleeze.umich.edu)</A> [remove the obvious bad part of the 
 address]
 
 <HR SIZE=3 NOSHADE WIDTH="100%">
@@ -82,11 +110,23 @@ magazines, among other Apple ][ historical topics.</LI>
 </UL>
 
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<IMG SRC="/personal-tech/gif/a2powered.gif" ALIGN=RIGHT ALT="Powered by Apple ]["><BR CLEAR=LEFT>
-<A HREF="links.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Links</A><BR>
+<IMG SRC="gif/a2powered.gif" ALIGN=RIGHT ALT="Powered by Apple ]["><BR CLEAR=LEFT>
+<A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Links</A><BR>
 <FONT SIZE=-1>
 Last modified: Mon Feb  1 22:32:21 EST 1999
 </FONT>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/apple2.html">
+@

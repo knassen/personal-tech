@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.12.53.25;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-   <BASE HREF="/personal-tech/">
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/amacs.html">
    <META name="description" content="Kent Nassen's Aurora Macros Page">
    <META name="keywords" content="Aurora editor, Aurora text editor, macros, aml, syntax highlighting" >
    <TITLE>Aurora Editor Macros</TITLE>
@@ -39,7 +67,7 @@ my specific comments, asides, or files (some of the rest of this page is
 my paraphrasing of what others wrote, but in general this is my original
 composition) :-) And yes, I do make (relatively) frequent updates here if 
 there are files to add. Check out the changes listed below. Thanks.
-<ADDRESS><A HREF="mailto: knassen@NOWAYAMSPAYumich.edu (Kent Nassen)">--Kent Nassen &lt;knassen@NOWAYAMSPAYumich.edu&gt;</A></ADDRESS>
+<ADDRESS><A HREF="mailto: knassen@@NOWAYAMSPAYumich.edu (Kent Nassen)">--Kent Nassen &lt;knassen@@NOWAYAMSPAYumich.edu&gt;</A></ADDRESS>
 </BLOCKQUOTE>
 
 <UL>
@@ -275,11 +303,11 @@ and more. Designed for use with the Netwide Assembler (<A
 HREF="http://www.web-sites.co.uk/nasm/">NASM</A>) but will work
 with other assemblers as well with little or no modification. Several
 files are included, so it is packaged as a <STRONG>.zip</STRONG> file (6869
-bytes). Submitted by &lt;MTerlouw@aol.com&gt; (Thanks! --kdn).
+bytes). Submitted by &lt;MTerlouw@@aol.com&gt; (Thanks! --kdn).
 
 <P><A HREF="aurora/xasm.aml"><STRONG>Assembler Highlighting II</STRONG></A>
 Another assembly code highlighting object.  Incorporates the newer
-opcodes.  Submitted by Matteo Baccan (baccan@isanet.it) (Thanks! --kdn).
+opcodes.  Submitted by Matteo Baccan (baccan@@isanet.it) (Thanks! --kdn).
 
 <P><A HREF="aurora/xawk.aml"><STRONG>Awk Highlighting v1.1</STRONG></A>
 This one's for highlighting awk scripts/programs. Added highlighting by 
@@ -291,7 +319,7 @@ some may not apply to all awk interpreters (which shouldn't be a big problem).
 4DOS is a command.com replacement that runs under DOS and Windows.
 It includes a batch file compilation facility.  Anyway, this is a syntax object
 for highlighting the extended batch language provided by 4DOS.
-Submitted by Matteo Baccan (baccan@isanet.it) (Thanks! --kdn).  See the 
+Submitted by Matteo Baccan (baccan@@isanet.it) (Thanks! --kdn).  See the 
 <A HREF="http://www.jpsoft.com/">JP Software Home Page</A> for further information 
 about 4DOS.
 
@@ -321,7 +349,7 @@ information about Perl. --by kdn
 
 <P><A HREF="aurora/xprg.aml"><STRONG>Clipper Highlighting</STRONG></A>
 Syntax highlighting for Clipper's language. Clipper is an xBase
-development tool. Submitted by Matteo Baccan (baccan@isanet.it)
+development tool. Submitted by Matteo Baccan (baccan@@isanet.it)
 (Thanks! --kdn). See the <A HREF="http://www.cai.com/">Computer Associates</A>
 site for more information about Clipper and related products.
 
@@ -347,7 +375,7 @@ contains all of them, so it should be modified for how you use SAS).
 
 <P><A HREF="aurora/xtpl.aml"><STRONG>dBSee Template Highlighting</STRONG></A>
 Syntax highlight object for dBsee (Database Software Engineering
-Environment) templates (.tpl). Submitted by Matteo Baccan (baccan@isanet.it) (Thanks! --kdn). The 
+Environment) templates (.tpl). Submitted by Matteo Baccan (baccan@@isanet.it) (Thanks! --kdn). The 
 <A HREF="http://www.dbsee.com/">dBsee Home Page</A> has more information
 about dBsee.
 
@@ -423,7 +451,7 @@ Incorporates Tiling, Resizing, Cascading, Splitting Windows.
 [<STRONG><A HREF="ainfo.html#archive">Mail List Archive</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#links">Aurora Links</A></STRONG>]
 
-<P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  To Kent's Home Page</A>
+<P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  To Kent's Home Page</A>
 <P>
 <FONT SIZE="-1">
 Last modified: Sun May  2 22:45:00 EDT 1999
@@ -431,3 +459,15 @@ Last modified: Sun May  2 22:45:00 EDT 1999
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+   <BASE HREF="http://www-personal.umich.edu/~knassen/amacs.html">
+@

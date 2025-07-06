@@ -1,9 +1,37 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.03.03.31.12;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
 <META name="description" content="Statistics Links">
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/statistics.html">
 <TITLE>Statistical Links</TITLE>
 </HEAD>
 
@@ -318,7 +346,7 @@ software for [X] data format?"</LI>
 [<A HREF="#online">OnLine Processing</A>]
 [<A HREF="#guides">Guides</A>]
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="links.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Links</A><BR>
+<A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Links</A><BR>
 
 <FONT SIZE=-1>
 Last-modified: Mon Dec 14 18:38:08 EST 1998
@@ -326,3 +354,15 @@ Last-modified: Mon Dec 14 18:38:08 EST 1998
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d6 1
+a6 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/statistics.html">
+@

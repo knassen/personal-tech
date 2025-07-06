@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.01.42.16;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
 <META name="description" content="sed, stream editor, web sites">
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/sed.html">
 <TITLE>sed Web Sites</TITLE>
 </HEAD>
 <BODY BACKGROUND="gif/canvas.jpg">
@@ -55,7 +83,7 @@ recent official GNU sed.<BR></LI>
 </UL>
 
 <P>
-<A HREF="unix.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Unix Page</A><BR>
+<A HREF="unix.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Unix Page</A><BR>
 
 <FONT SIZE=-1>Last Modified: Mon Feb 15 12:40:00 EST 1999
 </FONT>
@@ -63,3 +91,22 @@ recent official GNU sed.<BR></LI>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/sed.html">
+a56 4
+<HR SIZE=3 NOSHADE>
+This sed page has been visited 
+<IMG SRC="http://wwwcgi.itd.umich.edu/cgi-bin/counter?link=http://www-personal.umich.edu/~knassen/sed.html" 
+ALT="lots of"> times since November 27, 1998.
+a57 1
+
+@

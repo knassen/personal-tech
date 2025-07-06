@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.03.03.27.27;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/sasexampl.html">
+<BASE HREF="http://192.168.50.172/~knassen/sasexampl.html">
 <TITLE>SAS proc freq output example</TITLE>
 </HEAD>
 
@@ -23,3 +51,18 @@
 
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/sasexampl.html">
+d9 1
+a9 1
+<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+@

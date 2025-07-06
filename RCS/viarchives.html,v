@@ -1,7 +1,35 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.03.03.27.21;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
-   <BASE HREF="/personal-tech">
+   <BASE HREF="192.168.50.172/~knassen/umich/html/viarchives.html">
    <META name="description" content="VI Archive Index (HTML)">
    <TITLE>vi Archive Index</TITLE>
 </HEAD>
@@ -14,7 +42,7 @@
    #
    #  Index of archive:    alf.uib.no (129.177.30.3)
    #  Filearea:            /pub/vi
-   #  Archive maintainer:  Ove Ruben R Olsen ruben@uib.no
+   #  Archive maintainer:  Ove Ruben R Olsen ruben@@uib.no
    #  Archive updated:     Sat May 20 11:55:33 GMT 1995 
    #  Mirroring archives:  utsun.s.u-tokyo.ac.jp (133.11.11.11)
    #                       cs.uwp.edu (131.210.1.4)
@@ -343,7 +371,22 @@
 [<A HREF="#programs">programs</A>]
 
 <HR SIZE=3>
-<A HREF="vi.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's vi Resources</A>
+<A HREF="vi.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's vi Resources</A>
 
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d4 1
+a4 1
+   <BASE HREF="http://www-personal.umich.edu/~knassen/viarchives.html">
+d8 1
+a8 1
+<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+@

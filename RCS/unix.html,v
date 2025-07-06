@@ -1,9 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
 <META name="description" content="A few links to Unix-related sites">
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://www-personal.umich.edu/~knassen/unix.html">
 <TITLE>Unix-Related Sites</TITLE>
 </HEAD>
 
@@ -16,7 +39,7 @@
 
 <DL>
 <DL>
-<DT><A HREF="http://www.freebsd.org"><IMG SRC="/personal-tech/gif/devil-tiny.gif" ALT="" ALIGN=MIDDLE BORDER="0">
+<DT><A HREF="http://www.freebsd.org"><IMG SRC="gif/devil-tiny.gif" ALT="" ALIGN=MIDDLE BORDER="0">
 <STRONG>FreeBSD Page</STRONG></A>
 &nbsp;---&nbsp;<A HREF="ftp://ftp.freebsd.org/pub/FreeBSD/"><STRONG>FTP to freebsd.org</STRONG></A></DT>
 <DT>I run FreeBSD on my '486 at home, so of course, my web interests
@@ -88,9 +111,10 @@ administration tools written in perl.</DT>
 </DL>
 
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="links.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Links</A>
+<A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Links</A>
 <FONT SIZE=-1><BR><CENTER>Last modified: Sat Nov 28 13:24:43 EST 1998
 </CENTER></FONT>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@

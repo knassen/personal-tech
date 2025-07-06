@@ -1,8 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.01.42.46;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 
 <HEAD>
-<BASE HREF="/personal-tech/">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/myperl.html">
 <META name="description" content="Kent's Perl Stuff">
 <TITLE>Kent's Perl Stuff</TITLE>
 </HEAD>
@@ -110,7 +138,7 @@ A non-profit organization whose mission is to establish Perl user groups.</DT>
 
 <P>
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
 
 <HR>
 <P STYLE="font-size: 80%; color: gray;">
@@ -122,3 +150,65 @@ A non-profit organization whose mission is to establish Perl user groups.</DT>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+a5 1
+<BASE HREF="http://www-personal.umich.edu/~knassen/myperl.html">
+d15 8
+a22 9
+I generally use Perl for quick parsing and report generating tasks that
+are of a one-time-only nature. The following Perl programs are some
+that have been frequently used by myself and others in a more general
+context. They are probably not finished nor elegantly programmed, but
+they work for me the way I want. I'm providing them 'as is.' No
+guarantees, etc. They're my work, but you can copy, use, and alter them
+as you will, as long as you give me credit in your program code.  All
+were developed on Unix systems (Solaris, FreeBSD) but should be portable
+to MS-DOG.  Perl version 5 is assumed unless noted.
+d51 1
+a51 1
+<DT><STRONG><A HREF="perl/splitit.pl">Split a multi-column SAS input or
+d55 2
+a56 2
+<DT><STRONG><A HREF="perl/wrapit5.pl">Wrap a single column SAS input or
+SPSS data list statement</A></STRONG> into multiple (5) columns.</DT>
+d68 1
+a68 1
+<DT><A HREF="http://language.perl.com/faq/"><STRONG>The Perl FAQ</STRONG></A>
+d72 2
+a73 1
+<DT><A HREF="http://www.webdesigns1.com/perl/"><STRONG>The Perl Primer</STRONG></A>
+d79 3
+a81 2
+<DT><A HREF="http://www.perl.com/perl/"><STRONG>Perl Language Home Page</STRONG></A>
+Includes Perl news, documentation, and software.</DT>
+d84 5
+a88 1
+<DT><A HREF="http://reference.perl.com/"><STRONG>Perl Reference Page</STRONG></A>
+d101 2
+a102 6
+<DT><A HREF="http://www.netaxs.com/~joc/perlring.html"><STRONG>Perl Ring Home Site</STRONG></A>
+The home page for the Perl webring, a method for linking sites with Perl-relevant
+information.  There are more than 80 sites in the ring, and they may be accessed
+directly, sequentially, or randomly.  The Perl webring contains an eclectic mix of
+sites displaying Perl uses and scripts. Just browse and you'll likely find something of
+interest or use.</DT>
+a104 4
+<DT><A HREF="http://tpj.com/"><STRONG>The Perl Journal</STRONG></A>
+Home page for "The first and only periodical devoted to Perl."  The site includes
+listings for the programs discussed in the journal.</DT>
+<DD>&nbsp;</DD>
+a110 2
+This page has been visited <IMG SRC="http://wwwcgi.itd.umich.edu/cgi-bin/counter?link=http://www-personal.u
+mich.edu/~knassen/myperl.html" ALT="a few"> times since November 27, 1998.
+d115 6
+a120 1
+<FONT SIZE=-1>Last Modified: Sat May  1 16:23:06 EDT 1999
+@

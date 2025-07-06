@@ -1,7 +1,35 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.03.03.24.04;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
-   <BASE HREF="/personal-tech/">
+   <BASE HREF="192.168.50.172/~knassen/umich/html/ians.faq.html">
    <TITLE>FIGlet FAQ</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
@@ -12,10 +40,10 @@
 
 <PRE>
 Date:         Sun, 1 Jun 1997 00:12:19 -0500
-From: Ian Chai &lt;chai@uiuc.edu&gt;
+From: Ian Chai &lt;chai@@uiuc.edu&gt;
 Subject:      FIGlet FAQ
 To: Multiple recipients of list FIGLET-L
-              &lt;FIGLET-L@postoffice.cso.uiuc.edu&gt;
+              &lt;FIGLET-L@@postoffice.cso.uiuc.edu&gt;
 
  ___ ___ ___ _     _     ___ ___   ___   ................. 6/1/97
 | __|_ _/ __| |___| |_  | __/ _ \ / _ \  ::::::::::::::::: Posted
@@ -52,33 +80,48 @@ or FONTS.
 MANAGING YOUR SUBSCRIPTION
 =================================================================
 If you are going away for a while and your mailbox may overflow,
-send <A HREF="mailto:LISTSERV@postoffice.cso.uiuc.edu">LISTSERV@postoffice.cso.uiuc.edu</A> the message
+send <A HREF="mailto:LISTSERV@@postoffice.cso.uiuc.edu">LISTSERV@@postoffice.cso.uiuc.edu</A> the message
         set figlet-l nomail
 
-To get off FIGLET-L,  send  LISTSERV@postoffice.cso.uiuc.edu  the
+To get off FIGLET-L,  send  LISTSERV@@postoffice.cso.uiuc.edu  the
 message
         unsubscribe figlet-l
 
 To restrict your FIGLET-L mail to  only  software  announcements,
-send <A HREF="mailto:LISTSERV@postoffice.cso.uiuc.edu">LISTSERV@postoffice.cso.uiuc.edu</A> the message
+send <A HREF="mailto:LISTSERV@@postoffice.cso.uiuc.edu">LISTSERV@@postoffice.cso.uiuc.edu</A> the message
         set figlet-l topics=SOFTWARE
 
 To  restrict  your  FIGLET-L  mail  to  only  software  and  font
-announcements, send <A HREF="mailto:LISTSERV@postoffice.cso.uiuc.edu">LISTSERV@postoffice.cso.uiuc.edu</A> the message
+announcements, send <A HREF="mailto:LISTSERV@@postoffice.cso.uiuc.edu">LISTSERV@@postoffice.cso.uiuc.edu</A> the message
         set figlet-l topics=SOFTWARE,FONTS
 
-Please email me at chai@uiuc.edu if you have problems.  The  most
+Please email me at chai@@uiuc.edu if you have problems.  The  most
 common problem is people trying to do this from a different email
 address.    For    example,    if    you're    signed    up    as
-fred@barney.cs.bedrock.edu  and  you tried to send these commands
-from fred@dino.cs.bedrock.edu, it will fail and say  that  you're
+fred@@barney.cs.bedrock.edu  and  you tried to send these commands
+from fred@@dino.cs.bedrock.edu, it will fail and say  that  you're
 not   on   the   list.   You'll   then   need   to   log   on  to
 barney.cs.bedrock.edu and send the mail from there.
 =================================================================
 
 </PRE>
 <HR SIZE=3>
-<A HREF="figlet.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's FIGlet Page</A>
+<A HREF="figlet.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's FIGlet Page</A>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d4 1
+a4 1
+   <BASE HREF="http://www-personal.umich.edu/~knassen/ians.faq.html">
+d7 1
+a7 1
+<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+@

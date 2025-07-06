@@ -1,0 +1,299 @@
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.01.16.33.28;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<HTML>
+<HEAD>
+<META name="description" content="Resume of Kent D. Stefl Nassen">
+<META name="keywords" content="resume, computers, business, marketing, Perl, SAS, SPSS, Unix, MBA">
+<TITLE>Resume of Kent D. Stefl Nassen</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="" BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff" VLINK="#800080" ALINK="#ff0000">
+<P>A plain <A HREF="Resume11b.asc">ASCII text version</A> of this resume is available.
+<BLOCKQUOTE>
+<UL>
+
+<BR><BR>
+<FONT FACE="Times New Roman">
+<CENTER>
+<FONT SIZE="4"><B>R&eacute;sum&eacute;</B><BR>
+Kent D. Stefl Nassen<BR>
+</FONT>
+</CENTER>
+<BR>
+
+<CENTER>
+<TABLE WIDTH="95%" BORDER="0">
+
+<!-- Table 01 Row 01 -->
+<TR>
+<TD>E-Mail: <FONT COLOR="#0000ff"><A HREF="mailto:knassen@@umich.edu"><U>knassen@@umich.edu</U></A></FONT></TD>
+<FONT COLOR="#000000">
+<TD>&nbsp;</TD></FONT>
+<TD>&nbsp;</TD> 
+<TD>&nbsp;</TD> 
+<TD>&nbsp;</TD> 
+<TD>&nbsp;</TD> 
+<TD>&nbsp;</TD> 
+<TD>&nbsp;</TD>
+<TD>        432 South Fourth Avenue, Apartment 1</TD>
+</TR>
+
+<!-- Table 01 Row 02 -->
+<TR>
+<TD>Phone:  734-747-6055 Home </TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD>        Ann Arbor, MI 48104-2302</TD>
+</TR>
+
+<!-- Table 01 Row 03 -->
+<TR>
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+734-998-9860 Office<BR>
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<BR>
+<FONT SIZE="+1">
+<CENTER>
+<B>
+HIGHLIGHTS OF QUALIFICATIONS
+</B>
+</CENTER>
+</FONT>
+<BR>
+
+<UL>
+<LI>Advanced knowledge of and experience in business strategy,
+implementation, and management.</LI><BR>
+
+<LI>Excellent understanding of survey and experimental research design &
+implementation.</LI><BR>
+
+<LI>Outstanding computer skills including understanding of programming,
+data analysis & conversion.</LI><BR>
+
+<LI>Project management experience in complex multitask environments.</LI><BR>
+</UL>
+
+<BR>
+<FONT SIZE="+1">
+<B>
+<CENTER>
+EDUCATION
+</CENTER>
+</B>
+</FONT>
+<BR>
+Candidate, PhD in Marketing, University of Michigan, 1991.<BR>
+
+MBA, Iowa State University, 1989.<BR>
+
+B.S., Iowa State University, 1980. Journalism & Mass Communication, and
+Industrial Administration.<BR>
+
+<BR>
+<FONT SIZE="+1">
+<B>
+<CENTER>
+PROJECT MANAGEMENT
+</CENTER>
+</B>
+</FONT>
+<BR>
+<B><I>Planning</I></B>: evaluation and assessment of project time
+requirements. Prioritize projects and schedule tasks. <BR>
+
+<B><I>Organization</I></B>: Created and maintained a database of
+documentation, survey series information, and other information helpful
+to the project.<BR>
+
+<B><I>Implementation</I></B>: Created task lists, analyzed work process
+flow for order dependencies and areas of improvement. Scheduled
+materials flow and hourly charges to complete tasks. Assigned processing
+tasks. <BR>
+
+<B><I>Communication</I></B>: Regular communication with three other
+departments involved in every project to insure input and output met
+their requirements. Also, significant communication with researchers and
+archivists in Europe and the United States to solve data problems.<BR>
+
+<B><I>Training</I></B>: Created an annotated check list and operations
+manual to help processors. Created a processing handbook for complex
+survey data processing, including SAS & SPSS code and documentation of
+special in-house software. Trained new archive employees in basic Unix
+and archiving skills. <BR>
+
+<BR>
+<FONT SIZE="+1">
+<B>
+<CENTER>
+DATA MANAGEMENT
+</CENTER>
+</B>
+</FONT>
+<BR>
+<B><I>Data collection</I></B>: Created data collection forms and
+conducted a field survey by mail for a study of consumer attitudes,
+managed classroom experimental survey of students to test psychological
+emotion constructs, and gathered and analyzed a catalog of Internet
+financial sites. In addition, have helped collect survey and
+experimental data for other researchers, including field administration
+of a survey of drivers for an intelligent vehicle project. <BR>
+
+<B><I>Data conversion, cleaning & recoding</I></B>: Four years of
+experience evaluating, recoding, comparing, verifying, and preparing
+survey and experimental data for submission to an Internet-accessible
+international social science data archive. Convert between raw data,
+SAS transport, and SPSS portable file formats. Produce and test SAS &
+SPSS command files to read and label variables. Also, have experience in
+survey form coding and data entry. Helped produce CD-ROM data collection
+of minority research studies.<BR>
+
+<B><I>Data analysis</I></B>: Extensive education and experience in
+data analysis methods including: analysis of variance, regression,
+multivariate methods, nonparametrics, categorical methods, time series
+analysis, bootstrapping/jackknifing, graphical analysis methods, and
+structural equation modeling. Also, able to produce descriptive and
+interpretive reports of analysis results.<BR>
+
+<B><I>Data documentation</I></B>: Created abstracts and metadata
+summaries of data collections, generated codebooks, data maps, and
+other data documentation in text and Portable Document Format (PDF),
+installed a tag-based codebook generation system on Solaris Unix system,
+which included creation of new Perl programs to improve accuracy and
+efficiency of processing, revision and porting of old C programs.<BR>
+
+<BR>
+<FONT SIZE="+1">
+<B>
+<CENTER>
+COMPUTER SKILLS
+</CENTER>
+</B>
+</FONT>
+<BR>
+<B><I>Operating Systems</I></B>: Eight years Unix experience including
+Sun Solaris 2.5, SunOS 4.1.3, and FreeBSD 2.2.5 Unix, 12 years
+experience with Microsoft MS-DOS, Windows 3.1, and Windows 95, also
+experience with Michigan Terminal System, Orvyl/Wylbur, VM/CMS, MacOS,
+and IBM OS/2.<BR>
+
+<B><I>Hardware</I></B>: IBM-compatible PCs, Apple Macintosh, Sun Unix
+workstations, IBM mainframes. Tape experience includes read/write
+with 9-track, 4mm DAT, IBM 3480, and 8mm Exabyte on Unix and IBM 3480
+and 9-track on IBM mainframe. Upgrade memory, BIOS, hard drives, and
+motherboards on PCs. <BR>
+
+<B><I>Software</I></B>: Microsoft Word, Excel, Powerpoint, Corel
+Wordperfect, Quattro Pro, Lotus 1-2-3, dBase, SAS, SPSS, BMDP, Minitab,
+LISREL, xterm, X11 window managers, vi and other command line Unix
+tools. <BR>
+
+<B><I>Internet</I></B>: telnet, ftp, e-mail, Netscape, lynx, nslookup,
+netstat, ping, batchftp, plus some experience with sendmail and http
+daemon setup and operation.<BR>
+
+<B><I>Programming</I></B>: extensive SAS, SPSS, and Perl experience,
+some C (Borland C 4.5 & 5.0, C++Builder 3, TurboC, gcc, djgpp, cygwin),
+minimal Fortran (Microsoft Fortran, Sun f77, and f2c), awk, sed,
+make, Unix shell scripting and regular expressions. Write small
+applications and maintain legacy code in C and Fortran for data parsing
+and conversion. HTML coding. Have also ported, compiled, and installed
+applications in several Unix environments (BSD and SysV).<BR>
+
+<BR>
+<FONT SIZE="+1">
+<B>
+<CENTER>
+WORK EXPERIENCE
+</CENTER>
+</B>
+</FONT>
+<BR>
+<B><I>Senior Data Archives Specialist</I></B>, Inter-university
+Consortium for Political and Social Research, Ann Arbor, Michigan,
+January 1997-Present.<BR>
+
+<B><I>Data Archives Specialist</I></B>, Inter-university Consortium
+for Political and Social Research, Ann Arbor, Michigan, January
+1995-December 1996.<BR>
+
+<B><I>Graduate Student Research Assistant</I></B>, University of
+Michigan, College of Business, Marketing Department, September
+1989-August 1993. <BR>
+
+<B><I>Field Interviewer</I></B>, University of Michigan Transportation
+Research Institute, Ann Arbor, Michigan, June 1992. <BR>
+
+<B><I>Data Analyst</I></B>, Anjoy Research, Ann Arbor, MI. May-August
+1990. National Consumer Satisfaction Barometer Project. <BR>
+
+<B><I>Graduate Research Assistant</I></B>, Iowa State University,
+College of Business, Ames, Iowa, September 1987- May 1989. <BR>
+
+<B><I>Corporate Secretary-Treasurer and Supervisor</I></B>, Ye Olde
+Print Shop, Inc., Ames, Iowa, November 1980-September 1986.<BR>
+
+<BR>
+<CENTER>
+<FONT SIZE="+1">
+<B>PROFESSIONAL EXPERIENCE</B>
+</FONT>
+</CENTER>
+<BR>
+Michigan Individual Entrepreneurial Project, Pryor Award, 1990-1994. PhD
+Student Judge of business plans for annual entrepreneurship award.<BR>
+
+<P>Computer Resources Planning Committee PhD Student Representative,
+University of Michigan Business School, 1992.<BR>
+
+<P>Marketing Department PhD Student Advisor for incoming PhD students,
+University of Michigan Business School, 1991.<BR>
+
+<P>Treasurer, Graduate Business Student Association, University of
+Michigan Business School, 1990.<BR>
+
+<P>Revised and edited computer usage information package for incoming
+University of Michigan Business School PhD students, 1990.<BR>
+
+<P>Business School Representative to the Iowa State University Graduate
+Student Senate, 1988.<BR>
+
+
+</FONT>
+</UL>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
