@@ -1,0 +1,43 @@
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.04.12.44.46;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<HTML>
+<HEAD>
+<TITLE>Aurora 'About' Screen</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<H1>
+<CENTER>Aurora 'About' Screen 
+<A HREF="../gif/aur2b.gif"><IMG SRC="../gif/aur2b.gif" ALT="[Aurora 'About' Screen, 19K GIF]" ALIGN=MIDDLE WIDTH=644 HEIGHT=624>
+</A></CENTER></H1>
+
+<BLOCKQUOTE>
+<P>Of course, I've registered my copy of Aurora! It's been one of the
+best investments I've made in computer software. I can't get through a
+work day without it, and my supervisor just cannot understand how my editing
+chores get done so quickly.
+</BLOCKQUOTE>
+
+</BODY>
+</HTML>
+@

@@ -1,0 +1,259 @@
+#!/usr/bin/perl
+#
+# Server-Side Include Substitute (ssis)
+#
+# Version 1.1.3 - August 1, 1995 - Removed the need for cgi-lib.pl
+# Version 1.1.2 - May 9, 1995 - Slight documentation chages - GEB
+# Version 1.1.1 - Mar 10, 1995 - modified it to work if . isn't in path - GNS
+# Version 1.1 - Mar 3, 1995
+# Version 1.0 - Mar 1, 1995
+#
+# This script is meant to allow server-side include functionality without
+# *actually* using server-side includes.  It does this by running as a
+# CGI program, and parsing the pages itself.
+#
+# Written by George Burgyan <gburgyan@nforce.com> and Gabe Schaffer
+# <gabe@gabe.com>
+#
+###########################################################################
+#
+# Usage:
+#
+#  Put this program in the directory where you put your CGI programs.
+#  Call the program like this:
+#
+#   http://www.site.edu/cgi-bin/your_dir/ssis/~username/the_page_you_want.html
+#
+#  This will send the document
+#
+#   http://www.site.edu/~username/the_page_you_want.html
+#
+#  except it will handle the server-side includes.
+#
+#  If you're using the CERN server, you can have the server map the URL
+#  into the proper format by putting this in your httpd.conf file:
+#
+#    Map /dir/filename.html /cgi-bin/ssis/dir/filename.html
+#
+#  which will map any requests transparently onto the ssis script URL.
+#
+###########################################################################
+#
+# Bugs:
+#
+#  Right now it will only handle the <!--#exec cgi="program"--> server-
+#  side includes.  This limitation will be removed shortly. 
+#
+###########################################################################
+# Leave the next line alone...  it's used in the default config.
+#chop($pwd = `/bin/pwd`);	# save this for later
+###########################################################################
+#
+#   Configuration section
+#
+###########################################################################
+#
+# $ScriptAlias
+#
+# The directory to look in to find CGI programs.  Normally it is something
+# like '/usr/local/etc/httpd/cgi-bin' or something like it.  On CERN systems
+# it may be called something like 'htbin' or something.
+#
+# The following GUESSES where the cgi-bin directory is on the assumption
+# that this script is called with an absolute path.
+# If this does not work, you have to actually set it.
+# I have tested it on my configuration with both NCSA and CERN httpd and
+# it worked on those.  Your mileage may vary.
+# 
+#($ScriptAlias{"/cgi-bin/"}) = ($0 =~ m!^(.*/)?.*$!);
+#
+$ScriptAlias{"/cgi-bin/"} = "/usr/user/knassen/public_html/mycgi-bin/";
+#
+# Also note that you can set up *multiple* aliases.  (this is not that
+# often used.)
+# 
+#%ScriptAlias = ( "/cgi-bin/", "/usr/cgi-bin/",
+#		  "/htbin/", "/usr/cgi-bin",
+#		);
+#
+###########################################################################
+#
+# $DocumentRoot
+#
+# Set this variable to point at the *systems* home web directory.  It might
+# be called '/usr/local/etc/httpd/htdocs' or something.
+#
+#$DocumentRoot = "/usr/webdocs";
+#
+# If you are running a multi-homed host (ie. one machine looks like many
+# different web servers) you can set this up for each server so it looks
+# in a different directory based on which "server" was accessed.
+#
+#%DocumentRoot = ( "www.cybercon.com", "/usr/webdocs",
+#                  "www.gabe.com", "/home/gabe/public_html",
+#                );
+#
+###########################################################################
+#
+# $DirectoryIndex
+#
+# This should be the default file returned if a directory is requested.
+#
+$DirectoryIndex = "index.html";
+#
+###########################################################################
+#
+# This is set to be the user's web directory. (ie. where you put your web
+# documents.  Default NCSA is public_html.
+#
+$UserDir = "public_html";
+#
+###########################################################################
+#
+# End of configuration info
+#
+
+#print "<pre>". `env` . `/bin/pwd`."</pre>\n";
+
+if (!$ENV{"PATH_TRANSLATED"}) 
+{
+    print "Content-type: text/html\n\n";
+    &ServerError;
+}
+
+$file = $ENV{"PATH_TRANSLATED"};
+
+if (-d $file && !($file =~ /\/$/)) { # If it points to a directory without a
+				# '/' after it, relative links will be broken,
+				# send a redirect to the client to make
+				# the client look in the right place.
+    print "Location: http://$ENV{SERVER_NAME}:$ENV{SERVER_PORT}$ENV{SCRIPT_NAME}$ENV{PATH_INFO}/\n\n";
+    exit;
+}
+
+$ENV{"DOCUMENT_URI"} = $ENV{"PATH_INFO"};
+
+if (-d $file) {
+    $file .= $DirectoryIndex;
+    $ENV{"DOCUMENT_URI"} .= $DirectoryIndex;
+}
+
+if (!($file =~ m!^.*\.html?!)) # is it an html (or htm)?
+{				# it's not, so we can't parse it
+    print "Location: $ENV{PATH_INFO}\n\n"; # have the server send it out raw
+    exit;
+}
+
+print "Content-type: text/html\n\n";
+
+open(HTML,$file) || &ServerError;
+
+$/ = ">";			# set paragraph separator
+#@tags = split("<",$entire);
+#foreach $line (@tags)
+while ($line = <HTML>)
+{
+    $/ = "\n";			# gotta put it back the way it was
+
+    # Look through the file looking for a server-side include...
+    if ($line =~ /<!--#exec\s+cgi\s*=\s*"([^"]+)"\s*-->/)
+    {
+	$file = $1;
+	print $`;
+	$end = $';
+
+	# Pick the right ScriptAlias from the list.
+	foreach $a (keys %ScriptAlias) 
+	{
+	    last if $file =~ s!^$a!$ScriptAlias{$a}!;
+	}
+
+	undef $path_info;
+
+	# Find the actual program and the residual PATH_INFO
+	while ((!-f $file || !-x $file) && length($file))
+	{
+	    $pos = rindex($file, "/");
+	    $path_info = substr($file, $pos) . $path_info;
+	    $file = substr($file, 0, $pos);
+	}
+
+	($dir, $prog) = ($file =~ m!^(.*)/(.*)$!);
+	chdir $dir;
+	
+	if (defined $path_info)
+	{
+	    $ENV{"PATH_INFO"} = $path_info;
+	    ($uid, $path) = ($path_info =~ m!/~([^/])(.*)!);
+
+	    if ($uid)
+	    {
+		$path_tran = (getpwnam($uid))[7] . $path_info . "/" . $UserDir;
+	    }
+	    else
+	    {
+		$path_tran = $DocumentRoot . $path_info;
+	    }
+	}
+
+	# Make sure that the program that we are about to call is in fact
+	# an executable program...  If it isn't, spit out something to
+	# that effect.
+
+	if (! -e $prog) 
+	{
+	    print "[ssis: program not found. " .
+"<a href=\"http://www.webtools.org/ssis/noprog.html\"" .
+">More info availible</a>]";
+	} 
+	elsif (! -x $prog) 
+	{
+	    print "[ssis: non executable program specified: '$dir' / '$prog'" .
+" <a href=\"http://www.webtools.org/ssis/badprog.html\">" .
+"More info availible</a>]";
+	} 
+	else 
+	{
+	    # We have a program that exists and that we can run.  Run it!
+	    open (INCLUDE, "./$prog|");
+
+	    $gotblank = 0;
+	    while ($rline = <INCLUDE>) 
+	    {
+		print $rline if $gotblank;
+		$gotblank = 1 if $rline eq "\n";
+	    }
+	    
+	    close (INCLUDE);
+	}
+	
+	print $end;
+    } 
+    else 
+    {
+	print $line;
+    }
+    $/ = ">";			# set paragraph separator
+}
+
+
+# This spits out a rather official-looking error message along with any
+# info that we were passed.
+
+sub ServerError {
+    local($message) = @_;
+
+    print <<EOM;
+<html><head><h1>500 Server Error</h1></head><body>
+
+The ssis program was called in such a way that it was unable
+to complete your request.<p>
+
+Please contact the server administrator, and inform them of the time the error
+occurred, and anything you might have done that may have caused the error.<p>
+
+$message
+</body></html>
+EOM
+    exit(1);
+}

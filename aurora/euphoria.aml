@@ -1,0 +1,88 @@
+
+From jawilson@ix.netcom.comThu Nov 14 09:10:28 1996
+Date: Wed, 13 Nov 1996 21:34:20 -0800
+From: Jim Wilson <jawilson@ix.netcom.com>
+To: aurora-editor@sfu.ca
+Subject: Euphoria Syntax Object
+
+All;
+
+Here's a new syntax highlighting object. This one's for the Euphoria
+programming language. Euphoria, for those of you who are unfamiliar with
+it, is a neat little language that looks and acts similar to AML, so it has
+a fairly low learning curve for people who know AML. If you've got the time
+you should check Euphoria out.
+
+BTW; has anyone been experiencing problems with their syntax highlighting?
+I've noticed that if a TAB character directly proceeds a keyword then that
+keyword doesn't get highlighted. If I add a space between the TAB and the
+keyword it works fine. Is this problem occurring to anyone else?
+
+
+Regards,
+Jim Wilson
+(jawilson@ix.netcom.com)
+
+
+//--------------------------------------------------------------------
+// XEX.AML
+// Syntax highlighting for Euphoria files (.Ex)
+//
+// After making changes, save this file and compile with <shift f10>.
+//--------------------------------------------------------------------
+
+include bootpath "define.aml"
+
+syntax
+  'dn'                            // options:
+                                  //   b=show through marked block
+                                  //   c=highlight cursor line
+                                  //   d=show through closed folds
+                                  //   f=use only foreground colors
+                                  //   i=ignore keyword case
+                                  //   n=highlight numbers
+  '{}()[].=+-*/:;<>,@^#'          // symbol set 1
+  ''                              // symbol set 2
+  '"'                             // string characters
+  ''                              // string literal char
+  '$'                             // numeric char
+  '--'          0                 // eol comment 1 / start column
+  ''            0                 // eol comment 2 / start column
+  ''           ''                 // multi-line comment 1
+  ''           ''                 // multi-line comment 2
+  2                               // number of lines to scan backward
+
+  // colors
+  color brightcyan   on blue      // keyword color
+  color white        on blue      // symbol set 1
+  color white        on blue      // symbol set 2
+  color brightgreen  on blue      // string color
+  color brightgreen  on blue      // numeric color
+  color yellow       on blue      // eol1 comment color
+  color yellow       on blue      // eol2 comment color
+  color yellow       on blue      // comment1 color
+  color yellow       on blue      // comment2 color
+
+keyword
+  abort, allocate, allocate_low, all_palette, append, atom,
+  bits_to_int, bk_color, bytes_to_int, call, clear_screen, close,
+  command_line, compare, complex, constant, cos, current_dir, cursor,
+  date, dir, display_image, display_text_image, do, dos_interrupt,
+  draw_line, ellipse, else, elsif, end, end, exit, find, floor, for,
+  free, free_low, function, get, getc, getenv, gets, get_active_page,
+  get_display_page, get_key, get_mouse, get_pixel, get_position,
+  graphics_mode, if, include, integer, int_to_bits, int_to_bytes,
+  length, log, lower, machine_func, machine_proc, match, mouse_events,
+  mouse_pointer, natural, object, palette, peek, pixel, poke, polygon,
+  position, power, prepend, print, printf, procedure, puts, rand,
+  read_bitmap, remainder, repeat, return, save_image, save_text_image,
+  scroll, seek, sequence, set_active_page, set_display_page, set_rand,
+  sin, sort, sound, sprintf, sqrt, system, tan, text_color, text_rows,
+  then, time, trace, true, type, type_check, upper, use_vesa, value,
+  video_config, wait_key, where, while, wildcard_file, wildcard_match,
+  without, wrap
+
+Regards,
+Jim Wilson
+(jawilson@ix.netcom.com)
+

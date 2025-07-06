@@ -1,0 +1,49 @@
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.04.12.44.46;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<HTML>
+<HEAD>
+<TITLE>Aurora File Manager Part II</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<H1><CENTER>
+Aurora File Manager Part II
+<A HREF="../gif/aur4b.gif"><IMG SRC="../gif/aur4b.gif" ALT="[Aurora File Manager Part II, 25K GIF]" ALIGN=MIDDLE>
+</A></CENTER></H1>
+
+<BLOCKQUOTE>
+<P> This is a view of the Aurora file manager in a more ambitious role:
+marking several files, then performing an operation such as copying,
+deleting, or opening the files in the editor, on each of the highlighted
+files.  The file manager also offers a "tree" view of the disk file layout,
+from which files may be selected, if desired.  Or the tree may be used
+to navigate to a particular working directory, then the file list can be used
+to select files, as shown here.  Note the detachable menus: the "Command"
+menu normally appears under its title on the menu bar, but I've pulled it
+down to the bottom of the screen so it doesn't obscure what I've marked in
+the file list.
+</BLOCKQUOTE>
+
+</BODY>
+</HTML>
+@

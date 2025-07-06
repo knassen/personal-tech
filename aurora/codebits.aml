@@ -1,0 +1,321 @@
+
+It's been a while since I posted much to the list so I decided to
+rectify that with one big whopper post. The following tidbits are all
+AML code snippets culled from functions that I've created over the
+last year or two. Most of them have a small, but rather specific,
+purpose. Maybe some will be of benefit to you -- I know that they've
+become indispensable to me. All of them should be suitable to just cut
+and paste right into your KBD.AML file.
+
+Note that most of the functions that need to mark any text will use a
+unique block mark ID. This way, you can use them without having to
+unmark whatever you may already have marked. Enjoy! (BTW: I may have
+posted some of these before so if a few of them look familiar it may
+be for a good reason! <g>)
+
+I sure hope your email can handle looong messages...
+
+Jim Wilson
+(jawilson@ix.netcom.com)
+
+{----------------------------------------------------------------------------}
+
+RePositionBlock
+------------------------
+This function will allow you to move a marked block from one location
+to another. I generally only use this for column marks but I suppose
+it would work with other types of marks. Why don't I just use the
+'moveblockover' or 'moveblock2' functions? The primary reason is
+because both of those fail if you try to move a block of text to an
+area that would overlap the mark. Well, this bit of code doesn't have
+that problem. Note that this function will work differently if insert
+is on or off; if insert mode is on the block will be inserted but if
+insert mode is off the block will overwrite the underlying text. Also
+note that you need to have a block marked before you try to run this.
+I've assigned this function to Ctrl-PrtSc.
+
+if mark? then                               // only do if block is marked
+   undobegin                                // turn on undo
+   copy                                     // copy block to buffer
+   fillblock ' '                            // overwrite old area with
+   blanks if? (insert?) (paste) (paste 'o') // insert/overwrite the block
+   undoend                                  // turn off undo
+else
+   msgbox "No block marked -- Nothing to reposition" "" 'b'
+end
+
+
+SwapCharRight
+----------------------
+This little ditty will swap the character on the right with the one on
+the left (the reverse of the vi command 'xp' for all us Unix junkies
+-- the following function, SwapLeft, is identical to 'xp' though). For
+example: suppose you typed "wrod" instead of "word". Simply position
+your cursor on the "r" in "wrod" and run this function and the word
+will be magically transformed into "word". As a side benefit the
+cursor will be positioned on the character that you just moved so you
+can keep running this function and moving the character one position
+to the right. I've assigned this function to <alt grey+>.
+
+usemark "SwapRight"     // change mark
+markchar                // mark single char
+cut                     // cut to clipboard
+right                   // move cursor right 1 char
+paste                   // paste char back into text
+destroymark "SwapRight" // remove mark
+usemark                 // reset default mark
+
+
+SwapCharLeft
+--------------------
+This function performs identically to the one above with the exception
+that if moves the character to the left instead of the right. I've
+assigned this function to <alt grey->.
+
+usemark "SwapLeft"      // change mark
+markchar                // mark single char
+cut                     // cut to clipboard
+left                    // move cursor left 1 char
+paste                   // paste char back into text
+destroymark "SwapLeft"  // remove mark
+usemark                 // reset default mark
+
+
+TopOfParagraph
+------------------------
+This one has become quite useful to me, especially when writing .doc
+files. What this does is simply move your cursor to the first
+character in the current paragraph and then centers the line in the
+middle of the window. The cursor can reside anywhere within the
+paragraph when you run this command. I've assigned this function to
+<alt up>.
+
+setdisplay OFF                          // turn off screen updates
+usemark "TopOfPara"                     // change mark
+markpara                                // mark current paragraph
+gotomark 'tl'                           // move cursor to top
+if (getlinebeg <> 1) then nextword end  // goto first word
+adjustrow                               // center row in display
+destroymark "TopOfPara"                 // remove the mark
+usemark                                 // reset default mark
+setdisplay ON                           // turn on screen updates
+
+
+EndOfParagraph
+------------------------
+This function performs identically to the one above with the exception
+that the cursor is moved to the end of the paragraph. I've assigned
+this function to <alt down>.
+
+setdisplay OFF              // turn off screen updates
+usemark "EndOfPara"         // change mark
+markpara                    // mark current paragraph
+gotomark 'b'                // move cursor to end
+col (getlinelen + 1)        // goto last word
+adjustrow                   // center row in display
+destroymark "EndOfPara"     // remove the mark
+usemark                     // reset default mark
+setdisplay ON               // turn on screen updates
+
+
+Search
+----------
+Truly one of my favorite time savers here. This gem works as my dual
+purpose search function. I use Ctrl-s as the key that allows me to
+search for text in a file. With this bit of AML if I hit Ctrl-s the
+'askfind' function runs. However, if I hit Ctrl-shift-s then
+whatever word the cursor is currently on is used as the search string
+and the find is immediately started using that word. Try this one and
+you may wonder how you ever got along without it! I've assigned this
+function to Ctrl-s.
+
+ShiftPressed = if? (shiftkey?) TRUE FALSE   // see if ctrl-shift pressed
+if not ShiftPressed then askfind            // if not use normal search
+else                                        // else if both keys pressed
+  CurrentWord = getword                     // save word at cursor if
+  CurrentWord then                          // if a word was marked
+     search2 CurrentWord                    // search for it
+     addhistory "_find" CurrentWord         // add it to the history string
+  else
+     msgbox ('No word to mark') '' 'b'      // if no word was marked, error
+  end
+end
+
+
+Occurances
+------------------
+This function performs identically to the one above with the exception
+that the "occurrences" function is run instead of the search function.
+I've assigned this function to Ctrl-o.
+
+ShiftPressed = if? (shiftkey?) TRUE FALSE   // see if ctrl-shift pressed
+if not ShiftPressed then askfindo           // if not use normal search
+else                                        // else if both keys pressed
+  CurrentWord = getword                     // save word at cursor if
+  CurrentWord then                          // if a word was marked
+     findo CurrentWord                      // search for it
+     addhistory "_find" CurrentWord         // add it to the history string
+  else
+     msgbox ('No word to mark') '' 'b'      // if no word was marked, error
+  end
+end
+
+
+HomeKey
+--------------
+This one just emulates MultiEdit's <home> key functionality, the
+editor I had used mostly before I started using Aurora. This bit of
+code will move your cursor to column 1 of the current line of text the
+first time you hit it and then to the first character of the first
+word the second time. This pattern will continue for as many times as
+you'd care to keep hitting the <home> key (why you would hit the
+<home> key more than a few times is a mystery to me but hey, I aim to
+please). I've assigned this function to the <home> key, obviously.
+
+if? getcol == 1 and getlinelen (col (getlinebeg)) (col 1)
+                                           // goto left edge 1st then 1st char
+
+
+CtrlHome
+-------------
+Another MultiEdit ripoff. (I think even BRIEF, that brain dead excuse
+for a text editor, had some of these "MultiEdit" style features. Maybe
+MultiEdit ripped off BRIEF.) Anyway, this one will move the cursor to
+the beginning of the file the first time you hit it and then to the
+first column of line 1 the second time. I've assigned this function to
+Ctrl-Home.
+
+if? getrow == 1 (gotopos 1) (row 1)    // goto top of file 1st then 1st col
+
+
+CtrlEnd
+-----------
+Okay, so this is yet another MultiEdit feature I cloned -- so sue me.
+Actually, the next few functions are all "inherited" from MultiEdit.
+Basically, this one will move the cursor to the last line of a file
+the first time you hit it and then to the last character on that last
+line the second time. I've assigned this function to Ctrl-End.
+
+if? getrow == getlines (col (getlinelen + 1)) (row (getlines))
+                // goto end of file 1st then end
+                // of last line
+
+
+CtrlPgUp
+-------------
+This one moves the cursor to the top of the current window the first
+time it's hit and then to the first character of that line the second
+time. I've assigned this function to Ctrl-PgUp.
+
+if? getviewtop == getrow (col 1) (row (getviewtop))
+                // goto top of screen 1st then
+                // to 1st char
+
+
+CtrlPgDn
+-------------
+Very similar to the function above, except it works with the bottom of
+the window; i.e. it moves the cursor to the last line in the current
+window the first time it's hit and then to the last character of that
+line the second time. I've assigned this function to Ctrl-PgDn.
+
+if? getviewbot == getrow (col (getlinelen + 1)) (row (getviewbot))
+                // goto bottom of screen 1st
+                //  then to last char
+
+
+PgUp
+--------
+This one fixes an "abnormality" (IMHO) with the way Aurora works in
+its default mode. Basically what happens is that when you hit <pgup>
+and you happen to have your cursor on the first page -- anywhere on
+that first page -- Aurora will not do anything (BTW; <pgdn> doesn't
+share this behavior). Well, if you use this bit of AML what will
+happen is that Aurora will behave identically until you get to that
+first page. When you do get to the first page and you hit the <pgup>
+key this code will deposit your cursor on the very first line of the
+file. I've assigned this function to <pgup>.
+
+if? getviewtop == 1 (row (getviewtop)) (pageup 1)
+                // page up if not on 1st page
+                // else goto top of page
+
+
+CtrlUp
+---------
+Another "fix" of a default Aurora behavior, in my opinion. When
+scrolling up through a file the cursor will stop as soon as you get to
+the first page of text. With this function the cursor will do the same
+thing -- scroll up through your file -- but when it reaches the first
+page it will continue moving up until it gets to the first line. I've
+assigned this function to Ctrl-Up.
+
+if? getrow <= getviewrows and getviewtop == 1 (up) (rollrow -1)
+                // scroll up until 1st page
+                // then just move up
+
+
+CtrlLeft
+----------
+Another one of those "dual-personality" functions. If Ctrl-Left is
+hit then the cursor moves to the beginning of the previous word using
+the "normal" character set delimiters; letters and numbers. However,
+if you hit Ctrl-Shift-Left then the "alternate" character set
+delimiters are used to form words instead; letters, numbers, symbols,
+punctuation, etc. This latter behavior is particularly helpful when
+navigating around source code and you need to jump to string
+variables, delimiting brackets, etc. I've assigned this function to
+Ctrl-Left.
+
+ShiftPressed = if? (shiftkey?) TRUE FALSE   // see if ctrl-shift is pressed
+if ShiftPressed then                        // if yes
+   OrigCSet=_CSet                           // save orig char set
+   setobj CSet _CSetB 'prf'                 // switch to alt char set
+end
+prevword                                    // goto previous word if
+ShiftPressed then                           // switch back to orig char set
+   setobj CSet OrigCSet 'prf'
+end
+
+
+CtrlRight
+-------------
+Identical in functionality to the previous bit of AML code with the
+sole exception that it moves the cursor to the next word instead of
+the previous one. I've assigned this function to Ctrl-Right.
+
+ShiftPressed = if? (shiftkey?) TRUE FALSE   // see if ctrl-shift is pressed
+if ShiftPressed then                        // if yes
+   OrigCSet=_CSet                           // save orig char set
+   setobj CSet _CSetB 'prf'                 // switch to alt char set
+end
+nextword                                    // goto next word
+if ShiftPressed then                        // switch back to orig char set
+   setobj CSet OrigCSet 'prf'
+end
+
+
+Tab
+-----
+Similar to the above two functions except that this one doesn't have
+the aforementioned dual-personality, this reprograms the default <tab>
+key characteristics to always acknowledge the alternate character set
+(one which could be virtually anything you want and can be changed by
+editing the _CSetB object variable in CONFIG.AML).
+
+OrigCSet=_CSet              // save orig char set
+setobj CSet _CSetB 'prf'    // switch to alt char set
+tabright                    // tab right setobj CSet
+OrigCSet 'prf'              // switch back to orig char set
+
+
+ShiftTab
+-----------
+This function performs identically to the one above with the exception
+that it performs a 'tableft' function instead of the 'tabright'.
+
+OrigCSet=_CSet              // save orig char set
+setobj CSet _CSetB 'prf'    // switch to alt char set
+tableft                     // tab left setobj CSet
+OrigCSet 'prf'              // switch back to orig char set
+

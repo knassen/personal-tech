@@ -1,0 +1,22 @@
+List of the contents of newaurora.tar.gz.
+Need to check these out and see if any are duplcates
+under another for what's already on this macros page.
+
+-rw------- 224/40    3189 Jun 22 13:55 1997 4dos-descript.aml
+-rw------- 224/40    2197 Jun 22 14:16 1997 batrun.aml
+-rw------- 224/40    5817 Jun 22 14:04 1997 c-indent.aml
+-rw------- 224/40    2005 Jun 22 14:08 1997 cmt-block.aml
+-rw------- 224/40    1568 Jun 22 14:01 1997 date-time.fix.aml
+-rw------- 224/40    8671 Jun 22 14:21 1997 dbf-chk.aml
+-rw------- 224/40    1635 Jun 22 14:18 1997 easter-egg.aml
+-rw------- 224/40    4678 Jun 22 14:19 1997 enh-prtdlg.aml
+-rw------- 224/40    2280 Jun 22 13:01 1997 glenn-tran.aml
+-rw------- 224/40    3756 Jun 22 13:07 1997 hartman.tran.aml
+-rw------- 224/40    3235 Jun 22 13:52 1997 hex-repl.aml
+-rw------- 224/40    1593 Jun 22 13:55 1997 hex-repl2.aml
+-rw------- 224/40    7850 Jun 22 13:58 1997 html-extent.aml
+-rw------- 224/40    1479 Jun 22 14:07 1997 line-delim.aml
+-rw------- 224/40    2970 Jun 22 13:59 1997 projects.aml
+-rw------- 224/40    2671 Jun 22 14:15 1997 screensvr.mod.aml
+-rw------- 224/40    3549 Jun 22 14:11 1997 terhell-tips.aml
+-rw------- 224/40    8586 Jun 22 14:09 1997 dynamenu.mime

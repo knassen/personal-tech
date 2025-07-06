@@ -1,0 +1,16 @@
+  From jawilson@ix.netcom.comSun Nov 17 12:07:00 1996
+  Date: Sat, 16 Nov 1996 20:03:01 -0800
+  From: Jim Wilson <jawilson@ix.netcom.com>
+  To: aurora-editor@sfu.ca
+  Subject: Two new macros
+
+  - SRCHALL
+    This macro will search all your open files for a string. I have had
+    occasion to use this when searching for a variable name in a bunch
+    of open files. It will work on every file you have loaded, and will
+    stop at the first occurrence it finds. Note that there is one
+    problem; if srchall happens to find the search string in the
+    _ClipBoard it will cause weird things to happen (something which
+    simulates a lockup is usually what occurs). I have put logic in the
+    macro to prevent it from searching the _ClipBoard, but it doesn't
+    seem to work all of the time. Go figure...

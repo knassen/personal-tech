@@ -1,0 +1,145 @@
+//--------------------------------------------------------------------
+// XAWK.AML
+// Syntax highlighting for awk program/scripts (awk) v1.1
+//
+// by Kent Nassen (knassen@umich.edu)
+// After making changes, save this file and compile with <shift f10>.
+//--------------------------------------------------------------------
+
+include bootpath "define.aml"
+
+    stmcolor = color brightgreen on blue    // color of statements
+    repcolor = color pink on blue           // color of repeat statements
+    patcolor = color magenta on blue        // color of patterns
+    fncolor = color cyan on blue            // color of functions
+    condcolor = color yellow on blue        // color of conditionals
+    varcolor = color red on blue            // color of variables
+
+//
+// AWK statements
+//
+    public _break = stmcolor
+    public _continue = stmcolor
+    public _delete = stmcolor
+    public _exit = stmcolor
+    public _function = stmcolor
+    public _getline = stmcolor
+    public _in = stmcolor
+    public _next = stmcolor
+    public _print = stmcolor
+    public _printf = stmcolor
+    public _return = stmcolor
+    public _nextfile = stmcolor
+    public _func = stmcolor
+    public _nextfile = stmcolor
+
+//
+// AWK variables
+//
+    public _ARGC = varcolor
+    public _ARGIND = varcolor
+    public _ARGV = varcolor
+    public _CONVFMT = varcolor
+    public _ENVIRON = varcolor
+    public _ERRNO= varcolor
+    public _FIELDWIDTHS = varcolor
+    public _FILENAME = varcolor
+    public _FNR = varcolor
+    public _FS = varcolor
+    public _IGNORECASE = varcolor
+    public _NF = varcolor
+    public _NR= varcolor
+    public _OFMT = varcolor
+    public _OFS = varcolor
+    public _ORS = varcolor
+    public _RLENGTH= varcolor
+    public _RLENGTH = varcolor
+    public _RS = varcolor
+    public _RSTART = varcolor
+    public _RT = varcolor
+    public _SUBSEP= varcolor
+
+//
+// AWK functions
+//
+    public _atan2 = fncolor
+    public _close = fncolor
+    public _cos = fncolor
+    public _exp = fncolor
+    public _int = fncolor
+    public _log = fncolor
+    public _rand = fncolor
+    public _sin = fncolor
+    public _sqrt = fncolor
+    public _srand = fncolor
+    public _gsub = fncolor
+    public _index = fncolor
+    public _length = fncolor
+    public _match = fncolor
+    public _split = fncolor
+    public _sprintf = fncolor
+    public _sub = fncolor
+    public _substr = fncolor
+    public _system = fncolor
+    public _fflush = fncolor
+    public _gensub = fncolor
+    public _tolower = fncolor
+    public _toupper = fncolor
+    public _systime = fncolor
+    public _strftime = fncolor
+
+//
+// AWK conditionals
+//
+    public _if = condcolor
+    public _else = condcolor
+
+//
+// AWK repeat statements
+//
+    public _while = repcolor
+    public _for = repcolor
+    public _do = repcolor
+
+//
+// AWK patterns
+//
+    public _BEGIN = patcolor
+    public _END = patcolor
+
+
+syntax
+  'bcfn'                          // options:
+                                  //   b=show through marked block
+                                  //   c=highlight cursor line
+                                  //   d=show through closed folds
+                                  //   f=use only foreground colors
+                                  //   i=ignore keyword case
+                                  //   n=highlight numbers
+  '()[]{}=+-*/:;<>|&,~!^?'        // symbol set 1
+  '%$._'                          // symbol set 2
+  '\'"'                           // string characters
+  '\\'                            // string literal char
+  ''                              // numeric symbol
+  '#'           0                 // eol comment 1 / start column
+  ' #'          1                 // eol comment 2 / start column
+  ''            ''                // multi-line comment 1
+  ''            ''                // multi-line comment 2
+  0                               // number of lines to scan backward
+
+  // Choices for colors
+  // black   darkgray      blue    brightblue    green    brightgreen   
+  // cyan    brightcyan    red     brightred     magenta  brightmagenta=pink
+  // brown   yellow        gray    white
+           
+  // colors
+  color brightgreen  on blue      // keyword 1
+  color yellow       on blue      // symbol set 1
+  color brightcyan   on blue      // symbol set 2
+  color pink         on blue      // string
+  color brightcyan   on blue      // numeric
+  color gray         on blue      // eol comment 1
+  color gray         on blue      // eol comment 2
+  color magenta      on blue      // comment 1
+  color magenta      on blue      // comment 2
+

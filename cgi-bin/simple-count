@@ -1,0 +1,50 @@
+#!/usr/um/bin/perl
+# simplecount 1.0
+# count.pl
+#
+# I got the concept for this little hack from a script I saw somewhere
+# quite a while ago. I forget where I originally saw it though.
+# This script simply keeps a count of the amount of hits a web page
+# receives. The count can either be displayed on the page in which it
+# was called, or you can remove one simple line below for an invisible
+# count of your pages (which was why I had to write this script in the
+# first place).
+#
+# This will keep track the hits on multiple pages
+
+# get the URI
+$uri = $ENV{'DOCUMENT_URI'};
+
+# This is the name of the file that the counts will be stored in.
+#$countfile = "/usr/users/knassen/.counts";
+$countfile = "/afs/umich.edu/user/k/n/knassen/Public/html/.counts";
+
+print "Content-type: text/html\n\n";
+
+# Read the current counts
+open(COUNT, "+<$countfile") || do{print "Can't open count file"; die; };
+flock(COUNT, 2);
+
+while (<COUNT>) {
+        chop;
+        ($file, $count) = split(/:/, $_);
+        $counts{$file} = $count;
+}
+
+$counts{$uri}++;
+
+seek(COUNT, 0, 0);
+
+# Write the counts back to the file.        
+foreach $file (keys %counts) {
+       print COUNT $file, ":", $counts{$file}, "\n";
+    }
+
+
+close(COUNT);
+
+# remove the next line for an invisible count!
+print $counts{$uri};
+
+exit;
+

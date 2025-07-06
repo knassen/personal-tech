@@ -1,0 +1,17 @@
+  From jawilson@ix.netcom.comSun Nov 17 12:07:00 1996
+  Date: Sat, 16 Nov 1996 20:03:01 -0800
+  From: Jim Wilson <jawilson@ix.netcom.com>
+  To: aurora-editor@sfu.ca
+  Subject: Two new macros
+
+  - VERTHIGH
+    This macro will produce a vertical highlight on the screen. I have    
+    found this to be quite useful when trying to align columns of data.
+    The highlight uses the current cursor position and goes from the    
+    first line of the file to the last. It is fixed; e.g. it remains on the
+    screen while you move around. To turn it off all you do is run the 
+    macro a second time. Note that if you have a character or column
+    mark on the screen when you run this macro funny things will happen
+    to its color. Jeff is aware of this problem.
+
+

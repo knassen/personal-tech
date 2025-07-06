@@ -1,0 +1,138 @@
+Simplehits.pl V1.01 February 26th 1997		       filename: README.txt
+
+
+**************************************************************************
+				IMPORTANT 
+These scripts are released free for your use for whatever morally
+correct purpose you wish. BUT they are not guaranteed to be perfect,
+and may well contain faults. You use them entirely at your own risk,
+and by using them you agree to absolve all those connected with their
+creation or distribution from any liability for damage actual or
+consequential caused by their use.
+**************************************************************************
+
+
+About the simplest page access (hit) counter you can have, yet this one
+can be called with either Server Side Includes (SSI) or if you cannot,
+or don't want to, use SSI, by using the html <img src> tag instead.
+
+If you call simplehits.pl with the <img src> method, then the counter
+cannot print out the hit count, but it does record the hit in the hits
+file. It is therefore a hidden counter, very useful if you don't want
+the page user to know that there is a hit count on that page.
+
+Why can't simplehits.pl print out when in <img src> mode? Because the
+output to return as result of a call from <img src> - which is calling
+for a graphic image - must be a binary graphic, and not text. So
+simplehits.pl outputs a single transparent pixel called simplehits.gif
+to the browser.
+
+FILE TYPES
+
+If you downloaded the shv101.zip package, just set your variables then
+upload to your cgi-bin and other directories as appropriate.
+
+If you downloaded the shv101.tar package, then you can either untar it
+now and upload the files one by one, or you can place the tar package
+in your server cgi-bin and in that directory issue the command
+
+		tar xvfp shv101.tar
+
+which will unpack the files into their correct places - except you will
+need to put the graphics item and html items where they belong.
+
+
+SETUP
+
+SET VARIABLES
+
+1       Set the path to Perl on your server. Probably #!/usr/bin/perl
+or        #!/usr/local/bin/perl.
+
+2       Select the type of counter you want by unhashing either "text"
+or       "hidden" - but NOT BOTH
+
+3       Set the path of  $hit_file to where you are going to put the
+file       "simplehits.txt".       We suggest in a directory called
+"data" under   your cgi-bin directory, but it can be anywhere you
+like.
+
+4       Set the path of $gif to the place where you store
+"simplehits.gif".
+
+5       In the two html test pages, "simplehits.shtml" and
+"simplehits.html",   set the correct path to simplehits.pl.
+
+
+
+UPLOAD
+
+1       Upload simplehits.pl to your cgi-bin (scripts directory) and
+CHMOD it   755
+
+2       Upload simplehits.txt to your "data" directory and CHMOD it 666
+
+3	Upload simplehits.gif to your graphics directory
+
+4       Upload the two test pages "simplehits.shtml" and
+"simplehits.html" to   your html directory.
+
+
+
+TEST THE COUNTER
+
+Open simplehits.shtml in your browser. With luck, it will show you a
+smart red text counter reading 12346 - if it does then all is working
+fine, as your simplehits.txt file started at 12345!. If you get a
+message warning that "this directive was not correctly processed" or
+similar, then it means there was an SSI problem. Either SSI is not
+available to you (contact your server administrator and ask about it)
+or your path to simplehits.pl is wrong. Notice that this page has the
+extension ".shtml" and not "html". This is so that your server knows it
+is a page that must be parsed for things like SSI.
+
+Now open simplehits.html in your browser. You should get a clean page
+with no counter shown. If you get the "broken image" symbol, it
+probably means the path to simplehits.pl is wrong on this page.
+
+If neither of these pages work, then call simplehits.pl directly from
+your browser as http://www.your_domain.com/cgi-bin/simplehits.pl and
+see what you get. If you chose a text counter, you should get a text
+printout top left of screen, otherwise if it's a hidden counter,
+nothing appears on-screen. But either way simplehits.pl should
+execute.
+
+If you get a Server Error message, check that simplehits.pl is CHMOD
+755 and the file simplehits.txt CHMOD 666. And check that the paths to
+the file and gif are correct.
+
+We hope that this counter is useful to you - and if you want a smarter,
+bigger one then try out the full-blown graphics counter "mcounter.pl"
+from us. It is amazing!
+
+
+
+
+BUG REPORTS
+
+Any bug reports and comments or suggestions please to
+
+users@spells.com
+
+
+
+
+IMPORTANT
+
+Please would you let us know where you are using our scripts, so that
+we can come and look - and potential CGI Magic users can come and look
+too! Let us know at
+
+users@spells.com
+
+More scripts and updates from CGI Magic at
+
+http://www.spells.com/cgi/
+
+CGI Magic
+February 1997.

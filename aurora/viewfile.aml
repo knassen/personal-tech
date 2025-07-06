@@ -1,0 +1,170 @@
+
+From jawilson@ix.netcom.comMon Jan 22 13:57:19 1996
+Date: Mon, 1 Jan 1996 18:21:39 -0800
+From: Jim Wilson <jawilson@ix.netcom.com>
+To: aurora-editor@sfu.ca
+Subject: New Version of ViewFile.Aml
+
+All;
+
+Attached to the end of this message is the latest version of the 
+ViewFile AML macro I wrote. For those of you unfamiliar, ViewFile 
+allows you to view a file in a pop up window from the fmgr before you 
+load it into an edit window; that was version 1.0. Version 1.1 worked a 
+little faster and also allowed you to view a file within a .zip file. 
+Now, version 1.2 makes it possible to extract a file from a .zip WHILE 
+you're viewing it and then places it directly into an edit window. I 
+also changed the dialog boxes to the yes/no/cancel variety so you could 
+bail out at any time.
+
+This is an external macro and will only work while the fmgr is loaded. 
+Simply "detach" the .AML code from this message and place it in your 
+\AURORA\MACRO sub-dir (or whatever else you call it) and compile it. 
+One note: if your email package is like mine the AML code, especially 
+the comments, won't look quite right. If you load it into Aurora, 
+however, it should look just fine.
+
+Enjoy!
+
+Jim Wilson
+(jmw@ix.netcom.com)
+
+{--------------------------------------------------------------------}
+
+/* ---------------------------------------------------------------- */
+/* Macro:        VIEWFILE.AML                                       */
+/* Written by:   Jim Wilson                                         */
+/*                                                                  */
+/* Description:  Macro used from the fmgr to view a file in a popup */
+/*               window before loading it into an edit window.      */
+/*                                                                  */
+/* Usage:        This was written primarily as an external macro.   */
+/*               Assign it to a menu item and/or key in the fmgr.   */
+/*                                                                  */
+/* Version:      1.0 -- 10/95                                       */
+/*               ------------                                       */
+/*               Initial version. Never released.                   */
+/*                                                                  */
+/*               1.1 -- 11/95                                       */
+/*               ------------                                       */
+/*               Added the ability to view archived files (.zip) in */
+/*               the popup window, as opposed to just uncompressed  */
+/*               files.                                             */
+/*                                                                  */
+/*               Limited the amount of data read, in non zip files, */
+/*               to 10K (for faster access).                        */
+/*                                                                  */
+/*               1.2 -- 12/95                                       */
+/*               ------------                                       */
+/*               Added the ability to extract a file from a .zip    */
+/*               while viewing it and then place it directly into   */
+/*               an edit window. Highlight the file name and then   */
+/*               hit the <enter> key to extract it.                 */
+/*                                                                  */
+/*               Changed the dialog boxes to the Yes/No/Cancel      */
+/*               variety to allow you to bail out of any operation. */
+/* ---------------------------------------------------------------- */
+
+  include bootpath "define.aml"
+
+  ZipFile      = FALSE                           // default file type
+  WinTitle     = 'Extract File'                  // default window title
+  StartingLine = 1                               // default line to start viewing at
+
+
+  if not wintype? "fmgr" then                    // error if not fmgr window
+     msgbox ('File Manager Windows Only!') 'Error' 'b'
+     return '1'                                  // return the error
+  end
+
+
+  if (pos '\\' (gettext)) <> 0 then              // error for sub-dir name
+    msgbox 'Highlighted item is not a valid file name' 'Error' 'b'
+    return '2'                                   // return the error
+  else                                           // ..if it IS a file
+    FileName = getffile                          // get current file name
+    if (pos '.zip' FileName 'i') <> 0 then ZipFile = TRUE end
+
+    if ZipFile then ZipContents = qualify "ZIPTEMP.TMP" getbootpath  // .if so, create temp file
+
+    if not ZipContents then                      // if create failed
+      msgbox 'Error Creating Temp File ' + ZipContents 'Error' 'b'
+      return '3'                                 // return the error
+    else
+      if (yncbox 'There may be a slight delay as\n' + (getname (FileName)) +
+         ' is examined. Continue?' WinTitle) <> 'Yes'
+      then
+        return '0'                               // quit for No/Cancel
+      else
+        run "pkunzip -vb " + FileName + '> ' + ZipContents  // run pkunzip
+
+        ViewFile = loadbuf (ZipContents)         // put contents in buffer
+        deletefile ZipContents                   // delete temp file
+
+        if find 'Length' 'gw*' '' ViewFile then  // locate file header
+          StartingLine = getrow                  // ..if found, save row
+        end
+      end
+    end
+
+    else                                         // NOT a .zip file
+      Buffer     = "ViewBuffer"                  // set buffer name
+      FileHandle = openfile FileName 'r'         // try to open file
+
+      if (FileHandle <> -1) then                 // if successful then
+        currbuf Buffer                           // ..switch to temp buf
+
+        databuf Buffer
+          readfile FileHandle 10240              // read 10K into buffer
+        end
+
+        closefile FileName                       // close the file
+
+        TempFile = getbootpath + "VIEWFILE.TMP"  // setup temp file
+        savebuf TempFile 't' Buffer (hex2bin "0D0A") // save with CR/LF's
+        ViewFile = loadbuf TempFile              // reload "fixed" version
+
+        destroybuf Buffer                        // destroy temp buffer
+        deletefile TempFile                      // delete temp file
+      else                                       // if file can't be read
+        msgbox 'Error Reading File ' + FileName 'Error' 'b' // can't read file
+        return '4'                               // ..return the error
+      end
+  end
+
+  queue 'row' StartingLine                       // goto row where header is
+  queue 'adjustrow' 1                            // put row in top of window
+
+  case ZipFile                                   // set popup title
+    when TRUE  Title = 'Viewing ' + FileName + '  (ENTER=Unzip File)'
+    when FALSE Title = 'Viewing ' + FileName
+  end
+
+  setbufname ViewFile                            // setup buffer name
+  Results = popup ViewFile Title  72 15          // popup the info
+  destroybuf ViewFile                            // destroy temp buffer
+
+  if (Results) and (ZipFile) then                // if <enter> was hit in .zip view
+    UnZipFile = Results[47:0]                    // cut filename from string
+    TempFile  = UnZipFile                        // save file name to examine
+
+    if (pos '/' TempFile) then                   // see if pkzip / in filename
+       TempFile = sub '/' '\\' TempFile          // swap the / path for \ path
+       TempFile = getname (TempFile)             // remove the path from .zip
+
+       if not TempFile then                      // can't find a valid filename
+         msgbox 'Invalid file name selected' 'Error' 'b'
+         return '5'
+       end
+    end
+
+    if (yncbox 'Extract ' + TempFile + ' into an edit window?' 
+WinTitle) == 'Yes' then
+      run "pkunzip -e " + FileName + ' ' + UnZipFile + ' > Nul'  // unzip file
+      open ((getpath FileName) + TempFile) 'fpzl1'  // open file for editing
+    end
+  else
+    return '0'                                   // return NO error
+  end
+end
+

@@ -1,0 +1,11 @@
+<html>
+<head>
+<title>Simplehits Text Counter Test</title>
+</head>
+<body bgcolor=#ffffff>
+
+<p><h1><center>Here's a<i> text </i>counter using <br>Simplehits.pl</center></h1>
+<h1><center><font color="#FF0000"><!--#exec cgi="/afs/umich.edu/user/k/n/knassen/Public/html/cgi-bin/simplehits.pl"--></font></center></h3></p>
+
+</body>
+</html>
