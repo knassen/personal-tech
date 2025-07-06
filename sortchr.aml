@@ -1,0 +1,38 @@
+
+/* ------------------------------------------------------------------ */
+/* AML Macro:    SORTCHR.AML                                          */
+/* Written by:   nuText Systems                                       */
+/*                                                                    */
+/* Description:  Sort lines based on a key following a character      */
+/*               in the line.                                         */
+/*                                                                    */
+/* Usage:        Select SORTCHR.X from the macro picklist <shift f12> */
+/* ------------------------------------------------------------------ */
+
+  include bootpath "define.aml"
+
+  // test for edit windows
+  if not wintype? "edit" then
+    msgbox "Edit windows only!"
+    return
+  end
+
+  // do only if a mark exists in current window
+  if getcurrbuf <> getmarkbuf then
+    msgbox "Block not marked in current window"
+    return
+  end
+
+  stopmark
+
+  str = ask "Enter the Character to sort after"
+  if str then
+    undobegin
+    // use reg expression replace to swap strings in the line
+    replace "^{.*" + str [1] + "}{.*}$"  "\\2\xff\\1"  'xbga'
+    sortblock
+    // put strings back
+    replace "^{.*}\xff{.*}$"  "\\2\\1"  "xbga"
+    undoend
+  end
+

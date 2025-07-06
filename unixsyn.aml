@@ -1,0 +1,83 @@
+
+From jawilson@ix.netcom.comMon Jan 22 13:57:10 1996
+Date: Mon, 1 Jan 1996 18:24:33 -0800
+From: Jim Wilson <jawilson@ix.netcom.com>
+To: aurora-editor@sfu.ca
+Subject: Unix Syntax.Aml
+
+All;
+
+I don't know how many of you this will apply to but here goes...
+
+The following is a SYNTAX.AML definition for Unix shell script. I
+happen to admin a bunch of Unix servers and have the need to create
+scripts fairly often. The only editor which is even remotely usable
+that comes with the version of Unix on my servers is VI. Well, I
+*hate* VI -- I seem to be entirely unable to memorize it's somewhat
+limited command set (VI is a jack of all trades, well of all operating
+systems at least, but a master of none!). So naturally, I use Aurora
+to develop most of the script on my PC and then use VI only when I'm
+testing it on the server.
+
+Anyway, if your interested in adding a syntax definition for Unix to
+Aurora you can do the following to SYNTAX.AML:
+
+  1. Add the line  "when '.unx'"  (without the double quotes) to the
+     'case  getext file' section. If you choose to use a different
+     file extension for your Unix code just change the '.unx' to
+     whatever is your preference, but make sure you also change the
+     object name for the syntax definition in step 2.
+
+  2. Add the following code to the end of SYNTAX.AML:
+
+     // syntax highlighting for Unix shell script
+     object  unix
+
+       syntax
+         'ci'                        // options:
+                                     //  b=show through marked block
+                                     //  c=don't highlight cursor line
+                                     //  f=use only foreground colors
+                                     //  i=ignore keyword case
+                                     //  n=highlight numbers
+         '(){}[].*:;<>,@^'           // symbol set
+         '"\''                       // string characters
+         ''                          // string literal char
+         '$'                         // numeric char
+         '#'           0             // eol comment 1 / start column
+         '##'          0             // eol comment 2 / start column
+         ''           ''             // multi-line comment 1
+         ''           ''             // multi-line comment 2
+         2                           // # of lines to scan backward
+
+         color brightcyan   on blue  // keyword color
+         color white        on blue  // symbol color
+         color brightgreen  on blue  // string color
+         color brightred    on blue  // numeric color
+         color yellow       on blue  // eol1 comment color
+         color yellow       on blue  // eol2 comment color
+         color yellow       on blue  // comment1 color
+         color yellow       on blue  // comment2 color
+
+       keyword
+         case, do, done, esac, echo, else, fi, in, if, read, then,
+         while
+
+
+Of course, your color scheme will probably differ from mine so you
+have to change that as well. After you've got it all setup just
+recompile Aurora and you're ready to go.
+
+One note: Unix uses a $ sign to represent variables after they've been
+assigned a value. I like to see where these variables are in my code
+so I had to trick Aurora into displaying them for me. The way I
+accomplished this was by using the $ sign as the 'numeric char'. This
+way, when Aurora tries to display a "number" it's actually displaying
+the variable name instead.
+
+Good luck with it.
+
+
+Jim Wilson
+(jawilson@ix.netcom.com)
+

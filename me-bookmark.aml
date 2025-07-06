@@ -1,0 +1,132 @@
+
+From jawilson@ix.netcom.comTue Jan 21 21:51:08 1997
+Date: Tue, 21 Jan 1997 18:24:20 -0800
+From: Jim Wilson <jawilson@ix.netcom.com>
+To: aurora-editor@sfu.ca
+Subject: Re-posted message
+
+Whoooaaa, what happened here? I originally posted this from work, but
+when I got home the copy sent to my internet id was full of garbage. It
+even came through as an attachment and not a message! I don't know if
+everyone else got an email as screwed up as I did so I'm re-posting it.
+Someone let me know if this one comes through okay...
+
+{--------------------------------------------------------------}
+
+Has anyone tried using version 3.0c under NT 4.0 Workstation? I just
+"upgraded" my work PC to 4.0 Workstation (Andy, are you laughing?) and
+now I can't get the copy from/to the Windows clipboard to work any more.
+Anyone else try this yet?
+
+
+Also, I'm including a small macro I wrote. This one emulates a feature
+that my once-beloved-but-no-longer-used MultiEdit had. The bookmarks in
+ME had a feature that allowed you to use a single character. I know;
+Auroras default bookmarking scheme allows this as well, but you need to
+hit <enter> too. Because of how many years I used ME I had become quite
+accustomed to the single character scheme (although, I must admit that I
+became more acclimated to Auroras way of doing it than I thought I would
+have).
+
+Anyway, the included macro closely duplicates the ME version of
+bookmarks. It's an external macro that needs to be called with one of
+two parameters; 'set' or 'get'. Example: runmacro2 'bookmark' '' 'set'
+will popup a window in the "set bookmark" mode. In that same vein, using
+runmacro2 'bookmark' '' 'get' will put the macro into the "get bookmark"
+mode.
+
+While the popup window is being displayed you merely type any single
+letter, number or symbol to set/get a bookmark. Pressing either <enter>
+or <space> will cause the 'booklist' macro to run, displaying what marks
+you've already set.
+
+Give it a whirl and let me know if you have any problems with it.
+
+
+Regards,
+Jim Wilson
+(jawilson@ix.netcom.com)
+
+{---------------------- BOOKMARK.AML --------------------------}
+
+/* ------------------------------------------------------------------ */
+/* Macro:        BOOKMARK.AML                                         */
+/* Written by:   Jim Wilson                                           */
+/*                                                                    */
+/* Description:  Macro used to automatically set or get a bookmark    */
+/*               by typing nothing but a single character.            */
+/*                                                                    */
+/* Usage:        This was written primarily as an external macro.     */
+/*               Assign it to a menu item and/or key in kbd.aml.      */
+/*               When called, you must pass the name of the function  */
+/*               you wish to run; 'get' or 'set'.                     */
+/*                                                                    */
+/*                                                                    */
+/* Version:      1.0 -- 1/97                                          */
+/*               -----------                                          */
+/*               Initial version.                                     */
+/*                                                                    */
+/* ------------------------------------------------------------------ */
+
+include bootpath 'define.aml'
+
+
+Option = (upcase (arg 3))                           // make sure an option was selected
+if Option <> 'GET' and Option < > 'SET' then
+   msgbox "Need to specify either the 'set' or 'get'\noptions when calling
+this macro." 'Error' 'b'
+   return
+end
+
+
+function GotoBookMark (Mark)                        // partially swiped from ext.aml
+  msg = "Bookmark " + (if? Mark Mark)
+  bookbuf = getbookbuf Mark
+  if bookbuf < > getwinbuf then
+    open (getbufname bookbuf)
+  end
+  if gotobook Mark then
+    display
+    say msg
+  else
+    msgbox "Bookmark " + Mark + " not currently set" "Message" 'b'
+  end
+endfunction
+
+
+settype 'win'                                     // create a popup window
+createwindow
+setframe 'bn'
+setcolor border_color        (color white on gray)
+setcolor border_flash_color  (color brightgreen on gray)
+setcolor text_color          (color white on gray)
+setcolor north_title_color   (color white on magenta)
+setwinctrl 'ð'
+setborder '1i'
+setshadow 1 1
+sizewindow 23 8 56 15 'ad'
+
+
+Display = Option [1] + (locase Option [2..3])     // change case for displaying
+settitle Display + " Bookmark" 'c'
+writestr "Select Bookmark to " + Display (color black on gray) 5 2
+writestr "(use any letter/number/symbol)" (color black on gray) 2 3
+writestr "   ESC=Exit  ENTER=Show Marks   " (color white on magenta) 1 5
+
+
+BookMark = char (getkey)                            // read a single key
+destroywindow
+
+if BookMark == (char 27) then return end
+
+if (BookMark == (char 32)) or (BookMark == (char 13)) then   // <space> or <enter>
+   runmacro2 'booklist'
+   return
+else
+   if? Option == 'GET' (GotoBookMark BookMark) (setbook BookMark)
+end
+
+Regards,
+Jim Wilson
+(jawilson@ix.netcom.com)
+

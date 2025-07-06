@@ -1,0 +1,46 @@
+
+From ib@point.wupper.deWed Apr 10 10:42:04 1996
+Date: Tue, 09 Apr 1996 18:08:00 +0200
+From: Ingo Brueckl <ib@point.wupper.de>
+To: aurora-editor@sfu.ca
+Subject: An improved popup menu function
+
+When checking the clipboard view function that was mailed the other day, I
+found the line
+
+    popup Buffer 'Viewing Clipboard: ' + ClipBoardName 71 17
+
+where 71 may be a good choice for the width but maybe not.
+
+Unfortunately the popup menu does not look nice with 'real' buffers when
+there is no width specified. Recently, I wrote popup2 to overcome that
+problem:
+
+    // basically the same as popup menu, but
+    // the length of the longest line in buffer determines the menu width
+    function  popup2 (buffer title)
+      l = (sizeof title) + 6
+      pushcursor buffer
+      gotopos 1 1 buffer
+      repeat
+        if (getlinelen '' buffer) > l then
+          l = getlinelen '' buffer
+        end
+      until not (down 1 buffer)
+      popcursor buffer
+      popup buffer title l
+    end
+
+Simply place that function in EXT.AML in an 'object a' section, recompile
+and
+
+    popup2 Buffer 'Viewing Clipboard: ' + ClipBoardName
+
+will popup an appropriate menu.
+
+Regards,
+
+Ingo
+
+PS: BTW, you can popup the clipboard directly, it's a buffer.
+

@@ -1,0 +1,293 @@
+//
+// XPY.AML
+//
+// Syntax highlighting for the Python language v1.0  
+// 6:33pm Thursday, November 13, 1997
+// For the Aurora editor v3.x.
+//
+// There's much much more that could be added to this syntax object,
+// but it's getting out of hand already, so I stopped after std libs.
+// (I'm not even sure I got most of the std libs and modules, but what
+// the heck.)
+//
+// by Kent Nassen (knassen@umich.edu)
+//
+
+include bootpath "define.aml"
+
+//
+// Set up color schemes for several classes of keywords
+//
+    keycolor = color yellow on blue          // color of reserved keywords
+    repeatcolor = color brightcyan on blue   // color of repeat statements
+    conditcolor = color brightgreen on blue  // color of conditionals & operators
+    libscolor = color brightgreen on blue    // color of libs & lib functions
+    funccolor = color brightcyan on blue     // color of function defs & builtins
+    precondcolor = color pink on blue        // color of preconditions
+
+//
+// Python repeat statements
+//
+    public _for = repeatcolor 
+    public _while = repeatcolor
+
+//
+// Python conditionals and operators
+//
+    public _if =   conditcolor
+    public _elif = conditcolor 
+    public _else = conditcolor 
+    public _then = conditcolor
+    public _and = conditcolor 
+    public _in = conditcolor  
+    public _is = conditcolor  
+    public _not = conditcolor  
+    public _or = conditcolor 
+
+//
+// Python function definitions and builtin functions
+//
+    public _def = funccolor 
+    public _class = funccolor  
+    public _lambda = funccolor
+    public _abs = funccolor
+    public _apply = funccolor
+    public _chr = funccolor
+    public _cmp = funccolor
+    public _coerce = funccolor
+    public _compile = funccolor
+    public _delattr = funccolor
+    public _dir = funccolor
+    public _divmod = funccolor
+    public _eval = funccolor
+    public _execfile = funccolor
+    public _filter = funccolor
+    public _float = funccolor
+    public _getattr = funccolor
+    public _globals = funccolor
+    public _global = funccolor
+    public _hasattr = funccolor
+    public _hash = funccolor
+    public _hex = funccolor
+    public _id = funccolor
+    public _input = funccolor
+    public _int = funccolor
+    public _len = funccolor
+    public _locals = funccolor
+    public _long = funccolor
+    public _map = funccolor
+    public _max = funccolor
+    public _min = funccolor
+    public _oct = funccolor
+    public _open = funccolor
+    public _ord = funccolor
+    public _pow = funccolor
+    public _range = funccolor
+    public _raw = funccolor
+    public _reduce = funccolor
+    public _reload = funccolor
+    public _repr = funccolor
+    public _round = funccolor
+    public _setattr = funccolor
+    public _str = funccolor
+    public _tuple = funccolor
+    public _type = funccolor
+    public _vars = funccolor
+    public _xrange = funccolor
+
+//
+// Python standard libs, modules, and functions (most attention
+// is given to the sys and types libs, the rest are mostly at
+// their top call level).  There's just too many other Python
+// libs and modules to consider much else.  Add others not listed
+// if you like.
+//
+    public _Bastion = funccolor
+    public _BuiltinFunctionType = funccolor
+    public _BuiltinMethodType = funccolor
+    public _C = funccolor
+    public _COMPILED = funccolor
+    public _ClassType = funccolor
+    public _CodeType = funccolor
+    public _DictType = funccolor
+    public _DictionaryType = funccolor
+    public _EXTENSION = funccolor
+    public _FileType = funccolor
+    public _FloatType = funccolor
+    public _FrameType = funccolor
+    public _FunctionType = funccolor
+    public _InstanceType = funccolor
+    public _IntType = funccolor
+    public _LambdaType = funccolor
+    public _ListType = funccolor
+    public _LongType = funccolor
+    public _MethodType = funccolor
+    public _ModuleType = funccolor
+    public _NoneType = funccolor
+    public _PY = funccolor
+    public _PicklingError = funccolor
+    public _SOURCE = funccolor
+    public _StringType = funccolor
+    public _TERMIOS = funccolor
+    public _TracebackType = funccolor
+    public _TupleType = funccolor
+    public _TypeType = funccolor
+    public _Types = funccolor
+    public _UnboundMethodType = funccolor
+    public _XRangeType = funccolor
+    public _aifc = funccolor
+    public _argv = funccolor
+    public _array = funccolor
+    public _audioop = funccolor
+    public _binascii = funccolor
+    public _binhex = funccolor
+    public _builtin = funccolor
+    public _compiled = funccolor
+    public _copy = funccolor
+    public _crypt = funccolor
+    public _dbm = funccolor
+    public _dump = funccolor
+    public _dumps = funccolor
+    public _dynamic = funccolor
+    public _errno = funccolor
+    public _exc = funccolor
+    public _exception = funccolor
+    public _exit = funccolor
+    public _exitfunc = funccolor
+    public _extract = funccolor
+    public _fcntl = funccolor
+    public _find = funccolor
+    public _formatter = funccolor
+    public _frozen = funccolor
+    public _ftplib = funccolor
+    public _gdbm = funccolor
+    public _get = funccolor
+    public _getopt = funccolor
+    public _gopherlib = funccolor
+    public _grp = funccolor
+    public _htmllib = funccolor
+    public _httplib = funccolor
+    public _imageop = funccolor
+    public _imghdr = funccolor
+    public _imp = funccolor
+    public _init = funccolor
+    public _is = funccolor
+    public _last = funccolor
+    public _last = funccolor
+    public _load = funccolor
+    public _loads = funccolor
+    public _marshal =funccolor
+    public _math = funccolor
+    public _md5 = funccolor
+    public _mimetools = funccolor
+    public _module = funccolor
+    public _modules = funccolor
+    public _mpz = funccolor
+    public _name = funccolor
+    public _nntplib = funccolor
+    public _os = funccolor
+    public _parser = funccolor
+    public _path = funccolor
+    public _pi = funccolor
+    public _pickle = funccolor
+    public _platform = funccolor
+    public _posix = funccolor
+    public _posixfile = funccolor
+    public _posixpath = funccolor
+    public _ps1 = funccolor
+    public _ps2 = funccolor
+    public _pwd = funccolor
+    public _rand = funccolor
+    public _rect = funccolor
+    public _regex = funccolor
+    public _regsub = funccolor
+    public _rexec = funccolor
+    public _rfc822 = funccolor
+    public _rgbimg = funccolor
+    public _rotor = funccolor
+    public _select = funccolor
+    public _setcheckinterval = funccolor
+    public _setprofile = funccolor
+    public _settrace = funccolor
+    public _sgmllib = funccolor
+    public _shelve = funccolor
+    public _signal = funccolor
+    public _socket = funccolor
+    public _source = funccolor
+    public _stdin = funccolor
+    public _stdwin = funccolor
+    public _stdwinevents = funccolor
+    public _string = funccolor
+    public _struct = funccolor
+    public _sys = funccolor
+    public _syslog = funccolor
+    public _tb = funccolor
+    public _tempfile = funccolor
+    public _termios = funccolor
+    public _thread = funccolor
+    public _time = funccolor
+    public _traceback= funccolor
+    public _tracebacklimit= funccolor
+    public _type = funccolor
+    public _urllib = funccolor
+    public _urlparse = funccolor
+    public _uu = funccolor
+    public _whrandom = funccolor
+    public _xdrlib = funccolor
+
+//
+// Python preconditions
+//
+    public _import = precondcolor 
+    public _from = precondcolor
+
+//
+// Other Python reserved keywords
+//
+    public _break = keycolor 
+    public _continue = keycolor
+    public _del = keycolor 
+    public _except = keycolor  
+    public _exec = keycolor  
+    public _finally = keycolor 
+    public _pass = keycolor  
+    public _print = keycolor  
+    public _raise = keycolor 
+    public _return = keycolor  
+    public _try = keycolor 
+
+syntax
+  'bfn'                           // options:
+                                  //   b=show through marked block
+                                  //   c=highlight cursor line
+                                  //   d=show through closed folds
+                                  //   f=use only foreground colors
+                                  //   i=ignore keyword case
+                                  //   n=highlight numbers
+  '()[]{},:.`;\t'                 // symbol set 1
+  '+-*/%<>&|^~=!'                 // symbol set 2
+  '\'"'                           // string characters
+  '\\$@?'                         // string literal char
+  ''                              // numeric symbol
+  '#'           0                 // eol comment 1 / start column
+  ' #'            1               // eol comment 2 / start column
+  '"""'            '"""'          // multi-line comment 1
+  '\'\'\''            '\'\'\''    // multi-line comment 2
+  0                               // number of lines to scan backward
+
+  // Choices for colors
+  // black   darkgray      blue    brightblue    green    brightgreen   
+  // cyan    brightcyan    red     brightred     magenta  brightmagenta=pink
+  // brown   yellow        gray    white
+           
+  // colors
+  color brightgreen  on blue      // keyword 1
+  color yellow       on cyan      // symbol set 1
+  color brightcyan   on cyan      // symbol set 2
+  color pink         on blue      // string
+  color brightgreen  on blue      // numeric
+  color brightgreen  on blue      // eol comment 1
+  color brightgreen  on blue      // eol comment 2
+  color brightgreen  on blue      // multi-line comment 1
+  color brightgreen  on blue      // multi-line comment 2
+

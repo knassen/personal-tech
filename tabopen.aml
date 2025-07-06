@@ -1,0 +1,57 @@
+
+From 71702.1025@compuserve.comMon Jan 22 13:56:42 1996
+Date: 28 Dec 95 10:54:33 EST
+From: Jeff Wunderlich <71702.1025@compuserve.com>
+To: Aurora List <aurora-editor@sfu.ca>
+Subject: automatic tab expansion
+
+
+
+Jim & Frankie;
+
+
+>How to expand tab on opening file and compress the space to tab on 
+>closing file automatically that is seems as qeditor?
+>>This is how I do it. In the function 'onopen' in ext.aml add the 
+following code after the line that says<<
+
+With version 2.1a, this can also be done 'dynamically'. In other words,
+the code that performs the automatic tab expansion does not need to be
+a permanent part of A.X, but can also be an external macro loaded on 
+demand (for example, from the <shift f12> menu). The following macro
+should do the trick:
+
+/* ------------------------------------------------------------------ */
+/* Macro:        TABOPEN.AML                                          */
+/* Written by:   nuText Systems                                       */
+/*                                                                    */
+/* Description:  Running this macro forces the editor to expand tabs  */
+/*               in newly-opened edit windows.                        */
+/*                                                                    */
+/* Usage:        Select this macro from the Macro List (on the Macro  */
+/*               menu), or run it from the macro picklist <shift f12> */
+/* ------------------------------------------------------------------ */
+
+stayresident
+
+object edit
+
+  function onopen                   // replace the 'onopen' function
+    passprev                        // pass on to previous onopen
+    if not getbinarylen then        // only for non-binary files
+      oldmark = usemark 'T'
+      markline 1 40                 // create a mark (first 40 lines)
+      if find "\t" "bgn*" then      // search for tab char in the mark
+        markline 1 (getlines)       // extend the mark to end-of-file
+        tabblock _TabWidth          // expand tabs using TabWidth
+        bufferflag '-m'             // turn off buffer-modified flag
+      end
+      destroymark                   // destroy the temporary mark
+      usemark oldmark
+    end
+  end
+
+
+
+-Jeff
+

@@ -1,0 +1,43 @@
+
+  include bootpath 'define.aml'
+
+  undobegin
+  // mark current paragraph
+  //if markparagraph then
+  if markpara then
+    row (getmarktop)
+    last = getmarkbot
+    destroymark
+    direction = 0
+    while getrow < last do
+      col (getlinebeg)
+      blanks = (find ' #' 'xla')
+      // continue if line is not blank or one word only
+      if getlinelen and blanks then
+        col (getlinelen + 1)
+        //trim any trailing spaces from end of line
+        while (getchar) do
+          delchar
+        end
+        // repeat until line is fully justified
+        while (gap = _RMargin - getlinelen) and gap > 0
+          if? direction (col (getlinebeg)) (col (getlinelen))
+          ct = 0
+          // repeat until gap or blanks used up
+          while (ct < blanks) and (ct < gap) do
+            if? direction (find ' ' 'l') (find ' ' 'lr')
+            instext ' '
+            ct = ct + 1
+            if? direction (find ' ' '~l') (find ' ' '~lr')
+          end
+        end
+        // toggle direction of padding
+        if? (direction == 1) (direction = 0) (direction = 1)
+      end
+      row (getrow + 1)
+    end
+  end
+  down
+  col (getlinebeg)
+  undoend
+

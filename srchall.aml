@@ -1,0 +1,111 @@
+
+/* ------------------------------------------------------------------ */
+/* Macro:        SRCHALL.AML                                          */
+/* Written by:   Jim Wilson                                           */
+/*                                                                    */
+/* Description:  Macro used to search for a string of text in all     */
+/*               loaded files. If found, this macro will drop the     */
+/*               cursor at the first occurance in the first file.     */
+/*                                                                    */
+/* Version:      1.0 -- 7/96                                          */
+/*               Initial version.                                     */
+/*                                                                    */
+/*                                                                    */
+/*               1.1 -- 2/97                                          */
+/*               Fixed a bug that caused the macro to hang if the     */
+/*               found text was in the clipboard.                     */
+/*                                                                    */
+/*               Forced the search to start at the previous file      */
+/*               in the ring, as oppsoed to the current file being    */
+/*               edited.                                              */
+/* ------------------------------------------------------------------ */
+
+include bootpath "define.aml";
+
+variable CurrBuffer, OrigBuffer, SearchWord, SearchOpts1, SearchOpts2
+
+
+function ReDisplay
+  gotobuf OrigBuffer                             // go back to original file
+  display                                        // redisplay orig screen
+endfunction
+
+function ShowFoundText  
+  if? CurrBuffer <> OrigBuffer findlast onfound length SearchWord    // highlight string
+endfunction
+
+dialog "Search All Loaded Files" 66 8 'cp'       // dialog box
+field "Search &for: >" 3 2  38 '' "_find"; whenselect "findupd";
+
+SearchOpts1 = groupbox '' 3 4
+(menu ''
+   item " [ ] &Ignore Case"
+   item " [ ] &Whole Words"
+   item " [ ] Regular E&Xpression "
+   item " [ ] &Count Occurrences"
+end) '' _SearchOpt 'iwxa'
+
+SearchOpts2 = groupbox '' 30 4
+(menu ''
+   item " [ ] &Reverse Search"
+   item " [ ] &Global Search"
+   item " [ ] &Skip Closed Folds "
+end) '' _SearchOpt 'rgs'
+
+button "O&k"    56 2 8
+button "Cancel" 56 4 8
+
+if (getdialog ref SearchWord ref SearchOpts1 ref SearchOpts2) == 'Ok'
+then if SearchWord == '' then return end         // exit for <enter>, <ESC> only
+
+TotalFiles   = 0                                 // used for 'a' option
+TotalMatches = 0                                 // used for 'a' option
+OrigBuffer   = getcurrbuf                        // save current buffer ID
+CurrBuffer   = OrigBuffer                        // save first buffer to check
+Options      = joinstr '' SearchOpts1 + SearchOpts2  // save options in single string
+addhistory "_find" SearchWord + '/' + Options    // add search string to history
+if? (pos 'a' Options) (Count = TRUE) (Count = FALSE)  // set var if count occur only
+
+
+repeat
+  CurrBuffer = getprevbuf CurrBuffer             // get next buffer name
+  if CurrBuffer == _ClipName then CurrBuffer = getprevbuf CurrBuffer end // skip clipboard
+
+  gotobuf CurrBuffer                             // switch to buffer
+  say "Searching: " + (upcase (getbufname))      // print message
+
+  MatchFound = find SearchWord Options           // if a match is found..
+  if (MatchFound) and (Count) then
+     TotalFiles = TotalFiles + 1                 // add to counter
+     TotalMatches = MatchFound + TotalMatches    // add to counter
+     MatchFound = ''                             // zero out variable
+  end
+
+  if (MatchFound) and (CurrBuffer <> _ClipName) then   // skip finds in clipboard
+     setdisplay OFF                              // turn off the display
+     open (getbufname) 'l1'                      // goto the file
+     setdisplay ON                               // turn the display back on
+     ShowFoundText                               // highlight found text
+  end
+until CurrBuffer == '' or MatchFound             // loop until found or back to original buffer
+
+if not MatchFound then                           // if a match wasn't found in any other file
+   ReDisplay                                     // clean up original screen
+   MatchFound = find SearchWord Options          // search for it there
+   if MatchFound then up end                     // DON'T ASK!
+   ShowFoundText                                 // highlight found text
+end
+
+if (Count) and (TotalFiles <> 0) then
+   msgbox (thousands TotalMatches) + ' occurrences found in ' + (TotalFiles) + ' files'
+   ReDisplay                                     // clean up original screen
+   return
+end
+
+if not MatchFound then                           // if no matches found..
+   ReDisplay                                     // clean up original screen
+   msgbox 'Unable to find "'+ SearchWord + '"' 'Search All' 'b'
+end
+
+end
+

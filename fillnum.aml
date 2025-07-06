@@ -1,0 +1,116 @@
+
+From 71702.1025@compuserve.comSat Jan 20 19:01:55 1996
+Date: 19 Jan 96 22:39:42 EST
+From: Jeff Wunderlich <71702.1025@compuserve.com>
+To: Aurora List <aurora-editor@sfu.ca>
+Subject: Fillnum macro
+
+
+
+Here's a relatively simple macro which duplicates a feature found in 
+several other editors: filling a column block with increasing/decreasing 
+numbers. It can be useful for creating lists, tables, etc.
+
+Regards,
+
+-Jeff
+
+
+
+/* ------------------------------------------------------------------ */
+/* Macro:        FILLNUM.AML                                          */
+/* Written by:   nuText Systems                                       */
+/*                                                                    */
+/* Description:  This macro fills a column block with an incrementing */
+/*               or decrementing numeric value.                       */
+/*                                                                    */
+/* Usage:        Mark a column block in the current edit window and   */
+/*               run this macro from the macro picklist <shift f12>.  */
+/* ------------------------------------------------------------------ */
+
+  include bootpath "define.aml"
+
+  var start
+  var step
+  var justopt
+
+  // test for edit windows
+  if not wintype? "edit" then
+    msgbox "Edit windows only!"
+    return
+  end
+
+  // test for mark in current window and column mark
+  if getcurrbuf <> getmarkbuf or getmarktype <> 'k' then
+    msgbox "Column block not marked in current window"
+    return
+  end
+
+  // dialog box
+  dialog "Fill Block with Numbers" 38 8 'c'
+  field  "&Start:  >"  3  2 12  1
+  field  "&Step:   >"  3  4 12  1
+
+  // justify options
+  groupbox '' 3 6
+    (menu ''
+       item " ( ) &Left Justify"
+       item " ( ) &Right Justify"
+     end)  20 'r' "lr"
+
+  button "O&k"        27  2  8
+  button "Cancel"     27  4  8
+
+  // display dialog box and get user values
+  if (getdialog ref start ref step ref justopt) <> 'Ok' then
+    return
+  end
+
+  // check block width
+  finish = start + ((getmarkrows - 1) * step)
+  maxwidth = sizeof finish
+  if maxwidth < (sizeof start) then
+    maxwidth = sizeof start
+  end
+  markwidth = getmarkcols
+  if maxwidth > markwidth then
+    msgbox "Column block must be at least " + maxwidth + " columns wide."
+           "Error!"
+    return
+  end
+
+  // display message
+  say "Filling block..."
+
+  // mark the beginning of an undoable group of operations
+  undobegin
+
+  // stop cursor movement from resizing the mark
+  stopmark
+
+  // save cursor position and goto first line
+  pushcursor
+
+  row (getmarktop)
+  bottom = getmarkbot
+  column = getmarkleft
+
+  // enter numbers into the block
+  loop
+    ovltext (pad start markwidth justopt) column
+    start = start + step
+    if getrow == bottom then
+      break
+    end
+    down
+  end
+
+  // mark the end of an undoable group of operations
+  undoend
+
+  // restore cursor
+  popcursor
+
+  // clear the title bar
+  display
+
