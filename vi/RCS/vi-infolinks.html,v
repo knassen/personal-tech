@@ -1,0 +1,191 @@
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.19.35.45;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.04.19.16.31;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@Update background color.
+@
+
+
+1.2
+log
+@Remove background
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<META name="description" content="vi Informational Links">
+<META name="keywords" content="vi editor free elvis vile vim xvi nvi lemmy winvi">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/vi.html">
+<TITLE>vi Informational Links</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+
+<BR>
+<BLOCKQUOTE>
+
+<H2>vi Informational Links</H2>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+<BLOCKQUOTE>
+<STRONG><A HREF="http://www.netmeg.net/faq/computers/editors/vi/">
+<FONT SIZE="+1">The vi FAQ</FONT>
+</A></STRONG><BR> This is a link to an HTML version of the vi
+Frequently Asked Questions (FAQ) file. This should answer most of
+the questions that people ask when becoming familiar with vi and
+as such, is a good starting place to learn more (in addition to
+the links below). The most recent vi FAQ can be retrieved from 
+<A HREF="ftp://rtfm.mit.edu/pub/usenet-by-group/comp.editors/">rtfm.mit.edu</A> 
+but it has not been converted to HTML.
+
+<P>
+<STRONG>
+<A HREF="http://www.linuxbox.com/~taylor/4ltrwrd/title.html">
+<FONT SIZE="+1">Unix is a Four Letter Word and VI is a Two Letter Abbreviation</FONT>
+</A></STRONG><BR>
+An introduction to both Unix and VI. Skip right to the 
+<A HREF="http://www.linuxbox.com/~taylor/4ltrwrd/Vi.html">vi
+tutorial</A> if you want. It includes the basics of vi usage, as well as
+Maarten Litmaath's vi reference, and miscellaneous vi tips.
+
+<P>
+<STRONG>
+<A HREF="http://www.networkcomputing.com/unixworld/tutorial/009/009.html">
+<FONT SIZE="+1">UnixWorld VI Tutorials</FONT></A></STRONG><BR>
+This tutorial series starts with the fundamentals of editing with vi. 
+This page has links to all the installments. Other installments include
+topics such as global operations, line mode addressing, substitution,
+replacement, setting up the vi environment, editing in columns, and macros.
+
+<P>
+<STRONG><A HREF="ftp://ftp.uu.net/pub/text-processing/vi">
+<FONT SIZE="+1">The vi Archive (FTP to ftp.uu.net)</FONT></A></STRONG><BR>
+This is a link to the mirror at ftp.uu.net of the <A
+HREF="ftp://alf.uib.no/pub/vi">alf.uib.no</A> official vi archive. The archive
+includes tutorials & command summaries, macros, source code, and
+the comp.editors tip collection. Here is my unofficial HTML version of the 
+<A HREF="viarchives.html"><STRONG>archive index</STRONG></A>
+(approx. 32K HTML) which gives a brief description of, and links to, the files there.
+
+<P> 
+<STRONG><A HREF="http://www.cs.vu.nl/~tmgil/vi.html">
+<FONT SIZE="+1">vi Lover's Home Page</FONT></A></STRONG><BR> 
+The place for all things vi, by Thomer M. Gil (tmgil@@cs.vu.nl). Links
+to many vi resources, sources, binaries, stories, FAQs, manuals, and
+tutorials. <EM>Highly recommended!</EM>
+
+<P>
+<STRONG>
+<!-- A HREF="http://www2.cic.net/~gpoulos/vimug.html" -->
+<!-- A HREF="http://mail.globalbiz.net/~gpoulos/vimug.html" -->
+<A HREF="http://www.vireference.com/vimug.html">
+<FONT SIZE="+1">vi Reference Mugs</FONT></A></STRONG><BR>
+If you love vi, you've got to have one of these mugs on your desk!
+I ordered a set for myself, they arrived in just under a
+week, and appear exactly as advertised.  Should be a good
+conversation starter... This site allows ordering via a secure 
+web page.
+
+<P>
+<STRONG>
+<A HREF="http://www.nyx.net/~gthompso/quine.htm">
+<FONT SIZE="+1">The Quine Page</FONT></A></STRONG><BR>
+A page devoted to programs which reproduce their own source
+code.  Includes several examples of quines for vi/vim/nvi/elvis.
+
+<P>
+<STRONG><A HREF="http://george.lbl.gov/~hoo/Misc/vi_main.html">
+<FONT SIZE="+1">My little vi page</FONT></A></STRONG><BR>
+A little vi page with links to vi-related sites.
+
+<P>
+<STRONG><A HREF="http://www.math.fu-berlin.de/~guckes/vi/">
+<FONT SIZE="+1">Sven Guckes' vi Pages</FONT></A></STRONG><BR>
+Information on various vi versions and clones, vi quotes, vi folklore, 
+the vi vs. emacs religious war, vi documentation, and the vi picture
+gallery.
+
+<P>
+<STRONG><A HREF="news:comp.editors">
+<FONT SIZE="+1">comp.editors</FONT></A></STRONG><BR>
+comp.editors is a Usenet newsgroup devoted to text editors. Although
+this newsgroup is for almost any kind of editor for any system, much
+discussion of vi takes place here:  How do I do task Y in vi? Where can
+I find...? What's wrong with my macro? and other topics, including the
+perennial vi vs. emacs editor wars.
+
+<P>
+<STRONG><A HREF="http://www.drizzle.com/~james/lemmy.html">
+<FONT SIZE="+1">The Lemmy Page</FONT></A></STRONG><BR>
+This is James Iuliano's Lemmy page.  Although Software Online is
+now the company selling Lemmy, James still has a page devoted to
+the editor he developed.  Includes some of the development history
+for Lemmy, plus hints and tips for using Lemmy more effectively.
+
+<P>
+<STRONG><A HREF="http://www.vim.org/"><FONT SIZE="+1">The VIM Home Page</FONT></A></STRONG><BR>
+VIM is <STRONG>V</STRONG>i-<STRONG>IM</STRONG>proved, a
+<STRONG>free</STRONG> vi clone with many extensions and great features.
+This site provides much information on the use of vim.
+
+<P>
+<STRONG><A HREF="http://www.netusa.net/~eli/src/vim.html">
+<FONT SIZE="+1">Eli's Vim and vi Page</FONT></A></STRONG><BR>
+Eli the Bearded presents vi as only he can, including Conway's <A
+HREF="gif/vi-life2.gif">Game of Life for vi! [SCREEN SHOT, 7K GIF]</A>
+Also there are examples of "Hello, world" in vi, the Towers of Hanoi
+puzzle solver vi macros, and a couple different sets of HTML macros
+for vi. This site leans heavily toward VIM, but has a lot of "true" vi
+content as well.
+
+<P>
+<STRONG><A HREF="http://www.fh-wedel.de/elvis/index.html">
+<FONT SIZE="+1">Elvis's Home</FONT></A></STRONG><BR>
+A home page devoted to the Elvis editor, including the Elvis
+manual, screen shots of Elvis on various platforms, links to
+the Elvis source code, and other Elvis-related information.
+
+<P>
+<FONT SIZE="+2">
+<A HREF="vi/vi.html">[Main]</A>
+<A HREF="vi/vi-intro.html">[vi Intro]</A>
+<A HREF="vi/vi-books.html">[vi Books]</A>
+<A HREF="vi/vi-softlinks.html">[vi Software Links]</A>
+<A HREF="vi/vi-screens.html">[vi Screen Shots]</A>
+</FONT>
+<P>
+<FONT SIZE=-1>
+Last modified: Thu May 13 18:04:18 EDT 1999
+</FONT>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 1
+a11 1
+<BODY BACKGROUND="gif/textur7a.jpg" TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+@

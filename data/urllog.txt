@@ -1,0 +1,55 @@
+
+checking 20 urls ...
+
+www-personal.umich.edu/~knassen/Resume11b.html
+  ok
+www-personal.umich.edu/~knassen/apple2.html
+  ok
+www-personal.umich.edu/~knassen/archives.html
+  ok
+www-personal.umich.edu/~knassen/aurora.html
+  ok
+www-personal.umich.edu/~knassen/bsdpicts.html
+  ok
+www-personal.umich.edu/~knassen/figlet.html
+  ok
+www-personal.umich.edu/~knassen/gif/bsddaem5.gif
+  ok
+www-personal.umich.edu/~knassen/gif/canvas.jpg
+  ok
+www-personal.umich.edu/~knassen/gif/kenthpg4t.gif
+  ok
+www-personal.umich.edu/~knassen/gif/valid_html3.2.gif
+  ok
+www-personal.umich.edu/~knassen/icpsr.html
+  ok
+www-personal.umich.edu/~knassen/links.html
+  ok
+www-personal.umich.edu/~knassen/mice.html
+  ok
+www-personal.umich.edu/~knassen/myperl.html
+  ok
+www-personal.umich.edu/~knassen/statistics.html
+  ok
+www-personal.umich.edu/~knassen/umwww.html
+  ok
+www-personal.umich.edu/~knassen/unix.html
+  ok
+www-personal.umich.edu/~knassen/vi/vi.html
+  ok
+www-personal.umich.edu/~knassen/vim/index.html
+  ok
+www.freebsd.org/
+  ok
+
+writing files to data
+wrote 3 txt files
+wrote 1 html file
+wrote index file urlindex.html
+
+found  20 urls: ok
+
+Linklink checked 20 urls:
+    20 were ok, 0 failed.
+No files had failed urls.
+

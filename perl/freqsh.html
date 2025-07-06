@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/perl/freqsh.html">
+<TITLE>Shell Script Version of Frequency Counts</TITLE>
+</HEAD>
+
+<BODY>
+<BLOCKQUOTE>
+<PRE>
+#! /bin/sh
+#. Generate frequencies given a file, columns, and optional rec # and rec/case
+case $# in
+ 0)   echo " ";
+      echo " usage:   freq filename column(s) [r=record rc=records per case]" ;
+      echo " example: freq test.dat 8-13 r=2 rc=5" ;
+      echo " ";
+      exit 0;;
+
+# *)   echo " ";
+#      echo " error:  ** syntax error/incorrect number of arguments **" ;
+#      echo " usage:   freq filename column(s) [r=record rc=records per case]" ;
+#      echo " example: freq test.dat 8-13 r=2 rc=5" ;
+#      echo " ";
+#      exit 1;;
+
+ 2)   echo " ";
+      echo "freq of $1, column(s) $2";
+      echo " ";
+      echo "   freq value";
+      echo " ";
+      cut -c$2 $1 | sort | uniq -c &gt; /tmp/frtmp$$;
+      cat /tmp/frtmp$$;
+      awk 'BEGIN {print "-------------"}
+                 {n += $1} 
+             END { printf("   %d cases\n",n)}' /tmp/frtmp$$;
+      rm -f /tmp/frtmp$$;;
+     
+ 4)   echo " ";
+      echo "freq of $1, column(s) $2, record $3, $4 records per case";
+      echo " ";
+      echo "   freq value";
+      echo " ";
+      awk -f <A HREF="printrec0.html">printrec0</A> $3 $4 $1 &gt; /tmp/frtmp2$$;
+      cut -c$2 /tmp/frtmp2$$ | sort | uniq -c &gt; /tmp/frtmp$$;
+      cat /tmp/frtmp$$;     
+      awk 'BEGIN {print "-------------"}
+                 {n += $1} 
+             END { printf("   %d cases\n",n)}' /tmp/frtmp$$;
+      rm -f /tmp/frtmp$$;
+      rm -f /tmp/frtmp2$$;;
+   
+esac
+echo " "
+exit 0
+
+</PRE>
+</BLOCKQUOTE>
+(Note: credit for this shell script goes to Nelson Martinez).
+<HR SIZE=3>
+<A HREF="freqperl.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Frequency Count Page</A>
+</BODY>
+</HTML>

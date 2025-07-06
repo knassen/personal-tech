@@ -1,0 +1,137 @@
+#!/usr/local/bin/perl
+#  40scan.pl
+#  A script to count the characters between pairs of double quote marks
+#    on lines from a text file, as in SPSS VARIABLE LABELS and VALUE
+#    LABELS statements.
+# 
+#  Kent Nassen, v1.0: 2/14/95
+#      v1.1: 2/16/98 -- added multiple file capability, test for file 
+#                       existence, and a length variable ($checklen) so 
+#                       that changing the length to check for is easier.
+#      v1.2: 5/12/98 -- added message to print when no long quotes are found.
+#      v1.3: 8/20/98 -- fixed longlines count, added message with count of no. 
+#                       of longlines, changed all references to 40 to 
+#                       $checklen in anticipation of adding a commandline
+#                       length option.
+#      v1.4: 9/03/98 -- Added formatted output (page numbers, headers,
+#                       etc.) to make printing long lists easier.
+#      v1.5: 9/22/98 -- Improved output formatting a bit (number of lines
+#                       in file, line number of longest quoted text, page 
+#                       header). Each file's output now starts on a new page.
+# 
+#  :set tabstop=4
+# 
+#  SYNTAX:  40scan filename
+
+use FileHandle; 
+
+# $version="v1.1, 2/16/98";
+# $version="v1.2, 5/12/98";
+# $version="v1.3, 8/20/98";
+# $version="v1.4, 9/03/98";
+$version="v1.5, 9/22/98";
+
+# NOTE: $checklen sets the length of quoted text to search for
+my $file="", $checklen=40, $pagesize=54;
+STDOUT->format_lines_per_page($pagesize);
+
+($ProgName = $0) =~ s%.*/%%;  # Unix
+# ($ProgName = lc $0) =~ s%.*\\%%;  # DOS
+
+if ($#ARGV<0) { 
+    &DisplayUsage;
+	print STDERR "   *** I need a filename!\n\n";
+    exit 1;
+}
+
+foreach $file (@ARGV) { 
+	process($file, 'fh00'); 
+}
+
+	
+sub process {
+    $lines=$testcount=$maxcount=$longlines=0;
+	local($filename, $input) = @_;
+	$input++;
+	unless (open $input, $filename) {
+		print STDERR "Can't open $filename: $!\n";
+		return;
+	}
+	while (<$input>) {
+		chop;
+        $lines++;
+		if ( m/".*?".*(".*?")/ ) {
+			$testcount=length($1) - 2;
+			if ( $testcount > $checklen ) { $longlines++; write; }
+            if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
+		next;
+		}
+		if ( m/(".*?")/ ) {
+			$testcount=length($1) - 2;
+			if ( $testcount > $checklen ) {	$longlines++; write; }
+            if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
+		next;
+		}
+	}
+   	if (!$longlines) { 
+        $testcount=0;
+        $_ = "";
+        $. = 0;
+        write;
+        if (!$maxcount) { print "\n    *** No quoted text found.\n"; }
+        else {
+		    print "\n    *** No quoted text over $checklen characters long.\n"; 
+        }
+        if ($lines==1) { print "    There was $lines line in the file.\n"; }
+        else { print "    There were $lines lines in the file.\n"; }
+        if ($maxcount) {
+            print "    The longest quoted text found was $maxcount characters long at line $maxline.\n";
+        }
+        $- = 0;
+	}
+	else { 
+        if ($longlines==1) {
+		    print "\n    $longlines line had quoted text over $checklen characters long.\n"; 
+        }
+        else {
+		    print "\n    $longlines lines had quoted text over $checklen characters long.\n"; 
+        }
+        if ($lines==1) { print "    There was $lines line in the file.\n"; }
+        else { print "    There were $lines lines in the file.\n"; }
+        print "    The length of the longest quoted text found was $maxcount characters at line $maxline.\n";
+	}
+	close $input;
+	print "\n";
+}
+
+sub DisplayUsage {
+    print STDERR "\n  $ProgName: Find quotes longer than $checklen characters (e.g., check variable\n";
+    print STDERR "               and value labels).  by Kent Nassen, $version\n";
+
+    print STDERR "\n   Usage: $ProgName [filename...]\n",
+		  "        (multiple filenames or wildcards are accepted if\n",
+          "        your shell can handle them)\n",
+          "\n",
+          "   Examples: $ProgName sp6360.sps  or  $ProgName *.sps\n\n";
+}
+
+format STDOUT_TOP =
+
+   @||||@||
+   "Page",$%
+
+   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   "$ProgName: Find quotes longer than $checklen characters";
+   @<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
+   "by Kent Nassen, $version";
+   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   "Scanning for long quoted text in the file: ",$file
+
+   Line#     Length                             Line Contents
+  -------   --------  --------------------------------------------------------------
+.
+
+format STDOUT =
+  @>>>>>> @>>>>>>    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+$.,$testcount,$_
+.

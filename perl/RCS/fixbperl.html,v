@@ -1,0 +1,116 @@
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.02.13.30.44;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/fixbperl.html">
+   <TITLE>fixblock.pl -- Convert Stream File to Fixed Block File</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<A NAME="block">&nbsp;</A>
+<BR>
+<BLOCKQUOTE>
+<H2>fixblock.pl -- Convert Stream File to Fixed Block File</H2>
+<HR SIZE=3 NOSHADE>
+
+<A HREF="http://192.168.50.172/~knassen/umich/html/perl/fixblock.pl"><B>
+fixblock.pl</B></A> is a script to convert a &#34;stream&#34; data file,
+in which all data is on one long line with no end of line delimeters,
+into a fixed block data file with a constant logical record length
+(LRECL).* This started as a one or two line perl hack with hard-coded
+parameters, but after giving it to several coworkers, I found that it
+required more hand-holding (like commandline parameters, usage messages,
+error messages, etc.). Hence, it's quite a bit longer now.
+<P>
+This small program has been useful for fixing files incorrectly read
+from tape and some data files that have been received in stream format
+via FTP. The program leaves the original data file in its original
+format. <STRONG>NOTE</STRONG> that the script will fail to produce
+useful output if, for example, trailing blanks on short data lines were
+stripped before the input data file was put into stream format. Each
+data line or record must be LRECL length even when in stream format, in
+other words.
+
+<H3>Usage</H3>
+<P>
+Assuming this program is executable its commandline is:
+<P>
+<FONT COLOR="#000080">fixblock.pl -l# infile outfile</FONT>
+<P>
+where:<BR> 
+<UL>
+<I>-l#</I> sets the LRECL desired to # characters <BR>
+<I>infile</I> is the stream file to be processed <BR>
+and <I>outfile</I> is the file to which the blocked output will be sent.
+</UL>
+<P>
+As an example of usage, the command <TT><FONT COLOR="#000080">fixblock.pl
+-l5 test.dat test.out</FONT> </TT>with an input file, test.dat (one line
+with no line-end character) consisting of:
+<PRE>12345123451234512345123451234512345</PRE> 
+
+will produce this output in test.out:
+
+<PRE>
+12345
+12345
+12345
+12345
+12345
+12345
+12345
+</PRE>
+
+The user will see the following output on the screen:
+
+<PRE>
+(pts/1):~&gt; fixblock.pl -l5 test.dat test.out
+
+fixblock.pl: Done!
+7 records processed from 'test.dat'
+
+Output is in 'test.out'
+</PRE>
+
+<P>
+* Yes, there are other ways to do this sort of conversion--such as
+<I>dd</I>, but most users have trouble with that one. The GNU program
+<I>fold</I> (from the textutils distribution) can perform a similar
+task, but it does not end the last line of the file with a newline
+character. The <I>/usr/bin/fold</I> program from Sun also seems to have
+this characteristic.  I needed a program that would add a newline even
+on the last line of the program.  There are instances, however, when
+the 'fold' behavior is useful, also.
+
+<P>
+<HR SIZE=3 NOSHADE>
+<A HREF="myperl.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
+
+<FONT SIZE=-1>Last Modified: Sun Mar 14 14:28:44 EST 1999
+</FONT>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@

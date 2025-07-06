@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<LINK REV=MADE HREF="mailto: knassen@NOWAYAMPAYumich.edu (Kent Nassen)">
+<META name="description" content="Kent Nassen's Vim Syntax Files: for SAS, SPSS, and cbgen/cbentr">
+<META name="keywords" content="vi, vim, syntax highlighting, text editing, SAS, SPSS">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/vim/ksyntax.html">
+<TITLE>Kent's Vim Syntax Files</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../gif/txtr_gre.gif">
+<BR>
+<BLOCKQUOTE>
+<H2>Kent's Vim Syntax Files<HR SIZE=3 NOSHADE WIDTH="100%"></H2>
+
+Here are three vim syntax highlighting files I've cobbled together for
+use where I work.  I'm sure they are not finished yet, but then all such
+setups lend themselves to a bit of tweaking now and then...
+
+<P> Note that you must use at least the 5.0m release of Vim to get
+these to work without adjusting the syntax (I did have them running
+under earlier alpha versions of Vim 5.0, but the syntax highlighting
+features for 5.0 have changed slightly as the alpha testing has
+progressed). Anyway, these may serve as a basis for someone else to
+make improvements, so here you go.  Let me know if you have a way to
+improve these; shouldn't be difficult :-).
+
+<ADDRESS><A HREF="mailto: knassen@NOWAYAMPSAYumich.edu (Kent Nassen)">--Kent Nassen, knassen@NOWAYAMPSAYumich.edu</A></ADDRESS>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+<P>
+<STRONG><A HREF="sas.vim"><FONT SIZE="+1">SAS Syntax File</FONT></A></STRONG><BR>
+This syntax file covers the BASE and STAT modules of the SAS System.
+There are a number of overlaps between keywords of different groups yet
+to be resolved and a lot of SAS symbols aren't highlighted
+yet.  Anyway, it might give you some ideas for how you could alter it
+for how you use SAS.  See <A HREF="http://www.sas.com">http://www.sas.com</A> for
+more information on the SAS System.
+
+<P>
+<STRONG><A HREF="sps.vim"><FONT SIZE="+1">SPSS Syntax File</FONT></A></STRONG><BR>
+This is for highlighting most of the SPSS statistical package's
+commands.  Again, there is some overlap between keywords of different
+groups that will need to be resolved, and there're way too many
+subcommands all in one group, but it's a start.  See <A HREF="http://www.spss.com">http://www.spss.com</A> for more about SPSS.
+
+<P>
+<STRONG><A HREF="cbg.vim"><FONT SIZE="+1">Cbentr/Cbgen Syntax File</FONT></A></STRONG><BR> 
+This is an example of how I use Vim 5.0 to help me in the editing I
+have to do at work (and probably something that no one else would
+use). cbg.vim is for a little-known text markup language called cbentr
+(it's used for formatting codebooks for data collections, and is
+derived from the OSIRIS era of codebook and data processing, and is probably
+specific to <A HREF="http://www.icpsr.umich.edu">ICPSR</A>). I've been
+using a slightly newer interpreter for cbentr commands, called 'cbgen'
+hence this syntax file is called cbg.vim.  If you want more information
+about this, let me know.
+
+<P>cbentr/cbgen uses a small set of commands that begin in the first
+column. All commands begin with a slash (/). Examples include /Q for
+question text, /V for variable number, and /C for the variable's
+codes, so when you see those in this syntax file, that's what's
+going on. 
+
+<P>Lately, I've been editing a lot of codebooks for the 
+<A HREF="http://www.za.uni-koeln.de/data/en/eurobarometer/index.htm">Eurobarometer</A> 
+survey series, so many of the keywords in this
+file relate specifically to that (ESOMAR, NUTS, etc.) and not to
+cbentr/cbgen. Hey, why not include some of those special project terms?
+They're easy to change/remove when you move on to something else.
+
+<P>
+<HR SIZE=3>
+<P>Note that Vim's highlighting can outline the errors in a file as well
+as the usual syntax constructions. In the cbentr/cbgen example, I've set
+"???" as an error to be highlighted in red. This lets me insert three
+question marks for things that are partially done or unverified and
+they'll be pointed out brilliantly the next time I open the file.
+
+<P>I've got a few more of these for more obscure specific uses at work,
+such as helping me filling out standardized forms correctly, but I'm not
+sure they're very will done (as if the above are--ha!). I may put them
+up later if I get a few of the bugs ironed out.
+
+<P>My operating environments:<BR>
+Work: Solaris 2.5 on Sun SparcServer, 512MB RAM, never too much hard
+disk space, Sun OpenWindows with Athena and Motif widgets. Also Windoze
+3.1 running Exceed v4, and DOS 6.2. Home: FreeBSD 2.2.1 on a 486DX2-80
+system with 40MB RAM and 2 gig hard disk, running XFree86 3.2 with Xaw3d.
+
+<P>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+<A HREF="index.html"><IMG ALIGN=MIDDLE SRC="../gif/arrwback.gif" ALT=""
+BORDER=0 WIDTH=24 HEIGHT=24> Back to Kent's Vim Page</A>
+
+<FONT SIZE=-1><CENTER>Last modified: Sat Dec 27 17:10:12 EST 1997
+</CENTER></FONT>
+</BLOCKQUOTE>
+</BODY>
+</HTML>

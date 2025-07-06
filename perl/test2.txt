@@ -1,0 +1,8 @@
+  v1 "Short label"
+  v2 "Label within limits"
+  v3 "Near-max label string"
+  v8 "Variable 8"
+  v9 "Variable 9"
+  v10 "Variable 10"
+  v3 "This is a longer label for the riable v3"
+  v4 "This is a very long label for hich is v4"

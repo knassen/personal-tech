@@ -1,0 +1,13 @@
+file: linklint.txt
+root: /afs/umich.edu/user/k/n/knassen/Public/html
+date: Sun, 14 Mar 1999 14:08:59 (local)
+Linklint version: 2.1
+
+ summary.txt: summary of results
+     log.txt: log of progress
+      dir.txt: found   1 directory with files
+     file.txt: found   1 file
+    fileX.txt: found   1 file (cross referenced)
+    fileF.txt: found   1 file with forward links
+   remote.txt: found  21 other links
+  remoteX.txt: found  21 other links (cross referenced)

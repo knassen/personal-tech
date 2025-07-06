@@ -1,0 +1,13 @@
+file: summary.txt
+root: /afs/umich.edu/user/k/n/knassen/Public/html
+date: Sun, 14 Mar 1999 14:08:59 (local)
+Linklint version: 2.1
+
+Linklint found 1 file in 1 directory and checked 1 html file.
+There were no missing files. No files had broken links.
+No errors, no warnings.
+
+found   1 directory with files
+found   1 default index
+found  20 http links
+found   1 mailto link

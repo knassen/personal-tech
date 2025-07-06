@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/perl">
+   <TITLE>freq.pl -- Frequency Counts</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<BR>
+<BLOCKQUOTE>
+<H2>freq.pl -- Frequency Counts</H2>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+
+<A HREF="perl/freq.pl"><B>freq.pl</B></A> is a perl program I use to get a
+quick frequency table from a column of data values without the hassle of
+running a huge statistical application like SAS or SPSS. <I>freq.pl</I>
+can be used to answer the question "how many times do the unique values
+in columns <I>x</I> through <I>y</I> occur in this file?"
+<P>
+The input file is assumed to be formatted with the data of interest in
+the same column range on each line of the input file. The data may be
+numeric and/or character. The output is reminiscent of that produced by
+SAS proc freq, consisting of the individual values in increasing order,
+plus a frequency count and cumulative frequency count for each value.
+
+<H3>Usage</H3>
+<P>The commandline is: <TT><FONT COLOR="#000080">freq.pl [-h] [-c[#-#][#]
+filename]</FONT> </TT>where: <TT><FONT COLOR="#000080">-c#-#</FONT> </TT>indicates
+starting &amp; ending column numbers of the variable and <TT><FONT COLOR="#000080">-c#</FONT>
+</TT>indicates a single-column variable at column <TT><FONT COLOR="#000080">#</FONT></TT>.
+
+<P>As an example, the command <TT><FONT COLOR="#000080">freq.pl -c210 data.file</FONT>
+</TT>might produce output like:
+
+<PRE>
+(pts/1):~&gt; freq.pl -c210 data.file
+
+        Page  1
+        Frequencies for the values in columns 210-210
+        in the file &#34;data.file&#34;
+
+                                                 Cumulative
+                              Value   Frequency   Frequency
+                             -------  ---------  ----------
+                                   0       2214        2214
+                                   1       1009        3223
+                                   2        533        3756
+                                   9      15721       19477
+</PRE>
+If there had been many values to print out, the program would have
+output a paged listing, each page with the page number and header
+information as in the above table. In testing, this program was
+usually faster than a <A HREF="perl/freqsh.html">shell script</A> that uses
+<I>sort</I>, <I>cut</I>, <I>uniq</I>, and <I>awk</I> to produce output
+without the cumulative frequencies.
+
+<HR SIZE=3 NOSHADE WIDTH="100%">
+<A HREF="myperl.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
+
+<FONT SIZE=-1>Last Modified: Sun Mar 14 14:50:01 EST 1999
+</FONT>
+</BLOCKQUOTE>
+</BODY>
+</HTML>

@@ -1,0 +1,34 @@
+file: remote.txt
+root: /afs/umich.edu/user/k/n/knassen/Public/html
+date: Sun, 14 Mar 1999 14:08:59 (local)
+Linklint version: 2.1
+
+#------------------------------------------------------------
+# found  20 http links
+#------------------------------------------------------------
+http://www-personal.umich.edu/~knassen/Resume11b.html
+http://www-personal.umich.edu/~knassen/apple2.html
+http://www-personal.umich.edu/~knassen/archives.html
+http://www-personal.umich.edu/~knassen/aurora.html
+http://www-personal.umich.edu/~knassen/bsdpicts.html
+http://www-personal.umich.edu/~knassen/figlet.html
+http://www-personal.umich.edu/~knassen/gif/bsddaem5.gif
+http://www-personal.umich.edu/~knassen/gif/canvas.jpg
+http://www-personal.umich.edu/~knassen/gif/kenthpg4t.gif
+http://www-personal.umich.edu/~knassen/gif/valid_html3.2.gif
+http://www-personal.umich.edu/~knassen/icpsr.html
+http://www-personal.umich.edu/~knassen/links.html
+http://www-personal.umich.edu/~knassen/mice.html
+http://www-personal.umich.edu/~knassen/myperl.html
+http://www-personal.umich.edu/~knassen/statistics.html
+http://www-personal.umich.edu/~knassen/umwww.html
+http://www-personal.umich.edu/~knassen/unix.html
+http://www-personal.umich.edu/~knassen/vi/vi.html
+http://www-personal.umich.edu/~knassen/vim/index.html
+http://www.freebsd.org
+
+#------------------------------------------------------------
+# found   1 mailto link
+#------------------------------------------------------------
+mailto: knassen@NOWAYAMSPAYumich.edu (Kent Nassen)
+

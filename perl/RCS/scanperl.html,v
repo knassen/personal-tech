@@ -1,0 +1,164 @@
+head	1.3;
+access;
+symbols;
+locks
+	knassen:1.3; strict;
+comment	@# @;
+
+
+1.3
+date	2025.07.03.23.40.35;	author knassen;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2025.07.03.23.38.19;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.03.17.44.10;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/scanperl.html">
+   <TITLE>40scan.pl -- Scan for Excessively Long Quoted Strings</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<A NAME="40scan.pl">&nbsp;</A>
+<BR>
+<BLOCKQUOTE>
+<H2>40scan.pl -- Scan for Excessively Long Quoted Strings</H2>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+
+This Perl program to reads through a text file looking for double quoted
+strings and reports those which are longer than a defined number of
+characters (default=40). The output consists of the line number of the
+long quote, the length of the quoted text, the actual line containing
+the quoted text, and at the end of the run a summary of the number of
+lines with excessive length, the number of lines in the file, and the
+location and length of the longest quote.
+
+<UL STYLE="list-style-type: disc;">
+<LI>Output is sent to STDOUT, so redirect it to a file to save it.</LI>
+<LI>The program only looks for double-quoted strings.</LI>
+<LI>The variable $checklen in the program sets the length of strings to search for.
+<LI>Useful for making sure all your labels are within length limits, be they SAS,
+SPSS, or in-house standards.
+</UL>
+
+<P><STRONG>Download: </STRONG>
+<A HREF="http://192.168.50.172/~knassen/umich/html/perl/40scan.pl"><B>40scan.pl</B></A>
+
+<H3>Usage</H3>
+Assuming this program is executable, its commandline is:
+<FONT COLOR="#000080">40scan.pl infile</FONT>
+<BR>
+where:<BR> 
+<UL>
+<I>infile</I> is the text file to be processed <BR>
+</UL>
+
+<P>
+An example run is shown below.
+<PRE>
+~> 40scan.pl test.txt
+
+   Page  1
+
+   40scan: Find quotes longer than 40 characters
+   by Kent Nassen, v1.5, 9/22/98
+   Scanning for long quoted text in the file:  test.txt
+
+   Line#     Length                             Line Contents
+  -------   --------  --------------------------------------------------------------
+        7      42     v3 "This is a longer label for the variable v3"
+        8      61     v4 "This is a very long label for the fourth variable which is v4"
+
+    2 lines had quoted text over 40 characters long.
+    There were 8 lines in the file.
+    The length of the longest quoted text found was 61 characters at line 8.
+</PRE>
+<P>
+Remaining to do are allowing the user to select the width to scan for
+on the command line and scanning for single-quoted strings.
+
+<HR SIZE=3 NOSHADE>
+<A HREF="myperl.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
+
+<FONT SIZE=-1>Last Modified: Sun Apr 11 10:59:01 EDT 1999
+</FONT>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d15 7
+a21 7
+This Perl program to reads through a text file looking
+for double quoted strings and reports those which are longer than a
+defined number of characters (default=40). The output consists of the
+line number of the long quote, the length of the quoted text, the actual
+line containing the quoted text, and at the end of the run a summary of
+the number of lines with excessive length, the number of lines in the
+file, and the location and length of the longest quote.
+d27 1
+a27 1
+<LI>Useful for making sure all your labels are within lenght limits, be they SAS,
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d9 1
+a9 1
+<A NAME="scan">&nbsp;</A>
+d13 1
+a13 1
+<HR SIZE=3 NOSHADE>
+d15 2
+a16 3
+<A HREF="http://192.168.50.172/~knassen/umich/html/perl/40scan.pl"><B>
+40scan.pl</B></A> is a Perl program to scan through a text file looking
+for double quoted strings and report those which are longer than a
+d23 11
+a34 1
+<P>
+a35 1
+<P>
+d37 1
+a37 1
+<P>
+d64 3
+a66 7
+Left to do are such niceties as trimming the output to fit on an
+80-column screen (those wide xterms handle the output just fine, so why?
+:-), allowing the user to select the width to scan for on the command
+line (I found I was always scanning for the same three widths so I just
+made three copies, set the hard-coded width, and named them by their
+widths: 40scan, 20scan, 16scan, instead, but others might want more
+choice), and scanning for single-quoted strings.
+@

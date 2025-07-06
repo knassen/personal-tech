@@ -1,0 +1,95 @@
+file: remoteX.txt
+root: /afs/umich.edu/user/k/n/knassen/Public/html
+date: Sun, 14 Mar 1999 14:08:59 (local)
+Linklint version: 2.1
+
+#------------------------------------------------------------
+# found  20 http links (cross referenced)
+#------------------------------------------------------------
+http://www-personal.umich.edu/~knassen/Resume11b.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/apple2.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/archives.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/aurora.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/bsdpicts.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/figlet.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/gif/bsddaem5.gif
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/gif/canvas.jpg
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/gif/kenthpg4t.gif
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/gif/valid_html3.2.gif
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/icpsr.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/links.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/mice.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/myperl.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/statistics.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/umwww.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/unix.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/vi/vi.html
+    used in 1 file:
+    /
+
+http://www-personal.umich.edu/~knassen/vim/index.html
+    used in 1 file:
+    /
+
+http://www.freebsd.org
+    used in 1 file:
+    /
+
+#------------------------------------------------------------
+# found   1 mailto link (cross referenced)
+#------------------------------------------------------------
+mailto: knassen@NOWAYAMSPAYumich.edu (Kent Nassen)
+    used in 1 file:
+    /
+

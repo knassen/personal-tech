@@ -1,0 +1,151 @@
+head	1.4;
+access;
+symbols;
+locks
+	knassen:1.4; strict;
+comment	@# @;
+
+
+1.4
+date	2025.07.03.13.04.15;	author knassen;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2025.07.03.03.04.08;	author knassen;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2025.07.02.12.44.22;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.02.02.27.34;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+<HTML> 
+
+<HEAD>
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/wrapit.html">
+   <TITLE>wrapit5.pl -- Wrap Fixed-Format Variable Statements</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<BR>
+<BLOCKQUOTE>
+<H2>wrapit5.pl -- Wrap Fixed-Format Variable Statements</H2>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+
+This Perl script reads a file containing a column of SAS Input or SPSS
+Data List statements and reformats them into a wrapped format with
+multiple fields per line--defaulting to five columns wide.  Handy for
+making long, single-column declarations more compact and readable in
+your code.
+
+<UL STYLE="list-style-type: disc;">
+<LI>Output is sent to STDOUT, so redirect it to a file to save it.</LI>
+<LI>Output is five fields per line, using fixed-width spacing for readability.</LI>
+<LI>Developed for quick formatting of variable lists during SAS/SPSS prep,
+especially when transforming the output from <A HREF="perl/splitit.pl"><B>splitit.pl.</B></A></LI>
+</UL>
+
+<P><STRONG>Download: </STRONG><A HREF="perl/wrapit5.pl"><B>wrapit5.pl</B></A> 
+
+<H3>Usage</H3>
+<P>The command line is: 
+<TT><FONT COLOR="#000080">perl wrapit5.pl filename >filename.out</FONT> </TT>
+
+<P>Here is an example.  Consider this input data:
+<PRE>
+
+Sample input (cards):
+
+  V1 1-4
+  V2 5-8
+  V3 9-9
+  V4 10-13
+  V5 14-14
+  V6 15-16
+  V7 17-17
+  V8 18-19
+  V9 20-21
+
+The command <TT><FONT COLOR="#000080">perl wrapit5.pl cards > cards.wrap</FONT></TT> produces this:
+
+ Sample output (cards.wrap):
+
+    V1 1-4         V2 5-8         V3 9-9         V4 10-13       V5 14-14
+    V6 15-16       V7 17-17       V8 18-19       V9 20-21       
+
+</PRE>
+
+<HR SIZE=3 NOSHADE WIDTH="100%">
+<A HREF="myperl.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
+
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d15 1
+a15 1
+Data List statements and reformates them into a wrapped format with
+d33 1
+a33 2
+<P>Here is an example. 
+
+a34 1
+Consider this input data:
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d33 1
+a33 3
+<P>Here is an example. The command 
+<TT><FONT COLOR="#000080">perl wrapit5.pl cards > cards.wrap</FONT></TT>
+operates like this:
+d36 2
+d50 2
+d58 1
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d20 1
+a20 1
+<UL STYLE="disc">
+d33 1
+a33 1
+<P>As an example, the command 
+d35 1
+a35 1
+would produce output like:
+@

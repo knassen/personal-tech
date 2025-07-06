@@ -1,0 +1,123 @@
+head	1.2;
+access;
+symbols;
+locks
+	knassen:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2025.07.04.19.35.45;	author knassen;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2025.07.04.19.16.31;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@Update background color.
+@
+
+
+1.2
+log
+@Remove background
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<META name="description" content="vi Introduction">
+<META name="keywords" content="vi editor free elvis vile vim xvi nvi lemmy winvi">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/vi.html">
+<TITLE>vi Information & Resources</TITLE>
+</HEAD>
+
+<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+
+<BR>
+<BLOCKQUOTE>
+
+<P>
+<H2><STRONG>A Short Description of vi</STRONG></H2>
+<HR SIZE=3 NOSHADE WIDTH="100%">
+vi is a full-screen text editor originally written to run under Unix,
+but it has been cloned and imitated to run under MS-DOS, Windows,
+OS/2, Macintosh OS, Unix, and several other operating systems as well. vi is
+unusual in that it has <STRONG>two modes</STRONG>: an <STRONG>input
+mode</STRONG> in which text may be inserted, appended, or overwritten,
+and a <STRONG>command mode</STRONG> in which the user may issue searches
+and/or replacements of text, move around the file being edited, delete
+and copy text, perform file operations (read/write/save), and invoke
+external system commands (such as the Unix commands <I>sort</I>, 
+<I>date</I>, and <I>fmt</I>).
+<P>
+<STRONG>Up and Running Fast, But Powerful</STRONG><BR>
+Basic editing tasks with vi (opening a file, moving around,
+inserting text, deleting text, saving the file) can be learned in a few
+minutes, but mastering this editor will take much longer since it is
+relatively feature-rich and it can draw upon the full power of Unix,
+including regular expressions, reading the output of external commands,
+and allowing exernal commands to operate on the text being edited, as well
+as macros/key mapping, and ex line editor commands.
+<P>
+<STRONG>Bizarre and Incomprehensible...</STRONG><BR> 
+vi can seem rather bizarre, incomprehensible, and confusing to
+people just learning it, especially if they are used to single-mode
+editors such as the Aurora editor, emacs, the MS-DOS editor, Windows
+notepad/wordpad, xedit, Qedit/TSE, Multi-edit, Ultraedit, and the like.
+I know it took me a while to get used to the <STRONG>h j k l</STRONG>
+cursor keys and switching back and forth between command mode and input
+mode using the escape key. At some point, however, if you have the right
+sort of sticktoitiveness eventually you stop thinking so much about the
+commands you are typing. At that point, you're off to the races.
+<P>
+<STRONG>...or Fast and Efficient?</STRONG><BR>
+vi can be a very fast and efficient editor once you get used to the way
+it works. I also like the idea that I can find vi on every Unix system
+I've come across (and I use at least four different Unix operating
+systems on three different platforms currently), that it is economical
+of system resources (such as RAM), that it can do a lot of editing in
+very few keystrokes (no mouse required), that it can edit huge files,
+and it can operate quite handily over slow modem or internet connections
+(which seems to be necessary more often than one would expect).
+<P>
+<STRONG>The vi Stuff: Get To It, Already!</STRONG><BR>
+At this site are some references and links of interest to vi users
+and the curious. I've included some screen shots of several popular
+vi clones, too, as at least some vee-eyes now offer GUI (graphical)
+interfaces with pull-down menus or button bars that might be of interest
+to a new generation of potential vi users.
+
+<P>
+<FONT SIZE="+2">
+<A HREF="vi/vi.html">[Main]</A>
+<A HREF="vi/vi-books.html">[vi Books]</A>
+<A HREF="vi/vi-infolinks.html">[vi Info Links]</A>
+<A HREF="vi/vi-softlinks.html">[vi Software Links]</A>
+<A HREF="vi/vi-screens.html">[vi Screen Shots]</A>
+</FONT>
+<P>
+
+<FONT SIZE=-1>
+Last modified: Sun Mar 14 22:13:28 EST 1999
+</FONT>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 1
+a11 1
+<BODY BACKGROUND="gif/textur7a.jpg" TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+@

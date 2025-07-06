@@ -1,0 +1,25 @@
+
+Checking links locally in /afs/umich.edu/user/k/n/knassen/Public/html
+that match: /#/# /@
+1 seed: /
+
+Seed:    /
+looking for /(default)
+checking /
+
+Processing ...
+
+writing files to data
+wrote 8 txt files
+wrote 5 html files
+wrote index file linklint.html
+
+found   1 directory with files
+found   1 default index
+found  20 http links
+found   1 mailto link
+
+Linklint found 1 file in 1 directory and checked 1 html file.
+There were no missing files. No files had broken links.
+No errors, no warnings.
+

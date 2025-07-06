@@ -1,0 +1,32 @@
+#!/opt/gnu/bin/perl -w
+
+# Splitit: split columnized variable lists such as SAS input or
+# SPSS data list statements (puts each field on a separate line)
+# Assumes all variable names begin with a letter!  Adjust the
+# the pattern match in the split statement if desired.
+#  Kent Nassen, 4/22/97 & 8/15/97
+ 
+# Sample input:
+#   V1 1-4                   V2 5-8                   V3 9-9                   
+#   V4 10-13 (A)             V5 14-14                 V6 15-16                 
+#   V7 17-17                 V8 18-19                 V9 20-21
+
+# Sample output:
+#  V1 1-4
+#  V2 5-8
+#  V3 9-9
+#  V4 10-13 (A)
+#  V5 14-14
+#  V6 15-16
+#  V7 17-17
+#  V8 18-19
+#  V9 20-21
+$i=0;
+while (<>) {
+		chop;
+        for ($_) { s/^\s+//; s/$/ /; s/\n//g; }
+	@fields = split /([A-Za-z][A-Za-z0-9_]* )/, $_;
+	for ($i=1; $i<=$#fields; $i=$i+2) {
+			print "   ",${fields}[$i],${fields}[$i+1],"\n";
+		}
+	}

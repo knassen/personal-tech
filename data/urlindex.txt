@@ -1,0 +1,8 @@
+file: urlindex.txt
+root: /afs/umich.edu/user/k/n/knassen/Public/html
+date: Sun, 14 Mar 1999 14:08:59 (local)
+Linklint version: 2.1
+
+  urlsum.txt: summary of results
+  urllog.txt: log of progress
+    urlok.txt: found  20 urls: were ok

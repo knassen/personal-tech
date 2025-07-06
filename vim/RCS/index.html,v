@@ -1,0 +1,143 @@
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.02.23.56.59;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+<LINK REV=MADE HREF="mailto: knassen@@NOWAYAMSPAYumich.edu (Kent Nassen)">
+<META name="description" content="Kent Nassen's Vim Page: vim, vi, and syntax highlighting">
+<META name="keywords" content="vi, vim, syntax highlighting">
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/vim/index.html">
+<TITLE>Kent's Vim Page</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../gif/txtr_gre.gif">
+<BR>
+<BLOCKQUOTE>
+<H2><IMG SRC="../gif/vim2.gif" ALT="..." BORDER=0 WIDTH=167 HEIGHT=72><IMG SRC="../gif/kvimpg3.gif" ALT="Kent's Vim Page" BORDER=0 WIDTH=337 HEIGHT=38><HR SIZE=3 WIDTH="100%"></H2>
+Vim is <STRONG>V</STRONG>i-<STRONG>IM</STRONG>proved, a free vi text
+editor clone with many extensions and great features such as multi-level
+undo, multiple windows and buffers, flexible insert mode (use the arrow
+keys to move while in insert mode), visual mode (execute commands on
+marked areas of text), block operators (operate on rectangular blocks of
+text), and online help system. I've come a long way down the vi trail
+since 1990...vi, xvi, elvis, vile, xvile, nvi, and now, Vim. Consider this
+page a paltry tribute to Vim: a most useful, efficient, and enjoyable
+free editor of the vi type. Here is <A HREF="../gif/vim50t2.gif"><STRONG>a peek
+(screen shot 55K GIF)</STRONG>.</A> at how Vim 5.0t compiled with
+Lesstif 0.82 looks on my FreeBSD system running the XFree86 XWindow
+server and fvwm95. 
+
+<P>Vim is under active and ongoing development. Vim 5.3 has 
+recently been released. This new version, compared to vim 4.6,
+offers color syntax highlighting for many languages, a GUI interface
+(gvim), pull-down menus, functions, and the opportunity to include perl 
+and/or python and/or tcl/tk as an interpreter. You can find three 
+examples here of how I've been using Vim 5.x's color syntax highlighting 
+features on my <A HREF="ksyntax.html"><STRONG>Vim syntax file page</STRONG></A>.
+
+<P>If you don't know what "vi" is, my more generic
+<A HREF="http://192.168.50.172/~knassen/umich/html/vi.html"><STRONG>vi
+Information &amp; Resources </STRONG></A> page will give a brief 
+introduction and some links to further sources of information.  
+
+<P>Comments and suggestions about this Vim page are welcome.
+<ADDRESS><A HREF="mailto: knassen@@NOWAYAMSPAYumich.edu (Kent Nassen)">--Kent Nassen, knassen@@NOWAYAMSPAYumich.edu</A></ADDRESS>
+
+<HR SIZE=3 WIDTH="100%">
+<P><STRONG>Here are some links to further information about Vim.</STRONG>
+
+<P>
+<STRONG>
+<A HREF="http://www.vim.org/"><FONT SIZE="+1">The VIM Home Page </FONT><BR>(http://www.vim.org/)</A></STRONG><BR>
+This site is the main repository for Vim-related information. <STRONG>Definitely
+look here!</STRONG> (Bram Moolenaar (mool@@oce.nl) is the author of VIM.)
+
+<P><STRONG><A HREF="http://www.vim.org/deve.html"><FONT SIZE="+1">Vim Development Page</FONT><BR>(http://www.vim.org/deve.html)</A></STRONG><BR>
+A page with information about the current development status of Vim. Vim
+5.3 is the latest release version. Vim 5.4 is currently in development.
+Also included at this site is information about the development of vim
+for Windows, and where you can get development releases of vim. Note
+that such releases are for testing only. If you just want to see what
+vim 5.x looks like, see this example <A HREF="../gif/vim50m.gif">screen
+shot</A> of vim 5.0m.
+
+<P><STRONG><A HREF="http://www.grafnetix.com/~laurent/vim/"><FONT SIZE="+1">Laurent's Vim Repository</FONT><BR>(http://www.grafnetix.com/~laurent/vim/)</A>[bad link]</STRONG><BR> 
+Laurent is the maintainer of the Vim FAQ, which should answer a number
+of common VIM questions. This site also features Vim macros and Vim
+icons!
+
+<!--A HREF="http://www.wi.leidenuniv.nl/~jvhemert/vimacros.html"-->
+<P><STRONG>
+<A HREF="http://www.wi.leidenuniv.nl/~jvhemert/vim/"><FONT SIZE="+1">
+Jano's Vim Macro Page</FONT><BR>(http://www.wi.leidenuniv.nl/~jvhemert/vim/)</A>
+</STRONG><BR>
+Approximately two dozen macros for Vim in the categories of Toys &
+Entertainment (for example, a macro for creating text stereograms, and
+the Tower of Hanoi macro), Documents & Languages (including macros for
+C, HTML, and LaTex editing), and Miscellaneous (such as a file manager 
+macro).
+
+<P><STRONG><A HREF="http://www.mauigateway.com/~urban/projects/vim/index.html"><FONT SIZE="+1">Vim Resources</FONT><BR>
+(http://www.mauigateway.com/~urban/projects/vim/index.html)</A>[bad link]</STRONG><BR>
+Includes an archive of Vim macros, a Vim setup file (.vimrc), and 
+examples of Vim syntax menus (for HTML coding). [dead link]
+
+<P><STRONG><A HREF="http://www.netusa.net/~eli/src/vim.html"><FONT SIZE="+1">
+Eli's Vim and vi Page</FONT><BR>(http://www.netusa.net/~eli/src/vim.html)</A></STRONG><BR>
+Eli the Bearded presents vi, including Conway's <A
+HREF="../gif/vi-life2.gif">Game of Life for vi! [SCREEN SHOT, 7K GIF]</A>
+Also there are examples of "Hello, world" in vi, the Towers of Hanoi
+puzzle solver vi macros, and a couple different sets of HTML macros
+for vi. This site leans heavily toward VIM, but has a lot of "true" vi
+content as well.
+
+<P><STRONG><A HREF="http://www.wandering-man.com/Java/vim/java_Vim.html"><FONT SIZE="+1">
+Java Programming with Vim</FONT><BR>(http://www.wandering-man.com/Java/vim/java_Vim.html)</A>
+</STRONG><BR>
+Discusses and illustrates the use of Vim for Java programming, including
+syntax highlighting features helpful in Java development.
+
+<P>
+<FONT SIZE=-1>
+[The screen shots above were grabbed while the application was running under
+<A HREF="http://www.xfree86.org/">XFree86</A> and the 
+<A HREF="http://www.terraware.net/ftp/pub/Mirrors/FVWM95/fvwm95.html">FVWM-95</A> 
+window manager (not Win95). 
+</FONT>
+
+<HR SIZE=3 WIDTH="100%">
+<A HREF="../index.html"><IMG ALIGN=MIDDLE SRC="../gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24> Back to Kent's Home Page</A>
+
+<CENTER><!IMG SRC="http://wwwcgi.itd.umich.edu/cgi-bin/counter?link=http://www-personal.umich.edu/~knassen/vim/index.html" ALT="A few" HEIGHT=20> visits since December 26, 1997.<BR!>
+<!-- WIDTH=45 HEIGHT=20 -->
+<!-- September 25, 1997 -->
+<FONT SIZE=-1>
+Last modified: Tue Feb  2 10:33:45 EST 1999
+</FONT>
+</CENTER>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+@
