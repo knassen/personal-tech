@@ -1,4 +1,27 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.08.00.39.54;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
 <HTML> 
 
 <HEAD>
@@ -42,3 +65,4 @@ might produce output like:
 </BLOCKQUOTE>
 </BODY>
 </HTML>
+@
