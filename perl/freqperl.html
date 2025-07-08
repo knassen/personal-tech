@@ -11,7 +11,7 @@
 <H2>freq.pl -- Frequency Counts</H2>
 <HR SIZE=3 NOSHADE WIDTH="100%">
 
-<A HREF="perl/freq.pl"><B>freq.pl</B></A> is a perl program I use to get a
+<A HREF="../perl/freq.pl"><B>freq.pl</B></A> is a perl program I use to get a
 quick frequency table from a column of data values without the hassle of
 running a huge statistical application like SAS or SPSS. <I>freq.pl</I>
 can be used to answer the question "how many times do the unique values
@@ -22,6 +22,11 @@ the same column range on each line of the input file. The data may be
 numeric and/or character. The output is reminiscent of that produced by
 SAS proc freq, consisting of the individual values in increasing order,
 plus a frequency count and cumulative frequency count for each value.
+
+<UL>
+    <LI><A HREF="https://knassen.github.io/personal-tech/perl/freqshow.html"><B>Show freq.pl code</B></A></LI>
+    <LI><STRONG>Download: </STRONG> <A HREF="freq.pl"><B>freq.pl</B></A></LI>
+</UL>
 
 <H3>Usage</H3>
 <P>The commandline is: <TT><FONT COLOR="#000080">freq.pl [-h] [-c[#-#][#]
@@ -50,12 +55,12 @@ starting &amp; ending column numbers of the variable and <TT><FONT COLOR="#00008
 If there had been many values to print out, the program would have
 output a paged listing, each page with the page number and header
 information as in the above table. In testing, this program was
-usually faster than a <A HREF="perl/freqsh.html">shell script</A> that uses
+usually faster than a <A HREF="../perl/freqsh.html">shell script</A> that uses
 <I>sort</I>, <I>cut</I>, <I>uniq</I>, and <I>awk</I> to produce output
 without the cumulative frequencies.
 
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
+<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
 
 <FONT SIZE=-1>Last Modified: Sun Mar 14 14:50:01 EST 1999
 </FONT>
