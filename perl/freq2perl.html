@@ -2,7 +2,7 @@
 <HTML> 
 
 <HEAD>
-   <BASE HREF="/personal-tech">
+   <BASE HREF="/personal-tech/perl/">
    <TITLE>freq2.pl -- Frequency Counts with Percentages</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
@@ -11,10 +11,28 @@
 <H2>freq2.pl -- Frequency Counts with Percentages</H2>
 <HR SIZE=3 NOSHADE WIDTH="100%">
 
-<A HREF="perl/freq2.pl"><B>freq2.pl</B></A> is a simple extension of 
-<A HREF="perl/freqperl.html"><B>freq.pl</B></A> which provides frequency
+<A HREF="freq2.pl"><B>freq2.pl</B></A> is a simple extension of 
+<A HREF="freqperl.html"><B>freq.pl</B></A> which provides frequency
 counts, frequency as a percentage of total count, plus cumulative
 frequency, and cumulative percentage.
+
+<UL>
+    <LI><A HREF="https://knassen.github.io/personal-tech/perl/freq2show.html"><B>Show fixblock.pl code</B></A></LI>
+    <LI><STRONG>Download: </STRONG> <A HREF="freq2.pl"><B>fixblock.pl</B></A></LI>
+</UL>
+
+<P>Limitations:
+<UL STYLE="list-style-type: disc;">
+    <LI>Can only print the first 20 characters of a value,
+       although can compute frequencies for longer values.</LI>
+    <LI>The order of values in the output is set by a character
+       sort rather than a numeric sort (the program knows
+       nothing of variable types like numeric or string).</LI>
+    <LI>If you give a column range outside the logical record
+       length of the data, you will still get output, but all
+       values will be null.</LI>
+</UL>
+
 <H3>Usage</H3>
 <P>The command line is: 
 <TT><FONT COLOR="#000080">freq2.pl [-h] [-c[#-#][#] filename]</FONT> </TT>
@@ -44,8 +62,10 @@ might produce output like:
                 9      15721    80.72       19477      100.00
 </PRE>
 <HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
+<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
 
+<FONT SIZE=-1>Last Modified: Wed Jul  9 10:18:12 EDT 2025
+</FONT>
 </BLOCKQUOTE>
 </BODY>
 </HTML>
