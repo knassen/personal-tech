@@ -1,0 +1,8 @@
+Font: alphabet.flf
+~~~~~~~~~~~~~~~~~~~~
+TTTTTT          t   11   22  333  
+  TT            t  111  2  2    3 
+  TT   eee  ss ttt  11    2   33  
+  TT   e e  s   t   11   2      3 
+  TT   ee  ss   tt 11l1 2222 333  
+
