@@ -2,6 +2,7 @@
 <HTML>
 <HEAD>
   <BASE HREF="/personal-tech/perl/">
+  <TITLE>freq.pl code file</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
 <PRE>
@@ -18,7 +19,7 @@
 ##
 ##  Usage:
 ##      freq.pl [-h] [-c[#-#][#] filename]
-##   where: -c#-# indicates starting & ending column numbers of the variable
+##   where: -c#-# indicates starting &amp; ending column numbers of the variable
 ##          and -c# indicates a single-column variable at column #.
 ##      
 ##---------------------------------------------------------------------------##
@@ -43,8 +44,8 @@ sub DisplayUsage {
 }   # end DisplayUsage
 
 # Get possible options (-c requires a parameter)
-getopts (('hc:') || &DisplayUsage); 
-&DisplayUsage if ($opt_h);
+getopts (('hc:') || &amp;DisplayUsage); 
+&amp;DisplayUsage if ($opt_h);
 
 # Parse the -c option for starting and ending column locations
 # (ending location may not be present if the variable is only
@@ -52,7 +53,7 @@ getopts (('hc:') || &DisplayUsage);
 # Note if -c option ends with a hyphen, that will be interpreted as
 # another option (filename) since hyphens start options.
 if (!$opt_c) { print "\nI need column locations!\n"; 
-			&DisplayUsage;
+			&amp;DisplayUsage;
 			} # if we don't have an opt_c, no need to go further
 $_ = $opt_c;
 if (/^([0-9]+)-([0-9]+$)/) { # both starting and ending locations: #-#
@@ -64,13 +65,13 @@ elsif (/^[0-9]+$/) { # just starting location: #
 	$endcol=$startcol;
 	}
 else { print "\nI couldn't understand your column location(s)!\n"; 
-	&DisplayUsage;
+	&amp;DisplayUsage;
 	}
 
 # See if the column locations of the variable make sense
 if ($endcol==0 || $startcol==0) {
 	print "\nStarting or ending column was zero.\n";
-	&DisplayUsage;
+	&amp;DisplayUsage;
 	}
 
 # Assume startcol > endcol is a transposition of column locations
@@ -86,10 +87,10 @@ $loc="$startcol"."-"."$endcol";
 
 # What is left on the command is the filename to be processed (hopefully)
 if ($#ARGV>0) { print "\nOne filename at a time, please!\n";
-		&DisplayUsage;
+		&amp;DisplayUsage;
 		}
 if ($#ARGV<0) { print "\nI need a filename!\n";
-		&DisplayUsage;
+		&amp;DisplayUsage;
 		}
 
 # Set up a string var for printing out a quoted filename 
@@ -98,7 +99,7 @@ $fname="\"".$ARGV[0]."\"";
 #### ---------------------------------------------------- ####
 #### Read the data from the file named on the commandline ####
 #### ---------------------------------------------------- ####
-while (<ARGV>) { 
+while (&lt;ARGV&gt;) { 
 	chop;   
 	# Pull the desired columns and save in data array
 	push @data, substr($_,$startcol-1,$endcol-$startcol+1); 

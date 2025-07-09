@@ -2,6 +2,7 @@
 <HTML>
 <HEAD>
   <BASE HREF="/personal-tech/perl/">
+  <TITLE>40scan.pl code listing</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
 <PRE>
@@ -47,7 +48,7 @@ STDOUT->format_lines_per_page($pagesize);
 # ($ProgName = lc $0) =~ s%.*\\%%;  # DOS
 
 if ($#ARGV<0) { 
-    &DisplayUsage;
+    &amp;DisplayUsage;
 	print STDERR "   *** I need a filename!\n\n";
     exit 1;
 }
@@ -65,19 +66,19 @@ sub process {
 		print STDERR "Can't open $filename: $!\n";
 		return;
 	}
-	while (<$input>) {
+	while (&lt;$input&gt;) {
 		chop;
         $lines++;
 		if ( m/".*?".*(".*?")/ ) {
 			$testcount=length($1) - 2;
 			if ( $testcount > $checklen ) { $longlines++; write; }
-            if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
+            if ($testcount &gt; $maxcount) { $maxcount=$testcount; $maxline=$.; }
 		next;
 		}
 		if ( m/(".*?")/ ) {
 			$testcount=length($1) - 2;
-			if ( $testcount > $checklen ) {	$longlines++; write; }
-            if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
+			if ( $testcount &gt; $checklen ) {	$longlines++; write; }
+            if ($testcount &gt; $maxcount) { $maxcount=$testcount; $maxline=$.; }
 		next;
 		}
 	}

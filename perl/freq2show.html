@@ -2,9 +2,10 @@
 <HTML>
 <HEAD>
   <BASE HREF="/personal-tech/perl/">
+  <TITLE>freq2.pl perl code</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-
+ 
 <PRE>
 
 #!/usr/bin/perl
@@ -21,7 +22,7 @@
 ##
 ##  Usage:
 ##      freq.pl [-h] [-c[#-#][#] filename]
-##   where: -c#-# indicates starting & ending column numbers of the variable
+##   where: -c#-# indicates starting &amp; ending column numbers of the variable
 ##          and -c# indicates a single-column variable at column #.
 ##          -h gives a help screen.
 ##          Only one filename may be given.
@@ -81,16 +82,16 @@ sub DisplayUsage {
 }
 
 # Get possible options (-c requires a parameter)
-getopts (('hc:') or &DisplayUsage); 
+getopts (('hc:') or &amp;DisplayUsage); 
 
 # -h option?
-if ($opt_h) { &DisplayUsage };
+if ($opt_h) { &amp;DisplayUsage };
 
 # Parse the -c option for starting and ending column locations
 #  (ending location need not be present if the variable is only
 #  one column wide, e.g. -c5)
 if (!$opt_c) { print STDERR "\n   *** I need column locations!\n"; 
-			&DisplayUsage;
+			&amp;DisplayUsage;
 			} # if we don't have an opt_c, no need to go further
 $_ = $opt_c;
 if (/^([0-9]+)-([0-9]+$)/) { # both starting and ending locations: #-#
@@ -100,13 +101,13 @@ elsif (/^[0-9]+$/) { # just starting location: #
 	$startcol=$opt_c; $endcol=$startcol;
 	}
 else { print STDERR "\n   *** I couldn't understand your column location(s)!\n"; 
-	&DisplayUsage;
+	&amp;DisplayUsage;
 	}
 
 # See if the column locations of the variable make sense
 if ($endcol==0 || $startcol==0) {
 	print STDERR "\n   *** Starting or ending column was zero.\n";
-	&DisplayUsage;
+	&amp;DisplayUsage;
 	}
 
 # Assume startcol > endcol is a transposition of column locations
@@ -122,10 +123,10 @@ $loc="$startcol"."-"."$endcol";
 
 # What is left on the command is the filename to be processed (hopefully)
 if ($#ARGV>0) { print STDERR "\n   *** One filename at a time, please!\n";
-		&DisplayUsage;
+		&amp;DisplayUsage;
 		}
 if ($#ARGV<0) { print STDERR "\n   *** I need a data filename!\n";
-		&DisplayUsage;
+		&amp;DisplayUsage;
 		}
 open INFILE, "<$ARGV[0]" or die "\n$ProgName:   *** Can't open data file '$ARGV[0]': $!\n\n";
 
@@ -136,7 +137,7 @@ $fname="\"".$ARGV[0]."\"";
 #### ---------------------------------------------------- ####
 #### Read the data from the file named on the commandline ####
 #### ---------------------------------------------------- ####
-while (<ARGV>) { chop;   
+while (&lt;ARGV&gt;) { chop;   
 	# Pull the desired columns and save in data array
 	push @data, substr($_,$startcol-1,$endcol-$startcol+1); 
 	}
@@ -183,7 +184,7 @@ format STDOUT =
 $value,$freq{$value},$freqpct,$cfreq,$cfreqpct 
 .
 
-<PRE>
+</PRE>
 
 <FONT SIZE=-1>Last Modified: Tue Jul  8 16:45:51 EDT 2025
 </FONT>

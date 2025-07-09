@@ -2,6 +2,7 @@
 <HTML>
 <HEAD>
   <BASE HREF="/personal-tech/perl/">
+  <TITLE>fixblock.pl -- block a data file to a fixed record length</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
 <PRE>
@@ -37,18 +38,18 @@ $version="(v1.4, 9/22/98)";
 
 getopts('l:');
 if (!$opt_l) { 
-    &UsageInfo; 
+    &amp;UsageInfo; 
 	print STDERR "   *** No -l (record length) parameter given\n\n";
     exit 1;
 }
 if ($#ARGV > 1) {
-    &UsageInfo; 
+    &amp;UsageInfo; 
     print STDERR "   *** Input and output are the only filenames allowed\n\n";
     exit 1;
 }
 if ($#ARGV==1) { $infile = $ARGV[0]; $outfile = $ARGV[1]; }
 else { 
-    &UsageInfo; 
+    &amp;UsageInfo; 
     print STDERR "   *** Input and output filenames are both required\n\n";
     exit 1;
 }

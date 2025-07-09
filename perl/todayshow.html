@@ -2,6 +2,7 @@
 <HTML>
 <HEAD>
   <BASE HREF="/personal-tech/perl/">
+  <TITLE>today.pl code listing</TITLE>
 </HEAD>
 <BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
 
@@ -32,7 +33,7 @@ open ( CALENDAR, "/usr/bin/cal $mon $year |" );
 
 print "\n";
 until (eof(CALENDAR)) {
-    chop($current_line = <CALENDAR>);
+    chop($current_line = &lt;CALENDAR&gt;);
     $len = 22;
     $current_line =~ s/\b$mday\b/\033[7m$mday\033[m/;
     printf (sprintf("                            %%-20s  %%-%ds\n", $len), $current_line );
