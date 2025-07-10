@@ -1,0 +1,13 @@
+
+
+ 
+Font: tanja.flf
+~~~~~~~~~~~~~~~~~~~~
+T)tttttt                   t)     1)!    2)AAA   3)###  
+   T)                    t)tTTT  1)!!   2)   AA 3)   ## 
+   T)    e)EEEEE  s)SSSS   t)      1)       2)     3)#  
+   T)    e)EEEE  s)SSSS    t)      1)      2)        3) 
+   T)    e)           s)   t)      1)     2)    3)   ## 
+   T)     e)EEEE s)SSSS    t)T  1)!!!!! 2)AAAAA  3)###  
+                                                        
+            
