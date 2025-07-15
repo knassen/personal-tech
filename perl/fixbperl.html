@@ -1,16 +1,18 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
+<!DOCTYPE HTML>
+<html>
 
-<HEAD>
-   <BASE HREF="/personal-tech/perl/">
-   <TITLE>fixblock.pl -- Convert Stream File to Fixed Block File</TITLE>
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-<A NAME="block">&nbsp;</A>
-<BR>
-<BLOCKQUOTE>
-<H2>fixblock.pl -- Convert Stream File to Fixed Block File</H2>
-<HR SIZE=3 NOSHADE>
+<head>
+
+   <base href="/personal-tech/perl/">
+   <title>fixblock.pl -- Convert Stream File to Fixed Block File</title>
+</head>
+<body> 
+<a name="block">&nbsp;</A>
+<br>
+<blockquote>
+<h2>fixblock.pl -- Convert Stream File to Fixed Block File</h2>
+
+<hr SIZE=3 NOSHADE>
 
 This is a Perl script to convert a &#34;stream&#34; data file,
 in which all data is on one long line with no end of line delimeters,
@@ -24,22 +26,22 @@ of it is still one line of code.
 <P>This small program has been useful for fixing files incorrectly read
 from tape and some data files that have been received in stream format
 via FTP. The program leaves the original data file in its original
-format. <STRONG>NOTE</STRONG> that the script will fail to produce
+format. <strong>NOTE</strong> that the script will fail to produce
 useful output if, for example, trailing blanks on short data lines were
 stripped before the input data file was put into stream format. Each
 data line or record must be LRECL length even when in stream format, in
 other words.
 
-<UL>
-    <LI><A HREF="https://knassen.github.io/personal-tech/perl/fixbshow.html"><B>Show fixblock.pl code</B></A></LI>
-    <LI><STRONG>Download: </STRONG> <A HREF="fixblock.pl"><B>fixblock.pl</B></A></LI>
-</UL>
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/fixbshow.html"><b>Show fixblock.pl code</b></a></li>
+    <li><strong>Download: </strong> <a href="fixblock.pl"><b>fixblock.pl</b></a></li>
+</ul>
 
-<P>&nbsp;</P>
-<H3>Usage</H3>
-<P>Assuming this program is executable its commandline is:
-<P>
-<FONT COLOR="#000080">fixblock.pl -l# infile outfile</FONT>
+<p>&nbsp;</p>
+<h3>Usage</h3>
+<p>Assuming this program is executable its commandline is:
+<p>
+<span COLOR="#000080">fixblock.pl -l# infile outfile</FONT>
 <P>&nbsp;</P>
 where:<BR> 
 <UL>
