@@ -2,17 +2,16 @@
 <html>
 
 <head>
-
+   <link rel="stylesheet" type="text/css" href="style.css">
    <base href="/personal-tech/perl/">
    <title>fixblock.pl -- Convert Stream File to Fixed Block File</title>
 </head>
 <body> 
-<a name="block">&nbsp;</A>
 <br>
 <blockquote>
 <h2>fixblock.pl -- Convert Stream File to Fixed Block File</h2>
 
-<hr SIZE=3 NOSHADE>
+<hr style="width=100%; height 2px; border: none;">
 
 This is a Perl script to convert a &#34;stream&#34; data file,
 in which all data is on one long line with no end of line delimeters,
@@ -41,23 +40,23 @@ other words.
 <h3>Usage</h3>
 <p>Assuming this program is executable its commandline is:
 <p>
-<span COLOR="#000080">fixblock.pl -l# infile outfile</FONT>
-<P>&nbsp;</P>
+<span style="color: #000080;">fixblock.pl -l# infile outfile</span>
+<p>
 where:<BR> 
-<UL>
-    <LI><I>-l#</I> sets the LRECL desired to # characters</LI>
-    <LI><I>infile</I> is the stream file to be processed</LI> 
-    <LI>and <I>outfile</I> is the file to which the blocked output will be sent.</LI>
-</UL>
-<P>
-As an example of usage, the command <TT><FONT COLOR="#000080">fixblock.pl
--l5 test.dat test.out</FONT> </TT>with an input file, test.dat (one line
+<ul>
+    <li><i>-l#</i> sets the LRECL desired to # characters</li>
+    <li><i>infile</i> is the stream file to be processed</li> 
+    <li>and <I>outfile</i> is the file to which the blocked output will be sent.</li>
+</ul>
+<p>
+As an example of usage, the command <span style="color: #000080; font-family: monospace;">fixblock.pl
+-l5 test.dat test.out</span> with an input file, test.dat (one line
 with no line-end character) consisting of:
-<PRE>12345123451234512345123451234512345</PRE> 
+<pre>12345123451234512345123451234512345</pre> 
 
 will produce this output in test.out:
 
-<PRE>
+<pre>
 12345
 12345
 12345
@@ -65,35 +64,35 @@ will produce this output in test.out:
 12345
 12345
 12345
-</PRE>
+</pre>
 
 The user will see the following output on the screen:
 
-<PRE>
+<pre>
 (pts/1):~&gt; fixblock.pl -l5 test.dat test.out
 
 fixblock.pl: Done!
 7 records processed from 'test.dat'
 
 Output is in 'test.out'
-</PRE>
+</pre>
 
-<P>
+<p>
 * Yes, there are other ways to do this sort of conversion--such as
-<I>dd</I>, but most users have trouble with that one. The GNU program
-<I>fold</I> (from the textutils distribution) can perform a similar
+<i>dd</i>, but most users have trouble with that one. The GNU program
 task, but it does not end the last line of the file with a newline
-character. The <I>/usr/bin/fold</I> program from Sun also seems to have
+character. The <i>/usr/bin/fold</i> program from Sun also seems to have
 this characteristic.  I needed a program that would add a newline even
 on the last line of the program.  There are instances, however, when
 the 'fold' behavior is useful, also.
 
-<P>&nbsp;</P>
-<HR SIZE=3 NOSHADE>
-<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
+<hr style="width=100%; height 2px; border: none;">
 
-<FONT SIZE=-1>Last Modified: Sun Mar 14 14:28:44 EST 1999
-</FONT>
-</BLOCKQUOTE>
-</BODY>
-</HTML>
+<a href="../myperl.html"><img src="gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
+
+<span style="font-size: 80%;">
+Last Modified: Tue Jul 15 16:26:44 EDT 2025
+</span>
+</blockquote>
+</body>
+</html>
