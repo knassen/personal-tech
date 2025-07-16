@@ -1,14 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
-<HTML> 
+<!DOCTYPE HTML> 
+<html> 
 
-<HEAD>
-   <BASE HREF="/personal-tech/perl/">
-   <TITLE>splitit.pl -- Split Multi-column Variable Statements</TITLE>
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <base href="/personal-tech/perl/">
+   <title>splitit.pl -- Split Multi-column Variable Statements</title>
+</head>
+<body>
 
-<BLOCKQUOTE>
-<PRE>
+<blockquote>
+<pre><code>
 #!/opt/gnu/bin/perl -w
 
 # Splitit: split columnized variable lists such as SAS input or
@@ -41,12 +42,12 @@ while (<>) {
 			print "   ",${fields}[$i],${fields}[$i+1],"\n";
 		}
 	}
-</PRE>
+</code></pre>
 
+<hr style="width=100%; height 2px; border: none;">
 
-<HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
-</BLOCKQUOTE>
-</BODY>
-</HTML>
+</blockquote>
+</body>
+</html>
