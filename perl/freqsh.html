@@ -1,14 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
+<html>
 
-<HEAD>
-<BASE HREF="/personal-tech/perl/">
-<TITLE>Shell Script Version of Frequency Counts</TITLE>
-</HEAD>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base HREF="/personal-tech/perl/">
+    <title>Shell Script Version of Frequency Counts</title>
+</head>
 
-<BODY>
-<BLOCKQUOTE>
-<PRE>
+<body>
+<blockquote>
+<pre><code>
 #! /bin/sh
 #. Generate frequencies given a file, columns, and optional rec # and rec/case
 case $# in
@@ -42,7 +43,7 @@ case $# in
       echo " ";
       echo "   freq value";
       echo " ";
-      awk -f <A HREF="printrec0.html">printrec0</A> $3 $4 $1 &gt; /tmp/frtmp2$$;
+      awk -f <a href="printrec0.html">printrec0</a> $3 $4 $1 &gt; /tmp/frtmp2$$;
       cut -c$2 /tmp/frtmp2$$ | sort | uniq -c &gt; /tmp/frtmp$$;
       cat /tmp/frtmp$$;     
       awk 'BEGIN {print "-------------"}
@@ -55,10 +56,13 @@ esac
 echo " "
 exit 0
 
-</PRE>
-</BLOCKQUOTE>
+</code></pre>
+</blockquote>
 (Note: credit for this shell script goes to Nelson Martinez).
-<HR SIZE=3>
-<A HREF="../perl/freqperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Frequency Count Page</A>
-</BODY>
-</HTML>
+
+<hr style="width=100%; height 2px; border: none;">
+
+<a href="../perl/freqperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">   Back to Kent's Frequency Count Page</a>
+</body>
+</html>
+

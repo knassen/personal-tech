@@ -10,11 +10,13 @@ At this point it is mostly all there.
 
 There is more to do:
 
-  - A lot of links are bad and need to fixed or replaced.
+  - A lot of links are bad and need to fixed or replaced. I've been marking
+    bad links and replacing ones I can find in other sites.
   - Some of the information needs to be updated.
+  - I've been converting to HTML5 standards but there's more of that to do.
 
 There are still some good items here.  Even for historical value it can be
-kept. 
+useful. 
 
 I hope you find a few things here that are worthwhile.
 

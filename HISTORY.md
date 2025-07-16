@@ -8,7 +8,7 @@ umich server directly so I didn't have them locally. I got those from
 the Internet Archive's Wayback Machine and added them to the local
 codes. It wasn't much, thankfully.
 
-My umich.edu web site was where I put many of the Perl programs I wrote
+My umich.edu web site was where I put many of the **Perl programs** I wrote
 over the years. They still work, as far as I can tell.  Some were for
 my job at ICPSR (Inter-university Consortium for Political and Social
 Research at UM). We were always getting new study data submissions
@@ -17,8 +17,8 @@ documentation creation to get the data fully described.  This included
 creating SAS and SPSS programs to read the data to make it useful for
 users. You'll see a few Perl programs that were used for those tasks.
 
-At some point I learned about FIGlet, a program to create large letters
-from ASCII characters. There is an area of this site devoted to FIGlet
+At some point I learned about **FIGlet, a program to create large letters
+from ASCII characters**. There is an area of this site devoted to FIGlet
 fonts including ones I either created or converted.  When UseNet was a
 busy place, there were ASCII-art groups and often someone would post a
 font they had created, but didn't have the time to convert to a FIGlet
@@ -38,6 +38,10 @@ past 10 years. If I can find them, I've been updating my links.
 **July 13, 2025**: I began converting to HTML5 format for the web pages.
 It's going to be a big task even if switching from font to span is
 easy. 
+
+**July 15, 2025**: HTML5 conversion has been completed in the vi pages
+and mostly done in the Perl pages.  Plenty more to do.
+
 
 
 

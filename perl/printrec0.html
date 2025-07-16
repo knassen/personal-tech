@@ -1,11 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
-<HEAD>
-<BASE HREF="/personal-tech/perl/">
-<TITLE>printrec0 -- part of Shell Script Version of Frequency Counts</TITLE>
-</HEAD>
-<BODY>
-<PRE>
+<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base href="/personal-tech/perl/">
+    <title>printrec0 -- part of Shell Script Version of Frequency Counts</TITLE>
+</head>
+<body>
+<pre><code>
 #. Subset a multiple record per case file by record number
 
 { line[NR] = $0 }
@@ -15,11 +16,11 @@ END  { while (r &lt;= NR)  {
               r = r + rc
        }
 }
-</PRE>
+</code></pre>
 
 (Note: credit for this awk script goes to Nelson Martinez &lt;nelson@izzy.net&gt;)
-<HR SIZE=3>
-<A HREF="freqsh.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Shell Script Frequency Count Page</A>
+<hr size=3>
+<a href="freqsh.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Shell Script Frequency Count Page</a>
 
-</BODY>
-</HTML>
+</body>
+</html>
