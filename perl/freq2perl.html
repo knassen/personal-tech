@@ -1,52 +1,54 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
-<HTML> 
+<!DOCTYPE HTML>
+<html> 
 
-<HEAD>
-   <BASE HREF="/personal-tech/perl/">
-   <TITLE>freq2.pl -- Frequency Counts with Percentages</TITLE>
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-<BR>
-<BLOCKQUOTE>
-<H2>freq2.pl -- Frequency Counts with Percentages</H2>
-<HR SIZE=3 NOSHADE WIDTH="100%">
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <base HREF="/personal-tech/perl/">
+   <title>freq2.pl -- Frequency Counts with Percentages</TITLE>
+</head>
+<body> 
+<br>
+<blockquote>
+<h2>freq2.pl -- Frequency Counts with Percentages</h2>
 
-<STRONG>freq2.pl</STRONG> is a simple extension of <A
-HREF="freqperl.html"><B>freq.pl</B></A> which provides frequency counts,
+<hr style="width=100%; height 2px; border: none;">
+
+<strong>freq2.pl</strong> is a simple extension of 
+<a href="freqperl.html"><b>freq.pl</b></a> which provides frequency counts,
 frequency as a percentage of total count, plus cumulative frequency, and
 cumulative percentage.
 
-<UL>
-    <LI><A HREF="https://knassen.github.io/personal-tech/perl/freq2show.html"><B>Show freq2.pl code</B></A></LI>
-    <LI><STRONG>Download: </STRONG> <A HREF="freq2.pl"><B>freq2.pl</B></A></LI>
-</UL>
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/freq2show.html"><b>Show freq2.pl code</b></a></li>
+    <li><strong>Download: </strong> <a href="freq2.pl"><b>freq2.pl</b></a></li>
+</ul>
 
-<P>Limitations:
-<UL STYLE="list-style-type: disc;">
-    <LI>Can only print the first 20 characters of a value,
+<p>Limitations:
+<ul style="list-style-type: disc;">
+    <li>Can only print the first 20 characters of a value,
        although can compute frequencies for longer values.</LI>
-    <LI>The order of values in the output is set by a character
+    <li>The order of values in the output is set by a character
        sort rather than a numeric sort (the program knows
        nothing of variable types like numeric or string).</LI>
-    <LI>If you give a column range outside the logical record
+    <li>If you give a column range outside the logical record
        length of the data, you will still get output, but all
        values will be null.</LI>
-</UL>
+</ul>
 
-<H3>Usage</H3>
-<P>The command line is: 
-<TT><FONT COLOR="#000080">freq2.pl [-h] [-c[#-#][#] filename]</FONT> </TT>
-where: <TT><FONT COLOR="#000080">-c#-#</FONT> </TT>
+<h3>Usage</h3>
+<p>The command line is: 
+<span style="color: #000080; font-family: monospace;">freq2.pl [-h] [-c[#-#][#] filename]</span>
+where: <span style="color: #000080; font-family: monospace;">-c#-#</span>
 indicates starting &amp; ending column numbers of the variable and 
-<TT><FONT COLOR="#000080">-c#</FONT></TT>
+<span style="color: #000080; font-family: monospace;">-c#</span>
 indicates a single-column variable at column 
-<TT><FONT COLOR="#000080">#</FONT></TT>.
+<span style="color: #000080; font-family: monospace;">#</span>.
 
 <P>As an example, the command 
-<TT><FONT COLOR="#000080">freq2.pl -c210 data.file</FONT></TT>
+<span style="color: #000080; font-family: monospace;">freq2.pl -c210 data.file</span>
 might produce output like:
 
-<PRE>
+<pre><code>
 (pts/1):~&gt; freq2.pl -c210 data.file
 
    Page  1
@@ -60,12 +62,12 @@ might produce output like:
                 1       1009     5.18        3223       16.55
                 2        533     2.74        3756       19.28
                 9      15721    80.72       19477      100.00
-</PRE>
-<HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
+</code></pre>
+<hr style="width=100%; height 2px; border: none;">
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
-<FONT SIZE=-1>Last Modified: Wed Jul  9 10:35:13 EDT 2025
-</FONT>
-</BLOCKQUOTE>
-</BODY>
-</HTML>
+<span style="font-size: 80%;">Last Modified: Wed Jul  9 10:35:13 EDT 2025
+</span>
+</blockquote>
+</body>
+</html>

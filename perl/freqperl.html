@@ -1,43 +1,44 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
+<!DOCTYPE HTML> 
+<html>
 
-<HEAD>
-   <BASE HREF="/personal-tech/perl/">
-   <TITLE>freq.pl -- Frequency Counts</TITLE>
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-<BR>
-<BLOCKQUOTE>
-<H2>freq.pl -- Frequency Counts</H2>
-<HR SIZE=3 NOSHADE WIDTH="100%">
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <base HREF="/personal-tech/perl/">
+   <title>freq.pl -- Frequency Counts</title>
+</head>
+<body>
+<br>
+<blockquote>
+<h2>freq.pl -- Frequency Counts</h2>
+<hr style="width=100%; height 2px; border: none;">
 
-<P><STRONG>freq.pl</STRONG></A> is a perl program I use to get a
+<p><strong>freq.pl</strong> is a perl program I use to get a
 quick frequency table from a column of data values without the hassle of
-running a huge statistical application like SAS or SPSS. <I>freq.pl</I>
+running a huge statistical application like SAS or SPSS. <i>freq.pl</i>
 can be used to answer the question "how many times do the unique values
-in columns <I>x</I> through <I>y</I> occur in this file?"</P>
-<P>
+in columns <i>x</i> through <i>y</i> occur in this file?"</p>
+<p>
 The input file is assumed to be formatted with the data of interest in
 the same column range on each line of the input file. The data may be
 numeric and/or character. The output is reminiscent of that produced by
 SAS proc freq, consisting of the individual values in increasing order,
-plus a frequency count and cumulative frequency count for each value.</P>
+plus a frequency count and cumulative frequency count for each value.</p>
 
-<UL>
-    <LI><A HREF="https://knassen.github.io/personal-tech/perl/freqshow.html"><B>Show freq.pl code</B></A></LI>
-    <LI><STRONG>Download: </STRONG> <A HREF="https://knassen.github.io/personal-tech/perl/freq.pl"><B>freq.pl</B></A></LI>
-</UL>
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/freqshow.html"><b>Show freq.pl code</b></a></li>
+    <li><strong>Download: </strong> <a href="https://knassen.github.io/personal-tech/perl/freq.pl"><b>freq.pl</b></a></li>
+</ul>
 
-<H3>Usage</H3>
-<P>The commandline is: <TT><FONT COLOR="#000080">freq.pl [-h] [-c[#-#][#]
-filename]</FONT> </TT>where: <TT><FONT COLOR="#000080">-c#-#</FONT> </TT>indicates
-starting &amp; ending column numbers of the variable and <TT><FONT COLOR="#000080">-c#</FONT>
-</TT>indicates a single-column variable at column <TT><FONT COLOR="#000080">#</FONT></TT>.
+<h3>Usage</h3>
+<p>The commandline is: <span style="color: #000080; font-family: monospace;">freq.pl [-h] [-c[#-#][#]
+filename]</span> where: <span style="color: #000080; font-family: monospace;">-c#-#</span> 
+<span style="font-family: monospace;">indicates starting &amp; ending column numbers of the variable and</span> <span style="color: #000080; font-family: monospace;">-c#</span>
+<span style="font-family: monospace;">indicates a single-column variable at column</span> <span style="color: #000080; font-family: monospace;">#</span>.
 
-<P>As an example, the command <TT><FONT COLOR="#000080">freq.pl -c210 data.file</FONT>
-</TT>might produce output like:
+<p>As an example, the command <span style="color: #000080; font-family: monospace;">freq.pl -c210 data.file</span>
+<span style="font-family: monospace;">might produce output like:</span>
 
-<PRE>
+<pre><code>
 (pts/1):~&gt; freq.pl -c210 data.file
 
         Page  1
@@ -51,19 +52,19 @@ starting &amp; ending column numbers of the variable and <TT><FONT COLOR="#00008
                                    1       1009        3223
                                    2        533        3756
                                    9      15721       19477
-</PRE>
+</code></pre>
 If there had been many values to print out, the program would have
 output a paged listing, each page with the page number and header
 information as in the above table. In testing, this program was
-usually faster than a <A HREF="https://knassen.github.io/personal-tech/perl/freqsh.html">shell script</A> that uses
-<I>sort</I>, <I>cut</I>, <I>uniq</I>, and <I>awk</I> to produce output
+usually faster than a <a href="https://knassen.github.io/personal-tech/perl/freqsh.html">shell script</a> 
+that uses <i>sort</i>, <i>cut</i>, <i>uniq</i>, and <i>awk</i> to produce output
 without the cumulative frequencies.
 
-<HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A><BR>
+<hr style="width=100%; height 2px; border: none;">
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
 
-<FONT SIZE=-1>Last Modified: Sun Mar 14 14:50:01 EST 1999
-</FONT>
-</BLOCKQUOTE>
-</BODY>
-</HTML>
+<span style="font-size: 80%;">Last Modified: Sun Mar 14 14:50:01 EST 1999
+</span>
+</blockquote>
+</body>
+</html>
