@@ -1,41 +1,41 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
-<HTML> 
+<html> 
 
-<HEAD>
-   <BASE HREF="/personal-tech/perl/">
-   <TITLE>splitit.pl -- Split Multi-column Variable Statements</TITLE>
+<head>
+   <base HREF="/personal-tech/perl/">
+   <title>splitit.pl -- Split Multi-column Variable Statements</title>
 </HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-<BR>
-<BLOCKQUOTE>
-    <H2>splitit.pl -- Split Multi-column Variable Statements</H2>
+<body> 
+<br>
+<blockquote>
+    <h2>splitit.pl -- Split Multi-column Variable Statements</h2>
 
-<HR SIZE=3 NOSHADE WIDTH="100%">
+<hr style="width=100%; height 2px; border: none;">
 
 This Perl script reads a file containing multi-column SAS Input or SPSS
 Data List statements and reformats them into a single-column format with
 one field per line. Handy for checking multi-column declarations when
 preparing your code.
 
-<UL STYLE="list-style-type: disc;">
-<LI>Output is sent to STDOUT. To save it, redirect STDOUT to a file.</LI>
-<LI>Output is one field per line.</LI>
-<LI>Developed for SAS/SPSS program prep. See also <A HREF="wrapit.html"><B>wrapit5.</B></A></LI>
-</UL>
+<ul style="list-style-type: disc;">
+    <li>Output is sent to STDOUT. To save it, redirect STDOUT to a file.</LI>
+    <li>Output is one field per line.</LI>
+    <li>Developed for SAS/SPSS program prep. See also <a href="wrapit.html"><b>wrapit5.</b></a></li>
+</ul>
 
 
-<UL>
-    <LI><A HREF="https://knassen.github.io/personal-tech/perl/splititshow.html"><B>Show splitit.pl code</B></A></LI>
-    <LI><STRONG>Download: </STRONG><A HREF="splitit.pl"><B>splitit.pl</B></A> 
-</UL>
+<ul>
+    <li><A HREF="https://knassen.github.io/personal-tech/perl/splititshow.html"><b>Show splitit.pl code</b></a></li>
+    <li><STRONG>Download: </STRONG><A HREF="splitit.pl"><b>splitit.pl</b></a> 
+</ul>
 
-<H3>Usage</H3>
-<P>The command line is: 
+<h3>Usage</h3>
+<p>The command line is: 
 <TT><FONT COLOR="#000080">perl splitit.pl filename >filename.out</FONT> </TT>
 
-<P>Here is an example.  Consider this input data:
+<p>Here is an example.  Consider this input data:
 
-<PRE>
+<pre><code>
 Sample input (cards):
 
    V1 1-4         V2 5-8         V3 9-9         V4 10-13 (A)   V5 14-14
@@ -55,11 +55,11 @@ Sample output (cards.split)
    V8 18-19       
    V9 20-21 
 
-</PRE>
+</code></pre>
 
-<HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
+<hr style="width=100%; height 2px; border: none;">
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
-</BLOCKQUOTE>
-</BODY>
-</HTML>
+</blockquote>
+</body>
+</html>
