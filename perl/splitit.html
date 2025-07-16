@@ -1,8 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+<!DOCTYPE HTML> 
 <html> 
 
 <head>
-   <base HREF="/personal-tech/perl/">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <base href="/personal-tech/perl/">
    <title>splitit.pl -- Split Multi-column Variable Statements</title>
 </HEAD>
 <body> 
@@ -25,14 +26,13 @@ preparing your code.
 
 
 <ul>
-    <li><A HREF="https://knassen.github.io/personal-tech/perl/splititshow.html"><b>Show splitit.pl code</b></a></li>
-    <li><STRONG>Download: </STRONG><A HREF="splitit.pl"><b>splitit.pl</b></a> 
+    <li><a href="https://knassen.github.io/personal-tech/perl/splititshow.html"><b>Show splitit.pl code</b></a></li>
+    <li><strong>Download: </strong><a href="splitit.pl"><b>splitit.pl</b></a> 
 </ul>
 
 <h3>Usage</h3>
 <p>The command line is: 
-<TT><FONT COLOR="#000080">perl splitit.pl filename >filename.out</FONT> </TT>
-
+<span style="color: #000080; font-family: monospace;"> perl splitit.pl filename >filename.out</span>
 <p>Here is an example.  Consider this input data:
 
 <pre><code>
@@ -41,7 +41,8 @@ Sample input (cards):
    V1 1-4         V2 5-8         V3 9-9         V4 10-13 (A)   V5 14-14
    V6 15-16       V7 17-17       V8 18-19       V9 20-21
 
-The command <TT><FONT COLOR="#000080">perl splitit.pl cards > cards.split</FONT></TT> produces this:
+The command 
+<span style="color: #000080; font-family: monospace;">perl splitit.pl cards &gt; cards.split</span> produces this:
 
 Sample output (cards.split)
 
