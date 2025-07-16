@@ -1,15 +1,17 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
-<HTML> 
+<!DOCTYPE HTML> 
+<html> 
 
-<HEAD>
-   <BASE HREF="/personal-tech/perl/">
-   <TITLE>today.pl -- Highlight Today's Date in Unix Cal Output</TITLE>
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#fafafa" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-<BR>
-<BLOCKQUOTE>
-<H2>today.pl -- Highlight Today's Date in Unix Cal Output</H2>
-<HR SIZE=3 NOSHADE WIDTH="100%">
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <base HREF="/personal-tech/perl/">
+   <title>today.pl -- Highlight Today's Date in Unix Cal Output</title>
+</head>
+<body> 
+<br>
+<blockquote>
+<h2>today.pl -- Highlight Today's Date in Unix Cal Output</H2>
+
+<hr style="width=100%; height 2px; border: none;">
 
 <B>today.pl</B> is a simple way to highlight today's data in unix
 cal program output. Note that more modern cal programs, such as the
@@ -20,31 +22,30 @@ This program is more a curiousity of how I did it before cal did the
 highlighting. It's much easier to use cal or ncal now and let it do the
 highlighting.
 
-<UL>
-    <LI><A HREF="https://knassen.github.io/personal-tech/perl/todayshow.html"><B>Show today.pl code</B></A></LI>
-    <LI><STRONG>Download: </STRONG> <A HREF="today.pl"><B>today.pl</B></A></LI>
-</UL>
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/todayshow.html"><b>Show today.pl code</b></a></li>
+    <li><strong>Download: </strong> <A HREF="today.pl"><b>today.pl</b></a></li>
+</ul>
 
-<H3>Usage</H3>
-<P>The command line is: 
-<TT><FONT COLOR="#000080">today.pl</FONT> </TT>
+<h3>Usage</h3>
+<p>The command line is: 
+<span style="color: #000080; font-family: monospace;">today.pl</span>
 There are no commandline options for today.pl.
 
-<UL>
-    <LI>ncal output will also work in today.pl. /usr/bin/ncal -h -b'; # -h is turn of highlighting of today
-    <LI>ncal by default also highlights the day by default.  
-</UL>
+<ul>
+    <li>ncal output will also work in today.pl. /usr/bin/ncal -h -b'; # -h is turn of highlighting of today </li>
+    <li>ncal by default also highlights the day by default. </li> 
+</ul>
 
-<P>As an example, the command 
-<TT><FONT COLOR="#000080">today.pl</FONT></TT>
+<p>As an example, the command 
+<span style="color: #000080; font-family: monospace;">today.pl</span>
 might produce output like:
 
-<IMG SRC="/personal-tech/gif/today_example.png" ALT="today.pl example output">
+<img SRC="/personal-tech/gif/today_example.png" alt="today.pl example output">
 
+<hr style="width=100%; height 2px; border: none;">
+<a href="../myperl.html"><IMG src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
-<HR SIZE=3 NOSHADE WIDTH="100%">
-<A HREF="../myperl.html"><IMG ALIGN=MIDDLE SRC="/personal-tech/gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Perl Page</A>
-
-</BLOCKQUOTE>
-</BODY>
-</HTML>
+</blockquote>
+</body>
+</html>
