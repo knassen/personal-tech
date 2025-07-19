@@ -1,22 +1,26 @@
 # personal-tech
-My university personal web site which got deleted in 2024.
+This is my university personal web site which got deleted in 2024.
 
-This is my attempt at recreating it.  I found most of the html files on my
-local hard drive.  I did some lookups on the Wayback Machine to fill in for
-additions that were made directly on the web site rather than in my local
-files.
+I've made an attempt at recreating it. I found most of the html files on
+my local hard drive.  I did some lookups on the Wayback Machine to fill
+in for additions that were made directly on the web site rather than in
+my local files. So, I'm reasonably confident it is all back.
 
-At this point it is mostly all there.
+I've still got plenty to do.
 
-There is more to do:
+  - A lot of the links are bad and need to fixed or replaced. I've
+    been marking bad links and replacing ones I can find in other
+    sites. Thankfully, some of the old sites still exist.
 
-  - A lot of links are bad and need to fixed or replaced. I've been marking
-    bad links and replacing ones I can find in other sites.
-  - Some of the information needs to be updated.
-  - I've been converting to HTML5 standards but there's more of that to do.
+  - Some of the information needs to be updated and brought up to date.
 
-There are still some good items here.  Even for historical value it can be
-useful. 
+  - I may add some additional Perl programs of general interest.
 
-I hope you find a few things here that are worthwhile.
+  - I've mostly converted the site to HTML5 standards. 
+
+There are still some good items here, even if they are ancient in
+computer terms. Just remember: no AIs were around to help when this site
+was set up originally.
+
+I hope you will find a few things here that are worthwhile.
 

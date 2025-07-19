@@ -42,6 +42,10 @@ easy.
 **July 15, 2025**: HTML5 conversion has been completed in the vi pages
 and mostly done in the Perl pages.  Plenty more to do.
 
+**July 18, 2025**: HTML5 conversion is mostly done for the first pass
+through everything.  I'll still be tweaking as I review things.
+One thing I found interesting was that the statistics links had a high
+proportion of working links compared to other domains.
 
 
 
