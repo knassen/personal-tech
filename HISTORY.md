@@ -28,7 +28,7 @@ because they were often missing most of the alphabet.
 
 **July 6, 2025**: Since uploading it to github I've been going through all
 the 404 errors and trying to finding if they relocated to a different
-site or if they just disappeared into the ether. Some sites are still
+site or if they just disappe:spared into the ether. Some sites are still
 out there so I linked to their new locations.
 
 Many projects that used to be accessible from personal servers or other
@@ -47,5 +47,7 @@ through everything.  I'll still be tweaking as I review things.
 One thing I found interesting was that the statistics links had a high
 proportion of working links compared to other domains.
 
+**July 21, 2025**: Running out of HTML5 tweaks for lingering issues
+in HTML5.
 
 
