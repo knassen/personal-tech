@@ -7,11 +7,10 @@
 <body>
 <br>
 <blockquote>
-<ul>
 <pre>
 Newsgroups: comp.unix.questions,comp.editors,comp.answers,news.answers
 From: ellidz@kimbark.uchicago.edu (E. Larry Lidz)
-Subject: <B>vi editor FAQ (Frequently Asked Question List), Part 1/2</B>
+Subject: <b>vi editor FAQ (Frequently Asked Question List), Part 1/2</b>
 X-Nntp-Posting-Host: kimbark-nfs.uchicago.edu
 Message-ID: &lt;EByAuu.3MJ@midway.uchicago.edu&gt;
 Followup-To: comp.editors
@@ -30,11 +29,13 @@ Archive-name: editor-faq/vi/part1
 Posting-Frequency: 2nd and 17th of every month
 Last-modified: 1997-03-21
 Version: 1.76
+</pre>
 
-<H1>vi editor FAQ </H1>
-<HR WIDTH="40%" ALIGN=CENTER>
+<h1>vi editor FAQ </h1>
 
-<H2 id="subject-0.0">0.0 - Introduction -- How do I use this FAQ?</H2>
+<hr style="width=100%; height 2px; border: none;">
+<h2 id="subject-0.0">0.0 - Introduction -- How do I use this FAQ?</h2>
+<pre>
   This document is broken into multiple sections.  First, a general
 introduction and discussion of what vi is in sections 0 and 1.  Section
 2 is a collection of "novice" questions, questions that someone without
@@ -61,97 +62,98 @@ most Unix programs) or another reference (the O'Reilly Mastering
 Regular Expressions book in the bibliography, for example) for more
 information on what they are and what they do. They're really useful,
 and it won't be a waste of time. Trust me.
-<DL>
-<H3 id="subject-0.1">0.1 - Index</H3>
-</DL>
+</pre>
+<h3 id="subject-0.1">0.1 - Index</h3>
+<pre>
 First File:
-<DL>
-<DD><A HREF="#subject-0.0">0.0 - Introduction -- How do I use this FAQ?</A></DD>
-<DD><A HREF="#subject-0.1">  0.1 - Index</A></DD>
-<DD><A HREF="#subject-0.2">  0.2 - Can I distribute this FAQ?</A></DD>
-<DD><A HREF="#subject-0.3">  0.3 - What can you do to help out with this faq?</A></DD>
-<DD><A HREF="#subject-1.0">1.0 - What is vi?</A></DD>
-<DD><A HREF="#subject-1.1">  1.1 - What is the big deal about vi?  Why does anyone use it?  More
-         importantly, why should *I* use it?</A></DD>
-<DD><A HREF="#subject-1.2">  1.2 - Wow!  This sounds great!  Is there any reason not to use vi?</A></DD>
-<DD><A HREF="#subject-1.3">  1.3 - What different operating systems is vi available for?</A></DD>
-<DD><A HREF="#subject-1.4">  1.4 - Okay, you've convinced me.  I'm going to learn vi.  Where do I
-         start?</A></DD>
-<DD><A HREF="#subject-1.5">  1.5 - What are some of the vi clones that are available?</A></DD>
-<DD><A HREF="#subject-2.0">2.0 - Learning vi.</A></DD>
-<DD><A HREF="#subject-2.1">  2.1 - What games will help me learn vi?</A></DD>
-<DD><A HREF="#subject-2.2">  2.2 - What is the difference between Command mode &amp; Insert mode?</A></DD>
-<DD><A HREF="#subject-2.3">  2.3 - Wait, my keyboard doesn't have a &lt;Esc&gt; key!  What should I do?</A></DD>
-<DD><A HREF="#subject-2.4">  2.4 - What are all of those ~s?</A></DD>
-<DD><A HREF="#subject-2.6">  2.6 - How do I quit without saving?</A></DD>
-<DD><A HREF="#subject-2.7">  2.7 - How do I insert a file?</A></DD>
-<DD><A HREF="#subject-2.8">  2.8 - How do I search for text?</A></DD>
-<DD><A HREF="#subject-2,9">  2.9 - How do I search for a control sequence?</A></DD>
-<DD><A HREF="#subject-2.10">  2.10 - How do I reformat text?</A></DD>
-<DD><A HREF="#subject-2.11">  2.11 - How do I copy text?</A></DD>
-<DD><A HREF="#subject-2.12">  2.12 - Ahhhh!!!  I just hit dG and lost my dissertation!  What can I
-          do?  (Or, I've just made a mistake, what should I do?)</A></DD>
-<DD><A HREF="#subject-2.13">  2.13 - vi appears to be frozen or acting strange, what can I do?
-          (Also, I can't get rid of the colon prompt, now what?)</A></DD>
-<DD><A HREF="#subject-2.14">  2.14 - I've just written my dissertation and have been told that I 
+</pre>
+<dl>
+<dd><a href="#subject-0.0">0.0 - Introduction -- How do I use this FAQ?</a></dd>
+<dd><a href="#subject-0.1">  0.1 - Index</a></dd>
+<dd><a href="#subject-0.2">  0.2 - Can I distribute this FAQ?</a></dd>
+<dd><a href="#subject-0.3">  0.3 - What can you do to help out with this faq?</a></dd>
+<dd><a href="#subject-1.0">1.0 - What is vi?</a></dd>
+<dd><a href="#subject-1.1">  1.1 - What is the big deal about vi?  Why does anyone use it?  More
+         importantly, why should *I* use it?</a></dd>
+<dd><a href="#subject-1.2">  1.2 - Wow!  This sounds great!  Is there any reason not to use vi?</a></dd>
+<dd><a href="#subject-1.3">  1.3 - What different operating systems is vi available for?</a></dd>
+<dd><a href="#subject-1.4">  1.4 - Okay, you've convinced me.  I'm going to learn vi.  Where do I
+         start?</a></dd>
+<dd><a href="#subject-1.5">  1.5 - What are some of the vi clones that are available?</a></dd>
+<dd><a href="#subject-2.0">2.0 - Learning vi.</a></dd>
+<dd><a href="#subject-2.1">  2.1 - What games will help me learn vi?</a></dd>
+<dd><a href="#subject-2.2">  2.2 - What is the difference between Command mode &amp; Insert mode?</a></dd>
+<dd><a href="#subject-2.3">  2.3 - Wait, my keyboard doesn't have a &lt;Esc&gt; key!  What should I do?</a></dd>
+<dd><a href="#subject-2.4">  2.4 - What are all of those ~s?</a></dd>
+<dd><a href="#subject-2.6">  2.6 - How do I quit without saving?</a></dd>
+<dd><a href="#subject-2.7">  2.7 - How do I insert a file?</a></dd>
+<dd><a href="#subject-2.8">  2.8 - How do I search for text?</a></dd>
+<dd><a href="#subject-2,9">  2.9 - How do I search for a control sequence?</a></dd>
+<dd><a href="#subject-2.10">  2.10 - How do I reformat text?</a></dd>
+<dd><a href="#subject-2.11">  2.11 - How do I copy text?</a></dd>
+<dd><a href="#subject-2.12">  2.12 - Ahhhh!!!  I just hit dG and lost my dissertation!  What can I
+          do?  (Or, I've just made a mistake, what should I do?)</a></dd>
+<dd><a href="#subject-2.13">  2.13 - vi appears to be frozen or acting strange, what can I do?
+          (Also, I can't get rid of the colon prompt, now what?)</a></dd>
+<dd><a href="#subject-2.14">  2.14 - I've just written my dissertation and have been told that I 
           need to have each section in a different file, what should 
-          I do?</A></DD>
-<DD><A HREF="#subject-2.15">  2.15 - What's the deal with all of these : commands?</A></DD>
-<DD><A HREF="#subject-3.0">3.0 - How do you do a search and replace?</A></DD>
-<DD><A HREF="#subject-3.1">  3.1 - My / key is broken!  How can I search and replace?</A></DD>
-<DD><A HREF="#subject-3.2">  3.2 - How do I run a program from within vi?</A></DD>
-<DD><A HREF="#subject-3.3">  3.3 - Ahhh!!  I was writing my dissertation, and the computer crashed!</A></DD>
-<DD><A HREF="#subject-3.4">  3.4 - Any tips for making vi programmer friendly?</A></DD>
-<DD><A HREF="#subject-3.5">  3.5 - Macros -- How do I write them?</A></DD>
-<DD><A HREF="#subject-3.6">  3.6 - How do I make a function key a Macro?</A></DD>
-<DD><A HREF="#subject-3,7">  3.7 - Is there anyway to abbreviate text?</A></DD>
-<DD><A HREF="#subject-3.8">  3.8 - How do I spell check the current document?</A></DD>
-<DD><A HREF="#subject-3.9">  3.9 - How do I get rid the ^M's at the end of each line of my file?
-         How do I make a macro to do it?</A></DD>
-<DD><A HREF="#subject-3.10">  3.10 - I've got a hardcopy terminal, can I still use vi?</A></DD>
-<DD><A HREF="#subject-3.11">  3.11 - Oh, okay, is THAT what open mode is?  But I don't have a 
-         hardcopy terminal, and it still starts in open mode!</A></DD>
-<DD><A HREF="#subject-3.12">  3.12 - How can I get the source code to vi?</A></DD>
-<DD><A HREF="#subject-4.0">4.0 - More advanced topics in vi</A></DD>
-<DD><A HREF="#subject-4.1">  4.1 - I see that sections are defined by SHNHH HU and paragraphs by
+          I do?</a></dd>
+<dd><a href="#subject-2.15">  2.15 - What's the deal with all of these : commands?</a></dd>
+<dd><a href="#subject-3.0">3.0 - How do you do a search and replace?</a></dd>
+<dd><a href="#subject-3.1">  3.1 - My / key is broken!  How can I search and replace?</a></dd>
+<dd><a href="#subject-3.2">  3.2 - How do I run a program from within vi?</a></dd>
+<dd><a href="#subject-3.3">  3.3 - Ahhh!!  I was writing my dissertation, and the computer crashed!</a></dd>
+<dd><a href="#subject-3.4">  3.4 - Any tips for making vi programmer friendly?</a></dd>
+<dd><a href="#subject-3.5">  3.5 - Macros -- How do I write them?</a></dd>
+<dd><a href="#subject-3.6">  3.6 - How do I make a function key a Macro?</a></dd>
+<dd><a href="#subject-3,7">  3.7 - Is there anyway to abbreviate text?</a></dd>
+<dd><a href="#subject-3.8">  3.8 - How do I spell check the current document?</a></dd>
+<dd><a href="#subject-3.9">  3.9 - How do I get rid the ^M's at the end of each line of my file?
+         How do I make a macro to do it?</a></dd>
+<dd><a href="#subject-3.10">  3.10 - I've got a hardcopy terminal, can I still use vi?</a></dd>
+<dd><a href="#subject-3.11">  3.11 - Oh, okay, is THAT what open mode is?  But I don't have a 
+         hardcopy terminal, and it still starts in open mode!</a></dd>
+<dd><a href="#subject-3.12">  3.12 - How can I get the source code to vi?</a></dd>
+<dd><a href="#subject-4.0">4.0 - More advanced topics in vi</a></dd>
+<dd><a href="#subject-4.1">  4.1 - I see that sections are defined by SHNHH HU and paragraphs by
         IPLPPPQPPLIbp by default? What language is that in? What in
-        the world does it mean?</A></DD>
-<DD><A HREF="#subject-4.2">  4.2 - But when I program, I've noticed that I can use ]] and [[
+        the world does it mean?</a></dd>
+<dd><a href="#subject-4.2">  4.2 - But when I program, I've noticed that I can use ]] and [[
         to move between functions. My functions don't have .SH or 
-        anything at the beginning, what gives?</A></DD>
-</DL>
+        anything at the beginning, what gives?</a></dd>
+</dl>
 Second File:
-<DL>
-<DD><A HREF="#subject-5.0">5.0 - What's online at the vi archives?</A></DD>
-<DD><A HREF="#subject-6.0">6.0 - Silly vi tricks, and silly macros</A></DD>
-<DD><A HREF="#subject-6.1">  6.1 - Silly vi tricks</A></DD>
-<DD><A HREF="#subject-6.2">  6.2 - Silly macros</A></DD>
-<DD><A HREF="#subject-7.0">7.0 - Alphabetical vi quick reference</A></DD>
-<DD><A HREF="#subject-7.1">  7.1 - Command mode input options ( : commands)</A></DD>
-<DD><A HREF="#subject-7.2">  7.2 - set options</A></DD>
-<DD><A HREF="#subject-8.0">8.0 - Setting up .exrc file</A></DD>
-<DD><A HREF="#subject-8.1">  8.1 - Sample .exrc file</A></DD>
-<DD><A HREF="#subject-9.0">9.0 - Bugs in vi</A></DD>
-<DD><A HREF="#subject-10.0">10.0 - Glossary of terms</A></DD>
-<DD><A HREF="#subject-11.0">11.0 - Bibliography of Books that cover vi</A></DD>
-</DL>
+<dl>
+<dd><a href="#subject-5.0">5.0 - What's online at the vi archives?</a></dd>
+<dd><a href="#subject-6.0">6.0 - Silly vi tricks, and silly macros</a></dd>
+<dd><a href="#subject-6.1">  6.1 - Silly vi tricks</a></dd>
+<dd><a href="#subject-6.2">  6.2 - Silly macros</a></dd>
+<dd><a href="#subject-7.0">7.0 - Alphabetical vi quick reference</a></dd>
+<dd><a href="#subject-7.1">  7.1 - Command mode input options ( : commands)</a></dd>
+<dd><a href="#subject-7.2">  7.2 - set options</a></dd>
+<dd><a href="#subject-8.0">8.0 - Setting up .exrc file</a></dd>
+<dd><a href="#subject-8.1">  8.1 - Sample .exrc file</a></dd>
+<dd><a href="#subject-9.0">9.0 - Bugs in vi</a></dd>
+<dd><a href="#subject-10.0">10.0 - Glossary of terms</a></dd>
+<dd><a href="#subject-11.0">11.0 - Bibliography of Books that cover vi</a></dd>
+</dl>
 
-<H3 id="subject-0.2">0.2 - Can I distribute this FAQ?</H3>
+<h3 id="subject-0.2">0.2 - Can I distribute this FAQ?</h3>
   Yes, as long as you do not alter it in any fashion, or charge any
 money for it.  If you plan on including it in a book, CDRom, or other
 such publication, please contact me first.
 
-<H3 id="subject-0.3">0.3 - What can you do to help out with this faq?</H3>
+<h3 id="subject-0.3">0.3 - What can you do to help out with this faq?</h3>
   First, send me any errors that you may find.  Also, any suggestions
 that you might have are also appreciated.  Better yet, anything that
 you think is unclear.  My email address is:
-          <A HREF="mailto:ellidz@midway.uchicago.edu">ellidz@midway.uchicago.edu</A>
+          <a href="mailto:ellidz@midway.uchicago.edu">ellidz@midway.uchicago.edu</a>
   Also, use vi!  Spread the word!  I'm sorry I can't list everyone who
 has contributed to this faq, as many, many people have given me advice
 and helped out, but I fear if I were to, the list of contributers would
 become as long as the document itself.
 
-<H2 id="subject-1.0">1.0 - What is vi?</H2>
+<h2 id="subject-1.0">1.0 - What is vi?</h2>
   vi is a Visual Editor (hence the name -- vi for VIsual).  What is a
 visual editor (as opposed to a non-visual one)?  Visual editors are
 ones that let you see the document that you are editing as you edit
@@ -162,8 +164,8 @@ DOS until relatively recently.)
   vi was written by William Joy as part of the bsd distribution of
 Unix.  It was later used by AT&amp;T, and has been standard Unix since.
 
-<H3 id="subject-1.1">1.1 - What is the big deal about vi?  Why does anyone use it?  More
-importantly, why should *I* use it?</H3>
+<h3 id="subject-1.1">1.1 - What is the big deal about vi?  Why does anyone use it?  More
+importantly, why should *I* use it?</h3>
   vi is default visual editor under Unix, and is therefore shipped with
 all recent version of Unix.  (Recent being defined as post 1984 or
 so.)  This means that whenever you run across a machine that is running
@@ -176,7 +178,7 @@ based editors.  It is also a very small editor.  (The version on my
 machine is 200k) Also, it can do almost anything, as long as you know
 how to get it to do what you want.
 
-<H3 id="subject-1.2">1.2 - Wow!  This sounds great!  Is there any reason not to use vi?</H3>
+<h3 id="subject-1.2">1.2 - Wow!  This sounds great!  Is there any reason not to use vi?</h3>
   Yes.  There is a very good reason.  It can be somewhat hard to learn,
 and until you do so, it will be slow and painful.  Once you learn it,
 it will be faster, but the process of learning it is slow.  I've been
@@ -184,14 +186,14 @@ asked if vi was an easy editor to learn, whether it was intuitive or
 not.  My general response to this question is:  "Yes, some of us think
 so.  But most people think that we are crazy."
 
-<H3 id="subject-1.3">1.3 - What different operating systems is vi available for?</H3>
+<h3 id="subject-1.3">1.3 - What different operating systems is vi available for?</h3>
  Unix.  That's it.  However, there are many, many clones of vi that are
 available for different operating systems.  I personally have used vi
 clones under:  Unix, Dos, OS/2, Mac System 7.  (See below for a list of
 specifics.)
 
-<H3 id="subject-1.4">1.4 - Okay, you've convinced me.  I'm going to learn vi.  Where do I
-start?</H3>
+<h3 id="subject-1.4">1.4 - Okay, you've convinced me.  I'm going to learn vi.  Where do I
+start?</h3>
   Well...  That's a tricky one.  There are many good books out there
 that cover vi; most books on Unix have at least one chapter devoted to
 it.  There are also many books devoted specifically to vi.  I don't
@@ -209,28 +211,28 @@ probably also want to learn ed or ex, as some versions of Unix do not
 put vi in the root partition, and one might be stranded without it at
 some point.  Ed is a good choice.
 
-<H3 id="subject-1.5">1.5 - What are some of the vi clones that are available?</H3>
+<h3 id="subject-1.5">1.5 - What are some of the vi clones that are available?</h3>
   Just to list a few:  STvi (STevie), elvis, vile, vim, and nvi, xvi.
 
-<B>elvis</B> is available for: Amiga, DOS, OS/2, Unix, VMS, Atari, Psion3a Handheld.  
-<B>STevie</B> is available for:  Atari ST, DOS, Unix, Mac System 7.  
+<b>elvis</b> is available for: Amiga, DOS, OS/2, Unix, VMS, Atari, Psion3a Handheld.  
+<b>STevie</b> is available for:  Atari ST, DOS, Unix, Mac System 7.  
   Mac System 7 is available at any info-mac mirror in /info-mac/text
-    (Such as <A HREF="ftp://ftp.hawaii.edu/info-mac/text">ftp://ftp.hawaii.edu/info-mac/text</A>)
-<B>nvi</B> is the vi that ships with BSD 4.4. 
-<B>vim</B> is available for: Amiga, DOS, Mac System 7, Win 95, and Unix.
+    (Such as <a href="ftp://ftp.hawaii.edu/info-mac/text">ftp://ftp.hawaii.edu/info-mac/text</a>)
+<b>nvi</b> is the vi that ships with BSD 4.4. 
+<b>vim</b> is available for: Amiga, DOS, Mac System 7, Win 95, and Unix.
   Amiga, DOS, and the source are available at:
-    <A HREF="ftp://ftp.fu-berlin.de/misc/editors/vim">ftp://ftp.fu-berlin.de/misc/editors/vim</A> 
+    <a href="ftp://ftp.fu-berlin.de/misc/editors/vim">ftp://ftp.fu-berlin.de/misc/editors/vim</a> 
     The Vim Pages are available at:
-    <A HREF="http://www.math.fu-berlin.de/~guckes/vim/">http://www.math.fu-berlin.de/~guckes/vim/</A>
+    <a href="http://www.math.fu-berlin.de/~guckes/vim/">http://www.math.fu-berlin.de/~guckes/vim/</a>
   Mac System 7 is available at any info-mac mirror in /info-mac/text
-    (Such as <A HREF="ftp://ftp.hawaii.edu/info-mac/text">ftp://ftp.hawaii.edu/info-mac/text</A>)
-<B>vile</B> is available for: DOS, OS/2, Unix, VMS, Window95, 
+    (Such as <a href="ftp://ftp.hawaii.edu/info-mac/text">ftp://ftp.hawaii.edu/info-mac/text</a>)
+<b>vile</b> is available for: DOS, OS/2, Unix, VMS, Window95, 
   WindowsNT (console mode only).  
-  The source is available at: <A HREF="ftp://ftp.clark.net:/pub/dickey/vile">ftp://ftp.clark.net:/pub/dickey/vile</A>
-<B>xvile</B>, a X-windows aware version of vile exists, as well.
-<B>xvi</B> is available for: DOS, Unix.
-<B>viper</B> is available for GNU Emacs.
-  <A HREF="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/viper.tar.Z">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/viper.tar.Z</A>
+  The source is available at: <a href="ftp://ftp.clark.net:/pub/dickey/vile">ftp://ftp.clark.net:/pub/dickey/vile</a>
+<b>xvile</b>, a X-windows aware version of vile exists, as well.
+<b>xvi</b> is available for: DOS, Unix.
+<b>viper</b> is available for GNU Emacs.
+  <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/viper.tar.Z">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/viper.tar.Z</a>
 
 Mortice Kern Systems (support@mks.com), who I have absolutely no
 affiliation with, offers a commercial version of vi for DOS/Windows,
@@ -241,7 +243,7 @@ offer improvements, but most still allow the commands that are listed
 in this document, but there may be some differences.  Refer to the
 documentation that comes with the clone for details.
 
-<H2 id="subject-2.0">2.0 - Learning vi.</H2>
+<h2 id="subject-2.0">2.0 - Learning vi.</h2>
   These are some basic hints for the novice vi user.  First, keep a
 command summary with you at all times.  A quick reference guide/command
 summary is included later on.  Second, get a good book that covers vi.
@@ -257,7 +259,7 @@ you underestimated the difficulty of learning vi.
   Also, seek out vilearn or vitutor, programs designed to teach you the
 basics of vi.
   
-<H3 id="subject-2.1">2.1 - What games will help me learn vi?</H3>
+<h3 id="subject-2.1">2.1 - What games will help me learn vi?</h3>
   This may seem a bit silly, but there are many games on Unix systems
 that can help you learn to use vi.  These help particularly with the
 basics.  Although I don't know of any games that help with every vi
@@ -267,7 +269,7 @@ good for this, as it is a large game and can be entertaining for quite
 some time.  Not to make the other games sound worse, but some other
 ones are:  rogue, moria, omega, worm, and snake.
 
-<H3 id="subject-2.2">2.2 - What is the difference between Command mode &amp; Insert mode?</H3>
+<h3 id="subject-2.2">2.2 - What is the difference between Command mode &amp; Insert mode?</h3>
   Often cited as one of the main problems with vi, and equally often
 cited as being one of its best strengths, vi differentiates between a
 "Command mode" and an "Insert mode."  Understanding this difference is
@@ -293,17 +295,17 @@ options.")  If it does not show anything in the bottom right, it means
 that you are in command mode.  I call a few different modes (append,
 open and insert) "insert mode" in this document.
 
-<H3 id="subject-2.3">2.3 - Wait, my keyboard doesn't have a &lt;Esc&gt; key!  What should I do?</H3>
+<h3 id="subject-2.3">2.3 - Wait, my keyboard doesn't have a &lt;Esc&gt; key!  What should I do?</h3>
   Try hitting &lt;ctrl-[&gt; instead.  If your keyboard has a &lt;Meta&gt; key, try
 that.  If neither of these work, try &lt;ctrl-3&gt;.  Some DEC terminals use the
 F11 key as escape. 
 
-<H3 id="subject-2.4">2.4 - What are all of those ~s?</H3>
+<h3 id="subject-2.4">2.4 - What are all of those ~s?</h3>
   They're just there to let you know where the bottom of your file is,
 they are not actually in your document, and you do not need to worry
 about them.
 
-<H3 id="subject-2.5">2.5 - I can't get used to using hjkl, do you have any suggestions?</H3>
+<h3 id="subject-2.5">2.5 - I can't get used to using hjkl, do you have any suggestions?</h3>
   First, if your terminal is set properly and you have a good
 connection, you should be able to use the arrow keys.  However, if you
 think that you will be using vi a lot, then it makes sense to learn
@@ -312,11 +314,10 @@ may have a bad connection and the ESC sequences may get lost.
   Here is a simple mnemonic to help remember this: j extends below the
 line, and k above the line when written by hand.
 
-<H3 id="subject-2.6">2.6 - How do I quit without saving?</H3>
+<h3 id="subject-2.6">2.6 - How do I quit without saving?</h3>
   :q! will do it.
 
-<A NAME="subject-2.7">&nbsp;</A>
-<H3>2.7 - How do I insert a file?</H3>
+<h3 id="subject-2.7">2.7 - How do I insert a file?</h3>
   :r &lt;filename&gt;
 
   For example, to insert the file /etc/motd, type:  :r /etc/motd
@@ -325,8 +326,7 @@ line, and k above the line when written by hand.
 working on.  If you specify a number before the r, it will insert it at
 that location in the file.
 
-<A NAME="subject-2.8">&nbsp;</A>
-<H3>2.8 - How do I search for text?</H3>
+<h3 id="subject-2.8">2.8 - How do I search for text?</h3>
 
   /&lt;text&gt; will search forward.  ?&lt;text&gt; will search backwards.  ?? or
 // will repeat the last search.  It is worth noting that these are
@@ -334,15 +334,13 @@ pretty much standard in Unix.  In addition, in vi, n will find the next
 occurrence.  N will repeat the last search, reversing the direction.
 Regular Expressions may be used within searches.
 
-<A NAME="subject-2.9">&nbsp;</A>
-<H3>2.9 - How do I search for a control sequence?</H3>
+<h3 id="subject-2.9">2.9 - How do I search for a control sequence?</h3>
   /&lt;ctrl-v&gt;&lt;ctrl-&lt;seq&gt;&gt;
 
  &lt;ctrl-v&gt; will tell vi to take the next character literally, and not to take
 it as a command.
 
-<A NAME="subject-2.10">&nbsp;</A>
-<H3>2.10 - How do I reformat text?</H3>
+<h3 id="subject-2.20">2.10 - How do I reformat text?</h3>
   If your computer has the program fmt on it, all you need to do is
 type !}fmt from command mode (without a : before it).  This will
 reformat the text from the current location until the end of the
@@ -350,8 +348,7 @@ paragraph.  If your machine does not have fmt, you need to find a
 similar program.  (I gather there are many such programs available from
 the public domain, but I do not know much about them.)
 
-<A NAME="subject-2.11">&nbsp;</A>
-<H3>2.11 - How do I copy text?</H3>
+<h3 id="subject-2.11">2.11 - How do I copy text?</h3>
   Okay, this might be a bit complicated.  Take from this section what
 you can, and reread it a few times.  Also, experiment.
   "&lt;letter&gt;yy will copy one line of text into register &lt;letter&gt;.  (A
@@ -379,9 +376,8 @@ they are stored in different area of memory.  Then, type "&lt;register&gt;[y
 or d]`&lt;letter&gt;.  Where &lt;register&gt; is the register to put the text into,
 &lt;letter&gt; is the letter used to make, and yy or dd as appropriate.
 
-<A NAME="subject-2.12">&nbsp;</A>
-<H3>2.12 - Ahhhh!!!  I just hit dG and lost my dissertation!  What can I
-do?  (Or, I've just made a mistake, what should I do?)</H3>
+<h3 id="subject-2.12">2.12 - Ahhhh!!!  I just hit dG and lost my dissertation!  What can I
+do?  (Or, I've just made a mistake, what should I do?)</h3>
   u will undo the last command.  U will undo changes to the current
 line.  (Granted, a one line dissertation would not be much.) :e! will
 reload the current document without saving any changes.  In addition,
@@ -392,31 +388,27 @@ this, vi uses . slightly differently than normal.  Instead of repeating
 the last command, it will try the next register, so all you need to do
 is: "1p u . u ., etc. until you undo the delete you want to undo.)
 
-<A NAME="subject-2.13">&nbsp;</A>
-<H3>2.13 - vi appears to be frozen or acting strange, what can I do?
-(Also, I can't get rid of the colon prompt, now what?)</H3>
+<h3 id="subject-2.13">2.13 - vi appears to be frozen or acting strange, what can I do?
+(Also, I can't get rid of the colon prompt, now what?)</h3>
   If vi appears to have frozen, make sure that you haven't hit &lt;ctrl-S&gt;
 by mistake.  In order to undo a &lt;ctrl-s&gt;, hit &lt;ctrl-q&gt;.  
   If there is a colon and you can't get rid of it, you've entered ex by
 accident.  Generally this happens by hitting "Q" from command mode.
 Just type vi to get back into vi.
 
-<A NAME="subject-2.14">&nbsp;</A>
-<H3>2.14 - I've just written my dissertation and have been told that I
-need to have each section in a different file, what should I do?</H3>
+<h3 id="subject-2.14">2.14 - I've just written my dissertation and have been told that I
+need to have each section in a different file, what should I do?</h3>
  :[m],[n]w &lt;filename&gt; will save between lines m and n to &lt;filename&gt;.
 This line numbering method works for almost every : command.  If you
 use :[m],[n]w &gt;&gt; &lt;filename&gt; it will append it to the file.
 
-<A NAME="subject-2.15">&nbsp;</A>
-<H3>2.15 - What's the deal with all of these : commands?</H3>
+<h3 id="subject-2.15">2.15 - What's the deal with all of these : commands?</h3>
   The commands that follow a : are commands from the ex editor.  These
 allow a lot of flexibility and power.  For example, there are many
 different ways to search and replace, all of with have some
 similarities (in fact, they are in some ways the same...)
 
-<A NAME="subject-3.0">&nbsp;</A>
-<H2>3.0 - How do you do a search and replace?</H2>
+<h2 id="subject-3.0">3.0 - How do you do a search and replace?</h2>
   Well, there are a few methods.  The simplest is:
 
     :s/old/new/g 
@@ -460,13 +452,11 @@ can do lots of nifty things.
     \[eE]    end the selection for making upper or lowercase
 
 
-<A NAME="subject-3.1">&nbsp;</A>
-<H3>3.1 - My / key is broken!  How can I search and replace?</H3>
+<h3 id="subject-3.1">3.1 - My / key is broken!  How can I search and replace?</h3>
   Well, okay, it doesn't really need to be a /.  Lots of things will
 work fine.  (letters, numbers and a few other things won't...)
 
-<A NAME="subject-3.2">&nbsp;</A>
-<H3>3.2 - How do I run a program from within vi?</H3>
+<h3 id="subject-3.2">3.2 - How do I run a program from within vi?</h3>
   :!cmd will run the program cmd.  :sh will run an interactive shell.
 Within this shell, you may, if you want, run vi again.  This is
 particularly useful when you are editing makefiles and config files for
@@ -474,15 +464,13 @@ programs in an attempt to get a program to compile.  The advantage over
 :e is that you do not need to save the file, and it will be in its old
 place when you exit the shell.  (I advise saving the file anyway...)
 
-<A NAME="subject-3.3">&nbsp;</A>
-<H3>3.3 - Ahhh!!  I was writing my dissertation, and the computer crashed!</H3>
+<h3 id="subject-3.3">3.3 - Ahhh!!  I was writing my dissertation, and the computer crashed!</h3>
   Well, you should get mail about this, but you should be able to
 recover the file by typing vi -r &lt;filename&gt; where &lt;filename&gt; is the
 name of the file that you were editing at the time of the crash.  vi -r
 will give you a list of files that can be recovered.
 
-<A NAME="subject-3.4">&nbsp;</A>
-<H3>3.4 - Any tips for making vi programmer friendly?</H3>
+<h3 id="subject-3.4">3.4 - Any tips for making vi programmer friendly?</h3>
   :set ai will make it auto-indent for you.  
   :set sw=# where # is a number will set the shiftwidth (tabwidth).  
 You can then use &lt;&lt;, &gt;&gt; to shift a line left or right.  Plus, you 
@@ -495,8 +483,7 @@ one.
 programming.  () will move back and forth over s-expressions, and {}
 will move without stopping at atoms.
 
-<A NAME="subject-3.5">&nbsp;</A>
-<H3>3.5 - Macros -- How do I write them?</H3>
+<h3 id="subject-3.5">3.5 - Macros -- How do I write them?</h3>
   :map &lt;lhs&gt; &lt;rhs&gt; where &lt;lhs&gt; is up to ten characters and &lt;rhs&gt; is up
 to 100.  This will make it so that whenever you type &lt;lhs&gt; it will
 replace it with &lt;rhs&gt;.  All macros should start in command mode (except
@@ -508,22 +495,19 @@ while vi is scanning the line.  You should map it as :map foo
   :unmap &lt;lhs&gt; will remove the macro.  :map! &lt;lhs&gt; &lt;rhs&gt; will make
 &lt;lhs&gt; insert &lt;rhs&gt; into the text of the document.  map! macros may have
 lhs's that are much longer.
-<P>
+<p>&nbsp;</p>
 
-<A NAME="subject-3.6">&nbsp;</A>
-<H3>3.6 - How do I make a function key a Macro?</H3>
+<h3 id="subject-3.6">3.6 - How do I make a function key a Macro?</h3>
   If &lt;lhs&gt; is #n where n is 0-9, it will be mapped to the appropriate
 function key.
 
-<A NAME="subject-3.7">&nbsp;</A>
-<H3>3.7 - Is there anyway to abbreviate text?</H3>
+<h3 id="subject-3.7">3.7 - Is there anyway to abbreviate text?</h3>
   Yep, of course.  This is vi, it can do anything.  :ab email
 ellidz@midway.uchicago.edu will make it so that whenever you type
 email as a specific word, it will extend it to the entire
 unabbreviated word.  :una email will unabbreviate it.
 
-<A NAME="subject-3.8">&nbsp;</A>
-<H3>3.8 - How do I spell check the current document?</H3>
+<h3 id="subject-3.8">3.8 - How do I spell check the current document?</h3>
   Here is a macro to do it.  These should be put in your .exrc file.
 (More on .exrc files later on.) It is a pretty simple macro, it just
 calls ispell on the current file.  Of course, to use this you need
@@ -535,9 +519,8 @@ by vi, so it makes a good key.)
 The second &lt;enter&gt; makes it so that one does not need to hit return
 after it is done checking the spelling.
 
-<A NAME="subject-3.9">&nbsp;</A>
-<H3>3.9 - How do I get rid the ^M's at the end of each line of my file?
-How do I make a macro to do it?</H3>
+<h3 id="subject-3.9">3.9 - How do I get rid the ^M's at the end of each line of my file?
+How do I make a macro to do it?</h3>
   These generally appear from DOS files that get converted to Unix.
 They're easy to get rid of.
   :%s/&lt;ctrl-v&gt;&lt;enter&gt;//g will do it.  
@@ -555,8 +538,7 @@ are searching for &lt;ctrl-v&gt; &lt;enter&gt; to replace it with nothing...)
 you need to escape things a lot.  Sometimes it is quicker to just keep
 throwing &lt;ctrl-v&gt;'s in until it works.  
 
-<A NAME="subject-3.10">&nbsp;</A>
-<H3>3.10 - I've got a hardcopy terminal, can I still use vi?</H3>
+<h3 id="subject-3.10">3.10 - I've got a hardcopy terminal, can I still use vi?</h3>
   Okay, okay, so I don't expect anyone to actually ask this...  But, I
 thought it was bizarre enough to throw in anyway.  (And, it actually
 answers a very common question...)
@@ -566,9 +548,8 @@ appear on your print out as \'s.  vi will act as if the size of the
 window is only one line.  ^r will retype the current line.  z redraws
 the window around the current line.
 
-<A NAME="subject-3.11">&nbsp;</A>
-<H3>3.11 - Oh, okay, is THAT what open mode is?  But I don't have a
-hardcopy terminal, and it still starts in open mode!</H3>
+<h3 id="subject-3.11">3.11 - Oh, okay, is THAT what open mode is?  But I don't have a
+hardcopy terminal, and it still starts in open mode!</h3>
   Well, what is happening here is that vi doesn't know what type of
 terminal you have.  It decides that in this situation the best thing to
 do is to assume that you have the worst terminal possible.  This might
@@ -587,20 +568,17 @@ before you'll be able to edit the file...)
 terminals and terminal emulators can emulate vt100.  If this does not
 work, find someone to help you.
 
-<A NAME="subject-3.12">&nbsp;</A>
-<H3>3.12 - How can I get the source code to vi?</H3>
+<h3 id="subject-3.12">3.12 - How can I get the source code to vi?</h3>
   Unfortunately, the source code to vi is owned by AT&amp;T.  If you happen
 to have a source license to a version of Unix that has vi, you should
 have the source code.  Otherwise, you're out of luck.  You may want to
 look at the source for some vi clones, however, as most of them are
 publicly available.
 
-<A NAME="subject-4.0">&nbsp;</A>
-<H2>4.0 - More advanced topics in vi.</H2>
-<A NAME="subject-4.1">&nbsp;</A>
-<H3>4.1 - I see that sections are defined by SHNHH HU and paragraphs by
+<h2 id="subject-4.0">4.0 - More advanced topics in vi.</h2>
+<h3 id="subject-4.1">4.1 - I see that sections are defined by SHNHH HU and paragraphs by
 IPLPPPQPPLIbp by default? What language is that in? What in the world
-does it mean?</H3>
+does it mean?</h3>
 
   Man pages are written in a language called nroff/troff. Nroff is a
 general purpose text formatting language, similar to TeX. What does
@@ -615,17 +593,16 @@ and then any of the pairs of letters that the section is defined as.
 Paragraphs work the same way -- except that a blank line is also
 considered a paragraph break.
 
-<A NAME="subject-4.2">&nbsp;</A>
-<H3>4.2 - But when I program, I've noticed that I can use ]] and [[ to move
+<h3 id="subject-4.2">4.2 - But when I program, I've noticed that I can use ]] and [[ to move
 between functions. My functions don't have .SH or anything at the
-beginning, what gives?</H3>
+beginning, what gives?</h3>
   Luckily for many C programmers, an open curly brace at the beginning
 of a line is also defined as a section break.
 
 
 Newsgroups: comp.unix.questions,comp.editors,comp.answers,news.answers
 From: ellidz@kimbark.uchicago.edu (E. Larry Lidz)
-Subject: <B>vi editor FAQ (Frequently Asked Question List), Part 2/2</B>
+Subject: <b>vi editor FAQ (Frequently Asked Question List), Part 2/2</b>
 X-Nntp-Posting-Host: kimbark-nfs.uchicago.edu
 Message-ID: &lt;EByAuu.3MC@midway.uchicago.edu&gt;
 Followup-To: comp.editors
@@ -645,32 +622,29 @@ Posting-Frequency: 2nd and 17th of every month
 Last-modified: 1997-03-21
 Version: 1.76
 
-<A NAME="subject-5.0">&nbsp;</A>
-<H2>5.0 - What's online at the vi archives?</H2>
+<h2 id="subject-5.0">5.0 - What's online at the vi archives?</h2>
   There is a FAQ posted frequently which gives a list of all the files
 that are online at the vi archive.  It also gives a list of addresses
-which mirror the vi archive.  The main address is <A HREF="ftp://alf.uib.no/pub/vi">ftp://alf.uib.no/pub/vi</A>, 
+which mirror the vi archive.  The main address is <a href="ftp://alf.uib.no/pub/vi">ftp://alf.uib.no/pub/vi</a>, 
 but it is archived at many, many sites.  The vi-archive faq lists all 
 of them. Please check that faq before ftping to it, as there is almost 
 definitely a closer and therefore faster site to you than the one in 
 Norway.
-  A few mirrors are:  <A HREF="ftp://ftp.uwp.edu/pub/vi">ftp://ftp.uwp.edu/pub/vi</A>
-                      <A HREF="ftp://ftp.uu.net/pub/text-processing/vi.">ftp://ftp.uu.net/pub/text-processing/vi</A>
-                      <A HREF="ftp://ftp.cc.monash.edu.au/pub/vi">ftp://ftp.cc.monash.edu.au/pub/vi</A>
-                      <A HREF="ftp://ftp.s.u-tokyo.ac.jp/misc/vi-archive">ftp://ftp.s.u-tokyo.ac.jp/misc/vi-archive</A>
+  A few mirrors are:  <a href="ftp://ftp.uwp.edu/pub/vi">ftp://ftp.uwp.edu/pub/vi</a>
+                      <a href="ftp://ftp.uu.net/pub/text-processing/vi.">ftp://ftp.uu.net/pub/text-processing/vi</a>
+                      <a href="ftp://ftp.cc.monash.edu.au/pub/vi">ftp://ftp.cc.monash.edu.au/pub/vi</a>
+                      <a href="ftp://ftp.s.u-tokyo.ac.jp/misc/vi-archive">ftp://ftp.s.u-tokyo.ac.jp/misc/vi-archive</a>
   The site has many, many files on vi, including a few clones.  It also
 has the UCB distribution of vi, and lots of useful macros.  Check it
 out.
 
-<A NAME="subject-6.0">&nbsp;</A>
-<H2>6.0 - Silly vi tricks, and silly macros</H2>
+<h2 id="subject-6.0">6.0 - Silly vi tricks, and silly macros</h2>
   This section is for silly vi tricks, and silly macros.  Actually, any
 interesting vi tricks and macros are acceptable, as long as they are
 not too lengthy.  I will add any that are suggested to me that I think
 are reasonable.
 
-<A NAME="subject-6.1">&nbsp;</A>
-<H3>6.1 - Silly vi tricks</H3>
+<h3 id="subject-6.1">6.1 - Silly vi tricks</h3>
   xp     This will delete the character under the cursor, and put it
 afterwards.  In other words, it swaps the location of two characters.
  
@@ -697,8 +671,7 @@ m0 is the ex command to move the line to line 0.
   :v/./.,/./-1join
          Replaces multiple blank lines with just one blank line.
 
-<A NAME="subject-6.2">&nbsp;</A>
-<H3>6.2 - Silly macros</H3>
+<h3 id="subject-6.2">6.2 - Silly macros</h3>
   Note:  &lt;ctrl-x&gt; means hold down control, and hit x.
 
   Swap character and one vertically above:
@@ -808,8 +781,7 @@ done with your end note. [#] will be the number of the end note, not
 the literal # character. (Pretty crazy, huh?)
    map K ma1GO[0]&lt;ctrl-v&gt;&lt;esc&gt;G$?[[0-9]*]&lt;ctrl-v&gt;&lt;enter&gt;lyt]`aa&lt;ctrl-v&gt;&lt;enter&gt;&lt;ctrl-v&gt;&lt;esc&gt;O&lt;ctrl-v&gt;&lt;esc&gt;pI:r!echo '1 &lt;ctrl-v&gt;&lt;esc&gt;A + p' &lt;ctrl-v&gt;&lt;ctrl-v&gt;| dc&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;enter&gt;&lt;ctrl-v&gt;&lt;esc&gt;0"yD@y0i[&lt;ctrl-v&gt;&lt;esc&gt;A]&lt;ctrl-v&gt;&lt;esc&gt;kkJJJmb1Gdd`bF[yf]Go&lt;ctrl-v&gt;&lt;esc&gt;pA   
 
-<A NAME="subject-7.0">&nbsp;</A>
-<H2>7.0 - Alphabetical vi quick reference</H2>
+<h2 id="subject-7.0">7.0 - Alphabetical vi quick reference</h2>
   ... means that something needs to be specified before or after the
   command, as appropriate.  This is normally a cursor movement 
   keys (h,j,k,l,w,b, etc.) or a line number.
@@ -932,8 +904,7 @@ the literal # character. (Pretty crazy, huh?)
  ZZ  write (only if changes have been made) and quit 
  ^z  unused
 
-<A NAME="subject-7.1">&nbsp;</A>
-<H3>7.1 - Command mode input options ( : commands)</H3>
+<h3 id="subject-7.1">7.1 - Command mode input options ( : commands)</h3>
   (Note: this is not a canonical list, just some of the more important
 ones.)
 
@@ -971,8 +942,7 @@ ones.)
  :cd &lt;directory&gt; cd to &lt;directory&gt;
  :set &lt;option&gt;   set &lt;option&gt;...
 
-<A NAME="subject-7.2">&nbsp;</A>
-<H3>7.2 - set options</H3>
+<h3 id="subject-7.2">7.2 - set options</h3>
 
 The abbreviations in parenthesis may be used.  Syntax:
 
@@ -1057,8 +1027,7 @@ wrapmargin= (wm=)   0                  Set the right margin.  Greater
 wrapscan (ws)       ws                 Searches wrap around end of file
 writeany (wa)       nowa               Allow saving to any file
 
-<A NAME="subject-8.0">&nbsp;</A>
-<H2>8.0 - Setting up .exrc file</H2>
+<h2 id="subject-8.0">8.0 - Setting up .exrc file</h2>
   Any commands that can be used in command input mode ( : commands),
 may be used in a .exrc, which will load automatically whenever you
 start vi.  In addition, the source command (so), abbreviations (ab),
@@ -1066,8 +1035,7 @@ and macros may be used.  There may not be any blank lines in your
 .exrc.  A " in the first column may be used to tell vi that what
 follows is a comment.
 
-<A NAME="subject-8.1">&nbsp;</A>
-<H3>8.1 - Sample .exrc file</H3>
+<h3 id="subject-8.1">8.1 - Sample .exrc file</h3>
   This .exrc file is a real one.  Mine.  Because of that, it doesn't
 set as many options as one might wish it did to get a good idea of what
 may be used.  However, it should get the basic idea down, and it is
@@ -1099,8 +1067,7 @@ map g may0O&lt;ctrl-v&gt;&lt;esc&gt;P`ay$:s/./ /g&lt;ctrl-v&gt;&lt;enter&gt;0i&g
 " Change the case on the current word
 map K ywmno&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;esc&gt;P:s/./\~/g&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;ctrl-v&gt;&lt;enter&gt;0"nDdd`n@n
 
-<A NAME="subject-9.0">&nbsp;</A>
-<H2>9.0 - Bugs in vi</H2>
+<h2 id="subject-9.0">9.0 - Bugs in vi</h2>
   I'd like to say that vi is bug free, but unfortunateely, it's not.
 These bugs are bugs in the original vi, not necessarily in any of the
 different clones.
@@ -1108,55 +1075,53 @@ different clones.
   Macros for _ do not always work properly.
   #~ does not work under AIX
 
-<A NAME="subject-10.0">&nbsp;</A>
-<H2>10.0 - Glossary of terms</H2>
+<h2 id="subject-10.0">10.0 - Glossary of terms</h2>
   This glossary will be updated as people suggest terms that they do
 not understand.  Please let me know if you have any suggestions.
 
-  <B>command mode</B> 
+  <b>command mode</b> 
     Command mode is the mode within vi where the user gives commands to
 vi.  (Including cursor movement commands, editing commands, etc.)
 
-  <B>ed</B> 
+  <b>ed</b> 
     A non-visual editor under unix.
 
- <B>&lt;Esc&gt;</B> 
+ <b>&lt;Esc&gt;</b> 
     The escape key.  A key on a keyboard normally marked by escape.
 Sometimes ^[ will work in its place.  If there is no escape key,
 sometimes the Meta key will work.
 
-  <B>ex</B> 
+  <b>ex</b> 
     An editor under unix, all commands preceded with : are passed to
 it.
 
-  <B>insert mode</B> 
+  <b>insert mode</b> 
     Insert mode is the mode within vi where text is inserted into the
 document.
 
-  <B>macro</B> 
+  <b>macro</b> 
     A macro is a shortcut key combination.  For example, a macro allows
 one to hit one letter and have it execute a few different commands.
 
-  <B>open mode</B> 
+  <b>open mode</b> 
     Open mode is the mode that vi will start in if it cannot determine
 your terminal type, or if it believes you have a hardware or glass-tube
 terminal.
 
-  <B>regular expressions (RegEx) (RE)</B>
+  <b>regular expressions (RegEx) (RE)</b>
     Regular expressions, commonly known as "RegEx" or "REs" are a set
 of key combinations that are meant to allow people to have a large
 variety of control over what they are searching for.  RegEx is used a
 lot under Unix, and is common between many programs.
 
-  <B>sed </B>
+  <b>sed </b>
     Stream editor.  An editor that has no interface.  All commands
 are given from the command line.
 
-  <B>vi </B>
+  <b>vi </b>
     The editor to which this FAQ is dedicated.
 
-<A NAME="subject-11.0">&nbsp;</A>
-<H2>11.0 - Bibliography of Books that cover vi</H2>
+<h2 id="subject-11.0">11.0 - Bibliography of Books that cover vi</h2>
   VI QUICK REFERENCE/HELP CARDS
   Specialized System Conultants, Inc.      
   (206)-367-8649                           
@@ -1202,8 +1167,6 @@ are given from the command line.
 vi.  I will add books to this section as people suggest them to me.
 
 Copyright, E. Larry Lidz, 1994, 1995, 1996, 1997.  All Rights Reserved.
-</pre>
-</ul>
 </blockquote>
 </body>
 </html>
