@@ -13,10 +13,12 @@ I've still got plenty to do.
     sites. Thankfully, some of the old sites still exist.
 
   - Some of the information needs to be updated and brought up to date.
+    Some information is surprisingly still relevant after 25 years.
 
   - I may add some additional Perl programs of general interest.
 
-  - I've mostly converted the site to HTML5 standards. 
+  - I've mostly converted the site to HTML5 standards. This may lead to
+    some odd formatting yet to be fixed.
 
 There are still some good items here, even if they are ancient in
 computer terms. Just remember: no AIs were around to help when this site
