@@ -1,0 +1,333 @@
+<!DOCTYPE HTML> 
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="kstyle2.css">
+    <meta name="description" content="Kent Nassen's Vim Functions for SAS Programming">
+    <meta name="keywords" content="vi, vim, Vim, syntax, highlighting, vim functions for SAS programming">
+    <base HREF="http://www-personal.umich.edu/~knassen/vim/sasfns.html">
+    <link REL="SHORTCUT ICON" href="http://www-personal.umich.edu/~knassen/favicon.ico">
+    <title>Three Vim Functions for SAS Programming</title>
+    <style type="text/css">
+</style>
+</head>
+
+<body>
+<blockquote>
+<h1><img src="../gr/vim_sas_functions_menu2.png" alt="SAS functions Vim menu">
+Three Vim Functions for SAS Programming</h1>
+I wrote these three functions to help me program SAS with the Vim
+editor in GUI mode. The first allows me to run SAS in batch mode on a
+program I'm currently editing in Vim. In addition, there are functions
+to load the .log and .lst files for a SAS program being edited, and to run
+a log checking program on the current buffer, allowing the use of Vim's
+quickfix functionality to check SAS log files.
+<p>&nbsp;</p>
+These functions were developed for use with SAS in a Unix environment so
+they reference some Unix paths and programs. But they could be adapted
+to Vim and SAS in a Windows environment quite easily (using batch mode
+SAS). File extensions are used for determining the file types and follow
+SAS' defaults (.sas for program, .log for log file, and .lst for list
+output). These can be changed if you use other extensions for some
+reason.
+<p>&nbsp;</p>
+I keep the code for these functions in my $HOME/.gvimrc file. I
+haven't tried these functions in a console Vim environment, though
+they may work. The functions use Vim tabs when loading files for
+editing, thus I use them in GUI Vim (console Vim can do tabbed
+editing, as well). 
+<p>&nbsp;</p>
+The code to add the three functions to the <a
+href="../gr/vim_sas_functions.png"><strong>Vim Tools menu</strong></a>
+is given as well as code to make the assignments to function keys.
+All three Vim functions for using SAS, the menu and function key code, 
+a SAS log check script and an example wrapper script are available for 
+download in this <a href="vimsasfunctions.zip"><strong>zip file</strong></A>.
+<p>&nbsp;</p>
+<hr style="width=100%; height 2px; border: none;">
+<strong>Below you'll find descriptions of each of the functions and the actual code
+used.</strong>
+<p>&nbsp;</p>
+<strong>Run SAS on Current File/Buffer</strong>
+<p>&nbsp;</p>
+SAS runs against a program file on disk, so this function,              
+RunSASonCurrentFile(), will save the file before the run if the file has  
+been modified in the editor.                                            
+<p>&nbsp;</p>
+The function will automatically load the .log and lst files that get
+created from the SAS run (or possibly just the log file if you have no
+list output) into separate tabs, if they are not already open in the
+editor (note: RunSASonCurrentFile() calls LoadSASLogList()). If the .log
+and .lst files are already open in the editor, Vim will prompt to load
+the changed files after SAS runs as it normally does when files being
+edited are changed on disk by another process (such as another SAS run).
+This is Vim behavior, not a behavior of the function. Be sure to set the
+location of SAS on your machine in the system() call below.
+<p>&nbsp;</p>
+<pre>
+
+  " Run SAS on the current file/buffer. Assumes you have a SAS program in
+  " the current buffer. File will be saved before running SAS, if it has 
+  " been modified. SAS will run on the saved file on disk. Two tabs will
+  " be opened, one for the log and one for the list, assumed to be in the
+  " same location and with the same basename as the SAS program file.
+  function! RunSASonCurrentFile()
+    " Make sure this is a SAS program file (ends with .sas) so that
+    " we don't run SAS on a log file or similar.
+    :let checkSASpgm=match(expand("%"),"\.sas")
+
+    " If we did not match .sas in the file name, end this function with
+    " a warning msg
+    if checkSASpgm==-1
+       :echo "*** Current file is not a SAS program.  SAS run has been canceled."
+       :return
+    endif
+
+    " Ask user if we want to run SAS so we don't accidentally run it.
+    :let l:answer = input("Run SAS? Y/N ") 
+    :if (l:answer == "Y" || l:answer == "y")
+
+    " If file has been modified, save it before running
+    if exists(&amp;modified)
+       :echo "*** Saving modified file before SAS run..."
+       :w
+    endif
+
+    " Run SAS on path/file name (modify to your location of sas)
+    :echo "*** Running SAS..."
+    let returntxt = system("/usr/local/bin/sas -nodms " . shellescape(expand("%:p")))
+
+    " Shows the return messages from the SAS commandline (may be useful
+    " if no log produced)
+    :echo "*** SAS commandline: " . returntxt
+
+    :call LoadSASLogList()
+
+    :else
+    :echo "SAS Run cancelled."
+
+    " endif for the Run SAS? check
+    :endif
+  endfunction
+
+</pre>
+
+<p>
+<strong>Load SAS Log and Lst Files</strong>
+<p>
+The LoadSASLogLst function loads the SAS .log and .lst files for a SAS program
+being edited in the current buffer.  It will load these files into separate tabs 
+in Vim.  This is handy if you want to see those files for a SAS
+program file you are examining but don't want to run in SAS.  
+
+<pre>
+
+  function! LoadSASLogLst()
+    " Assumes you are editing a SAS program.   The log and lst file names will
+    " be based on the SAS program basename (the file in the current buffer) and
+    " are assumed to end in .log and .lst, as produced by SAS by default.
+
+    " Load the SAS log file in a tab, if it is not already loaded &amp; it exists
+    :let log=bufexists(fnameescape(expand("%:p:r") . ".log"))
+    :if log==0
+      :if filereadable(fnameescape(expand("%:p:r") . ".log"))
+        :execute "tabedit " . fnameescape(expand("%:p:r") . ".log")
+      :else
+        :echo "*** SAS log file does not exist."
+      :endif
+    :endif
+
+    " Load the SAS lst file in a tab, if it is not already loaded &amp; it exists
+    :let lst=bufexists(fnameescape(expand("%:p:r") . ".lst"))
+    :if lst==0
+      :if filereadable(fnameescape(expand("%:p:r") . ".lst"))
+        :execute "tabedit " . fnameescape(expand("%:p:r") . ".lst")
+      :else
+        :echo "*** SAS lst file does not exist."
+      :endif
+    :endif
+  endfunction
+
+</pre>
+
+<p>
+<strong>Checking the SAS Log File</strong>
+<p>
+The CheckSASLog function helps in debugging a SAS program, allowing
+you to link a list of errors to the lines in the log where the errors
+occurred and jump to specific errors. This is also the function that
+requires the most modification to make work the way you want.
+<p>
+Note: the usual SAS log with errors may contain dozens, but they may
+be caused by the first error and cascaded into other errors from that
+point, so having a complete list of errors may not be indicative of the
+amount of debugging necessary. Always start with the first error found. 
+<p>
+The Vim quickfix functionality (see :he quickfix in the Vim help system)
+makes jumping from error to error (or warning to warning) easy, so it
+is a good idea to take advantage of this. I've had it working in at
+least two different ways over the years: using Vim's internal grep
+capability (see :he grep), and using an external script or program that
+does the log checking and returns a list of errors, warnings, and other
+questionable messages from the SAS log.
+<p>
+In order to use Vim's quickfix mechanism fully, the list of errors and
+warnings needs to be linked to the SAS log file via the file name of the
+log. (Imagine if multiple SAS programs and logs were open in the editor,
+how would Vim know which list of errors goes with which log file? By the
+file name.)
+
+<p>
+The Unix grep program can provide a file name (GNU grep's -H option,
+for example) in the list of errors/warnings. Below, I present a <A
+HREF="#cklog"><strong>simple SAS Log checking shell script</strong></A>
+using the GNU grep program that works with Vim's quickfix mode.
+<p>
+If you use another external log-checking program, make sure it
+returns the file name for each error, in addition to the line number
+and error text (and modify the grepformat in the CheckSASLog function
+appropriately). Otherwise, depending on your situation (e.g. a
+provided log check utility you can't change that does not provide a
+file name), you'll need to write a small <a href="#wrap"><strong>wrapper
+script</strong></A> to call that check utility and do the addition of
+the file name to each error returned.
+<p>&nbsp;</p>
+
+<pre>
+
+  " Check SAS log files for errors, warnings and other problems
+  " Assumes you are editing the file to be checked when invoking this function.
+  " No assumption about log file name extension is made so you can check any file.
+   function! CheckSASLog()
+    " Go to the first line of the file
+    :0
+
+    " Set grepformat for use with the program used by grepprg. NOTE:
+    " quickfix needs a file name! Example grepformat when a file name is
+    " returned by grepprg program
+    set grepformat=%f:%l:%m
+
+    " Example grepformat with no file name returned by the program used
+    " by grepprg.
+    "set grepformat=%l:%m
+
+    " Save current grepprg setting
+    let _grepprg=&amp;grepprg
+
+    " Define the program to use for searching the SAS log
+    :set grepprg=~/bin/cklog
+
+    " Run grepprg on the current file 
+    grep %:p
+
+    " Set grepprg back to its original setting
+    let &amp;grepprg=_grepprg
+
+    " Open the quickfix error window 
+    :cope
+  endfunction
+
+</pre>
+
+<p>
+<strong>Menu Assignments and Key Mappings for the SAS Functions</strong>
+<p>
+You can relabel these, but note that you need to escape ('\') the spaces in
+the labels.  Obviously, you can assign the functions to any function keys
+you aren't currently using, as well, and in an order that makes sense to you.
+<pre>
+
+  " Add a separator before the SAS menu items
+  menu Tools.-Sep-     :
+
+  " Assign RunSASonCurrentFile function to the tools menu
+  menu Tools.Run\ SAS\ on\ Current\ File  :call RunSASonCurrentFile()<BR>
+
+  " Assign  LoadSASLogLst function to the tools menu
+  menu Tools.Load\ SAS\ Log\/List\ for\ Current\ File :call LoadSASLogLst()<BR>
+
+  " Assign  ChkSASLog function to the tools menu
+  menu Tools.Check\ SAS\ Log :call CheckSASLog()<BR>
+
+  " Map RunSASonCurrentFile to a function key
+  map &lt;F10&gt; :call RunSASonCurrentFile()<BR>
+
+  " Map LoadSASLogLst to a function key
+  map &lt;F11&gt; :call LoadSASLogLst()<BR>
+
+  " Map CheckSASLog to a function key
+  map &lt;F12&gt; :call CheckSASLog()<BR>
+
+</pre>
+
+<p>
+<a id="cklog"><strong>A Simple SAS Log File Checking Script</strong></A>
+<p>
+This is the cklog program noted in the grepprg definition in the
+CheckSASLog() function. It runs on Unix. It should run okay under
+Cygwin. This provides the file name, line number, and the error text so
+it can be used with Vim's quickfix functionality. More checks could be
+added, but it should find most of the obvious errors and warnings and
+some of the unusual messages in SAS log. grep -E is the same as egrep on
+my system.  It can also be used outside of Vim to check SAS log files
+from the command line.  The other options are -n (give the line number),
+-H (give the file name), and -i (case-insensitive search).
+<pre>
+
+  #!/bin/sh
+  
+  # Check SAS log files for warning, errors, and other possible
+  # problems. --KDN
+  
+  ME=`basename $0`
+  
+  case $# in
+  
+    0)
+    echo -e "------------------------------------------------------------------------------"
+    echo "$ME: check SAS log files for warnings, errors, and possible problems. "
+    echo "Usage: $ME [FILE]"
+    echo "   For example: $ME *.log will check all log files in the current directory."
+    echo "                $ME mysas.log will just check just the mysas.log file."
+    echo "by Kent Nassen, last update: 06JAN2009"
+    echo "------------------------------------------------------------------------------"
+    echo ""
+    ;;
+  
+    *)
+    for fname in $*
+    do
+      grep -E -H -n -i "warning:|error:|uninit| 0 obs|no obser|repeats of|not found\
+  |not valid|invalid|syntax error|overwritten|converted|missing values were generated\
+  |outside the axis range|duplicate by var|not created|contained a missing" ${fname}
+    done
+    ;;
+  esac
+
+</pre>
+
+<a id="wrap">A <strong>wrapper script</strong></a> to add the file name
+could be as simple as the following Bourne Shell script (which would become the
+grepprg program in CheckSASLog), where the "checksas" program operates
+on a file name given on the commandline and returns a list of errors and
+warnings from the SAS log and the sed command adds the file name ($1)
+to the beginning of each line ('#' is used as a delimiter in the sed
+substitution command because $1 is apt to contain '/' characters if it
+includes a file path, saving us a lot of quoting). This is not needed if
+your external SAS log check program output includes only the file name
+and no path (but it doesn't hurt either way).
+<pre>
+
+  #!/bin/sh
+  
+  /usr/local/bin/checksas $1 | /usr/bin/sed -e "s#^#$1: #"
+
+</pre
+<hr style="width=100%; height 2px; border: none;">
+<p>
+
+Last-modified: <!--#flastmod file="sasfns.html" -->
+
+</blockquote>
+</body>
+</html>
