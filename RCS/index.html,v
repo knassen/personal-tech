@@ -1,10 +1,15 @@
-head	1.3;
+head	1.4;
 access;
 symbols;
 locks
-	knassen:1.3; strict;
+	knassen:1.4; strict;
 comment	@# @;
 
+
+1.4
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.3;
 
 1.3
 date	2025.07.06.15.54.12;	author knassen;	state Exp;
@@ -26,12 +31,74 @@ desc
 @@
 
 
+1.4
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="editor" content="/usr/bin/vi">
+    <meta name="description" content="Kent Nassen's Site: Aurora text editor/perl/vi/vim/figlet fonts">
+    <meta name="keywords" content="Aurora text editor, vi, vim, figlet, perl, Apple II, Apple 2, Apple ][, Apple //, statistics">
+    <!-- BASE HREF="http://www-personal.umich.edu/~knassen/index.html" -->
+    <base HREF="/personal-tech/">
+    <title>Kent Nassen's Home Page</title>
+</head>
+
+<body> 
+<br>
+<blockquote>
+<a href="mice.html"><img src="/personal-tech/gif/kenthpg4t.gif" alt="Kent's Home Page"></a>
+<ul>
+    <li><a href="aurora.html"><span style="font-size: 130%;">The Aurora Text Editor</span></a><br></li>
+    <li><a href="figlet.html"><span style="font-size: 130%;">FIGlet (ASCII Lettering)</span></a><br></li>
+    <li><a href="vi/vi.html"><span style="font-size: 130%;">vi Information &amp; Resources</span></a><br></li>
+    <li><a href="vim/index.html"><span style="font-size: 130%;">Kent's Vim Page</span></a><br></li>
+    <li><a href="myperl.html"><span style="font-size: 130%;">Kent's Perl Stuff</span></a><br></li>
+    <li><a href="icpsr.html"><span style="font-size: 130%;">ICPSR/Social Research</span></a><br></li>
+    <li><a href="links.html"><span style="font-size: 130%;">Links to Other Things</span></a><br>
+    <span style="font-size: 130%;">(<a href="apple2.html">Apple ][</a> | <a href="archives.html">
+            Software Archives</a> | <a href="statistics.html">Statistical</a> | 
+    <a href="umwww.html"> U. Michigan</a> | <a href="unix.html">Unix</a> |
+    <a href="links.html">etc.</a>)
+    </span></li>
+</ul>
+<p>
+<strong>Proud to NOT be a "One Stop Shop" for anything!</strong><br>
+<span style="font-size: 80%;">
+My general philosophy here is to present information so many of the
+links are annotated. For the curious, there is some information
+about me from a very obvious (hidden) link on this page. Helpful
+comments/suggestions are appreciated. If you're human, you know how
+to fix my e-mail address (here and elsewhere on my web pages). Sorry,
+people, but there are a lot of sorry people out there that like to spam.
+<br><a href="mailto:AMSPAYNOT!knassen@@nowayamspay.chartermi.net">--Kent Nassen, AMSPAYNOT!knassen@@nowayamspay.umich.edu</a>--
+<a href="bsdpicts.html">&nbsp;&nbsp;&nbsp;&nbsp;A Note About the BSD Demon.</a><br>
+</span>
+
+<a href="http://www.freebsd.org"><img src="/personal-tech/gif/bsddaem5.gif" alt="FreeBSD Rocks!"></a>
+
+<span style="font-size: 100%;">
+Last-modified: Wed Jul 16 15:30:39 EDT 2025
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.3
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
+@d1 11
+a11 10
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN"> 
 <HTML>
 <HEAD>
 <META name="editor" content="/usr/bin/vi">
@@ -41,7 +108,8 @@ text
 <BASE HREF="http://192.168.50.172/~knassen/umich/html/index.html">
 <TITLE>Kent Nassen's Home Page</TITLE>
 </HEAD>
-
+d13 21
+a33 21
 <BODY BACKGROUND="gif/rbkng.jpg">
 <BR>
 <BLOCKQUOTE>
@@ -63,18 +131,16 @@ Software Archives</A> | <A HREF="statistics.html">Statistical</A> |
 <P>
 <B>Proud to NOT be a "One Stop Shop" for anything!</B><BR>
 <FONT SIZE="-1"> 
-My general philosophy here is to present information so many of the
-links are annotated. For the curious, there is some information
-about me from a very obvious (hidden) link on this page. Helpful
-comments/suggestions are appreciated. If you're human, you know how
-to fix my e-mail address (here and elsewhere on my web pages). Sorry,
-people, but there are a lot of sorry people out there that like to spam.
+d40 3
+a42 3
 <BR><A HREF="mailto: AMSPAYNOT!knassen@@nowayamspay.chartermi.net (Kent Nassen)">--Kent Nassen, AMSPAYNOT!knassen@@nowayamspay.umich.edu</A>--
 <A HREF="bsdpicts.html">&nbsp;&nbsp;&nbsp;&nbsp;A Note About the BSD Demon.</A><BR>
 </FONT>
-
+d44 1
+a44 1
 <A HREF="http://www.freebsd.org"><IMG SRC="gif/bsddaem5.gif" ALIGN="RIGHT" ALT="FreeBSD Rocks!" BORDER=0 WIDTH=113 HEIGHT=64></A>
-
+d46 7
+a52 8
 <FONT SIZE="-1">
 <IMG SRC="gif/valid_html3.2.gif" ALT="HTML 3.2 Validated">
 Last-modified: Wed Mar 31 08:01:27 EST 1999

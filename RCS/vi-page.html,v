@@ -1,0 +1,436 @@
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="description" content="vi Information &amp; Resources">
+    <meta name="keywords" content="vi editor free elvis vile vim xvi nvi lemmy winvi">
+    <base href="/personal-tech/">
+    <title>vi Information &amp; Resources</title>
+</head>
+
+<body>
+
+<br>
+<blockquote>
+
+<a href="vi-page.html">Reorganized Pages (3/1999)</a>
+
+<h1>vi Information &amp; Resources</h1>
+<hr style="width=100%; height 2px; border: none;">
+In addition to the <strong><a href="aurora.html">Aurora Editor</A></strong> 
+which I use under DOS/Windoze, I use <strong>vi</strong> (pronounced
+"vee-eye") when working on Unix systems. After trying pico and emacs, I
+settled on vi in 1990 as a good compromise between features, speed, and
+learning curve.  Since then I've found my choice to have been reasonable
+in terms of my original criteria. In addition to this vi page, I also
+have a <a href="vim/index.html"><strong>Vim page</strong></A> devoted to
+my favorite vi editor. <a href="mailto:knassen@@NOWAYAMSPAYumich.edu">
+--knassen@@NOWAYAMSPAYumich.edu</a>
+
+<p>&nbsp;</p>
+<h2><strong>A Short Description of vi</strong></h2>
+vi is a full-screen text editor originally written to run under Unix,
+but it has been cloned and imitated to run under MS-DOS, Windows,
+OS/2, Macintosh OS, Unix, and several other operating systems as well. vi is
+unusual in that it has <strong>two modes</strong>: an <strong>input
+mode</strong> in which text may be inserted, appended, or overwritten,
+and a <strong>command mode</strong> in which the user may issue searches
+and/or replacements of text, move around the file being edited, delete
+and copy text, perform file operations (read/write/save), and invoke
+external Unix commands (such as sort, date, and fmt).
+<p>
+<strong>Up and Running Fast, But Powerful</strong><br>
+Basic editing tasks with vi (opening a file, moving around,
+inserting text, deleting text, saving the file) can be learned in a few
+minutes, but mastering this editor will take much longer since it is
+relatively feature-rich and it can draw upon the full power of Unix,
+including regular expressions, reading the output of unix commands,
+and allowing unix commands to operate on the text being edited, as well
+as macros/key mapping, and ex line editor commands.
+<p>
+<strong>Bizarre and Incomprehensible...</strong><br> 
+vi can seem rather bizarre, incomprehensible, and confusing to people
+just learning it, especially if they are used to single-mode editors
+such as the Aurora editor, emacs, the MS-DOS editor, Windows notepad/wordpad, 
+xedit, Qedit/TSE, Multi-edit, Ultraedit, and the like. I know it took
+me a while to get used to the <strong>h j k l</strong> cursor keys and 
+switching back and forth between command mode and input mode.  At some point,
+however, if you have the right sort of sticktoitiveness eventually you
+stop thinking so much about the commands you are typing.  At that
+point, you're off to the races.
+<p>
+<strong>...or Fast and Efficient?</strong><br>
+vi can be a very fast and efficient editor once you get used to the
+way it works. I like the idea that I can find vi on every Unix system
+I've come across (and I use at least four different Unix operating
+systems on three different platforms currently), that it is economical of
+system resources, that it can do a lot of editing in very few keystrokes
+(no mouse required), that it can edit huge files, and it can operate
+quite handily over slow modem or internet connections (which seems to be
+necessary more often than one would expect).
+<p>
+<strong>The vi Stuff: Get To It, Already!</strong><br>
+Below are some references and links of interest to vi users and the
+curious.  I've included some screen shots of several popular vi clones,
+too, as at least some vee-eyes now offer GUI (graphical) interfaces
+with pull-down menus or button bars that might be of interest to a new
+generation of potential vi users.
+
+<h2>vi Books</h2>
+<hr style="width=100%; height 2px; border: none;">
+I own published copies of both of these books, and I find each of them excellent
+in its own way. The Lamb book is what I started with...well, actually, I
+started with the brief vi and ex command summaries in the 1990 printing
+of <u>Unix in a Nutshell</u> by <a href="http://www.ora.com/">O'Reilly
+&amp; Associates</a> and puzzled my way along until I got Lamb's book. I
+purchased the H-P book later, after I already knew enough to get through
+a work day using vi without looking at a manual, but that book has still
+been useful for its clear explanations.
+
+<p>
+<span style="font size: 115%;">Hewlett-Packard Company (1990, <u>The Ultimate Guide to the vi
+and ex Text Editors</u> (Redwood City, CA: Benjamin/Cummings Publishing
+Co.).</span>
+
+<dl>
+        <dt>11 Chapters, plus an appendix on regular expressions. This book takes
+a task-oriented approach to teaching the use of the vi and ex editors
+and includes many examples.</dt>
+</dl>
+
+<p>
+<span style="font size: 115%;">Lamb, Linda and Arnold Robbins (1998), <u>Learning the vi Editor</u> 6th ed.
+(Sebastapol, CA: 
+<a href="http://www.ora.com/">O'Reilly &amp; Associates</A>), 
+348 pp.</span>
+
+<dl>
+<dt>Starts with a beginner's tutorial and works up to using ex,
+global replacement, and advanced editing techniques. The 6th edition
+now includes information on several vi-clones: nvi, elvis, vim, and
+vile.</dt>
+</dl>
+
+<p>Also of interest for vi users is:
+
+<p><span style="font size: 115%;">Friedl, Jeffrey E.F., <u>Mastering Regular
+Expressions</u> (Sebastapol, CA:  O'Reilly &amp; Associates), 340+
+pp.</span>
+
+<dl>
+<dt>This must be the most comprehensive tutorial and reference
+about regular expressions published to-date. It includes in-depth
+explanations of how regular expressions do their work and many
+descriptions of the various unix tools that incorporate regular
+expressions (such as vi).  This book really gets to the method behind
+the madness of regular expressions and is an excellent reference.</dt>
+</dl>
+
+<h2>vi Links</h2>
+<hr style="width=100%; height 2px; border: none;">
+<blockquote>
+<strong><A HREF="http://www.netmeg.net/faq/computers/editors/vi/">
+<span style="font size: 115%;">The vi FAQ</span>
+</a></strong><br> This is a link to an HTML version of the vi
+Frequently Asked Questions (FAQ) file. This should answer most of
+the questions that people ask when becoming familiar with vi and
+as such, is a good starting place to learn more (in addition to
+the links below). The most recent vi FAQ can be retrieved from 
+<a href="ftp://rtfm.mit.edu/pub/usenet-by-group/comp.editors/">rtfm.mit.edu</a> 
+but it has not been converted to HTML.
+
+<p>
+<strong>
+<a href="http://www.linuxbox.com/~taylor/4ltrwrd/title.html">
+<span style="font size: 115%;">Unix is a Four Letter Word and VI is a Two Letter Abbreviation</span>
+</a></strong><br>
+An introduction to both Unix and VI. Skip right to the 
+<a href="http://www.linuxbox.com/~taylor/4ltrwrd/Vi.html">vi
+tutorial</a> if you want. It includes the basics of vi usage, as well as
+Maarten Litmaath's vi reference, and miscellaneous vi tips.
+
+<p>
+<strong>
+<a href="http://www.networkcomputing.com/unixworld/tutorial/009/009.html">
+<span style="font size: 115%;">UnixWorld VI Tutorials</span></a></strong><BR>
+This tutorial series starts with the fundamentals of editing with vi. 
+This page has links to all the installments. Other installments include
+topics such as global operations, line mode addressing, substitution,
+replacement, setting up the vi environment, editing in columns, and macros.
+
+<p>
+<strong><a href="ftp://ftp.uu.net/pub/text-processing/vi">
+<span style="font size: 115%;">The vi Archive (FTP)</span></a></strong><br>
+This is a link to the mirror at ftp.uu.net of the <a
+href="ftp://alf.uib.no/pub/vi">alf.uib.no</a> official vi archive. The archive
+includes tutorials &amp; command summaries, macros, source code, and
+the comp.editors tip collection. Here is my unofficial HTML version of the 
+<a href="viarchives.html"><strong>archive index</strong></A>
+(approx. 32K HTML) which gives a brief description of, and links to, the files there.
+
+<p> 
+<strong><a href="http://www.cs.vu.nl/~tmgil/vi.html">
+<span style="font size: 115%;">vi Lover's Home Page</span></a></strong><br> 
+
+The place for all things vi, by Thomer M. Gil (tmgil@@cs.vu.nl). Links
+to many vi resources, sources, binaries, stories, FAQs, manuals, and
+tutorials. <em>Highly recommended!</em>
+
+<p>
+<strong>
+<!-- A HREF="http://www2.cic.net/~gpoulos/vimug.html" -->
+<!-- A HREF="http://mail.globalbiz.net/~gpoulos/vimug.html" -->
+<a href="http://www.vireference.com/vimug.html">
+<span style="font size: 115%;">vi Reference Mugs</span></a></strong><br>
+If you love vi, you've got to have one of these mugs on your desk!
+
+<p>
+<strong>
+<a href="http://www.nyx.net/~gthompso/quine.htm">
+<span style="font size: 115%;">The Quine Page</span></a></strong><br>
+A page devoted to programs which reproduce their own source
+code.  Includes several examples of quines for vi/vim/nvi/elvis.
+
+<p>
+<strong><a href="http://george.lbl.gov/~hoo/Misc/vi_main.html">
+<span style="font size: 115%;">My little vi page</span></A></strong><br>
+A litte vi page with links to vi-related sites.
+
+<p>
+<strong><A HREF="http://www.math.fu-berlin.de/~guckes/vi/">
+<span style="font size: 115%;">Sven Guckes' vi Pages</span></a></strong><br>
+Information on various vi versions and clones, vi quotes, vi folklore, 
+the vi vs. emacs religious war, vi documentation, and the vi picture
+gallery.
+
+<p>
+<strong><A HREF="http://www.vim.org/"><span style="font size: 115%;">The VIM Home Page</span></a></strong><br>
+VIM is <strong>V</strong>i-<strong>IM</strong>proved, a
+<strong>free</strong> vi clone with many extensions and great features
+such as multi-level undo, multiple windows and buffers, flexible insert
+mode (use the arrow keys to move while in insert mode), visual mode
+(execute commands on marked areas of text), block operators (operate
+on rectangular blocks of text), and online help system. Vim 5.4 is
+currently being tested, and looking good. The new 5.x versions offer bug
+fixes and many improvements to the editor in general. In comparison to
+Vim 4.x, the 5.x versions offer syntax highlighting for many languages,
+a GUI interface (gvim), pull-down menus, an internal scripting language,
+and the opportunity to include perl or python as an interpreter. Bram
+Moolenaar (mool@@oce.nl) is the principal author of VIM and coordinator
+of VIM programming efforts. <a href="gif/vim50m.gif">[v5.0 SCREEN SHOT
+12K GIF]</a>
+
+<p>
+<strong><a href="http://www.netusa.net/~eli/src/vim.html">
+<span style="font size: 115%;">Eli's Vim and vi Page</span></a></strong><br>
+Eli the Bearded presents vi as only he can, including Conway's <a
+href="gif/vi-life2.gif">Game of Life for vi! [SCREEN SHOT, 7K GIF]</a>
+Also there are examples of "Hello, world" in vi, the Towers of Hanoi
+puzzle solver vi macros, and a couple different sets of HTML macros
+for vi. This site leans heavily toward VIM, but has a lot of "true" vi
+content as well.
+
+<p>
+<strong><a href="http://www.bostic.com/vi">
+<span style="font size: 115%;">nvi Page</span></a></strong><br>
+nvi is the latest incarnation of vi from U.C. Berkeley (it's the vi that
+ships with BSD 4.4). nvi is <strong>free</strong> and can use perl as an
+extension language. Handles lines longer than 1024 characters now, which
+I've found to be a tremendous improvement (many of the vi clones can
+also handle really long lines, too). In addition, nvi supports multiple
+buffers, unlimited undo, is 8 bit clean, and has command-line editing
+and filename completion. Current version is 1.79. Nothing fancy about
+the way nvi looks...plain ol' vi in a terminal window; I didn't expect
+you'd need a screen shot of that. Also included at this site is the vi
+FAQ.
+
+<p>
+<strong><a href="ftp://ftp.cs.pdx.edu/pub/elvis">
+<span style="font size: 115%;">Elvis (ftp)</span></a></strong><br>
+/<strong><a href="ftp://ftp.false.com/pub/elvis">
+<span style="font size: 115%;">Elvis (ftp alternate, faster)</span></a></strong><br>
+Elvis <a href="gif/elvis21c3.gif">[V2.0 SCREEN SHOT 14K GIF]</a>is
+a <strong>free</strong> vi clone written by Steve Kirkendall
+(kirkenda@@cs.pdx.edu) that offers multiple buffers, multiple windows,
+and multiple display modes. In its most recent incarnation (beta test
+v2.1g -- this is the first 2.1 beta, meaning all 2.1 features have been
+added and the only changes will be bug fixes) it provides a very nice
+X11 interface with a user-definable button bar, syntax highlighting,
+pop-up dialog windows, and hex editing. Elvis 2.1 can view and print a
+significant subset of HTML (its help system is written in HTML). This
+editor has come a long way in the last year or so, so if you haven't
+tried it recently, you should now. Version 2.0 is the most recent
+release version (binaries are available for MS-DOS and Win32, source
+code for Unix). Version 2.0 has most of the features of 2.1, although
+the menubar has become more versatile in 2.1 (the 2.1 beta version is in
+the "unreleased" directory).
+
+<P>
+<strong><a href="http://www.fh-wedel.de/elvis/index.html">
+<span style="font size: 115%;">Elvis's Home</span></a></strong><br>
+A home page devoted to the Elvis editor, including the Elvis
+manual, screen shots of Elvis on various platforms, links to
+the Elvis source code, and other Elvis-related information.
+
+<P>
+<strong><a href="ftp://ftp.clark.net/pub/dickey/vile/vile.html">
+<span style="font size: 115%;">Vile and XVile (ftp)</span></a></strong><br>
+vile stands for "vi like emacs." It is a <strong>free</strong>
+vi-like editor with many emacs-like features. It has a very vi-like
+"finger feel" according to its author, although it does not attempt
+to be a complete vi clone. vile includes multi-file editing and
+viewing, key rebinding, mouse support (in an xterm, or when built
+as xvile), infinite undo, selection highlighting, rectangular
+operations, "next error" cursor positioning after compilation, full
+function-key and arrow-key support, filename &amp; command completion,
+command/search string/filename history, auxiliary utilities for man
+page and C program syntax highlighting, built-in macro language,
+and an interface to Perl. vile ports to all UNIX platforms,
+VMS, and DOS. xvile <a href="gif/xvile72.gif">[SCREEN SHOT 11K
+GIF]</a> is the X11 version of vile, which adds scrollbars, more
+complete mouse capabilities, and menus when Athena or Motif widget
+libraries are available. vile and xvile were reviewed in the 
+<a href="http://www.redhat.com/linux-info/lg/issue01to08/xvile_mar96.html">
+March 1996 Linux Gazette.</a>  Vile is available for DOS, Win95/NT,
+OS/2, and as source code for Unix and other operating systems.
+
+<p>
+<strong><a href="http://www.softwareonline.org/products.html">
+<span style="font size: 115%;">Lemmy: A Unix vi for Windows 95 and NT</span></a></strong><br>
+Lemmy <a href="gif/lemmy20.gif">[V2.0 SCREEN SHOT 15K GIF]</a>is a
+rather interesting twist on the vi theme. It is a vi editor with
+a windows interface for <a href="gif/lemmy3.gif">Win 95 &amp; NT [V3
+SCREEN SHOT 10K GIF]</a> (and until recently, Win32s--couldn't
+find that version last time I looked). Custom (fixed-pitch)
+fonts, unlimited undo/redo, user-definable &amp; extendable syntax
+highlighting, and the obligatory Windows-style pull down menus
+are available, among other features. This is another vi clone
+that has seen lots of improvement in the past year. The author
+is <a href="http://www.drizzle.com/~james/">James Iuliano</a>, 
+who keeps some lemmy information and tips at his
+home page. Lemmy v3.0, however, is now being marketed by Software
+Online, Ltd. and a single-user license, which removes nags and
+affords free upgrades, costs $20 (other licenses available).
+<a href="http://www.softwareonline.org/lemmy40.html">Lemmy v4.0(Beta)</a>
+is now available (4/99).
+
+<p>
+<strong><a href="http://www.snafu.de/~ramo/WinViEn.htm">
+<span style="font size: 115%;">>WinVi for Win95/NT and Win 3.1</span></a>
+</strong><br>
+WinVi <a href="gif/winvi263.jpg">[V2.63 on Win95 SCREEN SHOT 60K
+JPG]</a> is a <strong>free</strong> Windows vi clone that was designed
+to be compatible with the Windows Notepad editor. It offers such
+features as fast startup (does not use DLLs), can edit files as large as
+virtual memory, background may be set to a bitmap image, and selectable
+(including True Type) fonts. This editor is still in the relatively
+early stages of development and does lack true vi compatibility. For
+example, macros &amp; abbreviations are not available currently. Also, only
+one active file can be edited for each instance of WinVi running. Still,
+this is another interesting adaptation of vi to the Windows environment
+and one to watch as it improves. Versions are available for 16-bit and
+32-bit Windows.
+
+<p>
+<strong><a href="http://home.att.net/~leeperd/ohvimain.html">
+ <span style="font size: 115%;">Oak Hill Vi</span></a></strong><br>
+Oak Hill vi is a shareware vi that is available in DOS and Win95/NT
+32-bit console versions. It costs $35 to register, which gains the
+user free upgrades, no more nags, &amp; user support via e-mail. This
+program, in its Win32 console version, can edit very large files (DOS
+version is limited to 250,000 characters). Other features include 8-bit
+ASCII support, 43/50 line display, and on-line help.
+
+<p>
+<strong><a href="http://sunsite.unc.edu/pub/Linux/apps/editors/vi/">
+<span style="font size: 115%;">xvi v2.19</span></a></strong><br>
+According to its authors: "Xvi <a href="gif/xvi219.gif">[SCREEN SHOT
+8K GIF]</A>is a portable <strong>free</strong> multi-window version of
+`vi'. In spite of its name, there is, as yet, no X-Windows-specific
+version of it, but work is reputedly still in progress. Existing
+versions use text windows separated by horizontal status lines
+on character mode displays. The windows may represent different
+files being edited, or different views on to the same file." 
+Here is a local copy of the source for xvi 2.19: 
+<a href="xvi219.tgz">xvi219.tgz</a>.
+
+<P>The <a href="ftp://ftp.uu.net/pub/text-processing/vi/programs">source 
+code for xvi <strong>2.15</strong></a>, as well as binaries for MS-DOS,
+are also available from the vi archive. Xvi was actually my first vi
+clone experience. It hooked me with its multiple windows and ability
+to cut and paste between windows. Unfortunately, xvi had a number of
+incompatibilities with "true" vi, so I moved on to other clones, and of
+course, "true" vi. Anyway, xvi is still a very serviceable editor with some
+handy features, including a small memory usage and multiple buffers.
+
+<p>
+<strong><a href="http://www.emi.net/~jjensen/java/javi.html"><span style="font size: 115%;">
+JAVI</span></a></strong><br>
+An implementation of vi in Java.  Can be run as an applet or an application.
+
+<p>
+<strong><A HREF="news:comp.editors">
+<span style="font size: 115%;">comp.editors</span></a></strong><br>
+comp.editors is a Usenet newsgroup devoted to text editors. Although
+this newsgroup is for almost any kind of editor for any system, much
+discussion of vi takes place here:  How do I do task Y in vi? Where can
+I find...? What's wrong with my macro? and other topics, including the
+perennial vi vs. emacs editor wars.
+
+<p>
+<span style="font size: 115%;">[The screen shots above, with the exception
+of the Lemmy and WinVi screen shots (which were grabbed while running
+Windows 3.1 or Win 95), were grabbed while each application was running under
+<a href="http://www.xfree86.org/">XFree86</a> and the 
+<a href="http://www.terraware.net/ftp/pub/Mirrors/FVWM95/fvwm95.html">FVWM-95</a> 
+window manager. Elvis, and xvile obviously have been set to
+similar color schemes in my .Xdefaults file.] </span></blockquote>
+
+<span style="font size: 115%;">
+<strong>~<br>
+~<br>
+~<br>
+~<br>
+"vi.html" 409 lines, 19975 characters 
+</strong><br></span>
+&nbsp;
+<a href="http://www.darryl.com/vi.html"><img src="/personal-tech/gif/vipower2.gif" alt="This Site
+ is vi Powered"></a>
+<hr style="width=100%; height 2px; border: none;">
+
+<span style="font size: 115%;">
+<a href="index.html"><img src="/personal-tech/gif/arrwback.gif" alt=""> Back to Kent's Home Page</a><br>
+</span>
+
+<span style="font size: 80%;">
+Last modified: Thu Jul 17 19:55:35 EDT 2025
+<!--Sun Apr 25 10:27:09 EDT 1999-->
+</span>
+</blockquote>
+</body>
+</html>
+@

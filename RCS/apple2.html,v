@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	knassen:1.2; strict;
+	knassen:1.3; strict;
 comment	@# @;
 
+
+1.3
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2025.07.04.12.49.56;	author knassen;	state Exp;
@@ -21,36 +26,138 @@ desc
 @@
 
 
-1.2
+1.3
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
+@<!DOCTYPE HTML> 
+<html>
 
-<HEAD>
-<BASE HREF="http://192.168.50.172/~knassen/umich/html/apple2.html">
-<META name="description" content="Apple II Sites">
-<TITLE>Apple II Sites and Information</TITLE>
-</HEAD>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base href="/personal-tech/">
+    <meta name="description" content="Apple II Sites">
+    <title>Apple II Sites and Information</title>
+</head>
 
-<BODY BACKGROUND="gif/canvas.jpg">
-<BR>
-<BLOCKQUOTE>
+<body>
+<br>
+<blockquote>
 
-<H2>Apple II Sites and Information</H2>
+<h2>Apple II Sites and Information</h2>
 
 In honor of my very first personal computer, an Apple ][e, here are
 links to some of the many Apple II sites out there on the web. In my
 current personal Apple ][ hardware collection are a ROM3 IIgs, a ROM1
 IIgs, and Apple //c+, three Apple //e's, an Apple //c, a good ol' Apple
-II+, and a cool-looking Darth Vader (black, Bell & Howell) II, all of
+II+, and a cool-looking Darth Vader (black, Bell &amp; Howell) II, all of
 which I still play around on once in a while. The other day I found my
-<U>Assembly Lines: The Book</U> book...does that ever bring back the
-memories...wonder what I did with my <U>Red Book</U>? Oh, here it is...
+<u>Assembly Lines: The Book</u> book...does that ever bring back the
+memories...wonder what I did with my <u>Red Book</u>? Oh, here it is...
 they sure don't build and document computers like this any more.
 
+<hr style="width=100%; height 2px; border: none;">
+<ul>
+<li><a href="gopher://gopher.archive.merit.edu:7055/11/apple2">Gopher to Umich Apple2 Archive [bad link]</a>
+<br>Also reachable via AFS (/afs/umich.edu/group/itd/archive/apple2) and
+FTP (<a href="ftp://apple2.archive.umich.edu">apple2.archive.umich.edu</a>).
+Has programs and information for both 8-bit and 16-bit Apples, as
+well as Apple Technotes.</li>
+
+<li><a href="ftp://apple2.caltech.edu/pub/apple2">FTP to apple2.caltech.edu Apple2 Archive (Babylon) [bad link]</a>
+<br>Home of the Caltech Apple II Archive.  Programs for 8-bit Apples
+and the IIgs, source code for Apple2 utility programs, demos,
+emulators, games, information, and more.</li>
+
+<li><a href="ftp://ground.icaen.uiowa.edu/">FTP to ground.icaen.uiowa.edu Apple2 Archive [bad link]</a>
+<br>People from all over the net donated money to purchase a 1.7 gig hard
+drive that now houses the ground Apple archive. A2 Genie Lamps, nulib v3.25, 
+Apple II Technical Notes, emulators, Beagle Oldies, games, graphics, languages,
+Eamon modules, etc.  Supports 8-bit and 16-bit Apples.</li>
+
+<li><a href="http://www.visi.com/~nathan/">Nathan Mates's (A2) Home Page [bad link]</a>
+<br>Well, this great Apple II resource is now gone...the only thing here now
+is Nathan's list of reasons why he's leaving the A2 community.
+</li>
+
+<!--li><a href="http://io.org/computers/apple2/">Brian Tao's Apple II Page</a> <strong>File not found, 12/30/97.</strong>
+<br>Currently an Apple II web site that is looking for a home!</LI -->
+
+<li><a href="ftp://ftp.uu.net/systems/apple2">FTP to ftp.uu.net /systems/apple2 [bad link]</a>
+<br>A mirror of the Umich Apple II Archive.</li>
+
+<li><a href="http://www.cis.ohio-state.edu/hypertext/faq/usenet/apple2/top.html">Apple2 comp.sys.apple2 FAQ [bad link]</a>
+<br>The CSA2 FAQ, plus FAQs for accelerators, Applesoft BASIC, CD-ROMs,
+Flopticals, and Sound &amp; Music.</li>
+
+<li><a href="http://geta.life.uiuc.edu/~badger/apple2.html">Apple II Emulation Page [bad link]</a>
+<br>Claims to have tested emulators, selected the best, most usable ones
+and made them available at this site.  (Which appears to be true).</li>
+
+<li><a href="https://www.zophar.net/apple2.html">Apple II Emulators (Zophar's Domain)</a>
+<br>A list of Apple II emulators with links to further information.</li>
+
+<li><a href="hptt://www.duke-net.com/apple/main.shtml">Chris, Mark and Terry's Apple II Page [bad link]</a>
+<br>Boot up DOS 3.3 and enter Chris, Mark and Terry's Apple II Page.  Much
+historical information about the Apple II and its hacker culture.  Screendumps
+from more the 500 classic Apple II games and a list of Apple ProDOS commands.
+And other stuff like more links to the Apple newsgroups, etc.</li>
+
+<li><a href="hptt://www.hypermall.com/History/ ">Apple ][ History [bad link]</a>
+<br>Covers all Apple ][ models (what was and what might have been) as
+well as programming languages, disk operating systems, software, and
+magazines, among other Apple ][ historical topics.</li>
+</ul>
+
+<hr style="width=100%; height 2px; border: none;">
+<img src="/personal-tech/gif/a2powered.gif" alt="Powered by Apple ]["><br>
+<a href="links.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Links</a><br>
+
+<span style="font size: 80%;">
+Last modified: Fri Jul 18 21:22:29 EDT 2025
+<!--Mon Feb  1 22:32:21 EST 1999-->
+
+</span>
+</blockquote>
+</body>
+</html>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d1 2
+a2 2
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+d4 6
+a9 5
+<HEAD>
+<BASE HREF="http://192.168.50.172/~knassen/umich/html/apple2.html">
+<META name="description" content="Apple II Sites">
+<TITLE>Apple II Sites and Information</TITLE>
+</HEAD>
+d11 3
+a13 3
+<BODY BACKGROUND="gif/canvas.jpg">
+<BR>
+<BLOCKQUOTE>
+d15 1
+a15 1
+<H2>Apple II Sites and Information</H2>
+d21 1
+a21 1
+II+, and a cool-looking Darth Vader (black, Bell & Howell) II, all of
+d23 2
+a24 2
+<U>Assembly Lines: The Book</U> book...does that ever bring back the
+memories...wonder what I did with my <U>Red Book</U>? Oh, here it is...
+d27 5
+a31 13
 <P>
 If anyone has a SCSI card for an Apple II (Apple High Speed or RamFast) 
 for sale, let me know, I might be interested (I'm looking to attach a
@@ -64,51 +171,65 @@ address]
 <LI><A HREF="gopher://gopher.archive.merit.edu:7055/11/apple2">Gopher to Umich Apple2 Archive</A>
 <BR>Also reachable via AFS (/afs/umich.edu/group/itd/archive/apple2) and
 FTP (<A HREF="ftp://apple2.archive.umich.edu">apple2.archive.umich.edu</A>).
-Has programs and information for both 8-bit and 16-bit Apples, as
+d33 1
+a33 1
 well as Apple Technotes.</LI>
-
+d35 2
+a36 2
 <LI><A HREF="ftp://apple2.caltech.edu/pub/apple2">FTP to apple2.caltech.edu Apple2 Archive (Babylon)</A>
 <BR>Home of the Caltech Apple II Archive.  Programs for 8-bit Apples
-and the IIgs, source code for Apple2 utility programs, demos,
+d38 1
+a38 1
 emulators, games, information, and more.</LI>
-
+d40 2
+a41 2
 <LI><A HREF="ftp://ground.icaen.uiowa.edu/">FTP to ground.icaen.uiowa.edu Apple2 Archive</A>
 <BR>People from all over the net donated money to purchase a 1.7 gig hard
-drive that now houses the ground Apple archive. A2 Genie Lamps, nulib v3.25, 
-Apple II Technical Notes, emulators, Beagle Oldies, games, graphics, languages,
+d44 1
+a44 1
 Eamon modules, etc.  Supports 8-bit and 16-bit Apples.</LI>
-
+d46 2
+a47 2
 <LI><A HREF="http://www.visi.com/~nathan/">Nathan Mates's (A2) Home Page</A>
 <BR>Well, this great Apple II resource is now gone...the only thing here now
-is Nathan's list of reasons why he's leaving the A2 community.
+d49 1
+a49 1
 </LI>
-
+d51 2
+a52 2
 <!--LI><A HREF="http://io.org/computers/apple2/">Brian Tao's Apple II Page</A> <STRONG>File not found, 12/30/97.</STRONG>
 <BR>Currently an Apple II web site that is looking for a home!</LI -->
-
+d54 2
+a55 2
 <LI><A HREF="ftp://ftp.uu.net/systems/apple2">FTP to ftp.uu.net /systems/apple2</A>
 <BR>A mirror of the Umich Apple II Archive.
-
+d57 3
+a59 3
 <LI><A HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/apple2/top.html">Apple2 comp.sys.apple2 FAQ</A>
 <BR>The CSA2 FAQ, plus FAQs for accelerators, Applesoft BASIC, CD-ROMs,
 Flopticals, and Sound & Music.</LI>
-
+d61 3
+a63 3
 <LI><A HREF="http://geta.life.uiuc.edu/~badger/apple2.html">Apple II Emulation Page</A>
 <BR>Claims to have tested emulators, selected the best, most usable ones
 and made them available at this site.  (Which appears to be true).
-
+d65 5
+a69 2
 <LI><A HREF="http://www.duke-net.com/apple/main.shtml">Chris, Mark and Terry's Apple II Page</A>
 <BR>Boot up DOS 3.3 and enter Chris, Mark and Terry's Apple II Page.  Much
-historical information about the Apple II and its hacker culture.  Screendumps
-from more the 500 classic Apple II games and a list of Apple ProDOS commands.
+d72 1
+a72 1
 And other stuff like more links to the Apple newsgroups, etc.</LI>
-
+d74 2
+a75 2
 <LI><A HREF="http://www.hypermall.com/History/">Apple ][ History</A>
 <BR>Covers all Apple ][ models (what was and what might have been) as
-well as programming languages, disk operating systems, software, and
+d77 2
+a78 2
 magazines, among other Apple ][ historical topics.</LI>
 </UL>
-
+d80 12
+a91 9
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <IMG SRC="gif/a2powered.gif" ALIGN=RIGHT ALT="Powered by Apple ]["><BR CLEAR=LEFT>
 <A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Links</A><BR>

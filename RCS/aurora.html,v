@@ -1,10 +1,15 @@
-head	1.6;
+head	1.7;
 access;
 symbols;
 locks
-	knassen:1.6; strict;
+	knassen:1.7; strict;
 comment	@# @;
 
+
+1.7
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.6;
 
 1.6
 date	2025.07.04.17.50.48;	author knassen;	state Exp;
@@ -41,55 +46,55 @@ desc
 @@
 
 
-1.6
+1.7
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
+@<!DOCTYPE HTML> 
+<html>
 
-<HEAD>
-   <META name="editor" content="The Aurora Text Editor">
-   <META name="description" content="Kent Nassen's Aurora Text Editor Pages">
-   <META name="keywords" content="editor, Aurora editor, Aurora text editor, nuText, nText, macros, column-editing, fast, programmable, DOS, win32, win95, winNT, Aurora/32 Aurora/DOS">
-   <BASE HREF="http://192.168.50.172/~knassen/umich/html/aurora.html">
-   <TITLE>The Aurora Text Editor</TITLE>
-</HEAD>
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="editor" content="The Aurora Text Editor">
+   <meta name="description" content="Kent Nassen's Aurora Text Editor Pages">
+   <meta name="keywords" content="editor, Aurora editor, Aurora text editor, nuText, nText, macros, column-editing, fast, programmable, DOS, win32, win95, winNT, Aurora/32 Aurora/DOS">
+   <base href="/personal-tech/">
+   <title>The Aurora Text Editor</title>
+</head>
 
-<BODY BACKGROUND="gif/canvas.jpg">
-<A NAME="Top">&nbsp;</A>
+<body>
 
-<BR>
-<BLOCKQUOTE>
-<P><A HREF="gif/aur2b.gif"><IMG SRC="gif/aur4qtr.gif" ALT="Full size screenshot 20K gif" ALIGN=BOTTOM BORDER=0 WIDTH=160 HEIGHT=100></A>
-<IMG SRC="gif/aur_titl.gif" ALT="" HEIGHT=41 WIDTH=276 BORDER=0>
+<br>
+<blockquote>
+<p><a href="gif/aur2b.gif"><img src="gif/aur4qtr.gif" alt="Full size screenshot 20K gif"></a>
+<img src="gif/aur_titl.gif" alt="">
 
-<P><STRONG>NOTE: these pages are very old and Aurora is no longer
+<p><strong>NOTE: these pages are very old and Aurora is no longer
 supported. The ntext web site is now (in 2025) questionable (has a
-self-signed certificate.)</STRONG>
+self-signed certificate.)</strong>
 
-<HR>
-<P><STRONG>Please note that the Aurora Text Editor is no longer sold and
-no longer supported</STRONG> by its author/owner (NText). The shareware
+<hr>
+<p><strong>Please note that the Aurora Text Editor is no longer sold and
+no longer supported</strong> by its author/owner (NText). The shareware
 version of the editor is still available at several shareware archive
 sites and at this site (both the last DOS release for 8086 and 80386+
 processors and the Win32 console mode beta version). You can still use
 the program and below you will find a way to register Aurora32 (provided
 by Aurora's creator), the Win32 command mode version of Aurora, which
-still runs, even on XP and Vista. <STRONG>What you find here are my own personal
+still runs, even on XP and Vista. <strong>What you find here are my own personal
 experiences and opinions as a registered user of this software. My
 ability to help assumes I have the time and the necessary knowledge
-(which I no longer do). --KN</STRONG>
+(which I no longer do). --KN</strong>
 
-<HR>
-<STRONG>DosBox 0.72+ will run Aurora 3.0 (DOS) quite nicely on *nix
-systems.</STRONG> See <A HREF="https://www.dosbox.com">the DosBox web
-site</A> where you can find versions of DosBox for Windows, Mac OS-X,
+<hr>
+<strong>DosBox 0.72+ will run Aurora 3.0 (DOS) quite nicely on *nix
+systems.</strong> See <a href="https://www.dosbox.com">the DosBox web
+site</a> where you can find versions of DosBox for Windows, Mac OS-X,
 several Linux distributions, FreeBSD, OS/2, and several other operating
 systems. Also there are some tools and language add-ons there.
 
-<P>A couple of things to note: one is that DosBox limits you to 63Mb of
+<p>A couple of things to note: one is that DosBox limits you to 63Mb of
 memory, so this would constrain the size of file you can edit. Another
 is that you are emulating DOS, so depending on the speed of your
 computer, the performance may not be fantastic. But, it is one way to
@@ -97,40 +102,40 @@ enjoy Aurora in a *nix environment. (Aurora 32 will not run on a DOS
 system, emulated or otherwise. For running Aurora 32 on *nix consider
 running it in Wine.).  KN 05/17/2008
 
-<HR>
-<P><STRONG>Here's a tip someone sent for registering Aurora, which seems to work
-    for any version of Aurora (old or new).</STRONG>
-<UL>
-<LI>Either in the Macro pull-down menu pick "Macro Expression" or if
+<hr>
+<p><strong>Here's a tip someone sent for registering Aurora, which seems to work
+    for any version of Aurora (old or new).</strong>
+<ul>
+<li>Either in the Macro pull-down menu pick "Macro Expression" or if
 you have not changed the default key map to something else hit Alt-F12
 to get the Macro Expression command line (or however you get to a
 Macro Expression command line, which may be different depending on the
-keyboard mapping scheme you've chosen).
+keyboard mapping scheme you've chosen).</li>
 
-<LI>Enter:
-    <P style="margin-left: 40px">xE "Your Name"</P>
+<li>Enter:
+    <p style="margin-left: 40px">xE "Your Name"</P>
 where Your Name is the name you want to use to register and hit return.
-Note that your name must be in quotes. xE is a macro in the default Aurora library and not something you need to create, obtain, or modify.
-<LI>Exit Aurora and start it back up. Your name should be registered. </LI>
-</UL>
-<P>This is quite interesting because it does not require any tools to implement other than Aurora itself.
+Note that your name must be in quotes. xE is a macro in the default Aurora library and not something you need to create, obtain, or modify.</li>
+<li>Exit Aurora and start it back up. Your name should be registered. </li>
+</ul>
+<p>This is quite interesting because it does not require any tools to implement other than Aurora itself.
 KN 05/10/2008
 
-<HR>
-<P><STRONG>Jeff has kindly sent a way to run a registered version of Aurora32.</STRONG>
-<P>Here is the pertinent information:
+<hr>
+<p><strong>Jeff has kindly sent a way to run a registered version of Aurora32.</strong>
+<p>Here is the pertinent information:
 
-<P>"...the .bat file command I use to register is:
-<BR>ac -reg "Jeff Wunderlich" "xujcwpkgzngqmqn" 1
-<BR>Feel free to share it with anyone on the net."
+<p>"...the .bat file command I use to register is:
+<br>ac -reg "Jeff Wunderlich" "xujcwpkgzngqmqn" 1
+<br>Feel free to share it with anyone on the net."
 
-<P>Also, see <A HREF="http://www.transmuter.org/index.html">http://www.transmuter.org/index.html</A> 
+<p>Also, see <a href="http://www.transmuter.org/index.html">http://www.transmuter.org/index.html</a> 
 which is about a programming language called Trans that Jeff is developing for x86 Linux
 and x86 Win32.
 
-<P><STRONG>Thank you Jeff! --KN 09/07/06</STRONG>
+<p><strong>Thank you Jeff! --KN 09/07/06</strong>
 
-<P>One note from a user who tried the above: if you can't get the
+<p>One note from a user who tried the above: if you can't get the
 registration to work, try running the batch file in Win98 compatibility
 mode. I used a batch file (.bat) with a name different from ac.bat and
 the contents above, in the same directory as ac.exe. Running that batch
@@ -138,23 +143,23 @@ file under Win XP SP2 successfully registered Aurora32 for me, without
 using compatibility mode. Running the "ac -reg" command from the command
 line did not work for me. Your mileage may vary. KN, 10/07/07
 
-<HR>
-<P><STRONG>Should Aurora be Open Source?</STRONG>
-<P><STRONG>NOTE: Jeff has decided he will not release Aurora code as open source,
-    so this effort is no longer viable.</STRONG> --KN 02/24/03
+<hr>
+<p><strong>Should Aurora be Open Source?</strong>
+<p><strong>NOTE: Jeff has decided he will not release Aurora code as open source,
+    so this effort is no longer viable.</strong> --KN 02/24/03
 
-<P><A HREF="aurora/opensource.html">A plea</A> to Jeff to release Aurora as open source software.
+<p><a href="aurora/opensource.html">A plea</a> to Jeff to release Aurora as open source software.
 
 <P>There remains significant interest in the Aurora user community for
-continuing the development of the Aurora editor. <DEL>If you would like to be
+continuing the development of the Aurora editor. <del>If you would like to be
 involved in petitioning the author for open-source status, working on
 the development of Aurora if it ever does become open-source software,
 or voice your support for this initiative, please let me know (use a
 subject line beginning with "[AURORA]"). Send to knassen location umich
-an edu institution--KN 12/14/01</DEL>>
+an edu institution--KN 12/14/01</del>>
 
-<HR>
-<H2><STRONG>The Aurora Text Editor</STRONG></H2>
+<hr>
+<h2><strong>The Aurora Text Editor</strong></h2>
 The Aurora Text Editor is a fast, feature-packed, highly-programmable
 shareware full-screen folding text editor for DOS &amp; Win32 console
 mode. It offers an extensive macro programming language which can be
@@ -162,7 +167,7 @@ used to change the character of almost every aspect of the editor,
 including customized pull-down menus and keyboard emulations of other
 editors, as well as the ability to automate almost any editing task you
 can imagine. Many macro examples are included with the editor.
-<P>
+<p>
 Aurora takes advantage of available memory, including disk virtual
 memory, to load and edit files as large as one gigabyte in the DOS
 version and 4 gigs in the Win32 console mode version. Aurora can use
@@ -170,42 +175,266 @@ regular expressions to search and replace, which is a nice feature
 if you hop back and forth between DOS and Unix. This editor also has
 column-block operations, unlimited undo/redo, and syntax highlighting.
 Aurora/DOS runs fine in a Windoze 3.1 or Win95 DOS window.
-<P>
+<p>
 I have tried quite a few DOS and Windoze editors in the past ten years,
 and occasionally still do, but I've never found an editor that is as
 versatile, customizable, and fun to use as Aurora at such a reasonable
-price. See the NText Systems <A HREF="aurora/features.html">feature
-list</A> for further specifics on the DOS version. Check out the rest of
+price. See the NText Systems <a href="aurora/features.html">feature
+list</a> for further specifics on the DOS version. Check out the rest of
 this Aurora site, too!  --Kent Nassen
 
+<p>
+<span style="font size: 115%;"><strong>What's (Sorta) New:</strong></span><br>
+Aurora as Open Source: I've heard from one of the members of the Aurora
+community that Jeff has decided he will not release the Aurora code as
+open-source. [kn, Feb 24, 2003].
+
+<p>Aurora32 on Unix: Verrrry interesting...Aurora32 can be run using Wine
+(well, wineconsole) and the File Manager then seems to work okay (no
+crashing). I have a relatively old version of Wine, even (20020804), but
+it worked. This was on FreeBSD 4.7-STABLE. [kn, Jan 18, 2003]
+
+<p>Aurora32 More Notes about Win2K: In reviewing the Aurora mail list
+archives from 1997, someone mentioned the fmgr option for the Window
+Style 1 setup in the configuration menu causes a crash if selected. So,
+this File Manager crash apparently has been there from the start and is
+not related specifically or entirely to Win2K [kn, Jan 13, 2003].
+Aurora32 Notes about Win2K: While I have been able to run Aurora32 under
+Win2K, you can cause a repeatable crash, in my experience, by using the
+File Manager to load files. Invoking the File Manager from the "File"
+pull down menu or starting the editor with the File Manager on the
+opening screen will lead to a crash when a file is selected. Avoid the
+File Manager and you stand a chance of editing. Aurora32 was programmed
+to run under previous versions of Win32 and in my opinion needs to be
+updated to deal with known Aurora32 bugs and whatever compatibility
+issues have been introduced in Win2K vs prior OS releases. I was able
+to edit files once they were loaded via the "File|Open" menu using an
+explicit path and filename. Another way I was able to load and edit
+files is to use the "Tree" macro to navigate to the file. Tree can be
+found either in the Macro List or in the File pull-down menu. Although
+Tree looks a lot like the file manager when running and probably uses
+many of the same functions, it does load the file(s) for me instead of
+crashing. I have commented out the "File Manager" item in the File menu
+(see menu.aml) so that I am not tempted to select it and I have Aurora32
+open to a new file instead of a File Manager window. The DOS version of
+Aurora appears to run well under Win2K, so that is an alternative (but
+it limits your window size). [kn, Jan 11-17, 2003].
+
+<p>Moved log-type messages about this site to a <a href="aurora/aurora-log.html">separate page</a> [12/22/01].
+
+<p>Local links to the three Aurora v3.0+ distributions (386+ DOS, 8086 DOS,
+and Win32 console) have been provided [12/22/01].
+
+<strong>New Macros Added:</strong>
+<a href="aurora/mydearc.zip" download>
+mydearc.zip</A>, <A HREF="aurora/mycomp.zip" download>mycomp.zip</a>,
+<a href="aurora/mytags.zip" download>mytags.zip</a>, and 
+<a href="aurora/smartref.aml" download>smartref.aml</a>
+[February 9, 1999].
+
+<P>
+<strong>SAS Syntax Highlighting</strong> file 
+(<a href="aurora/xsas.aml" download>xsas.aml</a>) added [September 1998].
+
+<p>
+<strong>Updated</strong> version of the <a href="aurora/exasm.zip" download>exasm.zip</a>
+assembler syntax highlighting object for NASM and other assembler 
+code added [July 1998].
+
+<p>
+<strong>Aurora/32 Beta <A HREF="gif/AURCON2.gif">(screenshot: 60K GIF)</a>
+is Available!</strong> A Win32 (Win95/NT) console mode version of the
+Aurora Editor is available for public beta testing and can be found at
+<strong><a href="http://bad.ntext.net">ntext.net [broken link]</a></strong>. NOTE: this is
+a beta test version.  [December 22, 1997]. A
+full Windows version is planned to be released later, according to
+Aurora's author [Oct 20, 1997].  
+
+<p>
+<span style="font size: 115%;"><strong>More Aurora Information:</strong></span><br>
+[<strong><a href="ascreen.html">Screen Shots</a></strong>]
+[<strong><a href="ainfo.html#download">Download Info</a></strong>]
+[<strong><a href="amacs.html">Aurora Macros</a></strong>]
+[<strong><a href="ainfo.html#mail">Mail List</a></strong>]
+[<strong><a href="ainfo.html#archive">Mail List Archive</a></strong>]
+[<strong><a href="ainfo.html#links">Aurora Links</a></strong>]
+
+<hr style="width=100%; height 2px; border: none;">
+<span style="font size: 80%;">
+Obligatory Disclaimer:<br>
+I am a satisfied registered user of this software and am in no other way
+connected with NuText Systems, nText Research, the Aurora Editor, or 
+its author.  Unless stated otherwise, the opinions expressed here are
+mine alone.<br>
+<a href="mailto:knassen@@NOWAYAMSPAYumich.edu">--Kent Nassen</a>
+</span>
+<hr style="width=100%; height 2px; border: none;">
+
+<span style="font size: 80%;">
+    Last modified: Thu Jul 17 23:16:17 EDT 2025
+</span>
+
+<span style="font size: 130%;">
+<a href="index.html"><img src="/personal-tech/gif/arrwback.gif" alt=""> To Kent's Home Page</a><br>
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d1 2
+a2 2
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+d4 8
+a11 7
+<HEAD>
+   <META name="editor" content="The Aurora Text Editor">
+   <META name="description" content="Kent Nassen's Aurora Text Editor Pages">
+   <META name="keywords" content="editor, Aurora editor, Aurora text editor, nuText, nText, macros, column-editing, fast, programmable, DOS, win32, win95, winNT, Aurora/32 Aurora/DOS">
+   <BASE HREF="http://192.168.50.172/~knassen/umich/html/aurora.html">
+   <TITLE>The Aurora Text Editor</TITLE>
+</HEAD>
+d13 1
+a13 2
+<BODY BACKGROUND="gif/canvas.jpg">
+<A NAME="Top">&nbsp;</A>
+d15 4
+a18 4
+<BR>
+<BLOCKQUOTE>
+<P><A HREF="gif/aur2b.gif"><IMG SRC="gif/aur4qtr.gif" ALT="Full size screenshot 20K gif" ALIGN=BOTTOM BORDER=0 WIDTH=160 HEIGHT=100></A>
+<IMG SRC="gif/aur_titl.gif" ALT="" HEIGHT=41 WIDTH=276 BORDER=0>
+d20 1
+a20 1
+<P><STRONG>NOTE: these pages are very old and Aurora is no longer
+d22 1
+a22 1
+self-signed certificate.)</STRONG>
+d24 3
+a26 3
+<HR>
+<P><STRONG>Please note that the Aurora Text Editor is no longer sold and
+no longer supported</STRONG> by its author/owner (NText). The shareware
+d32 1
+a32 1
+still runs, even on XP and Vista. <STRONG>What you find here are my own personal
+d35 1
+a35 1
+(which I no longer do). --KN</STRONG>
+d37 4
+a40 4
+<HR>
+<STRONG>DosBox 0.72+ will run Aurora 3.0 (DOS) quite nicely on *nix
+systems.</STRONG> See <A HREF="https://www.dosbox.com">the DosBox web
+site</A> where you can find versions of DosBox for Windows, Mac OS-X,
+d44 1
+a44 1
+<P>A couple of things to note: one is that DosBox limits you to 63Mb of
+d52 5
+a56 5
+<HR>
+<P><STRONG>Here's a tip someone sent for registering Aurora, which seems to work
+    for any version of Aurora (old or new).</STRONG>
+<UL>
+<LI>Either in the Macro pull-down menu pick "Macro Expression" or if
+d60 1
+a60 1
+keyboard mapping scheme you've chosen).
+d62 2
+a63 2
+<LI>Enter:
+    <P style="margin-left: 40px">xE "Your Name"</P>
+d65 4
+a68 4
+Note that your name must be in quotes. xE is a macro in the default Aurora library and not something you need to create, obtain, or modify.
+<LI>Exit Aurora and start it back up. Your name should be registered. </LI>
+</UL>
+<P>This is quite interesting because it does not require any tools to implement other than Aurora itself.
+d71 3
+a73 3
+<HR>
+<P><STRONG>Jeff has kindly sent a way to run a registered version of Aurora32.</STRONG>
+<P>Here is the pertinent information:
+d75 3
+a77 3
+<P>"...the .bat file command I use to register is:
+<BR>ac -reg "Jeff Wunderlich" "xujcwpkgzngqmqn" 1
+<BR>Feel free to share it with anyone on the net."
+d79 1
+a79 1
+<P>Also, see <A HREF="http://www.transmuter.org/index.html">http://www.transmuter.org/index.html</A> 
+d83 1
+a83 1
+<P><STRONG>Thank you Jeff! --KN 09/07/06</STRONG>
+d85 1
+a85 1
+<P>One note from a user who tried the above: if you can't get the
+d93 4
+a96 4
+<HR>
+<P><STRONG>Should Aurora be Open Source?</STRONG>
+<P><STRONG>NOTE: Jeff has decided he will not release Aurora code as open source,
+    so this effort is no longer viable.</STRONG> --KN 02/24/03
+d98 1
+a98 1
+<P><A HREF="aurora/opensource.html">A plea</A> to Jeff to release Aurora as open source software.
+d101 1
+a101 1
+continuing the development of the Aurora editor. <DEL>If you would like to be
+d106 1
+a106 1
+an edu institution--KN 12/14/01</DEL>>
+d108 2
+a109 2
+<HR>
+<H2><STRONG>The Aurora Text Editor</STRONG></H2>
+d117 1
+a117 1
+<P>
+d125 1
+a125 1
+<P>
+d129 2
+a130 2
+price. See the NText Systems <A HREF="aurora/features.html">feature
+list</A> for further specifics on the DOS version. Check out the rest of
+d133 5
+a137 2
 <P>
 <FONT SIZE="+1"><STRONG>What's New:</STRONG></FONT><BR>
-
+d139 41
+a179 5
 <STRONG>New Macros Added:</STRONG>
 <A HREF="aurora/mydearc.zip">
 mydearc.zip</A>, <A HREF="aurora/mycomp.zip">mycomp.zip</A>,
 <A HREF="aurora/mytags.zip">mytags.zip</A>, and 
 <A HREF="aurora/smartref.aml">smartref.aml</A>
-[February 9, 1999].
-
-<P>
+d183 2
+a184 2
 <STRONG>SAS Syntax Highlighting</STRONG> file 
 (<A HREF="aurora/xsas.aml">xsas.aml</A>) added [September 1998].
-
+d186 2
+a187 2
 <P>
 <STRONG>Updated</STRONG> version of the <A HREF="aurora/exasm.zip">exasm.zip</A>
-assembler syntax highlighting object for NASM and other assembler 
-code added [July 1998].
-
+d191 3
+a193 3
 <P>
 <STRONG>Aurora/32 Beta <A HREF="gif/AURCON2.gif">(screenshot: 60K GIF)</A>
 is Available!</STRONG> A Win32 (Win95/NT) console mode version of the
-Aurora Editor is available for public beta testing and can be found at
+d195 1
+a195 1
 <STRONG><A HREF="http://bad.ntext.net">ntext.net [broken link]</A></STRONG>. NOTE: this is
-a beta test version.  [December 22, 1997]. A
-full Windows version is planned to be released later, according to
-Aurora's author [Oct 20, 1997].  
-
+d200 8
+a207 8
 <P>
 <FONT SIZE="+1"><STRONG>More Aurora Information:</STRONG></FONT><BR>
 [<STRONG><A HREF="ascreen.html">Screen Shots</A></STRONG>]
@@ -214,18 +443,19 @@ Aurora's author [Oct 20, 1997].
 [<STRONG><A HREF="ainfo.html#mail">Mail List</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#archive">Mail List Archive</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#links">Aurora Links</A></STRONG>]
-
+d209 3
+a211 3
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <FONT SIZE="-1">
 Obligatory Disclaimer:<BR>
-I am a satisfied registered user of this software and am in no other way
-connected with NuText Systems, nText Research, the Aurora Editor, or 
-its author.  Unless stated otherwise, the opinions expressed here are
+d215 4
+a218 4
 mine alone.<BR>
 <A HREF="mailto: knassen@@NOWAYAMSPAYumich.edu (Kent Nassen)">--Kent Nassen</A>
 </FONT>
 <HR SIZE=3 NOSHADE WIDTH="100%">
-
+d220 11
+a230 6
 <FONT SIZE="-1">
 Last modified: Fri Jul  4 13:50:15 EDT 2025
 </FONT>

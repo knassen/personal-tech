@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	knassen:1.2; strict;
+	knassen:1.3; strict;
 comment	@# @;
 
+
+1.3
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2025.07.04.12.49.56;	author knassen;	state Exp;
@@ -21,21 +26,84 @@ desc
 @@
 
 
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+    <base href="/personal-tech/">
+    <title>Software Archive Sites</title>
+</head>
+
+<body> 
+
+<br>
+<blockquote>
+<h2>Software Archive Sites</h2>
+<hr style="width=100%; height 2px; border: none;">
+<p>&nbsp;</p>
+<ul>
+<li><a href="http://www.umich.edu/~archive/apple2">UMich Apple ][ Archive</a></li>
+<li><a href="http://www.umich.edu/~archive/mac">UMich Mac Archive</a></li>
+</ul>
+<hr style="width=100%; height 2px; border: none;">
+<ul>
+    <!-- LI><A HREF="http://sunsite.unc.edu/">SunSITE</A -->
+    <li><a href="http://metalab.unc.edu/metalab.shtml">MetaLab: the Site Formerly Known as SunSITE [bad link]</a>
+    <br>Software Archives for Linux, X11, GNU, &amp; much more</li>
+    <li><A HREF="http://www.simtel.net/simtel.net/">Keith Petersen's SimTel (WWW Main Site) [bad link]</A>
+    <br>MS-DOS, Windows 3.x, and Win95 shareware &amp; freeware</LI>
+    <li><A HREF="ftp://oak.oakland.edu/pub/simtelnet/">SimTel Archives (Oakland.edu FTP Mirror) [bad link]</A></LI>
+    <li><A HREF="ftp://oak.oakland.edu/pub/simtelnet/gnu/djgpp/">DJGPP Archive at Simtelnet [bad link]</A></LI>
+    <!--LI><A HREF="http://ftp.coast.net/Coast/">Coast to Coast Software Repository</A></LI -->
+    <li><A HREF="ftp://prep.ai.mit.edu/">MIT GNU Site (prep.ai.mit.edu) [bad link]</A></LI>
+    <li><A HREF="http://www.umich.edu/~archive/msdos">UMich MS-DOS Archive [bad link]</A></LI>
+    <li><A HREF="http://garbo.uwasa.fi/">Garbo Software Archives (Finland) [bad link]</A>
+    <br>MS-DOS, Windows, Win95, Mac, Sinclair QL, and Unix archives.</LI>
+    <li><A HREF="ftp://ftp.cdrom.com/pub/garbo/">Garbo Archives (US Mirror) [bad link]</A>
+    <br>Just the MS-DOS and Windows archives.</LI>
+    <li><A HREF="http://boole.stanford.edu/nerdsheaven.html">Nerd's Heaven Software Directory Directory [bad link]</A>
+    <br>Let the Irreverend Sally help you find what you need.</LI>
+</ul>
+
+<hr style="width=100%; height 2px; border: none;">
+<a href="links.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Links</a>
+
+<span style="font-size: 80%;">
+Last modified: Thu Apr  8 21:56:55 EDT 1999
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.2
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 2
+a2 2
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
-
+d4 5
+a8 4
 <HEAD>
 <BASE HREF="http://192.168.50.172/~knassen/umich/html/archives.html">
 <TITLE>Software Archive Sites</TITLE>
 </HEAD>
-
+d10 1
+a10 1
 <BODY BACKGROUND="gif/canvas.jpg">
-
+d12 28
+a39 25
 <BR>
 <BLOCKQUOTE>
 <H2>Software Archive Sites</H2>
@@ -61,11 +129,13 @@ text
 <LI><A HREF="http://boole.stanford.edu/nerdsheaven.html">Nerd's Heaven Software Directory Directory</A>
 <BR>Let the Irreverend Sally help you find what you need.</LI>
 </UL>
-
+d41 4
+a44 3
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Links</A>
 <FONT SIZE=-1>
-Last modified: Thu Apr  8 21:56:55 EDT 1999
+d46 5
+a50 4
 </FONT>
 </BLOCKQUOTE>
 </BODY>

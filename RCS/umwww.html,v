@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	knassen:1.2; strict;
+	knassen:1.3; strict;
 comment	@# @;
 
+
+1.3
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2025.07.04.12.49.56;	author knassen;	state Exp;
@@ -21,19 +26,59 @@ desc
 @@
 
 
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base href="/personal-tech/">
+    <title>University of Michigan Sites</title>
+</head>
+<body> 
+
+<br>
+<blockquote>
+<h2>University of Michigan Sites</h2>
+<hr style="width=100%; height 2px; border: none;">
+<ul>
+    <li><a href="http://www.umich.edu/">U of M Home Page</a></li>
+    <li><a href="http://www.lib.umich.edu">U of M Library Home Page</a></li>
+    <li><a href="http://www.css.itd.umich.edu/">U of M Information &amp; Technology Division Web Server [bad link] </a></li>
+    <li><a href="http://www.umich.edu/~jobs/">U of M Job Postings [bad link]</a></li>
+    <li><a href="http://web500gw.itd.umich.edu:8888/H">U of M Phone Book (X.500 Gateway) [bad link]</a></li>
+    <li><a href="http://groundhog.sprl.umich.edu/">U of M Weather Underground (any U.S. city) [bad link]</a></li>
+</ul>
+<hr style="width=100%; height 2px; border: none;">
+<a href="links.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Links</a><br>
+<span style="font size: 80%;">
+Last modified: Fri Jul 18 10:19:36 EDT 2025
+</span>
+</blockquote>
+</body>
+</html>
+@
+
+
 1.2
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 8
+a8 7
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
 <BASE HREF="http://192.168.50.172/~knassen/umich/html/umwww.html">
 <TITLE>University of Michigan Sites</TITLE>
 </HEAD>
 <BODY BACKGROUND="gif/canvas.jpg">
-
+d10 20
+a29 21
 <BR>
 <BLOCKQUOTE>
 <H2>University of Michigan Sites</H2>

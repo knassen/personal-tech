@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	knassen:1.2; strict;
+	knassen:1.3; strict;
 comment	@# @;
 
+
+1.3
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2025.07.03.03.31.12;	author knassen;	state Exp;
@@ -21,29 +26,373 @@ desc
 @@
 
 
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="description" content="Statistics Links">
+    <base href="/personal-tech/statistics.html">
+    <title>Statistical Links</title>
+</head>
+
+<body>
+
+<br>
+<blockquote>
+<h2 id="top">Statistical Links</h2>
+A sample of sources for statistical algorithms, source code, and data.
+From here you should be able to find your way to most of the rest of the
+statistical sites on the web.  Currently, these links are organized into
+the categories <a href="#general">General Statistical Archives</a>,
+<a href="#specific">Specific Statistical Programs</a>,
+<a href="#online">On-Line Statistical Processing</a>, and
+<a href="#guides">Guides and General Information</a>.
+<hr style="width=100%; height 2px; border: none;">
+<strong id="general"></strong><strong>General Statistical Archives</strong>
+<ul style="margin-bottom: 1em;">
+
+<li><a href="http://netlib.bell-labs.com/netlib/">Netlib Home Page [bad link]</a></li>
+
+<li><a href="http://www.netlib.org/">Netlib at U.Tenn &amp; ORNL</a></li>
+
+<li><a href="ftp://elib.zib.de/netlib/master/readme.html.Z">Netlib--Mirror Germany</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/">StatLib Main Index</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/general/">StatLib General Archive</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/general/Utexas/">StatLib UTexas Archive</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/minitab/">StatLib Minitab Macros</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/multi/">StatLib Multivariate Archive</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/apstat/">StatLib apstat--Applied Statistics Archives</a></li>
+
+<li><a href="http://lib.stat.cmu.edu/jasadata/">Statlib JASA Data Archive</a></li>
+
+<li><a href="file://lib.stat.cmu.edu/cmlib/">NIST Core Math Library: CMLib [bad link]</a></li>
+
+<li><a href="http://www.gamma.rug.nl/">The Interuniversity Expertise Center ProGAMMA Social Science Information Technology [bad link]</a></li>
+
+<li><a href="http://stommel.tamu.edu/~baum/ocean_graphics.html">Software for Graphics &amp; Data Analysis [bad link]</a></li>
+</ul>
+[<a href="#top">Top</a>]
+[<a href="#general">Archives</a>]
+[<a href="#specific">Programs</a>]
+[<a href="#online">OnLine Processing</a>]
+[<a href="#guides">Guides</a>]
+<hr style="width=100%; height 2px; border: none;">
+<strong id="specific">Specific Statistical Programs</strong>
+<ul style="margin-bottom: 1em;">
+
+<li><a href="http://www.autobox.com">Autobox Home Page</a>
+<br>Autobox is a product of Automatic Forecasting Systems, Inc. which can be
+used to identify and build Box-Jenkins ARIMA and Transfer function models.
+Models may optionally be selected automatically.  Includes graphical analysis
+tools, automatic intervention detection, and many other features.  
+[for Windows; commercial product]</li>
+
+<li><a href="http://www.stat.umn.edu/~luke/xls/xlsinfo/xlsinfo.html">XlispStat Home Page</a>
+<br>Lisp-Stat is an extensible statistical computing environment for data
+analysis, statistical instruction and research, with an emphasis on
+providing a framework for exploring the use of dynamic graphical
+methods.  XLISP-STAT is a version of Lisp-Stat based on a dialect
+of Lisp called XLISP.</li>
+
+<li><a href="http://lib.stat.cmu.edu/xlispstat/">StatLib Xlispstat</a>
+<br>Boxplot Matrix, Bayesian sensitivity analysis, regression diagnostics
+using dynamic graphics, routines for the interactive, dynamic,
+exploratory analysis of survival data, functions and prototypes for
+fitting generalized linear models, simulate some Markov Chains,
+functions for the spectral analysis of time series, etc.</li>
+
+<li><a href="http://euler.bd.psu.edu/lispstat/lispstat.html">Projects in LispStat</a>
+<br>Links to projects that use LispStat.</li>
+
+<li><a href="http://galen.med.virginia.edu/~sdm7g/XES/Docs/SourceIndex.html">Annotated Source Index (LispStat)</a>
+<br>Modules for Lisp-Stat.</li>
+
+<li><a href="http://forrest.psych.unc.edu/research/ViSta.html">ViSta Visual Statistics System</a>
+<br>"ViSta is designed for an audience of users having a very wide range
+of data analysis sophistication, ranging from novice to expert. ViSta
+provides seamlessly integrated data analysis environments specifically
+tailored to the user's level of expertise."</li>
+
+<li><a href="http://forrest.psych.unc.edu/research/ViSta/doco.html">ViSta Documentation</a></li>
+</ul>
+
+<ul style="margin-bottom: 1em;">
+<li><a href="https://github.com/Cran/locfit">LOCFIT Local Regression &amp; Likelihood and Density Estimation</a>
+<br>Available R.</li>
+
+<li><!-- a href="http://www.interchg.ubc.ca/cacb/power/" -->Power Analysis Software for PCs
+<br>"A comprehensive list of power analysis software for microcomputers."</li>
+
+<li><a href="https://mx-gui.software.informer.com">Mx Gui 1.7</a>
+<br>"Mx is a matrix algebra interpreter and numerical optimizer for
+structural equation modeling and other types of statistical modeling of
+data. It is being redeveloped as the OpenMx for R open source project
+in collaboration with the University of Virginia and Argonne National
+Laboratories. (May not be available)"</li>
+
+<li><a href="http://views.vcu.edu/mx/examples.html">Mx Examples</a>
+<br>Examples of using Mx for nonlinear, multi-trait multi-method, missing
+data, and QTL analysis, plus others.</li>
+
+<li><a href="http://cdsarc.u-strasbg.fr/~fmurtagh/mda-sw/">Multivariate Data Analysis Software</a>
+<br>"This is a collection of stand-alone routines, in Fortran (mostly)
+and C. Sample data sets are available. Indications are given on how to
+compile, link and run. Download the programs and run on your system."</li>
+
+<li><a href="http://www.estima.com/">The Estima Home Page</a>
+<br> "RATS (Regression Analysis of Time Series) is a leading
+econometrics/time-series analysis software package. It is used worldwide
+by economists and others for analyzing time series and cross sectional
+data, developing and estimating econometric models, forecasting, and
+much more." [commercial product]</li>
+
+<li><a href="http://www.qualisresearch.com/">The Ethnograph Qualitative Research &amp; Data Analysis Software</a>
+<br>Text-based qualitative data analysis software [commercial product].</li>
+
+<li><a href="http://www.limdep.com/index.html">LIMDEP Information</a>
+<br> "A general econometrics program for estimating linear and nonlinear
+models, limited and qualitative dependent variable models, models for
+cross section, time series, and panel data." [commercial product]</li>
+
+<li><a href="http://www.sas.com/">SAS Institute</a>
+<br> The SAS Institute Home Page. "The SAS System is an integrated suite
+of software for enterprise-wide information delivery. The functionality
+of the system is built around the four data-driven tasks common to
+virtually any application -- data access, data management, data analysis
+and data presentation." [commercial products]</li>
+
+<li><a href="http://shazam.econ.ubc.ca/">SHAZAM</a>
+<br> "SHAZAM is a comprehensive computer program for econometricians,
+statisticians, biometricians, sociometricians, psychometricians,
+politicometricians and others who use statistical techniques.... The
+primary strength of SHAZAM is for the estimation and testing of many
+types of regression models." [commercial product]</li>
+
+<li><a href="http://shazam.econ.ubc.ca/ftp/FAQ.html#Q1.2">FAQ: comp.soft-sys.shazam</a>
+<br> Frequently asked questions (and answers) about SHAZAM.</li>
+
+<li><a href="http://www.spss.com/">SPSS Inc.</a>
+<br> Publishers of the Statistical Package for the Social Sciences (SPSS), BMDP
+Classic for DOS, SYSTAT, and Surveycraft packages. [commercial products]</li>
+
+<li><a href="http://www.nr.com/">Numerical Recipes Home Page</a>
+<br>Publishers of the Numerical Recipes series of books and software.</li>
+
+<li><a href="http://gurukul.ucc.american.edu/econ/gaussres/GAUSSIDX.HTM">GAUSS Resources &amp; Archive at American University</a>
+<br>Includes GAUSS code for public, non-commerical use in the areas
+of Bayesian Econometrics, Covariance Matrix Estimators, DYNARE,
+Generalized Method of Moments, Goodness of Fit, Multivariate Statistics,
+Optimization Routines, PDFs and RNGs, Qualitative Choice Models,
+Regression, Simulation, Simultaneous Equations Estimation, Time Series,
+Unit Roots and Cointegration, and Utilities </li>
+
+<li><a href="http://www.cis.ohio-state.edu/~perlman/statinfo.html">|STAT Data Analysis Package</a>
+<br> "|STAT is a set of about 30 data manipulation and analysis programs
+developed by Gary Perlman at the University of California, San Diego and
+at the Wang Institute. The manipulation programs are general utilities
+that work with other standard programs like sort. The analysis programs
+compute most widely used statistics." For Unix and DOS.</li>
+
+<li><a href="http://www.stat.umn.edu/~gary/macanova/macanova.home.html">MacANOVA Homepage</a>
+<br> "MacAnova is a free, noncommercial, interactive statistical
+analysis program for Macintosh, DOS/Windows (Win32s), and Unix written
+by Gary W. Oehlert and Christopher Bingham, both of the School of
+Statistics, University of Minnesota. MacAnova's strengths are analysis
+of variance and related models, matrix algebra, time series, and (to a
+lesser extent) uni- and multi-variate exploratory statistics."</li>
+
+<li><a href="http://forrest.psych.unc.edu/research/ALSCAL.html">ALSCAL Multidimensional Scaling Program</a>
+<br> "ALSCAL performs metric or nonmetric Multidimensional Scaling and
+Unfolding with individual differences options. It can analyze one or
+more matrices of dissimilarity or similarity data." Executable for PCs
+plus Fortran source for other systems.</li>
+
+<li><a href="http://www.uts.com/">TK Solver Home Page</a>
+<br>"TK Solver is a mathematical modeling platform that simplifies math
+models into the form of systems of equations and relationships." </li>
+
+<li><a href="http://www.rmc.ca/tksolver/tkpage.html">TK Solver Model Collection</a>
+<br>TK Solver models and tutorials at the Royal Military College of Canada.</li>
+</ul>
+
+[<a href="#top">Top</a>]
+[<a href="#general">Archives</a>]
+[<a href="#specific">Programs</a>]
+[<a href="#online">OnLine Processing</a>]
+[<a href="#guides">Guides</a>]
+<p>&nbsp;</p>
+
+<hr style="width=100%; height 2px; border: none;">
+<strong id="online">On-Line Statistical Processing</strong>
+<ul>
+
+<li><a href="http://www.icpsr.umich.edu/GSS/">General Social Survey</a>
+<br>On-line subsetting and statistics (descriptives, frequencies, crosstabs,
+weighted, unweighted), codebook search, etc.</li>
+
+<li><a href="http://www.icpsr.umich.edu/NES/anesintro.html">American National
+Election Study</a>
+<br>On-line subsetting &amp; statistics, searching, etc.</li>
+
+<li><a href="http://biomserv.univ-lyon1.fr/NetMul.html">NetMul: WWW Online Multivariate Analysis System (unreachable?)</a>
+<br> "NetMul is an online multivariate analysis system. It provides a
+Web interface to the ADE-4 multivariate analysis software, which allows
+[you] to use it from Mac, PC and Unix workstations...To use it, you must
+first download your data set to our anonymous FTP server..."</li>
+
+<li><a href="http://www.stat.sc.edu/rsrch/gasp/">Globally Accessible Statistical Procedures (G.A.S.P.)</a>
+<br>Users need only choose the routine of interest and then enter
+the data into a form. It's that simple. Results will be returned to
+the user's browser window. Includes kernel density estimation, exact
+power of Fisher exact test, exact, unconditional tests of homogeneity
+(binomial model) or independence (multinomial model) for 2X2 tables,
+regression, and others. Some procedures require an Java-enabled
+browser.</li>
+
+<li><a href="http://www.stat.ucla.edu/cgi-bin/textbook/powercalc/">UCLA Power Calculator</a>
+<br>Calculate power for a given sample size and sample size for a given
+power in a number of different contexts.</li>
+
+<li><a href="http://www.stat.sc.edu/~west/webstat">WebStat</a>
+<br>WebStat is a Java application that provides basic statistics
+such as regression, comparison of means, and summary statistics, as
+well as several types of plots, via the WWW. Requires a Java-capable
+broswer.</li> 
+</ul>
+
+[<a href="#top">Top</a>]
+[<a href="#general">Archives</a>]
+[<a href="#specific">Programs</a>]
+[<a href="#online">OnLine Processing</a>]
+[<a href="#guides">Guides</a>]
+<P>&nbsp;</P>
+<hr style="width=100%; height 2px; border: none;">
+<strong id="guides">Guides and General Information</strong>
+<ul>
+
+<li><a href="http://www.umich.edu/~cscar/">CSCAR (UMich) Home Page</a>
+<br>The Center For Statistical Consultation And Research at the University of Michigan.</li>
+
+<li><a href="http://www.pfc.cfs.nrcan.gc.ca/landscape/inventory/wulder/mvstats/index.html">Multivariate Statistics: A Practical Guide</a>
+<br>"This document is set up to allow the user of multivariate
+statistics to get assistance in the choice of multivariate technique to
+use and the state the data must be in to use the desired technique. A
+series of links enable the user to view areas of interest in relation to
+multivariate statistical theory, use, and application."</li>
+
+<li><a href="http://www.mvsoft.com/books.htm">Multivariate Software</a>
+<br>(A list of) Books and Articles about Structural Modeling using
+EQS.</li>
+
+<li><a href="http://www.helsinki.fi/WebEc/webecc.html">WebEc: Mathematical and Quantitative Methods</a>
+<br>Links to many economics, statistics, and mathematics resources.</li>
+
+<li><a href="http://ourworld.compuserve.com/homepages/Rainer_Wuerlaender/stathome.htm">Rainer's Home Page for Statisticians</a>
+<br>"The intention of this [page] is to offer information and mainly
+links on topics like WWW servers in Statistics, mailing lists and
+newsgroups, statistical associations and departments, statistical
+software, miscellaneous, statistical quotes, and a directory of
+professional statisticians worldwide. In addition German related
+information is offered to all statisticians with German language skills
+on a separate page." Lots of stuff on this page (pointers to software,
+jokes, references, etc.).</li>
+
+<li><a href="http://asa.ugl.lib.umich.edu/chdocs/statistics/stat_guide_home.html">A Guide to Statistical Computing Resources on the Internet (dead link?)</a>
+<br> "This guide is designed to serve as a central location for finding
+internet resources on statistical computing, and is intended to be
+used primarily as a reference resource. We have searched the many
+internet resources and culled out the most valuable and useful resources
+pertinent to statistical computing."</li>
+
+<li><a href="http://www.lib.umich.edu/libhome/Documents.center/frames/steconfr.html">Statistical Resources/Economics (Frame Enhanced)</a> 
+or 
+<a href="http://www.lib.umich.edu/libhome/Documents.center/stecon.html">Statistical Resources/Economics (Non-frame Page)</a> 
+<br>Data! Bureau of Labor, Bureau of Census, economic data, business
+cycle indicators, Commerce Dept., Statistical Abstract, etc.</li>
+
+<li><a href="http://www.math.yorku.ca/SCS/StatResource.html">Statistics &amp; Statistical Graphics Resources</a>
+<br>"[A]n annotated, topic-based collection of available resources for
+statistics, statistical graphics, and computation related to research,
+data analysis and teaching, now containing over 475 links."</li>
+
+<li><a href="http://solon.cma.univie.ac.at/~neum/stat.html">Statistics Links</a>
+<br>A collection of links, software, and papers relating to
+statistics.</li>
+
+<li><a href="http://www.nova.edu/ssss/QR/text.html">Qualitative Research Text Resources</a>
+<br>"[L]inks to full-text papers, theses, and dissertations on the
+Internet which contain studies of or on qualitative research."</li>
+
+<li><a href="http://www.econ.ag.gov/sigstat/statlink.htm">Links to Statistical Resources on the Internet</a>
+<br>Links to journals &amp; papers, software, government agencies,
+associations, information on conventions, meetings, and employment
+opportunities.</li>
+
+<li><a href="http://ncardata.ucar.edu/dss/faq/data-formats.html">Scientific Data Formats FAQ (dead link?)</a>
+<br>Attempts to answer the question: "Where can I find documentation and
+software for [X] data format?"</li>
+
+<li><a href="http://fits.cv.nrao.edu/traffic/scidataformats/faq.html">Scientific Data Formats FAQ (alternate site)</a></li>
+</ul>
+
+[<a href="#top">Top</a>]
+[<a href="#general">Archives</a>]
+[<a href="#specific">Programs</a>]
+[<a href="#online">OnLine Processing</a>]
+[<a href="#guides">Guides</a>]
+<hr style="width=100%; height 2px; border: none;">
+<a href="links.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Links</a><br>
+
+<span style="font size: 80%;">
+Last-modified: Fri Jul 18 12:08:09 EDT 2025
+<!--Mon Dec 14 18:38:08 EST 1998-->
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.2
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 2
+a2 2
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
-
+d4 6
+a9 5
 <HEAD>
 <META name="description" content="Statistics Links">
 <BASE HREF="http://192.168.50.172/~knassen/umich/html/statistics.html">
 <TITLE>Statistical Links</TITLE>
 </HEAD>
-
+d11 1
+a11 2
 <BODY BACKGROUND="gif/canvas.jpg">
 <A NAME="top">&nbsp;</A>
-
+d13 3
+a15 3
 <BR>
 <BLOCKQUOTE>
 <H2>Statistical Links</H2>
-A sample of sources for statistical algorithms, source code, and data.
-From here you should be able to find your way to most of the rest of the
-statistical sites on the web.  Currently, these links are organized into
+d19 7
+a25 8
 the categories <A HREF="#general">General Statistical Archives</A>,
 <A HREF="#specific">Specific Statistical Programs</A>,
 <A HREF="#online">On-Line Statistical Processing</A>, and
@@ -52,33 +401,46 @@ the categories <A HREF="#general">General Statistical Archives</A>,
 <A NAME="general">&nbsp;</A>
 <STRONG>General Statistical Archives</STRONG>
 <UL>
-
+d27 1
+a27 1
 <LI><A HREF="http://netlib.bell-labs.com/netlib/">Netlib Home Page</A></LI>
-
+d29 1
+a29 1
 <LI><A HREF="http://www.netlib.org/">Netlib at U.Tenn & ORNL</A></LI>
-
+d31 1
+a31 1
 <LI><A HREF="ftp://elib.zib.de/netlib/master/readme.html.Z">Netlib--Mirror Germany</A></LI>
-
+d33 1
+a33 2
 <LI><A HREF="http://lib.stat.cmu.edu/">StatLib Main Index</A></LI>
 <UL>
-
+d35 1
+a35 1
 <LI><A HREF="http://lib.stat.cmu.edu/general/">StatLib General Archive</A></LI>
-
+d37 1
+a37 1
 <LI><A HREF="http://lib.stat.cmu.edu/general/Utexas/">StatLib UTexas Archive</A></LI>
-
+d39 1
+a39 1
 <LI><A HREF="http://lib.stat.cmu.edu/minitab/">StatLib Minitab Macros</A></LI>
-
+d41 1
+a41 1
 <LI><A HREF="http://lib.stat.cmu.edu/multi/">StatLib Multivariate Archive</A></LI>
-
+d43 1
+a43 1
 <LI><A HREF="http://lib.stat.cmu.edu/apstat/">StatLib apstat--Applied Statistics Archives</A></LI>
-
+d45 1
+a45 2
 <LI><A HREF="http://lib.stat.cmu.edu/jasadata/">Statlib JASA Data Archive</A></LI>
 </UL>
-
+d47 1
+a47 1
 <LI><A HREF="file://lib.stat.cmu.edu/cmlib/">NIST Core Math Library: CMLib</A></LI>
-
+d49 1
+a49 1
 <LI><A HREF="http://www.gamma.rug.nl/">The Interuniversity Expertise Center ProGAMMA Social Science Information Technology</A></LI>
-
+d51 10
+a60 10
 <LI><A HREF="http://stommel.tamu.edu/~baum/ocean_graphics.html">Software for Graphics & Data Analysis</A></LI>
 </UL>
 [<A HREF="#top">Top</A>]
@@ -89,135 +451,152 @@ the categories <A HREF="#general">General Statistical Archives</A>,
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A NAME="specific">&nbsp;</A><STRONG>Specific Statistical Programs</STRONG>
 <UL>
-
+d62 2
+a63 2
 <LI><A HREF="http://www.autobox.com">Autobox Home Page</A>
 <BR>Autobox is a product of Automatic Forecasting Systems, Inc. which can be
-used to identify and build Box-Jenkins ARIMA and Transfer function models.
-Models may optionally be selected automatically.  Includes graphical analysis
-tools, automatic intervention detection, and many other features.  
+d67 1
+a67 1
 [for Windows; commercial product]</LI>
-
+d69 2
+a70 2
 <LI><A HREF="http://www.stat.umn.edu/~luke/xls/xlsinfo/xlsinfo.html">XlispStat Home Page</A>
 <BR>Lisp-Stat is an extensible statistical computing environment for data
-analysis, statistical instruction and research, with an emphasis on
-providing a framework for exploring the use of dynamic graphical
-methods.  XLISP-STAT is a version of Lisp-Stat based on a dialect
+d74 4
+a77 4
 of Lisp called XLISP.</LI>
 <UL>
 <LI><A HREF="http://lib.stat.cmu.edu/xlispstat/">StatLib Xlispstat</A>
 <BR>Boxplot Matrix, Bayesian sensitivity analysis, regression diagnostics
-using dynamic graphics, routines for the interactive, dynamic,
-exploratory analysis of survival data, functions and prototypes for
-fitting generalized linear models, simulate some Markov Chains,
+d81 1
+a81 1
 functions for the spectral analysis of time series, etc.</LI>
-
+d83 2
+a84 2
 <LI><A HREF="http://euler.bd.psu.edu/lispstat/lispstat.html">Projects in LispStat</A>
 <BR>Links to projects that use LispStat.</LI>
-
+d86 2
+a87 2
 <LI><A HREF="http://galen.med.virginia.edu/~sdm7g/XES/Docs/SourceIndex.html">Annotated Source Index (LispStat)</A>
 <BR>Modules for Lisp-Stat.</LI>
-
+d89 2
+a90 2
 <LI><A HREF="http://forrest.psych.unc.edu/research/ViSta.html">ViSta Visual Statistics System</A>
 <BR>"ViSta is designed for an audience of users having a very wide range
-of data analysis sophistication, ranging from novice to expert. ViSta
-provides seamlessly integrated data analysis environments specifically
+d93 1
+a93 1
 tailored to the user's level of expertise."</LI>
-
+d95 2
+a96 2
 <LI><A HREF="http://forrest.psych.unc.edu/research/ViSta/doco.html">ViSta Documentation</A></LI>
 </UL>
-
+d98 3
+a100 2
 <LI><A HREF="http://cm.bell-labs.com/cm/ms/departments/sia/project/locfit/index.html">LOCFIT Local Regression & Likelihood</A>
 <BR>Available for Unix and Windows 95/NT.</LI>
-
+d102 2
+a103 2
 <LI><!-- A HREF="http://www.interchg.ubc.ca/cacb/power/" -->Power Analysis Software for PCs</A>
 <BR>"A comprehensive list of power analysis software for microcomputers."</LI>
-
+d105 2
+a106 2
 <LI><A HREF="http://griffin.vcu.edu/mx/">Mx Homepage</A>
 <BR>"Mx is a matrix algebra interpreter and numerical optimizer for
-structural equation modeling and other types of statistical modeling of
+d108 3
+a110 1
 data."</LI>
-
+d112 3
+a114 3
 <LI><A HREF="http://views.vcu.edu/mx/examples.html">Mx Examples</A>
 <BR>Examples of using Mx for nonlinear, multi-trait multi-method, missing
 data, and QTL analysis, plus others.</LI>
-
+d116 2
+a117 2
 <LI><A HREF="http://cdsarc.u-strasbg.fr/~fmurtagh/mda-sw/">Multivariate Data Analysis Software</A>
 <BR>"This is a collection of stand-alone routines, in Fortran (mostly)
-and C. Sample data sets are available. Indications are given on how to
+d119 1
+a119 1
 compile, link and run. Download the programs and run on your system."</LI>
-
+d121 2
+a122 2
 <LI><A HREF="http://www.estima.com/">The Estima Home Page</A>
 <BR> "RATS (Regression Analysis of Time Series) is a leading
-econometrics/time-series analysis software package. It is used worldwide
-by economists and others for analyzing time series and cross sectional
-data, developing and estimating econometric models, forecasting, and
+d126 1
+a126 1
 much more." [commercial product]</LI>
-
+d128 2
+a129 2
 <LI><A HREF="http://www.qualisresearch.com/">The Ethnograph Qualitative Research & Data Analysis Software</A>
 <BR>Text-based qualitative data analysis software [commercial product].</LI>
-
+d131 2
+a132 2
 <LI><A HREF="http://www.limdep.com/index.html">LIMDEP Information</A>
 <BR> "A general econometrics program for estimating linear and nonlinear
-models, limited and qualitative dependent variable models, models for
+d134 1
+a134 1
 cross section, time series, and panel data." [commercial product]</LI>
-
+d136 2
+a137 2
 <LI><A HREF="http://www.sas.com/">SAS Institute</A>
 <BR> The SAS Institute Home Page. "The SAS System is an integrated suite
-of software for enterprise-wide information delivery. The functionality
-of the system is built around the four data-driven tasks common to
-virtually any application -- data access, data management, data analysis
+d141 1
+a141 1
 and data presentation." [commercial products]</LI>
-
+d143 2
+a144 2
 <LI><A HREF="http://shazam.econ.ubc.ca/">SHAZAM</A>
 <BR> "SHAZAM is a comprehensive computer program for econometricians,
-statisticians, biometricians, sociometricians, psychometricians,
-politicometricians and others who use statistical techniques.... The
-primary strength of SHAZAM is for the estimation and testing of many
+d148 1
+a148 1
 types of regression models." [commercial product]</LI>
-
+d150 2
+a151 2
 <LI><A HREF="http://shazam.econ.ubc.ca/ftp/FAQ.html#Q1.2">FAQ: comp.soft-sys.shazam</A>
 <BR> Frequently asked questions (and answers) about SHAZAM.</LI>
-
+d153 3
+a155 3
 <LI><A HREF="http://www.spss.com/">SPSS Inc.</A>
 <BR> Publishers of the Statistical Package for the Social Sciences (SPSS), BMDP
 Classic for DOS, SYSTAT, and Surveycraft packages. [commercial products]</LI>
-
+d157 2
+a158 2
 <LI><A HREF="http://www.nr.com/">Numerical Recipes Home Page</A>
 <BR>Publishers of the Numerical Recipes series of books and software.</LI>
-
+d160 2
+a161 2
 <LI><A HREF="http://gurukul.ucc.american.edu/econ/gaussres/GAUSSIDX.HTM">GAUSS Resources & Archive at American University</A>
 <BR>Includes GAUSS code for public, non-commerical use in the areas
-of Bayesian Econometrics, Covariance Matrix Estimators, DYNARE,
-Generalized Method of Moments, Goodness of Fit, Multivariate Statistics,
-Optimization Routines, PDFs and RNGs, Qualitative Choice Models,
-Regression, Simulation, Simultaneous Equations Estimation, Time Series,
+d166 1
+a166 1
 Unit Roots and Cointegration, and Utilities </LI>
-
+d168 2
+a169 2
 <LI><A HREF="http://www.cis.ohio-state.edu/~perlman/statinfo.html">|STAT Data Analysis Package</A>
 <BR> "|STAT is a set of about 30 data manipulation and analysis programs
-developed by Gary Perlman at the University of California, San Diego and
-at the Wang Institute. The manipulation programs are general utilities
-that work with other standard programs like sort. The analysis programs
+d173 1
+a173 1
 compute most widely used statistics." For Unix and DOS.</LI>
-
+d175 2
+a176 2
 <LI><A HREF="http://www.stat.umn.edu/~gary/macanova/macanova.home.html">MacANOVA Homepage</A>
 <BR> "MacAnova is a free, noncommercial, interactive statistical
-analysis program for Macintosh, DOS/Windows (Win32s), and Unix written
-by Gary W. Oehlert and Christopher Bingham, both of the School of
-Statistics, University of Minnesota. MacAnova's strengths are analysis
-of variance and related models, matrix algebra, time series, and (to a
+d181 1
+a181 1
 lesser extent) uni- and multi-variate exploratory statistics."</LI>
-
+d183 2
+a184 2
 <LI><A HREF="http://forrest.psych.unc.edu/research/ALSCAL.html">ALSCAL Multidimensional Scaling Program</A>
 <BR> "ALSCAL performs metric or nonmetric Multidimensional Scaling and
-Unfolding with individual differences options. It can analyze one or
-more matrices of dissimilarity or similarity data." Executable for PCs
+d187 1
+a187 1
 plus Fortran source for other systems.</LI>
-
+d189 3
+a191 3
 <LI><A HREF="http://www.uts.com/">TK Solver Home Page</A>
 <BR>"TK Solver is a mathematical modeling platform that simplifies math
 models into the form of systems of equations and relationships." </LI>
-
+d193 3
+a195 12
 <LI><A HREF="http://www.rmc.ca/tksolver/tkpage.html">TK Solver Model Collection</A>
 <BR>TK Solver models and tutorials at the Royal Military College of Canada.</LI>
 </UL>
@@ -230,41 +609,45 @@ models into the form of systems of equations and relationships." </LI>
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A NAME="online">&nbsp;</A><STRONG>On-Line Statistical Processing</STRONG>
 <UL>
-
+d197 6
+a202 3
 <LI><A HREF="http://www.icpsr.umich.edu/GSS/">General Social Survey</A>
 <BR>On-line subsetting and statistics (descriptives, frequencies, crosstabs,
 weighted, unweighted), codebook search, etc.</LI>
-
+d204 3
+a206 3
 <LI><A HREF="http://www.icpsr.umich.edu/NES/anesintro.html">American National
 Election Study</A>
 <BR>On-line subsetting & statistics, searching, etc.</LI>
-
+d208 10
+a217 2
 <LI><A HREF="http://biomserv.univ-lyon1.fr/NetMul.html">NetMul: WWW Online Multivariate Analysis System (unreachable?)</A>
 <BR> "NetMul is an online multivariate analysis system. It provides a
-Web interface to the ADE-4 multivariate analysis software, which allows
-[you] to use it from Mac, PC and Unix workstations...To use it, you must
+d220 1
+a220 1
 first download your data set to our anonymous FTP server..."</LI>
-
+d222 2
+a223 2
 <LI><A HREF="http://www.stat.sc.edu/rsrch/gasp/">Globally Accessible Statistical Procedures (G.A.S.P.)</A>
 <BR>Users need only choose the routine of interest and then enter
-the data into a form. It's that simple. Results will be returned to
-the user's browser window. Includes kernel density estimation, exact
-power of Fisher exact test, exact, unconditional tests of homogeneity
-(binomial model) or independence (multinomial model) for 2X2 tables,
-regression, and others. Some procedures require an Java-enabled
+d229 1
+a229 1
 browser.</LI>
-
+d231 3
+a233 3
 <LI><A HREF="http://www.stat.ucla.edu/cgi-bin/textbook/powercalc/">UCLA Power Calculator</A>
 <BR>Calculate power for a given sample size and sample size for a given
 power in a number of different contexts.</LI>
-
+d235 2
+a236 2
 <LI><A HREF="http://www.stat.sc.edu/~west/webstat">WebStat</A>
 <BR>WebStat is a Java application that provides basic statistics
-such as regression, comparison of means, and summary statistics, as
-well as several types of plots, via the WWW. Requires a Java-capable
+d239 2
+a240 2
 broswer.</LI> 
 </UL>
-
+d242 9
+a250 9
 [<A HREF="#top">Top</A>]
 [<A HREF="#general">Archives</A>]
 [<A HREF="#specific">Programs</A>]
@@ -274,72 +657,83 @@ broswer.</LI>
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A NAME="guides">&nbsp;</A><STRONG>Guides and General Information</STRONG>
 <UL>
-
+d252 2
+a253 2
 <LI><A HREF="http://www.umich.edu/~cscar/">CSCAR (UMich) Home Page</A>
 <BR>The Center For Statistical Consultation And Research at the University of Michigan.</LI>
-
+d255 2
+a256 2
 <LI><A HREF="http://www.pfc.cfs.nrcan.gc.ca/landscape/inventory/wulder/mvstats/index.html">Multivariate Statistics: A Practical Guide</A>
 <BR>"This document is set up to allow the user of multivariate
-statistics to get assistance in the choice of multivariate technique to
-use and the state the data must be in to use the desired technique. A
-series of links enable the user to view areas of interest in relation to
+d260 1
+a260 1
 multivariate statistical theory, use, and application."</LI>
-
+d262 3
+a264 3
 <LI><A HREF="http://www.mvsoft.com/books.htm">Multivariate Software</A>
 <BR>(A list of) Books and Articles about Structural Modeling using
 EQS.</LI>
-
+d266 2
+a267 2
 <LI><A HREF="http://www.helsinki.fi/WebEc/webecc.html">WebEc: Mathematical and Quantitative Methods</A>
 <BR>Links to many economics, statistics, and mathematics resources.</LI>
-
+d269 2
+a270 2
 <LI><A HREF="http://ourworld.compuserve.com/homepages/Rainer_Wuerlaender/stathome.htm">Rainer's Home Page for Statisticians</A>
 <BR>"The intention of this [page] is to offer information and mainly
-links on topics like WWW servers in Statistics, mailing lists and
-newsgroups, statistical associations and departments, statistical
-software, miscellaneous, statistical quotes, and a directory of
-professional statisticians worldwide. In addition German related
-information is offered to all statisticians with German language skills
-on a separate page." Lots of stuff on this page (pointers to software,
+d277 1
+a277 1
 jokes, references, etc.).</LI>
-
+d279 2
+a280 2
 <LI><A HREF="http://asa.ugl.lib.umich.edu/chdocs/statistics/stat_guide_home.html">A Guide to Statistical Computing Resources on the Internet (dead link?)</A>
 <BR> "This guide is designed to serve as a central location for finding
-internet resources on statistical computing, and is intended to be
-used primarily as a reference resource. We have searched the many
-internet resources and culled out the most valuable and useful resources
+d284 1
+a284 1
 pertinent to statistical computing."</LI>
-
+d286 1
+a286 1
 <LI><A HREF="http://www.lib.umich.edu/libhome/Documents.center/frames/steconfr.html">Statistical Resources/Economics (Frame Enhanced)</A> 
-or 
+d288 3
+a290 3
 <A HREF="http://www.lib.umich.edu/libhome/Documents.center/stecon.html">Statistical Resources/Economics (Non-frame Page)</A> 
 <BR>Data! Bureau of Labor, Bureau of Census, economic data, business
 cycle indicators, Commerce Dept., Statistical Abstract, etc.</LI>
-
+d292 2
+a293 2
 <LI><A HREF="http://www.math.yorku.ca/SCS/StatResource.html">Statistics & Statistical Graphics Resources</A>
 <BR>"[A]n annotated, topic-based collection of available resources for
-statistics, statistical graphics, and computation related to research,
+d295 1
+a295 1
 data analysis and teaching, now containing over 475 links."</LI>
-
+d297 3
+a299 3
 <LI><A HREF="http://solon.cma.univie.ac.at/~neum/stat.html">Statistics Links</A>
 <BR>A collection of links, software, and papers relating to
 statistics.</LI>
-
+d301 3
+a303 3
 <LI><A HREF="http://www.nova.edu/ssss/QR/text.html">Qualitative Research Text Resources</A>
 <BR>"[L]inks to full-text papers, theses, and dissertations on the
 Internet which contain studies of or on qualitative research."</LI>
-
+d305 2
+a306 2
 <LI><A HREF="http://www.econ.ag.gov/sigstat/statlink.htm">Links to Statistical Resources on the Internet</A>
 <BR>Links to journals & papers, software, government agencies,
-associations, information on conventions, meetings, and employment
+d308 1
+a308 1
 opportunities.</LI>
-
+d310 3
+a312 3
 <LI><A HREF="http://ncardata.ucar.edu/dss/faq/data-formats.html">Scientific Data Formats FAQ (dead link?)</A>
 <BR>Attempts to answer the question: "Where can I find documentation and
 software for [X] data format?"</LI>
-
+d314 2
+a315 2
 <LI><A HREF="http://fits.cv.nrao.edu/traffic/scidataformats/faq.html">Scientific Data Formats FAQ (alternate site)</A></LI>
 </UL>
-
+d317 7
+a323 7
 [<A HREF="#top">Top</A>]
 [<A HREF="#general">Archives</A>]
 [<A HREF="#specific">Programs</A>]
@@ -347,7 +741,8 @@ software for [X] data format?"</LI>
 [<A HREF="#guides">Guides</A>]
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Links</A><BR>
-
+d325 8
+a332 6
 <FONT SIZE=-1>
 Last-modified: Mon Dec 14 18:38:08 EST 1998
 </FONT>

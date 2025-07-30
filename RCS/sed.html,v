@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	knassen:1.2; strict;
+	knassen:1.3; strict;
 comment	@# @;
 
+
+1.3
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2025.07.04.01.42.16;	author knassen;	state Exp;
@@ -21,12 +26,86 @@ desc
 @@
 
 
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="description" content="sed, stream editor, web sites">
+    <base href="/personal-tech/">
+    <title>sed Web Sites</title>
+</head>
+<body>
+<br>
+<br>
+<blockquote>
+<h2>sed (Stream EDitor) - Web Sites</h2>
+
+<hr style="width=100%; height 2px; border: none;">
+
+<dl>
+<dt>sed (Stream EDitor) is a noninteractive (batch) editor that can
+quickly edit very large files. It is available for unix and for other
+operating systems, such as DOS. sed can be used from the command line in
+a one-liner mode to do quick searches &amp; replaces or deletes in a file.
+It can also accept its commands from a file, so it is useful in a batch
+mode. sed utilizes regular expressions, making it very powerful and
+reasonably easy to learn if you are already using regular expressions
+as a part of other Unix commands, such as grep, editors, or scripting
+languages. sed often finds it way into Unix shell scripts. A trivial
+example of a sed command might be:
+</dt>
+<dd><pre><code>sed '/dog/d' fyle</code></pre></dd>
+<dt>
+which would delete all lines in the input file ("fyle" above) which
+contain "dog" (but not "Dog", "dOg", "d og" etc.) as a word or
+word-part (e.g., hotdog, boondoggle, dog days, the lazy dog, etc.).
+</dt>
+</dl>
+<p>
+sed can be used for much more impressive and complicated tasks, of
+course. The web sites listed here present much material on the use of
+sed, including tutorials for the beginner, examples for the expert, and
+many more sed resources on the Internet.
+<ul>
+<li><a href="http://seders.icheme.org/">seders Grab Bag (seders Official Web Page) [bad link]</a>
+seders is an e-mail list for the discussion of sed. This site has scripts, tutorials, 
+the sed FAQ, and other resources related to sed and seders.<br></li>
+<li><a href="http://www.math.fu-berlin.de/~guckes/sed/">Sven Guckes' sed Page [bad link]</a><br></li>
+<li><a href="http://www.math.fu-berlin.de/~leitner/sed/">Felix von Leitner's sed Page [bad link]</a><br></li>
+<li><a href="http://www.dbnet.ece.ntua.gr/~george/#seders">Yiorgos Adamopoulos' sed Page [bad link]</a><br></li>
+<li><a href="ftp://algos.inesc.pt/pub/users/cdua/">The Great sed Stud [bad link]</a> ftp site. There's
+sed information in the misc directory and some sed script included in scripts.tar.gz.<br></li>
+<li><a href="http://www.ora.com/catalog/sed2/">sed &amp; awk, 2nd edition [bad link]</a> a description of the 
+O'Reilly sed book.<br></li>
+</ul>
+
+<p>
+<a href="unix.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Unix Page</a><br>
+
+<span style="font-size: 80%;">
+    Last Modified: Thu Jul 17 14:14:35 EDT 2025
+    <!--Mon Feb 15 12:40:00 EST 1999-->
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.2
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 13
+a13 13
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
 <META name="description" content="sed, stream editor, web sites">
@@ -39,34 +118,29 @@ text
 <BLOCKQUOTE>
 <H2>sed (Stream EDitor) - Web Sites</H2>
 <HR SIZE=3 NOSHADE>
-
+d15 4
+a18 2
 <DL>
 <DT>sed (Stream EDitor) is a noninteractive (batch) editor that can
-quickly edit very large files. It is available for unix and for other
-operating systems, such as DOS. sed can be used from the command line in
+d21 1
+a21 1
 a one-liner mode to do quick searches & replaces or deletes in a file.
-It can also accept its commands from a file, so it is useful in a batch
-mode. sed utilizes regular expressions, making it very powerful and
-reasonably easy to learn if you are already using regular expressions
-as a part of other Unix commands, such as grep, editors, or scripting
-languages. sed often finds it way into Unix shell scripts. A trivial
-example of a sed command might be:
+d28 3
+a30 3
 </DT>
 <DD><PRE>sed '/dog/d' fyle</PRE></DD>
 <DT>
-which would delete all lines in the input file ("fyle" above) which
-contain "dog" (but not "Dog", "dOg", "d og" etc.) as a word or
-word-part (e.g., hotdog, boondoggle, dog days, the lazy dog, etc.).
+d34 3
+a36 3
 </DT>
 </DL>
 <P>
-sed can be used for much more impressive and complicated tasks, of
-course. The web sites listed here present much material on the use of
-sed, including tutorials for the beginner, examples for the expert, and
-many more sed resources on the Internet.
+d41 2
+a42 2
 <UL>
 <LI><A HREF="http://seders.icheme.org/">seders Grab Bag (seders Official Web Page)</A>
-seders is an e-mail list for the discussion of sed. This site has scripts, tutorials, 
+d44 9
+a52 14
 the sed FAQ, and other resources related to sed and seders.<BR></LI>
 <LI><A HREF="http://www.math.fu-berlin.de/~guckes/sed/">Sven Guckes' sed Page</A><BR></LI>
 <LI><A HREF="http://www.math.fu-berlin.de/~leitner/sed/">Felix von Leitner's sed Page</A><BR></LI>
@@ -81,13 +155,16 @@ An ftp link to the C source code distribution for GNU sed 2.05.<BR></LI>
 An ftp link to the C source code distribution of GNU sed 3.02.  This appears to be the most
 recent official GNU sed.<BR></LI>
 </UL>
-
+d54 2
+a55 2
 <P>
 <A HREF="unix.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Unix Page</A><BR>
-
+d57 4
+a60 2
 <FONT SIZE=-1>Last Modified: Mon Feb 15 12:40:00 EST 1999
 </FONT>
-
+d62 3
+a64 3
 </BLOCKQUOTE>
 </BODY>
 </HTML>

@@ -1,10 +1,15 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
 locks
-	knassen:1.1; strict;
+	knassen:1.2; strict;
 comment	@# @;
 
+
+1.2
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.1;
 
 1.1
 date	2025.07.01.16.33.28;	author knassen;	state Exp;
@@ -16,101 +21,104 @@ desc
 @@
 
 
-1.1
+1.2
 log
-@Initial revision
+@*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
+@<!DOCTYPE HTML> 
+<html>
 
-<HEAD>
-<BASE HREF="http://www-personal.umich.edu/~knassen/mice.html">
-<META name="description" content="A little about myself...">
-<TITLE>This picture's apparently good for scaring mice...</TITLE>
-</HEAD>
-<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
-<BR>
-<BLOCKQUOTE>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base href="/personal-tech/">
+    <meta name="description" content="A little about myself...">
+    <title>This picture's apparently good for scaring mice...</title>
+</head>
+<body> 
+<br>
+<blockquote>
 
-<H2>This picture's apparently good for scaring mice...</H2>
+<h2>This picture's apparently good for scaring mice...</h2>
 
-<IMG SRC="gif/1975kent.jpg" ALT="[Kent Nassen, c19754 65K JPEG]" BORDER="0"> <FONT SIZE="-2">yk</FONT>
-<P>
-<STRONG>Kent Nassen</STRONG> c.1974
-<HR SIZE=3 NOSHADE WIDTH="100%">
+<img src="/personal-tech/gif/1975kent.jpg" alt="[Kent Nassen, c19754 65K JPEG]">
 
-<P>Okay, it has been suggested that I put in a little about myself (as
+<span style="font size: 60%;">yk</span>
+<p>
+<strong>Kent Nassen</strong> c.1974
+<hr style="width=100%; height 2px; border: none;">
+
+<p>Okay, it has been suggested that I put in a little about myself (as
 if all the rest of the links on this site don't leave a trail a mile
 wide :-). As the picture above shows (assuming you can see it), I play
 bass guitar (that's a <A HREF="http://www.carvinguitars.com/">Carvin</A>
 above) and have since 1972. 
 
-<P>My favorite amp is my black padded vinyl-covered Kustom B200 (100W RMS),
+<p>My favorite amp is my black padded vinyl-covered Kustom B200 (100W RMS),
 which is of course, much too loud for the neighbors. 
 My current (and relatively long-standing)
-musical interests are <A HREF="http://www.rockabilly.com">rockabilly</A>
-(<A HREF="http://www.geocities.com/SunsetStrip/Palms/1682/">The
+musical interests are <A HREF="http://www.rockabilly.com">rockabilly</a>
+(<a href="http://www.geocities.com/SunsetStrip/Palms/1682/">The
 Reverend Horton Heat</A> --that's psychobilly,
-though isn't it?--the Stray Cats, Brian Setzer, <A
-HREF="http://bullwinkle.as.utexas.edu/scot/blasters.html">the
-Blasters</A> [hey, these guys have their first vinyl album--1980--out
+though isn't it?--the Stray Cats, Brian Setzer, 
+<a href="http://bullwinkle.as.utexas.edu/scot/blasters.html">the
+Blasters</a> [hey, these guys have their first vinyl album--1980--out
 on CD now! "American Music" Get it!], ), and electric guitar blues
-(<A HREF="http://www.thenighthawks.com/">The Nighthawks</A>, 
-<A HREF="http://centerstage.net/chicago/music/whoswho/KinseyReport.html">The Kinsey 
-Report</A>, Magic Dick & J. Geils with BluesTime,
+(<a href="http://www.thenighthawks.com/">The Nighthawks</A>, 
+<a href="http://centerstage.net/chicago/music/whoswho/KinseyReport.html">The Kinsey 
+Report</a>, Magic Dick &amp; J. Geils with BluesTime,
 etc.). I also enjoy 60's, 70's and 80's rock, though nothing
 at all disco-ish or rap-ish 'k? Think Lynyrd Skynyrd, the 
-<A HREF="http://www.netspace.org/allmans/">Allman Brothers</A>, Ted Nugent,
+<a href="http://www.netspace.org/allmans/">Allman Brothers</a>, Ted Nugent,
 Rush, The Fabulous Thunderbirds, Blue Oyster Cult, Creedence Clearwater
 Revival, John Fogerty, Stevie Ray Vaughn and you've probably got a
 pretty good handle on what I like to listen to, eclectic as it may seem.
 I'm not playing with any band currently, but I do play almost every day
 for my own enjoyment.
 
-<P>Just recently, I accepted employment with the 
-<A HREF="http://www.parke-davis.com">Parke-Davis Division</A> of
+<p>Just recently, I accepted employment with the 
+<a href="http://www.parke-davis.com">Parke-Davis Division</a> of
 Warner-Lambert Corporation in Ann Arbor as a programmer/analyst in
 the Clinical Reporting Systems department. I'm very happy with this
 move, related as it is to the duties of previous job, but in a larger
 department, with many new things to learn.
 
-<P>My previous job was at the Inter-university Consortium for Political
-and Social Research (<A HREF="http://www.icpsr.umich.edu">ICPSR</A>)
+<p>My previous job was at the Inter-university Consortium for Political
+and Social Research (<a href="http://www.icpsr.umich.edu">ICPSR</a>)
 in Ann Arbor, MI, where I was a Senior Data Archive Specialist.
 There I spent a lot of my time on a Unix server writing shell, AWK,
-and Perl scripts, SPSS and <A HREF="http://www.sas.com">SAS</A>
+and Perl scripts, SPSS and <a href="http://www.sas.com">SAS</a>
 programs, as well as the occasional C program. My main job there was
 cleaning and documenting survey data collections. While at ICPSR, I
-presented mini-seminars on the use of sed &amp; AWK and SAS &amp; <A
-HREF="http://www.spss.com">SPSS</A> for my co-workers.
+presented mini-seminars on the use of sed &amp; AWK and SAS &amp; 
+<a href="http://www.spss.com">SPSS</A> for my co-workers.
 
-<P>At home, I run the free unix operating system 
-<A HREF="http://www.freebsd.org">FreeBSD</A> 2.2.5 on my old
-486DX2-80. I run the <A HREF="http://www.xfree86.org">XFree86</A>
+<p>At home, I run the free unix operating system 
+<a href="http://www.freebsd.org">FreeBSD</A> 2.2.5 on my old
+486DX2-80. I run the <a href="http://www.xfree86.org">XFree86</a>
 X-server with either the fvwm95 or fvwm2 window managers
-(depending on mood). Currently, I'm goofing around with the <A
-HREF="http://www.gimp.org">gimp</A> graphics package and <A
-HREF="http://www.perl.org">Perl</A> 5.005. I use some version of the vi
+(depending on mood). Currently, I'm goofing around with the 
+<a href="http://www.gimp.org">gimp</a> graphics package and 
+<a href="http://www.perl.org">Perl</a> 5.005. I use some version of the vi
 editor every day (lately it's been vim and nvi, although elvis, vile,
 and vanilla vi see regular duty also). I actually use or have tried
-all of the vi clones I discuss and show on <A HREF="vi.html">my vi
-page</A> and I usually edit my HTML code by hand using vi, hence the
-<A HREF="http://www.darryl.com/vi.html">vi-powered</A> logo.
+all of the vi clones I discuss and show on <a href="vi.html">my vi
+page</a> and I usually edit my HTML code by hand using vi, hence the
+<a href="http://www.darryl.com/vi.html">vi-powered</a> logo.
 
-<P>One recent non-fiction book I've read was <U>Killing Custer</U> by
+<P>One recent non-fiction book I've read was <u>Killing Custer</u> by
 James Welch (with Paul Stekler) (New York: W.W. Norton, 1994). I'm also
-recently finished <U>The Mystery of E Troop: Custer's Gray Horse Company
-at the Little Bighorn</U> by Gregory Michno (Missoula, Montana: Mountain
+recently finished <u>The Mystery of E Troop: Custer's Gray Horse Company
+at the Little Bighorn</u> by Gregory Michno (Missoula, Montana: Mountain
 Press, 1994). This indicates an interest in Custeriana, of course, and
 a certain predilection to doing several things at once. On the fiction
-side, I recently read Robert Ludlum's <U>The Matarese Countdown</U> and
-<U>The Matarese Circle</U>. I also regularly read through the series
+side, I recently read Robert Ludlum's <u>The Matarese Countdown</u> and
+<u>The Matarese Circle</u>. I also regularly read through the series
 of Clive Cussler "Dirk Pitt" novels (and hope for something new ASAP--
-such as <U>Clive Cussler and Dirk Pitt Revealed</U>, and the upcoming
-<U>Atlantis Found</U>).
+such as <u>Clive Cussler and Dirk Pitt Revealed</u>, and the upcoming
+<u>Atlantis Found</u>).
 
-<P>I suppose at this point I could throw in my vita, but most people
+<p>I suppose at this point I could throw in my vita, but most people
 find it a bit tedious (it's at around 6 pages now). I'm published
 in at least one textbook on management and in several journals and
 proceedings. My undergraduate degree was in journalism and industrial
@@ -122,34 +130,34 @@ seem strange given all the stat and methodology courses I've had to
 take at the graduate level. My latest collaboration "Representation
 of Measurement Error in Marketing Variables: Review of Approaches and
 Extension to Three-Facet Designs" by Richard P. Bagozzi, Youjae Yi, and
-myself was recently published in the <U>Journal of Econometrics</U>
+myself was recently published in the <u>Journal of Econometrics</u>
 Special Issue on Marketing (89) 1999.
 
-<P>In past lives, I've earned a ham radio license back in the days when
+<p>In past lives, I've earned a ham radio license back in the days when
 you needed to know Morse code to pass (novice, KA0QEQ probably long
-since expired/retired), accumulated over 80 hours in single engine airplanes
-including three solo X-countries, water skied all summer, spent my
-autumns and winters hunting squirrels, pheasants, ducks, and geese.
-I've also enjoyed fishing year 'round for many years although I haven't
-found Michigan very conducive for that sport in spite of its reputation
-(too much pollution for me to tolerate; I really hate those "don't eat
-more than X fish a day" signs). In previous employment, I've run Heidelberg K-line
-offset and letter presses, done darkroom work, bindery work, been a
-bookkeeper, and a manager for a commercial print shop. I'm occasionally
-known to brew my own beer; I prefer stouts. If I could brew Guinness,
-that'd be perfect.
+since expired/retired), accumulated over 80 hours in single engine
+airplanes including three solo X-countries, water skied all summer,
+spent my autumns and winters hunting squirrels, pheasants, ducks, and
+geese.  I've also enjoyed fishing year 'round for many years although
+I haven't found Michigan very conducive for that sport in spite of its
+reputation (too much pollution for me to tolerate; I really hate those
+"don't eat more than X fish a day" signs). In previous employment, I've
+run Heidelberg K-line offset and letter presses, done darkroom work,
+bindery work, been a bookkeeper, and a manager for a commercial print
+shop. I'm occasionally known to brew my own beer; I prefer stouts. If I
+could brew Guinness, that'd be perfect.
 
-<P>On the <A HREF="http://www.cyberspace.org/">Grex</A> public-access
-computer conferencing system, I'm the <A HREF="figlet.html">FIGlet</A>
+<p>On the <a href="http://www.cyberspace.org/">Grex</a> public-access
+computer conferencing system, I'm the <a href="figlet.html">FIGlet</a>
 font maintainer and the fairwitness of the Life 101/Consumer computer
 conference, which tends to be the catch-all conference for anything to
 do with purchasing and using products, as well as finding sources for
 goods &amp; services. 
-On the <A HREF="http://www.arbornet.org/">M-Net</A> 
+On the <a href="http://www.arbornet.org/">M-Net</a> 
 public-access conferencing system, I'm one of the fairwitnesses of the 
 Unix conference.
 
-<P>Currently, I share an apartment with my wife, Suzi, and two cats,
+<p>Currently, I share an apartment with my wife, Suzi, and two cats,
 Cricket and George. I'm allergic to the latter two, so I'm not a big
 fan of cats, although Cricket seems to be a fan of me. My wife works
 for the University of Michigan as a network operations consultant in
@@ -161,12 +169,172 @@ foolish, but he wouldn't listen. My stepdaughter, Dorothy, and her
 husband Chris, just had their second child, a girl named Elizabeth
 Danielle.  Forrest is their other good kid.
 
-<P>So there you have a bit of the past, a lot of the present and a
+<p>So there you have a bit of the past, a lot of the present and a
 little of the future for Kent Nassen. This is more than anyone will
 read, I'm sure, and certainly more than anyone will care about.
 
-<P>--Kent
+<p>--Kent
 
+<p>-----BEGIN GEEK CODE BLOCK-----<br>
+Version: 3.1<br>
+GB/SS/O d- s-: a+ C++$ UBS++(+++)$&gt;++++ P+++$ L- !E- W++ N++ o !K <br>
+w--$ !O !M-- V PS+ PE Y+ PGP t 5 X R* tv+ b+++ DI++++ !D G e+++&gt;++++<br>
+h--- r+++ y+++<br>
+------END GEEK CODE BLOCK------ <br>
+<a href="http://www.ebb.org/cgi-bin/ungeek.cgi?geekCode=Version%3A+3.1%0D%0A++++GB%2FSS%2FO+d-+s-%3A+a%2B+C%2B%2B%24+UBS%2B%2B%28%2B%2B%2B%29%24%3E%2B%2B%2B%2B+P%2B%2B%2B%24+L-+%21E-+W%2B%2B+N%2B%2B+o+%21K+%0D%0A++++w--%24+%21O+%21M--+V+PS%2B+PE+Y%2B+PGP+t+5+X+R*+tv%2B+b%2B%2B%2B+DI%2B%2B%2B%2B+%21D+G+e%2B%2B%2B%3E%2B%2B%2B%2B%0D%0A++++h---+r%2B%2B%2B+y%2B%2B%2B">Decode this geek code.</a>
+
+(Or see <a href="http://www.geekcode.com/">the Code of the Geeks page.</a> or
+<a href="http://www.ebb.org/ungeek/">the Geek Code Decoder Page</a>)
+
+<hr style="width=100%; height 2px; border: none;">
+<a href="index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Home Page</a><br>
+
+<span style="font size: 80%;">
+Last Modified: Fri Jul 18 10:46:41 EDT 2025
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 2
+a2 2
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+d4 9
+a12 8
+<HEAD>
+<BASE HREF="http://www-personal.umich.edu/~knassen/mice.html">
+<META name="description" content="A little about myself...">
+<TITLE>This picture's apparently good for scaring mice...</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#bad3ef" LINK="#0000EF" VLINK="#55188A" ALINK="#FF0000">
+<BR>
+<BLOCKQUOTE>
+d14 1
+a14 1
+<H2>This picture's apparently good for scaring mice...</H2>
+d16 1
+a16 4
+<IMG SRC="gif/1975kent.jpg" ALT="[Kent Nassen, c19754 65K JPEG]" BORDER="0"> <FONT SIZE="-2">yk</FONT>
+<P>
+<STRONG>Kent Nassen</STRONG> c.1974
+<HR SIZE=3 NOSHADE WIDTH="100%">
+d18 6
+a23 1
+<P>Okay, it has been suggested that I put in a little about myself (as
+d29 1
+a29 1
+<P>My favorite amp is my black padded vinyl-covered Kustom B200 (100W RMS),
+d32 2
+a33 2
+musical interests are <A HREF="http://www.rockabilly.com">rockabilly</A>
+(<A HREF="http://www.geocities.com/SunsetStrip/Palms/1682/">The
+d35 3
+a37 3
+though isn't it?--the Stray Cats, Brian Setzer, <A
+HREF="http://bullwinkle.as.utexas.edu/scot/blasters.html">the
+Blasters</A> [hey, these guys have their first vinyl album--1980--out
+d39 3
+a41 3
+(<A HREF="http://www.thenighthawks.com/">The Nighthawks</A>, 
+<A HREF="http://centerstage.net/chicago/music/whoswho/KinseyReport.html">The Kinsey 
+Report</A>, Magic Dick & J. Geils with BluesTime,
+d44 1
+a44 1
+<A HREF="http://www.netspace.org/allmans/">Allman Brothers</A>, Ted Nugent,
+d51 2
+a52 2
+<P>Just recently, I accepted employment with the 
+<A HREF="http://www.parke-davis.com">Parke-Davis Division</A> of
+d58 2
+a59 2
+<P>My previous job was at the Inter-university Consortium for Political
+and Social Research (<A HREF="http://www.icpsr.umich.edu">ICPSR</A>)
+d62 1
+a62 1
+and Perl scripts, SPSS and <A HREF="http://www.sas.com">SAS</A>
+d65 2
+a66 2
+presented mini-seminars on the use of sed &amp; AWK and SAS &amp; <A
+HREF="http://www.spss.com">SPSS</A> for my co-workers.
+d68 3
+a70 3
+<P>At home, I run the free unix operating system 
+<A HREF="http://www.freebsd.org">FreeBSD</A> 2.2.5 on my old
+486DX2-80. I run the <A HREF="http://www.xfree86.org">XFree86</A>
+d72 3
+a74 3
+(depending on mood). Currently, I'm goofing around with the <A
+HREF="http://www.gimp.org">gimp</A> graphics package and <A
+HREF="http://www.perl.org">Perl</A> 5.005. I use some version of the vi
+d77 3
+a79 3
+all of the vi clones I discuss and show on <A HREF="vi.html">my vi
+page</A> and I usually edit my HTML code by hand using vi, hence the
+<A HREF="http://www.darryl.com/vi.html">vi-powered</A> logo.
+d81 1
+a81 1
+<P>One recent non-fiction book I've read was <U>Killing Custer</U> by
+d83 2
+a84 2
+recently finished <U>The Mystery of E Troop: Custer's Gray Horse Company
+at the Little Bighorn</U> by Gregory Michno (Missoula, Montana: Mountain
+d87 2
+a88 2
+side, I recently read Robert Ludlum's <U>The Matarese Countdown</U> and
+<U>The Matarese Circle</U>. I also regularly read through the series
+d90 2
+a91 2
+such as <U>Clive Cussler and Dirk Pitt Revealed</U>, and the upcoming
+<U>Atlantis Found</U>).
+d93 1
+a93 1
+<P>I suppose at this point I could throw in my vita, but most people
+d105 1
+a105 1
+myself was recently published in the <U>Journal of Econometrics</U>
+d108 1
+a108 1
+<P>In past lives, I've earned a ham radio license back in the days when
+d110 11
+a120 11
+since expired/retired), accumulated over 80 hours in single engine airplanes
+including three solo X-countries, water skied all summer, spent my
+autumns and winters hunting squirrels, pheasants, ducks, and geese.
+I've also enjoyed fishing year 'round for many years although I haven't
+found Michigan very conducive for that sport in spite of its reputation
+(too much pollution for me to tolerate; I really hate those "don't eat
+more than X fish a day" signs). In previous employment, I've run Heidelberg K-line
+offset and letter presses, done darkroom work, bindery work, been a
+bookkeeper, and a manager for a commercial print shop. I'm occasionally
+known to brew my own beer; I prefer stouts. If I could brew Guinness,
+that'd be perfect.
+d122 2
+a123 2
+<P>On the <A HREF="http://www.cyberspace.org/">Grex</A> public-access
+computer conferencing system, I'm the <A HREF="figlet.html">FIGlet</A>
+d128 1
+a128 1
+On the <A HREF="http://www.arbornet.org/">M-Net</A> 
+d132 1
+a132 1
+<P>Currently, I share an apartment with my wife, Suzi, and two cats,
+d144 1
+a144 1
+<P>So there you have a bit of the past, a lot of the present and a
+d148 1
+a148 1
+<P>--Kent
+d150 7
+a156 7
 <P>-----BEGIN GEEK CODE BLOCK-----<BR>
 Version: 3.1<BR>
 GB/SS/O d- s-: a+ C++$ UBS++(+++)$&gt;++++ P+++$ L- !E- W++ N++ o !K <BR>
@@ -174,10 +342,12 @@ w--$ !O !M-- V PS+ PE Y+ PGP t 5 X R* tv+ b+++ DI++++ !D G e+++&gt;++++<BR>
 h--- r+++ y+++<BR>
 ------END GEEK CODE BLOCK------ <BR>
 <A HREF="http://www.ebb.org/cgi-bin/ungeek.cgi?geekCode=Version%3A+3.1%0D%0A++++GB%2FSS%2FO+d-+s-%3A+a%2B+C%2B%2B%24+UBS%2B%2B%28%2B%2B%2B%29%24%3E%2B%2B%2B%2B+P%2B%2B%2B%24+L-+%21E-+W%2B%2B+N%2B%2B+o+%21K+%0D%0A++++w--%24+%21O+%21M--+V+PS%2B+PE+Y%2B+PGP+t+5+X+R*+tv%2B+b%2B%2B%2B+DI%2B%2B%2B%2B+%21D+G+e%2B%2B%2B%3E%2B%2B%2B%2B%0D%0A++++h---+r%2B%2B%2B+y%2B%2B%2B">Decode this geek code.</A>
-
+d158 2
+a159 2
 (Or see <A HREF="http://www.geekcode.com/">the Code of the Geeks page.</A> or
 <A HREF="http://www.ebb.org/ungeek/">the Geek Code Decoder Page</A>)
-
+d161 10
+a170 7
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  Back to Kent's Home Page</A><BR>
 <FONT SIZE=-1>Last Modified: Wed Apr 14 20:09:17 EDT 1999

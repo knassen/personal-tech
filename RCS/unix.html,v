@@ -1,10 +1,15 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
 locks
-	knassen:1.1; strict;
+	knassen:1.2; strict;
 comment	@# @;
 
+
+1.2
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.1;
 
 1.1
 date	2025.07.01.16.33.28;	author knassen;	state Exp;
@@ -16,27 +21,132 @@ desc
 @@
 
 
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="description" content="A few links to Unix-related sites">
+    <base href="/personal-tech/">
+    <title>Unix-Related Sites</title>
+</head>
+
+<body> 
+
+<br>
+<blockquote>
+    <h2>Unix-Related Sites</h2>
+<hr style="width=100%; height 2px; border: none;">
+
+<dl>
+<dt><a href="http://www.freebsd.org"><img src="/personal-tech/gif/devil-tiny.gif" alt="">
+<strong>FreeBSD Page</strong></a>
+<!--&nbsp;---&nbsp;<a href="ftp://ftp.freebsd.org/pub/FreeBSD/"><strong>FTP to freebsd.org</strong></a--></dt>
+<dt>I run FreeBSD on my '486 at home, so of course, my web interests
+tend to point in that direction.  FreeBSD is available for 
+many systems, including i386, amd64, arm64, powerpc64, and riscv64. One of this
+free operating system's strong points is TCP/IP networking. Many
+application programs are available (freeware and commercial) as
+ports and/or "packages" (precompiled binaries packed with or linked to
+all the files needed to run the application--installing packages is as
+simple as typing "pkg_add <em>package-name</em>").  A large team of individuals
+continues to contribute actively to the development of FreeBSD. Includes Linux 
+emulation.
+
+<dt><a href="http://www.netbsd.org"><strong>NetBSD
+Page</strong></a>&nbsp; and&nbsp; 
+<a href="http://www.openbsd.org"><strong>OpenBSD Page</strong></a></dt>
+<dd>NetBSD and OpenBSD are related free unix operating systems (based
+on the 4.4BSD-lite distribution, as is FreeBSD), although it is fairly
+safe to say now OpenBSD has found its own niche as a secure system.
+The NetBSD group tries for maximum portability and stability across
+platforms, while the OpenBSD group tries for maximum security while
+retaining portability.  These operating systems also are of interest
+since their software tends to port (mostly) effortlessly to FreeBSD (and
+vice versa, one presumes).</dd>
+
+<dt><a href="http://www.ugu.com/"><strong>Unix Guru Universe Unix SysAdmin Page</strong></a></dt>
+<dd>The Official Home Page for Unix System Administrators.  The site is
+broken down into the following areas:  (Unix) Flavors, System Administration,
+Networking, Security, Software (62 categories), Help,
+Conferences/Shows/Events, Vendors, Careers, and Internet. Too much to
+describe in a short space.</dd>
+
+<dt><a href="http://www.research.att.com/sw/tools/reuse/">
+<strong>Practical Reusable UNIX Software [bad link]</strong></a></dt>
+<dt>ksh93 and other reusable software tools. Downloading programs
+requires assenting to a license agreement.</dt>
+
+<dt><a href="http://www.stokely.com/unix.sysadm.resources/index.html">
+<strong>Unix System Administrator's Resources [bad link]</strong></a></dt>
+<dd>Many information sources and links to same: FAQs, patches, tutorials, and
+    more.</dd>
+
+<dt><a href="http://www2.shore.net/~jblaine/vault/"><strong>Jeff's Unix Vault [bad link]</strong></a></dt>
+<dd>According to the author this site is "an attempt at a complete compendium of 
+UNIX and strongly UNIX-related material." Stuff for many flavors of unix, 
+including shells, security-related files, links to other Unix materials 
+(organizations, FAQs, etc.), windowing systems, and scripting information.
+Once again, too much to adequately describe here.</dd>
+
+<dt><a href="ftp://oak.oakland.edu/pub/unix-c/"><strong>oak.oakland.edu/pub/unix-c [bad link]</strong></a></dt>
+<dd>A bit on the old side as far as the ages of the files, but often useful for the
+source code to any number of handy utilities and replacement programs for those
+systems lacking them.</dd>
+
+<dt><a href="http://reference.perl.com/"><strong>Perl Reference Page</strong></a></dt>
+<dd>A good starting point for learning about Perl, including some system
+    administration tools written in perl.</dd>
+
+<dt><a href="sed.html"><strong>sed Sites</strong></a></dt>
+<dd>Several links to seders sites, and other information about the sed editor.</dd>
+</dl>
+
+<hr style="width=100%; height 2px; border: none;">
+<a href="links.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Links</a>
+
+<span style="font size: 80%;">
+<br>Last modified: Fri Jul 18 09:08:41 EDT 2025
+</span>
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.1
 log
 @Initial revision
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 2
+a2 2
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
-
+d4 6
+a9 5
 <HEAD>
 <META name="description" content="A few links to Unix-related sites">
 <BASE HREF="http://www-personal.umich.edu/~knassen/unix.html">
 <TITLE>Unix-Related Sites</TITLE>
 </HEAD>
-
+d11 1
+a11 1
 <BODY BACKGROUND="gif/canvas.jpg">
-
+d13 4
+a16 4
 <BR>
 <BLOCKQUOTE>
 <H2>Unix-Related Sites
 <HR SIZE=3 NOSHADE WIDTH="100%"></H2>
-
+d18 7
+a24 8
 <DL>
 <DL>
 <DT><A HREF="http://www.freebsd.org"><IMG SRC="gif/devil-tiny.gif" ALT="" ALIGN=MIDDLE BORDER="0">
@@ -45,14 +155,16 @@ text
 <DT>I run FreeBSD on my '486 at home, so of course, my web interests
 tend to point in that direction.  FreeBSD is only available for Intel
 386+ systems, but it tends to shine in that environment.  One of this
-free operating system's strong points is TCP/IP networking. Many
+d26 1
+a26 1
 application programs are available (free, freeware, and commercial) as
-ports and/or "packages" (precompiled binaries packed with or linked to
-all the files needed to run the application--installing packages is as
+d29 3
+a31 3
 simple as typing "pkg_add <EM>package-name</EM>").  A large team of individuals
 continues to contribute actively to the development of FreeBSD.  Includes Linux 
 emulation.</DT>
-
+d33 11
+a43 11
 <P>
 <DT><A HREF="http://www.netbsd.org"><STRONG>NetBSD Page</STRONG></A>&nbsp;
 and&nbsp; <A HREF="http://www.openbsd.org"><STRONG>OpenBSD Page</STRONG></A></DT>
@@ -64,52 +176,59 @@ OpenBSD group tries for maximum security while retaining portability.
 These operating systems also are of interest since their software tends
 to port (mostly) effortlessly to FreeBSD (and vice versa, one
 presumes).</DT>
-
+d45 2
+a46 3
 <P>
 <DT><A HREF="http://www.ugu.com/"><STRONG>Unix Guru Universe Unix SysAdmin Page</STRONG></A></DT>
 <DT>The Official Home Page for Unix System Administrators.  The site is
-broken down into the following areas:  (Unix) Flavors, System Administration,
-Networking, Security, Software (62 categories), Help,
-Conferences/Shows/Events, Vendors, Careers, and Internet. Too much to
+d50 1
+a50 1
 describe in a short space.</DT>
-
+d52 4
+a55 5
 <P>
 <DT><A HREF="http://www.research.att.com/sw/tools/reuse/">
 <STRONG>Practical Reusable UNIX Software</STRONG></A></DT>
 <DT>ksh93 and other reusable software tools. Downloading programs
 requires assenting to a license agreement.</DT>
-
+d57 4
+a60 5
 <P>
 <DT><A HREF="http://www.stokely.com/unix.sysadm.resources/index.html">
 <STRONG>Unix System Administrator's Resources</STRONG></A></DT>
 <DT>Many information sources and links to same: FAQs, patches, tutorials, and
 more.</DT>
-
+d62 2
+a63 3
 <P>
 <DT><A HREF="http://www2.shore.net/~jblaine/vault/"><STRONG>Jeff's Unix Vault</STRONG></A></DT>
 <DT>According to the author this site is "an attempt at a complete compendium of 
-UNIX and strongly UNIX-related material." Stuff for many flavors of unix, 
-including shells, security-related files, links to other Unix materials 
-(organizations, FAQs, etc.), windowing systems, and scripting information.
+d67 1
+a67 1
 Once again, too much to adequately describe here.</DT>
-
+d69 2
+a70 3
 <P>
 <DT><A HREF="ftp://oak.oakland.edu/pub/unix-c/"><STRONG>oak.oakland.edu/pub/unix-c</STRONG></A></DT>
 <DT>A bit on the old side as far as the ages of the files, but often useful for the
-source code to any number of handy utilities and replacement programs for those
+d72 1
+a72 1
 systems lacking them.</DT>
-
+d74 3
+a76 4
 <P>
 <DT><A HREF="http://reference.perl.com/"><STRONG>Perl Reference Page</STRONG></A></DT>
 <DT>A decent starting point for learning about Perl, including some system
 administration tools written in perl.</DT>
-
+d78 3
+a80 5
 <P>
 <DT><A HREF="sed.html"><STRONG>sed Sites</STRONG></A></DT>
 <DT>Several links to seders sites, and other information about the sed editor.</DT>
 </DL>
 </DL>
-
+d82 10
+a91 7
 <HR SIZE=3 NOSHADE WIDTH="100%">
 <A HREF="links.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0 WIDTH=24 HEIGHT=24>  Back to Kent's Links</A>
 <FONT SIZE=-1><BR><CENTER>Last modified: Sat Nov 28 13:24:43 EST 1998

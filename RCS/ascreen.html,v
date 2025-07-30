@@ -1,10 +1,15 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
 locks
-	knassen:1.1; strict;
+	knassen:1.2; strict;
 comment	@# @;
 
+
+1.2
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.1;
 
 1.1
 date	2025.07.01.16.33.28;	author knassen;	state Exp;
@@ -16,12 +21,87 @@ desc
 @@
 
 
+1.2
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base href="/personal-tech/">
+    <title>Aurora Editor Screen Shots</title>
+</head>
+<body> 
+<blockquote>
+[<strong><a href="aurora.html">Main</a></strong>]
+[<strong><a href="ascreen.html">Screen Shots</a></strong>]
+[<strong><a href="ainfo.html#download">Download</a></strong>]
+[<strong><a href="amacs.html">Aurora Macros</a></strong>]
+[<strong><a href="ainfo.html#mail">Mail List</a></strong>]
+[<strong><a href="ainfo.html#archive">Mail List Archive</a></strong>]
+[<strong><a href="ainfo.html#links">Aurora Links</a></strong>]
+
+<h2><strong>Aurora Editor Screen Shots</strong></h2>
+<hr style="width=100%; height 2px; border: none;">
+These are screen shots of my &#34;version&#34; of Aurora:  how I've
+got Aurora/DOS set up in terms of colors, title bars, etc.  This is not how
+Aurora comes &#34;out of the box.&#34; However, all the changes I've
+made to screen appearance were made using Aurora's configuration menu
+and a little editing in the configuration files. Note that since I
+generally run my Aurora windows at full screen, I don't like borders on
+my windows (Aurora provides a simple command to circulate between open
+windows, even if they aren't visible on the screen); I apologize to
+those who expect clearly-defined boundaries for their windows...
+
+<ul>
+<li><a href="aurora/aurora2.html"><strong>Aurora 'About' Screen </strong>(19K gif)</a>
+Of course, I've registered...</li>
+
+<li><a href="aurora/aurora1.html"><strong>Aurora Editor Window </strong>(15K gif)</a>
+I prefer a rather barren screen...</li>
+
+<li><a href="aurora/aurora3.html"><strong>Aurora's File Manager Part I (Simple Usage)</strong> (10K gif)</a>
+The file manager allows selection of files...</li> 
+
+<li><a href="aurora/aurora4.html"><strong>Aurora's File Manager Part II (More Features)</strong> (27K gif)</a>
+This is a view of the Aurora file manager in a more ambitious role...</li>
+
+<li><a href="aurora/aurora5.html"><strong>Aurora Multiple Windows Editing</strong> (27K gif)</a>
+One good feature of the Aurora editor is its ability to open many files
+at once...</li> 
+
+<li><a href="aurora/aurora6.html"><strong>Aurora Editor -- Hex Mode</strong> (17K gif)</a>
+Another handy feature of the Aurora editor is its built-in hex editor mode...</li> 
+</ul>
+
+<hr style="width=100%; height 2px; border: none;">
+
+[<strong><a href="aurora.html">Main</a></strong>]
+[<strong><a href="ascreen.html">Screen Shots</a></strong>]
+[<strong><a href="ainfo.html#download">Download</a></strong>]
+[<strong><a href="amacs.html">Aurora Macros</a></strong>]
+[<strong><a href="ainfo.html#mail">Mail List</a></strong>]
+[<strong><a href="ainfo.html#archive">Mail List Archive</a></strong>]
+[<strong><a href="ainfo.html#links">Aurora Links</a></strong>]
+
+<P><a href="index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  To Kent's Home Page</a>
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.1
 log
 @Initial revision
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 16
+a16 15
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
    <BASE HREF="http://www-personal.umich.edu/~knassen/ascreen.html">
@@ -36,42 +116,43 @@ text
 [<STRONG><A HREF="ainfo.html#mail">Mail List</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#archive">Mail List Archive</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#links">Aurora Links</A></STRONG>]
-
+d18 2
+a19 2
 <H2><STRONG>Aurora Editor Screen Shots</STRONG></H2>
 <HR SIZE=5 NOSHADE WIDTH="100%">
-These are screen shots of my &#34;version&#34; of Aurora:  how I've
-got Aurora/DOS set up in terms of colors, title bars, etc.  This is not how
-Aurora comes &#34;out of the box.&#34; However, all the changes I've
-made to screen appearance were made using Aurora's configuration menu
-and a little editing in the configuration files. Note that since I
-generally run my Aurora windows at full screen, I don't like borders on
-my windows (Aurora provides a simple command to circulate between open
-windows, even if they aren't visible on the screen); I apologize to
-those who expect clearly-defined boundaries for their windows...
-
+d30 3
+a32 3
 <UL>
 <LI><A HREF="aurora/aurora2.html"><STRONG>Aurora 'About' Screen </STRONG>(19K gif)</A>
 Of course, I've registered...</LI>
-
+d34 2
+a35 2
 <LI><A HREF="aurora/aurora1.html"><STRONG>Aurora Editor Window </STRONG>(15K gif)</A>
 I prefer a rather barren screen...</LI>
-
+d37 2
+a38 2
 <LI><A HREF="aurora/aurora3.html"><STRONG>Aurora's File Manager Part I (Simple Usage)</STRONG> (10K gif)</A>
 The file manager allows selection of files...</LI> 
-
+d40 2
+a41 2
 <LI><A HREF="aurora/aurora4.html"><STRONG>Aurora's File Manager Part II (More Features)</STRONG> (27K gif)</A>
 This is a view of the Aurora file manager in a more ambitious role...</LI>
-
+d43 1
+a43 1
 <LI><A HREF="aurora/aurora5.html"><STRONG>Aurora Multiple Windows Editing</STRONG> (27K gif)</A>
-One good feature of the Aurora editor is its ability to open many files
+d45 1
+a45 1
 at once...</LI> 
-
+d47 3
+a49 3
 <LI><A HREF="aurora/aurora6.html"><STRONG>Aurora Editor -- Hex Mode</STRONG> (17K gif)</A>
 Another handy feature of the Aurora editor is its built-in hex editor mode...</LI> 
 </UL>
-
+d51 1
+a51 1
 <HR SIZE=5 NOSHADE WIDTH="100%">
-
+d53 7
+a59 7
 [<STRONG><A HREF="aurora.html">Main</A></STRONG>]
 [<STRONG><A HREF="ascreen.html">Screen Shots</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#download">Download</A></STRONG>]
@@ -79,9 +160,11 @@ Another handy feature of the Aurora editor is its built-in hex editor mode...</L
 [<STRONG><A HREF="ainfo.html#mail">Mail List</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#archive">Mail List Archive</A></STRONG>]
 [<STRONG><A HREF="ainfo.html#links">Aurora Links</A></STRONG>]
-
+d61 1
+a61 1
 <P><A HREF="index.html"><IMG ALIGN=MIDDLE SRC="gif/arrwback.gif" ALT="" BORDER=0>  To Kent's Home Page</A>
-
+d63 3
+a65 3
 </BLOCKQUOTE>
 </BODY>
 </HTML>

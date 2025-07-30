@@ -1,10 +1,15 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks
-	knassen:1.2; strict;
+	knassen:1.3; strict;
 comment	@# @;
 
+
+1.3
+date	2025.07.21.15.16.12;	author knassen;	state Exp;
+branches;
+next	1.2;
 
 1.2
 date	2025.07.04.12.49.56;	author knassen;	state Exp;
@@ -21,12 +26,44 @@ desc
 @@
 
 
+1.3
+log
+@*** empty log message ***
+@
+text
+@<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <base href="/personal-tech/">
+    <title>awk sites</title>
+</head>
+
+<body>
+<blockquote>
+<h2>awk sites</h2>
+<hr style="width=100%; height 2px; border: none;">
+
+<dl>
+<dd><a href="http://www.cis.ohio-state.edu/hypertext/faq/usenet/computer-lang/awk-faq/faq.html">The awk FAQ [bad link]</a></dd>
+
+</dl>
+<hr style="width=100%; height 2px; border: none;">
+
+</blockquote>
+</body>
+</html>
+@
+
+
 1.2
 log
 @*** empty log message ***
 @
 text
-@<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+@d1 7
+a7 10
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <HTML>
 <HEAD>
 <BASE HREF="http://192.168.50.172/~knassen/umich/www/awk.html">
@@ -36,13 +73,16 @@ text
 <BLOCKQUOTE>
 <H2>awk sites</H2>
 <HR SIZE=3>
-
+d9 4
+a12 2
 <DL>
 <DD><A HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/computer-lang/awk-faq/faq.html">The awk FAQ</A></DD>
-
+d14 2
+a15 2
 </DL>
 <HR SIZE=3>
-
+d17 6
+a22 3
 </BLOCKQUOTE>
 </BODY>
 </HTML>
