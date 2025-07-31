@@ -15,6 +15,7 @@
 <blockquote>
 <h1><img src="/personal-tech/gif/vim_sas_functions_menu2.png" alt="">
 Vim Functions for SAS Programming</h1>
+
 <hr style="width=100%; height 2px; border: none;">
 <h1> Introduction </h1>
 I wrote these three functions to help me program SAS with the Vim
@@ -27,12 +28,12 @@ which covers defining the file to be used and how to move around the issues
 list).
 <p>
 The code to add the three functions to the <a
-href="../gr/vim_sas_functions.png"><strong>Vim Tools menu</strong></a>
+href="/personal-tech/gif/vim_sas_functions.png"><strong>Vim Tools menu</strong></a>
 is given as well as code to make the assignments to function keys.  All
 three Vim functions for using SAS, the menu and function key code,
 a SAS log check script and an example wrapper script are available
 for download in this <a href="vimsasfunctions.zip"><strong>zip
-file</strong></A>.
+file</strong></a>.
 <p>
 Regarding the use of these functions with Windows and PC SAS: two
 suggestions I received (thank you Laurie Samuels) that appear to work
@@ -216,7 +217,7 @@ when the quickfix window opens.
 <p>
 The Unix grep program can provide a file name (GNU grep's -H option,
 for example) in the list of errors/warnings. Below, I present a 
-<strong id="#cklog">simple SAS Log checking shell script</strong>
+<a href id="#cklog">simple SAS Log checking shell script</a>
 using the GNU grep program that works with Vim's QuickFix mode.
 <p>
 If you use another external log-checking program, make sure it
@@ -277,27 +278,27 @@ you aren't currently using, as well, and in an order that makes sense to you.
   menu Tools.-Sep-     :
 
   " Assign RunSASonCurrentFile function to the tools menu
-  menu Tools.Run\ SAS\ on\ Current\ File  :call RunSASonCurrentFile()<BR>
+  menu Tools.Run\ SAS\ on\ Current\ File  :call RunSASonCurrentFile()<br>
 
   " Assign  LoadSASLogLst function to the tools menu
-  menu Tools.Load\ SAS\ Log\/List\ for\ Current\ File :call LoadSASLogLst()<BR>
+  menu Tools.Load\ SAS\ Log\/List\ for\ Current\ File :call LoadSASLogLst()<br>
 
   " Assign  ChkSASLog function to the tools menu
-  menu Tools.Check\ SAS\ Log :call CheckSASLog()<BR>
+  menu Tools.Check\ SAS\ Log :call CheckSASLog()<br>
 
   " Map RunSASonCurrentFile to a function key
-  map &lt;F10&gt; :call RunSASonCurrentFile()<BR>
+  map &lt;F10&gt; :call RunSASonCurrentFile()<br>
 
   " Map LoadSASLogLst to a function key
-  map &lt;F11&gt; :call LoadSASLogLst()<BR>
+  map &lt;F11&gt; :call LoadSASLogLst()<br>
 
   " Map CheckSASLog to a function key
-  map &lt;F12&gt; :call CheckSASLog()<BR>
+  map &lt;F12&gt; :call CheckSASLog()<br>
 
 </pre>
 
 <p>
-<a id="cklog"><strong>A Simple SAS Log File Checking Script</strong></A>
+<strong id="cklog">A Simple SAS Log File Checking Script</strong></a>
 <p>
 This is the cklog program noted in the grepprg definition in the
 CheckSASLog() function. It runs on Unix. It should run okay under Cygwin
