@@ -1,0 +1,158 @@
+#!/usr/bin/env perl 
+
+# cklg: a script to check SAS log files for errors, warnings, and other 
+# messages that indicate potential problems. 
+#
+# cklg operates on the command line and can process multiple files.
+# It can be customized for the log messages to find and for the
+# log messages to ignore.  There are only 2 optional command line
+# parameters, besides the file name(s) to check: give a usage message
+# and list the strings that will be searched. cklg should be portable
+# to any system with Perl and an available command line.
+#
+# cklg was intended to work with the Vim editors's quickfix facility. 
+# Thus, it provides the log file name and the line number of the error 
+# in addition to the error text. It also can be run as a stand alone
+# program.
+#
+# Original version 01JUN2009 by Kent Nassen.
+# Updated to use lexical filehandles and modern Perl practices.
+
+use strict;
+use warnings;
+use Getopt::Std;
+use vars qw($version $file $ProgName $query $filename @search $opt_h $opt_l $count $term $i $line $line_number);
+
+$version = "v1.1, " . scalar(localtime);
+($file, $ProgName, $query, $filename) = ("", "", "", "");
+@search = ();
+($opt_h, $opt_l) = ('', '');
+
+($ProgName = $0) =~ s%.*/%%;  # Unix
+#($ProgName = lc $0) =~ s%.*\\%%;  # DOS
+
+# Initialize options
+
+getopts('hl');
+
+if ($opt_h or ($#ARGV < 0 and not $opt_l)) { DisplayUsage(); }
+
+# The list of SAS log message strings to search for.  Add more here if
+# needed.  A case-insensitive search will be used later.
+@search = ( "error",
+            "fatal",
+            "warning:",
+            "syntax error",
+            "converted",
+            "uninitialized",
+            " 0 obs",
+            "no obser",
+            "repeats of",
+            "not found",
+            "could not be loaded",
+            "w.d. format was too small",
+            "not valid",
+            "not executed",
+            "invalid",
+            "overwritten",
+            "missing values were generated",
+            "outside the axis range",
+            "duplicate by var",
+            "not created",
+            "contained a missing",
+            "already sorted",
+            "already on the library",
+            "ignored",
+            "went to new line",
+            "no effect",
+            "division by zero",
+            "stopped",
+            "due to loop" 
+          );
+
+# List the search terms used by the program.
+if ($opt_l) {
+    # loop over elements in the array
+    print "\nThe log search terms used by $ProgName are: \n";
+    $count = 0;
+    foreach $term (@search) {
+        print "   $term\n";
+        $count++;
+    }
+    print "\n$count terms defined.\n\n";
+    exit 0;
+}
+
+# Build the query (if statement) from the array elements
+for ($i = 0; $i < @search; $i++) {
+    if ($i == 0) {
+        $query = "if (m/" . $search[$i] . "/i\n";
+    } else {
+        $query .= "or m/" . $search[$i] . "/i\n";
+    }
+}
+# Finish building the if statement.
+$query=$query.")\n { print \"\$filename:\$.:\",\$_,\"\\n\"\; }";
+# Loop through file names on the command line and process each.
+foreach $file (@ARGV) {
+    $filename = $file;  # Set the global filename for use in the query
+    Process($file);
+}
+
+# Process looks for errors and warnings and prints the findings.
+sub Process {
+    my ($file_to_process) = @_;
+    
+    # We need to use $file_to_process within the function but use the global $filename 
+    # in the query for consistent behavior with the original script
+    
+    # Use lexical filehandle (modern Perl practice)
+    my $fh;
+    open $fh, '<', $file_to_process or do {
+        print STDERR "\n   *** $ProgName: Can't open '$file_to_process': $!\n\n";
+        return;
+    };
+    
+    $line_number = 0;
+    while ($line = <$fh>) {
+        $line_number = $.;  # Save current line number
+        chomp($line);
+        $line =~ s/\r.*$//; # Remove the overprinted text on the line
+        
+        # Log messages that look like errors but we don't want to report
+        if (
+            $line =~ m/Errors printed on/i 
+            or $line =~ m/will be automatically converted/i
+            # add more message to skip here
+        ){ 
+            next; 
+        }
+        
+        # This does the log search by executing the if
+        # statement contained in the variable $query created
+        # earlier. Add more terms above.
+        # We need to localize $_ for the eval to work properly
+        local $_ = $line;
+        local $. = $line_number;  # Ensure line number is consistent
+        
+        # Execute the dynamic search query
+        eval $query;
+        if ($@) {
+            warn "Error evaluating query: $@";
+        }
+    } # end of input while loop 
+    close $fh;
+}   # end of sub process
+
+# DisplayUsage gives a usage message.
+sub DisplayUsage {
+    print STDERR "\n  $ProgName: Search SAS logs for errors and warnings\n",
+                "               by Kent Nassen, $version\n",
+                "\n   Usage: $ProgName [filename...]\n",
+                "         -h    Display this usage message\n",
+                "         -l    List the search terms\n",
+                "\n",
+                "   Examples: $ProgName test.log  or  $ProgName *.log", 
+                "  or  $ProgName -l\n\n";
+    exit 0;
+}
