@@ -232,9 +232,7 @@ file name), you'll need to write a small <strong id="#wrap">wrapper
 script</strong> to call that check utility and do the addition of
 the file name to each error returned.
 <p>&nbsp;</p>
-
 <pre>
-
   " Check SAS log files for errors, warnings and other problems
   " Assumes you are editing the file to be checked when invoking this function.
   " No assumption about log file name extension is made so you can check any file.
@@ -268,7 +266,6 @@ the file name to each error returned.
   endfunction
 
 </pre>
-<!-- edited to here -->
 <p>
 <strong>Menu Assignments and Key Mappings for the SAS Functions</strong>
 <p>
@@ -300,8 +297,8 @@ you aren't currently using, as well, and in an order that makes sense to you.
 
 </pre>
 
-<p>
-<strong id="cklog">A Simple SAS Log File Checking Script</strong></a>
+<!-- edited to here -->
+<p>strong>A Simple SAS Log File Checking Script</strong></p>
 <p>
 This is the cklog program noted in the grepprg definition in the
 CheckSASLog() function. It runs on Unix. It should run okay under Cygwin
@@ -313,7 +310,7 @@ my system.  It can also be used outside of Vim to check SAS log files
 from the command line.  The other options are -n (give the line number),
 -H (give the file name), and -i (case-insensitive search).
 
-<pre>
+<pre id="cklog">
   #!/bin/sh
   
   # Check SAS log files for warning, errors, and other possible
