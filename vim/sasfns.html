@@ -155,8 +155,7 @@ into separate tabs in Vim.  This is handy if you want to see those files
 for a SAS program file you are examining but don't want to run in SAS.
 It uses the basename of file being edited to find the associated .log
 and .lst files.
-<pre><code>
-
+<pre>
   function! LoadSASLogLst()
     " Assumes you are editing a SAS program.   The log and lst file names will
     " be based on the SAS program basename (the file in the current buffer) and
@@ -182,12 +181,10 @@ and .lst files.
       :endif
     :endif
   endfunction
-
-</code></pre>
+</pre>
 
 <p>
 <strong>Checking the SAS Log File</strong>
-<p>
 The CheckSASLog function helps in debugging a SAS program, allowing
 you to link a list of errors to the lines in the log where the errors
 occurred and jump to specific errors. This is also the function that
@@ -224,7 +221,7 @@ returns the file name for each error, in addition to the line number
 and error text (and modify the grepformat in the CheckSASLog function
 appropriately). Otherwise, depending on your situation (e.g. a
 provided log check utility you can't change that does not provide a
-file name), you'll need to write a small <a href="wrap">wrapper
+file name), you'll need to write a small <a href="#wrap">wrapper
 script</a> to call that check utility and do the addition of
 the file name to each error returned.
 <p>&nbsp;</p>
@@ -341,7 +338,7 @@ from the command line.  The other options are -n (give the line number),
 
 <strong>Wrapper Script to Add Filename</strong>
 <p>
-A <strong id="#wrap">wrapper script</strong> to add the file name
+A <strong id="wrap">wrapper script</strong> to add the file name
 could be as simple as the following Bourne Shell script (which would become the
 grepprg program in CheckSASLog), where the "checksas" program operates
 on a file name given on the commandline and returns a list of errors and
