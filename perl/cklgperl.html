@@ -10,7 +10,6 @@
 <br>
 <blockquote>
 <h2>cklg.pl -- Scan a SAS log for errors, warnings, and other issues</h2>
-
 <hr style="width=100%; height 2px; border: none;">
 
 I wrote this Perl program to do a faster scan through one or more SAS log
@@ -19,9 +18,26 @@ them. The script, on Unix/Linux, can be run on multiple log files. The
 output is set up to allow the use of vim's Quick Fix facility. Adding more
 search terms is easy. Just add them to the @search array like the others.
 
-The command line is: <span style="color: #000080; font-family: monospace;">cklg [filename...]
-                    -h    Display this usage message
-                    -l    List the search terms</span>
+<ul style="list-style-type: disc;">
+    <li>This program is intended to be run from a Unix or Linux command line.</li>
+    <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
+    <li>Not all issues this program finds are labeled as errors or warnings.</li>
+    <li>The output is formatted so that it can be used with Vim's QuickFix facility.</li>
+</ul>
+
+<ul>
+    <li><a href="cklgshow.html"><strong>Show cklg code</strong></a></li>
+    <li><strong>Download: </strong> <a href="cklg.pl"><strong>cklg.pl</strong></a></li>
+
+
+<h3>Usage</h3>
+Assuming this program is executable, its commandline is:
+<span style="font size: 115%;"><strong>cklg.pl [SAS log filename...]</strong></span>
+where: <br>
+<ul>
+    <li>                    -h    Display this usage message</li>
+    <li>                    -l    List the search terms</span></li>
+</ul>
 
 As an example, the command <span style="color: #000080; font-family: monospace;"> cklg testdate2.log</span>
 might produce output like:
@@ -32,7 +48,6 @@ testdate2.log:40:NOTE: Character values have been converted to numeric values at
 testdate2.log:42:NOTE: The SAS System stopped processing this step because of errors.
 testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
 testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</code></pre>
-
 
 <hr style="width=100%; height 2px; border: none;">
 
