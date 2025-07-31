@@ -84,3 +84,12 @@ font:78%/1.6em "Trebuchet MS",Trebuchet,Verdana,Sans-serif;
 text-transform:uppercase;
 letter-spacing:.1em;
 }
+/* pre sections */
+pre {
+  background-color: #f5f5f5;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  overflow: auto;
+  font-family: "Courier New", Courier, monospace;
+}
+
