@@ -296,7 +296,7 @@ you aren't currently using, as well, and in an order that makes sense to you.
 <!-- edited to here -->
 <p><strong>A Simple SAS Log File Checking Script</strong></p>
 <p>
-This is the cklog program noted in the grepprg definition in the
+This is the <b id="cklog">cklog</b> program noted in the grepprg definition in the
 CheckSASLog() function. It runs on Unix. It should run okay under Cygwin
 on Windows. This provides the file name, line number, and the error text
 so it can be used with Vim's quickfix functionality. More checks could
@@ -306,7 +306,7 @@ my system.  It can also be used outside of Vim to check SAS log files
 from the command line.  The other options are -n (give the line number),
 -H (give the file name), and -i (case-insensitive search).
 
-<pre id="cklog">
+<pre>
   #!/bin/sh
   
   # Check SAS log files for warning, errors, and other possible
