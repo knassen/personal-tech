@@ -23,7 +23,7 @@ a log checking program on the current buffer, allowing the use of Vim's
 QuickFix functionality to check SAS log files (see the Vim quickfix help, 
 which covers defining the file to be used and how to move around the issues
 list).
-<br>
+<p>
 These functions were developed for use with SAS in a Unix environment so
 they reference some Unix paths and programs. But they could be adapted
 to Vim and SAS in a Windows environment quite easily (using batch mode
@@ -31,20 +31,20 @@ to run SAS). File extensions are used for determining the file types and
 follow SAS' defaults (.sas for program, .log for log file, and .lst for
 list output). These can be changed if you use other extensions for some
 reason.
-<br>
+<p>
 I keep the code for these functions in my $HOME/.gvimrc file. I haven't
 tried these functions in a console Vim environment.  They should work
 in console vim. Terminal menus get set up using :tlmenu instead of
 :menu. The functions use Vim tabs when loading files for editing, thus I
 use them in GUI Vim (console Vim can do tabbed editing, as well).
-<br>
+<p>
 One option for Vim that may help you use these functions is to set the
 <strong>autoread</strong> option (set autoread in .gvimrc). Thus you
 should get your already-loaded .log and .lst files automatically updated
 when they change, such as when you rerun your .sas file. This may take a
 few seconds depending on how busy your Unix server (or Windows computer)
 is. 
-<br>
+<p>
 Regarding the use of these functions with Windows and PC SAS: two
 suggestions I received (thank you Laurie Samuels) that appear to work
 fine are removing the fnameescape() calls from the LoadSASLogLst()
@@ -61,7 +61,7 @@ three Vim functions for using SAS, the menu and function key code,
 a SAS log check script and an example wrapper script are available
 for download in this <a href="vimsasfunctions.zip"><strong>zip
 file</strong></A>.-->
-<br>
+<p>
 <hr style="width=100%; height 2px; border: none;"> <strong>Below
 you'll find descriptions of each of the functions and the actual
 code used.</strong> 
