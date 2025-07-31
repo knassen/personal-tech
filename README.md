@@ -1,28 +1,36 @@
 # personal-tech
-This is my university personal web site which got deleted in 2024.
+This is my university personal website, which was deleted in 2024.
 
-I've made an attempt at recreating it. I found most of the html files on
-my local hard drive.  I did some lookups on the Wayback Machine to fill
-in for additions that were made directly on the web site rather than in
-my local files. So, I'm reasonably confident it is all back.
+I've tried recreating it. I found most of the HTML files on
+my local hard drive (though they were not always the most recent).  I 
+did some lookups on the Wayback Machine to fill in for additions and
+changes that were made directly on the server rather than in my local files. 
+I'm reasonably confident it is mostly all back.
 
 I've still got plenty to do.
 
-  - A lot of the links are bad and need to fixed or replaced. I've
+  - A lot of the links are bad and need to be fixed or replaced. I've
     been marking bad links and replacing ones I can find in other
     sites. Thankfully, some of the old sites still exist.
 
   - Some of the information needs to be updated and brought up to date.
     Some information is surprisingly still relevant after 25 years.
 
-  - I may add some additional Perl programs of general interest.
+  - I may add some additional Perl programs of general interest. For example,
+  - I recently added the cklg SAS log checking program to the Perl page.
 
-  - I've mostly converted the site to HTML5 standards. This may lead to
-    some odd formatting yet to be fixed.
+  - I'm done converting the site to HTML5 standards. This may lead to odd
+  - page formatting yet to be fixed.
 
-There are still some good items here, even if they are ancient in
-computer terms. Just remember: no AIs were around to help when this site
-was set up originally.
+    I'm still comparing to the Internet Archive for things I may have
+    missed. The Vim functions for SAS programming were one such retrieval
+    that wasn't in my local files.
 
-I hope you will find a few things here that are worthwhile.
+There are still some good and interesting items here, even if they are 
+ancient in computer terms. Just remember: no AIs were around to help when 
+this site was set up originally. At least, you can see how things used
+to be done.
+
+I hope you will find a few things here that are worthwhile. I still use
+some of these programs.
 
