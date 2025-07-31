@@ -198,8 +198,8 @@ editor, how would Vim know which list of errors goes with which log
 file? By the file name.
 <p>
 The Unix grep program can provide a file name (GNU grep's -H option,
-for example) in the list of errors/warnings. Below, I present a <a
-href id="#cklog"><strong>simple SAS Log checking shell script</strong></A>
+for example) in the list of errors/warnings. Below, I present a 
+<strong id="#cklog">simple SAS Log checking shell script</strong>
 using the GNU grep program that works with Vim's QuickFix mode.
 <p>
 If you use another external log-checking program, make sure it
@@ -207,8 +207,8 @@ returns the file name for each error, in addition to the line number
 and error text (and modify the grepformat in the CheckSASLog function
 appropriately). Otherwise, depending on your situation (e.g. a
 provided log check utility you can't change that does not provide a
-file name), you'll need to write a small <a href id="#wrap"><strong>wrapper
-script</strong></A> to call that check utility and do the addition of
+file name), you'll need to write a small <strong id="#wrap">wrapper
+script</strong> to call that check utility and do the addition of
 the file name to each error returned.
 <p>&nbsp;</p>
 
