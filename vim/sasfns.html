@@ -45,9 +45,7 @@ PC SAS. The latter modification is a comment in the function that can
 be uncommented. Note that these functions may take a little bit of
 adjustment (well, the ChkSASLog function, especially) depending on your
 local environment.
-<p>
 <hr style="width=100%; height 2px; border: none;"> 
-<p>
 <h1>Usage Notes</h1>
 
 These functions were developed for use with SAS in a Unix environment so
@@ -98,10 +96,9 @@ refocus on the Vim window for this to happen (e.g. by opening a pull
 down menu).
 <p>
 <strong>Run SAS on Current File/Buffer</strong>
-<pt>
+<p>
 Be sure to set the location of SAS on your machine in the system() call
 below.
-<p>
 <pre>
 
   " Run SAS on the current file/buffer. Assumes you have a SAS program in
@@ -152,7 +149,6 @@ below.
 
 <p>
 <strong>Load SAS Log and Lst Files</strong>
-<p>
 The LoadSASLogLst function loads the SAS .log and .lst files for a SAS
 program being edited in the current buffer.  It will load these files
 into separate tabs in Vim.  This is handy if you want to see those files
@@ -205,7 +201,7 @@ two different ways over the years: using Vim's internal grep capability
 or program that does the log checking and returns a list of errors,
 warnings, and other questionable messages from the SAS log. 
 <p> In order to use 
-<a href=/personal-tech/gif/vim_sas_quickfix.jpg>Vim's QuickFix
+<a href="/personal-tech/gif/vim_sas_quickfix.jpg">Vim's QuickFix
 mechanism</a> fully, the list of errors and warnings needs to be linked
 to the SAS log file via the file name of the log. (Imagine if multiple
 SAS programs and logs were open in the gvim editor, how would Vim know
@@ -228,8 +224,8 @@ returns the file name for each error, in addition to the line number
 and error text (and modify the grepformat in the CheckSASLog function
 appropriately). Otherwise, depending on your situation (e.g. a
 provided log check utility you can't change that does not provide a
-file name), you'll need to write a small <strong id="#wrap">wrapper
-script</strong> to call that check utility and do the addition of
+file name), you'll need to write a small <a href="wrap">wrapper
+script</a> to call that check utility and do the addition of
 the file name to each error returned.
 <p>&nbsp;</p>
 <pre>
