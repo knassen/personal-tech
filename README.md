@@ -17,14 +17,14 @@ I've still got plenty to do.
     Some information is surprisingly still relevant after 25 years.
 
   - I may add some additional Perl programs of general interest. For example,
-  - I recently added the cklg SAS log checking program to the Perl page.
+    I recently added the cklg SAS log checking program to the Perl page.
 
-  - I'm done converting the site to HTML5 standards. This may lead to odd
-  - page formatting yet to be fixed.
-
-    I'm still comparing to the Internet Archive for things I may have
+  - I'm done converting the site to HTML5 standards. This may result in odd page formatting
+    that has yet to be fixed.
+  
+  - I'm still comparing to the Internet Archive for things I may have
     missed. The Vim functions for SAS programming were one such retrieval
-    that wasn't in my local files.
+    that weren't in my local files.
 
 There are still some good and interesting items here, even if they are 
 ancient in computer terms. Just remember: no AIs were around to help when 
