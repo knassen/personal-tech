@@ -26,3 +26,7 @@ hr {
   border: none;
   margin: 20px auto;
 }
+
+blockquote img {
+   margin-top: 20px; /* tweak as needed */
+} 
