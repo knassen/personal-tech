@@ -1,14 +1,14 @@
-## My Former Web Site
+## My Former WebSite
 
-**This is my former web site at umich.edu**. As of sometime in 2024, they
-decided that alumni don't get web sites anymore, so they deleted it.
+**This is my former website at umich.edu**. As of sometime in 2024, they
+decided that alumni don't get websites anymore, so they deleted it.
 I was able to find most of the code on my local computer because I
 developed it there and uploaded it. But some changes were done on the
-umich server directly so I didn't have them locally. I got those from
+server directly, so I didn't have them locally. I got those from
 the Internet Archive's Wayback Machine and added them to the local
 codes. It wasn't much, thankfully.
 
-My umich.edu web site was where I put many of the **Perl programs** I wrote
+My umich.edu website was where I put many of the **Perl programs** I wrote
 over the years. They still work, as far as I can tell.  Some were for
 my job at ICPSR (Inter-university Consortium for Political and Social
 Research at UM). We were always getting new study data submissions
@@ -17,30 +17,41 @@ documentation creation to get the data fully described.  This included
 creating SAS and SPSS programs to read the data to make it useful for
 users. You'll see a few Perl programs that were used for those tasks.
 
-At some point I learned about **FIGlet, a program to create large letters
+At some point, I learned about **FIGlet, a program to create large letters
 from ASCII characters**. There is an area of this site devoted to FIGlet
-fonts including ones I either created or converted.  When UseNet was a
-busy place, there were ASCII-art groups and often someone would post a
+fonts, including ones I either created or converted.  When USENET was a
+busy place, there were ASCII-art groups. Occasionally, someone would post a
 font they had created, but didn't have the time to convert to a FIGlet
-font, so often I'd take on the conversion. Some fonts came from e-mail
+font, so often I'd take on the conversion. Some fonts came from email
 signatures that included ASCII art letters. Those would take more effort
 because they were often missing most of the alphabet.
 
-**July 6, 2025**: Since uploading it to github I've been going through all
-the 404 errors and trying to finding if they relocated to a different
-site or if they just disappe:spared into the ether. Some sites are still
-out there so I linked to their new locations.
+**July 6, 2025**: Since uploading it to GitHub, I've been going through all
+the 404 errors and trying to find if they relocated to a different
+site or if they just disappeared into the ether. Some sites are still
+out there, so I linked to their new locations. Other sites are gone. I'm
+initially marking them as "bad link" while I search for replacements. If
+I can't find a replacement link, that link is being deleted.
 
 Many projects that used to be accessible from personal servers or other
-commercial server accounts, have moved to sourceforge and github in the
-past 10 years. If I can find them, I've been updating my links.
+commercial server accounts have moved to SourceForge and GitHub in the
+past 10-20 years. If I can find them, I've been updating my links.
+
+It is interesting to see how links and information degrade over the
+decades.  And, as we all know, the WWW is quite often impermanent. Even
+when this site was being managed regularly, links would turn
+up not working and need to be replaced. Also interesting is that some
+websites still operate after all this time with similar content. This
+varies by subject area. Things like Figlet and Vim have many bad links.
+But the statistics links were relatively unscathed by bit rot (including
+stat packages). Fads come and go.
 
 **July 13, 2025**: I began converting to HTML5 format for the web pages.
-It's going to be a big task even if switching from font to span is
+It's going to be a big task, even if switching from font to span is
 easy. 
 
 **July 15, 2025**: HTML5 conversion has been completed in the vi pages
-and mostly done in the Perl pages.  Plenty more to do.
+and is mostly done in the Perl pages.  Plenty more to do.
 
 **July 18, 2025**: HTML5 conversion is mostly done for the first pass
 through everything.  I'll still be tweaking as I review things.
@@ -50,4 +61,13 @@ proportion of working links compared to other domains.
 **July 21, 2025**: Running out of HTML5 tweaks for lingering issues
 in HTML5.
 
+**July 30, 2025**: I'm checking html files with tidy5 and fixing any
+warnings and errors.  At this point, every file is passing the tidy5
+tests for HTML5. This doesn't mean it looks good, though.
+
+**August 2, 2025**: I'm going through the web pages again and fixing
+formatting issues.  These issues are not such that the page can't
+be read.  They are more likely to be spacing and horizontal rule placement
+issues. I've found at least two dozen such issues and will likely find
+other issues along the way.
 
