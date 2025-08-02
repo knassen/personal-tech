@@ -25,7 +25,8 @@ I still have plenty to do.
   - I'm still comparing to the Internet Archive for things I may have
     missed. The Vim functions for SAS programming were one such retrieval
     that was not in my local files. I'm trying to get pages back to their
-    last status before deletion.
+    last status before deletion. This led to the main index.html page being
+    updated with a new image and an adjustment of content.
 
 There are still some good and interesting items here, even if they are 
 ancient in computer terms. No AIs were around to help when 
