@@ -28,5 +28,10 @@ hr {
 }
 
 blockquote img {
-   margin-top: 20px; /* tweak as needed */
+  #margin-top: 20px; /* tweak as needed */
+  margin-bottom: 4px; /* or even 0 if you're feeling bold */
 } 
+
+blockquote hr {
+  margin-top: 4px;
+}
