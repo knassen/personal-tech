@@ -21,7 +21,11 @@ search terms is easy. Just add them to the @search array like the others.
 <ul style="list-style-type: disc;">
     <li>This program is intended to be run from a Unix or Linux command line.</li>
     <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
-    <li>Not all issues this program finds are labeled as errors or warnings.</li>
+    <li>Not all issues this program finds are labeled as errors or
+        warnings.  For example, "0 observations" may be expected or
+        not, depending on your program and data. The programmer must
+        check potential issues like this to make sure they are not truly
+        issues.</li>
     <li>The output is formatted so that it can be used with Vim's QuickFix facility.</li>
 </ul>
 
