@@ -3,6 +3,7 @@
 
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="keywords" content="Perl, SAS, log issues, Vim QuickFix">
    <base href="/personal-tech/perl/">
    <title>cklg.pl -- Scan a SAS log for errors, warnings, and other issues</title>
 </head>
@@ -12,11 +13,12 @@
 <h2>cklg.pl -- Scan a SAS log for errors, warnings, and other issues</h2>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-I wrote this Perl program to do a faster scan through one or more SAS log
-files than I could do by pulling them into an editor and paging through
-them. The script, on Unix/Linux, can be run on multiple log files. The
-output is set up to allow the use of vim's Quick Fix facility. Adding more
-search terms is easy. Just add them to the @search array like the others.
+I wrote this Perl program to do a faster scan through one or more SAS
+log files than I could do by pulling them into an editor and paging
+through them. The script, on Unix/Linux, can be run on multiple log
+files. The output is set up to allow the use of the Vim editor's Quick
+Fix facility. Adding more search terms is easy. Just add them to the
+@search array like the others.
 
 <ul style="list-style-type: disc;">
     <li>This program is intended to be run from a Unix or Linux command line.</li>
@@ -36,10 +38,10 @@ search terms is easy. Just add them to the @search array like the others.
 
 <h3>Usage</h3>
 Assuming this program is executable, its commandline is:
-<span style="font size: 115%;"><strong>cklg.pl [SAS log filename...]</strong> where:</span>
+<span style="font size: 115%;"><strong>cklg.pl [-h] [-l] [SAS log filename...]</strong> where:</span>
 <ul>
     <li>                    -h    Display this usage message</li>
-    <li>                    -l    List the search terms</li>
+    <li>                    -l    List the search terms used by the program</li>
 </ul>
 <p>
 As an example, the command <span style="color: #000080; font-family: monospace;"> cklg testdate2.log</span>
@@ -51,6 +53,30 @@ testdate2.log:40:NOTE: Character values have been converted to numeric values at
 testdate2.log:42:NOTE: The SAS System stopped processing this step because of errors.
 testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
 testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</code></pre>
+<p>
+The -l command line option will list the search terms used by the program. This
+allows you to see why a certain was found in a log or missed in a log (so you can
+add it). I haven't added new terms to this list for a long time.  Once I put it into
+use I found most of the commond issues and some uncommon issues. It looks like this:
+
+<pre><code>
+~/sas> cklg -l
+
+The log search terms used by cklg are: 
+   error
+   fatal
+   warning:
+   syntax error
+   converted
+   uninitialized
+    0 obs
+   no obser
+   [...]
+   stopped
+   due to loop
+
+29 terms defined.
+</code></pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
