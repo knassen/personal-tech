@@ -2,20 +2,18 @@
 
 **This is my former website at umich.edu**. As of sometime in 2024, they
 decided that alumni don't get websites anymore, so they deleted it.
-I was able to find most of the code on my local computer because I
-developed it there and uploaded it. But some changes were done on the
-server directly, so I didn't have them locally. I got those from
-the Internet Archive's Wayback Machine and added them to the local
-codes. It wasn't much, thankfully.
+They were kind enough to zip up my files so I could download them before
+they disappeared.
 
-My umich.edu website was where I put many of the **Perl programs** I wrote
-over the years. They still work, as far as I can tell.  Some were for
-my job at ICPSR (Inter-university Consortium for Political and Social
-Research at UM). We were always getting new study data submissions
-to add to the archives there. But there were many checks and much
-documentation creation to get the data fully described.  This included
-creating SAS and SPSS programs to read the data to make it useful for
-users. You'll see a few Perl programs that were used for those tasks.
+My umich.edu website was where I put many of the **Perl programs** I
+wrote over the years. They still work, as far as I can tell.  Some were
+for my job at ICPSR (Inter-university Consortium for Political and
+Social Research at UM) when I worked there. We were always getting new
+study data submissions to add to the archives there. But there were many
+checks and much documentation creation to get the data fully described.
+This included creating SAS and SPSS programs to read the data to make
+it useful for users. You'll see a few Perl programs that were used for
+those tasks.
 
 At some point, I learned about **FIGlet, a program to create large letters
 from ASCII characters**. There is an area of this site devoted to FIGlet
@@ -26,8 +24,8 @@ font, so often I'd take on the conversion. Some fonts came from email
 signatures that included ASCII art letters. Those would take more effort
 because they were often missing most of the alphabet.
 
-**July 6, 2025**: Since uploading it to GitHub, I've been going through all
-the 404 errors and trying to find if they relocated to a different
+**July 6, 2025**: Since uploading it to GitHub, I've been going through
+all the 404 errors and trying to find if they relocated to a different
 site or if they just disappeared into the ether. Some sites are still
 out there, so I linked to their new locations. Other sites are gone. I'm
 initially marking them as "bad link" while I search for replacements. If
@@ -39,12 +37,12 @@ past 10-20 years. If I can find them, I've been updating my links.
 
 It is interesting to see how links and information degrade over the
 decades.  And, as we all know, the WWW is quite often impermanent. Even
-when this site was being managed regularly, links would turn
-up not working and need to be replaced. Also interesting is that some
-websites still operate after all this time with similar content. This
-varies by subject area. Things like Figlet and Vim have many bad links.
-But the statistics links were relatively unscathed by bit rot (including
-stat packages). Fads come and go.
+when this site was being managed regularly, links would turn up not
+working after a few months and need to be replaced. Also interesting
+is that some websites still operate after all this time with similar
+content. This varies by subject area. Things like my Figlet and Vim
+pages have many bad links.  But the statistics links were relatively
+unscathed by bit rot (including stat packages). Fads come and go.
 
 **July 13, 2025**: I began converting to HTML5 format for the web pages.
 It's going to be a big task, even if switching from font to span is
@@ -69,5 +67,15 @@ tests for HTML5. This doesn't mean it looks good, though.
 formatting issues.  These issues are not such that the page can't
 be read.  They are more likely to be spacing and horizontal rule placement
 issues. I've found at least two dozen such issues and will likely find
-other issues along the way.
+other issues along the way. I'm still finding one occasionally that
+needs to be converted to HTML5, but they are getting scarce.
+
+**August 3, 2025** Okay, I finally found the zip file of my site
+that I downloaded. I was cleaning up duplicate and old zip files in
+my Downloads directory and there it was. So now, other than HTML5
+conversions, I'm looking at old pages and seeing if there is anything
+missing on this site.  It's quite a bit easier than sifting through the
+WayBack Machine outputs, but now I have the actual code. If I need to do
+something the same way, I can do so easily. The big thing will be seeing
+if there are any pages that I don't already have.
 

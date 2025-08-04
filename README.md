@@ -1,7 +1,7 @@
 # personal-tech
 This is my university personal website, which was deleted in 2024.
 
-I've tried recreating it. I found most of the HTML files on
+I've mostly recreated it. I found most of the HTML files on
 my local hard drive (though they were not always the most recent).  I 
 did some lookups on the Wayback Machine to fill in for additions and
 changes that were made directly on the server rather than in my local files. 
@@ -18,21 +18,29 @@ I still have plenty to do.
 
   - I may add some additional Perl programs of general interest. For example,
     I recently added the cklg SAS log checking program to the Perl page.
+    And this is the cklg program I updated last year because it was 
+    complaining about using old-style code. It should work fine now.
 
-  - I'm done converting the site to HTML5 standards. This may result in odd
-    page formatting that is yet to be fixed.
-  
-  - I'm still comparing to the Internet Archive for things I may have
-    missed. The Vim functions for SAS programming were one such retrieval
-    that was not in my local files. I'm trying to get pages back to their
-    last status before deletion. This led to the main index.html page being
+  - I'm done converting the site to HTML5 standards. This may result in
+    odd page formatting that is yet to be fixed.
+
+  - I found a backup of my web site from just prior to it being deleted.
+    This makes some things much easier, although I still would have had
+    to go through the conversion to HTML5. The main thing is I got all
+    the files back, including things that were linked to in the original
+    web pages.
+
+  - I still have the Internet Archive for comparisons if I need it.  The
+    Vim functions for SAS programming were one such retrieval that was
+    not in my local files. It also led to the main index.html page being
     updated with a new image and an adjustment of content.
+
 
 There are still some good and interesting items here, even if they are 
 ancient in computer terms. No AIs were around to help when 
 this site was set up originally. At least, you can see how things used
 to be done.
 
-I hope you will find a few things here that are worthwhile. I still use
-some of these programs.
+I hope you will find a few things here that are worthwhile. And maybe
+they will give you some ideas. I still use some of these programs.
 
