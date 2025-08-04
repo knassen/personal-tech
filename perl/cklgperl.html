@@ -28,6 +28,8 @@ Fix facility. Adding more search terms is easy. Just add them to the
         not, depending on your program and data. The programmer must
         check potential issues like this to make sure they are not truly
         issues.</li>
+    <li>The program uses a case-insensitive search (so errors and :ERROR and Error
+        all get found, for example)</li>
     <li>The output is formatted so that it can be used with Vim's QuickFix facility.</li>
 </ul>
 
@@ -54,10 +56,13 @@ testdate2.log:42:NOTE: The SAS System stopped processing this step because of er
 testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
 testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</code></pre>
 <p>
-The -l command line option will list the search terms used by the program. This
-allows you to see why a certain was found in a log or missed in a log (so you can
-add it). I haven't added new terms to this list for a long time.  Once I put it into
-use I found most of the commond issues and some uncommon issues. It looks like this:
+The <span style="color: #000080; font-family: monospace;">-l command
+line option</span> will list the search terms used by the program. This
+allows you to see why a certain issue was found in a log or missed in a log
+search (so you can add it). I haven't added new terms to this list for a long
+time. Once I put it into use I found most of the commond issues and
+some uncommon issues. The term "error" catches a lot of issues beyond the
+usual SAS :ERROR tags in the log. It looks like this:
 
 <pre><code>
 ~/sas> cklg -l
@@ -83,7 +88,7 @@ The log search terms used by cklg are:
 <a href="../myperl.html"><img src="gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
 
 <span style="font-size: 80%;">
-Last Modified: Tue Jul 29 20:43:30 EDT 2025
+Last Modified: Mon Aug  4 09:34:50 EDT 2025
 </span>
 </blockquote>
 </body>
