@@ -1,0 +1,72 @@
+<!DOCTYPE HTML> 
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="editor" content="/usr/bin/vi">
+    <meta name="description" content="Kent Nassen's Site: shell script, perl">
+    <meta name="keywords" content="deblank script">
+    <base HREF="/personal-tech/">
+    <title>deblank: Turns multiple blank lines into single blank lines</title>
+</head>
+<body>
+<blockquote>
+<h2>deblank: Turns multiple blank lines into single blank lines</h2>
+<br>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+This shell script will go through an ASCII text file and remove multiple blank
+lines, leave a single blank line.  I've added Perl detection of non-ASCII
+characters in the file so that an external program is not necessary as long
+as you have Perl available.
+
+
+<pre><code>
+
+ -------------------------------------------------------------
+  deblank: Turns multiple blank lines into single blank lines
+ -------------------------------------------------------------
+     
+ Needed a filename (and only one filename) to convert!
+ If more than one filename is given, the second and
+ succeeding files will be ignored. (You may, however, redirect
+ the output to a file).
+         
+    Usage:
+          deblank [filename]
+
+</code></pre>
+<p>
+Assume we have a small text file with some blank lines in it.  If we want
+to remove duplicate or multiple blank lines, deblank will do the job.
+
+<pre><code>
+> more test1
+
+a file with several lines.
+a file with several lines.
+
+
+
+
+a file with several lines.
+
+
+a file with several lines.
+
+
+>deblank test1
+
+a file with several lines.
+a file with several lines.
+
+a file with several lines.
+
+a file with several lines.
+
+</code></pre>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+</blockquote >
+</body>
+

@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+
+# This program borrows heavily from Usenet postings on
+# comp.lang.perl.misc and one or more O'Reilly Perl books (Programming
+# Perl and/or Perl Cookbook) for the column mode of tab replacement.
+
+# --Kent Nassen, 5/5/1999 (v1.0)
+
+use strict;
+use Getopt::Std;
+
+use vars qw($version $ProgName $tablen $mode $opt_h $opt_l $opt_m);
+
+$version="(v1.0, 5/5/1999)";
+($ProgName = $0) =~ s%.*/%%;
+
+getopts('hl:m:');
+
+# Default tab width is 8
+if (!$opt_l) { $tablen=8 }
+elsif ($opt_l>0) { $tablen=$opt_l }
+else { print STDERR "\n   *** Bad tab length: $opt_l\n"; &DisplayUsage }
+
+# Default tab replace mode is "column"
+if ($opt_m) { $mode=$opt_m } else { $mode="column" }
+
+# Found -h so display usage message
+if ($opt_h) { &DisplayUsage }
+
+while (<>) {
+	if ($mode eq "literal") {
+	# This does literal tab-->fixed # of spaces
+	# For example, if you have "Test<tab>some stuff" and 8 chars per tab,
+	# in literal mode, you'll get "Test        some stuff"
+	#                                  ^^^^^^^^
+	#                                  8 spaces
+	  while ( $_ =~ s/\t/" " x ($tablen)/eg ) { } 
+  	}
+	elsif ($mode eq "column") {
+	# This does tab-->actual column location starting from position of tab
+	# For example, if you have "Test<tab>some stuff" and 8 chars per tab,
+	# in column mode, you'll get "Test   some stuff"
+	#                                    ^
+	#                             column 8
+	  while ( $_ =~ s/\t/" " x ($tablen - length($`) % $tablen)/eg ) { } 
+  	}
+        if (/[^\t]/) { print }
+	else { print STDERR "\n   *** Bad tab replacement mode: $mode\n"; &DisplayUsage }
+}
+
+sub DisplayUsage {
+print STDERR "\n    $ProgName: replace tabs with spaces\n",
+	"    by Kent Nassen, $version\n\n",
+	"    Usage:  $ProgName [-h][-l #][-m mode] [filename]\n\n",
+	"    -h       Show this usage message\n",
+	"    -l\#      Each tab is worth up to \# spaces.  8 spaces per tab is the\n",
+	"             default.\n",
+	"    -m mode  Where mode is one of: 'column' or 'literal', indicating the\n",
+	"             tab replacement mode, either spacing to the actual column\n",
+	"             location indicated by the tab (may be less than -l spaces) or\n",
+	"             a literal replacement of each tab by -l spaces without regard to\n",
+	"             to which column.  column mode is the default.\n\n",
+	"    If no filename is given, the program will read from stdin\n\n";
+exit;
+}

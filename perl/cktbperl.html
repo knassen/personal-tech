@@ -1,0 +1,141 @@
+<!DOCTYPE HTML> 
+<html>
+
+<head>
+   <base href="http://www-personal.umich.edu/~knassen/freqperl.html">
+   <link rel="SHORTCUT ICON" href="http://www-personal.umich.edu/~knassen/favicon.ico">
+   <title>cktb -- Check for trailing blanks (spaces, tabs) in a file</title>
+   <style type="text/css">
+   <!--
+   @import url(http://www-personal.umich.edu/~knassen/kstyle2.css);
+    -->
+   </style>
+</head>
+<body>
+
+<blockquote>
+<h3>cktb -- Check for trailing blanks (spaces, tabs) in a file</h3>
+<hr style="height: 2px; width: 100%; margin-left: 0px; margin-right: auto;">
+
+<a href="perl/cktb.pl.txt"><B>cktb.pl</b></a> is a perl program
+which checks for trailing blanks (space or tabs) ina file and
+reports the number found and the longest string of blanks found.
+
+<h3>Source Code</h3>
+<pre>
+
+#!/usr/local/bin/perl
+# Look for and count the blanks or tabs at the end of lines
+# --Kent Nassen, 5/26/99, 6/11/99, 6/28/00
+
+# 6/28/00: only print longest string of whitespace message if the file
+# had trailing whitespace.  Added run_time to header.
+
+use FileHandle;
+use Getopt::Std;
+
+use strict;
+
+use vars qw($file $filename $input $line $len $whitespace $match
+  $matchcount $ProgName $version $pagesize $longest $longline $opt_l
+  $run_time);
+
+$pagesize=54;
+STDOUT->format_lines_per_page($pagesize);
+
+$version="v1.1, 6/11/99";
+$run_time=localtime(time);
+
+($ProgName = $0) =~ s%.*/%%; # Unix
+# ($ProgName = lc $0) =~ s%.*\\%%;  # DOS
+
+die "\n*** $ProgName: need a filename to test. \n\
+$ProgName: Find lines with trailing white space (tabs or spaces) in files,\
+      by Kent Nassen, $version\n\
+     Usage: $ProgName [-l] filename [filename...]\
+            where -l gives long output, instead of a summary.\n\n"
+        unless defined($file=$ARGV[0]);
+
+getopts('l');
+
+# Print program header
+if (!$opt_l) { print "   $ProgName: Find lines with trailing spaces or tabs,",
+    " by Kent Nassen, $version\n   Report generated: $run_time\n";
+    }
+
+# Check a file for trailing blanks/white space
+foreach $file (@ARGV) {
+	no strict 'refs';
+    process($file, 'fh00');
+}
+
+sub process {
+	no strict 'refs';
+    # Print Header?
+    $line=$matchcount=$match=$longest=$longline=0;
+    local($filename, $input) = @_;
+    $input++;
+    unless (open $input, $filename) {
+        print STDERR "\n  $ProgName: *** Can't open $filename: $!\n\n";
+        return;
+    }
+    while (<$input>) {
+        chomp;
+        $line++;
+        if (/([\t\s]+)$/) {
+            $match=$1;
+            $matchcount++;
+            if (length($match)>$longest) {
+                $longest=length($match); $longline=$line
+            }
+            if ($opt_l) { write } # do long report (line# & count)
+        }
+    } # end of while()
+    if (!$matchcount) {
+        print "\n   *** No lines found with trailing white space";
+        $longest=0;
+        $longline=$line
+    }
+    print "\n   $line total lines in the file '$file'.\n";
+    if ($matchcount) {
+        print "   Longest string of trailing whitespace was $longest",
+                " characters at line $longline.\n";
+    }
+    $longest=$longline=0;
+    close $input;
+}
+
+format STDOUT_TOP =
+
+   @||||@||
+   "Page",$%
+
+   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   "$ProgName: Find lines with trailing spaces or tabs, by Kent Nassen, $version";
+   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   "Scanning for trailing white space in the file: ",$file
+   @<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   "Report generated: ",$run_time
+
+              Trailing WS
+     Line#       Length
+    -------   -----------
+.
+
+format STDOUT =
+    @>>>>>> @>>>>>>>>>
+$line, length($match)
+.
+</pre>
+
+<hr style="height: 2px; width: 90%; margin-left: 0px; margin-right: auto;">
+
+<a href="myperl.html">
+<img src="gr/arrwback.png" alt="">  Back to Kent's Perl Page</A>
+
+<!-- Last Modified: Wed Jul  7 21:38:30 EDT 1999 -->
+Last-modified: Tue Aug  5 21:34:36 EDT 2025
+
+</blockquote>
+</body>
+</html>
