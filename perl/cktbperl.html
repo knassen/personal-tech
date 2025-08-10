@@ -21,112 +21,32 @@
 which checks for trailing blanks (space or tabs) ina file and
 reports the number found and the longest string of blanks found.
 
-<h3>Source Code</h3>
-<pre>
+This was written because one place I worked didn't want any spaces or
+tabs at the end of each row in a program. So this program checks for it.
+It's easier to get a report where this issue is found than trying do it
+in your editor (although some editors can get rid of spaces at the end
+of the lines, like vim). And if anyone thinks they've gotten rid of them
+you can show them a report.
 
-#!/usr/local/bin/perl
-# Look for and count the blanks or tabs at the end of lines
-# --Kent Nassen, 5/26/99, 6/11/99, 6/28/00
+<p>
+<strong>Limitations:</strong>
 
-# 6/28/00: only print longest string of whitespace message if the file
-# had trailing whitespace.  Added run_time to header.
+<ul>
+    <li>This is written in Perl so needs Perl available.
+    <li>It is a command line program and would generally run on Linux or Unix.
 
-use FileHandle;
-use Getopt::Std;
 
-use strict;
+</ul>
 
-use vars qw($file $filename $input $line $len $whitespace $match
-  $matchcount $ProgName $version $pagesize $longest $longline $opt_l
-  $run_time);
+<h3> Usage </h3>
 
-$pagesize=54;
-STDOUT->format_lines_per_page($pagesize);
+<span style="color: #000080; font-family: monospace;">     cktb.pl [-l] filename [filename...]</span>
+where: <span style="color: #000080; font-family: monospace;"> -l </span>gives long output, 
+instead of a summary.
+<p>
+For example, here is a file with some trailing white space and what the
+report will show.
 
-$version="v1.1, 6/11/99";
-$run_time=localtime(time);
-
-($ProgName = $0) =~ s%.*/%%; # Unix
-# ($ProgName = lc $0) =~ s%.*\\%%;  # DOS
-
-die "\n*** $ProgName: need a filename to test. \n\
-$ProgName: Find lines with trailing white space (tabs or spaces) in files,\
-      by Kent Nassen, $version\n\
-     Usage: $ProgName [-l] filename [filename...]\
-            where -l gives long output, instead of a summary.\n\n"
-        unless defined($file=$ARGV[0]);
-
-getopts('l');
-
-# Print program header
-if (!$opt_l) { print "   $ProgName: Find lines with trailing spaces or tabs,",
-    " by Kent Nassen, $version\n   Report generated: $run_time\n";
-    }
-
-# Check a file for trailing blanks/white space
-foreach $file (@ARGV) {
-	no strict 'refs';
-    process($file, 'fh00');
-}
-
-sub process {
-	no strict 'refs';
-    # Print Header?
-    $line=$matchcount=$match=$longest=$longline=0;
-    local($filename, $input) = @_;
-    $input++;
-    unless (open $input, $filename) {
-        print STDERR "\n  $ProgName: *** Can't open $filename: $!\n\n";
-        return;
-    }
-    while (<$input>) {
-        chomp;
-        $line++;
-        if (/([\t\s]+)$/) {
-            $match=$1;
-            $matchcount++;
-            if (length($match)>$longest) {
-                $longest=length($match); $longline=$line
-            }
-            if ($opt_l) { write } # do long report (line# & count)
-        }
-    } # end of while()
-    if (!$matchcount) {
-        print "\n   *** No lines found with trailing white space";
-        $longest=0;
-        $longline=$line
-    }
-    print "\n   $line total lines in the file '$file'.\n";
-    if ($matchcount) {
-        print "   Longest string of trailing whitespace was $longest",
-                " characters at line $longline.\n";
-    }
-    $longest=$longline=0;
-    close $input;
-}
-
-format STDOUT_TOP =
-
-   @||||@||
-   "Page",$%
-
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "$ProgName: Find lines with trailing spaces or tabs, by Kent Nassen, $version";
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "Scanning for trailing white space in the file: ",$file
-   @<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "Report generated: ",$run_time
-
-              Trailing WS
-     Line#       Length
-    -------   -----------
-.
-
-format STDOUT =
-    @>>>>>> @>>>>>>>>>
-$line, length($match)
-.
-</pre>
 
 <hr style="height: 2px; width: 90%; margin-left: 0px; margin-right: auto;">
 
@@ -134,7 +54,7 @@ $line, length($match)
 <img src="gr/arrwback.png" alt="">  Back to Kent's Perl Page</A>
 
 <!-- Last Modified: Wed Jul  7 21:38:30 EDT 1999 -->
-Last-modified: Tue Aug  5 21:34:36 EDT 2025
+Last-modified: Wed Aug  6 15:26:08 EDT 2025
 
 </blockquote>
 </body>
