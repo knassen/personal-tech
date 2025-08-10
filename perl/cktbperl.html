@@ -34,8 +34,6 @@ you can show them a report.
 <ul>
     <li>This is written in Perl so needs Perl available.
     <li>It is a command line program and would generally run on Linux or Unix.
-
-
 </ul>
 
 <h3> Usage </h3>
@@ -46,7 +44,44 @@ instead of a summary.
 <p>
 For example, here is a file with some trailing white space and what the
 report will show.
+<pre><code>
+Input (9 lines):
 
+A line with no trailing blanks.
+
+A line with one trailing blank 
+
+A line with several trailing blanks   
+
+A line with a lot of trailing blanks
+
+Output (default):
+~> cktb.pl cktbtest.in
+   cktb.pl: Find lines with trailing spaces or tabs, by Kent Nassen, v1.1, 6/11/99
+   Report generated: Sun Aug 10 09:16:50 2025
+
+   9 total lines in the file 'cktbtest.in'.
+   Longest string of trailing whitespace was 22 characters at line 8.
+
+Output (using -l option):
+cktb.pl -l cktbtest.in
+
+   Page  1
+
+   cktb.pl: Find lines with trailing spaces or tabs, by Kent Nassen, v1.1, 6/11/99
+   Scanning for trailing white space in the file:  cktbtest.in
+   Report generated: Sun Aug 10 09:18:09 2025
+
+              Trailing WS
+     Line#       Length
+    -------   -----------
+          4          1
+          6          3
+          8         22
+
+   9 total lines in the file 'cktbtest.in'.
+   Longest string of trailing whitespace was 22 characters at line 8.
+</code></pre>
 
 <hr style="height: 2px; width: 90%; margin-left: 0px; margin-right: auto;">
 
