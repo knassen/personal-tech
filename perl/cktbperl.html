@@ -2,9 +2,9 @@
 <html>
 
 <head>
+   <link rel="stylesheet" type="text/css" href="style.css">
    <base href="/personal-tech/perl/">
    <title>cktb -- Check for trailing blanks (spaces, tabs) in a file</title>
-   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -12,16 +12,21 @@
 <h3>cktb -- Check for trailing blanks (spaces, tabs) in a file</h3>
 <hr style="height: 2px; width: 100%; margin-left: 0px; margin-right: auto;">
 
-<a href="perl/cktb.pl.txt"><B>cktb.pl</b></a> is a perl program
-which checks for trailing blanks (space or tabs) ina file and
-reports the number found and the longest string of blanks found.
+<ul>
+  <li><a href="https://knassen.github.io/personal-tech/perl/cktbshow.html"><strong>Show cktb.pl code</strong></a
+  <li><strong>Download: </strong> <a href="cktb.pl"><strong>cktb.pl</strong></a></li>
+</ul>
+
+<a href="cktb.pl"><strong>cktb.pl</strong></a> is a Perl
+program which checks for trailing blanks (space or tabs) in a text file
+and reports the number found and the longest string of blanks found.
 
 This was written because one place I worked didn't want any spaces or
 tabs at the end of each row in a program. So this program checks for it.
 It's easier to get a report where this issue is found than trying do it
 in your editor (although some editors can get rid of spaces at the end
 of the lines, like vim). And if anyone thinks they've gotten rid of them
-you can show them a report.
+you can show them a report from this program.
 
 <p>
 <strong>Limitations:</strong>
@@ -33,7 +38,7 @@ you can show them a report.
         the user to remove them, if desired.</li>
 </ul>
 
-<h3> Usage </h3>
+<h3>Usage</h3>
 
 <span style="color: #000080; font-family: monospace;">     cktb.pl [-l] filename [filename...]</span>
 where: <span style="color: #000080; font-family: monospace;"> -l </span>gives long output, 
@@ -81,11 +86,10 @@ cktb.pl -l cktbtest.in
 </code></pre>
 
 <hr style="height: 2px; width: 90%; margin-left: 0px; margin-right: auto;">
-
 <a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
 <!-- Last Modified: Wed Jul  7 21:38:30 EDT 1999 -->
-Last-modified: Sun Aug 10 09:28:38 EDT 2025
+Last-modified: Sun Aug 10 10:19:26 EDT 2025
 </blockquote>
 </body>
 </html>
