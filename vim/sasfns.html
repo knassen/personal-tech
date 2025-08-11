@@ -202,6 +202,9 @@ mechanism</a> fully, the list of errors and warnings needs to be linked
 to the SAS log file via the file name of the log. (Imagine if multiple
 SAS programs and logs were open in the gvim editor, how would Vim know
 which list of errors goes with which log file? By the file name).
+The example image above shows a SAS program (testdate2.log) in one
+gvim tab, the .lst file in another tab, and the log file with QuickFix
+window open and stopped on an error.
 <p>
 Note: a SAS log may contain dozens of errors and warnings, but they may
 be caused by the first error and cascaded into other errors from that
@@ -216,9 +219,9 @@ for example) in the list of errors/warnings. Below, I present a
 using the GNU grep program that works with Vim's QuickFix mode.
 <p>
 I also have a SAS log checking program in Perl that can be used. <a
-href="/personal-tech/perl/cklgperl.html">cklg.pl</a> That program
+href="/personal-tech/perl/cklgperl.html">called cklg.pl</a> That program
 provides the filename and line number information for use with vim's
-QuickFix facility.
+QuickFix facility and can be used as a grepprg program.
 <p>
 If you use another external log-checking program, make sure it
 returns the file name for each error, in addition to the line number
