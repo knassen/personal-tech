@@ -79,3 +79,9 @@ WayBack Machine outputs, but now I have the actual code. If I need to do
 something the same way, I can do so easily. The big thing will be seeing
 if there are any pages that I don't already have.
 
+**August 13, 2025** I am at the point where I'm tweaking content and
+formatting occasionally. The HTML5 conversion is done.  I added more
+Perl programs to the site. I verified the site with google. And I 
+added a sitemap.xml file.
+
+
