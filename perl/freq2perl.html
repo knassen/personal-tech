@@ -33,6 +33,10 @@ cumulative percentage.
     <li>If you give a column range outside the logical record
        length of the data, you will still get output, but all
        values will be null.</LI>
+    <li>Since the program summarizes values, if you have dots
+        in the data (as SAS missing), they will be counted.  
+        And of course, values like NA and 999 but they will not
+        be labeled as missing.
 </ul>
 
 <h3>Usage</h3>
