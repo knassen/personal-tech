@@ -1,6 +1,8 @@
 # personal-tech
 This is my university personal website, which was deleted in 2024.
 
+It is now: https://knassen.github.io/personal-tech/
+
 I've mostly recreated it. I found most of the HTML files on
 my local hard drive (though they were not always the most recent).  I 
 did some lookups on the Wayback Machine to fill in for additions and
@@ -12,6 +14,13 @@ I still have plenty to do.
   - A lot of the links are bad and need to be fixed or replaced. I've
     been marking bad links and replacing ones I can find in other
     sites. Thankfully, some of the old sites still exist.
+ 
+    - I've got the Figlet pages up and working, with font examples.
+    = I've got my Perl programs back up and have added four more
+      to the list including the cklg SAS log checker.
+    - I've got my vi and vim pages up and working.
+    - The Aurora Editor pages are up and working. They are mainly
+      for historical reference.
 
   - Some of the information needs to be updated and brought up to date.
     Some information is surprisingly still relevant after 25 years.
@@ -34,7 +43,6 @@ I still have plenty to do.
     Vim functions for SAS programming were one such retrieval that was
     not in my local files. It also led to the main index.html page being
     updated with a new image and an adjustment of content.
-
 
 There are still some good and interesting items here, even if they are 
 ancient in computer terms. No AIs were around to help when 
