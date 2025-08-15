@@ -1,3 +1,5 @@
+<style>
+
 /* Body styling */
 body {
   background-color: #ffffff;
@@ -35,3 +37,8 @@ blockquote img {
 blockquote hr {
   margin-top: 4px;
 }
+
+dl dd {
+    margin-bottom: 1em;
+}
+</style>
