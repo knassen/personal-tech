@@ -1,0 +1,75 @@
+<!DOCTYPE HTML> 
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<base href="/personal-tech/perl/">
+<title>qscan.pl -- Scan for Excessively Long Quoted Strings (new version)</title>
+</head>
+<body> 
+<blockquote>
+<h2>qscan.pl -- Scan for Excessively Long Quoted Strings (new version)</h2>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+Like 40scan.pl, this program scans a text file or program for double-quoted
+and single-quoted strings.  If found, it reports those which are longer than
+a defined number of characters.  The default is 40 characters, but qscan lets
+you define other string lengths on the command line.
+
+<ul style="list-style-type: disc;">
+    <li>This program is intended to be run from a Unix or Linux command line.</li>
+    <li>Output is sent to STDOUT, so redirect it to a file to save the output.</li>
+    <li>The program looks for double-quoted and single-quoted strings.</li>
+    <li>The variable $checklen in the program sets the default length of strings to search for.</li>
+    <li>Useful for making sure all your labels are within length limits, including SAS,
+        SPSS, or in-house standards.</li>
+</ul>
+
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/qscanshow.html"><strong>Show qscan.pl code</strong></a></li>
+    <li><strong>Download: </strong> <a href="qscan.pl"><strong>qscan.pl</strong></a></li>
+</ul>
+
+<h3>Usage</h3>
+Assuming this program is executable, its commandline is:
+<span style="font size: 115%;"><strong>qscan [-l#] [filename...]</strong></span>
+<br>
+where:<br> 
+<ul>
+    <li><i>-l#</i> is the number of characters withing quotes to search for</li>
+    <li><i>filename</i> is the text file to be processed </li>
+</ul>
+
+<p>
+An example run is shown below.
+<pre>
+> qscan test.txt
+
+   Page  1
+
+   qscan: Find long quoted text
+   by Kent Nassen, v1.8, 10/22/99
+   Scanning for quoted text longer than 40 characters in the file '40scan_versions_test'
+
+             Quote
+   Line#     Length                   Line Contents/*** Message
+  -------   --------  ----------------------------------------------------------
+       16        42           7      42      v3 "This is a longer label for t...
+       51        42        7   42    v3 "This is a longer label for the varia...
+       52        61        8   61    v4 "This is a very long label for the fo...
+
+    There were 68 lines in '40scan_versions_test'
+    3 lines had quoted text over 40 characters long.
+    The length of the longest quoted text found was 61 characters at line 52."
+</pre>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+<a href="../myperl.html">
+    <img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page
+</a><br>
+<p>
+<span style="font size: 85%;"> Last Modified: Fri Aug 15 11:26:08 EDT 2025</span>
+</blockquote>
+</body>
+</html>
+
