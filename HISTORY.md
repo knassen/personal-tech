@@ -84,4 +84,12 @@ formatting occasionally. The HTML5 conversion is done.  I added more
 Perl programs to the site. I verified the site with google. And I 
 added a sitemap.xml file.
 
+**August 15, 2025** I've added more Perl programs to the Perl page.
+Whether they are useful to you, depends on what kind of work you do
+and what your needs are.  There are programs like cktb, which checks
+for trailing blanks on the lines of a file or program. Or detab, which
+can be used to replace tabs with spaces to different ways. Deblank is
+another one, which coverts multiple blank lines in a file to single
+blank lines. Finally, I added qscan, an updated of the 40scan program
+for finding the lengths of quoted strings in files or programs.
 
