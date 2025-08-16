@@ -50,6 +50,6 @@ ancient in computer terms. No AIs were around to help when this site was
 set up originally. However, you can see how things used to be done.
 
 I hope you will find a few things here that are worthwhile. And maybe
-they will give you some ideas for utilities over your own. I still use
+they will give you some ideas for utilities of your own. I still use
 some of these programs.
 
