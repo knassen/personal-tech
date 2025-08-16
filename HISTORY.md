@@ -34,12 +34,14 @@ out there, so I linked to their new locations. Other sites are gone. I'm
 initially marking them as "bad link" while I search for replacements. If
 I can't find a replacement link, that link gets deleted.
 
-Many projects that used to be accessible from personal servers or other
-commercial server accounts have moved to SourceForge and GitHub in the
-past 10-20 years. If I can find them, I've been updating my links.
+Many projects that used to be accessible from personal servers,
+university accounts, or commercial server accounts have moved to
+SourceForge and GitHub in the past 10-20 years. If I can find them, I've
+been updating my links.
 
 Some the of software archives are completely gone, but some had mirrors
-that are still available, so I added those links.
+that are still available, so I've added those mirror links. How long
+they'll continue to work is anyone's guess.
 
 It is interesting to see how links and information degrade over the
 decades. As we all know, the WWW is very often impermanent. Even
@@ -77,7 +79,7 @@ issues. I've found at least two dozen such issues and will likely find
 other issues along the way. I'm still finding one occasionally that
 needs to be converted to HTML5, but they are getting scarce.
 
-**August 3, 2025** Okay, I finally found the zip file of my site
+**August 3, 2025**: I finally found the zip file of my site
 that I downloaded. I was cleaning up duplicate and old zip files in
 my Downloads directory and there it was. So now, other than HTML5
 conversions, I'm looking at old pages and seeing if there is any content
@@ -86,16 +88,17 @@ WayBack Machine outputs, but now I have the actual code. If I need to do
 something the same way, I can do so easily. The big thing will be seeing
 if there are any pages that I don't already have.
 
-**August 13, 2025** I am at the point where I'm tweaking content and
-formatting occasionally. The HTML5 conversion is done and validated by
-tidy5. I added more Perl programs to the site. I verified the site with
-google. And I added a sitemap.xml file. I'm hoping that helps more
-people find these pages. I worked at getting Google to index my pages,
-but it is either glacially slow or not being done. I did a few pages
-manually and that helped. I was able to get to three pages via a 
-Google search, so hopefully the rest of it will get indexed.
+**August 13, 2025**: I am at the point where I'm tweaking content and
+formatting occasionally. The HTML5 conversion is done and validated
+by tidy5. I added more Perl programs to the site. I verified the site
+with google. And I added a sitemap.xml file. I'm hoping that helps
+Google find these pages. I worked at getting Google to index my pages,
+but it is either glacially slow or not being done. I submitted a few
+pages manually from the Google Search Console, asking for indexing, and
+that helped. I was able to get to three pages via a Google search, so
+hopefully the rest of it will get indexed.
 
-**August 15, 2025** I've added more Perl programs to the Perl page.
+**August 15, 2025**: I've added more Perl programs to the Perl page.
 Whether they are useful to you, depends on what kind of work you do
 and what your needs are.  There are programs like cktb, which checks
 for trailing blanks on the lines of a file or program. Or detab, which
