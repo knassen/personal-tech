@@ -20,7 +20,7 @@ I still have plenty to do.
  
     - I've got the Figlet pages up and working, with font examples.
       I also added all the Figlet fonts I had and put them in a
-      list, where you can see and example of the font, or download
+      list, where you can see an example of the font, and/or download
       it.
     - I've got my Perl programs back up and have added several more
       to the list including the cklg SAS log checker.
@@ -50,5 +50,6 @@ ancient in computer terms. No AIs were around to help when this site was
 set up originally. However, you can see how things used to be done.
 
 I hope you will find a few things here that are worthwhile. And maybe
-they will give you some ideas. I still use some of these programs.
+they will give you some ideas for utilities over your own. I still use
+some of these programs.
 
