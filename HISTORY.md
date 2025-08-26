@@ -116,4 +116,10 @@ back. I'm a little over half done with adding the links now.  One thing
 this has been good for is finding minor issues in font sample files, and
 typos in URLs. Things are getting better as I go down the list.
 
+**August 26, 2025**: otherfonts.html is updated for preview dropdowns
+now.  Click the button and a preview appears.  Click it again and 
+goes away. I may work on the spacing at some point, but all seems
+to work as expected.
+
+
 
