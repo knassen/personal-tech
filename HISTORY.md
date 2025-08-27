@@ -105,21 +105,21 @@ for trailing blanks on the lines of a file or program. Or detab, which
 can be used to replace tabs with spaces two different ways. Deblank is
 another one, which coverts multiple blank lines in a file to single
 blank lines. Finally, I added qscan, an update of the 40scan program
-for finding the lengths of quoted strings in files or programs with
-the ability to set a line length via the command line.
+for finding the lengths of quoted strings in files or programs with the
+ability to set a line length via the command line.
 
 **August 25, 2025**: I've been working on the otherfonts.html page,
 adding buttons for previews. This allows opening one preview or several
 and comparing on the same page. To close the preview, click on the
-preview button again.  No need to leave the font list page and go
-back. I'm a little over half done with adding the links now.  One thing
-this has been good for is finding minor issues in font sample files, and
-typos in URLs. Things are getting better as I go down the list.
+preview button again.  No need to leave the font list page and come
+back. One thing this has been good for is finding minor issues in font
+sample files, and typos in URLs. Things are getting better as I go down
+the list.
 
 **August 26, 2025**: otherfonts.html is updated for preview dropdowns
-now.  Click the button and a preview appears.  Click it again and 
-goes away. I may work on the spacing at some point, but all seems
-to work as expected.
+now.  Click the button and a preview appears.  Click it again and the
+preview goes away. I may work on the spacing at some point, but all
+seems to work as expected.
 
 
 
