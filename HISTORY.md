@@ -121,5 +121,9 @@ now.  Click the button and a preview appears.  Click it again and the
 preview goes away. I may work on the spacing at some point, but all
 seems to work as expected.
 
+**August 29, 2025** I've updated the figlet pages for content.  Many
+broken links are now commented out or replaced with good links. It's a
+process...
+
 
 
