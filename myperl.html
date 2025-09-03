@@ -4,8 +4,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <base href="/personal-tech/">
-    <meta name="description" content="Kent's Perl Programs for Data Tasks, reformat SAS and SPSS data input statements, compute frequencies, scan SAS logs for errors and warnings">
-    <title>Kent's Perl Stuff</title>
+    <meta name="description" content="Perl Programs, reformat SAS and SPSS data input statements, compute frequencies, scan SAS logs for errors and warnings">
+    <title>Kent's Perl Programs for Data Tasks</title>
 </head>
 
 <body>
@@ -14,10 +14,10 @@
 <h2>Kent's Perl Programs for Data Tasks</h2>
 
 <hr style="height: 2px; width: 100%; margin-left:0px;
-margin-right:auto;"> The following programs are tools I've written
-and reused over the years--some by only me, some shared among
-coworkers. They're not polished software, but they work the way I need
-them to. 
+margin-right:auto;"> The following programs are command-line tools I've
+written and reused over the years. They're not polished software with a
+graphical interface or needless options. They work the way I need them
+to and have the options they need.
 
 <p>I'm sharing them 'as-is' with no guarantees. Feel free to copy,
 use, or modify them, as long as you leave my name in the code. All
@@ -26,16 +26,17 @@ fine on Windows and Mac OS X, too, if you have Perl available (such as
 Strawberry Perl for Windows; Mac OS X has perl installed already). Perl
 version 5 is assumed unless otherwise noted. 
 
-<p>These programs were written
-to work on raw ASCII data such as raw data files, program files, etc.
+<p>These programs were written to work on raw ASCII data such as raw
+data files, program text files, etc. The links below go to pages that
+provide usage notes, example runs, and assumptions of the programs.
 
 <blockquote>
 <dl>
 <dt><strong><a href="perl/freqperl.html">Compute frequency
-counts</a></strong> for alphanumeric values in a column range.
-Answers the question "how many times do the unique values in columns
-<i>x</i> through <i>y</i> occur in this file?".</dt>
-<dd>&nbsp;</dd>
+counts</a></strong> for alphanumeric values in a column range of an
+ASCII LRECL data set.  Answers the question "how many times do the
+unique values in columns <i>x</i> through <i>y</i> occur in this
+file?".</dt> <dd>&nbsp;</dd>
 
 <dt><strong><a href="perl/freq2perl.html">Frequency counts
 w/percentages</a></strong> adds percentages &amp; cumulative percentages
@@ -56,7 +57,7 @@ Used to keep commands within limits for strings.</dt>
 
 <dt><strong><a href="perl/qscanperl.html">Report length of double-quoted and
 single-quoted strings</a></strong> in a text file (such as SPSS or SAS variable 
-labels). New version.</dt>
+labels). New version. Get a report of labels that are too long.</dt>
 <dd>&nbsp;</dd>
 
 <dt><strong><a href="perl/todayperl.html">Print a calendar with today's date 
@@ -67,7 +68,7 @@ cal programs now have an option to highlight today's date.</dt>
 
 <dt><strong><a href="perl/splitit.html">Split a multi-column SAS input or
 SPSS data list statement</a></strong> into a single column. Useful for
-reformatting another way.</dt>
+reformatting SAS or SPSS input code another way.</dt>
 <dd>&nbsp;</dd>
 
 <dt><strong><a href="perl/wrapit.html">Wrap a single column of SAS input or
