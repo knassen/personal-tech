@@ -4,7 +4,7 @@
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="keywords" content="Perl, SAS, find log issues, Vim QuickFix">
-   <meta name="description" content="perl program code cklg usage, limitations, examples">
+   <meta name="description" content="Perl program cklg SAS log checking, usage, limitations, examples">
    <base href="/personal-tech/perl/">
    <title>cklg.pl -- Scan a SAS log for errors, warnings, and other issues</title>
 </head>
@@ -50,12 +50,12 @@ Assuming this program is executable, its commandline is:
 As an example, the command <span style="color: #000080; font-family: monospace;"> cklg testdate2.log</span>
 might produce output like:
 
-<pre><code>~/sas> cklg testdate2.log
+<code>~/sas> cklg testdate2.log
 testdate2.log:33:ERROR 22-322: Syntax error, expecting one of the following: !, !!, &, *, **, +, -, /, ;, <, <=, <>,
 testdate2.log:40:NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).
 testdate2.log:42:NOTE: The SAS System stopped processing this step because of errors.
 testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
-testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</code></pre>
+testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</code>
 <p>
 The <span style="color: #000080; font-family: monospace;">-l command
 line option</span> will list the search terms used by the program. This
@@ -66,7 +66,7 @@ some uncommon issues. The term "error" catches a lot of issues beyond the
 usual SAS :ERROR tags in the log. the <span style="color: #000080;
 font-family: monospace;">cklg -l</span> output looks like this:
 
-<pre><code>
+<code>
 ~/sas> cklg -l
 
 The log search terms used by cklg are: 
@@ -83,14 +83,14 @@ The log search terms used by cklg are:
    due to loop
 
 29 terms defined.
-</code></pre>
+</code>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <a href="../myperl.html"><img src="gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
 
 <span style="font-size: 80%;">
-Last Modified: Mon Aug  4 09:34:50 EDT 2025
+Last Modified: Fri Sep  5 16:43:41 EDT 2025
 </span>
 </blockquote>
 </body>
