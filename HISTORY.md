@@ -125,5 +125,10 @@ seems to work as expected.
 broken links are now commented out or replaced with good links. It's a
 process...
 
+**September 6, 2025** I've been trying to get google to index some
+of the main pages on this site. And I've been adding code to help
+with mobile viewing and accessibility.
+
+
 
 
