@@ -1,12 +1,13 @@
 <!DOCTYPE HTML> 
-<html> 
+<html lang="en"> 
 
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program splitit SAS SPSS multicolumn to single column">
    <base href="/personal-tech/perl/">
    <title>splitit.pl -- Split Multi-column Variable Statements</title>
-</HEAD>
+</head>
 <body> 
 <br>
 <blockquote>
@@ -25,7 +26,6 @@ preparing your code.
     <li>Developed for SAS/SPSS program prep. See also <a href="wrapit.html"><strong>wrapit5.</strong></a></li>
 </ul>
 
-
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/splititshow.html"><strong>Show splitit.pl code</strong></a></li>
     <li><strong>Download: </strong><a href="splitit.pl"><strong>splitit.pl</strong></a> 
@@ -36,7 +36,7 @@ preparing your code.
 <span style="color: #000080; font-family: monospace;"> perl splitit.pl filename >filename.out</span>
 <p>Here is an example.  Consider this input data:
 
-<pre><code>
+<pre>
 Sample input (cards):
 
    V1 1-4         V2 5-8         V3 9-9         V4 10-13 (A)   V5 14-14
@@ -57,10 +57,14 @@ Sample output (cards.split)
    V8 18-19       
    V9 20-21 
 
-</code></pre>
+</pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
+
+<span style="font size: 80%;">
+Last modified: Sat Sep  6 17:20:11 EDT 2025
+</span>
 
 </blockquote>
 </body>
