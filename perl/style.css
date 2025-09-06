@@ -1,6 +1,7 @@
 /* Body styling */
 body {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
+  background-color: lime;
   color: #000000;
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -29,7 +30,7 @@ hr {
 
 /* Vertical rule at the left */
 .commentary {
- border-left: 2px solit #888;
+ border-left: 2px solid #888;
  padding-left: 10px;
  margin-botton: 1em;
 }
