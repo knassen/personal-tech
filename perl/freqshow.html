@@ -1,14 +1,25 @@
 <!DOCTYPE HTML> 
-<html>
+<html lang="en">
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="perl program code freq frequencies computation">
   <base href="/personal-tech/perl/">
   <title>freq.pl code file</title>
 </head>
 <body> 
 
-<pre><code>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+    <h2>Perl program code for freq.pl</h2>
+    <div class="commentary">This file contains the actual Perl code for
+    freq.pl. The program assumes lines of data, all the same length, with
+    information you want to count in the same columns all through the file.
+    That's called an LRECL (logical record length) file.
+    </div>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+<pre>
 
 #!/usr/bin/perl -w
 ##---------------------------------------------------------------------------##
@@ -140,9 +151,12 @@ format STDOUT =
    @>>>>>>>>>>>>>>>>>>>>>>>>>>>@>>>>>>>>>>@>>>>>>>>>>>
                      $value,   $freq{$value}, $cfreq 
 .
-</code></pre>
+</pre>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Tue Jul  8 17:08:44 EDT 2025
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
+<p>
+<span style="font-size: 80%;">Last Modified: Sat Sep  6 20:43:38 EDT 2025
 </span>
 </body>
 </html>
