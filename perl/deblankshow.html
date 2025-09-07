@@ -1,14 +1,26 @@
 <!DOCTYPE HTML> 
-<html>
+<html lang="en">
 <head>
   <link rel="stylesheet" type="text/css" href="style.css">                                              
+  <meta name="viewport" content="width=device-width, intial-scale=1">
   <base href="/personal-tech/perl/">
   <meta name="description" content="shell script deblank multiple blank lines to single blank lines">
-  <title>40scan.pl code listing</title>
+  <title>deblank shell script code listing</title>
 </head>
 <body> 
+<blockquote>
 
-<pre><code>
+    <h2>Deblank Shell Script Code</h2>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+    <div class="commentary">
+    This short shell script uses sed to turn multiple blank lines into
+    single blank lines. Useful if you have a text file with lots of
+    blank lines in it.</div>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+<pre>
 #! /bin/sh
 
 if [ "$#" -lt 1 ]
@@ -46,8 +58,15 @@ else
          echo ' '
     exit 1
 fi
-</code></pre>                                                                                           
+</pre>                                                                                           
 
-<span style="font-size: 80%;">Last Modified: Wed Jul  9 10:03:38 EDT 2025
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
+
+<span style="font-size: 80%;">Last Modified: Sat Sep  6 22:37:05 EDT 2025
 </span>
+
+</blockquote>
 </body>
+</html>
