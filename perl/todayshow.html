@@ -1,13 +1,22 @@
 <!DOCTYPE HTML> 
-<html>
+<html lang="en">
 <head>
   <base href="/personal-tech/perl/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="perl program code today highlighted">
   <title>today.pl code listing</title>
 </head>
 <body> 
-
-<pre><code>
+    <blockquote>
+        <h2>Perl Code for today.pl</h2>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+        <div class="commentary">
+        As noted on the main today.pl page, this program is not so necessary
+        any longer due to Gnu and BSD cal programs have this facility now.
+        I'm leaving this here as an historical example of what I had to do
+        to make it work when the cal program I had wouldn't do the hightlighting.</div>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+<pre>
 
 #!/usr/um/bin/perl
 #
@@ -42,9 +51,15 @@ until (eof(CALENDAR)) {
 printf("\n                          Current time is: %2d:%02d %s\n\n",
         ($hour>12 ? $hour-12 : $hour),$min,($hour>=12 ? "PM" : "AM"));
 
-</code></pre>
+</pre>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Wed Jul  9 10:02:43 EDT 2025</span>
+<a href="todayperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to today.pl Perl Page</a><br>
+
+<span style="font-size: 80%;">Last Modified: Sun Sep  7 10:36:38 EDT 2025
+</span>
+
+</blockquote>
 </body>
 </html>
 
