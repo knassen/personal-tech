@@ -5,7 +5,7 @@ body {
   background-color: #ffffff;
   color: #000000;
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin: 1em;
 }
 
@@ -17,7 +17,7 @@ a:active  { color: #ff0000; }
 
 /* Replacing <font> size "+1" */
 .up1 {
-  font-size: 115%;
+  font-size: 130%;
 }
 
 /* Horizontal rule */
