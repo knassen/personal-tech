@@ -1,8 +1,9 @@
 <!DOCTYPE HTML> 
-<html>
+<html lang="en">
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="shell script for computing frequencies">
     <base HREF="/personal-tech/perl/">
     <title>Shell Script Version of Frequency Counts</title>
@@ -10,7 +11,16 @@
 
 <body>
 <blockquote>
-<pre><code>
+
+<h2>Frequency Counts Using a Shell Script</h2>
+
+This shell script can generate frequencies and it includes options
+for choosing the records per case and subsetting based on that (for a
+hierarchical data file).
+
+It depends on another shell script (printrec0), linked below.
+
+<pre>
 #! /bin/sh
 #. Generate frequencies given a file, columns, and optional rec # and rec/case
 case $# in
@@ -57,13 +67,18 @@ esac
 echo " "
 exit 0
 
-</code></pre>
-</blockquote>
+</pre>
 (Note: credit for this shell script goes to Nelson Martinez).
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<a href="../perl/freqperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">   Back to Kent's Frequency Count Page</a>
+<a href="../perl/freqperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">   Back to Frequency Count Page</a>
+<p>
+<span style="font size: 80%;">
+Last modified: Sat Sep  6 17:21:22 EDT 2025
+</span>
+
+</blockquote>
 </body>
 </html>
 

@@ -1,13 +1,16 @@
 <!DOCTYPE HTML> 
-<html>
+<html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="shell script printrec0 frequency counts">
     <base href="/personal-tech/perl/">
-    <title>printrec0 -- part of Shell Script Version of Frequency Counts</TITLE>
+    <title>printrec0 -- part of Shell Script Version of Frequency Counts (awk routine)</title>
 </head>
+
 <body>
-<pre><code>
+
+<pre>
 #. Subset a multiple record per case file by record number
 
 { line[NR] = $0 }
@@ -17,11 +20,17 @@ END  { while (r &lt;= NR)  {
               r = r + rc
        }
 }
-</code></pre>
+</pre>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 (Note: credit for this awk script goes to Nelson Martinez &lt;nelson@izzy.net&gt;)
-<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
 <a href="freqsh.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Shell Script Frequency Count Page</a>
+<p>
+<span style="font size: 80%;">
+    Last modified: Sat Sep  6 19:46:46 EDT 2025
+</span>
 
 </body>
 </html>
