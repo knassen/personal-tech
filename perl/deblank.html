@@ -14,14 +14,17 @@
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This shell script will go through an ASCII text file and remove multiple
-blank lines, leave a single blank line.  I've added Perl detection
-of non-ASCII characters in the file so that an external program is
-not necessary as long as you have Perl available. The trick here, for
-programming is to remove the second and following blank lines, but leave
-the first. The sed command used does this by finding a blank line, then
-going to the adjacent blank line and removing it, etc.  The program
-uses a check for a file we can run this operation on by testing for
-a binary file before doing the sed command.
+blank lines, leaving a single blank line from each sequence of blank
+lines.  I've added Perl detection of non-ASCII characters in the file
+so that an external program is not necessary as long as you have Perl
+available. 
+
+The trick here, for programming is to remove the second and following
+blank lines, but leave the first blank line. The sed command used does
+this by finding a blank line, then going to the adjacent blank line and
+removing it, etc.  The program uses a check for a file we can run this
+operation on by testing for a binary file before doing the sed command.
+See the code from the link below.
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/deblankshow.html"><strong>Show deblank code</strong></a></li>
