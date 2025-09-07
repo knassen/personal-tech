@@ -1,16 +1,25 @@
 <!DOCTYPE HTML> 
-<html> 
+<html lang="en"> 
 
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program splitit SAS SPSS columns to single list">
    <base href="/personal-tech/perl/">
    <title>splitit.pl -- Split Multi-column Variable Statements</title>
 </head>
 <body>
-
 <blockquote>
-<pre><code>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+    <h2>Perl Code for splitit.pl</h2>
+    <div class="commentary">The Perl code for splitit.pl. This
+        is a simple program to turn a columnized input statement
+        in SPSS into a single column for easier editing or
+        reformatting some other way.</div>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<pre>
 #!/opt/gnu/bin/perl -w
 
 # Splitit: split columnized variable lists such as SAS input or
@@ -43,11 +52,15 @@ while (<>) {
 			print "   ",${fields}[$i],${fields}[$i+1],"\n";
 		}
 	}
-</code></pre>
+</pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
+<a href="splitit.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to splitit Perl Page</a>
+<p>
+<span style="font-size: 80%;">
+Last Modified: Sun Sep  7 11:22:47 EDT 2025
+</span>
 
 </blockquote>
 </body>
