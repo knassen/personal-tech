@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program fixblock convert stream file to fixed block">
    <base href="/personal-tech/perl/">
    <title>fixblock.pl -- Convert Stream File to Fixed Block File</title>
@@ -26,7 +27,7 @@ of it is still one line of code.
 <P>This small program has been useful for fixing files incorrectly read
 from tape and some data files that have been received in stream format
 via FTP. The program leaves the original data file in its original
-format. <strong>NOTE</strong> that the script will fail to produce
+format. <strong>NOTE</strong> the script will fail to produce
 useful output if, for example, trailing blanks on short data lines were
 stripped before the input data file was put into stream format. Each
 data line or record must be LRECL length even when in stream format, in
@@ -80,19 +81,20 @@ Output is in 'test.out'
 
 <p>
 * Yes, there are other ways to do this sort of conversion--such as
-<i>dd</i>, but most users have trouble with that one. The GNU program
-task, but it does not end the last line of the file with a newline
-character. The <i>/usr/bin/fold</i> program from Sun also seems to have
-this characteristic.  I needed a program that would add a newline even
-on the last line of the program.  There are instances, however, when
-the 'fold' behavior is useful, also.
+  <i>dd</i>, but most users have trouble with that one. The GNU program
+  <i>fold</i> (from the textutils distribution) can perform a similar                                                 
+  task, but it does not end the last line of the file with a newline
+  character. The <i>/usr/bin/fold</i> program from Sun also seems to have
+  this characteristic.  I needed a program that would add a newline even
+  on the last line of the program.  There are instances, however, when
+  the 'fold' behavior is useful, also.
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <a href="../myperl.html"><img src="gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
 
 <span style="font-size: 80%;">
-Last Modified: Tue Jul 15 16:26:44 EDT 2025
+Last Modified: Sun Sep  7 09:44:35 EDT 2025
 </span>
 </blockquote>
 </body>
