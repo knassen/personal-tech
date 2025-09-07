@@ -127,7 +127,9 @@ process...
 
 **September 6, 2025** I've been trying to get google to index some
 of the main pages on this site. And I've been adding code to help
-with mobile viewing and accessibility.
+with mobile viewing and accessibility. Some of the pages probably
+won't index, unfortunately.  I don't have a lot of graphics and
+I don't write a novel on each page.
 
 
 
