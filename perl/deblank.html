@@ -13,10 +13,15 @@
 <br>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-This shell script will go through an ASCII text file and remove multiple blank
-lines, leave a single blank line.  I've added Perl detection of non-ASCII
-characters in the file so that an external program is not necessary as long
-as you have Perl available.
+This shell script will go through an ASCII text file and remove multiple
+blank lines, leave a single blank line.  I've added Perl detection
+of non-ASCII characters in the file so that an external program is
+not necessary as long as you have Perl available. The trick here, for
+programming is to remove the second and following blank lines, but leave
+the first. The sed command used does this by finding a blank line, then
+going to the adjacent blank line and removing it, etc.  The program
+uses a check for a file we can run this operation on by testing for
+a binary file before doing the sed command.
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/deblankshow.html"><strong>Show deblank code</strong></a></li>
@@ -29,7 +34,9 @@ as you have Perl available.
 
    <span style="font size: 115%;"><strong>deblank [filename...]</strong></span>
 
-  An example run is shown below.
+  An example run is shown below. First the command is run with
+  no filename and it gives a usage message in that case. Then it
+  is run on a text file with blank lines mixed with text.
 
 <pre>
 
@@ -74,6 +81,8 @@ a file with several lines.
 
 a file with several lines.
 
+deblank has removed multiple blank lines and left one blank line from sets
+of multiple blank lines.
 </pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
@@ -81,7 +90,7 @@ a file with several lines.
 <a href="https://knassen.github.io/personal-tech/myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 <p>
 <span style="font-size: 80%;">
-    Last Modified: Sun Sep  7 09:23:08 EDT 2025
+    Last Modified: Sun Sep  7 19:21:07 EDT 2025
 </span>
 
 </blockquote >
