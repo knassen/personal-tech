@@ -10,7 +10,6 @@
 <body>
 <blockquote>
 <h2>deblank: Turns multiple blank lines into single blank lines</h2>
-<br>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This shell script will go through an ASCII text file and remove multiple
@@ -18,7 +17,7 @@ blank lines, leaving a single blank line from each sequence of blank
 lines.  I've added Perl detection of non-ASCII characters in the file
 so that an external program is not necessary as long as you have Perl
 available. 
-
+<p>
 The trick here, for programming is to remove the second and following
 blank lines, but leave the first blank line. The sed command used does
 this by finding a blank line, then going to the adjacent blank line and
