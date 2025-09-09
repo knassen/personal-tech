@@ -13,10 +13,18 @@
 <h2>cklg SAS log checker code</h2>
         
 <div class="commentary">
-This is a Perl script called cklg. It checks SAS log files for errors,
-warnings and other issues. It compares your file text against a list of
-errors and warnings, which can be changed (see @search array below). The
-code is here for you to copy and use.</div>
+    This page present a Perl script called cklg, focused on SAS log
+    diagnostics. For a more complete description and usage information
+    see <a href="cklgperl.html">cklgperl.html</a>. The code below scans
+    for warnings and other issues in SAS log files. It compares the
+    given SAS log file text against a list of errors and warnings, which
+    can be modified for how you use SAS, if necessary (see @search array
+    below). The actual search is done with one line of Perl code "eval
+    @query" which searches for the phrases in @query in the current
+    file. Only enough log message text to find the particular error is
+    given for each issue. Adding more text to a particular error won't
+    help. The search is case-insensitive. Getopt::Std is used to get
+    options from the command line.</div>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
@@ -182,8 +190,11 @@ sub DisplayUsage {
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Sat Sep  6 14:17:43 EDT 2025 </span>
+<span style="font-size: 80%;">Last Modified: Tue Sep  9 11:56:34 EDT 2025
+</span>
 <p>
 <a href="cklgperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the cklg Perl Page</a><br>
 </blockquote>
 </body>
+</html>
+

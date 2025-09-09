@@ -4,27 +4,29 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="perl program deblank multiple blank lines to single blank lines">
-    <base HREF="/personal-tech/">
-    <title>deblank: Turns multiple blank lines into single blank lines</title>
+    <base href="/personal-tech/">
+    <title>deblank: Turn multiple blank lines into single blank lines</title>
 </head>
 <body>
 <blockquote>
-    <h2>deblank: Turns multiple blank lines into single blank lines</h2>
+    <h2>deblank: Turn multiple blank lines into single blank lines</h2>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This shell script will go through an ASCII text file and remove multiple
 blank lines, leaving a single blank line from each sequence of blank
-lines.  I've added Perl detection of non-ASCII characters in the file so
-that an external special program is not necessary as long as you have
-Perl available.
+lines. It is useful for reducing the length of files with many blank
+lines without removing the intent that there should be blank space after
+sections of text.
 <p>
 The programming problem is to remove the second and following
 blank lines, but leave the first blank line. The sed command used does
 this by finding a blank line, then going to the adjacent blank line and
-removing it, etc.  The program uses a check for a file we can run this
-operation on by testing for a binary file before doing the sed command.
+removing it, etc.  The program uses a line of Perl to check the script
+is not running on a binary file before issuing the sed command.
 See the code linked below.
+<p>
+This utility is part of a collection of more text-processing tools.
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/deblankshow.html"><strong>Show deblank code</strong></a></li>
@@ -37,9 +39,10 @@ See the code linked below.
 
    <span style="font size: 115%;"><strong>deblank [filename...]</strong></span>
 
-  An example run is shown below. First the command is run with
-  no filename and it gives a usage message in that case. Then it
-  is run on a text file with multiple blank lines mixed with text.
+  An example run is shown below. First the deblank command is run with
+  no filename and a usage message is given in that case. Next deblank 
+  is run on a text file with multiple blank lines mixed with text and
+  we can see the result.
 
 <pre>
 
@@ -60,24 +63,24 @@ See the code linked below.
 Assume we have a small text file with some blank lines in it.  If we want
 to remove duplicate or multiple blank lines, deblank will do the job. 
 <p>
-<strong>First, the original file, test1, is shown.</strong> 
+<strong>This is the original text file, test1.</strong> 
 
 <pre>
 > more test1
 
 a file with several lines.
 a file with several lines.
-
-
-
-
+                          <- blank line
+                          <- blank line
+                          <- blank line
+                          <- blank line
 a file with several lines.
-
-
+                          <- blank line
+                          <- blank line
 a file with several lines.
 </pre>
 
-<strong>Then deblank is run</strong> on that file and the multiple blank
+<strong>Now deblank is run</strong> on test1 and the multiple blank
 lines are processed.
 
 <pre>
@@ -91,15 +94,15 @@ a file with several lines.
 a file with several lines.
 
 </pre>
-<strong>Above, deblank has removed multiple blank lines</strong> and
-left one blank line from sets of multiple blank lines.
+<strong>Above, deblank has removed the multiple blank lines</strong> and
+retained one blank line from sets of multiple blank lines. 
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <a href="https://knassen.github.io/personal-tech/myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 <p>
 <span style="font-size: 80%;">
-    Last Modified: Sun Sep  7 22:25:02 EDT 2025
+    Last Modified: Tue Sep  9 10:24:43 EDT 2025
 </span>
 
 </blockquote >
