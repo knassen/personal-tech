@@ -10,7 +10,7 @@ body {
 }
 
 /* Link styling */
-a:link    { color: #3366cc; }
+a:link    { color: #006699; }
 a:visited { color: #663399; }
 a:hover   { color: #cc6600; }
 a:active  { color: #990000; }
