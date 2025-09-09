@@ -15,9 +15,9 @@
 
 This shell script will go through an ASCII text file and remove multiple
 blank lines, leaving a single blank line from each sequence of blank
-lines.  I've added Perl detection of non-ASCII characters in the file
-so that an external program is not necessary as long as you have Perl
-available. 
+lines.  I've added Perl detection of non-ASCII characters in the file so
+that an external special program is not necessary as long as you have
+Perl available.
 <p>
 The programming problem is to remove the second and following
 blank lines, but leave the first blank line. The sed command used does
@@ -39,7 +39,7 @@ See the code linked below.
 
   An example run is shown below. First the command is run with
   no filename and it gives a usage message in that case. Then it
-  is run on a text file with blank lines mixed with text.
+  is run on a text file with multiple blank lines mixed with text.
 
 <pre>
 
@@ -58,7 +58,8 @@ See the code linked below.
 </pre>
 <p>
 Assume we have a small text file with some blank lines in it.  If we want
-to remove duplicate or multiple blank lines, deblank will do the job.
+to remove duplicate or multiple blank lines, deblank will do the job. First,
+the original file, test1, is shown. 
 
 <pre>
 > more test1
@@ -73,8 +74,12 @@ a file with several lines.
 
 
 a file with several lines.
+</pre>
 
+Then deblank is run on that file and the multiple blank lines are
+processed.
 
+<pre>
 >deblank test1
 
 a file with several lines.
