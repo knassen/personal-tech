@@ -17,6 +17,13 @@
     a line. This assumes you have Perl available and that it can be
     found by the "env" program.  If neither of those conditions are met,
     you can still run the program as perl wrapit.pl.</div> 
+    <p>
+    The basic algorithm here is push the code statements onto an array,
+    then loop through the array printing them out in the format desired.
+    Thus if you want a different out format, just modify the printf 
+    command. Or modify the "for" statement if you want different number
+    of columns. Since it currently does 5 columns the program was called
+    wrapit5.
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <pre>
