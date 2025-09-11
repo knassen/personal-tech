@@ -16,12 +16,14 @@
 
 <a href="/personal-tech/perl/detab.pl"><strong>detab.pl</strong></a> is a perl program
 which detabs a text file using two different methods for converting
-tabs to spaces.  The two methods are 1) a column-based mode which
+tabs to spaces: 1) a column-based mode which
 attempts to insert spaces to a "virtual" tab location or
 2) a literal number of spaces per tab character. It is especially helpful
 when receiving text files from collaborators who use different editors
 or tab settings. It is also good when you get a file with mixed tabs
-and spaces or inconsistent indentation.
+and spaces that cause inconsistent indentation. It's ideal for prepping
+source code, data files, or documentation for printing, diffing, or
+semantic clarity.
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/detabshow.html"><strong>Show detab.pl code</strong></a></li>
@@ -34,12 +36,11 @@ and spaces or inconsistent indentation.
     <li>It is a command line program and would generally run on Linux or Unix.</li>
     <li>The program gives two methods of tab replacement. Probably you'll need to
         try both to see which one comes closer to how the original file was 
-        formatted when using tabs. If custom tab stops are used, such as in
+        formatted when using tabs. If custom/variable tab stops are used, such as in
         MS Word, then the replacement of tabs in a text file won't be consistent.</li>
 </ul>
 <p>
 This utility is part of my collection of <a href="../myperl.html">text-processing tools</a>.
-<p>&nbsp;</p>
 <h3>Example</h3>
 For example, if you have text like
 <br>"Test[tab]some stuff" 
