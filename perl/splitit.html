@@ -4,32 +4,37 @@
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="perl program splitit SAS SPSS multicolumn to single column">
+   <meta name="description" content="perl program splitit reformat SAS SPSS multicolumn to single column">
    <base href="/personal-tech/perl/">
-   <title>splitit.pl -- Split Multi-column Variable Statements</title>
+   <title>splitit.pl -- Reformat Multi-column Variable Statements</title>
 </head>
 <body> 
 <br>
 <blockquote>
-    <h2>splitit.pl -- Split Multi-column Variable Statements</h2>
+    <h2>splitit.pl -- Reformat Multi-column Variable Statements</h2>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This Perl script reads a file containing multi-column SAS Input or SPSS
 Data List statements and reformats them into a single-column format with
-one field per line. Handy for checking multi-column declarations when
+one field per line. Handy for checking your input declarations when
 preparing your code.
 
 <ul style="list-style-type: disc;">
     <li>Output is sent to STDOUT. To save it, redirect STDOUT to a file.</LI>
-    <li>Output is one field per line.</LI>
-    <li>Developed for SAS/SPSS program prep. See also <a href="wrapit.html"><strong>wrapit5.</strong></a></li>
+    <li>Output is one field per line allowing easy review.</LI>
+    <li>Developed for quick formatting of SAS/SPSS variable lists. See also <a href="wrapit.html"><strong>wrapit5.</strong></a>
+        which creates a multi-column format from the output of splitit.</li>
 </ul>
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/splititshow.html"><strong>Show splitit.pl code</strong></a></li>
     <li><strong>Download: </strong><a href="splitit.pl"><strong>splitit.pl</strong></a> 
 </ul>
+
+<p>
+This utility is part of a collection of <a href="../myperl.html">more
+    text-processing tools.</a>
 
 <h3>Usage</h3>
 <p>The command line is: 
