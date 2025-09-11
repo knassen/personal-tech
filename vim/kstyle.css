@@ -5,8 +5,7 @@ padding:40px 20px;
 font:Serif;
 text-align:left;
 color:#333;
-font-size:small;
-font-size:small;
+font-size:16px;
 }
 a:link {
 color:#58a;
@@ -48,7 +47,7 @@ width:660px;
 margin:0 auto;
 padding:0;
 text-align:left;
-font-size:small;
+font-size:16px;
 }
 #main {
 width:410px;
