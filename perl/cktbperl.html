@@ -4,7 +4,7 @@
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="perl program cktb check for trailing blanks">
+   <meta name="description" content="perl program cktb check for trailing blanks in text files">
    <base href="/personal-tech/perl/">
    <title>cktb -- Check for trailing blanks (spaces, tabs) in a file</title>
 </head>
@@ -17,18 +17,19 @@
 <a href="cktb.pl"><strong>cktb.pl</strong></a> is a Perl program which
 checks for trailing blanks (space or tabs) in a text file and reports
 the number found and the longest string of blanks found.
-
+<p>
 This program was written because one place I worked didn't want any
 programs with spaces or tabs at the end of any line. So this program
-checks for it.  It's easier to get a report where this issue is found
-than trying do it in your editor (although some editors can get find
-spaces at the end of the lines, like vim). And if anyone thinks they've
-gotten rid of them you can show them a report from this program.
+checks for that issue. It's easier to get a report where this issue is
+found than trying do it in your editor (although some editors can get
+find spaces at the end of the lines, like vim). And if anyone thinks
+they've gotten rid of them you can show them a report from this program.
 <p>
 Yes, it's a relatively simple program but you would not believe the number
 of times it proved that even though people did their best to get rid of
 trailing white space in their programs, there was still some there. A
-program like this makes all the difference in proving it.
+program like this makes all the difference in proving it. If you're a 
+programmer, that's something worth writing a program for!
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/cktbshow.html"><strong>Show cktb.pl code</strong></a></li>
@@ -39,8 +40,10 @@ program like this makes all the difference in proving it.
 <ul>
     <li>This is written in Perl so needs Perl available.</li>
     <li>It is a command line program and would generally run on Linux or Unix.</li>
+    <li>It is intended to scan through text files, in particular, programs, but
+        could be used for other purposes.
     <li>The program only reports the locations of trailing blanks. It is left to
-        the user to remove them, if desired.</li>
+        the user to remove them, if desired. (In theory there shouldn't be many)</li>
 </ul>
 
 <h3>Usage</h3>
@@ -51,10 +54,13 @@ instead of a summary.
 <p>
 For example, here is a file with some trailing white space and what the
 report will show. I've marked the end of the lines with the vertical
-bars so you can see there is some white space of varying lengths on a
-few of the lines.
+bars ("|") so you can see there is some white space of varying lengths
+on a few of the lines.
+<p>
+This utility is part of a collection of <a href="../myperl.html">more
+    text-processing tools.</a>
 
-<pre><code>
+<pre>
 Input (9 lines):
 
 A line with no trailing blanks.|
@@ -66,7 +72,7 @@ A line with several trailing blanks   |
 A line with a lot of trailing blanks                      |
 
 <strong>Output (default):</strong>
-~> cktb.pl cktbtest.in
+~&gt; cktb.pl cktbtest.in
    cktb.pl: Find lines with trailing spaces or tabs, by Kent Nassen, v1.1, 6/11/99
    Report generated: Sun Aug 10 09:16:50 2025
 
@@ -91,13 +97,13 @@ cktb.pl -l cktbtest.in
 
    9 total lines in the file 'cktbtest.in'.
    Longest string of trailing whitespace was 22 characters at line 8.
-</code></pre>
+</pre>
 
 <hr style="height: 2px; width: 90%; margin-left: 0px; margin-right: auto;">
 <a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
 <!-- Last Modified: Wed Jul  7 21:38:30 EDT 1999 -->
-Last-modified: Sep  9, 2025 6:14:20 PM
+Last-modified: Wed Sep 10 22:12:19 EDT 2025
 </blockquote>
 </body>
 </html>
