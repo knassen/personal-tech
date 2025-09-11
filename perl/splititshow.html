@@ -6,18 +6,22 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program splitit SAS SPSS columns to single list">
    <base href="/personal-tech/perl/">
-   <title>splitit.pl -- Split Multi-column Variable Statements</title>
+   <title>Perl Code for splitit.pl -- Convert Multi-column Input to Single-Column Format</title>
 </head>
 <body>
 <blockquote>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
-    <h2>Perl Code for splitit.pl</h2>
+    <h2>Perl Code for splitit.pl -- Convert Multi-column Input to Single-column Format</h2>
     <div class="commentary">The Perl code for splitit.pl. This
-        program turns a multi-column SAS or SPSS input statement
-        into a single column for easier editing, reviewing, or
-        reformatting. The <a href="wrapit.html">wrapit program</a> 
-        can turn a single column back into multi-column</div>
+        utility reformats SAS or SPSS input statement from multi-column layout
+        into a single column format--one field per line. It's useful for editing, reviewing, or
+        scripting changes to large variable lists. The <a href="wrapit.html">wrapit program</a> 
+        reverses the process, restoring multi-column layout from the single-column
+        output.</div>
+    <p>
+       See also my collection of other <a href="../myperl.html">text-processing tools.</a>
+<p>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
@@ -58,13 +62,10 @@ while (<>) {
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-This utility is part of my collection of <a
-href="../myperl.html">text-processing tools.</a>
-<p>
 <a href="splitit.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to splitit Perl Page</a>
 <p>
 <span style="font-size: 80%;">
-Last Modified: Sun Sep  7 11:22:47 EDT 2025
+Last Modified: Thu Sep 11 19:35:17 EDT 2025
 </span>
 
 </blockquote>
