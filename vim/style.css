@@ -3,19 +3,19 @@ body {
   background-color: #ffffff;
   color: #000000;
   font-family: serif;
-  font-size: 14px;
+  font-size: 16px;
   margin: 1em;
 }
 
 /* Link styling */
-a:link    { color: #3399ff; }
-a:visited { color: #9966ff; }
-a:hover   { color: #ff6600; }
-a:active  { color: #ff0000; }
+a:link    { color: #006699; }
+a:visited { color: #663399; }
+a:hover   { color: #cc6600; }
+a:active  { color: #990000; }
 
 /* Replacing <font> size "+1" */
 .up1 {
-  font-size: 115%;
+  font-size: 130`;
 }
 
 /* Horizontal rule */
