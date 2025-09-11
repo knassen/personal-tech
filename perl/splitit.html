@@ -6,36 +6,36 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program splitit reformat SAS SPSS multicolumn to single column">
    <base href="/personal-tech/perl/">
-   <title>splitit.pl -- Reformat Multi-column Variable Statements</title>
+   <title>splitit.pl -- Reformat Multi-column Variable Statements into Single Column</title>
 </head>
 <body> 
 <br>
 <blockquote>
-    <h2>splitit.pl -- Reformat Multi-column Variable Statements</h2>
+    <h2>splitit.pl -- Reformat Multi-column Variable Statements into Single Column</h2>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This Perl script reads a file containing multi-column SAS Input or SPSS
 Data List statements and reformats them into a single-column format with
 one field per line. Handy for checking your input declarations when
-preparing your code or for operating on the statements with scripts.
+preparing your code or for modifying the statements with scripts.
 <p>
-If all you have is 9 variables to format, by all means, use your editor
-to do the reformatting, but for larger lists of variables, this program 
-will do the work in a few seconds. That's what I used to use it for, 
-formatting SAS and SPSS statements for large social sciences studies 
-with hundreds or thousands of variables. It was a huge time-saver for me.
+Intended for larger lists of variables, this program will reformat many
+statements very quickly. I used to use it for SAS and SPSS input statements
+for large social sciences studies with hundreds or thousands of
+variables. It was a huge time-saver.
+<p>
+See also <a href="wrapit.html"><strong>wrapit</strong></a> which creates
+a multi-column format from the single column output of splitit. 
+Using these two programs, you can go from one command per line to 5
+commands per line and back again.
 
 <ul style="list-style-type: disc;">
     <li>Output is sent to STDOUT. To save it, redirect STDOUT to a file.</LI>
     <li>Output is one field per line allowing easy review, scripting, 
         and duplicates removal.</LI>
-    <li>Developed for quick formatting of SAS/SPSS variable lists. See also 
-        <a href="wrapit.html"><strong>wrapit</strong></a>
-        which creates a multi-column format from the output of splitit.
-        splitit and wrapit do the opposite operations, so with them
-        you can go from one command per line to 5 commands per line
-        and back again.</li>
+    <li>Developed for quick formatting of SAS/SPSS variable lists.</li>
+
 </ul>
 
 <ul>
@@ -81,7 +81,7 @@ Sample output (cards.split)
 Last modified: Sat Sep  6 17:20:11 EDT 2025
 </span>
 
-<a href="https://www.freecounterstat.com" title="free counters"><img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=x4m81rbttcurj941ymkxlbn4cmf345uz" border="0" title="free counters" alt="free counters"></a>
+<a href="https://www.freecounterstat.com" title="free counters"><img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=x4m81rbttcurj941ymkxlbn4cmf345uz" title="free counters" alt="free counters"></a>
 
 </blockquote>
 </body>
