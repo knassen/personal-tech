@@ -4,22 +4,22 @@
 <head>
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="perl program wrapit5 SAS SPSS convert single column commands to multiple columns">
+   <meta name="description" content="perl program wrapit5 SAS SPSS convert single column input commands to multiple columns">
    <base href="/personal-tech/perl/">
-   <title>wrapit5.pl -- Wrap Fixed-Format Variable Statements</title>
+   <title>wrapit5.pl -- Wrap SAS or SPPS Variable Input Statements to Multiple Columns</title>
 </head>
 <body> 
 <br>
 <blockquote>
-<h2>wrapit5.pl -- Wrap Fixed-Format Variable Statements</h2>
+<h2>wrapit5.pl -- Wrap SAS or SPSS Variable Input Statements to Multiple Columns</h2>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-This Perl script reads a file containing a column of SAS Input or SPSS
-Data List statements and reformats them into a wrapped format with
+This Perl script reads a file containing a single column of SAS Input or
+SPSS Data List statements and changes them into a wrapped format with
 multiple fields per line--defaulting to five columns wide.  Handy for
-making long, single-column declarations more compact and readable in
-your code.
+making long, single-column SAS or SPSS input declarations more compact
+and readable in your code.
 
 <ul style="list-style-type: disc;">
     <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
@@ -38,7 +38,7 @@ your code.
 <p>The command line is: 
 <span style="color: #000080; font-family: monospace;">perl wrapit5.pl filename >filename.out</span>
 <p>
-This utility is part of a collection of <a href="../myperl.html">more text-processing tools</a>.
+This utility is part of my collection of <a href="../myperl.html">text-processing tools</a>.
 
 <br>Here is an example.  Consider this input data:
 <pre>
