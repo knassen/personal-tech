@@ -24,7 +24,7 @@ you can loop over a single column easily.
 Intended for larger lists of variables, this program will reformat many
 statements very quickly. I used to use it for SAS and SPSS input statements
 for large social sciences studies with hundreds or thousands of
-variables. It was a huge time-saver.
+variables. It saved a lot of time.
 <p>
 See also <a href="wrapit.html"><strong>wrapit</strong></a> which creates
 a multi-column format from the single column output of splitit. 
@@ -36,7 +36,6 @@ layout.
     <li>Output is one field per line allowing easy review, scripting, 
         and duplicates removal.</LI>
     <li>Developed for quick formatting of SAS/SPSS variable lists.</li>
-
 </ul>
 
 <ul>
@@ -56,7 +55,9 @@ This utility is part of my collection of <a href="../myperl.html">text-processin
 Sample input (cards):
 
    V1 1-4         V2 5-8         V3 9-9         V4 10-13 (A)   V5 14-14
-   V6 15-16       V7 17-17       V8 18-19       V9 20-21
+   V6 15-16       V7 17-17       V8 18-19       V9 20-21      V10 22-23
+  V11 24-25      V12 26-26      V13 27-28      V14 29-33 (A)  V15 34-35
+  V16 36-37      V17 38-39      V18 40-41      V19 42-46 (A)  V20 47-47
 
 The command 
 <span style="color: #000080; font-family: monospace;">perl splitit.pl cards &gt; cards.split</span> produces this:
@@ -71,7 +72,18 @@ Sample output (cards.split)
    V6 15-16       
    V7 17-17       
    V8 18-19       
-   V9 20-21 
+   V9 20-21      
+   V10 22-23 
+   V11 24-25      
+   V12 26-26      
+   V13 27-28      
+   V14 29-33 (A)  
+   V15 34-35 
+   V16 36-37      
+   V17 38-39      
+   V18 40-41      
+   V19 42-46 (A)  
+   V20 47-47 
 
 </pre>
 
