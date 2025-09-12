@@ -16,20 +16,18 @@
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This Perl script reads a file containing multi-column SAS Input or SPSS
-Data List statements and reformats them into a single-column format with
-one field per line. It is good for checking your input declarations when
-preparing your code or for modifying the statements with scripts since
-you can loop over a single column easily.
+Data List statements and converts them into a single-column format with
+one statement per line. It is good for checking your input declarations
+when preparing your code or for modifying the statements with scripts
+since you can loop over a single column easily.
 <p>
-Intended for larger lists of variables, this program will reformat many
+Intended for larger lists of variables, this program will process many
 statements very quickly. I used to use it for SAS and SPSS input statements
 for large social sciences studies with hundreds or thousands of
 variables. It saved a lot of time.
 <p>
 See also <a href="wrapit.html"><strong>wrapit</strong></a> which creates
 a multi-column format from the single column output of splitit. 
-Use wrapit to reverse the list that splitit created and restore multi-column 
-layout. 
 
 <ul style="list-style-type: disc;">
     <li>Output is sent to STDOUT. To save it, redirect STDOUT to a file.</LI>
