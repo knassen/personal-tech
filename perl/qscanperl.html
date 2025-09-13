@@ -58,17 +58,19 @@ An example run is shown below.
 
    qscan: Find long quoted text
    by Kent Nassen, v1.8, 10/22/99
-   Scanning for quoted text longer than 40 characters in the file '40scan_versions_test'
+   Scanning for quoted text longer than 40 characters in the file 'testulc.txt'
 
              Quote
    Line#     Length                   Line Contents/*** Message
   -------   --------  ----------------------------------------------------------
-       51        42        7   42    v3 "This is a longer label for the varia...
-       52        61        8   61    v4 "This is a very long label for the fo...
+        1        42   v3 "This is a longer label for the variable v3"
+        2        61   v4 "This is a very long label for the fourth variable w...
+        3        70   v5 'This is a single-quoted label for the fifth variabl...
 
-    There were 68 lines in '40scan_versions_test'
+    There were 3 lines in 'testulc.txt'
     3 lines had quoted text over 40 characters long.
-    The length of the longest quoted text found was 61 characters at line 52."
+    The length of the longest quoted text found was 70 characters at line 3.
+
 </pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
