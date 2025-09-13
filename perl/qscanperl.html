@@ -17,13 +17,15 @@ Like <a href="scanperl.html">40scan.pl</a>, this program scans a text file or
 program for double-quoted and single-quoted strings.  If found, it
 reports those which are longer than a defined number of characters.  The
 default is 40 characters, but qscan lets you define other string lengths
-to search for on the command line.
+to search for on the command line. Originally written to ensure SAS and SPSS
+variable labels were within the length limitations of the system. qscan can
+be used for checking any quoted string lengths.
 
 <ul style="list-style-type: disc;">
     <li>This program is intended to be run from a Unix or Linux command line.</li>
     <li>Output is sent to STDOUT, so redirect it to a file to save the output.</li>
     <li>Very long lines will be truncated in the output.  This is to keep the output
-        from getting too wide.
+        from getting too wide. The length will still be reported.
     <li>The program looks for double-quoted and single-quoted strings.</li>
     <li>The variable $checklen in the program sets the default length of strings to search for.</li>
     <li>Useful for making sure all your labels are within length limits, including SAS,
