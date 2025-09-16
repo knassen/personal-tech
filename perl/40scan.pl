@@ -18,25 +18,32 @@
 #      v1.5: 9/22/98 -- Improved output formatting a bit (number of lines
 #                       in file, line number of longest quoted text, page 
 #                       header). Each file's output now starts on a new page.
+#      v1.6: 9/16/25 -- Updated to lexical filehandles and tested with use
+#                       strict and use warnings.
 # 
 #  :set tabstop=4
 # 
 #  SYNTAX:  40scan filename
 
-use FileHandle; 
+use strict;
+use warnings;
+
+use vars qw($version $file $filename $lines $line $ProgName $file_to_process $pagesize $checklen $testcount $maxcount $maxline $longlines);
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
 # $version="v1.3, 8/20/98";
 # $version="v1.4, 9/03/98";
-$version="v1.5, 9/22/98";
+# $version="v1.5, 9/22/98";
+$version="v1.6, 9/16/25";
 
 # NOTE: $checklen sets the length of quoted text to search for
-my $file="", $checklen=40, $pagesize=54;
+# NOTE: $pagesize is the number of lines to print per page
+$file="",$checklen=40, $pagesize=54;
 STDOUT->format_lines_per_page($pagesize);
 
-($ProgName = $0) =~ s%.*/%%;  # Unix
-# ($ProgName = lc $0) =~ s%.*\\%%;  # DOS
+(my $ProgName = $0) =~ s%.*/%%;  # Unix
+# ($ProgName = lc $0) =~ s%.*\\%%;  # DOS/Windows
 
 if ($#ARGV<0) { 
     &DisplayUsage;
@@ -45,28 +52,34 @@ if ($#ARGV<0) {
 }
 
 foreach $file (@ARGV) { 
-	process($file, 'fh00'); 
+    $file_to_process = $file;
+	process($file); 
 }
-
 	
 sub process {
+    # reset page numbers and lines remaining for each file
+    $% = 0; # page num
+    $- = 0; # lines remaining
     $lines=$testcount=$maxcount=$longlines=0;
-	local($filename, $input) = @_;
-	$input++;
-	unless (open $input, $filename) {
-		print STDERR "Can't open $filename: $!\n";
-		return;
-	}
-	while (<$input>) {
-		chop;
+	($file_to_process) = @_;
+    my $fh;
+    open $fh, '<', $file_to_process or do {
+         print STDERR "\n    *** $ProgName: Can't open '$file_to_process': $!\n\n";
+         return;
+    };
+	while ($line = <$fh>) {
+		chomp($line);
+        #print $line,"\n";
         $lines++;
-		if ( m/".*?".*(".*?")/ ) {
+		if ( $line =~ m/".*?".*(".*?")/ ) {
+            $line=$1;
 			$testcount=length($1) - 2;
 			if ( $testcount > $checklen ) { $longlines++; write; }
             if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
 		next;
 		}
-		if ( m/(".*?")/ ) {
+		if ( $line =~ m/(".*?")/ ) {
+            $line=$1;
 			$testcount=length($1) - 2;
 			if ( $testcount > $checklen ) {	$longlines++; write; }
             if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
@@ -100,7 +113,7 @@ sub process {
         else { print "    There were $lines lines in the file.\n"; }
         print "    The length of the longest quoted text found was $maxcount characters at line $maxline.\n";
 	}
-	close $input;
+	close $fh;
 	print "\n";
 }
 
@@ -133,5 +146,5 @@ format STDOUT_TOP =
 
 format STDOUT =
   @>>>>>> @>>>>>>    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-$.,$testcount,$_
+$.,$testcount,$line
 .
