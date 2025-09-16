@@ -25,8 +25,8 @@
 # 
 #  SYNTAX:  40scan filename
 
-use strict;
-use warnings;
+#use strict;
+#use warnings;
 
 use vars qw($version $file $filename $lines $line $ProgName $file_to_process $pagesize $checklen $testcount $maxcount $maxline $longlines);
 
