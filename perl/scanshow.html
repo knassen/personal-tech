@@ -69,7 +69,7 @@ STDOUT->format_lines_per_page($pagesize);
 # ($ProgName = lc $0) =~ s%.*\\%%;  # DOS/Windows
 
 if ($#ARGV<0) { 
-    &DisplayUsage;
+    &amp;DisplayUsage;
 	print STDERR "   *** I need a filename!\n\n";
     exit 1;
 }
