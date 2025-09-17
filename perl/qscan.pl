@@ -34,18 +34,20 @@
 #                       out or remove the line: 
 #                       STDOUT->format_page_number(0); # Each file starts with Page 1
 #     v1.8: 10/22/99 -- Added support for also finding single-quoted strings.
+#     v1.9:  9/16/25 -- Updated to lexical filehandles.
 #
 #
 #  :set tabstop=4
 #
 #  SYNTAX:  qscan filename[...]
+#use warnings;
+#use strict;
 
-use FileHandle;
 use Getopt::Std;
 
 use vars qw($version $checklen $pagesize $ProgName $lines $testcount
  	$maxcount $longlines $extendlen $filename $input $extend $maxline
- 	$lentest $opt_l);
+ 	$lentest $opt_l $file $CurrentFile );
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
@@ -54,7 +56,8 @@ use vars qw($version $checklen $pagesize $ProgName $lines $testcount
 # $version="v1.5, 9/22/98";
 # $version="v1.6, 6/27/99";
 # $version="v1.7, 8/14/99";
-$version="v1.8, 10/22/99";
+#$version="v1.8, 10/22/99";
+$version="v1.9, 9/16/25";
 
 # NOTE: $checklen sets the length of quoted text to search for
 my $file="", $checklen=40, $pagesize=54;
@@ -81,22 +84,23 @@ if ($#ARGV<0) {
     exit 1;
 }
 
-foreach $file (@ARGV) {
+foreach my $file (@ARGV) {
 	STDOUT->format_page_number(0); # Each file starts with Page 1
-	process($file, 'fh00');
+    open my $fh, '<',$file or do {
+       warn"\n   *** $ProgName: Can't open '$file': $!\n\n";
+       next;
+   };
+	process($fh, $file);
 }
 
 sub process {
+	my ($fh, $filename) = @_;
     $lines=$testcount=$maxcount=$longlines=0;
 	$extend=" ";
+    $CurrentFile=$filename;
 	$extendlen=56; # length beyond which we truncate long strings in the output
-	local($filename, $input) = @_;
 	$input++;
-	unless (open $input, $filename) {
-		print STDERR "\n   *** $ProgName: Can't open '$filename': $!\n\n";
-		return;
-	}
-	while (<$input>) {
+	while (<$fh>) {
 		chop;
         $lines++;
 		if ( m/".*?".*(".*?")/ or m/'.*?'.*('.*?')/ ) {
@@ -130,6 +134,8 @@ sub process {
         else { # Quoted text found, but not over the max
 		    $_=" *** No quoted text over $checklen characters long.\n";
         }
+        my $CurrentFile=$filename;
+        print $CurrentFile,"\n";
 		write; # Print out the header for files with no lines over max
         if ($lines==1) { print "\n    There was one line in the '$filename'\n"; }
         else { print "\n    There were $lines lines in '$filename'\n"; }
@@ -147,13 +153,13 @@ sub process {
         else {
 		    print "    $longlines lines had quoted text over $checklen characters long.\n";
         }
-        print "    The length of the longest quoted text found was $maxcount",
-			" characters at line $maxline.\n";
-	}
-	print "\n";
-	close $input;
-	STDOUT->format_lines_left("0");
-} # end of subroutine process()
+           print "    The length of the longest quoted text found was $maxcount",   
+                           " characters at line $maxline.\n";                       
+           }                                                                        
+           print "\n";                                                              
+           close $fh;                                                            
+           STDOUT->format_lines_left("0");                                          
+   } # end of subroutine process()                                                  
 
 sub DisplayUsage {
     print STDERR "\n  $ProgName: Find long quoted text",
@@ -177,8 +183,8 @@ format STDOUT_TOP =
    "$ProgName: Find long quoted text";
    @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
    "by Kent Nassen, $version";
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "Scanning for quoted text longer than $checklen characters in the file '".$file."'"
+   Scanning for quoted text longer than @< characters in the file @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   $checklen, $CurrentFile
 
              Quote
    Line#     Length                   Line Contents/*** Message
