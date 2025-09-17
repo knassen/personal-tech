@@ -32,8 +32,9 @@
 ##        Fixed number of lines per page in output. (2/7/1999)
 ##      
 ##---------------------------------------------------------------------------##
+#use warnings;
+#use strict;
 
-use FileHandle;
 use Getopt::Std;
 
 use vars qw($opt_h $ProgName $opt_c $temp $loc $fname 
