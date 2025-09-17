@@ -1,4 +1,4 @@
-#!/use/bin/env perl
+#!/usr/bin/env perl
 # Look for and count the blanks or tabs at the end of lines
 # --Kent Nassen, 5/26/99, 6/11/99, 6/28/00
 
