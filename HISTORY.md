@@ -131,6 +131,31 @@ with mobile viewing and accessibility. Some of the pages probably
 won't index, unfortunately.  I don't have a lot of graphics and
 I don't write a novel on each page.
 
+**September 20, 2025** The push in the past week or so has been to
+convert Perl programs from old-style FileHandles to lexical file
+handles that don't require the FileHandle module.  Once this process
+is done, the only module needed by any of my Perl programs will
+be GetOpt::Std, which is part of the core Perl install. 
+
+cktb.pl was originally difficult to get working even though it is short.
+And I do remember working on this 25 years ago. This was due to using
+Perl's format facility on one of the two outputs from the program. I
+distinctly remember the amount of experimentation with the timing of
+write statements it took to get it working at all.
+
+So...this time I decided just use print and printf statements. This
+program produces two reports: a summary report of a few lines, and a
+detail report of every match found. It always did this.  Now it does
+it with page numbers and titles on the summary as well as the long,
+detailed listing. Page 1 had to be handled separately because there
+is no line number information at that point and it's the start of the
+detail listing.
+
+
+
+
+
+
 
 
 

@@ -1,34 +1,31 @@
 #!/usr/bin/env perl
 # Look for and count the blanks or tabs at the end of lines
-# --Kent Nassen, 5/26/99, 6/11/99, 6/28/00
+# --Kent Nassen, 5/26/99, 6/11/99, 6/28/00, 9/20/25
 
 # 6/28/00: only print longest string of whitespace message if the file
 # had trailing whitespace.  Added run_time to header.
 
-# TODO:
-#   update to use a new header for each file. See for example
-#   the longline program.
+# 9/20/25: Removed Perl formats. Use print and printf instead. This means
+# pagination is done manually and page 1 is handled separately because
+# there are no lines read at that point. Use lexical filehandles and
+# remove the use of the FileHandle module. Use our() for variables now. 
 
-use FileHandle;
+#use warnings;
+#use strict;
 use Getopt::Std;
 
-#use strict;
-# Can't use string ("fh01") as a symbol ref while "strict refs" in use
-# at cktb line 50.
-
-use vars qw($file $filename $input $line $len $whitespace $match
-  $matchcount $ProgName $version $pagesize $longest $longline $opt_l
-  $run_time);
+our ($file, $filename, $input, $line, $len, $whitespace, $match,
+  $matchcount, $ProgName, $version, $pagesize, $longest, $longline, $opt_l,
+  $run_time, $trail, $pagenum, $linecount);
 
 $pagesize=54;
-STDOUT->format_lines_per_page($pagesize);
 
-$version="v1.1, 6/11/99";
+#$version="v1.1, 6/11/99";
+$version="v1.2, 9/20/25"; # p;rint titles on all pages
 $run_time=localtime(time);
 
-
-#($ProgName = $0) =~ s%.*/%%; # Unix
-($ProgName = lc $0) =~ s%.*\\%%;  # DOS
+($ProgName = $0) =~ s%.*/%%; # Unix
+#($ProgName = lc $0) =~ s%.*\\%%;  # DOS
 
 die "\n*** $ProgName: need a filename to test. \n\
 $ProgName: Find lines with trailing white space (tabs or spaces) in files,\
@@ -39,69 +36,87 @@ $ProgName: Find lines with trailing white space (tabs or spaces) in files,\
 
 getopts('l');
 
-# Print program header
-if (!$opt_l) { print "   $ProgName: Find lines with trailing spaces or tabs,",
-    " by Kent Nassen, $version\n   Report generated: $run_time\n";
-    }
+sub print_banner {
+     my ($pagenum) = @_;
+     print "\n Page $pagenum\n\n"; 
+     print "   $ProgName: Find lines with trailing spaces or tabs,",
+         " by Kent Nassen, $version\n", 
+         "   Scanning for trailing white space in the file: $file\n",  
+         "   Report generated: $run_time\n\n";
+     print "\n                    Trailing WS\n";
+     print "    Line #            Length\n";
+     print "    -------         -----------\n"; 
+}
 
 # Check a file for trailing blanks/white space
+my $fh;
 foreach $file (@ARGV) {
-    process($file, 'fh00');
+     $pagenum=1;
+     # Print Page 1 page number, titles, and table headers for opt_l case.
+     if ($pagenum==1) { print " \nPage 1\n\n"; }
+     print "   $ProgName: Find lines with trailing spaces or tabs,",
+         " by Kent Nassen, $version\n", 
+         "   Scanning for trailing white space in the file: $file\n",  
+         "   Report generated: $run_time\n\n";
+     if ( $opt_l ) {
+     print "\n                    Trailing WS\n";
+     print "    Line #            Length\n";
+     print "    -------         -----------\n"; 
+     }
+    process($file, $fh, \$pagenum);
 }
 
 sub process {
-    # Print Header?
-    $line=$matchcount=$match=$longest=$longline=0;
-    local($filename, $input) = @_;
+    $match="";
+    $- = 0;
+    $pagenum=2;
+    my ($file, $fh, $pagenum_ref) = @_;
+    $pagenum = defined $pagenum_ref ? $$pagenum_ref : 1;
+    $filename=$file;
+    $line=$matchcount=$longest=$longline=$linecount=0;
     $input++;
-    unless (open $input, $filename) {
+    unless (open $fh, $filename) {
         print STDERR "\n  $ProgName: *** Can't open $filename: $!\n\n";
         return;
     }
-    while (<$input>) {
+    while (<$fh>) {
         chomp;
         $line++;
+
         if (/([\t\s]+)$/) {
-            $match=$1;
+            $$pagenum_ref = $pagenum if defined $pagenum_ref;
+            $match=$_; # keep full line on a match
+            $trail=$1; # the white space;
+            $linecount++;
             $matchcount++;
-            if (length($match)>$longest) {
-                $longest=length($match); $longline=$line
+            $len=length($trail);
+            if ($len>$longest) {
+                $longest=$len; 
+                $longline=$line;
             }
-            if ($opt_l) { write } # do long report (line# & count)
+            if ($opt_l) {
+                if ($linecount % 45 == 0) {
+                     print_banner($pagenum);
+                     $pagenum++;
+                     $$pagenum_ref = $pagenum if defined $pagenum_ref && ref($pagenum_ref) eq 'SCALAR';
+                }
+                # opt_l case: print the table data
+                printf "      %5d       %7d\n",$line,length($trail);
+            }
         }
     } # end of while()
     if (!$matchcount) {
         print "\n   *** No lines found with trailing white space";
         $longest=0;
-        $longline=$line
+        $longline=$line;
     }
     print "\n   $line total lines in the file '$file'.\n";
     if ($matchcount) {
         print "   Longest string of trailing whitespace was $longest",
-                " characters at line $longline.\n\n";
+                " characters at line $longline.\n\n",
+    "------------------------------------------------------------------------\n";
     }
     $longest=$longline=0;
-    close $input;
+    close $fh;
 }
 
-format STDOUT_TOP =
-
-   @||||@||
-   "Page",$%
-
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "$ProgName: Find lines with trailing spaces or tabs, by Kent Nassen, $version";
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "Scanning for trailing white space in the file: ",$file
-   @<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-   "Report generated: ",$run_time
-
-              Trailing WS
-     Line#       Length
-    -------   -----------
-.
-
-format STDOUT =
-    @>>>>>> @>>>>>>>>>
-$line, length($match)
-.
