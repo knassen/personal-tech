@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 #  40scan.pl
 #  A script to count the characters between pairs of double quote marks
 #    on lines from a text file, as in SPSS VARIABLE LABELS and VALUE
@@ -28,7 +28,7 @@
 #use strict;
 #use warnings;
 
-use vars qw($version $file $filename $lines $line $ProgName $file_to_process $pagesize $checklen $testcount $maxcount $maxline $longlines);
+our ($version, $file, $filename, $lines, $line, $ProgName, $file_to_process, $pagesize, $checklen, $testcount, $maxcount, $maxline, $longlines);
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
