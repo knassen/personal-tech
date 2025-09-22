@@ -45,9 +45,9 @@
 
 use Getopt::Std;
 
-use vars qw($version $checklen $pagesize $ProgName $lines $testcount
- 	$maxcount $longlines $extendlen $filename $input $extend $maxline
- 	$lentest $opt_l $file $CurrentFile );
+our ($version, $checklen, $pagesize, $ProgName, $lines, $testcount, 
+    $maxcount, $longlines, $extendlen, $filename, $input, $extend, $maxline,
+ 	$lentest, $opt_l, $CurrentFile );
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
@@ -71,10 +71,7 @@ $opt_l='';
 getopt('l:');
 
 if ($opt_l =~ /^\d+$/) { $checklen=$opt_l }
-else { 
-	if ($opt_l) {
-	print STDERR "\n   *** -l parameter, $opt_l, is not a number\n"; 
-    &DisplayUsage; 
+else { if ($opt_l) { print STDERR "\n   *** -l parameter, $opt_l, is not a number\n"; &DisplayUsage; 
 	exit 1;
 	}
 }
