@@ -19,8 +19,7 @@
         highlighting.</div>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <pre>
-
-#!/usr/um/bin/perl
+#!/usr/bin/env perl
 #
 # today - print a calendar with today in reverse video (vt100 hardcoded)
 # (Handy for a login script)
@@ -28,14 +27,14 @@
 #                               April 1999                               
 #                             S  M Tu  W Th  F  S                        
 #                                         1  2  3                        
-#                             4  5  >6<  7  8  9 10                        
+#                             4  5  6  7  8  9 10                        
 #                            11 12 13 14 15 16 17                        
 #                            18 19 20 21 22 23 24                        
 #                            25 26 27 28 29 30                           
 #                                                                        
 #                          Current time is:  7:02 PM
 
-use vars qw( $min $hour $mday $mon $year $current_line $len );
+our ($min, $hour, $mday, $mon, $year, $current_line, $len);
 
 ($min,$hour,$mday,$mon,$year) = (localtime)[1,2,3,4,5];
 $mon++;
@@ -58,7 +57,7 @@ printf("\n                          Current time is: %2d:%02d %s\n\n",
 
 <a href="todayperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to today.pl Perl Page</a><br>
 
-<span style="font-size: 80%;">Last Modified: Sun Sep  7 10:36:38 EDT 2025
+<span style="font-size: 80%;">Last Modified: Mon Sep 22 16:10:27 EDT 2025
 </span>
 
 </blockquote>

@@ -1,4 +1,4 @@
-#!/usr/um/bin/perl
+#!/usr/bin/env perl
 #
 # today - print a calendar with today in reverse video (vt100 hardcoded)
 # (Handy for a login script)
@@ -13,7 +13,7 @@
 #                                                                        
 #                          Current time is:  7:02 PM
 
-use vars qw( $min $hour $mday $mon $year $current_line $len );
+our ($min, $hour, $mday, $mon, $year, $current_line, $len);
 
 ($min,$hour,$mday,$mon,$year) = (localtime)[1,2,3,4,5];
 $mon++;
