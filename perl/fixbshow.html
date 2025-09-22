@@ -20,8 +20,7 @@
     <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <pre>
-
-#!/opt/gnu/bin/perl
+#!/use/bin/env perl
 #
 # fixblock.pl -- block a data file to a fixed record length
 #
@@ -43,10 +42,11 @@
 #    All parameters on the command line are required.
 
 use Getopt::Std;
-use vars qw($version $ProgName $infile $outfile $recnum $record $opt_l);
+our ($version, $ProgName, $infile, $outfile, $recnum, $record, $opt_l);
 
 # $version="(v1.3, 8/12/98)";
-$version="(v1.4, 9/22/98)";
+#$version="(v1.4, 9/22/98)";
+$version="(v1.5, 9/22/25)";
 ($ProgName = $0) =~ s%.*/%%; # Unix
 # ($ProgName = lc $0) =~ s%.*\\%%; # DOS 
 
@@ -89,6 +89,7 @@ sub UsageInfo {
             "       For example:\n",
             "       $ProgName -l80 mydata mydata.out\n\n"; 
 }
+
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
