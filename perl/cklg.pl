@@ -21,7 +21,9 @@
 use strict;
 use warnings;
 use Getopt::Std;
-use vars qw($version $file $ProgName $query $filename @search $opt_h $opt_l $count $term $i $line $line_number);
+
+our ($version, $file, $ProgName, $query, $filename, @search, $opt_h,
+     $opt_l, $count, $term, $i, $line, $line_number);
 
 $version = "v1.1, " . scalar(localtime);
 ($file, $ProgName, $query, $filename) = ("", "", "", "");

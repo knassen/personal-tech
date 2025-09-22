@@ -54,10 +54,12 @@ This utility is part of a collection of <a href="../myperl.html">more
 # Original version 01JUN2009 by Kent Nassen.
 # Updated to use lexical filehandles and modern Perl practices.
 
-use strict;
-use warnings;
+#use strict;
+#use warnings;
 use Getopt::Std;
-use vars qw($version $file $ProgName $query $filename @search $opt_h $opt_l $count $term $i $line $line_number);
+
+our ($version, $file, $ProgName, $query, $filename, @search, $opt_h,
+     $opt_l, $count, $term, $i, $line, $line_number);
 
 $version = "v1.1, " . scalar(localtime);
 ($file, $ProgName, $query, $filename) = ("", "", "", "");
@@ -195,10 +197,11 @@ sub DisplayUsage {
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Tue Sep  9 11:56:34 EDT 2025
+<span style="font-size: 80%;">Last Modified: Mon Sep 22 15:14:20 EDT 2025
 </span>
 <p>
 <a href="cklgperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the cklg Perl Page</a><br>
+
 </blockquote>
 </body>
 </html>
