@@ -37,10 +37,10 @@
 
 use Getopt::Std;
 
-use vars qw($opt_h $ProgName $opt_c $temp $loc $fname 
-            $nofcases $startcol $endcol $cfreq $value 
-            $cfreqpct $valuepct $freqpct @data %freq
-            $transpos $version $pagesize);
+our ($opt_h, $ProgName, $opt_c, $temp, $loc, $fname, 
+     $nofcases, $startcol, $endcol, $cfreq, $value, 
+     $cfreqpct, $valuepct, $freqpct, @data, %freq,
+     $transpos, $version, $pagesize);
 
 $pagesize=57;
 STDOUT->format_lines_per_page($pagesize);

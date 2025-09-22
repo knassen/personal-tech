@@ -20,7 +20,6 @@
     
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <pre>
-
 #!/usr/bin/perl
 ##---------------------------------------------------------------------------##
 ##  File:
@@ -35,7 +34,7 @@
 ##
 ##  Usage:
 ##      freq.pl [-h] [-c[#-#][#] filename]
-##   where: -c#-# indicates starting &amp; ending column numbers of the variable
+##   where: -c#-# indicates starting & ending column numbers of the variable
 ##          and -c# indicates a single-column variable at column #.
 ##          -h gives a help screen.
 ##          Only one filename may be given.
@@ -55,14 +54,15 @@
 ##        Fixed number of lines per page in output. (2/7/1999)
 ##      
 ##---------------------------------------------------------------------------##
+#use warnings;
+#use strict;
 
-use FileHandle;
 use Getopt::Std;
 
-use vars qw($opt_h $ProgName $opt_c $temp $loc $fname 
-            $nofcases $startcol $endcol $cfreq $value 
-            $cfreqpct $valuepct $freqpct @data %freq
-            $transpos $version $pagesize);
+our ($opt_h, $ProgName, $opt_c, $temp, $loc, $fname, 
+     $nofcases, $startcol, $endcol, $cfreq, $value, 
+     $cfreqpct, $valuepct, $freqpct, @data, %freq,
+     $transpos, $version, $pagesize);
 
 $pagesize=57;
 STDOUT->format_lines_per_page($pagesize);
@@ -196,12 +196,11 @@ format STDOUT =
 @>>>>>>>>>>>>>>>>>>> @>>>>>>>>>  @###.##  @>>>>>>>>>     @###.##
 $value,$freq{$value},$freqpct,$cfreq,$cfreqpct 
 .
-
 </pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Sat Sep  6 14:26:32 EDT 2025
+<span style="font-size: 80%;">Last Modified: Mon Sep 22 15:26:06 EDT 2025
 </span>
 <p>
 <a href="freq2perl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the freq2 Perl Page</a><br>
