@@ -25,8 +25,7 @@
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <pre>
-
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 #  40scan.pl
 #  A script to count the characters between pairs of double quote marks
 #    on lines from a text file, as in SPSS VARIABLE LABELS and VALUE
@@ -56,7 +55,9 @@
 #use strict;
 #use warnings;
 
-use vars qw($version $file $filename $lines $line $ProgName $file_to_process $pagesize $checklen $testcount $maxcount $maxline $longlines);
+our ($version, $file, $filename, $lines, $line, $ProgName,
+    $file_to_process, $pagesize, $checklen, $testcount, $maxcount, $maxline,
+    $longlines);
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
@@ -74,7 +75,7 @@ STDOUT->format_lines_per_page($pagesize);
 # ($ProgName = lc $0) =~ s%.*\\%%;  # DOS/Windows
 
 if ($#ARGV<0) { 
-    &amp;DisplayUsage;
+    &DisplayUsage;
 	print STDERR "   *** I need a filename!\n\n";
     exit 1;
 }
@@ -181,7 +182,7 @@ $.,$testcount,$line
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <a href="scanperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the 40scan Perl Page</a><br>
 
-<span style="font-size: 80%;">Last Modified: Tue Sep 16 18:07:32 EDT 2025
+<span style="font-size: 80%;">Last Modified: Mon Sep 22 14:45:16 EDT 2025
 </span>
 
 </blockquote>

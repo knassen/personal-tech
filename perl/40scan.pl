@@ -28,7 +28,9 @@
 #use strict;
 #use warnings;
 
-our ($version, $file, $filename, $lines, $line, $ProgName, $file_to_process, $pagesize, $checklen, $testcount, $maxcount, $maxline, $longlines);
+our ($version, $file, $filename, $lines, $line, $ProgName,
+    $file_to_process, $pagesize, $checklen, $testcount, $maxcount, $maxline,
+    $longlines);
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
