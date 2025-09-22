@@ -19,7 +19,6 @@ with different options to see what worked best for a file. </div>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <pre>
-
 #!/usr/bin/perl
 
 # This program borrows heavily from Usenet postings on
@@ -31,9 +30,10 @@ with different options to see what worked best for a file. </div>
 use strict;
 use Getopt::Std;
 
-use vars qw($version $ProgName $tablen $mode $opt_h $opt_l $opt_m);
+our ($version, $ProgName, $tablen, $mode, $opt_h, $opt_l, $opt_m);
 
-$version="(v1.0, 5/5/1999)";
+#$version="(v1.0, 5/5/1999)";
+$version="(v1.1, 9/22/2025)";
 ($ProgName = $0) =~ s%.*/%%;
 
 getopts('hl:m:');
@@ -52,7 +52,7 @@ if ($opt_h) { &amp;DisplayUsage }
 while (<>) {
 	if ($mode eq "literal") {
 	# This does literal tab-->fixed # of spaces
-	# For example, if you have "Test&lt;tab&gt;some stuff" and 8 chars per tab,
+	# For example, if you have "Test<tab>some stuff" and 8 chars per tab,
 	# in literal mode, you'll get "Test        some stuff"
 	#                                  ^^^^^^^^
 	#                                  8 spaces
@@ -60,7 +60,7 @@ while (<>) {
   	}
 	elsif ($mode eq "column") {
 	# This does tab-->actual column location starting from position of tab
-	# For example, if you have "Test&lt;tab&gt;some stuff" and 8 chars per tab,
+	# For example, if you have "Test<tab>some stuff" and 8 chars per tab,
 	# in column mode, you'll get "Test   some stuff"
 	#                                    ^
 	#                             column 8
@@ -85,14 +85,9 @@ print STDERR "\n    $ProgName: replace tabs with spaces\n",
 	"    If no filename is given, the program will read from stdin\n\n";
 exit;
 }
-
 </pre>
-<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<a href="detabperl.html"><img src="../gif/arrwback.gif" alt=""> Back to the detab Perl Page</a>
-<p>
-<span style="font size: 80%;">
-Last modified: Sat Sep  6 17:52:09 EDT 2025
+<span style="font-size: 80%;"> Last modified: Mon Sep 22 15:50:43 EDT 2025
 </span>
 
 </blockquote>

@@ -9,9 +9,10 @@
 use strict;
 use Getopt::Std;
 
-use vars qw($version $ProgName $tablen $mode $opt_h $opt_l $opt_m);
+our ($version, $ProgName, $tablen, $mode, $opt_h, $opt_l, $opt_m);
 
-$version="(v1.0, 5/5/1999)";
+#$version="(v1.0, 5/5/1999)";
+$version="(v1.1, 9/22/2025)";
 ($ProgName = $0) =~ s%.*/%%;
 
 getopts('hl:m:');
