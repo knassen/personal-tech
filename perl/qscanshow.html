@@ -71,9 +71,9 @@ run the program as perl cklg.pl.</div>
 
 use Getopt::Std;
 
-use vars qw($version $checklen $pagesize $ProgName $lines $testcount
- 	$maxcount $longlines $extendlen $filename $input $extend $maxline
- 	$lentest $opt_l $file $CurrentFile );
+our ($version, $checklen, $pagesize, $ProgName, $lines, $testcount,
+  	maxcount, $longlines, $extendlen, $filename, $input, $extend, $maxline,
+  	$lentest, $opt_l, $file, $CurrentFile );
 
 # $version="v1.1, 2/16/98";
 # $version="v1.2, 5/12/98";
@@ -100,7 +100,7 @@ if ($opt_l =~ /^\d+$/) { $checklen=$opt_l }
 else { 
 	if ($opt_l) {
 	print STDERR "\n   *** -l parameter, $opt_l, is not a number\n"; 
-    &DisplayUsage; 
+    &amp;DisplayUsage; 
 	exit 1;
 	}
 }
@@ -224,7 +224,8 @@ $.,$testcount,$_,$extend
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Tue Sep 16 21:06:32 EDT 2025</span>
+<span style="font-size: 80%;">Last Modified: Wed Sep 24 13:33:41 EDT 2025
+    </span>
 
 <p>
 <a href="qscanperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the qscan Perl Page</a><br>
