@@ -32,6 +32,10 @@ all labels fixed without rerunning SAS repeatedly!
     <li>The variable $checklen in the program sets the default length of strings to search for.</li>
     <li>Useful for making sure all your labels are within length limits, including SAS,
         SPSS limits, or for in-house standards.</li>
+    <li>qscan will not report quoted strings that are split across multiple
+        lines.  The program was written for SAS and SPSS value and variable
+        label checking not general text. Keep the label for a variable or
+        value on a single line.</li>
 </ul>
 
 <ul>
@@ -78,7 +82,7 @@ An example run is shown below.
     <img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page
 </a><br>
 <p>
-<span style="font size: 85%;"> Last Modified: Fri Sep 12 21:04:25 EDT 2025
+<span style="font size: 85%;"> Last Modified: Sun Sep 28 16:16:59 EDT 2025
 </span>
 </blockquote>
 </body>
