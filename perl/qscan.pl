@@ -129,6 +129,7 @@ sub process {
    	if (!$longlines) { # No long lines found
         if (!$maxcount) { $_=" *** No quoted text found.\n"; }
         else { # Quoted text found, but not over the max
+            $testcount="";
 		    $_=" *** No quoted text over $checklen characters long.\n";
         }
         my $CurrentFile=$filename;
