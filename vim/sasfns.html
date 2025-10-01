@@ -70,6 +70,23 @@ updated when they change, such as when you rerun your .sas file. This
 may take a few seconds depending on how busy your Unix server (or
 Windows computer) is.
 <p>
+The functions assume SAS is installed and able to batch process your SAS
+code, thus creating log and lst files. SAS in the Cloud is not apt to do
+this, in my experience. I had to use "sas -nodms" (no display management
+system) to run sas on the current file in gvim.  Otherwise it would to
+open up the SAS GUI, which won't work because it captures the log and
+lst files so gvim can't get to them. 
+<p>
+I don't have SAS available now, so I can't say if that is still the case
+with SAS, but I would suspect it is, since running jobs in batch mode is
+often done (periodic reports, for example). However, I was able to get
+these functions to work a few days ago (Sept 28, 2025) using a shell
+script for "sas" that would create dummy log and lst files. If they
+don't work for you, make sure your sas will run in batch mode on your
+sas file. The opening of log and lst files worked for me as did the log
+scanning and the setup of Quick Fix mode in gvim. Thus, the functions
+used still work after all this time. I'm using gvim 9.1.
+<p>
 There are other SAS-related text-processing utilities on this site at: 
 <a href="../myperl.html">Perl utilities.</a>
 <p>
