@@ -46,6 +46,12 @@ PC SAS. The latter modification is a comment in the function that can
 be uncommented. Note that these functions may take a little bit of
 adjustment (well, the ChkSASLog function, especially) depending on your
 local environment.
+
+<ul style="list-style-type: disc;">
+    <li>Requires vim/gvim able to read and write the SAS file, log, and lst.</li>
+    <li>Requires SAS to be runnable in batch mode from a script command.</li>
+    <li>Can run on Windows with PC SAS, and on Unix with command line SAS.</li>
+</ul>
 <hr style="width=100%; height 2px; border: none;"> 
 <h1>Usage Notes</h1>
 
@@ -72,36 +78,38 @@ Windows computer) is.
 <p>
 The functions assume SAS is installed and able to batch process your
 SAS code, thus creating log and lst files on the same server SAS is
-running on and you editing on. SAS in the Cloud may not do this if you
-are running your vim on a local machine. I had to use "sas -nodms" (no
-display management system) to run sas on the current file in gvim on
-a local unix server. Otherwise it would to open up the SAS GUI, which
-wouldn't work because it captures the log and lst files so gvim can't
-get to them.
+running on and you are editing the program on. SAS in the Cloud may not
+do this if you are running your vim on a local machine. I had to use
+"sas -nodms" (no display management system) to run sas on the current
+file in gvim on a local unix server. Otherwise it would to open up the
+SAS GUI, which wouldn't work because it captures the log and lst files
+so gvim can't get to them.
 <p>
 I have not tried to do something like run SAS in the Cloud, and then
 transfer sas code, log, and lst files to a local machine running
-gvim.  In theory it is possible, but would require modifying the
+gvim. In theory it is possible, but would require modifying the
 LoadSASLogLst() function part to transfer the files via some protocol
 that works on a cloud server (or if the cloud server appears as a drive
-on your local machine). And the RunSASonCurrentFile part of the process
-might need to switch to manual operation unless there is a command
-that can run SAS in the cloud via a local command. I'm assuming it is
-unlikely gvim would be available on the cloud SAS server (e.g. Viya) and
-thus you can't set up the vim functions on a cloud server.
+on your local machine files might be directly accessable). And the
+RunSASonCurrentFile part of the process might need to switch to manual
+operation unless there is a command that can run SAS in the cloud via
+a local command. I'm assuming it is unlikely gvim would be available
+on the cloud SAS server (e.g. Viya) and thus you can't set up the vim
+functions on a cloud server.
 <p>
 I don't have SAS available now, so I can't say with certainty that is
 still the case with SAS, but I would suspect it is, since running jobs
 in batch mode is often done (periodic reports, for example). However, I
 was able to get these functions to work a few days ago (Sept 28, 2025)
 using a shell script for "sas" that would create dummy log and lst files
-in the same folder as my dummy sas script.
+in the same folder as my sas program.
 <p>
-If the functions don't work for you, make sure your sas will run in
+If the functions don't work for you, make sure your SAS will run in
 batch mode on your sas file. The opening of log and lst files worked
 for me as did the log scanning and the setup of Quick Fix mode in
-gvim. Thus, the vim functions used still work after all this time if
-the file connections can be made. I'm using gvim 9.1.
+gvim. Thus, the vim functions still work after all this time if
+the file connections can be made to SAS program, log, and lst files. 
+I'm using gvim 9.1. 
 <p>
 There are other SAS-related text-processing utilities on this site at: 
 <a href="../myperl.html">Perl utilities.</a>
@@ -127,7 +135,7 @@ should appear there, as well.
 If the .log and .lst files are already open in the editor, Vim will
 prompt to load the changed files after SAS runs as it normally does
 when files being edited are changed on disk by another process (such
-as another SAS run).  This is Vim behavior, not a behavior of the
+as another SAS run). This is Vim behavior, not a behavior of the
 function. In some cases, you may need to force your window manager to
 refocus on the Vim window for this to happen (e.g. by opening a pull
 down menu).
