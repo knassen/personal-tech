@@ -44,6 +44,7 @@ dl dd {
 
 .spaced-list li {
    margin-bottom: 10px; 
+   background-color: yellow;
 }
 
 </style>
