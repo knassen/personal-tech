@@ -28,11 +28,11 @@ art letters. Those would take more effort because they were often
 missing most of the alphabet.
 
 **July 6, 2025**: Since uploading it to GitHub, I've been going through
-all the 404 errors and trying to find if they relocated to a different
-site or if they just disappeared into the ether. Some sites are still
-out there, so I linked to their new locations. Other sites are gone. I
-initially marked them in the HTML as "bad link" while I searched for
-replacements. If I couldn't find a replacement link, the link was
+all the 404 errors and trying to find if the site relocated to a
+different server or if they just disappeared into the ether. Some sites
+are still out there, so I linked to their new locations. Other sites are
+gone. I initially marked them in the HTML as "bad link" while I searched
+for replacements. If I couldn't find a replacement link, the link was
 deleted.
 
 Many projects that used to be accessible from personal servers,
@@ -43,7 +43,7 @@ been updating my links.
 Some the of software archives are completely gone, but some had mirrors
 that are still available, so I've added those mirror links. How long
 they'll continue to work is anyone's guess. Currently there are only
-two archive links.
+two archive links so this page needs more help.
 
 It is interesting to see how links and information degrade over the
 decades. As we all know, the WWW is very often impermanent. Even
@@ -121,11 +121,14 @@ the list.
 **August 26, 2025**: otherfonts.html is updated for preview dropdowns
 now. Click the button and a preview appears. Click it again and the
 preview goes away. I may work on the spacing at some point, but all
-seems to work as expected.
+seems to work as expected. If I need different example phrases on 
+this page, they can be easily added because the code is reading a
+text file.
 
 **August 29, 2025** I've updated the figlet pages for content. Many
 broken links are now commented out or replaced with good links. It's a
-process...
+process. I did get the link to my Figlet site updated on the main
+Figlet site.
 
 **September 6, 2025** I've been trying to get google to index some
 of the main pages on this site. And I've been adding code to help
