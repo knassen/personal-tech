@@ -159,7 +159,7 @@ the detail listing.
 **November 23, 2025** At this point, most of my web pages are as up to
 date as I can get them. What really needs to be done is to add new content.
 I'm still adjusting spacing, correcting grammar, etc. but that's normal
-for web sites, even new ones.
+for web sites, even new ones ("tweaking").
 
 
 
