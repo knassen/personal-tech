@@ -1,0 +1,126 @@
+<!DOCTYPE HTML> 
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Python Programs, scan SAS logs for errors and warnings">
+    <base href="/personal-tech/">
+    <title>Kent's Python Programs</title>
+</head>
+<body>
+<main>
+<br>
+
+<blockquote>
+<h2>Kent's Python Programs</h2>
+
+<hr style="height: 2px; width: 100%; margin-left:0px;
+margin-right:auto;"> The following program is a command-line tool I've
+converted from Perl. I'm sharing them 'as-is' with no guarantees.
+
+<p>You may copy, use, or modify them, as long as you leave my name in   
+the code. All were developed on Unix systems (Solaris, FreeBSD), but    
+they should run on Windows and Mac OS, too, if you have Python available.
+Python version 3 is assumed unless otherwise noted.             
+
+<p>These programs were written to work on raw ASCII text files such as
+LRECL (logical record length) data files where every line is the same
+length, or on program text files, etc. They are intended to be run from
+a command line. 
+
+<p>The link below goes to a page that provides usage notes, example runs,
+assumptions of the programs as well as links to view the program code,
+and download the programs.
+
+<dl>
+<!--dt><strong><a href="perl/freqperl.html">freq: Compute frequency
+counts</a></strong> for alphanumeric values in a column range of an
+ASCII LRECL data set.  Answers the question "how many times do the
+unique values in columns <i>x</i> through <i>y</i> occur in this
+file?".</dt> <dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/freq2perl.html">freq2: Frequency counts
+w/percentages</a></strong> adds percentages &amp; cumulative percentages
+to the frequency count program above. This output is more like what SPSS
+frequencies produces.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/fixbperl.html">fixblock: Block a stream data
+file</a></strong> to fixed line length by inserting newlines at a
+user-specified logical record length. Makes all the lines the same length
+from a stream of data.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/scanperl.html">40scan: Report length of double-quoted 
+strings</a></strong> in a text file (such as SPSS or SAS variable labels).
+Used to keep commands within limits for strings.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/qscanperl.html">qscan: Report length of double-quoted and
+single-quoted strings</a></strong> in a text file (such as SPSS or SAS variable 
+labels). New version. Generates a report of labels that are too long.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/todayperl.html">today: Print a calendar with today's date 
+highlighted</a></strong> Assumes VT100-compatible terminal emulation and 
+an available Unix 'cal' command. Mostly no longer needed since several
+cal programs now have an option to highlight today's date.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/splitit.html">splitit: Convert multi-column SAS input or
+SPSS data list statements</a></strong> into a single column. Useful for
+reformatting SAS or SPSS input code another way.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/wrapit.html">wrapit5: Wrap a single column of SAS input or
+ SPSS data list statements</a></strong> into multiple (5) columns. Fits more
+statements on a line. splitit and wrapit5 do opposite formatting.</dt>
+<dd>&nbsp;</dd-->
+
+<dt><strong><a href="perl/cklgpy.html">cklg: Check a SAS log file for
+errors, warnings and other issues</a></strong> Output is in QuickFix
+format for use with the Vim editor.</dt>
+<dd>Using Vim's QuickFix functions, the output of this program supports
+jumping to the line of the error or warning in your SAS
+log. Or you can use the output directly to guide your debugging.
+This is the Python version of cklg.pl.
+<p>
+There is more SAS-related content on <a href="/personal-tech/vim/sasfns.html"><strong> 
+my Vim Functions for SAS Programming</strong></a> page. It includes 
+a way to integrate cklg into gvim, as well as how to set gvim up for SAS
+development.</dd>
+
+<!--dt><strong><a href="perl/deblank.html">deblank: Turn multiple blank lines
+into single blank lines.</a></strong> For example, if 3 blanks lines
+are found in a file, this program will remove 2 of them and leave one
+blank line.</dt>
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/cktbperl.html">cktb: Check for trailing blanks
+at the end of lines.</a></strong>It reports the number of blanks (spaces
+or tabs) found on lines and the line with the longest string of blanks.
+If your programming standards say no trailing blanks, this
+program will tell you if you need to fix anything in your programs.</dt>
+
+<dd>&nbsp;</dd-->
+
+<!--dt><strong><a href="perl/detabperl.html">detab: Detab a file, two different
+methods </a></strong>Detabbing in this context means replacing tabs with spaces. 
+Choose between column-based alignment or literal replacement by a fixed number
+of spaces. Each method produces distinct output which can be selected based
+on formatting needs.</dt>
+<dd>&nbsp;</dd-->
+
+</dl>
+
+</p>
+
+<span style="font size: 80%;">
+Last Modified: Fri Jan  2 12:07:04 EST 2026
+</span>
+
+</blockquote>
+</main>
+</body>
+</html>
