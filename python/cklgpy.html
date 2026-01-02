@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="keywords" content="Python, SAS, find log issues, Vim QuickFix">
+   <meta name="description" content="Python program cklg SAS log checking, usage, limitations, examples">
+   <base href="/personal-tech/perl/">
+   <title>cklg.py -- Scan a SAS log for errors, warnings, and other issues</title>
+</head>
+<body> 
+<br>
+<blockquote>
+<h2>cklg.py -- Scan a SAS log for errors, warnings, and other issues</h2>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+This is a conversion of cklg.pl to python. The script, on Unix/Linux,
+can be run on multiple log files. The output is set up to allow the use
+of the Vim editor's Quick Fix facility. Adding more search terms is
+easy. Just add them to the @search array like the others.
+
+<ul style="list-style-type: disc;">
+    <li>This program is intended to be run from a Unix or Linux command line.</li>
+    <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
+    <li>Not all issues this program finds are labeled as errors or
+        warnings.  For example, "0 observations" may be expected or
+        not, depending on your program and data. The programmer must
+        check potential issues like this to make sure they are not truly
+        issues.</li>
+    <li>The program uses a case-insensitive search (so errors and :ERROR and Error
+        all get found, for example)</li>
+    <li>The output is formatted so that it can be used with Vim's QuickFix facility.</li>
+</ul>
+
+<ul>
+    <li><a href="cklgshowpy.html"><strong>Show cklg.py code</strong></a></li>
+    <li><strong>Download: </strong> <a href="cklg.py"><strong>cklg.py</strong></a></li>
+</ul>
+<p>
+This utility is part of a collection of <a href="../mypy.html">more
+    text-processing tools.</a>
+
+<h3>Usage</h3>
+Assuming this program is executable, its commandline is:
+<span style="font size: 115%;"><strong>cklg.py [-h] [-l] [SAS log filename...]</strong> where:</span>
+<ul>
+    <li>                    -h    Display this usage message</li>
+    <li>                    -l    List the search terms used by the program</li>
+</ul>
+<p>
+As an example, the command <span style="color: #000080; font-family: monospace;">cklg testdate2.log</span>
+might produce output like:
+
+<pre>~/sas> cklg testdate2.log
+testdate2.log:33:ERROR 22-322: Syntax error, expecting one of the following: !, !!, &, *, **, +, -, /, ;, <, <=, <>,
+testdate2.log:40:NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).
+testdate2.log:42:NOTE: The SAS System stopped processing this step because of errors.
+testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
+testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</pre>
+<p>
+The <span style="color: #000080; font-family: monospace;">-l command
+line option</span> will list the search terms used by the program. This
+allows you to see why a certain issue was found in a log or missed in a log
+search (so you can add it). I haven't added new terms to this list for a long
+time. Once I put it into use I found most of the common log issues and
+some uncommon issues. The term "error" catches a lot of issues beyond the
+usual SAS :ERROR tags in the log. the <span style="color: #000080;
+font-family: monospace;">cklg -l</span> output looks like this:
+
+<pre>
+~/sas> cklg -l
+
+The log search terms used by cklg are: 
+   error
+   fatal
+   warning:
+   syntax error
+   converted
+   uninitialized
+    0 obs
+   no obser
+   [...]
+   stopped
+   due to loop
+
+29 terms defined.
+</pre>
+
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
+
+<span style="font-size: 100%;">
+Last Modified: Fri Jan  2 12:19:22 EST 2026
+</span>
+</blockquote>
+</body>
+</html>
