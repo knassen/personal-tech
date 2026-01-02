@@ -52,12 +52,16 @@ Assuming this program is executable, its commandline is:
 As an example, the command <span style="color: #000080; font-family: monospace;">cklg testdate2.log</span>
 might produce output like:
 
-<pre>~/sas> cklg testdate2.log
+<pre>
+
+> cklg.py ~/testdate2.log
+: No such file or directory
+(latte 2:44pm) knassen: ~/sas> python3 cklg.py ~/testdate2.log
 testdate2.log:33:ERROR 22-322: Syntax error, expecting one of the following: !, !!, &, *, **, +, -, /, ;, <, <=, <>,
 testdate2.log:40:NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).
 testdate2.log:42:NOTE: The SAS System stopped processing this step because of errors.
 testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
-testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.</pre>
+testdate2.log:45:WARNING: Data set WORK.TEST2 was not replaced because this step was stopped.
 <p>
 The <span style="color: #000080; font-family: monospace;">-l command
 line option</span> will list the search terms used by the program. This
