@@ -11,8 +11,8 @@ back.
 
 This site includes Figlet fonts, Perl programs for various data
 processing tasks, information about the old Aurora Text Editor, vi and
-vim pages, links to Unix/Linux sites, links related to Apple 2 sites,
-and statistical links.
+vim editor pages, links to Unix/Linux sites, links related to Apple 2 
+sites, and statistical links.
 
 I have done most of things I set out to do.
 
