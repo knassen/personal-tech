@@ -17,7 +17,7 @@ in addition to the error text. It also can be run as a stand alone
 program.
 
 Original Perl version 01JUN2009 by Kent Nassen.
-Python version 12/30/2024 by Kent Nassen.
+Python version 12/30/2026 by Kent Nassen.
 """
 
 import sys
