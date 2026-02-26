@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="keywords" content="Python, SAS, find log issues, Vim QuickFix">
+   <meta name="description" content="Python program cklg SAS log checking, usage, limitations, examples">
+   <base href="/personal-tech/python/">
+   <title>cklg.py -- Scan a SAS log for errors, warnings, and other issues</title>
+</head>
+<body> 
+<br>
+<blockquote>
+
+<h2>freq2.py: compute frequencies for a single variable in an LRECL data file. 
+Also computes cumulative frequencies, percentages, and cumulative percentages. </h2>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+This is a conversion of freq2.pl to python. The script, on Unix/Linux,
+can be run on multiple log files. 
+
+<ul style="list-style-type: disc;">
+    <li>This program is intended to be run from a Unix or Linux command line.</li>
+    <li>If you run it on Windows or Mac, be sure to change the lineends to 
+        the appropriate ones for your system.</li>
+    <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
+</ul>
+
+<ul>
+    <li><a href="freq2showpy.html"><strong>Show freq2.py code</strong></a></li>
+    <li><strong>Download: </strong> <a href="freq2.py"><strong>freq2.py</strong></a></li>
+</ul>
+<p>
+This utility is part of a collection of <a href="../mypy.html">more
+    text-processing tools.</a> There is only one python utility at this time.
+
+<h3>Usage</h3>
+Assuming this program is executable, and the line ends match your OS (Unix: LF, Windows
+LFCR, Mac CR) its commandline is:
+<span style="font size: 115%;"><strong>freq2.py [-h] [-c[#-#][#]] [filename...]</strong> where:</span>
+       -c#-#      Start-End column numbers of variable
+       -c#        Single column variable at column #
+       filename   LRECL data file filename
+       -h         Show this help screen
+
+       Example: freq2.py -c5-7 fylename.dat
+
+       (Column numbers in the file start at column 1)
+<p>
+As an example, the command <span style="color: #000080; font-family: monospace;">cklg testdate2.log</span>
+might produce output like:
+
+<pre>
+> freq2.py -c1 data.file
+
+   Page 01
+   Frequencies for the values in columns 1-1
+   in the file "data.file"
+
+                                           Cumulative  Cumulative
+               Value   Frequency  Percent   Frequency     Percent
+              -------  ---------  -------  ----------  ----------
+                   0      2214    11.37        2214       11.37
+                   1      1009     5.18        3223       16.55
+                   2       533     2.74        3756       19.28
+                   9     15721    80.72       19477      100.00
+</pre>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<a href="../mypy.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Python Page</a><br>
+
+<span style="font-size: 100%;">
+Last Modified: Wed Feb 25 21:04:34 EST 2026
+</span>
+</blockquote>
+</body>
+</html>
