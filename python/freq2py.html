@@ -5,16 +5,15 @@
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="keywords" content="Python, SAS, find log issues, Vim QuickFix">
-   <meta name="description" content="Python program cklg SAS log checking, usage, limitations, examples">
+   <meta name="description" content="Python program freq2 compute frequencies for column data">
    <base href="/personal-tech/python/">
-   <title>cklg.py -- Scan a SAS log for errors, warnings, and other issues</title>
+   <title>freq2.py -- </title>
 </head>
 <body> 
 <br>
 <blockquote>
 
-<h2>freq2.py: compute frequencies for a single variable in an LRECL data file. 
-Also computes cumulative frequencies, percentages, and cumulative percentages. </h2>
+<h2>freq2.py: compute frequencies and percentages from column data.</h2>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 This is a conversion of freq2.pl to python. The script, on Unix/Linux,
@@ -23,7 +22,12 @@ can be run on multiple log files.
 <ul style="list-style-type: disc;">
     <li>This program is intended to be run from a Unix or Linux command line.</li>
     <li>If you run it on Windows or Mac, be sure to change the lineends to 
-        the appropriate ones for your system.</li>
+        the appropriate ones for your operating system.</li>
+    <li>Computes frequencies, percents, cumulative frequencies, and cumulative percents.</li>
+    <li>Can only print the first 20 characters of a value, although can compute frequencies for longer values.</li>
+    <li>The order of values in the output is set by a character sort rather than a numeric sort (the program knows nothing of variable types like numeric or string).</li>
+    <li>If you give a column range outside the logical record length of the data, you will still get output, but all values will be null.</li>
+    <li>Since the program summarizes values, if you have dots in the data (as SAS missing), they will be counted. And of course, values like NA and 999 but they will not be labeled as missing.</li>
     <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
 </ul>
 
@@ -34,7 +38,7 @@ can be run on multiple log files.
 <p>
 This utility is part of a collection of <a href="../mypy.html">more
     text-processing tools.</a> There are only two python utilities at this time. There
-    are many more Perl utilities.
+    are many more Perl utilities. As they get converted, they'll be added to this page.
 
 <h3>Usage</h3>
 Assuming this program is executable, and the line ends match your OS (Unix: LF, Windows
@@ -49,13 +53,13 @@ LFCR, Mac CR) its commandline is:
 
        (Column numbers in the file start at column 1)
 <p>
-As an example, the command <span style="color: #000080; font-family: monospace;">cklg testdate2.log</span>
+As an example, the command <span style="color: #000080; font-family: monospace;">freq2.py -c1 data.file</span>
 might produce output like:
 
 <pre>
 > freq2.py -c1 data.file
 
-   Page 01
+   Page  1
    Frequencies for the values in columns 1-1
    in the file "data.file"
 
