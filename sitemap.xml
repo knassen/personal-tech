@@ -168,17 +168,17 @@
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/todayshow.html
+  <loc>https://knassen.github.io/personal-tech/perl/todayshow.html
   <lastmod>2025-09-05T14:09:35+00:00
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/wrapit.html
+  <loc>https://knassen.github.io/personal-tech/perl/wrapit.html
   <lastmod>2025-09-05T14:09:35+00:00
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/wrapitshow.html
+  <loc>https://knassen.github.io/personal-tech/perl/wrapitshow.html
   <lastmod>2025-09-05T14:09:35+00:00
   <priority>0.80</priority>
 </url>
@@ -210,6 +210,11 @@
 <url>
   <loc>https://knassen.github.io/personal-tech/statistics.html</loc>
   <lastmod>2025-08-13T18:56:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://knassen.github.io/personal-tech/vim/sasfns.html</loc>
+  <lastmod>2026-02-27T18:56:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
