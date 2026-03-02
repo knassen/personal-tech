@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # This program borrows heavily from Usenet postings on
 # comp.lang.perl.misc and one or more O'Reilly Perl books (Programming
