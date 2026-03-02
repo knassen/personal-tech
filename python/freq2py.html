@@ -44,11 +44,13 @@ This utility is part of a collection of <a href="../mypy.html">more
 <h3>Usage</h3>
 Assuming this program is executable, and the line ends match your OS (Unix: LF, Windows
 LFCR, Mac CR) its commandline is:
-<p><span style="font size: 115%;"><strong>freq2.py [-h] [-c[#-#][#]] [filename...]</strong> where:</span>
-       -c#-#      Start-End column numbers of variable
-       -c#        Single column variable at column #
-       filename   LRECL data file filename
-       -h         Show this help screen
+<p><span style="font size: 115%;"><strong>freq2.py [-h] [-c[#-#][#]] [filename...]</strong> </span>
+where: <span style="color: #000080; font-family: monospace;">-c#-#</span>
+       indicates Start-End column numbers of the variable
+       <span style="color: #000080; font-family: monospace;">-c#</span>indicates a single-column variable at column #
+       <span style="color: #000080; font-family: monospace;">filename</span>  LRECL data file filename
+       <span style="color: #000080; font-family: monospace;">filename</span>
+       <span style="color: #000080; font-family: monospace;">-h</span>  Show this help screen
 
        Example: freq2.py -c5-7 fylename.dat
 
@@ -71,13 +73,29 @@ might produce output like:
                    1      1009     5.18        3223       16.55
                    2       533     2.74        3756       19.28
                    9     15721    80.72       19477      100.00
+
+   Results from pspp 2.01 for the same data:
+         cntry
+         +-------+---------+-------+-------------+------------------+
+         |       |Frequency|Percent|Valid Percent|Cumulative Percent|
+         +-------+---------+-------+-------------+------------------+
+         |Valid 0|     2214|  11.4%|        11.4%|             11.4%|
+         |      1|     1009|   5.2%|         5.2%|             16.5%|
+         |      2|      533|   2.7%|         2.7%|             19.3%|
+         |      9|    15721|  80.7%|        80.7%|            100.0%|
+         +-------+---------+-------+-------------+------------------+
+         |Total  |    19477| 100.0%|             |                  |
+         +-------+---------+-------+-------------+------------------+
+
+         You can see the counts, percents, cumulative percents, match.
+
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <a href="../mypy.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Python Page</a><br>
 
 <span style="font-size: 100%;">
-Last Modified: Fri Feb 27 20:52:06 EST 2026
+Last Modified: Sun Mar  1 21:27:56 EST 2026
 </span>
 </blockquote>
 </body>
