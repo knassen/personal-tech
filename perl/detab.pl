@@ -12,7 +12,8 @@ use Getopt::Std;
 our ($version, $ProgName, $tablen, $mode, $opt_h, $opt_l, $opt_m);
 
 #$version="(v1.0, 5/5/1999)";
-$version="(v1.1, 9/22/2025)";
+#$version="(v1.1, 9/22/2025)";
+$version="(v1.2, 3/2/2026)";
 ($ProgName = $0) =~ s%.*/%%;
 
 getopts('hl:m:');
@@ -27,6 +28,7 @@ if ($opt_m) { $mode=$opt_m } else { $mode="column" }
 
 # Found -h so display usage message
 if ($opt_h) { &DisplayUsage }
+elsif(!$opt_h) { &DisplayUsage }
 
 while (<>) {
 	if ($mode eq "literal") {
