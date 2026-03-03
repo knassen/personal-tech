@@ -39,6 +39,20 @@ formatting clarity.
         formatted when using tabs. If custom/variable tab stops are used, such as in
         MS Word, then the replacement of tabs in a text file won't be consistent.</li>
 </ul>
+<pre>
+    Usage:  detab.pl [-h][-l #][-m mode] [filename]
+
+    -h       Show this usage message
+    -l#      Each tab is worth up to # spaces.  8 spaces per tab is the
+             default.
+    -m mode  Where mode is one of: 'column' or 'literal', indicating the
+             tab replacement mode, either spacing to the actual column
+             location indicated by the tab (may be less than -l spaces) or
+             a literal replacement of each tab by -l spaces without regard to
+             to which column.  column mode is the default.
+
+    If no filename is given, the program will read from stdin
+</pre>
 <p>
 This utility is part of my collection of <a href="../myperl.html">text-processing tools</a>.
 <h3>Example</h3>
