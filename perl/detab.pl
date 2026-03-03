@@ -28,8 +28,9 @@ if ($opt_m) { $mode=$opt_m } else { $mode="column" }
 
 # Found -h so display usage message
 if ($opt_h) { &DisplayUsage }
-elsif(!$opt_h) { &DisplayUsage }
+#elsif(!$opt_h) { &DisplayUsage }
 
+# if no options are found, read from STDIN.
 while (<>) {
 	if ($mode eq "literal") {
 	# This does literal tab-->fixed # of spaces
