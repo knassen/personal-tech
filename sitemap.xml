@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
+<urlset>
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
@@ -48,146 +48,148 @@
   <priority>0.80</priority>
 </url>
 <url>
-<loc>https://knassen.github.io/personal-tech/perl/cklgperl.html
-  <lastmod>2026-01-08T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/cklgperl.html</loc>
+  <lastmod>2026-01-08T14:09:35+00:00</lastmod>
   <priority>0.94</priority>
 </url>
 <url>
-<loc>https://knassen.github.io/personal-tech/python/cklgpy.html
-  <lastmod>2026-01-08T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/python/cklgpy.html</loc>
+  <lastmod>2026-01-08T14:09:35+00:00</lastmod>
   <priority>0.94</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/cklgshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/cklgshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-<loc>https://knassen.github.io/personal-tech/perl/cklgshowpy.html
-  <lastmod>2026-07-03T14:09:35+00:00
+<url>                                                                                                               
+<loc>https://knassen.github.io/personal-tech/perl/cklgshowpy.html</loc>
+  <lastmod>2026-07-03T14:09:35+00:00</lastmod>
   <priority>0.87</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/cktbperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/cktbperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/cktbshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/cktbshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/deblank.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/deblank.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/deblankshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/deblankshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/detabperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/detabperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/detabshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/detabshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/fixbperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/fixbperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/fixbshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/fixbshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/freq2perl.html
-  <lastmod>2025-09-05T14:09:35+00:00
-  <priority>0.80</priority>
-</url>
-<loc>https://knassen.github.io/personal-tech/perl/freq2py.html
-  <lastmod>2026-03-07T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/freq2perl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/freq2show.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/freq2py.html</loc>
+  <lastmod>2026-03-07T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/freqperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/freq2show.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/freqsh.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/freqperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/freqshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/freqsh.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/printrec0.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/freqshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/qscanperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/printrec0.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/qscanshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/qscanperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/scanperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/qscanshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/scanshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/scanperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/splitit.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/scanshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/splititshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/splitit.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-<loc>https://knassen.github.io/personal-tech/perl/todayperl.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/splititshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-  <loc>https://knassen.github.io/personal-tech/perl/todayshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+<loc>https://knassen.github.io/personal-tech/perl/todayperl.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-  <loc>https://knassen.github.io/personal-tech/perl/wrapit.html
-  <lastmod>2025-09-05T14:09:35+00:00
+  <loc>https://knassen.github.io/personal-tech/perl/todayshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>                                                                                                               
-  <loc>https://knassen.github.io/personal-tech/perl/wrapitshow.html
-  <lastmod>2025-09-05T14:09:35+00:00
+  <loc>https://knassen.github.io/personal-tech/perl/wrapit.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>                                                                                                               
+  <loc>https://knassen.github.io/personal-tech/perl/wrapitshow.html</loc>
+  <lastmod>2025-09-05T14:09:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
