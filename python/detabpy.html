@@ -1,0 +1,82 @@
+<!DOCTYPE HTML> 
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="description" content="python program detab convert tabs to spaces">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/personal-tech/python/">
+    <title>detab -- convert tabs to space two different ways</title>
+</head>
+<body>
+
+<blockquote>
+<h2>detab -- convert tabs to spaces two different ways</h2>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<a href="/personal-tech/python/detab.py"><strong>detab.py</strong></a> is a python program
+which detabs a text file using two different methods for converting
+tabs to spaces: 1) a column-based mode which
+attempts to insert spaces to a "virtual" tab location or
+2) a literal number of spaces per tab character. It is especially helpful
+when receiving text files from collaborators who use different editors
+or tab settings. It is also good when you get a file with mixed tabs
+and spaces that cause inconsistent indentation. It's ideal for prepping
+source code, data files, or documentation for printing, diffing, or
+formatting clarity.
+
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/python/detabshow.html"><strong>Show detab.py code</strong></a></li>
+    <li><strong>Download: </strong><a href="/personal-tech/python/detab.py"><strong>detab.py</strong></a></li>
+</ul>
+
+<h3>Limitations</h3>
+<ul>
+    <li>This is written in Python so needs Python available.</li>
+    <li>It is a command line program and would generally run on Linux or Unix.</li>
+    <li>The program gives two methods of tab replacement. Probably you'll need to
+        try both to see which one comes closer to how the original file was 
+        formatted when using tabs. If custom/variable tab stops are used, such as in
+        MS Word, then the replacement of tabs in a text file won't be consistent.</li>
+</ul>
+<pre>
+    Usage:  detab.pl [-h][-l #][-m mode] [filename]
+
+    -h       Show this usage message
+    -l#      Each tab is worth up to # spaces.  8 spaces per tab is the
+             default.
+    -m mode  Where mode is one of: 'column' or 'literal', indicating the
+             tab replacement mode, either spacing to the actual column
+             location indicated by the tab (may be less than -l spaces) or
+             a literal replacement of each tab by -l spaces without regard to
+             to which column.  column mode is the default.
+
+    If no filename is given, the program will read from stdin
+</pre>
+<p>
+This utility is part of my collection of <a href="../mypy.html">text-processing tools</a>.
+<h3>Example</h3>
+For example, if you have text like
+<br>"Test[tab]some stuff" 
+<br>then with 8 chars per tab, in column mode, you'll get 
+<br>"Test^^^some stuff"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>^</strong>
+<br>&nbsp;&nbsp;&nbsp; column 8
+<p>
+...but in literal mode, you'll get 
+<br>"Test^^^^^^^^some stuff"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8 spaces
+
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+<a href="/personal-tech/mypy.html">
+<img src="gr/arrwback.png" alt="">  Back to Kent's Python Page</a>
+<p>
+<!-- Last Modified: Wed Jul  7 21:38:30 EDT 1999 -->
+<span style="font size: 80%;">
+Last-modified: Sun Mar  8 14:32:22 EDT 2026
+</span>
+
+</blockquote>
+</body>
+</html>

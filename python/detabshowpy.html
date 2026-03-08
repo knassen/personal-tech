@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="python program deblank code ">
+   <base href="/personal-tech/python/">
+   <title>cktb -- Code</title>
+</head>
+<body>
+    <blockquote>
+<h2>detab Python Code List</h2>
+<div class="commentary">
+This is the Python code for detab, a small program for converting tabs
+to spaces suing two different methods. I usually had to run this a few times
+with different options to see what works best for a file. Text that
+comes from word processors often has odd formatting, for example.</div>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<pre>
+#!/usr/bin/env python3
+
+"""
+Replace tabs with spaces.
+
+This program replaces tabs with spaces, supporting two modes:
+- column: spaces to the next tab stop (default)
+- literal: fixed number of spaces per tab
+
+Ported from detab.pl by Kent Nassen, originally v1.0 (5/5/1999)
+Python version by Kent Nassen, 3/8/2026
+"""
+
+import sys
+import argparse
+
+
+def detab_literal(line, tablen):
+    """Replace each tab with a fixed number of spaces."""
+    return line.replace('\t', ' ' * tablen)
+
+
+def detab_column(line, tablen):
+    """Replace each tab with spaces to the next tab stop."""
+    result = []
+    pos = 0
+    for char in line:
+        if char == '\t':
+            # Calculate spaces needed to reach next tab stop
+            spaces = tablen - (pos % tablen)
+            result.append(' ' * spaces)
+            pos += spaces
+        else:
+            result.append(char)
+            if char == '\n':
+                pos = 0
+            else:
+                pos += 1
+    return ''.join(result)
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        prog='detab',
+        description='Replace tabs with spaces, Kent Nassen 3/8/2026'
+    )
+    parser.add_argument(
+        '-l', '--length',
+        type=int,
+        default=8,
+        help='Each tab is worth up to this many spaces (default: 8)'
+    )
+    parser.add_argument(
+        '-m', '--mode',
+        choices=['column', 'literal'],
+        default='column',
+        help='Tab replacement mode (default: column)'
+    )
+    parser.add_argument(
+        'filename',
+        nargs='?',
+        help='Input file (default: stdin)'
+    )
+
+    args = parser.parse_args()
+
+    if args.length <= 0:
+        print(f"\n   *** Bad tab length: {args.length}", file=sys.stderr)
+        sys.exit(1)
+
+    # Choose the detab function based on mode
+    if args.mode == 'literal':
+        detab_func = detab_literal
+    else:  # column
+        detab_func = detab_column
+
+    # Open input file or use stdin
+    if args.filename:
+        try:
+            input_file = open(args.filename, 'r')
+        except IOError as e:
+            print(f"\n   *** Error opening file: {e}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        input_file = sys.stdin
+
+    # Process lines
+    try:
+        for line in input_file:
+            detabbed = detab_func(line, args.length)
+            # Only print if line contains non-tab characters
+            if any(c != '\t' for c in line):
+                sys.stdout.write(detabbed)
+    finally:
+        if args.filename:
+            input_file.close()
+
+
+if __name__ == '__main__':
+    main()
+</pre>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<a href="detabpy.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to detab Python Page</a><br>
+
+<span style="font-size: 80%;"> Last modified: Sun Mar  8 12:42:06 EDT 2026
+</span>
+
+</blockquote>
+</body>
+</html>
