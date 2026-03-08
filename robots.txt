@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://knassen.github.io/personal-tech/sitemap.xml
+Sitemap: https://knassen.github.io/personal-tech/my_sitemap.xml
