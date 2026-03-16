@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="kstyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kent Nassen's Vim Functions for SAS Programming">
-    <meta name="keywords" content="vi, vim, Vim, syntax, highlighting, vim functions for SAS programming">
+    <meta name="keywords" content="vim editor functions for SAS programming">
     <base href="/personal-tech/vim/">
     <title>Vim Functions for SAS Programming</title>
     <style type="text/css">
@@ -27,11 +27,12 @@ to load the .log and .lst files for a SAS program being edited, and to run
 a log checking program on the current buffer, allowing the use of Vim's
 QuickFix functionality to check SAS log files (see the Vim quickfix help, 
 which covers defining the file to be used and how to move around the issues
-list).
+list). If you can't run SAS in batch mode, then this setup likely will not
+work for you.
 <p>
 The code to add the three functions to the 
 <a href="/personal-tech/gif/vim_sas_functions.jpg"><strong>Vim Tools 
-menu</strong></a> is given as well as code to make the assignments to 
+menu in Gvim </strong></a> is given as well as code to make the assignments to 
 function keys. All
 three Vim functions for using SAS, the menu and function key code,
 a SAS log check script and an example wrapper script are available
@@ -80,24 +81,25 @@ Windows computer) is.
 <p>
 <strong>The functions assume SAS is installed and able to batch process your
     SAS code</strong>, thus creating log and lst files on the same server SAS is
-running on and you are editing the program on. SAS in the Cloud may not
+running on and you are editing the program on with Gvim. SAS in the Cloud may not
 do this if you are running your vim on a local machine. <strong>I had to use
 "sas -nodms"</strong> (no display management system) to run sas on the current
 file in gvim on a local unix server. Otherwise it would to open up the
 SAS GUI, which wouldn't work because it captures the log and lst files
 so gvim can't get to them.
 <p>
-I have not tried to do something like run SAS in the Cloud, and then
-transfer sas code, log, and lst files to a local machine running
-gvim. In theory it is possible, but would require modifying the
-LoadSASLogLst() function part to transfer the files via some protocol
-that works on a cloud server (or if the cloud server appears as a drive
-on your local machine, files might be directly accessable). And the
-RunSASonCurrentFile part of the process might need to switch to manual
-operation unless there is a command that can run SAS in the cloud via
-a local command. I'm assuming it is unlikely gvim would be available
-on the cloud SAS server (e.g. Viya) and thus you probably can't set up 
-the vim functions on a cloud server.
+<strong>NOTE:</strong>I have not tried to do something like run SAS in
+the Cloud, and then transfer sas code, log, and lst files to a local
+machine running gvim. In theory it is possible, but would require
+modifying the LoadSASLogLst() function part to transfer the files via
+some protocol that works on a cloud server (or if the cloud server
+appears as a drive on your local machine, files might be directly
+accessable in some directory). And the RunSASonCurrentFile part of
+the process might need to switch to manual operation unless there
+is a command that can run SAS in the cloud via a local command. I'm
+assuming it is unlikely gvim would be available on the cloud SAS server
+(e.g. Viya) and thus you probably can't set up the vim functions on a
+cloud server.
 <p>
 I don't have SAS available now, so I can't say with certainty that is
 still the case with SAS, but I would suspect it is, since running jobs
@@ -196,8 +198,8 @@ below and use the right format for your OS (e.g. slashes or backslashes).
 <p>
 <strong>Load SAS Log and Lst Files</strong>
 The LoadSASLogLst function loads the SAS .log and .lst files for a SAS
-program being edited in the current buffer.  It will load these files
-into separate tabs in Vim.  This is handy if you want to see those files
+program being edited in the current buffer. It will load these files
+into separate tabs in Vim. This is handy if you want to see those files
 for a SAS program file you are examining but don't want to run in SAS.
 It uses the basename of file being edited to find the associated .log
 and .lst files.
@@ -208,6 +210,7 @@ and .lst files.
     " are assumed to end in .log and .lst, as produced by SAS by default.
 
     " Load the SAS log file in a tab, if it is not already loaded &amp; it exists
+    " Note: the file must be available to Gvim."
     :let log=bufexists(fnameescape(expand("%:p:r") . ".log"))
     :if log==0
       :if filereadable(fnameescape(expand("%:p:r") . ".log"))
@@ -218,6 +221,7 @@ and .lst files.
     :endif
 
     " Load the SAS lst file in a tab, if it is not already loaded &amp; it exists
+    " Note: the file must be available to Gvim."
     :let lst=bufexists(fnameescape(expand("%:p:r") . ".lst"))
     :if lst==0
       :if filereadable(fnameescape(expand("%:p:r") . ".lst"))
@@ -318,7 +322,7 @@ the file name to each error returned.
 <strong>Menu Assignments and Key Mappings for the SAS Functions</strong>
 <p>
 You can relabel these, but note that you need to escape ('\') the spaces in
-the labels.  Obviously, you can assign the functions to any function keys
+the labels. Obviously, you can assign the functions to any function keys
 you aren't currently using, as well, and in an order that makes sense to you.
 <pre><code>
 
@@ -414,7 +418,7 @@ and no path (but it doesn't hurt either way).
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
 <p>
 <span style="font-size: 80%;">
-Last Modified: Fri Feb 20 16:23:01 EST 2026
+Last Modified: Mon Mar 16 17:13:02 EDT 2026
 </span>
 
 
