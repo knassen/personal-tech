@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+   <base href="/personal-tech/perl/">
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program code for cktb report blanks at the end of lines">
-   <base href="/personal-tech/perl/">
+    <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
    <title>cktb -- Code</title>
 </head>
 <body>
@@ -99,7 +101,7 @@ sub process {
         print STDERR "\n  $ProgName: *** Can't open $filename: $!\n\n";
         return;
     }
-    while (<$fh>) {
+    while (&lt;$fh&gt;) {
         chomp;
         $line++;
 
@@ -146,7 +148,9 @@ sub process {
 <a href="cktbperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the cktb Perl Page</a>
 <p>
 <!-- Last Modified: Wed Jul  7 21:38:30 EDT 1999 -->
-Last-modified: Sat Sep 20 23:34:14 EDT 2025
+<span style="font-size: 80%;">
+Last-modified: Tue Mar 17 13:04:34 EDT 2026
+</span>
 </blockquote>
 </body>
 </html>

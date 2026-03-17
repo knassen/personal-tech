@@ -1,4 +1,28 @@
-<!DOCTYPE HTML> 
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2026.03.17.16.46.07;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@/
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML> 
 <html lang="en">
 <head>
     <base href="/personal-tech/">
@@ -105,9 +129,10 @@ retained one blank line from sets of multiple blank lines.
 <a href="https://knassen.github.io/personal-tech/myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 <p>
 <span style="font-size: 80%;">
-    Last Modified: Tue Mar 17 12:47:00 EDT 2026
+    Last Modified: Fri Mar 13 19:12:08 EDT 2026
 </span>
 
 </blockquote >
 </body>
 </html>
+@
