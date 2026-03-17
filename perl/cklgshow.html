@@ -1,10 +1,12 @@
 <!DOCTYPE HTML> 
 <html lang="en">
 <head>
+  <base href="/personal-tech/perl/">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="perl program code cklg SAS log checker">
-  <base href="/personal-tech/perl/">
   <title>cklg</title>
 </head>
 <body> 
@@ -76,7 +78,7 @@ $version = "v1.1, " . scalar(localtime);
 
 getopts('hl');
 
-if ($opt_h or ($#ARGV < 0 and not $opt_l)) { DisplayUsage(); }
+if ($opt_h or ($#ARGV &lt; 0 and not $opt_l)) { DisplayUsage(); }
 
 # The list of SAS log message strings to search for.  Add more here if
 # needed.  A case-insensitive search will be used later.
@@ -125,7 +127,7 @@ if ($opt_l) {
 }
 
 # Build the query (if statement) from the array elements
-for ($i = 0; $i < @search; $i++) {
+for ($i = 0; $i &lt; @search; $i++) {
     if ($i == 0) {
         $query = "if (m/" . $search[$i] . "/i\n";
     } else {
@@ -149,13 +151,13 @@ sub Process {
     
     # Use lexical filehandle (modern Perl practice)
     my $fh;
-    open $fh, '<', $file_to_process or do {
+    open $fh, '&lt;', $file_to_process or do {
         print STDERR "\n   *** $ProgName: Can't open '$file_to_process': $!\n\n";
         return;
     };
     
     $line_number = 0;
-    while ($line = <$fh>) {
+    while ($line = &lt;$fh&gt;) {
         $line_number = $.;  # Save current line number
         chomp($line);
         $line =~ s/\r.*$//; # Remove the overprinted text on the line
@@ -200,7 +202,7 @@ sub DisplayUsage {
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Mon Sep 22 15:14:20 EDT 2025
+<span style="font-size: 80%;">Last Modified: Tue Mar 17 10:21:00 EDT 2026
 </span>
 <p>
 <a href="cklgperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the cklg Perl Page</a><br>

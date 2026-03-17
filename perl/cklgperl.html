@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+   <base href="/personal-tech/perl/">
    <link rel="stylesheet" type="text/css" href="style.css">
+      <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="keywords" content="Perl, SAS, find log issues, Vim QuickFix">
    <meta name="description" content="Perl program cklg SAS log checking, usage, limitations, examples">
-   <base href="/personal-tech/perl/">
    <title>cklg.pl -- Scan a SAS log for errors, warnings, and other issues</title>
 </head>
 <body> 
@@ -55,7 +57,7 @@ As an example, the command <span style="color: #000080; font-family: monospace;"
 might produce output like:
 
 <pre>~/sas> cklg testdate2.log
-testdate2.log:33:ERROR 22-322: Syntax error, expecting one of the following: !, !!, &, *, **, +, -, /, ;, <, <=, <>,
+testdate2.log:33:ERROR 22-322: Syntax error, expecting one of the following: !, !!, &amp;, *, **, +, -, /, ;, &lt;, &lt;=, &gt;>,
 testdate2.log:40:NOTE: Character values have been converted to numeric values at the places given by: (Line):(Column).
 testdate2.log:42:NOTE: The SAS System stopped processing this step because of errors.
 testdate2.log:43:WARNING: The data set WORK.TEST2 may be incomplete.  When this step was stopped there were 0
@@ -95,7 +97,7 @@ The log search terms used by cklg are:
 <a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a><br>
 
 <span style="font-size: 100%;">
-Last Modified: Tue Mar 17 10:03:52 EDT 2026
+Last Modified: Tue Mar 17 10:16:58 EDT 2026
 </span>
 </blockquote>
 </body>
