@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+   <base href="/personal-tech/perl/">
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="perl program deblank code ">
-   <base href="/personal-tech/perl/">
-   <title>cktb -- Code</title>
+   <meta name="description" content="perl program detab code ">
+    <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
+   <title>detab -- Perl Code</title>
 </head>
 <body>
     <blockquote>
@@ -52,9 +54,9 @@ if ($opt_m) { $mode=$opt_m } else { $mode="column" }
 if ($opt_h) { &amp;DisplayUsage }
 elsif(!$opt_h) { &amp;DisplayUsage }
 
-while (<>) {
+while (&lt;&gt;) {
         if ($mode eq "literal") {
-        # This does literal tab-->fixed # of spaces
+        # This does literal tab--&gt;fixed # of spaces
         # For example, if you have "Test&lt;tab&gt;some stuff" and 8 chars per tab,
         # in literal mode, you'll get "Test        some stuff"
         #                                  ^^^^^^^^
@@ -62,7 +64,7 @@ while (<>) {
           while ( $_ =~ s/\t/" " x ($tablen)/eg ) { } 
         }
         elsif ($mode eq "column") {
-        # This does tab-->actual column location starting from position of tab
+        # This does tab--&gt;actual column location starting from position of tab
         # For example, if you have "Test&lt;tab&gt;some stuff" and 8 chars per tab,
         # in column mode, you'll get "Test   some stuff"
         #                                    ^
@@ -93,7 +95,7 @@ exit;
 
 <a href="detabperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to detab Perl Page</a><br>
 
-<span style="font-size: 80%;"> Last modified: Sun Mar  8 12:42:06 EDT 2026
+<span style="font-size: 80%;"> Last modified: Tue Mar 17 14:26:34 EDT 2026
 </span>
 
 </blockquote>
