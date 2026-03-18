@@ -1,10 +1,12 @@
 <!DOCTYPE HTML> 
 <html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
   <base href="/personal-tech/perl/">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <meta name="description" content="perl program code for qscan find long label text in SAS labels">
+    <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
   <title>qscan.pl code listing</title>
 </head>
 <body> 
@@ -87,7 +89,7 @@ $version="v1.9, 9/16/25";
 
 # NOTE: $checklen sets the length of quoted text to search for
 my $file="", $checklen=40, $pagesize=54;
-STDOUT->format_lines_per_page($pagesize);
+STDOUT-&gt;format_lines_per_page($pagesize);
 
 ($ProgName = $0) =~ s%.*/%%;  # Unix
 #($ProgName = lc $0) =~ s%.*\\%%;  # DOS
@@ -105,14 +107,14 @@ else {
 	}
 }
 
-if ($#ARGV<0) {
+if ($#ARGV&lt;0) {
     &amp;DisplayUsage;
     exit 1;
 }
 
 foreach my $file (@ARGV) {
-	STDOUT->format_page_number(0); # Each file starts with Page 1
-    open my $fh, '<',$file or do {
+	STDOUT-&gt;format_page_number(0); # Each file starts with Page 1
+    open my $fh, '&lt;',$file or do {
        warn"\n   *** $ProgName: Can't open '$file': $!\n\n";
        next;
    };
@@ -126,7 +128,7 @@ sub process {
     $CurrentFile=$filename;
 	$extendlen=56; # length beyond which we truncate long strings in the output
 	$input++;
-	while (<$fh>) {
+	while (&lt;$fh&gt;) {
 		chop;
         $lines++;
 		if ( m/".*?".*(".*?")/ or m/'.*?'.*('.*?')/ ) {
@@ -134,23 +136,23 @@ sub process {
 			if ( $testcount>$checklen ) {
 				$longlines++;
 				$lentest=length($_);
-				if ($lentest>=$extendlen) { $extend='...' }
+				if ($lentest&gt;=$extendlen) { $extend='...' }
 				else { $extend=" " }
 				write;
 			}
-            if ($testcount>$maxcount) { $maxcount=$testcount; $maxline=$.; }
+            if ($testcount&gt;$maxcount) { $maxcount=$testcount; $maxline=$.; }
 			$extend="";
 		}
 		if ( m/"(.*?)"/ or m/'(.*?)'/ ) {
 			$testcount=length($1);
-			if ( $testcount>$checklen ) {
+			if ( $testcount&gt;$checklen ) {
 				$longlines++;
 				$lentest=length($_);
-				if ($lentest>=$extendlen) { $extend='...' }
+				if ($lentest&gt;=$extendlen) { $extend='...' }
 				else { $extend=" " }
 				write;
 			}
-            if ($testcount>$maxcount) { $maxcount=$testcount; $maxline=$.; }
+            if ($testcount&gt;$maxcount) { $maxcount=$testcount; $maxline=$.; }
 		}
 	} # end of while (file has been completely read and processed)
 
@@ -184,7 +186,7 @@ sub process {
            }                                                                        
            print "\n";                                                              
            close $fh;                                                            
-           STDOUT->format_lines_left("0");                                          
+           STDOUT-&gt;format_lines_left("0");                                          
    } # end of subroutine process()                                                  
 
 sub DisplayUsage {
@@ -205,11 +207,11 @@ format STDOUT_TOP =
    @||||@||
    "Page",$%
 
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    "$ProgName: Find long quoted text";
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    "by Kent Nassen, $version";
-   Scanning for quoted text longer than @< characters in the file @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   Scanning for quoted text longer than @&lt; characters in the file @&lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    $checklen, $CurrentFile
 
              Quote
@@ -218,13 +220,13 @@ format STDOUT_TOP =
 .
 
 format STDOUT =
-  @>>>>>> @>>>>>>>>   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@<<<
+  @&gt;&gt;&gt;&gt;&gt;&gt; @&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; @&lt;&lt;&lt;
 $.,$testcount,$_,$extend
 .
 </pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Wed Sep 24 13:33:41 EDT 2025
+<span style="font-size: 80%;">Last Modified: Tue Mar 17 14:44:16 EDT 2026
     </span>
 
 <p>

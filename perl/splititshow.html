@@ -2,10 +2,12 @@
 <html lang="en"> 
 
 <head>
+   <base href="/personal-tech/perl/">
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="perl program splitit SAS SPSS columns to single list">
-   <base href="/personal-tech/perl/">
+    <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
    <title>Perl Code for splitit.pl -- Convert Multi-column Input to Single-Column Format</title>
 </head>
 <body>
@@ -49,7 +51,7 @@
 #  V8 18-19
 #  V9 20-21
 $i=0;
-while (<>) {
+while (&lt;&gt;) {
 		chop;
         for ($_) { s/^\s+//; s/$/ /; s/\n//g; }
 	@fields = split /([A-Za-z][A-Za-z0-9_]* )/, $_;
@@ -64,7 +66,7 @@ while (<>) {
 <a href="splitit.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to splitit Perl Page</a>
 <p>
 <span style="font-size: 80%;">
-Last Modified: Thu Sep 11 19:35:17 EDT 2025
+Last Modified: Tue Mar 17 15:32:05 EDT 2026
 </span>
 
 </blockquote>

@@ -1,4 +1,27 @@
-<!DOCTYPE HTML> 
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2026.03.17.22.43.07;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML> 
 <html lang="en">
 <head>
   <base href="/personal-tech/perl/">
@@ -27,9 +50,9 @@
 #!/usr/bin/perl -w
 ##---------------------------------------------------------------------------##
 ##  File:
-##      @(#)  freq.pl 1.0 97/05/13 @(#)
+##      @@(#)  freq.pl 1.0 97/05/13 @@(#)
 ##  Author:
-##      Kent Nassen     knassen@umich.edu
+##      Kent Nassen     knassen@@umich.edu
 ##  Description:
 ##      A script for grabbing quick and dirty frequencies
 ##      from an LRECL data file (vars in fixed column locations)
@@ -119,14 +142,14 @@ $fname="\"".$ARGV[0]."\"";
 while (&lt;ARGV&gt;) { 
 	chop;   
 	# Pull the desired columns and save in data array
-	push @data, substr($_,$startcol-1,$endcol-$startcol+1); 
+	push @@data, substr($_,$startcol-1,$endcol-$startcol+1); 
 	} # End of data input while loop
 
 #### ---------------------------------------------------- ####
 #### The real work begins here                            ####
 #### ---------------------------------------------------- ####
 # Get Frequencies 
-foreach $value (@data) {
+foreach $value (@@data) {
 	$freq{$value}++;
 	}
 # Print Out the Frequencies
@@ -139,11 +162,11 @@ print "\n";
 # Formatted, paged output
 format STDOUT_TOP =
  
-   @||||@||
+   @@||||@@||
    "Page",$%
-   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+   @@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    "Frequencies for the values in columns",$loc
-   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+   @@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    "in the file ",$fname
  
                                             Cumulative
@@ -151,7 +174,7 @@ format STDOUT_TOP =
                         -------  ---------  ----------
 .
 format STDOUT =
-   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+   @@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
                      $value,   $freq{$value}, $cfreq 
 .
 </pre>
@@ -164,3 +187,4 @@ format STDOUT =
 </blockquote>
 </body>
 </html>
+@

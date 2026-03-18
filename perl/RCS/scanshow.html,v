@@ -1,12 +1,33 @@
-<!DOCTYPE HTML> 
+head	1.1;
+access;
+symbols;
+locks
+	knassen:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2026.03.17.22.58.12;	author knassen;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!DOCTYPE HTML> 
 <html lang="en">
 <head>
-  <base href="/personal-tech/perl/">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <base href="/personal-tech/perl/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="perl program code 40scan find long labels">
-    <meta http-equiv="Content-Type" 
-         content="text/html; charset=utf-8">
   <title>40scan.pl code listing</title>
 </head>
 <body> 
@@ -71,18 +92,18 @@ $version="v1.6, 9/16/25";
 # NOTE: $checklen sets the length of quoted text to search for
 # NOTE: $pagesize is the number of lines to print per page
 $file="",$checklen=40, $pagesize=54;
-STDOUT-&gt;format_lines_per_page($pagesize);
+STDOUT->format_lines_per_page($pagesize);
 
 (my $ProgName = $0) =~ s%.*/%%;  # Unix
 # ($ProgName = lc $0) =~ s%.*\\%%;  # DOS/Windows
 
-if ($#ARGV&lt;0) { 
+if ($#ARGV<0) { 
     &DisplayUsage;
 	print STDERR "   *** I need a filename!\n\n";
     exit 1;
 }
 
-foreach $file (@ARGV) { 
+foreach $file (@@ARGV) { 
     $file_to_process = $file;
 	process($file); 
 }
@@ -92,13 +113,13 @@ sub process {
     $% = 0; # page num
     $- = 0; # lines remaining
     $lines=$testcount=$maxcount=$longlines=0;
-	($file_to_process) = @_;
+	($file_to_process) = @@_;
     my $fh;
-    open $fh, '&lt;', $file_to_process or do {
+    open $fh, '<', $file_to_process or do {
          print STDERR "\n    *** $ProgName: Can't open '$file_to_process': $!\n\n";
          return;
     };
-	while ($line = &lt;$fh&gt;) {
+	while ($line = <$fh>) {
 		chomp($line);
         #print $line,"\n";
         $lines++;
@@ -161,14 +182,14 @@ sub DisplayUsage {
 
 format STDOUT_TOP =
 
-   @||||@||
+   @@||||@@||
    "Page",$%
 
-   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+   @@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
    "$ProgName: Find quotes longer than $checklen characters";
-   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+   @@<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
    "by Kent Nassen, $version";
-   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+   @@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
    "Scanning for long quoted text in the file: ",$file
 
    Line#     Length                             Line Contents
@@ -176,7 +197,7 @@ format STDOUT_TOP =
 .
 
 format STDOUT =
-  @&gt;&gt;&gt;&gt;&gt;&gt; @&gt;&gt;&gt;&gt;&gt;&gt;    @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+  @@>>>>>> @@>>>>>>    @@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 $.,$testcount,$line
 .
 </pre>
@@ -189,3 +210,4 @@ $.,$testcount,$line
 
 </blockquote>
 </body>
+@

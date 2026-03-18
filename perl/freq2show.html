@@ -1,10 +1,12 @@
 <!DOCTYPE HTML> 
 <html lang="en">
 <head>
+  <base HREF="/personal-tech/perl/">
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="perl program freq2 code for computing frequencies from raw data">
-  <base HREF="/personal-tech/perl/">
+    <meta http-equiv="Content-Type" 
+         content="text/html; charset=utf-8">
   <title>freq2.pl perl code</title>
 </head>
 <body> 
@@ -34,7 +36,7 @@
 ##
 ##  Usage:
 ##      freq.pl [-h] [-c[#-#][#] filename]
-##   where: -c#-# indicates starting & ending column numbers of the variable
+##   where: -c#-# indicates starting &amp; ending column numbers of the variable
 ##          and -c# indicates a single-column variable at column #.
 ##          -h gives a help screen.
 ##          Only one filename may be given.
@@ -65,7 +67,7 @@ our ($opt_h, $ProgName, $opt_c, $temp, $loc, $fname,
      $transpos, $version, $pagesize);
 
 $pagesize=57;
-STDOUT->format_lines_per_page($pagesize);
+STDOUT-&gt;format_lines_per_page($pagesize);
 
 # Check performance
 #my $begint = (times) [0];
@@ -123,9 +125,9 @@ if ($endcol==0 || $startcol==0) {
 	&amp;DisplayUsage;
 	}
 
-# Assume startcol > endcol is a transposition of column locations
+# Assume startcol &gt; endcol is a transposition of column locations
 # You may want to make this an error instead.
-if ($startcol > $endcol) { # swap startcol and endcol
+if ($startcol &gt; $endcol) { # swap startcol and endcol
 	$temp=$endcol; $endcol=$startcol; $startcol=$temp; 
     print STDERR "\n   *** Start col greater than end col: assuming reversed col. locations.\n";
     }
@@ -135,13 +137,13 @@ if ($startcol > $endcol) { # swap startcol and endcol
 $loc="$startcol"."-"."$endcol";
 
 # What is left on the command is the filename to be processed (hopefully)
-if ($#ARGV>0) { print STDERR "\n   *** One filename at a time, please!\n";
+if ($#ARGV&gt;0) { print STDERR "\n   *** One filename at a time, please!\n";
 		&amp;DisplayUsage;
 		}
-if ($#ARGV<0) { print STDERR "\n   *** I need a data filename!\n";
+if ($#ARGV&lt;0) { print STDERR "\n   *** I need a data filename!\n";
 		&amp;DisplayUsage;
 		}
-open INFILE, "<$ARGV[0]" or die "\n$ProgName:   *** Can't open data file '$ARGV[0]': $!\n\n";
+open INFILE, "&lt;$ARGV[0]" or die "\n$ProgName:   *** Can't open data file '$ARGV[0]': $!\n\n";
 
 # Set up a string var for printing out a quoted filename 
 #  (rather than construct this for each page printed)
@@ -163,7 +165,7 @@ $nofcases=$cfreq=0;
 foreach $value (@data) { $freq{$value}++; $nofcases++; }
 
 # Print Out the Frequencies
-foreach $value (sort { $a <=> $b } keys(%freq)) {
+foreach $value (sort { $a &lt;=&gt; $b } keys(%freq)) {
 	$cfreq=$cfreq+$freq{$value}; # cumulative freqs
 	if ($nofcases) { $cfreqpct=($cfreq/$nofcases)*100 } # cumulative percent
 		else { $cfreqpct="----" } # don't divide by zero
@@ -183,9 +185,9 @@ format STDOUT_TOP =
  
    @||||@||
    "Page",$%
-   @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<@<<<<<<<<<<<<
+   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    "Frequencies for the values in columns",$loc
-   @<<<<<<<<<<<@<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+   @&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;@&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
    "in the file ",$fname
  
                                            Cumulative  Cumulative
@@ -193,14 +195,14 @@ format STDOUT_TOP =
               -------  ---------  -------  ----------  ----------
 .
 format STDOUT =
-@>>>>>>>>>>>>>>>>>>> @>>>>>>>>>  @###.##  @>>>>>>>>>     @###.##
+@&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; @&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;  @###.##  @&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;     @###.##
 $value,$freq{$value},$freqpct,$cfreq,$cfreqpct 
 .
 </pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<span style="font-size: 80%;">Last Modified: Mon Sep 22 15:26:06 EDT 2025
+<span style="font-size: 80%;">Last Modified: Tue Mar 17 15:12:15 EDT 2026
 </span>
 <p>
 <a href="freq2perl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the freq2 Perl Page</a><br>
