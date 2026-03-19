@@ -29,19 +29,19 @@ cumulative percentage to the report.
 
 <p><strong>Limitations:</strong>
 <ul style="list-style-type: disc;">
-    <li>It reads columns of raw data. Intended for quick checks.
+    <li>It reads columns of raw data. Intended for quick checks.</li>
     <li>Can only print the first 20 characters of a value,
-       although can compute frequencies for longer values.</LI>
+       although can compute frequencies for longer values.</li>
     <li>The order of values in the output is set by a character
        sort rather than a numeric sort (the program knows
-       nothing of variable types like numeric or string).</LI>
+       nothing of variable types like numeric or string).</li>
     <li>If you give a column range outside the logical record
        length of the data, you will still get output, but all
-       values will be null.</LI>
+       values will be null.</li>
     <li>Since the program summarizes values, if you have dots
         in the data (as SAS missing), they will be counted.  
         And of course, values like NA and 999 but they will not
-        be labeled as missing.
+        be labeled as missing.</li>
 </ul>
 
 <h3>Usage</h3>
@@ -72,10 +72,13 @@ might produce output like:
                 2        533     2.74        3756       19.28
                 9      15721    80.72       19477      100.00
 </pre>
+
+An <a href="sasexampl.html">example of SAS output on the same data</a> shows the same results as above.
+
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
-<span style="font-size: 80%;">Last Modified: Tue Mar 17 15:10:10 EDT 2026
+<span style="font-size: 80%;">Last Modified: Wed Mar 18 20:43:53 EDT 2026
 </span>
 </blockquote>
 </body>
