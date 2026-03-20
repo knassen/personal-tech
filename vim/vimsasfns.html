@@ -19,6 +19,7 @@
 Vim Functions for SAS Programming</h1>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
 <h1> Introduction </h1>
 I wrote these three functions to help me program SAS with the Vim
 editor in GUI mode. The first allows me to run SAS in batch mode on a
@@ -37,7 +38,7 @@ function keys. All
 three Vim functions for using SAS, the menu and function key code,
 a SAS log check script and an example wrapper script are available
 for download in this <a href="vimsasfunctions.zip"><strong>zip
-file</strong></a>.
+file</strong></a>.</p>
 <p>
 Regarding the use of these functions with Windows and PC SAS: 
 I received (thank you Laurie Samuels) two suggestions that appear to work
@@ -47,7 +48,7 @@ for Unix/Linux use, either) and updating the RunSAS() function to work with
 PC SAS. The latter modification is a comment in the function that can
 be uncommented. Note that these functions may take a little bit of
 adjustment (well, the ChkSASLog function, especially) depending on your
-local environment.
+local environment.</p>
 
 <ul style="list-style-type: disc;">
     <li>Requires vim/gvim able to read and write the SAS file, log, and lst.</li>
@@ -70,14 +71,14 @@ file</strong>. I haven't tried these functions in a console Vim
 environment. They should work in console vim. Terminal menus get set up
 using :tlmenu instead of :menu. The functions use Vim tabs when loading
 files for editing, thus I prefer to use them in gvim (console Vim can do
-tabbed editing, as well). 
+tabbed editing, as well). </p>
 <p>
 One option for Vim that may help you use these functions is to set the
 <strong>autoread</strong> option (set autoread in .gvimrc/.vimrc). Thus
 you should get your already-loaded .log and .lst files automatically
 updated when they change, such as when you rerun your .sas file. This
 may take a few seconds depending on how busy your Unix/Linux server (or
-Windows computer) is.
+Windows computer) is.</p>
 <p>
 <strong>The functions assume SAS is installed and able to batch process your
     SAS code</strong>, thus creating log and lst files on the same server SAS is
@@ -86,7 +87,7 @@ do this if you are running your vim on a local machine. <strong>I had to use
 "sas -nodms"</strong> (no display management system) to run sas on the current
 file in gvim on a local unix server. Otherwise it would to open up the
 SAS GUI, which wouldn't work because it captures the log and lst files
-so gvim can't get to them.
+so gvim can't get to them.</p>
 <p>
 <strong>NOTE:</strong>I have not tried to do something like run SAS in
 the Cloud, and then transfer sas code, log, and lst files to a local
@@ -99,7 +100,7 @@ the process might need to switch to manual operation unless there
 is a command that can run SAS in the cloud via a local command. I'm
 assuming it is unlikely gvim would be available on the cloud SAS server
 (e.g. Viya) and thus you probably can't set up the vim functions on a
-cloud server.
+cloud server.</p>
 <p>
 I don't have SAS available now, so I can't say with certainty that is
 still the case with SAS, but I would suspect it is, since running jobs
@@ -107,35 +108,35 @@ in batch mode is often done (periodic reports, for example). However, I
 was able to get these functions to work a few days ago (Sept 28, 2025)
 using a shell script for "sas" that would create dummy log and lst files
 in the same folder as my sas program. This is one way to test that the
-functions work even if you can get them completely set up.
+functions work even if you can get them completely set up.</p>
 <p>
 If the functions don't work for you, make sure your SAS will run in
 batch mode on your sas file. The opening of log and lst files worked
 for me as did the log scanning and the setup of Quick Fix mode in
 gvim. Thus, the vim functions still work after all this time if
 the file connections can be made to SAS program, log, and lst files. 
-I'm using gvim 9.2. 
+I'm using gvim 9.2. </p>
 <p>
 There are other SAS-related text-processing utilities on this site at: 
-<a href="../myperl.html">Perl utilities.</a>
+<a href="../myperl.html">Perl utilities.</a></p>
 <p>
 Below you'll find descriptions of each of the functions and the actual
-code used.
+code used.</p>
 <p>
-<strong>Run SAS on Current File/Buffer</strong> 
+<strong>Run SAS on Current File/Buffer</strong> </p>
 <p>
 SAS runs against a program file on disk, so this function,
 RunSASonCurrentFile(), will save the file before the run if the file
-has been modified in the editor. 
+has been modified in the editor. </p>
 <p>
 The function will automatically load the .log and lst files that get
 created from the SAS run (or possibly just the log file if you have no
 list output) into separate tabs, if they are not already open in the
-editor (note: RunSASonCurrentFile() calls LoadSASLogList()). 
+editor (note: RunSASonCurrentFile() calls LoadSASLogList()). </p>
 <p>
 The function gives its messages at the bottom of the Vim screen where
 other Vim messages appear. Any messages from SAS on the command line
-should appear there, as well.
+should appear there, as well.</p>
 <p>
 If the .log and .lst files are already open in the editor, Vim will
 prompt to load the changed files after SAS runs as it normally does
@@ -143,10 +144,11 @@ when files being edited are changed on disk by another process (such
 as another SAS run). This is Vim behavior, not a behavior of the
 function. In some cases, you may need to force your window manager to
 refocus on the Vim window for this to happen (e.g. by opening a pull
-down menu).
+down menu).</p>
 <p>
 Be sure to set the location of SAS on your machine in the system() call
-below and use the right format for your OS (e.g. slashes or backslashes).
+below and use the right format for your OS (e.g. slashes or backslashes).</p>
+
 <pre><code>
 
   " Run SAS on the current file/buffer. Assumes you have a SAS program in
@@ -202,7 +204,8 @@ program being edited in the current buffer. It will load these files
 into separate tabs in Vim. This is handy if you want to see those files
 for a SAS program file you are examining but don't want to run in SAS.
 It uses the basename of file being edited to find the associated .log
-and .lst files.
+and .lst files.</p>
+
 <pre><code>
   function! LoadSASLogLst()
     " Assumes you are editing a SAS program.   The log and lst file names will
@@ -238,7 +241,7 @@ and .lst files.
 The CheckSASLog function helps in debugging a SAS program, allowing
 you to link a list of errors to the lines in the log where the errors
 occurred and jump to specific errors. This is also the function that
-requires the most modification to make work the way you want.
+requires the most modification to make work the way you want.</p>
 <p>
 The Vim QuickFix functionality (see :he QuickFix in the Vim help system)
 makes jumping from error to error (or warning to warning) in the log
@@ -247,7 +250,7 @@ working in at least two different ways over the years: using Vim's
 internal grep capability (see :he grep and set grepprg=internal), and
 using an external script or program that does the log checking and
 returns a list of errors, warnings, and other questionable messages from
-the SAS log.
+the SAS log.</p>
 <p> In order to use 
 <a href="/personal-tech/gif/gvim_quickfix_example.jpg">Vim's QuickFix
 mechanism</a> fully, the list of errors and warnings needs to be linked
@@ -256,24 +259,24 @@ SAS programs and logs were open in the gvim editor, how would Vim know
 which list of errors goes with which log file? By the file name).
 The example image above shows a SAS program (testdate2.log) in one
 gvim tab, the .lst file in another tab, and the log file with QuickFix
-window open and stopped on an error.
+window open and stopped on an error.</p>
 <p>
 Note: a SAS log may contain dozens of errors and warnings, but they may
 be caused by the first error and cascaded into other errors from that
 point, so having a complete list of errors may not be indicative of the
 amount of debugging necessary. Always start with the first error found.
 Vim's quickfix feature will automatically jump to the first error found
-when the quickfix window opens.
+when the quickfix window opens.</p>
 <p>
 The Unix/Linux grep program can provide a file name (GNU grep's -H option,
 for example) in the list of errors/warnings. Below, I present a 
 <a href="/personal-tech/vim/sasfns.html#cklog">simple SAS Log checking shell script</a>
-using the GNU grep program that works with Vim's QuickFix mode.
+using the GNU grep program that works with Vim's QuickFix mode.</p>
 <p>
 I also have a SAS log checking program in Perl that can be used <a
 href="/personal-tech/perl/cklgperl.html">called cklg.pl</a> That program
 provides the filename and line number information for use with vim's
-QuickFix facility and can be used as a grepprg program.
+QuickFix facility and can be used as a grepprg program.</p>
 <p>
 If you use another external log-checking program, make sure it
 returns the file name for each error, in addition to the line number
@@ -282,8 +285,9 @@ appropriately). Otherwise, depending on your situation (e.g. a
 provided log check utility you can't change that does not provide a
 file name), you'll need to write a small <a href="/personal-tech/vim/sasfns.html#wrap">wrapper
 script</a> to call that check utility and do the addition of
-the file name to each error returned.
+the file name to each error returned.</p>
 <p>&nbsp;</p>
+
 <pre><code>
   " Check SAS log files for errors, warnings and other problems
   " Assumes you are editing the file to be checked when invoking this function.
@@ -319,11 +323,12 @@ the file name to each error returned.
 
 </code></pre>
 <p>
-<strong>Menu Assignments and Key Mappings for the SAS Functions</strong>
+<strong>Menu Assignments and Key Mappings for the SAS Functions</strong></p>
 <p>
 You can relabel these, but note that you need to escape ('\') the spaces in
 the labels. Obviously, you can assign the functions to any function keys
-you aren't currently using, as well, and in an order that makes sense to you.
+you aren't currently using, as well, and in an order that makes sense to you.</p>
+
 <pre><code>
 
   " Add a separator before the SAS menu items
@@ -359,7 +364,7 @@ be added, but it should find most of the obvious errors and warnings and
 some of the unusual messages in SAS log. grep -E is the same as egrep on
 my system.  It can also be used outside of Vim to check SAS log files
 from the command line.  The other options are -n (give the line number),
--H (give the file name), and -i (case-insensitive search).
+-H (give the file name), and -i (case-insensitive search).</p>
 
 <pre><code>
   #!/bin/sh
@@ -404,7 +409,8 @@ to the beginning of each line ('#' is used as a delimiter in the sed
 substitution command because $1 is apt to contain '/' characters if it
 includes a file path, saving us a lot of quoting). This is not needed if
 your external SAS log check program output includes only the file name
-and no path (but it doesn't hurt either way).
+and no path (but it doesn't hurt either way).</p>
+
 <pre><code>
 
   #!/bin/sh
@@ -413,10 +419,10 @@ and no path (but it doesn't hurt either way).
 
 </code></pre>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
-<p>
+<p></p>
 
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
-<p>
+<p></p>
 <span style="font-size: 80%;">
 Last Modified: Wed Mar 18 12:30:56 EDT 2026
 </span>
