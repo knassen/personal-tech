@@ -161,6 +161,14 @@ date as I can get them. What really needs to be done is to add new content.
 I'm still adjusting spacing, correcting grammar, etc. but that's normal
 for web sites, even new ones ("tweaking").
 
+**March 22, 2026** I've spent the last several weeks running every html
+file through the w3.org html validator. This led to many minor fixes,
+but it also found some missing end tags and issues like that. Some
+of these pages are over 20 years have suffered through many changes
+(though the content and links have been updated). I had to fix some
+pages because they got un-indexed by Google. 
 
-
+All html files pass the w3.org validator now.  My python pages have been
+on the site starting Feb 24, 2026. I'm still working on them. The latest
+one is detab.py (see detabpy.html).
 

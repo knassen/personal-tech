@@ -16,8 +16,8 @@ sites, and statistical links.
 
 I have done most of things I set out to do.
 
-  - I've cleaned up most of the bad links and tried to replace them.
-    Thankfully, some of the old sites still exist.
+  - I've cleaned up most of the bad links and replaced them. Thankfully, 
+    some of the old sites still exist in new locations.
  
   - I've updated information where I saw it was out of date.  Some
     information is surprisingly still relevant after 25 years.  I've
@@ -39,13 +39,16 @@ I have done most of things I set out to do.
     the page formatting. 
 
   - Pages are mostly updated for spacing issues and content and the
-    issues list is done.
+    initial issues list is done.
 
   - Most pages are updated for language and viewport settings now. The
     latter should make them look better on mobile devices.
 
   - I made an effort to get many of the pages indexed on google so
     they'll stand a better chance of showing up in searches.
+
+  - In 2026, I started adding Python program that do what my Perl
+    programs do. There are three programs there now.
 
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
