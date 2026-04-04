@@ -85,11 +85,11 @@ Windows computer) is.</p>
 your SAS code</strong>, thus creating log and lst files on the same
 server SAS is running on and you are editing the program on with
 Gvim. SAS in the Cloud may not do this if you are running your vim on a
-local machine. <strong>I had to use "sas -nodms"</strong> (no display
-management system) to run sas on the current file in gvim on a local
-unix server. Otherwise it would to open up the SAS GUI, which wouldn't
-work because it captures the log and lst files so gvim can't get to
-them.</p>
+local machine. </p>
+<strong>I had to use "sas -nodms"</strong> (no display management
+system) to run sas on the current file in gvim on a local unix
+server. Otherwise it would to open up the SAS GUI, which wouldn't work
+because it captures the log and lst files so gvim can't get to them.</p>
 
 <h3>Environment Considerations</h3>
 <strong>NOTE:.I have not tried to do something like run SAS in the
@@ -126,13 +126,23 @@ was able to get these functions to work a few days ago (Sept 28, 2025)
 using a shell script for "sas" that would create dummy log and lst files
 in the same folder as my sas program. This is one way to test that the
 functions work even if you can get them completely set up.</p>
-<p>
+
+<h3>If Things Don't Work </h3>
 If the functions don't work for you, make sure your SAS will run in
 batch mode on your sas file. The opening of log and lst files worked
 for me as did the log scanning and the setup of Quick Fix mode in
 gvim. Thus, the vim functions still work after all this time if
 the file connections can be made to SAS program, log, and lst files. 
-I'm using gvim 9.2. </p>
+I'm using gvim 9.2.
+<p>
+Make sure you've got the commands in the .gvimrc to run SAS, define
+the grepprg, etc.  Make sure there are not .gvimrc errors.
+</p>
+<p>
+You can test it with existing program, log and lst files. If they are
+in the directory where you are editing the program with gvim, they
+should load into tabs for review.
+</p>
 <p>
 There are other SAS-related text-processing utilities on this site at: 
 <a href="../myperl.html">Perl utilities.</a></p>
@@ -281,9 +291,9 @@ window open and stopped on an error.</p>
 Note: a SAS log may contain dozens of errors and warnings, but they may
 be caused by the first error and cascaded into other errors from that
 point, so having a complete list of errors may not be indicative of the
-amount of debugging necessary. Always start with the first error found.
-Vim's quickfix feature will automatically jump to the first error found
-when the quickfix window opens.</p>
+amount of debugging necessary. Always start with the first error found
+at the beginning of the log. Vim's quickfix feature will automatically 
+jump to the first error found when the quickfix window opens.</p>
 <p>
 The Unix/Linux grep program can provide a file name (GNU grep's -H option,
 for example) in the list of errors/warnings. Below, I present a 
@@ -295,14 +305,19 @@ href="/personal-tech/perl/cklgperl.html">called cklg.pl</a> That program
 provides the filename and line number information for use with vim's
 QuickFix facility and can be used as a grepprg program.</p>
 <p>
-If you use another external log-checking program, make sure it
-returns the file name for each error, in addition to the line number
-and error text (and modify the grepformat in the CheckSASLog function
-appropriately). Otherwise, depending on your situation (e.g. a
-provided log check utility you can't change that does not provide a
-file name), you'll need to write a small <a href="/personal-tech/vim/sasfns.html#wrap">wrapper
-script</a> to call that check utility and do the addition of
-the file name to each error returned.</p>
+If you use another external log-checking program, it must return the
+file name, the line number and error text for each issue. In that
+case, you'll need to modify the grepformat in the CheckSASLog function
+appropriately to point to your log-checking program). </p>
+<p>
+If your situation is different, for example, if you're required to
+use a provided log check utility that you can't modify and that
+does not include a file name, you'll need to write a small <a
+href="/personal-tech/vim/sasfns.html#wrap">wrapper script</a> to call
+that check utility and add the file name and line number to each error
+message it returns. This approach only works when you have access to
+the log file on a real filesystem; in a cloud‑based SAS environment,
+you typically cannot run your own tools or wrapper scripts. </p>
 
 <pre><code>
   " Check SAS log files for errors, warnings and other problems
@@ -339,7 +354,7 @@ the file name to each error returned.</p>
 
 </code></pre>
 <p>
-<strong>Menu Assignments and Key Mappings for the SAS Functions</strong></p>
+<strong>Menu Assignments and Key Mappings in Vim for the SAS Functions</strong></p>
 <p>
 You can relabel these, but note that you need to escape ('\') the spaces in
 the labels. Obviously, you can assign the functions to any function keys
@@ -375,11 +390,11 @@ you aren't currently using, as well, and in an order that makes sense to you.</p
 This is the <b id="cklog">cklog</b> program noted in the grepprg definition in the
 CheckSASLog() function. It runs on Unix/Linux. It should run okay under Cygwin
 on Windows. This provides the file name, line number, and the error text
-so it can be used with Vim's quickfix functionality. More checks could
+so it can be used with Vim's quickfix functionality. More log checks could
 be added, but it should find most of the obvious errors and warnings and
 some of the unusual messages in SAS log. grep -E is the same as egrep on
-my system.  It can also be used outside of Vim to check SAS log files
-from the command line.  The other options are -n (give the line number),
+my system. It can also be used outside of Vim to check SAS log files
+from the command line. The other options are -n (give the line number),
 -H (give the file name), and -i (case-insensitive search).</p>
 
 <pre><code>
@@ -440,7 +455,7 @@ and no path (but it doesn't hurt either way).</p>
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
 <p></p>
 <span style="font-size: 80%;">
-Last Modified: Fri Apr  3 17:31:08 EDT 2026
+Last Modified: Fri Apr  3 21:05:47 EDT 2026
 </span>
 
 
