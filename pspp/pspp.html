@@ -27,7 +27,7 @@ and is well-suited for batch processing, scripting, and reproducible
 analysis. This page provides practical examples of PSPP syntax along
 with output samples and notes.</p>
 <p>
-I've been using PSPP for many years now.  After I left college it
+I've been using PSPP for many years now.  After I left college, it
 was one of the software packages that could do some of the analysis
 tasks that I needed. I generally build it from source code on one
 of my FreeBSD Unix computers. 
@@ -43,11 +43,11 @@ data. More examples will be added over time. </p>
 <a href="https://www.gnu.org/software/pspp/get.html">gnu.org/software/pspp</a></p>
 
 <p>
-This site gives instructions for installing pspp for Windows, Mac,
+This site gives instructions for installing PSPP for Windows, Mac,
 Debian, Ubuntu, Fedora, and with Flatpak. </p>
 
 <p>
-pspp source can also be installed with git: 
+PSPP source can also be obtained with git: 
 <a href="https://savannah.gnu.org/git/?group=pspp">savannah.gnu.org/git</a></p>
 
 <p>FreeBSD: PSPP is no longer in the FreeBSD ports collection (expired
@@ -66,7 +66,7 @@ details.</p>
 <h3>Using PSPP</h3>
 <p>You can create a PSPP syntax file with a text editor. Save the file
 with a .sps extension. In psppire, you can use the Syntax Editor to
-modify or run the file with PSPP or psppire. There are two ways to find
+modify or run the file with PSPP or psppire. There are two ways to open 
 the Syntax Editor in psppire.</p>
 
 <hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
@@ -78,23 +78,25 @@ into a program file.<p>
 
 <p>Some PSPP commands and options are not available in the psppire
 menus. When you need features that the GUI doesn’t expose, you can
-enter the syntax directly in a syntax window or run a .sps file. psppire
-runs all PSPP syntax, not just what appears in the dialogs. Thus, you
-can use psppire to develop and run you PSPP code.</p>
-<hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
+enter the syntax directly in a syntax window or run an .sps file with
+pspp. psppire runs all PSPP syntax, not just what appears in the
+dialogs. Thus, you can use psppire to develop and run your PSPP code.</p>
+<hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto;
+background-color:black">
 
 <p>In psppire, to start from scratch in the Syntax Editor,
 <strong>File->New->Syntax</strong> will open a Syntax Editor window with
-nothing in it. PSPP Commands can be entered in that window and run.</p>
+nothing in it. PSPP commands can be entered in that window and run. Be
+sure to save your work if you want to save it.</p>
 
 <p>To open existing <code>.sps</code> files, go to
-<strong>File->Open</strong>. When the Open window comes up, it will by
-default, show you PSPP data files and <code>.sps</code> syntax files. If
+<strong>File->Open</strong>. When the Open window appears, it will by
+default, show your PSPP data files and <code>.sps</code> syntax files. If
 you want to only see <code>.sps</code> files, select <strong>Syntax
 Files (*sps)</strong> from the pull-down menu in the lower right, and
-psppire will list any existing <code>.sps</code> files you can
-open. If you want a new syntax file this way, you must first create an
-empty <code>.sps</code> file before you open it. That's more work, of
+psppire will list any existing <code>.sps</code> files you can open. If
+you want a to create a new syntax file this way, you must first create
+an empty <code>.sps</code> file before you open it. That's more work, of
 course, than opening a new file.</p>
 
 <p>
@@ -164,8 +166,8 @@ FREE</code>.</p>
 
 <p><code>GET DATA</code> can read the same raw text file as DATA
 LIST, and it does not rely on the inference rules used by <code>DATA
-LIST FREE</code>. The example below shows the data read with
-<code>GET DATA</code>.</p>
+LIST FREE</code>. The example below shows how <code>GET DATA</code> reads
+the data.</p>
 
 <pre>
 * Save the following lines into a text file, for example: data.txt
@@ -209,7 +211,7 @@ DISPLAY DICTIONARY.
 +----+--------+----------------+-----+-----+---------+------------+-----------+
 </pre>
 
-<p>No issues with the read. The only gotcha with GET DATA is it
+<p>No issues with the read. The only gotcha with GET DATA is that it
 expects its data input to come from a file. You can see it reads
 the data just like the DATA LIST FREE example above.</p>
 
@@ -266,7 +268,7 @@ verify. The <code>LIST</code> command shows that the data were read
 correctly, which is always good practice when using <code>DATA LIST
 FREE</code>. The means and minimum/maximum values can be checked by
 inspection, and although computing the standard deviations requires
-a a bit more arithmetic, the values reported are consistent with the
+a bit more arithmetic, the values reported are consistent with the
 data.</p>
 
 <h3>Frequencies</h3>
@@ -413,7 +415,6 @@ the analyst’s chosen significance level and the question being asked.
 The important point here is that the procedure ran correctly and
 produced the expected statistics.</p>
 
-
 <h3>Linear Regression</h3>
 
 <p>
@@ -463,7 +464,7 @@ the results.
       <li>PSPP does not yet support all SPSS procedures.</li>
       <li>Some dialogs in the GUI correspond to syntax that is not fully implemented.</li>
       <li>Batch mode is stable and well-suited for reproducible workflows.</li>
-      <li>Table and Chart Output can be produced in several formats: plain text, 
+      <li>Table and chart output can be produced in several formats: plain text, 
           PostScript, PDF, DocBook, TeX, or HTML depending on configuration.</li>
 </ul>
 
@@ -489,7 +490,7 @@ a compact form, spreading each case across multiple physical
 records. However, the format is not self-documenting. <strong>External
 documentation is required to interpret the file</strong>, usually in the
 form of a codebook defining how the data were collected, what the cards
-represent, what the variable names are and how wide the variables are,
+represent, what the variable names are, and how wide the variables are,
 or PSPP code to read the data.</p>
 
 <p>Here is an example of multi-record hierarchical data:</p>
@@ -510,7 +511,7 @@ which value belongs to which variable. Different variables appear on
 different cards (or lines in the file), so you cannot read this file
 vertically as a simple rectangular dataset or CSV file.</p>
 <p>
-PSPP can handle this type of data quite easily, by reading each record
+PSPP can handle this type of data quite easily by reading each record
 with a separate set of input statements for each card. It then
 combines the values from all the records into a single case.</p>
 
@@ -521,14 +522,14 @@ options:</p>
 
 <ul>
     <li>Read the card (and delete variables later if you don’t need them)</li>
-    <li>Skip the card using a blank record specification (like: <code>/ / /</code>: 
+    <li>Skip the card using a blank record specification (for example: <code>/ / /</code>: 
         slashes in <code>DATA LIST</code> skips cards)</li>
 </ul>
 
 <p>You must account for every card. Removing a card is like removing
 variables from the middle of a <code>DATA LIST FREE</code> statement
 — everything after the gap shifts left, and the data becomes
-misaligned. Here, it would be a vertical misalignment.</p>
+misaligned. Here, it becomes a vertical misalignment.</p>
 
 <p>Hierarchical multi‑record files follow a vertical, sequential
 pattern that is not obvious at first glance. Without understanding the data
@@ -541,7 +542,7 @@ the data is in a modern format, you can work with it however you
 prefer with other tools.</p>
 
 <p>Before looking at PSPP syntax, it helps to see the basic pattern of
-multi-record file. Each card has its own layout, and PSPP reads them
+a multi-record file. Each card has its own layout, and PSPP reads them
 in order:</p>
 
 <pre>
@@ -582,7 +583,7 @@ period.</p>
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
 <p>Unless you grew up reading data this way--or ever had reason to 
-become familiar with the <strong>vertical, sequential data
+become familiar with the <strong>vertical, sequential data&endash;
 reading</strong> pattern that hierarchical files depend upon--the format
 may seem odd at first glance. The structure itself is not the
 problem. It is an efficient, compact way to store data--and it 
@@ -601,7 +602,7 @@ from several cards to confirm that the data were read correctly.</p>
 <p>When all variables are single digits, a one‑off shift
 can still produce values that look plausible. In those cases,
 <code>FREQUENCIES</code> may not reveal the problem because the range
-of values is unchanged -- only counts shift . This is where having the
+of values is unchanged -- only the counts shift. This is where having the
 original, documented frequencies or an original filled-out survey form
 is essential. When you cannot trust <code>FREQUENCIES</code> to expose
 a misread, the only dependable method is to check the values by hand to
@@ -698,7 +699,7 @@ lets you rerun the syntax in psppire without restarting the application.</p>
 Only the formats shown in the File->Export menu are supported; if a
 format is not listed, psppire does not produce it. The export format is
 determined by the output file extension you provide. For example, if you
-put "myfile.pdf" in the export dialog, psppire will generate a PDF file.</p>
+enter "myfile.pdf" in enter the export dialog, psppire will generate a PDF file.</p>
 
 <p> The following sections outline the formats available in the
 File->Export menu and explain what each one is best suited for.<p>
@@ -712,8 +713,8 @@ Output window.</p>
 <ul> 
     <li><strong>PDF (.pdf)</strong> — Suitable for sharing,
         printing, and archiving.</li>
-    <li><strong>Postscript (.ps)</strong> — Vector format; Compatible
-        with Postscript viewers and printers.</li>
+    <li><strong>PostScript (.ps)</strong> — Vector format; Compatible
+        with PostScript viewers and printers.</li>
     <li><strong>Scalable Vector Graphics (.svg)</strong> — Vector
         format; editable in tools such as Inkscape.</li>
 </ul>
@@ -722,7 +723,7 @@ Output window.</p>
 
 <p>These preserve tables and structure, suitable for editing or further processing.</p>
 <ul>
-    <li><strong>HTML (.html)</strong> — Good for viewing in a web browser, for copying into other
+    <li><strong>HTML (.html)</strong> — Good for viewing in a web browser, copying into other
     documents, or converting to other formats.</li>
     <li><strong>OpenDocument Text (.odt)</strong> — Editable in LibreOffice and other ODT-compatible
         editors.</li>
@@ -748,21 +749,21 @@ current version of psppire (or the one I'm using). Examples include:</p>
     <li><strong>TeX / LaTeX (.tex)</strong></li>
     <li><strong>RTF</strong></li>
     <li><strong>PDF/A</strong></li>
-    <li><strong>Any PSPP backend not listed above — not supported</strong></li>
+    <li><strong>Any PSPP backend format not listed above — not supported</strong></li>
 </ul>
 
 <h3>Choosing a Format</h3>
 
 <ul>
     <li>Use <strong>PDF, HTML, ODT, TXT, or PS</strong> for
-        non-graphical statistical output.</li>
+        non&endash;graphical statistical output.</li>
     <li>Use <strong>PDF, SVG, PNG, or PS</strong> for graphical output.</li>
     <li>Use <strong>CSV</strong> when exporting tables for use in other software.</li>
 </ul>
 
 <h3>Merging Files (MATCH FILES)</h3>
 
-<p>Merging of data files is something every programmer needs to do when
+<p>Merging data files is something every programmer needs to do when
 processing data. Often more variables you want to analyze come from a
 different file, for example. The solution is using PSPP's MATCH FILES
 command to merge them into your main file for analysis or reporting
@@ -846,9 +847,9 @@ a new dataset is read or created, you must save any results you want to
 keep <strong>before</strong> running another command that changes the
 active file.</p>
 
-<p><strong>What happens when there is not a one to one merge?</strong>
+<p><strong>What happens when there is not a one-to-one merge?</strong>
 Subject 104 has been added to psych.sav but not to demo.sav. In this
-case, patid 104 is merged but the demo variables are all missing.</p>
+case, PATID 104 is merged but the demo variables are all missing.</p>
 
 <p><strong>Revised psych.sav</strong></p>
 <table>
@@ -885,10 +886,10 @@ case, patid 104 is merged but the demo variables are all missing.</p>
 
 <p>If a PATID value appears in one file but not the other, MATCH FILES
 still creates a case in the merged dataset. This is not a missing file
-or a missing variable—it is a <em>missing case</em> in one of the
+or a missing variable — it is a <em>missing case</em> in one of the
 datasets. PSPP has no values to supply for that side of the merge, so
 the variables from the file where the case is absent are set to
-system-missing. This is the safest behavior: it preserves the case
+system&endash;missing. This is the safest behavior: it preserves the case
 without inventing zeros or placeholder values.</p>
 
 <p>You can <strong>use <code>/IN=</code> flags to track which file each
