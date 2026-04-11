@@ -8,7 +8,7 @@ color:#333;
 font-size:16px;
 }
 a:link {
-color:#58a;
+color:#336699;
 text-decoration:none;
 }
 a:visited {
@@ -16,7 +16,7 @@ color:#969;
 text-decoration:none;
 }
 a:hover {
-color:#140;
+color:#224466;
 text-decoration:underline;
 }
 a img {
@@ -59,40 +59,43 @@ float:right;
 }
 /* Headings
 ----------------------------------------------- */
-    /*
 h2 {
-margin:1.5em 0 .75em;
+margin-top:1.5em 0 .75em;
 font:78%/1.4em "Trebuchet MS",Trebuchet,Arial,Verdana,Sans-serif;
 text-transform:uppercase;
 letter-spacing:.2em;
 color:#999;
 }
-*/
+
+h3 {
+    font-size: 1.2em
+    font-weight: bold;
+    color: #000;
+    text-transform: none;
+    letter-spacing: normal;
+}
 /* Footer
 ----------------------------------------------- */
-#footer {
-width:660px;
-clear:both;
-margin:0 auto;
-}
-#footer hr {
-display:none;
-}
-#footer p {
-margin:0;
-padding-top:15px;
-font:78%/1.6em "Trebuchet MS",Trebuchet,Verdana,Sans-serif;
-text-transform:uppercase;
-letter-spacing:.1em;
-}
+    footer {
+        margin-top: 1em;
+        text-align: center;
+        font-size: 0.9em;
+        color: #555;
+    }
+    footer a {
+        color: #555;
+        text-decoration: none;
+    }
+    footer a:hover {
+        text-decoration: underline;
+    }
 /* pre sections */
 pre {
-  background-color: #f5f5f5;
+  background-color: #d4d4d4;
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  box-shadow: 0 0 3px rgba(0,0,0,0.35);
   overflow: auto;
-  /*font-family: "Courier New", Courier, monospace;*/
 }
 

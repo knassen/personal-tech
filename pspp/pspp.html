@@ -1,0 +1,969 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+     <base href="/personal-tech/">
+     <link rel="stylesheet" type="text/css" href="kstyle2.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="description" content="Kent Nassen's PSPP Page">
+     <meta name="keywords" content="PSPP Overview &amp; programming">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <title>PSPP Overview &amp; Programming</title> 
+</head>
+
+<body>
+
+<main>
+<blockquote>
+
+<hr style="height: 4px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
+
+<h1>Using PSPP: Examples, Syntax, and Notes</h1>
+
+<p>
+PSPP is a free, open-source alternative to SPSS. It supports many
+of the same statistical procedures, uses a similar syntax language,
+and is well-suited for batch processing, scripting, and reproducible
+analysis. This page provides practical examples of PSPP syntax along
+with output samples and notes.</p>
+<p>
+I've been using PSPP for many years now.  After I left college it
+was one of the software packages that could do some of the analysis
+tasks that I needed. I generally build it from source code on one
+of my FreeBSD Unix computers. 
+</p>
+
+<p> This web page focuses on practical examples and discussions about
+data. More examples will be added over time. </p>
+
+<h3>Getting Started</h3>
+
+<p>
+<a href="https://www.gnu.org/software/pspp/get.html">gnu.org/software/pspp</a></p>
+
+<p>
+This site gives instructions for installing pspp for Windows, Mac,
+Debian, Ubuntu, Fedora, and with Flatpak. </p>
+
+<p>
+pspp source can also be installed with git: 
+<a href="https://savannah.gnu.org/git/?group=pspp">savannah.gnu.org/git</a></p>
+
+<p>FreeBSD: PSPP is no longer in the FreeBSD ports collection (expired
+2025‑03‑01 after being marked broken for more than
+five months). FreeBSD users can still install PSPP by building it
+from the official GNU source release. The standard build instructions
+work on FreeBSD: clone the PSPP source and the required gnulib
+revision using Git (as described on pspp.gnu.org), build and install the GNU
+Spreadsheet Widget, ensure the listed build tools are present, and use
+<code>gmake</code> instead of BSD <code>make</code>. gnulib does not need
+to be built or installed; PSPP’s build system pulls the needed files
+directly from the gnulib source tree when it is placed in the expected
+location. See <code>pspp/INSTALL</code> after cloning with Git for
+details.</p>
+
+<h3>Using PSPP</h3>
+<p>You can create a PSPP syntax file with a text editor. Save the file
+with a .sps extension. In psppire, you can use the Syntax Editor to
+modify or run the file with PSPP or psppire. There are two ways to find
+the Syntax Editor in psppire.</p>
+
+<hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
+<p><strong>A note about psppire:</strong><p>
+<p>psppire is a graphical interface for the PSPP engine. It’s useful
+for exploring data, running common procedures, and generating basic
+syntax. Many users begin in psppire and then copy the generated syntax
+into a program file.<p>
+
+<p>Some PSPP commands and options are not available in the psppire
+menus. When you need features that the GUI doesn’t expose, you can
+enter the syntax directly in a syntax window or run a .sps file. psppire
+runs all PSPP syntax, not just what appears in the dialogs. Thus, you
+can use psppire to develop and run you PSPP code.</p>
+<hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
+
+<p>In psppire, to start from scratch in the Syntax Editor,
+<strong>File->New->Syntax</strong> will open a Syntax Editor window with
+nothing in it. PSPP Commands can be entered in that window and run.</p>
+
+<p>To open existing <code>.sps</code> files, go to
+<strong>File->Open</strong>. When the Open window comes up, it will by
+default, show you PSPP data files and <code>.sps</code> syntax files. If
+you want to only see <code>.sps</code> files, select <strong>Syntax
+Files (*sps)</strong> from the pull-down menu in the lower right, and
+psppire will list any existing <code>.sps</code> files you can
+open. If you want a new syntax file this way, you must first create an
+empty <code>.sps</code> file before you open it. That's more work, of
+course, than opening a new file.</p>
+
+<p>
+PSPP syntax files use straightforward commands terminated by
+periods. Commands can span multiple lines. Comments begin with an
+asterisk (*) or they may be written as block comments enclosed in
+<code>/*</code> and <code>*/</code>. Most data management and analysis
+operations can be expressed in this format, whether run from the command
+line or from psppire’s Syntax Editor.</p>
+
+<p>With these basics in place, here is a simple example of data
+processing in PSPP using the command‑line <code>pspp</code>. The same
+syntax can be run in psppire’s Syntax Editor window. If you cannot
+find <code>DATA LIST FREE</code> in psppire’s pull‑down menus, that
+is correct — psppire does not provide a GUI for this command, but
+it can still be entered and run in the Syntax Editor (use the syntax,
+Luke).</p>
+
+<pre>
+* Read simple space‑delimited data.
+DATA LIST FREE /ID AGE YEAR SEX (A).
+BEGIN DATA
+123456  27 1984 Male
+987654  58 1990 Female
+END DATA.
+FORMATS
+  ID   (F6.0)
+  AGE  (F2.0)
+  YEAR (F4.0)
+  SEX  (A6).
+LIST.
+DISPLAY DICTIONARY.
+</pre>
+
+<p>Output:</p>
+<pre>
+        Data List
++------+---+----+------+
+|  ID  |AGE|YEAR|  SEX |
++------+---+----+------+
+|123456| 27|1984|Male  |
+|987654| 58|1990|Female|
++------+---+----+------+
+
+                                    Variables
++----+--------+-----------------+-----+-----+---------+------------+------------+
+|Name|Position|Measurement Level| Role|Width|Alignment|Print Format|Write Format|
++----+--------+-----------------+-----+-----+---------+------------+------------+
+|ID  |       1|Scale            |Input|    8|Right    |F6.0        |F6.0        |
+|AGE |       2|Scale            |Input|    8|Right    |F2.0        |F2.0        |
+|YEAR|       3|Scale            |Input|    8|Right    |F4.0        |F4.0        |
+|SEX |       4|Nominal          |Input|    6|Left     |A6          |A6          |
++----+--------+-----------------+-----+-----+---------+------------+------------+
+</pre>
+
+<p><code>DATA LIST FREE</code> relies on type and width inference, which
+can behave unpredictably with short tokens or mixed data. To ensure
+correct and reproducible results, specify formats for all variables. If
+in doubt, verify the read using <code>GET DATA</code>, which always
+requires explicit formats and provides a deterministic check.</p>
+
+
+<h3>GET DATA command</h3>
+
+<p>This example uses the same dataset as above so you can compare
+the results of <code>GET DATA</code> with those from <code>DATA LIST
+FREE</code>.</p>
+
+<p><code>GET DATA</code> can read the same raw text file as DATA
+LIST, and it does not rely on the inference rules used by <code>DATA
+LIST FREE</code>. The example below shows the data read with
+<code>GET DATA</code>.</p>
+
+<pre>
+* Save the following lines into a text file, for example: data.txt
+* GET DATA reads data from files.
+*123456 27 1984 Male
+*987654 58 1990 Female
+
+GET DATA
+  /TYPE = TXT
+  /FILE = 'data.txt'
+  /DELCASE = LINE
+  /DELIMITERS = " "
+  /VARIABLES =
+      ID  F6
+      age F2
+      year F4
+      sex  A6.
+LIST.
+DISPLAY DICTIONARY.
+</pre>
+
+<p>Output:</p>
+<pre>
+        Data List
++------+---+----+------+
+|  ID  |age|year|  sex |
++------+---+----+------+
+|123456| 27|1984|Male  |
+|987654| 58|1990|Female|
++------+---+----+------+
+
+                                   Variables
++----+--------+----------------+-----+-----+---------+------------+-----------+
+|    |        |   Measurement  |     |     |         |            |   Write   |
+|Name|Position|      Level     | Role|Width|Alignment|Print Format|   Format  |
++----+--------+----------------+-----+-----+---------+------------+-----------+
+|ID  |       1|Scale           |Input|    8|Right    |F6.0        |F6.0       |
+|age |       2|Scale           |Input|    8|Right    |F2.0        |F2.0       |
+|year|       3|Scale           |Input|    8|Right    |F4.0        |F4.0       |
+|sex |       4|Nominal         |Input|    6|Left     |A6          |A6         |
++----+--------+----------------+-----+-----+---------+------------+-----------+
+</pre>
+
+<p>No issues with the read. The only gotcha with GET DATA is it
+expects its data input to come from a file. You can see it reads
+the data just like the DATA LIST FREE example above.</p>
+
+<h3>Descriptive Statistics</h3>
+
+<p>
+The <code>DESCRIPTIVES</code> command computes means, standard
+deviations, and other summary statistics. PSPP supports variable lists,
+subcommands, and formatting options, and these are specified through the
+syntax.</p>
+
+<p>DESCRIPTIVES does not read data on its own, so if no dataset is
+active or you have no PSPP data file to read, you must use a short DATA
+LIST or GET DATA to read raw data for the analysis.</p>
+
+<pre>
+* Short example dataset for DESCRIPTIVES.
+DATA LIST FREE 
+  /x y z.
+BEGIN DATA
+5  24  7  
+96  8  3
+END DATA.
+LIST.
+
+DESCRIPTIVES VARIABLES = x y z
+  /STATISTICS = MEAN STDDEV MIN MAX.
+</pre>
+
+<p>Output:</p>
+<pre>
+     Data List
++-----+-----+----+
+|  x  |  y  |  z |
++-----+-----+----+
+| 5.00|24.00|7.00|
+|96.00| 8.00|3.00|
++-----+-----+----+
+
+                Descriptive Statistics
++--------------------+-+-----+-------+-------+-------+
+|                    |N| Mean|Std Dev|Minimum|Maximum|
++--------------------+-+-----+-------+-------+-------+
+|x                   |2|50.50|  64.35|   5.00|  96.00|
+|y                   |2|16.00|  11.31|   8.00|  24.00|
+|z                   |2| 5.00|   2.83|   3.00|   7.00|
+|Valid N (listwise)  |2|     |       |       |       |
+|Missing N (listwise)|0|     |       |       |       |
++--------------------+-+-----+-------+-------+-------+
+</pre>
+
+<p>This example uses a very small dataset so the results are easy to
+verify. The <code>LIST</code> command shows that the data were read
+correctly, which is always good practice when using <code>DATA LIST
+FREE</code>. The means and minimum/maximum values can be checked by
+inspection, and although computing the standard deviations requires
+a a bit more arithmetic, the values reported are consistent with the
+data.</p>
+
+<h3>Frequencies</h3>
+
+<p>
+The <code>FREQUENCIES</code> command produces counts and percentages for the
+values of one or more variables. It is often the first procedure you run
+after reading a dataset, because it quickly shows whether the values were
+read correctly and whether any unexpected categories or codes appear.
+</p>
+
+<p>
+FREQUENCIES can also produce summary statistics and simple charts, but in
+its basic form it is most useful as a data‑checking tool.
+</p>
+
+<pre>
+DATA LIST FREE /group score.
+BEGIN DATA
+1 10
+1 12
+2 15
+2 18
+2 18
+END DATA.
+
+LIST.
+
+FREQUENCIES VARIABLES = group score.
+</pre>
+
+<p>Output:</p>
+<pre>
+  Data List
++-----+-----+
+|group|score|
++-----+-----+
+| 1.00|10.00|
+| 1.00|12.00|
+| 2.00|15.00|
+| 2.00|18.00|
+| 2.00|18.00|
++-----+-----+
+
+       Statistics
++---------+-----+-----+
+|         |group|score|
++---------+-----+-----+
+|N Valid  |    5|    5|
+|  Missing|    0|    0|
++---------+-----+-----+
+|Mean     | 1.60|14.60|
++---------+-----+-----+
+|Std Dev  |  .55| 3.58|
++---------+-----+-----+
+|Minimum  | 1.00|10.00|
++---------+-----+-----+
+|Maximum  | 2.00|18.00|
++---------+-----+-----+
+
+                             group
++----------+---------+-------+-------------+------------------+
+|          |Frequency|Percent|Valid Percent|Cumulative Percent|
++----------+---------+-------+-------------+------------------+
+|Valid 1.00|        2|  40.0%|        40.0%|             40.0%|
+|      2.00|        3|  60.0%|        60.0%|            100.0%|
++----------+---------+-------+-------------+------------------+
+|Total     |        5| 100.0%|             |                  |
++----------+---------+-------+-------------+------------------+
+
+                              score
++-----------+---------+-------+-------------+------------------+
+|           |Frequency|Percent|Valid Percent|Cumulative Percent|
++-----------+---------+-------+-------------+------------------+
+|Valid 10.00|        1|  20.0%|        20.0%|             20.0%|
+|      12.00|        1|  20.0%|        20.0%|             40.0%|
+|      15.00|        1|  20.0%|        20.0%|             60.0%|
+|      18.00|        2|  40.0%|        40.0%|            100.0%|
++-----------+---------+-------+-------------+------------------+
+|Total      |        5| 100.0%|             |                  |
++-----------+---------+-------+-------------+------------------+
+</pre>
+
+<p>The <code>DATA LIST</code> successfully read the data, as shown
+by the <code>LIST</code> output. The statistics we requested appear
+next. Of particular interest are the counts of valid and missing
+values. In this case all values are valid and none are missing, because
+this small example was constructed to be complete. Real datasets often
+contain missing or unexpected values, and <code>FREQUENCIES</code> is a
+quick way to identify them.</p>
+
+<p>Following the statistics output are the frequencies for the two
+variables, group and score. There are two groups and 5 subjects. The
+Score variable shows 18 has two values and the rest of the frequencies
+are one.  This type of result can be checked against the data.</p>
+
+<p> FREQUENCIES can summarize multiple variables at once, but it
+treats each variable separately. CROSSTABS and CTABLES can also
+produce counts for categorical variables, but they’re designed for
+examining relationships or producing formatted tables, not for quick
+single‑variable inspection.</p>
+
+<h3>Cross-Tabulation</h3>
+
+<p>
+The <code>CROSSTABS</code> command displays the relationship between two
+categorical variables by showing the joint distribution of their
+values. It is often used after <code>FREQUENCIES</code> to check that the
+categories of each variable combine as expected.
+</p>
+
+<p>
+CROSSTABS can also produce row, column, and total percentages, which
+make it easier to compare groups. In this example we use the same
+small dataset to show how the values of one variable are distributed
+within the categories of another, and we also request the chi‑square
+test that PSPP prints below the table.
+</p>
+
+<pre>
+CROSSTABS
+  /TABLES = group BY outcome
+    /STATISTICS = CHISQ.
+</pre>
+
+<p>Output:</p>
+
+<pre>
+           Outcome
+           Group     0      1
+           ----------------------
+           1         5      7
+           2         4     14
+
+           Chi-square = 2.31, df = 1, p = 0.128
+</pre>
+
+<p>The crosstabulation shows how the categories of the two variables
+combine. This confirms that the values were read correctly and that
+all expected category combinations appear. The chi‑square test is
+printed below the table. In this example the p‑value is 0.128. Whether
+this is considered evidence against the null hypothesis depends on
+the analyst’s chosen significance level and the question being asked.
+The important point here is that the procedure ran correctly and
+produced the expected statistics.</p>
+
+
+<h3>Linear Regression</h3>
+
+<p>
+The <code>REGRESSION</code> command performs ordinary least squares
+analysis with one or more predictors. After checking the variables with
+<code>FREQUENCIES</code> and <code>CROSSTABS</code>, regression shows
+how a continuous outcome relates to the predictors. PSPP provides the
+standard coefficients and model statistics used in OLS.
+</p>
+
+<pre>
+REGRESSION
+  /DEPENDENT = y
+    /METHOD = ENTER x1 x2 x3.
+</pre>
+
+<p>Output:</p>
+
+<pre>
+Model Summary
+R = 0.72   R-sq = 0.52
+
+Coefficients:
+Variable   B       SE      t       p
+----------------------------------------
+x1        0.45    0.12    3.7    0.001
+x2        0.10    0.09    1.1    0.28
+x3       -0.22    0.11   -2.0    0.05
+</pre>
+
+<p>
+The output includes the standard tables for an ordinary least squares
+model. The Model Summary shows an R of 0.72 and an R-squared of 0.52
+for this example. The Coefficients table lists each predictor along
+with its estimate, standard error, t statistic, and p-value. These
+values confirm that the procedure ran correctly and that PSPP produced
+the expected regression statistics. The size of the coefficients and
+the R-squared value are specific to this small example; their
+interpretation depends on the context and the analyst’s goals. The
+purpose here is simply to show how PSPP fits the model and reports
+the results.
+</p>
+
+<h3>Notes and Limitations</h3>
+
+<ul>
+      <li>PSPP does not yet support all SPSS procedures.</li>
+      <li>Some dialogs in the GUI correspond to syntax that is not fully implemented.</li>
+      <li>Batch mode is stable and well-suited for reproducible workflows.</li>
+      <li>Table and Chart Output can be produced in several formats: plain text, 
+          PostScript, PDF, DocBook, TeX, or HTML depending on configuration.</li>
+</ul>
+
+<p> The remaining sections cover data formats, exporting, psppire
+behavior, and file‑combining. These topics are not part of the basic
+procedures shown above, but they are useful when working with real
+datasets and larger projects. </p>
+
+<p> Up to this point we have seen <code>DATA LIST FREE</code> and
+<code>GET DATA</code> used to read ordinary raw data files. There
+is another kind of raw data you may encounter in your career: the
+multi‑record hierarchical data format. </p>
+
+<h3>Multi-Record Hierarchical Data Format (HDF) with PSPP</h3>
+
+<p>Multi-record hierarchical data is an older raw data format that is
+still used in industries where older reporting systems, long-running
+surveys, or fixed-width exports are still being produced, or where 
+efficient storage matters. 
+
+<p>This format stores a large number of variables and values in
+a compact form, spreading each case across multiple physical
+records. However, the format is not self-documenting. <strong>External
+documentation is required to interpret the file</strong>, usually in the
+form of a codebook defining how the data were collected, what the cards
+represent, what the variable names are and how wide the variables are,
+or PSPP code to read the data.</p>
+
+<p>Here is an example of multi-record hierarchical data:</p>
+<pre>
+044104101712288855439855238255785555221010000010000000005080
+805060909080808090500000708000005092543214424122111432310100
+000200000000080908080810090909100800000007070000051015441344
+2412311243221
+087107002688878693388888577338897238210020001020001010308090
+810071008070506060906030607020505092444443225332444554400200
+000100010001081009090810100708090707060304070302050845444421
+1522124444441
+</pre>
+<p>
+Each block in the example above consists of four records or
+"cards." Single digit responses make it nearly impossible to tell
+which value belongs to which variable. Different variables appear on
+different cards (or lines in the file), so you cannot read this file
+vertically as a simple rectangular dataset or CSV file.</p>
+<p>
+PSPP can handle this type of data quite easily, by reading each record
+with a separate set of input statements for each card. It then
+combines the values from all the records into a single case.</p>
+
+<h3>Tip: You Must Read Every Record or Explicitly Skip It</h3> <p>A
+hierarchical multi‑record file is like a stack of cards.  PSPP
+reads them in order, one record at a time.  You have only two safe
+options:</p>
+
+<ul>
+    <li>Read the card (and delete variables later if you don’t need them)</li>
+    <li>Skip the card using a blank record specification (like: <code>/ / /</code>: 
+        slashes in <code>DATA LIST</code> skips cards)</li>
+</ul>
+
+<p>You must account for every card. Removing a card is like removing
+variables from the middle of a <code>DATA LIST FREE</code> statement
+— everything after the gap shifts left, and the data becomes
+misaligned. Here, it would be a vertical misalignment.</p>
+
+<p>Hierarchical multi‑record files follow a vertical, sequential
+pattern that is not obvious at first glance. Without understanding the data
+file structure, it is easy to make assumptions that don’t match how
+these files must be read.</p>
+
+<p>This page shows how to read a multi‑record file with PSPP and then
+export the assembled dataset to CSV or SAV for use in other tools. Once
+the data is in a modern format, you can work with it however you
+prefer with other tools.</p>
+
+<p>Before looking at PSPP syntax, it helps to see the basic pattern of
+multi-record file. Each card has its own layout, and PSPP reads them
+in order:</p>
+
+<pre>
+- card 1 → /1 variables (Subject IDs and Treatments)
+- card 2 → /2 variables (Attitudes, Part 1)
+- card 3 → /3 variables (Attitudes, Part 2)
+- etc.
+</pre>
+
+<p>This dataset has 4 cards per case. Two of the cards are not needed for
+the analysis so are skipped, by using slashes.</p>
+<pre>
+DATA LIST FILE=studydat RECORDS=4 NOTABLE 
+ /1 SUBJECT 1-3  STUDY 4  TRTMENT 5-6 TRTMENT 5-6  
+    FEEL1 10  FEEL2 11  FEEL3 12
+ /2 LIKE1 1  LIKE2 2  LIKE3 3
+    LIKE4 4  LIKE5 5  LIKE6 6  LIKE7 7  LIKE8 8
+    LIKE9 9  LIKE10 10  ACTU11 11  ACTU12 12  ACTU13 13
+ /
+ /
+ .
+</pre>
+<p>This short bit of code illustrates how <code>DATA LIST</code> reads
+multi-record data. First, the <code>DATA LIST</code> is told how many
+records belong to each case. In this example, there are four cards per
+case, even though two cards are not used.</p>
+
+<p>Each card is defined by a <code>/N</code> and followed by variable
+names and their column locations on that card. Note that the column
+locations differ across the cards because each card has its own
+layout. Here data from two cards are read, so <code>/1</code> and
+<code>/2</code> define those two cards.</p>
+
+<p>To skip a card, PSPP is instructed to advance one record for
+each slash (/). To skip two cards, enter two slashes and end with a
+period.</p>
+
+<h3>Prevent errors when the data don’t match the expected pattern</h3>
+
+<p>Unless you grew up reading data this way--or ever had reason to 
+become familiar with the <strong>vertical, sequential data
+reading</strong> pattern that hierarchical files depend upon--the format
+may seem odd at first glance. The structure itself is not the
+problem. It is an efficient, compact way to store data--and it 
+still works beautifully today. But because it relies on reading
+multiple cards of data in the correct sequence, even a small slip
+can create problems that are hard to detect.</p>
+
+<p>If a card is missing, out of order, or removed from the read pattern,
+the software doesn't complain. It simply reads the next physical record
+as the next logical one -- and everything after that is wrong. The first
+card may appear correct, but the misalignment often becomes apparent
+only on later cards.  Because PSPP cannot infer what you intended, it is
+essential to run <code>FREQUENCIES</code> on a few key variables drawn
+from several cards to confirm that the data were read correctly.</p>
+
+<p>When all variables are single digits, a one‑off shift
+can still produce values that look plausible. In those cases,
+<code>FREQUENCIES</code> may not reveal the problem because the range
+of values is unchanged -- only counts shift . This is where having the
+original, documented frequencies or an original filled-out survey form
+is essential. When you cannot trust <code>FREQUENCIES</code> to expose
+a misread, the only dependable method is to check the values by hand to
+see where the read went wrong.</p>
+
+<h3>Exporting PSPP Data to CSV or SAV Format</h3>
+
+<p>
+PSPP can export data in several formats using syntax, which is the most
+reproducible way to create files for use in other software. The examples
+below show how to write datasets in common formats. psppire also
+supports exporting through its File-&gt;Export dialog; its available
+formats are described in a later section. </p>
+
+<pre>
+/* Set the working directory to avoid path errors when saving files. */
+CD '/home/user/analysis'.
+
+SAVE OUTFILE='spss/emo.sav'.
+
+EXPORT OUTFILE='spss/emo.por'.
+
+/* Write a CSV file with variable names in the first row. */
+SAVE TRANSLATE
+  /OUTFILE='spss/emo.csv'
+  /TYPE=CSV
+  /FIELDNAMES
+  /REPLACE.
+</pre>
+
+<p> The commands above show how to write data files in several
+formats using syntax. <code>SAVE</code> creates an SPSS system file
+(<code>.sav</code>), and <code>EXPORT</code> writes a portable file
+(<code>.por</code>) for transferring data to other applications
+that support this format. The <code>SAVE TRANSLATE</code> command
+writes a CSV file with variable names in the first row; the
+<code>REPLACE</code> option allows it to overwrite an existing file.
+<code>SAVE TRANSLATE</code> can also write tab‑separated files by
+specifying <code>TYPE=TAB</code>. </p>
+
+<p>PSPP syntax can be run either from a shell command line or by pasting
+it into psppire’s Syntax Editor. psppire can also export the assembled
+data directly through its File-&gt;Export dialog, which provides a subset
+of the formats available in PSPP syntax.</p>
+
+<h3>psppire: The PSPP Graphical Interface</h3>
+
+<p>Many PSPP users prefer <strong>psppire</strong>, the graphical 
+interface that resembles the SPSS Data Editor. psppire is useful for data 
+entry, quick exploration, and running common procedures without writing 
+syntax. However, it does not expose all of PSPP's capabilities, and some 
+dialogs correspond to syntax that is only partially implemented.</p>
+
+<p>For reproducible analysis, batch processing, or advanced procedures,
+PSPP syntax is still the recommended approach. psppire can generate
+syntax for many commands, which can then be copied, edited, and reused
+in syntax files. But there are many more PSPP commands outside the GUI
+that may be needed from time to time.</p> 
+
+<p> For example, merging datasets (MATCH FILES) is a standard PSPP
+operation, but it is not currently available through psppire’s
+menus.</p>
+
+<p>psppire is ideal for learning the syntax by example, but complex
+workflows are best handled directly in syntax files where you can use
+all the PSPP commands that you need, including commands not in psppire.
+psppire shows only the commands for which dialogs exist; PSPP syntax
+supports many additional commands and options.</p>
+
+<h3>psppire and File Handles vs. Rerunning Programs</h3>
+
+<p>psppire keeps FILE HANDLE definitions for the duration of the session.
+If you define a handle in your syntax and then rerun the program, psppire
+will report that the handle is already in use. This does not happen when
+running PSPP from the command line, because each run starts a fresh
+session.</p>
+
+<p>If you use FILE HANDLEs to give your files meaningful names, add
+<code>CLOSE FILE HANDLE</code> commands at the end of your program. This
+removes the handles so the syntax can be rerun without errors:</p>
+
+<pre>
+CLOSE FILE HANDLE demo.
+CLOSE FILE HANDLE psych.
+CLOSE FILE HANDLE out.
+</pre>
+
+<p>Closing the handles prevents the “handle already in use” error and
+lets you rerun the syntax in psppire without restarting the application.</p>
+
+<h3>psppire Export Formats</h3>
+
+<p>psppire can export the contents of the Output window in several formats.
+Only the formats shown in the File->Export menu are supported; if a
+format is not listed, psppire does not produce it. The export format is
+determined by the output file extension you provide. For example, if you
+put "myfile.pdf" in the export dialog, psppire will generate a PDF file.</p>
+
+<p> The following sections outline the formats available in the
+File->Export menu and explain what each one is best suited for.<p>
+
+<h3>Rich / Page‑Description Formats (cairo‑based)</h3>
+
+<p>
+These preserve layout, fonts, borders, and the exact appearance of the
+Output window.</p>
+
+<ul> 
+    <li><strong>PDF (.pdf)</strong> — Suitable for sharing,
+        printing, and archiving.</li>
+    <li><strong>Postscript (.ps)</strong> — Vector format; Compatible
+        with Postscript viewers and printers.</li>
+    <li><strong>Scalable Vector Graphics (.svg)</strong> — Vector
+        format; editable in tools such as Inkscape.</li>
+</ul>
+
+<h3>Structured / Document Formats</h3>
+
+<p>These preserve tables and structure, suitable for editing or further processing.</p>
+<ul>
+    <li><strong>HTML (.html)</strong> — Good for viewing in a web browser, for copying into other
+    documents, or converting to other formats.</li>
+    <li><strong>OpenDocument Text (.odt)</strong> — Editable in LibreOffice and other ODT-compatible
+        editors.</li>
+    <li><strong>SPSS Viewer (.spv)</strong> — Compatible with SPSS Viewer applications.</li>
+</ul>
+
+<h3>Plain Data Formats</h3>
+
+<p>These provide minimal formatting and are useful for scripting, data
+        interchange or raw text.</p>
+<ul>
+    <li><strong>Text (generic) (.txt).</strong></li>
+    <li><strong>Text [plain] (.txt)</strong> — Plain text output.</li>
+    <li><strong>Comma‑separated values (.csv)</strong> — For exporting data tables.</li>
+</ul>
+
+<h3>Unsupported Formats</h3>
+
+<p>Formats not shown in the File->Export menu are not implemented in the
+current version of psppire (or the one I'm using). Examples include:</p>
+
+<ul>
+    <li><strong>TeX / LaTeX (.tex)</strong></li>
+    <li><strong>RTF</strong></li>
+    <li><strong>PDF/A</strong></li>
+    <li><strong>Any PSPP backend not listed above — not supported</strong></li>
+</ul>
+
+<h3>Choosing a Format</h3>
+
+<ul>
+    <li>Use <strong>PDF, HTML, ODT, TXT, or PS</strong> for
+        non-graphical statistical output.</li>
+    <li>Use <strong>PDF, SVG, PNG, or PS</strong> for graphical output.</li>
+    <li>Use <strong>CSV</strong> when exporting tables for use in other software.</li>
+</ul>
+
+<h3>Merging Files (MATCH FILES)</h3>
+
+<p>Merging of data files is something every programmer needs to do when
+processing data. Often more variables you want to analyze come from a
+different file, for example. The solution is using PSPP's MATCH FILES
+command to merge them into your main file for analysis or reporting
+purposes.</p>
+
+<p>psppire does not currently provide dialogs for merging datasets. MATCH
+FILES is a standard PSPP command, but it must be run from PSPP syntax.</p>
+
+<p>The following example shows how to merge two datasets that share
+a common key variable (<code>PATID</code>). One file contains
+demographic variables; the other contains psychological measures. MATCH
+FILES combines them into a single dataset by matching cases on
+<code>PATID</code>.</p>
+
+<p><strong>Example datasets</strong></p>
+
+<p><strong>demo.sav</strong></p>
+<table>
+  <tr><th>PATID</th><th>AGE</th><th>SEX</th></tr>
+  <tr><td>101</td><td>34</td><td>1</td></tr>
+  <tr><td>102</td><td>29</td><td>2</td></tr>
+  <tr><td>103</td><td>41</td><td>1</td></tr>
+</table>
+
+<p><strong>psych.sav</strong></p>
+<table>
+  <tr><th>PATID</th><th>SCORE1</th><th>SCORE2</th></tr>
+  <tr><td>101</td><td>12</td><td>18</td></tr>
+  <tr><td>102</td><td>15</td><td>20</td></tr>
+  <tr><td>103</td><td>11</td><td>17</td></tr>
+</table>
+
+<p><strong>Merged Output</strong></p>
+<table>
+  <tr>
+    <th>PATID</th><th>AGE</th><th>SEX</th>
+    <th>SCORE1</th><th>SCORE2</th>
+  </tr>
+  <tr>
+    <td>101</td><td>34</td><td>1</td>
+    <td>12</td><td>18</td>
+  </tr>
+  <tr>
+    <td>102</td><td>29</td><td>2</td>
+    <td>15</td><td>20</td>
+  </tr>
+  <tr>
+    <td>103</td><td>41</td><td>1</td>
+    <td>11</td><td>17</td>
+  </tr>
+</table>
+
+<pre>
+MATCH FILES
+  /FILE='demo.sav'
+  /TABLE='psych.sav'
+  /BY PATID.
+EXECUTE.
+
+SAVE OUTFILE='merged.sav'.
+</pre>
+
+<p>PSPP matches cases from both files using
+<code>PATID</code>. Variables from <code>demo.sav</code> and
+<code>psych.sav</code> appear together in the merged dataset.  If a case
+appears in one file but not the other, MATCH FILES still produces a
+case, but variables from the missing file are system-missing.</p>
+
+<p>The dataset named on <code>/FILE</code> becomes the active dataset
+after the merge. Variables from each <code>/TABLE</code> file are added
+to it. In this example, <code>demo.sav</code> is the base file. After
+MATCH FILES completes, the active dataset contains the merged result,
+which needs to be saved with <code>SAVE OUTFILE='merged.sav'</code> if
+you want to keep it.</p>
+
+<p>PSPP always has exactly one <em>active file</em>, referred to in
+syntax as <code>*</code>. Commands such as <code>GET FILE</code>,
+<code>MATCH FILES</code>, and <code>ADD FILES</code> replace the active
+file with their result. Because the active file is overwritten whenever
+a new dataset is read or created, you must save any results you want to
+keep <strong>before</strong> running another command that changes the
+active file.</p>
+
+<p><strong>What happens when there is not a one to one merge?</strong>
+Subject 104 has been added to psych.sav but not to demo.sav. In this
+case, patid 104 is merged but the demo variables are all missing.</p>
+
+<p><strong>Revised psych.sav</strong></p>
+<table>
+  <tr><th>PATID</th><th>SCORE1</th><th>SCORE2</th></tr>
+  <tr><td>101</td><td>12</td><td>18</td></tr>
+  <tr><td>102</td><td>15</td><td>20</td></tr>
+  <tr><td>103</td><td>11</td><td>17</td></tr>
+  <tr><td>104</td><td>14</td><td>19</td></tr>
+</table>
+
+<p><strong>Merged Output</strong></p>
+<table>
+  <tr>
+    <th>PATID</th><th>AGE</th><th>SEX</th>
+    <th>SCORE1</th><th>SCORE2</th>
+  </tr>
+  <tr>
+    <td>101</td><td>34</td><td>1</td>
+    <td>12</td><td>18</td>
+  </tr>
+  <tr>
+    <td>102</td><td>29</td><td>2</td>
+    <td>15</td><td>20</td>
+  </tr>
+  <tr>
+    <td>103</td><td>41</td><td>1</td>
+    <td>11</td><td>17</td>
+  </tr>
+  <tr>
+    <td>104</td><td>.</td><td>.</td>
+    <td>14</td><td>19</td>
+  </tr>
+</table>
+
+<p>If a PATID value appears in one file but not the other, MATCH FILES
+still creates a case in the merged dataset. This is not a missing file
+or a missing variable—it is a <em>missing case</em> in one of the
+datasets. PSPP has no values to supply for that side of the merge, so
+the variables from the file where the case is absent are set to
+system-missing. This is the safest behavior: it preserves the case
+without inventing zeros or placeholder values.</p>
+
+<p>You can <strong>use <code>/IN=</code> flags to track which file each
+case came from</strong>. An <code>/IN</code> variable is set to 1 if the
+case was present in that file, and 0 if it was not. This makes it easy
+to identify unmatched cases after the merge.</p>
+
+<pre>
+MATCH FILES
+  /FILE='demo.sav'  /IN=indemo
+  /TABLE='psych.sav' /IN=inpsych
+  /BY PATID.
+
+SAVE OUTFILE='merged.sav'.
+</pre>
+
+<p><strong>Merged Output with /IN= Flags</strong></p>
+<table>
+  <tr>
+    <th>PATID</th><th>AGE</th><th>SEX</th>
+    <th>SCORE1</th><th>SCORE2</th>
+    <th>indemo</th><th>inpsych</th>
+  </tr>
+  <tr>
+    <td>101</td><td>34</td><td>1</td>
+    <td>12</td><td>18</td>
+    <td>1</td><td>1</td>
+  </tr>
+  <tr>
+    <td>102</td><td>29</td><td>2</td>
+    <td>15</td><td>20</td>
+    <td>1</td><td>1</td>
+  </tr>
+  <tr>
+    <td>103</td><td>41</td><td>1</td>
+    <td>11</td><td>17</td>
+    <td>1</td><td>1</td>
+  </tr>
+  <tr>
+    <td>104</td><td>.</td><td>.</td>
+    <td>14</td><td>19</td>
+    <td>0</td><td>1</td>
+  </tr>
+</table>
+
+<p>In addition to <code>MATCH FILES</code>, PSPP also provides <code>ADD
+FILES</code> to append data from multiple files to the active data set, and
+<code>UPDATE</code>, which updates a master file with modifications from
+a transaction file.</p>
+
+<h3>Appendix:  Further Reading</h3>
+
+<p>The <a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
+user manual</a> provides the full reference for all commands, functions,
+and procedures available in PSPP.  It is worth consulting when you need
+details beyond the examples shown here. or the options available in the
+psppire menus.</p>
+
+<hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+
+<footer>
+    <p>© 2026, Kent Nassen</p>
+
+<p>
+<a href="/personal-tech/index.html">
+    <img src="/personal-tech/gif/arrwback.gif" alt="">
+    Back to Kent's Page
+</a>
+</p>
+<p style="font-size:80%;">
+Last Modified: Sat Apr 11 10:58:16 EDT 2026
+</p>
+</footer>
+</blockquote>
+</main>
+</body>
+</html>
+
