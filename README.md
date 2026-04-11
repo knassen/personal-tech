@@ -50,6 +50,10 @@ I have done most of things I set out to do.
   - In 2026, I started adding Python program that do what my Perl
     programs do. There are three programs there now.
 
+  - Also in 2026, I put together a PSPP page with plenty of examples,
+    tips, and information about reading multi-record hierarchical files,
+    merging files in PSPP, and test of GET DATA.
+
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
 ways to do things in SAS, vim, or unix/linux. I still use some of these

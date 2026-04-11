@@ -172,3 +172,9 @@ All html files pass the w3.org validator now.  My python pages have been
 on the site starting Feb 24, 2026. I'm still working on them. The latest
 one is detab.py (see detabpy.html).
 
+**April 11, 2026** Today I uploaded a new page, pspp.html which is about
+the free statistical software PSPP. I'm still adding to it but it's
+in a readable and usable condition already. The main things about it is
+it covers multi-record hierarchical files, merging files in PSPP, and
+I run GET DATA and compare the results to DATA LIST FREE.
+
