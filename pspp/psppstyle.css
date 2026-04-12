@@ -1,3 +1,6 @@
+.skip {
+   display: none;
+}
 body {
 background:#fff;
 margin:20;
