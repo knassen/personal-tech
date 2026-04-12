@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-     <base href="/personal-tech/">
-     <link rel="stylesheet" type="text/css" href="pspp/psppstyle.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <meta name="description" content="Kent Nassen's PSPP Page">
-     <meta name="keywords" content="PSPP Overview &amp; programming">
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-     <title>PSPP Overview &amp; Programming</title> 
+     <base href="/personal-tech/"> 
+     <link rel="stylesheet" href="pspp/psppstyle.css"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     <meta name="description" content="Kent Nassen's PSPP Page"> 
+     <meta name="keywords" content="PSPP Overview &amp; programming"> 
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+     <title>PSPP Overview &amp; Programming</title>  
 </head>
 
 <body>
@@ -36,7 +36,7 @@ of my FreeBSD Unix computers.
 <p> This web page focuses on practical examples and discussions about
 data. More examples will be added over time. </p>
 
-<h2 class="skip"></h2>
+<h2 class="skip">&nbsp;</h2>
 <h3>Getting Started</h3>
 
 <p>
@@ -212,6 +212,66 @@ DISPLAY DICTIONARY.
 <p>No issues with the read. The only gotcha with GET DATA is that it
 expects its data input to come from a file. You can see it reads
 the data just like the DATA LIST FREE example above.</p>
+
+<h3>Reading Saved Files</h3>
+
+<pre>
+* Reading those rare portable SPSS files.
+GET FILE='legacy.por'.
+
+*Reading a PSPP system file.
+GET FILE='mydata.sav'.
+
+*Reading a CSV file.
+GET DATA
+  /TYPE=CSV
+  /FILE='data.csv'
+  /DELCASE=LINE
+  /DELIMITERS=","
+  /QUALIFIER='"'
+  /ARRANGEMENT=DELIMITED
+  /FIRSTCASE=2
+  /VARIABLES=
+    id F8.0
+    age F3.0
+    gender A1.
+    score F5.2
+    .
+</pre>
+
+<p>Note: FIRSTCASE tells pspp that the data begin in line 2. The variable names
+are in line 1, so we skip that line. This example defines the file
+as DELIMITED, in this case comma-separated values, with the comma as a
+delimiter and double quotes as the text qualifier.</p>
+
+<h3>File Handles in PSPP</h3>
+
+<p>File handles allow you to avoid typing long path names in your
+programs. Instead, you define a shorter file handle and after that can
+use the handle to refer to the data.</p>
+
+<pre>
+* File handle usage.
+FILE HANDLE survey /FILE='C:\path\to\survey.sav'.
+GET FILE=survey.
+</pre>
+
+<p>When you are done with a file handle, close it with <code>CLOSE FILE HANDLE
+[handle name]</code>. PSPP requires closing file handles in psppire so they 
+don’t persist between runs.</p>
+
+<p>The entire sequence of using file handles looks like this:</p>
+
+<pre>
+FILE HANDLE demo /NAME='demo' /FILE='/home/analysis/data/demo.sav'.
+
+GET FILE=demo.
+
+* Do some work here (uses the active file from GET FILE).
+FREQUENCIES VARIABLES=age sex income.
+
+CLOSE FILE HANDLE demo.
+</pre>
 
 <h3>Descriptive Statistics</h3>
 
@@ -599,14 +659,112 @@ from several cards to confirm that the data were read correctly.</p>
 
 <p>When all variables are single digits, a one‑off shift
 can still produce values that look plausible. In those cases,
-<code>FREQUENCIES</code> may not reveal the problem because the range
-of values is unchanged -- only the counts shift. This is where having the
+<code>FREQUENCIES</code> may not reveal the problem because the range of
+values is unchanged -- only the counts shift. This is where having the
 original, documented frequencies or an original filled-out survey form
 is essential. When you cannot trust <code>FREQUENCIES</code> to expose
-a misread, the only dependable method is to check the values by hand to
-see where the read went wrong.</p>
+a misread due to complexity, the only dependable method is to check the
+values by hand to see where the read went wrong.</p>
 
-<h3>Exporting PSPP Data to CSV or SAV Format</h3>
+<h3>Recoding Variables using RECODE</h3>
+
+<p>The RECODE command can be used to change values in a variable or
+create new values in a new variable.</p>
+
+<p>Here PSPP requires you to create a string variable to put your values
+in, because the recoded values are strings in the next two examples.
+Anything not recoded is given the System Missing value (SYSMIS)</p>
+
+<pre>
+/* Create  GENDERC wide enough to accept the longest value then recode.*/
+STRING GENDERC (A8). 
+RECODE GENDER (2="Female") (1="Male") (ELSE=SYSMIS) into GENDERC.                                                                     
+
+/* Create a text Treatment var (TRTA) */
+STRING TRTA(A1).
+RECODE TRTMENT (1="A") (2="B") (3="C") (4="D") (5="E") (6="F") (7="G") 
+               (8="H") (9="I") (10="J") 
+               (ELSE=SYSMIS) into TRTA.
+</pre>
+
+<pre>
+/* Reverse these scales */
+RECODE CONSIST TO KEEP_RID UNCERT TO POWER MORALITY CONTROL CAUS_YOU 
+   (1=9) (2=8) (3=7) (4=6) (5=5) (6=4) (7=3) (8=2) (9=1) 
+   (ELSE=SYSMIS).
+</pre>
+
+<p>This recode is changing the numeric values in the same variable it
+is reading from (CONSIST). Since that variable already exists, we don't
+need to create a new variable. Anything not recoded is given the System
+Missing value (SYSMIS).</p>
+
+<p>RECODE works on both string to numeric coding and numeric to string
+coding.</p>
+
+<h3>Using COMPUTE to Create Values</h3>
+
+<p><code>COMPUTE</code> creates a new variable or replaces the values
+of an existing one. It is used for simple arithmetic, scale scores, or
+system variables such as <code>$CASENUM</code>.</p>
+
+<pre>
+/* Compute an index number based on current case number */
+COMPUTE IDN = $CASENUM.
+
+/* Average three items */
+COMPUTE SITUATN = (CONSIST + WANTEDBY + IMPROVED) / 3.
+
+/* Average three items using a function. */
+COMPUTE SITUATN = MEAN(CONSIST, WANTEDBY, IMPROVED).
+</pre>
+
+<h3>PSPP Function Examples</h3>
+
+<p>PSPP has many functions that can be used when you work on data. Here
+       are five that are used frequently.</p>
+
+<p><strong>1. MEAN()</strong> — the workhorse</p> 
+<p>Handles missing values gracefully and teaches the “function inside
+COMPUTE” pattern.</p>
+
+<pre>
+COMPUTE avg_score = MEAN(v1, v2, v3, v4).
+</pre>
+
+<p><strong>2. SUM()</strong> — simple, predictable, and widely needed
+Good for scales, counts, and composite scores.</p>
+
+<pre>
+COMPUTE total = SUM(item1, item2, item3).
+</pre>
+
+<p><strong>3. DATEDIFF()</strong> — essential for age and time intervals
+This one solves a real problem for archivists and anyone working with dates.</p>
+
+<pre>
+COMPUTE age = DATEDIFF(TODAY(), birthdate, "years").
+</pre>
+
+<p><code>DATEDIFF</code> returns the difference between two dates
+without adding 1. If you need inclusive counting, add 1 manually.</p>
+
+<p><strong>4. LTRIM() / RTRIM()</strong> — string cleanup That will
+remove leading or trailing spaces from a string variables's values.</p>
+
+<pre>
+COMPUTE clean_name = RTRIM(LTRIM(name)).
+</pre>
+
+<p><strong>5. SD()</strong> — a simple statistical function that
+demonstrates PSPP’s analytic side. Useful for z‑scores or quick diagnostics.</p>
+
+<pre>
+COMPUTE z = (score - MEAN(score)) / SD(score).
+</pre>
+
+
+<h3>Exporting and Saving PSPP Data (CSV, POR, SAV)</h3>
 
 <p>
 PSPP can export data in several formats using syntax, which is the most
@@ -831,19 +989,20 @@ appears in one file but not the other, MATCH FILES still produces a
 case, but variables from the missing file are system-missing.</p>
 
 <p>The dataset named on <code>/FILE</code> becomes the active dataset
-after the merge. Variables from each <code>/TABLE</code> file are added
-to it. In this example, <code>demo.sav</code> is the base file. After
-MATCH FILES completes, the active dataset contains the merged result,
-which needs to be saved with <code>SAVE OUTFILE='merged.sav'</code> if
-you want to keep it.</p>
+after the merge. Variables from each <code>/TABLE</code> file are
+added to it. In this example, <code>demo.sav</code> is the base
+file. After MATCH FILES completes, the active dataset contains the
+merged result, which should be saved (for example, with<code>SAVE
+OUTFILE='merged.sav'</code>) if you want to keep the data set with
+all its variable attributes.</p>
 
-<p>PSPP always has exactly one <em>active file</em>, referred to in
-syntax as <code>*</code>. Commands such as <code>GET FILE</code>,
-<code>MATCH FILES</code>, and <code>ADD FILES</code> replace the active
-file with their result. Because the active file is overwritten whenever
-a new dataset is read or created, you must save any results you want to
-keep <strong>before</strong> running another command that changes the
-active file.</p>
+<p>PSPP always has exactly one <em>active file</em>, referred to
+in syntax as <code>*</code> (asterisk). Commands such as <code>GET
+FILE</code>, <code>MATCH FILES</code>, and <code>ADD FILES</code>
+replace the active file with their result. Because the active file is
+overwritten whenever a new dataset is read or created, you must save any
+results you want to keep <strong>before</strong> running another command
+that changes the active file.</p>
 
 <p><strong>What happens when there is not a one-to-one merge?</strong>
 Subject 104 has been added to psych.sav but not to demo.sav. In this
