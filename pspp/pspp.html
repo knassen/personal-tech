@@ -213,6 +213,135 @@ DISPLAY DICTIONARY.
 expects its data input to come from a file. You can see it reads
 the data just like the DATA LIST FREE example above.</p>
 
+<h3>Reading Data in Fixed Column Format</h3>
+
+<p><code>DATA LIST FIXED</code> reads variables from specific column
+positions in a text data file. As long as the text is aligned in
+columns, PSPP will parse it exactly as specified.</p>
+
+<p><strong>Syntax</strong></p>
+<pre>
+DATA LIST FIXED
+  /ID    1-5
+   NAME  6-13 (A)
+   AGE   14-15.
+BEGIN DATA.
+12345John    27
+98765Maria   34
+END DATA.
+
+LIST.
+DISPLAY DICTIONARY.
+</pre>
+
+<p>PSPP sees:</p>
+<pre>
+Column layout
+- ID → columns 1–5 → numeric
+- NAME → columns 6–13 → 8‑character string
+- AGE → columns 14–15 → numeric
+</pre>
+
+<p>There are a couple of points to remember when using DATA LIST FIXED:</p>
+
+<p><strong>1. DATA LIST FIXED is brittle by design</strong></p>
+
+<p>If the file shifts by even one space, every variable after that point is
+wrong. This is why fixed‑width files must be inspected in a monospace
+editor and each column range verified to ensure PSPP is reading the data
+correctly.</p>
+
+<p><strong>2. Strings must match their column width</strong></p>
+
+<p>PSPP does not infer string length in DATA LIST FIXED. If NAME spans
+columns 6–13, it must be (A8) or (A) with that exact range.</p>
+
+<h3>Reading Data with Implied Decimals</h3>
+
+<p>Some types of data, including government survey data such as CPS,
+NHANES in older ASCII releases, and older Census PUMS files, include
+fields that have implied decimal places. This means the decimal point
+is not stored in the data file. For example, a monthly earnings value
+that is $582.89 in real life would appear in the raw data as 58289 when
+two implied decimal places are used. Implied decimals are a legacy
+formatting method used in many long‑running surveys, and PSPP can read
+them directly using DATA LIST FIXED with the right setup.</p>
+
+<p>The number of implied decimal places must be defined in the codebook
+or other documentation for the study. It is usually noted in the
+variable definition as “IMPLIED DECIMAL” along with the number of
+decimal places.</p>
+
+<p>This section goes over a short example of implied-decimal data and 
+how to read it with PSPP.</p>
+
+<p>Raw data:</p>
+<pre>
+58289
+43750
+120055
+</pre>
+
+<p>What the codebook should show:</p>
+<p>EARN   columns 1-6   implied decimal 2</p>
+
+<pre>
+** PSPP implied decimals example.
+DATA LIST FIXED
+  /earn 1-6 (2).
+BEGIN DATA
+58289
+43750
+120055
+END DATA.
+
+LIST.
+DISPLAY DICTIONARY.
+</pre>
+
+<p>Note that you don't give a full format for implied decimals. You just
+give the number of implied decimals in parenthese. So, here we want 2
+implied decimal places and the format is (2).</p>
+
+<p>Run this in psppire and should get the following output:</p>
+
+<pre>
+** Implied decimals example.
+DATA LIST FIXED
+  /earn 1-6 (2).
+  Reading 1 record from INLINE.
+╭────────┬──────┬───────┬──────╮
+│Variable│Record│Columns│Format│
+├────────┼──────┼───────┼──────┤
+│earn    │     1│1-6    │F6.2  │
+╰────────┴──────┴───────┴──────╯
+BEGIN DATA
+58289
+43750
+120055
+END DATA.
+
+LIST.
+Data List
+╭───────╮
+│  earn │
+├───────┤
+│ 582.89│
+│ 437.50│
+│1200.55│
+╰───────╯
+
+DISPLAY DICTIONARY.
+                                    Variables
+╭────┬────────┬─────────────────┬─────┬─────┬─────────┬────────────┬────────────╮
+│Name│Position│Measurement Level│ Role│Width│Alignment│Print Format│Write Format│
+├────┼────────┼─────────────────┼─────┼─────┼─────────┼────────────┼────────────┤
+│earn│       1│Scale            │Input│    8│Right    │F7.2        │F7.2        │
+╰────┴────────┴─────────────────┴─────┴─────┴─────────┴────────────┴────────────╯
+</pre>
+
+<p>The LIST output shows our input data was read with two decimal places.</p>
+
 <h3>Reading Saved Files</h3>
 
 <pre>
@@ -725,7 +854,7 @@ COMPUTE SITUATN = MEAN(CONSIST, WANTEDBY, IMPROVED).
        are five that are used frequently.</p>
 
 <p><strong>1. MEAN()</strong> — the workhorse</p> 
-<p>Handles missing values gracefully and teaches the “function inside
+<p>Handles missing values gracefully and uses the “function inside
 COMPUTE” pattern.</p>
 
 <pre>
@@ -1117,7 +1246,7 @@ psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Apr 12 17:52:11 EDT 2026
+Last Modified: Mon Apr 13 17:10:08 EDT 2026
 </p>
 </footer>
 </blockquote>
