@@ -84,12 +84,12 @@ dialogs. Thus, you can use psppire to develop and run your PSPP code.</p>
 background-color:black">
 
 <p>In psppire, to start from scratch in the Syntax Editor,
-<strong>File->New->Syntax</strong> will open a Syntax Editor window with
+<strong>File-&gt;New-&gt;Syntax</strong> will open a Syntax Editor window with
 nothing in it. PSPP commands can be entered in that window and run. Be
-sure to save your work if you want to save it.</p>
+sure to save your work if you want to use it later.</p>
 
 <p>To open existing <code>.sps</code> files, go to
-<strong>File->Open</strong>. When the Open window appears, it will by
+<strong>File-&gt;Open</strong>. When the Open window appears, it will by
 default, show your PSPP data files and <code>.sps</code> syntax files. If
 you want to only see <code>.sps</code> files, select <strong>Syntax
 Files (*sps)</strong> from the pull-down menu in the lower right, and
@@ -304,7 +304,9 @@ DISPLAY DICTIONARY.
 give the number of implied decimals in parentheses. So, here we want 2
 implied decimal places and the format is (2).</p>
 
-<p>Run this in psppire and should get the following output:</p>
+<p>Run this in psppire and should get the following output. Note that
+psppire uses lines around the tables for a smoother look. Command line
+pspp uses ASCII character that looks different.</p>
 
 <pre>
 ** Implied decimals example.
@@ -402,6 +404,37 @@ FREQUENCIES VARIABLES=age sex income.
 
 CLOSE FILE HANDLE demo.
 </pre>
+
+<h3>Reading Less Data for Testing: N OF CASES</h3>
+
+<p>When you are developing syntax on a large data file, you often
+don’t want to read thousands of cases just to test a few lines of
+code.  N OF CASES lets you limit PSPP to the first N cases in the file.
+This speeds up development and makes debugging easier.</p>
+
+<pre>
+N OF CASES 15.
+GET FILE=survey.
+
+* Try out your transformations.
+RECODE age income (SYSMIS=0).
+
+* Check a few variables.
+FREQUENCIES VARIABLES=age income.
+</pre>
+
+<p>Modify the commands to fit your situation. Once your code is working,
+remove N OF CASES and run the full analysis. This speeds up testing so
+that your development goes more smoothly. It is especially useful when
+reading large raw data files, testing recodes or <code>COMPUTE</code>
+statements, checking variable formats, verifying merges, and building
+syntax incrementally.</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Use FREQUENCIES when you want quick counts, ranges, and
+missing‑value checks.  Use LIST when you need to inspect exact values,
+string variables, or formatting.</p>
 
 <h3>Descriptive Statistics</h3>
 
@@ -649,11 +682,22 @@ the results.
 <h3>Notes and Limitations</h3>
 
 <ul>
-      <li>PSPP does not yet support all SPSS procedures.</li>
-      <li>Some dialogs in the GUI correspond to syntax that is not fully implemented.</li>
+      <li>PSPP does not yet support everything SPSS does. Software should be
+          installed based on what it can do, not what you wished it did.</li>
+      <li>PSPP includes some functionality that SPSS doesn't.</li>
+      <li>Your mileage may vary. New versions may have what you
+          need. PSPP is a work in progress and run by volunteers.</li>
+      <li>If you want to contribute, report bugs, make suggestions, and 
+          consider helping.</li>
+      <li>If you’re not sure what a command will do, read the manual or run the 
+          examples on a copy of your data before applying it to anything 
+          important.</li>
       <li>Batch mode is stable and well-suited for reproducible workflows.</li>
-      <li>Table and chart output can be produced in several formats: plain text, 
-          PostScript, PDF, DocBook, TeX, or HTML depending on configuration.</li>
+      <li>Some dialogs in the GUI correspond to syntax that is not fully 
+          implemented.</li>
+      <li>Table and chart output can be produced in several formats: 
+          plain text, PostScript, PDF, DocBook, TeX, or HTML depending on 
+          configuration.</li>
 </ul>
 
 <p> The remaining sections cover data formats, exporting, psppire
@@ -819,7 +863,10 @@ RECODE TRTMENT (1="A") (2="B") (3="C") (4="D") (5="E") (6="F") (7="G")
 
 <pre>
 /* Reverse these scales */
-RECODE CONSIST TO KEEP_RID UNCERT TO POWER MORALITY CONTROL CAUS_YOU 
+RECODE 
+   CONSIST TO KEEP_RID  /* First consecutive block
+   UNCERT TO POWER  /* Second consecutive block */ 
+   MORALITY CONTROL CAUS_YOU /* Individual variables */
    (1=9) (2=8) (3=7) (4=6) (5=5) (6=4) (7=3) (8=2) (9=1) 
    (ELSE=SYSMIS).
 </pre>
@@ -828,6 +875,23 @@ RECODE CONSIST TO KEEP_RID UNCERT TO POWER MORALITY CONTROL CAUS_YOU
 is reading from (CONSIST). Since that variable already exists, we don't
 need to create a new variable. Anything not recoded is given the System
 Missing value (SYSMIS).</p>
+
+<p>This example also uses "TO" in the variable list. TO is useful to
+shorten long variable lists and reduce typing. BEWARE, it only works on
+variables that are <strong>consecutive in the data set</strong>. That's
+why this example has a skip in variable list. <code>CONSIST TO
+KEEP_RID</code> covers one block of consecutive variables. <code>UNCERT
+TO POWER</code> reads another block of variables further in the line of
+data, and <code>MORALITY CONTROL CAUS_YOU</code> are variables not part
+of any consecutive sequence, so must be listed separately.<p>
+
+<p>If you try <code>CONSIST TO CAUS_YOU</code>, PSPP will include every 
+variable between those names in dictionary order — often far more than 
+you intended.</p>
+
+<p><code>DISPLAY DICTIONARY.</code> will show you the variable order
+so you can confirm which variables are consecutive before using
+<code>TO</code>.</p>
 
 <p>RECODE works on both string to numeric coding and numeric to string
 coding.</p>
@@ -982,13 +1046,14 @@ lets you rerun the syntax in psppire without restarting the application.</p>
 <h3>psppire Export Formats</h3>
 
 <p>psppire can export the contents of the Output window in several formats.
-Only the formats shown in the File->Export menu are supported; if a
+Only the formats shown in the File-&gt;Export menu are supported; if a
 format is not listed, psppire does not produce it. The export format is
 determined by the output file extension you provide. For example, if you
-enter "myfile.pdf" in enter the export dialog, psppire will generate a PDF file.</p>
+enter "myfile.pdf" in enter the export dialog, psppire will generate a PDF 
+file.</p>
 
 <p> The following sections outline the formats available in the
-File->Export menu and explain what each one is best suited for.<p>
+File-&gt;Export menu and explain what each one is best suited for.<p>
 
 <h3>Rich / Page‑Description Formats (cairo‑based)</h3>
 
@@ -1028,7 +1093,7 @@ Output window.</p>
 
 <h3>Unsupported Formats</h3>
 
-<p>Formats not shown in the File->Export menu are not implemented in the
+<p>Formats not shown in the File-&gt;Export menu are not implemented in the
 current version of psppire (or the one I'm using). Examples include:</p>
 
 <ul>
