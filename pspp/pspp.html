@@ -214,6 +214,8 @@ DISPLAY DICTIONARY.
 expects its data input to come from a file. You can see it reads
 the data just like the DATA LIST FREE example above.</p>
 
+<p>GET DATA can read CSV files as TYPE=TXT and DELIMITERS=",".</p>
+
 <h3>Reading Data in Fixed Column Format</h3>
 
 <p><code>DATA LIST FIXED</code> reads variables from specific column
@@ -687,11 +689,16 @@ the results.
       <li>PSPP includes some functionality that SPSS doesn't.</li>
       <li>Your mileage may vary. New versions may have what you
           need. PSPP is a work in progress and run by volunteers.</li>
-      <li>If you want to contribute, report bugs, make suggestions, and 
-          consider helping.</li>
-      <li>If you’re not sure what a command will do, read the manual or run the 
-          examples on a copy of your data before applying it to anything 
-          important.</li>
+      <li>If you want to contribute, report bugs, and make suggestions,
+          consider helping the pspp project at gnu.org.</li>
+      <li>If you’re not sure what a PSPP command will do, read the manual or
+          run the examples on a copy of your data before applying it to
+          anything important. Some commands (like NEW FILE, GET, MATCH FILES, 
+          or DATA LIST) replace or clear the active dataset, so save your data 
+          first if you want to keep it.</li>
+      <li>If it deals with files in memory or on disk, assume it will
+          disappear unless you save it before running the next command.</li>
+      <li>Again: If you create it and want to keep it, you need to save it.</li>
       <li>Batch mode is stable and well-suited for reproducible workflows.</li>
       <li>Some dialogs in the GUI correspond to syntax that is not fully 
           implemented.</li>
