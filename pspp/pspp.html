@@ -94,14 +94,15 @@ nothing in it. PSPP commands can be entered in that window and run. Save your
 work if you want to use it later.</p>
 
 <p>To open existing <code>.sps</code> files, go to
-<strong>File-&gt;Open</strong>. When the Open window appears, it will by
-default, show your PSPP data files and <code>.sps</code> syntax files. If
-you want to only see <code>.sps</code> files, select <strong>Syntax
-Files (*sps)</strong> from the pull-down menu in the lower right, and
-psppire will list any existing <code>.sps</code> files you can open. If
-you want to create a new syntax file this way, you must first create
-an empty <code>.sps</code> file before you open it. That's more work, of
-course, than opening a new file.</p>
+<strong>File-&gt;Open</strong>. When the Open window appears, it
+will by default, show your PSPP data files and <code>.sps</code>
+syntax files. If you want to only see <code>.sps</code> files, select
+<strong>Syntax Files (*sps)</strong> from the pull-down menu in the
+lower right, and psppire will list any existing <code>.sps</code>
+files you can open. If you want to create a new syntax file from the
+File-&gt;Open menu, you must first create an empty <code>.sps</code>
+file in the directory before you open it. That's more work, of course,
+than opening a new file.</p>
 
 <p>
 PSPP syntax files use straightforward commands terminated by
@@ -118,6 +119,9 @@ find <code>DATA LIST FREE</code> in psppire’s pull‑down menus, that
 is correct — psppire does not provide a GUI for this command, but
 it can still be entered and run in the Syntax Editor (use the syntax,
 Luke).</p>
+
+<p>BEGIN DATA and END DATA mark the literal block of raw data that PSPP
+reads when using DATA LIST to read raw data.</p>
 
 <pre>
 * Read simple space‑delimited data.
@@ -159,16 +163,17 @@ DISPLAY DICTIONARY.
 <p><code>DATA LIST FREE</code> relies on type and width inference, which
 can behave unpredictably with short tokens or mixed data. To ensure
 correct and reproducible results, specify formats for all variables. If
-in doubt, verify the read using <code>GET DATA</code>, which always
-requires explicit formats and provides a deterministic check.</p>
+in doubt, verify the <code>DATA LIST FREE</code> read by using <code>GET
+DATA</code>, which always requires explicit formats and provides a
+deterministic check.</p>
 
 <h3>GET DATA command</h3>
 
-<p>This example uses the same dataset as above so you can compare
-the results of <code>GET DATA</code> with those from <code>DATA LIST
-FREE</code>.</p>
+<p>This example uses the same dataset as <code>DATA LIST FREE</code>
+above so you can compare the results of <code>GET DATA</code> with those
+from <code>DATA LIST FREE</code>.</p>
 
-<p><code>GET DATA</code> can read the same raw text file as DATA
+<p><code>GET DATA</code> can read the same raw text file as the DATA
 LIST, and it does not rely on the inference rules used by <code>DATA
 LIST FREE</code>. The example below shows how <code>GET DATA</code> reads
 the data.</p>
@@ -215,17 +220,19 @@ DISPLAY DICTIONARY.
 +----+--------+----------------+-----+-----+---------+------------+-----------+
 </pre>
 
-<p>No issues with the read. The only gotcha with GET DATA is that it
-expects its data input to come from a file. You can see it reads
-the data just like the DATA LIST FREE example above.</p>
+<p>No issues with the read. The only potential issue with GET DATA is
+that it expects its data input to come from a file. Thus, you'll need
+to set up a data file. You can see it reads the data just like the DATA
+LIST FREE example above.</p>
 
-<p>GET DATA can read CSV files as TYPE=TXT and DELIMITERS=",".</p>
+<p><strong>CSV Files:</strong> GET DATA can read CSV files as TYPE=TXT
+and DELIMITERS=",".</p>
 
 <h3>Reading Data in Fixed Column Format</h3>
 
 <p><code>DATA LIST FIXED</code> reads variables from specific column
-positions in a text data file. As long as the text is aligned in
-columns, PSPP will parse it exactly as specified.</p>
+locations in a text data file. As long as the text is aligned in
+columns, PSPP can parse it exactly as specified.</p>
 
 <p><strong>Syntax</strong></p>
 <pre>
@@ -313,7 +320,7 @@ implied decimal places and the format is (2).</p>
 
 <p>Run this in psppire and should get the following output. Note that
 psppire uses lines around the tables for a smoother look. Command line
-pspp uses ASCII character that looks different.</p>
+pspp uses ASCII characters that look different.</p>
 
 <pre>
 ** Implied decimals example.
@@ -354,6 +361,9 @@ DISPLAY DICTIONARY.
 
 <h3>Reading Saved Files</h3>
 
+<p>Use <code>GET FILE=</code> to read PSPP system files and portable files. Use
+<code>GET DATA</code> to read CSV files.</p>
+
 <pre>
 * Reading those rare portable SPSS files.
 GET FILE='legacy.por'.
@@ -378,16 +388,18 @@ GET DATA
     .
 </pre>
 
-<p>Note: FIRSTCASE tells pspp that the data begin in line 2. The variable names
-are in line 1, so we skip that line. This example defines the file
-as DELIMITED, in this case comma-separated values, with the comma as a
-delimiter and double quotes as the text qualifier.</p>
+<p>Note: FIRSTCASE tells pspp that the data begin in line 2. The
+variable names are in line 1, so we skip that line. FIRSTCASE is not
+needed if your CSV file is one long line of data. This example defines
+the file as DELIMITED, in this case comma-separated values, with the
+comma as a delimiter and double quotes as the text qualifier.</p>
 
 <h3>File Handles in PSPP</h3>
 
 <p>File handles allow you to avoid typing long path names in your
-programs. Instead, you define a shorter file handle and after that can
-use the handle to refer to the data.</p>
+programs. Instead, you define a shorter file handle and after that
+can use the handle to refer to the data. Below, "survey" refers to
+"C:\path\to\survey.sav".</p>
 
 <pre>
 * File handle usage.
@@ -395,9 +407,9 @@ FILE HANDLE survey /FILE='C:\path\to\survey.sav'.
 GET FILE=survey.
 </pre>
 
-<p>When you are done with a file handle, close it with <code>CLOSE FILE HANDLE
-[handle name]</code>. PSPP requires closing file handles in psppire so they 
-don’t persist between runs.</p>
+<p>When you are done with a file handle, close it with <code>CLOSE FILE
+HANDLE [handle name]</code>. psppire requires closing file handles 
+so they don’t persist between runs.</p>
 
 <p>The entire sequence of using file handles looks like this:</p>
 
@@ -415,9 +427,10 @@ CLOSE FILE HANDLE demo.
 <h3>Reading Less Data for Testing: N OF CASES</h3>
 
 <p>When you are developing syntax on a large data file, you often
-don’t want to read thousands of cases just to test a few lines of
-code.  N OF CASES lets you limit PSPP to the first N cases in the file.
-This speeds up development and makes debugging easier.</p>
+don’t want to read many thousands of cases just to test a few lines of
+code on a couple of values. <code>N OF CASES</code> lets you limit PSPP
+to the first N cases in the file.  This speeds up development and makes
+debugging easier.</p>
 
 <pre>
 N OF CASES 15.
@@ -430,30 +443,31 @@ RECODE age income (SYSMIS=0).
 FREQUENCIES VARIABLES=age income.
 </pre>
 
-<p>Modify the commands to fit your situation. Once your code is working,
-remove N OF CASES and run the full analysis. This speeds up testing so
-that your development goes more smoothly. It is especially useful when
-reading large raw data files, testing recodes or <code>COMPUTE</code>
-statements, checking variable formats, verifying merges, and building
-syntax incrementally.</p>
+<p>Modify the commands to fit your situation. Once your code is
+working, remove <code>N OF CASES</code> and run the full analysis. This
+speeds up testing so that your development goes more smoothly. It is
+especially useful when reading large raw data files, testing recodes or
+<code>COMPUTE</code> statements, checking variable formats, verifying
+merges, and building syntax incrementally.</p>
 
 <p><strong>Note:</strong></p>
 
-<p>Use FREQUENCIES when you want quick counts, ranges, and
-missing‑value checks.  Use LIST when you need to inspect exact values,
-string variables, or formatting.</p>
+<p>Use <code>FREQUENCIES</code> when you want quick counts, ranges, and
+missing‑value checks. <code>Use LIST</code> when you need to inspect
+exact values, string variables, or formatting.</p>
 
 <h3>Descriptive Statistics</h3>
 
 <p>
 The <code>DESCRIPTIVES</code> command computes means, standard
 deviations, and other summary statistics. PSPP supports variable lists,
-subcommands, and formatting options, and these are specified through the
+subcommands, and formatting options. These are specified through the
 syntax.</p>
 
-<p>DESCRIPTIVES does not read data on its own, so if no dataset is
-active or you have no PSPP data file to read, you must use a short DATA
-LIST or GET DATA to read raw data for the analysis.</p>
+<p><code>DESCRIPTIVES</code> does not read raw data, so if no active
+dataset is available—or you have no PSPP system file to load—you
+can use <code>DATA LIST</code> or <code>GET DATA</code> to read
+the raw data before running the procedure.</p>
 
 <pre>
 * Short example dataset for DESCRIPTIVES.
@@ -498,6 +512,16 @@ FREE</code>. The means and minimum/maximum values can be checked by
 inspection, and although computing the standard deviations requires
 a bit more arithmetic, the values reported are consistent with the
 data.</p>
+
+<p>If you include the <code>/SAVE</code> option,
+<code>DESCRIPTIVES</code> also computes <strong>Z‑scores</strong> for
+all variables you specify and adds them to the active dataset as new
+variables. This works in pspp syntax and there is a checkbox in psppire's
+DESCRIPTIVES dialog for saving Z-score variables labeled “Save
+Z‑scores of selected variables as new.”.</p>
+
+<p>The <code>FORMAT</code> subcommand is accepted for backward
+compatibility but has no effect in PSPP.</p>
 
 <h3>Frequencies</h3>
 
@@ -1325,7 +1349,7 @@ psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Apr 15 20:16:42 EDT 2026
+Last Modified: Thu Apr 16 11:16:08 EDT 2026
 </p>
 </footer>
 </blockquote>
