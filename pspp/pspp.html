@@ -73,11 +73,11 @@ the Syntax Editor in psppire.</p>
 </a>
 
 <hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
-<p><strong>A note about psppire:</strong><p>
+<p><strong>A note about psppire:</strong></p>
 <p>psppire is a graphical interface for the PSPP engine. It’s useful
 for exploring data, running common procedures, and generating basic
 syntax. Many users begin in psppire and then copy the generated syntax
-into a program file.<p>
+into a program file.</p>
 
 <p>Some PSPP commands and options are not available in the psppire
 menus. When features that the GUI doesn’t expose are needed, syntax
@@ -86,13 +86,13 @@ with pspp. psppire runs all PSPP syntax, not just what appears in the
 dialogs. Thus, psppire can be used to develop and run PSPP syntax (or
 any PSPP code).</p>
 
-<hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto;
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
 
 <p>In psppire, to start from scratch in the Syntax Editor,
 <strong>File-&gt;New-&gt;Syntax</strong> will open an empty Syntax
-Editor window where commands can be entered and run. Saving
-work is necessary if it is to be used it later.</p>
+Editor window where commands can be entered and run. Save
+the file if it is to be used later.</p>
 
 <p>To open existing <code>.sps</code> files, go to
 <strong>File-&gt;Open</strong>. When the Open window appears, it will
@@ -163,9 +163,15 @@ DISPLAY DICTIONARY.
 <p><code>DATA LIST FREE</code> relies on type and width inference, which
 can behave unpredictably with short tokens or mixed data. To ensure
 correct and reproducible results, specify formats for all variables. If
-in doubt, verify the <code>DATA LIST FREE</code> read by using <code>GET
-DATA</code>, which always requires explicit formats and provides a
-deterministic check.</p>
+in doubt, verify the <code>DATA LIST FREE</code> read by comparing it
+with <code>GET DATA</code>, which always requires explicit formats. 
+</p>
+
+<p><strong>Note:</strong></p>
+
+<p>Use <code>FREQUENCIES</code> when quick counts, ranges, and
+missing‑value checks are needed. Use <code>LIST</code> when inspecting
+exact values, string variables, or formatting.</p>
 
 <h3>GET DATA command</h3>
 
@@ -220,10 +226,10 @@ DISPLAY DICTIONARY.
 +----+--------+----------------+-----+-----+---------+------------+-----------+
 </pre>
 
-<p>There were no issues with the read. The only potential issue with
-GET DATA is that it expects its data input to come from a file. Thus, a
-data file is needed. <code>GET DATA</code> reads the data just like the
-<code>DATA LIST FREE</code> example above.</p>
+<p>There were no issues with the read. The only limitation of GET
+DATA is that it always reads from a file, so a data file must exist.
+<code>GET DATA</code> reads the data just like the <code>DATA LIST
+FREE</code> example above.</p>
 
 <p><strong>CSV Files:</strong> <code>GET DATA</code> can read CSV files
 as <code>TYPE=TXT</code> and <code>DELIMITERS=","</code>.</p>
@@ -249,12 +255,51 @@ LIST.
 DISPLAY DICTIONARY.
 </pre>
 
-<p>PSPP sees:</p>
+<p><strong>PSPP sees:</strong></p>
 <pre>
-Column layout
 - ID → columns 1–5 → numeric
 - NAME → columns 6–13 → 8‑character string
 - AGE → columns 14–15 → numeric
+</pre>
+
+<p><strong>Output</strong></p>
+<pre>
+DATA LIST FIXED
+  /ID    1-5
+   NAME  6-13 (A)
+   AGE   14-15.
+
+  Reading 1 record from INLINE.
+╭────────┬──────┬───────┬──────╮
+│Variable│Record│Columns│Format│
+├────────┼──────┼───────┼──────┤
+│ID      │     1│1-5    │F5.0  │
+│NAME    │     1│6-13   │A8    │
+│AGE     │     1│14-15  │F2.0  │
+╰────────┴──────┴───────┴──────╯
+BEGIN DATA.
+12345John    27
+98765Maria   34
+END DATA.
+
+LIST.
+    Data List
+╭─────┬─────┬───╮
+│  ID │ NAME│AGE│
+├─────┼─────┼───┤
+│12345│John │ 27│
+│98765│Maria│ 34│
+╰─────┴─────┴───╯
+
+DISPLAY DICTIONARY.
+                                    Variables
+╭────┬────────┬─────────────────┬─────┬─────┬─────────┬────────────┬────────────╮
+│Name│Position│Measurement Level│ Role│Width│Alignment│Print Format│Write Format│
+├────┼────────┼─────────────────┼─────┼─────┼─────────┼────────────┼────────────┤
+│ID  │       1│Scale            │Input│    8│Right    │F5.0        │F5.0        │
+│NAME│       2│Nominal          │Input│    8│Left     │A8          │A8          │
+│AGE │       3│Scale            │Input│    8│Right    │F2.0        │F2.0        │
+╰────┴────────┴─────────────────┴─────┴─────┴─────────┴────────────┴────────────╯
 </pre>
 
 <p>There are a couple of points to remember when using DATA LIST FIXED:</p>
@@ -270,6 +315,11 @@ correctly.</p>
 
 <p>PSPP does not infer string length in DATA LIST FIXED. If NAME spans
 columns 6–13, it must be (A8) or (A) with that exact range.</p>
+
+<p><strong>3. psppire states "Reading 1 record from INLINE"</strong></p>
+even though there are two lines of data. psppire reads the first
+line of the INLINE data to determine the variable formats, which it
+reports. Then it reads the rest of the data.
 
 <h3>Reading Data with Implied Decimals</h3>
 
@@ -314,11 +364,11 @@ LIST.
 DISPLAY DICTIONARY.
 </pre>
 
-<p>Note that a full format isn't used for implied decimals.  The number
-of implied decimals in parentheses is all that is needd. So, 2 implied
-decimal places are needed and the format is (2).</p>
+<p>Note that for implied decimals only the number of decimals is
+specified in parentheses. PSPP determines the width from the column
+range.</p>
 
-<p>Run this in psppire and t should produce the following output. Note
+<p>Run this in psppire and it should produce the following output. Note
 that psppire uses lines around the tables for a smoother look. Command
 line pspp uses ASCII characters that look different.</p>
 
@@ -428,7 +478,7 @@ CLOSE FILE HANDLE demo.
 
 <p>When developing syntax on a large data file, reading many thousands
 of cases just to test a few lines of code on a couple of values wastes
-time. <code>N OF CASES</code> tells PSPP read only the first N cases
+time. <code>N OF CASES</code> tells PSPP to read only the first N cases
 in the file.  This speeds up development and makes debugging easier.</p>
 
 <pre>
@@ -443,17 +493,26 @@ FREQUENCIES VARIABLES=age income.
 </pre>
 
 <p>Modify the commands to fit the situation. Once the code is
-working, remove <code>N OF CASES</code> and run the full analysis. This
-speeds up testing and development goes more smoothly. It is
-especially useful when reading large raw data files, testing recodes or
+working, remove <code>N OF CASES</code> and run the full analysis. This 
+speeds up testing and development goes more smoothly overall. It is
+especially useful when reading large raw data files, testing recodes, 
 <code>COMPUTE</code> statements, checking variable formats, verifying
 merges, and building syntax incrementally.</p>
 
-<p><strong>Note:</strong></p>
+<h3>Selecting Data for Analysis: SELECT IF</h3>
 
-<p>Use <code>FREQUENCIES</code> when quick counts, ranges, and
-missing‑value checks are needed. Use <code>LIST</code> when inspecting
-exact values, string variables, or formatting.</p>
+<p><code>SELECT IF</code> is used to select cases for analysis or
+testing. Cases that are not selected are removed from the active
+dataset.</p>
+
+<pre>
+* Keep only adults with non‑missing income.
+SELECT IF (age &gt;= 18) AND (NOT SYSMIS(income)).
+EXECUTE.
+</pre>
+
+<p><code>SYSMIS</code> is used here to exclude cases with missing income
+values.</p>
 
 <h3>Descriptive Statistics</h3>
 
