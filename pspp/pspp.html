@@ -41,7 +41,7 @@ data. More examples will be added over time. </p>
 <h3>Getting Started</h3>
 
 <p>
-<a href="https://www.gnu.org/software/pspp/get.html">PSPP download page at gnu.org</a>
+<a href="https//www.gnu.org/software/pspp/get.html">PSPP download page at gnu.org</a>
 The gnu site gives instructions for installing PSPP for Windows, Mac,
 Debian, Ubuntu, Fedora, and with Flatpak. </p>
 
@@ -88,6 +88,11 @@ any PSPP code).</p>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
+
+
+<p>This section covers only the basics needed to open psppire, run
+syntax, and get started. A more detailed discussion of psppire’s
+behavior and limitations appears later in this page.</p>
 
 <p>In psppire, to start from scratch in the Syntax Editor,
 <strong>File-&gt;New-&gt;Syntax</strong> will open an empty Syntax
@@ -971,10 +976,12 @@ PSPP fits the model and reports the results.
           configuration.</li>
 </ul>
 
-<p> The remaining sections cover data formats, exporting, psppire
+<p>The remaining sections cover data formats, exporting, psppire
 behavior, and file‑combining. These topics are not part of the basic
 procedures shown above, but they are useful when working with real
-datasets and larger projects.</p>
+datasets and larger projects. psppire is introduced briefly above
+so new users can get started; its detailed behavior and limitations
+are covered in several later sections.</p>
 
 <p> Up to this point we have seen <code>DATA LIST FREE</code> and
 <code>GET DATA</code> used to read ordinary raw data files.  Another
@@ -1279,7 +1286,8 @@ specifying <code>TYPE=TAB</code>. </p>
 <p>PSPP syntax can be run either from a shell command line or by pasting
 it into psppire’s Syntax Editor. psppire can also export the assembled
 data directly through its File-&gt;Export dialog, which provides a subset
-of the formats available in PSPP syntax.</p>
+of the formats available in PSPP syntax. The following section describes
+psppire itself in more detail.</p>
 
 <h3>psppire: The PSPP Graphical Interface</h3>
 
@@ -1329,15 +1337,12 @@ allows rerunning the syntax in psppire without restarting the application.</p>
 
 <h3>psppire Export Formats</h3>
 
-<p>psppire can export the contents of the Output window in several formats.
-Only the formats shown in the File-&gt;Export menu are supported; if a
-format is not listed, psppire does not produce it. The export format is
-determined by the output file extension entered in the dialog. For example, 
-entering "myfile.pdf" in the export dialog causes psppire to generate a PDF 
-file.</p>
-
-<p> The following sections outline the formats available in the
-File-&gt;Export menu and explain what each one is best suited for.</p>
+<p>psppire can export the contents of the Output window in several
+formats.  Only the formats shown in the File-&gt;Export menu are
+supported; if a format is not listed, psppire does not produce it. The
+export format is determined by the output file extension entered in the
+dialog. For example, entering "myfile.pdf" in the export dialog causes
+psppire to generate a PDF file.</p>
 
 <h3>Rich / Page‑Description Formats (cairo‑based)</h3>
 
@@ -1598,7 +1603,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Apr 17 15:10:58 EDT 2026
+Last Modified: Fri Apr 17 16:14:46 EDT 2026
 </p>
 </footer>
 </blockquote>
