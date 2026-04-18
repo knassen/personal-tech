@@ -206,17 +206,17 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://knassen.github.io/personal-tech/amacs.html</loc>
+    <loc>https://knassen.github.io/personal-tech/aurora/amacs.html</loc>
   <lastmod>2025-08-13T18:56:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://knassen.github.io/personal-tech/ainfo.html</loc>
+    <loc>https://knassen.github.io/personal-tech/aurora/ainfo.html</loc>
   <lastmod>2025-08-13T18:56:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://knassen.github.io/personal-tech/ascreen.html</loc>
+    <loc>https://knassen.github.io/personal-tech/aurora/ascreen.html</loc>
   <lastmod>2026-12-13T18:56:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -246,7 +246,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://knassen.github.io/personal-tech/aurora.html</loc>
+    <loc>https://knassen.github.io/personal-tech/aurora/aurora.html</loc>
   <lastmod>2025-08-13T18:56:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
