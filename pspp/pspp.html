@@ -452,7 +452,7 @@ comma as a delimiter and double quotes as the text qualifier.</p>
 <h3>File Handles in PSPP</h3>
 
 <p>File handles help prevent typing long path names in the
-program. Instead, a shorter file handle is defined and after that
+program. Instead, a shorter file handle is defined and after that, the
 handle can be used to refer to the data file. Below, "survey" refers to
 "C:\path\to\survey.sav".</p>
 
@@ -464,7 +464,7 @@ GET FILE=survey.
 
 <p>When the file handle is no longer needed, close it with <code>CLOSE
 FILE HANDLE [handle name]</code>. psppire requires closing file handles
-so they don’t persist between runs.</p>
+so they don’t persist between runs and cause file errors.</p>
 
 <p>The entire sequence of using file handles looks like this:</p>
 
@@ -778,15 +778,6 @@ produced the expected statistics.</p>
 <h3>Linear Regression</h3>
 
 <p>
-The <code>REGRESSION</code> command performs ordinary least squares
-analysis with one or more predictors. After checking the variables with
-<code>FREQUENCIES</code> and <code>CROSSTABS</code>, regression shows
-how a continuous outcome relates to the predictors. PSPP provides the
-standard coefficients and model statistics used in OLS.
-</p>
-<h3>Linear Regression</h3>
-
-<p>
 The <code>REGRESSION</code> command fits an ordinary least squares model to a
 continuous dependent variable using one or more predictors. After checking
 the variables with <code>FREQUENCIES</code> and <code>CROSSTABS</code>,
@@ -831,27 +822,27 @@ REGRESSION
 
 Model Summary
 ╭───────────────┬───────────────┬───────────────╮
-│Model           │      R        │     R-Square  │
+│Model          │      R        │     R-Square  │
 ├───────────────┼───────────────┼───────────────┤
-│1               │     .991      │      .982     │
+│1              │     .991      │      .982     │
 ╰───────────────┴───────────────┴───────────────╯
 
 ANOVA
 ╭───────────────┬────────┬──────┬────────┬──────────╮
-│Model           │   SS   │  df  │   MS   │     F    │
+│Model          │   SS   │  df  │   MS   │     F    │
 ├───────────────┼────────┼──────┼────────┼──────────┤
-│Regression      │  96.40 │   2  │ 48.20  │  82.33   │
-│Residual        │   1.17 │   2  │  0.58  │          │
-│Total           │  97.57 │   4  │        │          │
+│Regression     │  96.40 │   2  │ 48.20  │  82.33   │
+│Residual       │   1.17 │   2  │  0.58  │          │
+│Total          │  97.57 │   4  │        │          │
 ╰───────────────┴────────┴──────┴────────┴──────────╯
 
 Coefficients
 ╭───────────────┬──────────┬──────────┬──────────┬──────────╮
-│Variable        │    B     │    SE    │    t     │    p     │
+│Variable       │    B     │    SE    │    t     │    p     │
 ├───────────────┼──────────┼──────────┼──────────┼──────────┤
-│(Constant)      │   1.00   │   1.02   │   0.98   │   .423   │
-│x1              │   2.00   │   0.41   │   4.86   │   .040   │
-│x2              │   1.00   │   0.41   │   2.43   │   .140   │
+│(Constant)     │   1.00   │   1.02   │   0.98   │   .423   │
+│x1             │   2.00   │   0.41   │   4.86   │   .040   │
+│x2             │   1.00   │   0.41   │   2.43   │   .140   │
 ╰───────────────┴──────────┴──────────┴──────────┴──────────╯
 </pre>
 
@@ -874,79 +865,6 @@ the variables with <code>FREQUENCIES</code> and <code>CROSSTABS</code>,
 regression shows how the outcome relates to the predictors. PSPP provides
 the standard coefficients and model statistics used in OLS.
 </p>
-
-<pre>
-DATA LIST FREE /y x1 x2.
-BEGIN DATA
-10   1   4
-12   2   5
-13   3   6
-20   4   7
-22   5   8
-END DATA.
-
-LIST.
-
-REGRESSION
-  /DEPENDENT = y
-  /METHOD = ENTER x1 x2.
-</pre>
-
-<p><strong>Output:</strong></p>
-
-<pre>
-Data List
-╭────┬────┬────╮
-│  y │ x1 │ x2 │
-├────┼────┼────┤
-│10.0│1.00│4.00│
-│12.0│2.00│5.00│
-│13.0│3.00│6.00│
-│20.0│4.00│7.00│
-│22.0│5.00│8.00│
-╰────┴────┴────╯
-
-REGRESSION
-  /DEPENDENT = y
-  /METHOD = ENTER x1 x2.
-
-Model Summary
-╭───────────────┬───────────────┬───────────────╮
-│Model           │      R        │     R-Square  │
-├───────────────┼───────────────┼───────────────┤
-│1               │     .991      │      .982     │
-╰───────────────┴───────────────┴───────────────╯
-
-ANOVA
-╭───────────────┬────────┬──────┬────────┬──────────╮
-│Model           │   SS   │  df  │   MS   │     F    │
-├───────────────┼────────┼──────┼────────┼──────────┤
-│Regression      │  96.40 │   2  │ 48.20  │  82.33   │
-│Residual        │   1.17 │   2  │  0.58  │          │
-│Total           │  97.57 │   4  │        │          │
-╰───────────────┴────────┴──────┴────────┴──────────╯
-
-Coefficients
-╭───────────────┬──────────┬──────────┬──────────┬──────────╮
-│Variable        │    B     │    SE    │    t     │    p     │
-├───────────────┼──────────┼──────────┼──────────┼──────────┤
-│(Constant)      │   1.00   │   1.02   │   0.98   │   .423   │
-│x1              │   2.00   │   0.41   │   4.86   │   .040   │
-│x2              │   1.00   │   0.41   │   2.43   │   .140   │
-╰───────────────┴──────────┴──────────┴──────────┴──────────╯
-</pre>
-
-<p>
-The output includes the standard tables for an ordinary least squares
-model. The Model Summary shows an R of 0.991 and an R‑square of 0.982 for
-this small example. The Coefficients table lists each predictor along with
-its estimate, standard error, t statistic, and p‑value. These values confirm
-that the procedure ran correctly and that PSPP produced the expected
-regression statistics. Interpretation of the coefficients depends on the
-context and the analyst’s goals; the purpose here is simply to show how
-PSPP fits the model and reports the results.
-</p>
-
 
 <h3>Notes and Limitations</h3>
 
@@ -1603,7 +1521,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Apr 17 16:14:46 EDT 2026
+Last Modified: Fri Apr 17 19:39:42 EDT 2026
 </p>
 </footer>
 </blockquote>
