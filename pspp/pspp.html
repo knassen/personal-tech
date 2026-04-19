@@ -121,9 +121,9 @@ line or from psppire’s Syntax Editor.</p>
 processing in PSPP using the command‑line <code>pspp</code>. The
 same syntax can be copied and run in psppire’s Syntax Editor window.
 <code>DATA LIST FREE</code> cannot be found in psppire’s pull‑down
-menus.  Psppire does not provide a GUI for this command, but it
-can still be entered and run in the Syntax Editor (use the syntax,
-Luke).</p>
+menus.  Psppire does not provide a GUI for this command, but that
+command can still be entered and run in the Syntax Editor (use the
+syntax, Luke).</p>
 
 <p>BEGIN DATA and END DATA mark the literal block of raw data that PSPP
 reads when using DATA LIST to read raw data.</p>
@@ -169,11 +169,15 @@ DISPLAY DICTIONARY.
 can behave unpredictably with short tokens or mixed data. To ensure
 correct and reproducible results, specify formats for all variables. If
 in doubt, verify the <code>DATA LIST FREE</code> read by comparing it
-with <code>GET DATA</code>, which always requires explicit formats. 
-</p>
+with <code>GET DATA</code>, which always requires explicit formats.</p>
 
-<p><strong>Note:</strong></p>
+<p><strong>Note:</strong> If you prefer to use psppire’s Import Data
+wizard, it will ask which line contains the first data row and then
+infer variable formats based on the delimiter you choose (space, tab,
+comma, etc.). With the correct delimiter and first‑line selection, the
+wizard should parse the fields and import the data.</p>
 
+<p><strong>Inspecting your imported data</strong></p>
 <p>Use <code>FREQUENCIES</code> when quick counts, ranges, and
 missing‑value checks are needed. Use <code>LIST</code> when inspecting
 exact values, string variables, or formatting.</p>
@@ -464,7 +468,7 @@ GET FILE=survey.
 
 <p>When the file handle is no longer needed, close it with <code>CLOSE
 FILE HANDLE [handle name]</code>. psppire requires closing file handles
-so they don’t persist between runs and cause file errors.</p>
+so they don’t persist between runs and cause file handle errors.</p>
 
 <p>The entire sequence of using file handles looks like this:</p>
 
