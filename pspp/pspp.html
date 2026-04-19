@@ -1040,11 +1040,30 @@ Anything not recoded is given the System Missing value (SYSMIS)</p>
 STRING GENDERC (A8). 
 RECODE GENDER (2="Female") (1="Male") (ELSE=SYSMIS) into GENDERC.
 
+/* Apply labels to the new variable */
+VARIABLE LABELS     
+  GENDER "Gender of Respondent"
+  GENDERC "Gender of Respondent (Char)".
+
+/* Value labels apply to the numeric variable (GENDER), not the string version. */
+VALUE LABELS
+  GENDER   
+    1 "Male"    
+    2 "Female"
+    .
+
+VARIABLE LEVEL
+    GENDER  (NOMINAL)
+    GENDERC (NOMINAL).
+
 /* Create a text Treatment var (TRTA) */
 STRING TRTA(A1).
 RECODE TRTMENT (1="A") (2="B") (3="C") (4="D") (5="E") (6="F") (7="G") 
                (8="H") (9="I") (10="J") 
                (ELSE=SYSMIS) into TRTA.
+
+VARIABLE LABELS TRTA "Treatment Assignment (Char)".
+VARIABLE LEVEL TRTA (NOMINAL).
 </pre>
 
 <pre>
@@ -1058,8 +1077,9 @@ RECODE
 </pre>
 
 <p>This scale-reversing recode is changing the numeric values in the
-same variable it is reading from (CONSIST). Since that variable already
-exists, we don't need to create a new variable. Anything not recoded is
+same variables it is reading from (CONSIST TO KEEP_RID UNCERT TO POWER,
+and MORALITY CONTROL CAUS_YOU). Since thoses variables already
+exist, we don't need to create a new variables. Anything not recoded is
 given the System Missing value (<code>SYSMIS</code>).</p>
 
 <p>This example also uses "TO" in the variable list. <code>TO</code>
