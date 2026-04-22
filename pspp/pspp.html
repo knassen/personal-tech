@@ -94,20 +94,20 @@ background-color:black">
 syntax, and get started. A more detailed discussion of psppire’s
 behavior and limitations appears later in this page.</p>
 
-<p>In psppire, to start from scratch in the Syntax Editor,
-<strong>File-&gt;New-&gt;Syntax</strong> will open an empty Syntax
+<p>In psppire, to start a new pspp program, the Syntax Editor,
+<strong>File-&gt;New-&gt;Syntax</strong> menu will open an empty Syntax
 Editor window where commands can be entered and run. Save
 the file if it is to be used later.</p>
 
 <p>To open existing <code>.sps</code> files, go to
 <strong>File-&gt;Open</strong>. When the Open window appears, it will
-by default, show PSPP data files and <code>.sps</code> syntax
-files. If <code>.sps</code> files are desired, select <strong>Syntax
-Files (*sps)</strong> from the pull-down menu in the lower right,
-and psppire will list any existing <code>.sps</code> files that can be
-opened. To create a new syntax file from the File-&gt;Open menu, an empty
-<code>.sps</code> file in the directory must be created before 
-it is opened. That's more work, of course, than opening a new file.</p>
+by default, show PSPP data files and <code>.sps</code> syntax files. If
+only <code>.sps</code> files are desired, select <strong>Syntax Files
+(*sps)</strong> from the pull-down menu in the lower right, and psppire
+will list any existing <code>.sps</code> files that can be opened. To
+create a new syntax file from the File-&gt;Open menu, an empty
+<code>.sps</code> file in the directory must be created before it is
+opened. That's more work, of course, than opening a new file.</p>
 
 <p>
 PSPP syntax files use straightforward commands terminated by
@@ -125,8 +125,9 @@ menus.  Psppire does not provide a GUI for this command, but that
 command can still be entered and run in the Syntax Editor (use the
 syntax, Luke).</p>
 
-<p>BEGIN DATA and END DATA mark the literal block of raw data that PSPP
-reads when using DATA LIST to read raw data.</p>
+<p><code>BEGIN DATA</code> and <code>END DATA</code> mark the literal
+block of raw data that PSPP reads when using DATA LIST to read raw
+data.</p>
 
 <pre>
 * Read simple space‑delimited data.
@@ -198,7 +199,7 @@ internally; you can see the generated command in the output window.
 You can copy this generated syntax into the syntax editor and modify
 it. For example, changing the variable names and labels, without going
 through the import wizard again and again. psppire's data editor will
-allow to change variables names, types, alignment, and widths, easily,
+allow changing variables names, types, alignment, and widths, easily,
 though.</p>
 
 <p>The <code>GET DATA</code> syntax below was edited by hand; it was not
@@ -210,7 +211,7 @@ output window always shows the results of your commands, while the
 command‑line <code>pspp</code> program produces output only when your syntax
 includes procedures that generate it or when PSPP reports an error.
 Either way, the output alone is not enough to recreate the import; you
-must save the syntax.</p>
+must save the syntax if you wish to prove your work was done correctly.</p>
 
 <pre>
 * Save the following lines into a text file, for example: data.txt
@@ -1558,7 +1559,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Apr 19 13:16:27 EDT 2026
+Last Modified: Wed Apr 22 12:35:32 EDT 2026
 </p>
 </footer>
 </blockquote>
