@@ -188,13 +188,13 @@ see the attributes of what got imported.</p>
 <h3>GET DATA command</h3>
 
 <p>This example uses the same dataset as <code>DATA LIST FREE</code>
-above so the results of <code>GET DATA</code> can be compared with those
-from <code>DATA LIST FREE</code>.</p>
+example above so the results of <code>GET DATA</code> can be compared
+with those from <code>DATA LIST FREE</code>.</p>
 
-<p><code>GET DATA</code> can read the same raw text file as the DATA
-LIST, and it does not rely on the inference rules used by <code>DATA
-LIST FREE</code>. The example below shows how <code>GET DATA</code> reads
-the data.</p>
+<p><code>GET DATA</code> can read the same raw text file as used by
+<code>DATA LIST</code>, and it does not rely on the inference rules used
+by the <code>DATA LIST FREE</code> command. The example below shows how
+<code>GET DATA</code> reads the data.</p>
 
 <p><strong>Note:</strong> psppire’s File Import wizard uses
 <code>GET DATA</code> internally; you can see the generated command
@@ -610,7 +610,7 @@ the data.</p>
 <code>DESCRIPTIVES</code> also computes <strong>Z‑scores</strong> for
 all variables specified and adds them to the active dataset as new
 variables. This works in pspp syntax and there is a checkbox in psppire's
-DESCRIPTIVES dialog for saving Z-score variables labeled “Save
+<code>DESCRIPTIVES</code> dialog for saving Z-score variables labeled “Save
 Z‑scores of selected variables as new.”.</p>
 
 <p>The <code>FORMAT</code> subcommand used by <code>DESCRIPTIVES</code>
@@ -1279,11 +1279,11 @@ additional commands and options.</p>
 
 <h3>psppire and File Handles vs. Rerunning Programs</h3>
 
-<p>psppire keeps FILE HANDLE definitions for the duration of the
-session.  If file handle is defined in syntax and then the program
-is rerun, psppire will report that the handle is already in use. This
-does not happen when running PSPP from the command line, because each
-run starts a fresh session.</p>
+<p>psppire keeps <code>FILE HANDLE</code> definitions for the duration
+of the session.  If file handle is defined in syntax and then the
+program is rerun, psppire will report that the handle is already in
+use. This does not happen when running PSPP from the command line,
+because each run starts a fresh session.</p>
 
 <p>When using <code>FILE HANDLE</code>s to give files meaningful
 names, add <code>CLOSE FILE HANDLE</code> commands at the end of the
@@ -1304,9 +1304,9 @@ allows rerunning the syntax in psppire without restarting the application.</p>
 <p>psppire can export the contents of the Output window in several
 formats.  Only the formats shown in the File-&gt;Export menu are
 supported; if a format is not listed, psppire does not produce it. The
-export format is determined by the output file extension entered in the
-dialog. For example, entering "myfile.pdf" in the export dialog causes
-psppire to generate a PDF file.</p>
+export format is determined by the output file extension entered in
+the dialog. For example, entering <strong>"myfile.pdf"</strong> in the
+export dialog causes psppire to generate a PDF file.</p>
 
 <h3>Rich / Page‑Description Formats (cairo‑based)</h3>
 
@@ -1567,7 +1567,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Apr 22 20:38:25 EDT 2026
+Last Modified: Thu Apr 23 17:27:04 EDT 2026
 </p>
 </footer>
 </blockquote>
