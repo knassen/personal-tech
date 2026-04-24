@@ -84,8 +84,8 @@ Windows computer) is.</p>
 <strong>The functions assume SAS is installed and able to batch process
 your SAS code</strong>, thus creating log and lst files on the same
 server SAS is running on and you are editing the program on with
-Gvim. SAS in the Cloud may not do this if you are running your vim on a
-local machine. </p>
+Gvim.</p>
+
 <p>
 <strong>I had to use "sas -nodms"</strong> (no display management
 system) to run sas on the current file in gvim on a local unix
@@ -93,21 +93,11 @@ server. Otherwise it would to open up the SAS GUI, which wouldn't work
 because it captures the log and lst files so gvim can't get to them.</p>
 
 <h2>Environmental Considerations</h2>
-<p><strong>NOTE: I have not tried to SAS in the Cloud, and then
-transfer sas code, log, and lst files to a local computer running
-gvim</strong>. In theory it is possible, but would require modifying
-the LoadSASLogLst() function part to transfer the files via some
-protocol that works on a cloud server (or if the cloud server appears
-as a drive on your local machine, files might be directly accessable
-in some directory. Or you can copy them manually.</p> 
 
-<p>They would need to be text files, though, not screengrabs as
-you get in the SAS interface in the cloud via a browser). And the
-RunSASonCurrentFile part of the process might need to switch to manual
-operation unless there is a command that can run SAS in the cloud via a
-local command. I'm assuming it is unlikely gvim would be available on
-the cloud SAS server (e.g. Viya) and thus you probably can't set up the
-vim functions on a cloud server.</p>
+<p>NOTE: I have tried to use SAS in the Cloud, and then transfer sas
+code, log, and lst files to a local computer running gvim. The issue
+with the SAS Cloud Learning edition is that it saves HTML files, not
+plain text.</p>
 
 <h3>PC SAS on Windows</h3>
 <p>The one place where these functions may still be useful today is in PC
@@ -117,12 +107,9 @@ actually running on a Windows Server, in which case you’re back to the
 same restrictions as the cloud.</p>
 
 <h3>Cloud SAS</h3>
-<p>In my experience, the cloud is not a serious programming environment. If
-you rely on tools, automation, or editor integration, you’ll hit its
-limitations immediately. It dictates what editor you are allowed to use,
-and you can't develop scripts to help yourself and your workflow. You
-are limited to what the vendor provides. I am glad I don't need to deal
-with programming in cloud applications.</p>
+<p>If your cloud SAS environment does not allow saving plain text log or
+output files, this method will not work.
+</p>
 <p>
 I don't have SAS available now, so I can't say with certainty that is
 still the case with SAS, but I would suspect it is, since running jobs
@@ -469,7 +456,7 @@ and no path (but it doesn't hurt either way).</p>
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
 
 <span style="font-size: 80%;">
-Last Modified: Fri Apr 24 12:39:02 EDT 2026
+Last Modified: Fri Apr 24 14:42:51 EDT 2026
 </span>
 
 </blockquote>
