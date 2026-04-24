@@ -94,30 +94,20 @@ because it captures the log and lst files so gvim can't get to them.</p>
 
 <h2>Environmental Considerations</h2>
 
-<p>NOTE: I have tried to use SAS in the Cloud, and then transfer sas
-code, log, and lst files to a local computer running gvim. The issue
-with the SAS Cloud Learning edition is that it saves HTML files, not
-plain text.</p>
-
 <h3>PC SAS on Windows</h3>
 <p>The one place where these functions may still be useful today is in PC
 SAS, since it runs locally and still allows batch mode, file access,
 and the ability to use your own tools — unless your “PC SAS” is
-actually running on a Windows Server, in which case you’re back to the
+actually running on a Windows Server, in which case there might be the
 same restrictions as the cloud.</p>
+
+<h3>SAS on a Server Where You Can Edit & Run Programs</h3>
+This should be okay if you are allowed to set up your own work environment.
 
 <h3>Cloud SAS</h3>
 <p>If your cloud SAS environment does not allow saving plain text log or
 output files, this method will not work.
 </p>
-<p>
-I don't have SAS available now, so I can't say with certainty that is
-still the case with SAS, but I would suspect it is, since running jobs
-in batch mode is often done (periodic reports, for example). However, I
-was able to get these functions to work a few days ago (Sept 28, 2025)
-using a shell script for "sas" that would create dummy log and lst files
-in the same folder as my sas program. This is one way to test that the
-functions work even if you can't get them completely set up.</p>
 
 <h3>If Things Don't Work </h3>
 <p>If the functions don't work for you, make sure your SAS will run in
@@ -135,6 +125,12 @@ are in the directory where you are editing the program with gvim, they
 should load into tabs for review, if the set up is correct. You can even
 make up some files with some.sas, some.log, some.lst extensions and test
 your setup.</p>
+
+<p>I do not have access to command line SAS any longer.  However, I was
+able to get these functions to work (Sept 28, 2025) using a shell script
+for "sas" that would create dummy log and lst files in the same folder
+as my sas program. This is one way to test that the functions work even
+if you can't get them completely set up.</p>
 
 <h2>Descriptions of Functions</h2>
 
@@ -456,7 +452,7 @@ and no path (but it doesn't hurt either way).</p>
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
 
 <span style="font-size: 80%;">
-Last Modified: Fri Apr 24 14:42:51 EDT 2026
+Last Modified: Fri Apr 24 14:49:23 EDT 2026
 </span>
 
 </blockquote>
