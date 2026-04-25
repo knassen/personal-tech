@@ -204,9 +204,8 @@ example above so the results of <code>GET DATA</code> can be compared
 with those from <code>DATA LIST FREE</code>.</p>
 
 <p><code>GET DATA</code> can read the same raw text file as used by
-<code>DATA LIST</code>, and it does not rely on the inference rules used
-by the <code>DATA LIST FREE</code> command. The example below shows how
-<code>GET DATA</code> reads the data.</p>
+<code>DATA LIST</code>. The example below shows how <code>GET DATA</code>
+reads the data.</p>
 
 <p><strong>Note:</strong> psppire’s File Import wizard uses
 <code>GET DATA</code> internally; the generated command can be seen
@@ -355,7 +354,8 @@ correctly.</p>
 
 <p><strong>2. Strings must match their column width</strong></p> <p>PSPP
 does not infer string length in <code>DATA LIST FIXED</code>. If NAME
-spans columns 6–13, it must be (A8) or (A) with that exact range.</p>
+spans columns 6–13, it must be (A8) or (A) with that exact column range.
+The data width must match the span of the fixed width field.</p>
 
 <p><strong>3. psppire states "Reading 1 record from INLINE"</strong></p>
 even though there are two lines of data. psppire reads the first
@@ -1579,7 +1579,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Apr 25 15:28:44 EDT 2026
+Last Modified: Sat Apr 25 16:36:31 EDT 2026
 </p>
 </footer>
 </blockquote>
