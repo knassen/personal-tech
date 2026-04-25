@@ -212,7 +212,7 @@ DATA</code> reads the data.</p>
 the output window. This syntax can be copied into the syntax editor for
 modification—for example, changing the variable names and labels,
 without going through the import wizard repeatedly. psppire's data
-editor will allow changing variables names, types, alignment, and widths
+editor also allows changing variables names, types, alignment, and widths
 directly.</p>
 
 <p>The <code>GET DATA</code> syntax below was edited by hand; it was
@@ -408,13 +408,12 @@ LIST.
 DISPLAY DICTIONARY.
 </pre>
 
-<p>Note that for implied decimals only the number of decimals is
-specified in parentheses. PSPP determines the width from the column
-range.</p>
+<p>For implied decimals only the number of decimals is specified in
+parentheses. PSPP determines the width from the column range.</p>
 
-<p>Run this in psppire and it should produce the following output. Note
-that psppire uses lines around the tables for a smoother look. Command
-line pspp uses ASCII characters that look different.</p>
+<p>Run this in psppire and it should produce output similar to the
+following. psppire uses box-drawing charcters for tables while the 
+command=line pspp uses plain ASCII.</p>
 
 <pre>
 ** Implied decimals example.
@@ -451,8 +450,8 @@ DISPLAY DICTIONARY.
 ╰────┴────────┴─────────────────┴─────┴─────┴─────────┴────────────┴────────────╯
 </pre>
 
-<p>The <code>LIST</code> output shows our input data was read with two
-decimal places.</p>
+<p>The <code>LIST</code> output shows that the input values were read with two
+decimal places applied.</p>
 
 <h3>Reading Saved Files</h3>
 
@@ -483,12 +482,12 @@ GET DATA
     .
 </pre>
 
-<p>Note: <code>FIRSTCASE</code> tells pspp that the data begin in line
-2. The variable names are in line 1, so we skip that line. FIRSTCASE
-is not needed if the CSV file is one long line of data. This example
-defines the file as <code>DELIMITED</code>, in this case comma-separated
-values, with the comma as a delimiter and double quotes as the text
-qualifier.</p>
+<p><strong>Note:</strong> <code>FIRSTCASE</code> tells pspp that the
+data begin on line 2. The variable names are in line 1, so that line
+is skipped.  FIRSTCASE is not needed if the CSV file is one long
+line of data and no header row. This example defines the file as
+<code>DELIMITED</code>, in this case comma-separated values, with the
+comma as the delimiter and double quotes as the text qualifier.</p>
 
 <h3>File Handles in PSPP</h3>
 
@@ -512,7 +511,7 @@ the program is rerun.</p>
 <p>The entire sequence of using file handles looks like this:</p>
 
 <pre>
-FILE HANDLE demo /NAME='demo' /FILE='/home/analysis/data/demo.sav'.
+FILE HANDLE demo /FILE='demo' /FILE='/home/analysis/data/demo.sav'.
 
 GET FILE=demo.
 
