@@ -178,25 +178,24 @@ DISPLAY DICTIONARY.
 +----+--------+-----------------+-----+-----+---------+------------+------------+
 </pre>
 
-<p><code>DATA LIST FREE</code> relies on type and width inference, which
-can behave unpredictably with short tokens or mixed data. To ensure
-correct and reproducible results, specify formats for all variables. If
-in doubt, verify the <code>DATA LIST FREE</code> read by comparing it
-with <code>GET DATA</code>, which always requires explicit formats.</p>
+<p><code>DATA LIST FREE</code> can behave unpredictably reading some
+data. To ensure correct and reproducible results, specify formats for
+all variables. If in doubt, verify the <code>DATA LIST FREE</code>
+read by comparing it with <code>GET DATA</code>, which always requires
+explicit formats.</p>
 
-<p><strong>Note:</strong> If psppire is preferred rather than
-commandline syntax in an editor, the Import Data wizard will ask which line
-contains the first data row and then infer variable formats based on
-the delimiter choosen (space, tab, comma, etc.). With the correct
-delimiter and first‑line selection, the wizard should parse the fields
-and import the data (some formats may need to be added, though, as shown
-above).</p>
+<p><strong>Note:</strong> If psppire is preferred, rather than
+commandline syntax in an editor, setting the correct delimiter allows
+the import wizard to split the fields and load the data. However, its
+format guesses are often wrong or missing, so variable formats may still
+need to be added manually (as shown above).</p>
 
 <p><strong>Inspecting imported data</strong></p> <p>Use
 <code>FREQUENCIES</code> when quick counts, ranges, and missing‑value
 checks are needed. Use <code>LIST</code> when inspecting exact values,
 string variables, or formatting. Use <code>DISPLAY DICTIONARY</code> to
-see the attributes of what got imported.</p>
+see the attributes of what was imported. If the data are not being
+read correctly, add or adjust variable formats.</p>
 
 <h3>GET DATA command</h3>
 
@@ -1580,7 +1579,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Apr 25 14:44:30 EDT 2026
+Last Modified: Sat Apr 25 15:28:44 EDT 2026
 </p>
 </footer>
 </blockquote>
