@@ -143,7 +143,11 @@ read raw data.</p>
 
 <pre>
 * Read simple space‑delimited data.
-DATA LIST FREE /ID AGE YEAR SEX (A).
+DATA LIST FREE 
+  /ID (F6.0)
+   AGE (F2.0)
+   YEAR (F4.0) 
+   SEX (A6) .
 BEGIN DATA
 123456  27 1984 Male
 987654  58 1990 Female
