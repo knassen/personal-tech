@@ -550,7 +550,9 @@ merges, and building syntax incrementally.</p>
 
 <p><code>SELECT IF</code> is used to select cases for analysis or
 testing. Cases that are not selected are removed from the active
-dataset.</p>
+dataset. If the dataset is saved after this point, the removed
+cases cannot be recovered except by reloading the original data
+file.</p>
 
 <pre>
 * Keep only adults with non‑missing income.
@@ -567,12 +569,12 @@ values.</p>
 The <code>DESCRIPTIVES</code> command computes means, standard
 deviations, and other summary statistics. PSPP supports variable lists,
 subcommands, and formatting options. These are specified through the
-syntax.</p>
+<code>DESCRIPTIVES</code> command syntax.</p>
 
 <p><code>DESCRIPTIVES</code> does not read raw data, so if no active
-dataset is available—or there is no PSPP system file to load—<code>DATA 
-LIST</code> or <code>GET DATA</code> can be used to read
-the raw data before running the procedure.</p>
+dataset is available—or there is no PSPP system file to load—use
+<code>DATA LIST</code> or <code>GET DATA</code> to read the raw data
+before running the procedure.</p>
 
 <pre>
 * Short example dataset for DESCRIPTIVES.
@@ -619,11 +621,11 @@ requires a bit more arithmetic, the values reported are consistent with
 the data.</p>
 
 <p>If the <code>/SAVE</code> option is included,
-<code>DESCRIPTIVES</code> also computes <strong>Z‑scores</strong> for
-all variables specified and adds them to the active dataset as new
-variables. This works in pspp syntax and there is a checkbox in psppire's
-<code>DESCRIPTIVES</code> dialog for saving Z-score variables labeled “Save
-Z‑scores of selected variables as new.”.</p>
+<code>DESCRIPTIVES</code> also computes <strong>Z‑scores</strong>
+for all variables specified and adds them to the active dataset as new
+variables. This works in PSPP syntax, and psppire includes a checkbos
+in the <code>DESCRIPTIVES</code> dialog labeled “Save Z‑scores of
+selected variables as new.”.</p>
 
 <p>The <code>FORMAT</code> subcommand used by <code>DESCRIPTIVES</code>
 is accepted for backward compatibility but has no effect in PSPP.</p>
@@ -632,7 +634,7 @@ is accepted for backward compatibility but has no effect in PSPP.</p>
 
 <p>
 The <code>FREQUENCIES</code> command produces counts and percentages for the
-values of one or more variables and is often the first procedure to be run
+values of one or more variables and is often the first procedure run
 after reading a dataset, because it quickly shows whether the values were
 read correctly and whether any unexpected categories or codes appear.
 </p>
@@ -717,10 +719,11 @@ this small example was constructed to be complete. Real datasets often
 contain missing or unexpected values, and <code>FREQUENCIES</code> is a
 quick way to identify them.</p>
 
-<p>Following the statistics output are the frequencies for the two
-variables, group and score. There are two groups and 5 subjects. The
-Score variable shows 18 has two values and the rest of the frequencies
-are one.  This type of result can be checked against the data.</p>
+<p>Following the statistics output are the frequency tables for
+<code>group</code> and <code>score</code>. There are two groups and 5
+subjects. The <code>score</code> variable shows 18 occurs twice and the
+o ther values occur once. These results can be checked directly against
+the data.</p>
 
 <p><code>FREQUENCIES</code> can summarize multiple variables at once,
 but it treats each variable separately. <code>CROSSTABS</code> and
@@ -737,12 +740,19 @@ values. It is often used after <code>FREQUENCIES</code> to check that the
 categories of each variable combine as expected.
 </p>
 
+<p><code>CROSSTABS</code> can include more than two variables, but
+PSPP produces a separate two‑way table for each combination. If you
+need counts arranged by nested categories in a single table—such
+as multiple variables stacked within rows or columns—use
+<code>CTABLES</code>, which is designed for multi‑layered and
+formatted tables.</p>
+
 <p>
 <code>CROSSTABS</code> can also produce row, column, and total
-percentages, which make it easier to compare groups. In this example we
-use the same small dataset to show how the values of one variable are
-distributed within the categories of another, and we also request the
-chi‑square test that PSPP prints below the table. </p>
+percentages, which make it easier to compare groups. The same small
+dataset is used in this example to show how the values of one variable
+are distributed within the categories of another. It also requests
+the chi‑square test, which PSPP prints below the table. </p>
 
 <p>Output:</p>
 <pre>
@@ -841,23 +851,28 @@ END DATA.
 LIST.
 
 REGRESSION
-/DEPENDENT = y
-/METHOD = ENTER x1 x2.
+  /DEPENDENT = y
+  /METHOD = ENTER x1 x2
+  /SAVE = PRED RESID.
 </pre>
 
 <p><strong>Output:</strong></p>
-
+<p>
+This creates two additional variables: <code>PRED1</code> (predicted
+values) and <code>RES1</code> (residuals). These can then be examined,
+listed, or plotted using other PSPP procedures.
+</p>
 <pre>
-Data List
-╭────┬────┬────╮
-│  y │ x1 │ x2 │
-├────┼────┼────┤
-│10.0│1.00│4.00│
-│12.0│2.00│5.00│
-│13.0│3.00│6.00│
-│20.0│4.00│7.00│
-│22.0│5.00│8.00│
-╰────┴────┴────╯
+          Data List
+╭─────┬────┬────┬─────┬─────╮
+│  y  │ x1 │ x2 │ RES1│PRED1│
+├─────┼────┼────┼─────┼─────┤
+│10.00│1.00│4.00│ 1.00│ 9.00│
+│12.00│2.00│5.00│ -.20│12.20│
+│13.00│3.00│6.00│-2.40│15.40│
+│20.00│4.00│7.00│ 1.40│18.60│
+│22.00│5.00│8.00│  .20│21.80│
+╰─────┴────┴────┴─────┴─────╯
 
 REGRESSION
 /DEPENDENT = y
@@ -905,11 +920,15 @@ PSPP fits the model and reports the results.
 <ul>
       <li>PSPP does not yet support everything SPSS does. Software should be
           installed based on what it can do, not what you wished it did.</li>
-      <li>PSPP includes some functionality that SPSS doesn't.</li>
+
+      <li>PSPP includes some functionality that SPSS does not.</li>
+      
       <li>Your mileage may vary. New versions may have what you
-          need. PSPP is a work in progress and run by volunteers.</li>
+          need. PSPP is a work in progress and maintained by volunteers.</li>
+
       <li>If you want to contribute, report bugs, and make suggestions,
           consider helping the pspp project at gnu.org.</li>
+
       <li>If you’re not sure what a PSPP command will do, read
           the manual or run the examples on a copy of your data
           before applying it to anything important. Some commands
@@ -917,12 +936,18 @@ PSPP fits the model and reports the results.
           FILES</code>, or <code>DATA LIST</code>) replace or clear the
           active dataset, so save your data first if you want to keep
           it.</li>
-      <li>If it deals with files in memory or on disk, assume it will
-          disappear unless you save it before running the next command.</li>
+
+      <li>If a command works with files in memory or on disk, assume the
+          results will disappear unless you save them before running the
+          next command.</li>
+
       <li>Again: If you create it and want to keep it, it needs to be saved.</li>
+
       <li>Batch mode is stable and well-suited for reproducible workflows.</li>
+
       <li>Some dialogs in the GUI correspond to syntax that is not fully 
           implemented.</li>
+
       <li>Table and chart output can be produced in several formats: 
           plain text, PostScript, PDF, DocBook, TeX, or HTML depending on 
           configuration.</li>
@@ -937,23 +962,23 @@ are covered in several later sections.</p>
 
 <p> Up to this point we have seen <code>DATA LIST FREE</code> and
 <code>GET DATA</code> used to read ordinary raw data files.  Another
-kind of raw data that still appears on the job is the multi‑record
+kind of raw data that still appears oin practice is the multi‑record
 hierarchical data format.</p>
 
 <h3>Multi-Record Hierarchical Data Format (HDF) with PSPP</h3>
 
 <p>Multi-record hierarchical data is an older raw data format that is
-still used in industries where older reporting systems, long-running
-surveys, or fixed-width exports are still being produced, or where 
-efficient storage matters. 
+still encountered in industries where legacy reporting systems, long-running
+surveys, or fixed-width exports are produced, or where 
+efficient storage is important. 
 
 <p>This format stores a large number of variables and values in
 a compact form, spreading each case across multiple physical
 records. However, the format is not self-documenting. <strong>External
 documentation is required to interpret the file</strong>, usually in the
 form of a codebook defining how the data were collected, what the cards
-represent, what the variable names are, and how wide the variables are,
-or PSPP code to read the data.</p>
+represent, the variable names, and the column locations, 
+or PSPP code that reads the data correctly.</p>
 
 <p>Here is an example of multi-record hierarchical data:</p>
 <pre>
@@ -973,7 +998,7 @@ which value belongs to which variable. Different variables appear on
 different cards (or lines in the file), so this file cannot be read
 vertically as a simple rectangular dataset or CSV file.</p>
 <p>
-PSPP can handle this type of data quite easily by reading each record
+PSPP can handle this type of data by reading each record
 with a separate set of input statements for each card. It then
 combines the values from all the records into a single case.</p>
 
@@ -985,7 +1010,7 @@ options:</p>
 <ul>
     <li>Read the card (and delete variables later if they are not needed)</li>
     <li>Skip the card using a blank record specification (for example: <code>/ / /</code>: 
-        slashes in <code>DATA LIST</code> skips cards)</li>
+        slashes in <code>DATA LIST</code> skip cards)</li>
 </ul>
 
 <p>Every card must be accounted for. Removing a card is like
@@ -1001,7 +1026,7 @@ these files must be read.</p>
 
 <p>This page shows how to read a multi‑record file with PSPP and export
 the assembled dataset to CSV or SAV. Once in a modern format, the data
-is usable in modern analysis tools.</p>
+can be used in modern analysis tools.</p>
 
 <p>Before looking at PSPP syntax, it helps to see the basic pattern of
 a multi-record file. Each card has its own layout, and PSPP reads them
@@ -1027,16 +1052,16 @@ DATA LIST FILE=studydat RECORDS=4 NOTABLE
  /
  .
 </pre>
-<p>This short bit of code illustrates how <code>DATA LIST</code> reads
-multi-record data. First, the <code>DATA LIST</code> is told how many
-records belong to each case. In this example, there are four cards per
-case, even though two cards are not used for analysis.</p>
+<p>This code illustrates how <code>DATA LIST</code> reads
+multi-record data. First, the <code>RECORDS=4</code> tells PPSP that
+each case consists of four cards, even though two cards are not used 
+for analysis.</p>
 
 <p>Each card is defined by a <code>/N</code> and followed by variable
 names and their column locations on that card. Note that the column
 locations differ across the cards because each card has its own
-layout. Here data from two cards are read, so <code>/1</code> and
-<code>/2</code> define those two cards.</p>
+layout. In this example, <code>/1</code> and <code>/2</code> define the
+two cards being read.</p>
 
 <p>To skip a card, PSPP is instructed to advance one record for
 each slash (/). To skip two cards, enter two slashes and end with a
@@ -1044,17 +1069,17 @@ period.</p>
 
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
-<p>For anyone not familiar with the <strong>vertical, sequential
+<p>For anyone unfamiliar with the <strong>vertical, sequential
 data-reading</strong> pattern that hierarchical files depend
-upon--the format may seem odd at first glance. The structure itself is
+upon, the format may seem unusual at first. The structure itself is
 not the problem. It is an efficient, compact way to store data--and it
-still works beautifully today. But because it relies on reading multiple
+still works well today. But because it relies on reading multiple
 cards of data in the correct sequence, even a small slip can create
 problems that are hard to detect.</p>
 
 <p>If a card is missing, out of order, or removed from the read pattern,
 the software doesn't complain. It simply reads the next physical record
-as the next logical one -- and everything after that is wrong. The first
+as the next logical one, and everything after that is wrong. The first
 card may appear correct, but the misalignment often becomes apparent
 only on later cards. Because PSPP cannot infer what was intended, it is
 essential to run <code>FREQUENCIES</code> on a few key variables drawn
@@ -1063,7 +1088,7 @@ from several cards to confirm that the data were read correctly.</p>
 <p>When all variables are single digits, a one‑off shift
 can still produce values that look plausible. In those cases,
 <code>FREQUENCIES</code> may not reveal the problem because the range of
-values is unchanged -- only the counts shift. This is where having the
+values is unchanged--only the counts shift. This is where having the
 original, documented frequencies or an original filled-out survey form
 is essential. When <code>FREQUENCIES</code> cannot be trusted to expose
 a misread due to complexity, the only dependable method is to check the
@@ -1074,11 +1099,11 @@ values by hand to see where the read went wrong.</p>
 <p>The <code>RECODE</code> command can be used to change values in a
 variable or create new values in a new variable.</p>
 
-<p>Here PSPP requires the creation of a string variable to put values
-in, because the recoded values are strings in the next two examples.
-Anything not recoded is given the System Missing value (SYSMIS)</p>
+<p>In the next two examples, the recoded values are strings, soo PSPP
+requires creating a string variable to hold them.  Anything not recoded
+is given the System Missing value (<code>SYSMIS</code>)</p>
 
-<p>Also included here are variable labels, value labels, and variable
+<p>This example also includes variable labels, value labels, and variable
 level definitions.</p>
 
 <pre>
@@ -1123,29 +1148,27 @@ RECODE
 </pre>
 
 <p>This scale-reversing recode is changing the numeric values in the
-same variables it is reading from (<code>CONSIST TO KEEP_RID UNCERT
-TO POWER</code>, and <code>MORALITY CONTROL CAUS_YOU</code>). Since
-thoses variables already exist, we don't need to create a new
-variables. Anything not recoded is given the System Missing value
-(<code>SYSMIS</code>).</p>
+same variables it reads from (<code>CONSIST TO KEEP_RID UNCERT TO
+POWER</code>, and <code>MORALITY CONTROL CAUS_YOU</code>). Because those
+variables already exist, no new variables are needed. Anything not
+recoded is given the System Missing value (<code>SYSMIS</code>).</p>
 
 <p>This example also uses "TO" in the variable list. <code>TO</code>
-is useful to shorten long variable lists and reduce typing. BEWARE,
-it only works on variables that are <strong>consecutive in the data
-set</strong>. That's why this example has a skip in variable list.
-<code>CONSIST TO KEEP_RID</code> covers one block of consecutive
-variables. <code>UNCERT TO POWER</code> reads another block of variables
-in the data set, and <code>MORALITY CONTROL CAUS_YOU</code> are
-variables not part of any consecutive sequence, so must be listed
-separately.<p>
+is useful for shortening long variable lists and reducing typing,
+but it only works on variables that are <strong>consecutive in the
+data set</strong>. That is why this example has a break in variable
+list. <code>CONSIST TO KEEP_RID</code> covers one consecutive block,
+<code>UNCERT TO POWER</code> covers another, and <code>MORALITY CONTROL
+CAUS_YOU</code> are variables not part of any consecutive sequence, so
+they must be listed separately.<p>
 
-<p><code>A variable order like CONSIST TO CAUS_YOU</code> causes PSPP to
+<p><code>A variable list like CONSIST TO CAUS_YOU</code> causes PSPP to
 include every variable between those names in dictionary order — often
 far more than intended.</p>
 
 <p><code>DISPLAY DICTIONARY.</code> shows the variable order, making
 it easy to confirm which variables are consecutive before using
-<code>TO</code> in the code.</p>
+<code>TO</code>.</p>
 
 <p><code>RECODE</code> works on both string to numeric coding and
 numeric to string coding.</p>
@@ -1163,7 +1186,7 @@ COMPUTE IDN = $CASENUM.
 /* Average three items */
 COMPUTE SITUATN = (CONSIST + WANTEDBY + IMPROVED) / 3.
 
-/* Average three items using a function. */
+/* Average three items using a function */
 COMPUTE SITUATN = MEAN(CONSIST, WANTEDBY, IMPROVED).
 </pre>
 
@@ -1193,7 +1216,7 @@ COMPUTE total = SUM(item1, item2, item3).
 </pre>
 
 <p><strong>3. <code>DATEDIFF()</code></strong> — essential for age and
-time intervals This one solves a real problem for archivists and anyone
+time intervals. This one solves a real problem for archivists and anyone
 working with dates.</p>
 
 <pre>
@@ -1268,7 +1291,7 @@ psppire itself in more detail.</p>
 <h3>psppire: The PSPP Graphical Interface</h3>
 
 <p>Many PSPP users prefer <strong>psppire</strong>, the graphical 
-interface that resembles the SPSS Data Editor. Psppire is useful for data 
+interface that resembles the SPSS Data Editor. psppire is useful for data 
 entry, quick exploration, and running common procedures without writing 
 syntax. However, it does not expose all of PSPP's capabilities, and some 
 dialogs correspond to syntax that is only partially implemented.</p>
@@ -1293,7 +1316,7 @@ in psppire's Syntax Editor).</p>
 <h3>psppire and File Handles vs. Rerunning Programs</h3>
 
 <p>psppire keeps <code>FILE HANDLE</code> definitions for the duration
-of the session.  If file handle is defined in syntax and then the
+of the session. If a file handle is defined in syntax and then the
 program is rerun, psppire will report that the handle is already in
 use. This does not happen when running PSPP from the command line,
 because each run starts a fresh session.</p>
@@ -1330,7 +1353,7 @@ Output window.</p>
 <ul> 
     <li><strong>PDF (.pdf)</strong> — Suitable for sharing,
         printing, and archiving.</li>
-    <li><strong>PostScript (.ps)</strong> — Vector format; Compatible
+    <li><strong>PostScript (.ps)</strong> — Vector format; compatible
         with PostScript viewers and printers.</li>
     <li><strong>Scalable Vector Graphics (.svg)</strong> — Vector
         format; editable in tools such as Inkscape.</li>
@@ -1455,7 +1478,7 @@ after the merge. Variables from each <code>/TABLE</code> file are
 added to it. In this example, <code>demo.sav</code> is the base
 file. After MATCH FILES completes, the active dataset contains the
 merged result, which should be saved (for example, with <code>SAVE
-OUTFILE='merged.sav'</code>). PSPP system .sav files contain the data set
+OUTFILE='merged.sav'</code>). PSPP system files contain the data set
 with all its variable attributes.</p>
 
 <p>PSPP always has exactly one <em>active file</em>, referred to
@@ -1468,8 +1491,8 @@ changes the active file.</p>
 
 <p><strong>What happens when there is not a one-to-one merge?</strong>
 Subject 104 has been added to psych.sav but not to demo.sav. In this
-case, PATID 104 is merged but that subject's demo variables are all
-missing.</p>
+case, PATID 104 is merged but that subject's demographic variables are
+all missing.</p>
 
 <p><strong>Revised psych.sav</strong></p>
 <table>
@@ -1564,9 +1587,9 @@ a transaction file.</p>
 
 <p>The <a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
 user manual</a> provides the full reference for all commands, functions,
-and procedures available in PSPP.  It is worth consulting when details
-beyond the examples shown here are needed. or the options available in
-the psppire menus.</p>
+and procedures available in PSPP. It is worth consulting when details
+beyond the examples shown here are needed, or when exploring options 
+available in the psppire menus.</p>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
@@ -1580,7 +1603,7 @@ the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Apr 25 17:04:23 EDT 2026
+Last Modified: Sat Apr 25 20:31:36 EDT 2026
 </p>
 </footer>
 </blockquote>
