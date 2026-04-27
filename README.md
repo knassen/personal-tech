@@ -52,7 +52,8 @@ I have done most of things I set out to do.
 
   - Also in 2026, I put together a PSPP page with plenty of examples,
     tips, and information about reading multi-record hierarchical files,
-    merging files in PSPP, and test of GET DATA.
+    merging files in PSPP, general usage, issues with DATA LIST FREE,
+    and a test of GET DATA.
 
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
