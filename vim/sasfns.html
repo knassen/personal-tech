@@ -6,31 +6,38 @@
     <link rel="stylesheet" type="text/css" href="kstyle.css">
     <link rel="canonical" href="https://knassen.github.io/personal-tech/vim/sasfns.html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Kent Nassen's Vim Functions for SAS Programming">
+    <meta name="description" content="Original Vim SAS Functions Written by Kent Nassen">
     <meta name="keywords" content="vim editor SAS programming">
+    <meta name="author" content="Kent Nassen">
     <meta http-equiv="Content-Type" 
          content="text/html; charset=utf-8">
-    <title>Vim Functions for SAS Programming</title>
+    <title>Vim Functions for SAS Programming--Official Documentation & Examples</title>
 </head>
 
 <body>
 <main>
 <blockquote>
 <h1><img src="/personal-tech/gif/vim_sas_functions_menu2.png" alt="">
-Vim Functions for SAS Programming</h1>
+Vim Functions for SAS Programming--Official Documentation &amp; Examples</h1>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
 <h1> Introduction </h1>
-These three functions were written to help me program SAS with the Vim
+<p>This page provides the original and complete documentation for the Vim
+SAS functions I wrote for SAS program editing, log analysis, and
+running SAS directly from vim.</p>
+
+<p>I wrote these functions to help me program SAS with the Vim
 editor in GUI mode. The first allows me to run SAS in batch mode on a
 program I'm currently editing in Vim. In addition, there are functions
 to load the .log and .lst files for a SAS program being edited, and to run
 a log checking program on the current buffer, allowing the use of Vim's
 QuickFix functionality to check SAS log files (see the Vim quickfix help, 
 which covers defining the file to be used and how to move around the issues
-list). If you can't run SAS in batch mode, then this setup will not
-work for you.
+list).</p> 
+
+<p>If you can't run SAS in batch mode, then this setup will not
+work for you.</p>
 <p>
 The code to add the three functions to the 
 <a href="/personal-tech/gif/vim_sas_functions.jpg"><strong>Vim Tools 
@@ -59,13 +66,13 @@ local environment and what it calls its log checking program.</p>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <h1>Usage Notes</h1>
 
-These functions were developed for use with SAS in a Unix/Linux
+<p>These functions were developed for use with SAS in a Unix/Linux
 environment so they reference some Unix paths and programs. But they
 could be adapted to Vim and PC SAS in a Windows environment quite
 easily (using batch mode to run PC SAS). File extensions are used for
 determining the file types and follow SAS' defaults (.sas for program,
 .log for log file, and .lst for list output). These can be changed if
-you use other extensions for some reason.
+you use other extensions for some reason.</p>
 <p>
 I keep the code for these functions in my <strong>$HOME/.gvimrc
 file</strong>. I haven't tried these functions in a console Vim
@@ -453,7 +460,7 @@ and no path (but it doesn't hurt either way).</p>
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
 
 <span style="font-size: 80%;">
-Last Modified: Fri Apr 24 14:52:23 EDT 2026
+Last Modified: Mon Apr 27 20:52:22 EDT 2026
 </span>
 
 </blockquote>
