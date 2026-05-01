@@ -32,7 +32,8 @@ syntax along with output samples and notes.</p>
 I've been using PSPP for many years now.  After I left college, it
 was one of the software packages that could do some of the analysis
 tasks that I needed. I generally build it from source code on one
-of my FreeBSD Unix computers.</p>
+of my FreeBSD Unix computers. Before that, I used SPSS in one of my
+jobs.</p>
 
 <p>This web page focuses on practical examples and discussions about
 data and programming with PSPP. More examples will be added over
@@ -56,18 +57,11 @@ for Windows, Mac, Debian, Ubuntu, Fedora, and with Flatpak.</p>
 <p>PSPP source can also be obtained with git: 
 <a href="https://savannah.gnu.org/git/?group=pspp">savannah.gnu.org/git</a></p>
 
-<p>FreeBSD: PSPP is no longer in the FreeBSD ports collection (expired
-2025-03-01 after being marked broken for more than
-five months). FreeBSD users can still install PSPP by building it
-from the official GNU source release. The standard build instructions
-work on FreeBSD: clone the PSPP source and the required gnulib
-revision using Git (as described on pspp.gnu.org), build and install the GNU
-Spreadsheet Widget, ensure the listed GNU build tools are present, and use
-<code>gmake</code> instead of BSD <code>make</code>. gnulib does not need
-to be built or installed; PSPP’s build system pulls the needed files
-directly from the gnulib source tree when it is placed in the expected
-location. See <code>pspp/INSTALL</code> after cloning with Git for the
-details.</p>
+<p>FreeBSD: PSPP is not in the FreeBSD ports collection (expired
+2025-03-01 after being marked broken). FreeBSD users can still install
+PSPP by building it from the official GNU source release. The standard
+build instructions work on FreeBSD. See <code>pspp/INSTALL</code> after
+cloning with Git for the details.</p>
 
 <h3>Using PSPP</h3>
 <p>PSPP syntax files can be created with a text editor. Save the file
@@ -103,6 +97,16 @@ background-color:black">
 <p>This section covers only the basics needed to open psppire, run
 syntax, and get started. A more detailed discussion of psppire’s
 behavior and limitations appears later in this page.</p>
+
+<p><strong>Opening psppire</strong> depends on the operating
+system. Details of OS usage are outside the scope of this page. On
+Windows the installer normally adds a desktop icon or a Start Menu
+entry. On macOS, psppire will appear in the Applications window. On
+Linux/Unix, if it does not appear in your desktop environment's
+applications window, it can be started from a terminal by running
+<code>psppire</code>. If you are unfamiliar with how to launch
+applications on your system, consult your OS documentation or ask
+someone familiar with it.</p>
 
 <p>In psppire, to start a new pspp program, the Syntax Editor,
 <strong>File-&gt;New-&gt;Syntax</strong> menu will open an empty
@@ -1186,7 +1190,7 @@ data set</strong>. That is why this example has a break in variable
 list. <code>CONSIST TO KEEP_RID</code> covers one consecutive block,
 <code>UNCERT TO POWER</code> covers another, and <code>MORALITY CONTROL
 CAUS_YOU</code> are variables not part of any consecutive sequence, so
-they must be listed separately.<p>
+they must be listed separately.</p>
 
 <p><code>A variable list like CONSIST TO CAUS_YOU</code> causes PSPP to
 include every variable between those names in dictionary order — often
@@ -1629,7 +1633,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Apr 29 17:30:29 EDT 2026
+Last Modified: Fri May  1 11:24:17 EDT 2026
 </p>
 </footer>
 </blockquote>
