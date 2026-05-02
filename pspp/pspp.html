@@ -21,23 +21,23 @@
 
 <h1>Using PSPP: Examples, Syntax, and Notes</h1>
 
-<p>
-PSPP is a free, open-source alternative to SPSS. It supports many of
+<p>PSPP is a free, open-source alternative to SPSS. It supports many of
 the same statistical procedures, uses a similar syntax language, and is
 well-suited for batch processing, scripting, reproducible analysis, as
 well as interactive use. This page provides practical examples of PSPP
 syntax along with output samples and notes.</p>
 
-<p>
-I've been using PSPP for many years now.  After I left college, it
+<p> I've been using PSPP for many years now.  After I left college, it
 was one of the software packages that could do some of the analysis
-tasks that I needed. I generally build it from source code on one
-of my FreeBSD Unix computers. Before that, I used SPSS in one of my
-jobs.</p>
+tasks that I needed. I generally build it from source code on one of my
+FreeBSD Unix computers. I also used SPSS in one of my jobs.</p>
 
-<p>This web page focuses on practical examples and discussions about
-data and programming with PSPP. More examples will be added over
-time (maybe, it's getting big now).</p>
+<p>This page focuses on practical examples, notes about data, and
+programming with PSPP. And yes, it's a lot of reading. Adding
+screenshots would make the page a lot longer, and they don't
+show anything you can't already see on your own computer running
+psppire. More examples may be added over time--though the page is
+getting pretty large as it is.</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>Getting Started</h3>
@@ -59,7 +59,7 @@ for Windows, Mac, Debian, Ubuntu, Fedora, and with Flatpak.</p>
 
 <p>FreeBSD: PSPP is not in the FreeBSD ports collection (expired
 2025-03-01 after being marked broken). FreeBSD users can still install
-PSPP by building it from the official GNU source release. The standard
+PSPP by building it from the official GNU source release. The PSPP
 build instructions work on FreeBSD. See <code>pspp/INSTALL</code> after
 cloning with Git for the details.</p>
 
@@ -78,7 +78,7 @@ the Syntax Editor in psppire.</p>
 <p>psppire is a graphical interface for the PSPP engine. It’s useful
 for exploring data, running common procedures, and generating basic
 syntax. Many users begin in psppire and then copy the generated syntax
-into a program file.</p>
+into the Syntax Editor or program file.</p>
 
 <p>Some PSPP commands and options are not available in the psppire
 menus. When features that the GUI doesn’t expose are needed, syntax
@@ -87,15 +87,17 @@ with pspp. psppire runs all PSPP syntax, not just what appears in the
 dialogs. Thus, psppire can be used to develop and run PSPP syntax (or
 any PSPP code).</p>
 
-<p>psppire does not save syntax or workflow automatically.  If the
-program is closed without saving the syntax, any unsaved syntax entered
-or generated during the session cannot be recovered.</p>
+<p>psppire does not save syntax or workflow
+<strong>automatically</strong>. If the program is closed without saving
+the syntax, any unsaved syntax entered or generated during the session
+cannot be recovered. Saving matters if you need to reproduce or debug your
+analysis.</p>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
 
 <p>This section covers only the basics needed to open psppire, run
-syntax, and get started. A more detailed discussion of psppire’s
+syntax, and get started. A more detailed review of psppire’s
 behavior and limitations appears later in this page.</p>
 
 <p><strong>Opening psppire</strong> depends on the operating
@@ -150,14 +152,14 @@ Editor (use the syntax, Luke).</p>
 block of raw data that PSPP reads when using <code>DATA LIST</code> to
 read raw data.</p>
 
-<p><strong>If there are issues reading the data</strong>, the
-only reliable method is to apply formats for all variables on the
-<code>DATA LIST FREE</code> line.</p> 
+<p>If there are <strong>issues reading the data</strong>, the only
+reliable method to read the data is to apply formats for all variables
+on the <code>DATA LIST FREE</code> line.</p>
 
-<p>In my own testing this example read space-delimited data perfectly
-for over a week with no formats at all except for SEX as a string. Then,
-without any changes to the syntax or data, PSPP suddenly assigned
-every variable an A1 format and failed to read the data. Adding
+<p>In my own testing this simple example read space-delimited data
+perfectly for over a week with no formats at all except for SEX as a
+string. Then, without any changes to the syntax or data, PSPP suddenly
+assigned every variable an A1 format and failed to read the data. Adding
 explicit formats immediately fixed the problem and produced consistent
 results.</p>
 
@@ -165,7 +167,8 @@ results.</p>
 two different operating systems, and two different versions of
 pspp/psppire. If there is a choice, use <code>GET DATA</code>.
 If <code>DATA LIST FREE</code> must be used, use formats on all
-variables.</p>
+variables to ensure reliability and reproducibility. Of course,
+a few days later it started working again.</p>
 
 <pre>
 * Read simple space‑delimited data.
@@ -215,10 +218,11 @@ read by comparing it with <code>GET DATA</code>, which always requires
 explicit formats.</p>
 
 <p><strong>Note:</strong> If psppire is preferred, rather than
-commandline syntax in an editor, setting the correct delimiter allows
-the import wizard to split the fields and load the data. However, its
-format guesses are often wrong or missing, so variable formats may still
-need to be added manually (as shown above).</p>
+commandline syntax in an editor, setting the <strong>correct
+delimiter</strong> allows the import wizard to split the fields and
+load the data. However, its format guesses are sometimes wrong or
+missing. Variable formats may still need to be added manually (as shown
+above) to read the data correctly.</p>
 
 <p><strong>Inspecting Imported Data</strong></p> <p>Use
 <code>FREQUENCIES</code> when quick counts, ranges, and missing‑value
@@ -237,13 +241,13 @@ with those from <code>DATA LIST FREE</code>.</p>
 by <code>DATA LIST</code>. The example below shows how <code>GET
 DATA</code> reads the data.</p>
 
-<p><strong>Note:</strong> psppire’s File Import wizard uses
-<code>GET DATA</code> internally; the generated command appears in
-the output window. This syntax can be copied into the syntax editor for
-modification—for example, changing the variable names and labels,
-without going through the import wizard repeatedly. psppire's data
-editor also allows changing variables names, types, alignment, and widths
-directly.</p>
+<p><strong>Note:</strong> psppire’s <strong>File Import</strong>
+wizard uses <code>GET DATA</code> internally; the generated command
+appears in the output window. This syntax can be edited in the syntax
+editor, for example, changing the variable names and
+labels, without going through the import wizard repeatedly. psppire's
+data editor also allows changing variables names, types, alignment, and
+widths directly.</p>
 
 <p>The <code>GET DATA</code> syntax below was edited by hand; it was
 not generated by the File Import wizard. If an analysis needs to be
@@ -254,7 +258,7 @@ always shows the results of your commands, while the command‑line
 <code>pspp</code> program produces output only when your syntax includes
 procedures that generate it or when PSPP reports an error. In either
 case, the output alone is not enough to recreate the import; the syntax
-must be saved document the data-input step.</p>
+must be saved to document the data-input step.</p>
 
 <pre>
 * Save the following lines into a text file, for example: data.txt
@@ -298,10 +302,10 @@ DISPLAY DICTIONARY.
 +----+--------+----------------+-----+-----+---------+------------+-----------+
 </pre>
 
-<p>There were no issues with the read. The only limitation of <code>GET
-DATA</code> is that it always reads data from a file, so a data
-file must exist. <code>GET DATA</code> reads the data just like the
-<code>DATA LIST FREE</code> example above.</p>
+<p>There were no issues with the read of the data. The only limitation
+of <code>GET DATA</code> is that it always reads data from a file, so a
+data file must exist. <code>GET DATA</code> reads the data just like the
+<code>DATA LIST FREE</code> example above. It gives the same results.</p>
 
 <p><strong>Reading CSV Files with GET DATA:</strong> <code>GET
 DATA</code> can read CSV files by using <code>TYPE=TXT</code> and
@@ -313,6 +317,8 @@ delimited text, so variable formats must still be specified.</p>
 <p><code>DATA LIST FIXED</code> reads variables from specific column
 locations in a text data file. As long as the text is aligned in
 columns, PSPP can parse it exactly as specified.</p>
+
+<p>This example was run with psppire.</p>
 
 <p><strong>Syntax</strong></p>
 <pre>
@@ -398,18 +404,18 @@ reports. Then it reads the rest of the data.
 
 <p>Some types of data, including government survey data such as CPS,
 NHANES in older ASCII releases, and older Census PUMS files, include
-fields that have <strong>implied decimal places</strong>. This means the
-decimal point is not stored in the data file. For example, a monthly
-earnings value that is <code>$582.89</code> in real life would appear
-in the raw data as <code>58289</code> when two implied decimal places
-are used. Implied decimals are a legacy formatting method used in many
-long‑running surveys, and PSPP can read them directly using <code>DATA
-LIST FIXED</code> with the right setup.</p>
+data fields that have <strong>implied decimal places</strong>. This
+means the decimal point is not stored in the data file. For example, a
+monthly earnings value that is <code>$582.89</code> in real life would
+appear in the raw data as <code>58289</code> when two implied decimal
+places are used. Implied decimals are a legacy formatting method used
+in many long‑running surveys, and PSPP can read them directly using
+<code>DATA LIST FIXED</code> with the right setup.</p>
 
-<p>The number of implied decimal places must be defined in the codebook
-or other documentation for the study. It is usually noted in the
-variable definition as “IMPLIED DECIMAL” along with the number of
-decimal places.</p>
+<p>The number of implied decimal places should be defined in the
+codebook or other documentation for the study. It is usually noted in
+the variable definition as “IMPLIED DECIMAL” along with the number
+of decimal places.</p>
 
 <p>This section goes over a short example of implied-decimal data and 
 how to read it with PSPP.</p>
@@ -439,7 +445,8 @@ DISPLAY DICTIONARY.
 </pre>
 
 <p>For implied decimals only the number of decimals is specified in
-parentheses. PSPP determines the width from the column range.</p>
+parentheses for that field. PSPP determines the width from the column
+range.</p>
 
 <p>Run this in psppire and it should produce output similar to the
 following. psppire uses box-drawing charcters for tables while the 
@@ -513,19 +520,21 @@ GET DATA
 </pre>
 
 <p><strong>Note:</strong> <code>FIRSTCASE</code> tells pspp that the
-data begin on line 2. The variable names are in line 1, so that line
-is skipped.  FIRSTCASE is not needed if the CSV file is one long
-line of data and no header row. This example defines the file as
-<code>DELIMITED</code>, in this case comma-separated values, with the
-comma as the delimiter and double quotes as the text qualifier.</p>
+data to read begin on line 2. The variable names are often in line
+1, so that line is skipped.  FIRSTCASE is not needed if the CSV file
+is one long line of data and no header row. This example defines the
+file as <code>DELIMITED</code>, in this case <strong>comma-separated
+values</strong>, with the comma as the delimiter and double quotes as
+the text qualifier.</p>
 
 <h3>File Handles in PSPP</h3>
 
-<p>File handles help reduce the typing of long path names in the
-program. Instead, a shorter file handle is defined and after that, the
-handle can be used to refer to the data file. Below, "survey" refers to
-"C:\path\to\survey.sav". After the handle is defined in this example,
-other commands can refer to the file as simply "survey".</p>
+<p><strong>File handles</strong> help reduce the typing of long path
+names in the program. Instead, a shorter file handle is defined and
+after that, the handle can be used to refer to the data file. Below,
+"survey" refers to "C:\path\to\survey.sav". After the handle is defined
+in this example, other commands can refer to the file as simply
+"survey".</p>
 
 <pre>
 * File handle usage.
@@ -579,8 +588,8 @@ merges, and building syntax incrementally.</p>
 <h3>Selecting Data for Analysis: SELECT IF</h3>
 
 <p><code>SELECT IF</code> is used to select cases for analysis or
-testing. Cases that are not selected are removed from the active
-dataset. If the dataset is saved after this point, the removed
+testing. Cases that are not selected are <strong>removed from the active
+dataset</strong>. If the dataset is saved after this point, the removed
 cases cannot be recovered except by reloading the original data
 file.</p>
 
@@ -1633,7 +1642,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri May  1 11:38:01 EDT 2026
+Last Modified: Sat May  2 09:18:08 EDT 2026
 </p>
 </footer>
 </blockquote>
