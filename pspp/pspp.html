@@ -1631,6 +1631,20 @@ FILES</code> to append data from multiple files to the active data set, and
 <code>UPDATE</code>, which updates a master file with modifications from
 a transaction file.</p>
 
+<p><strong>A note about copy-and-paste merging:</strong></p>
+
+<p>The <code>/IN=</code> flags above show exactly what goes wrong when
+the data in two files doesn't match perfectly. A statistical merge makes
+these mismatches visible and preserves the structure of the data. A
+copy‑and‑paste merge does not. In a spreadsheet, unmatched cases,
+misaligned rows, and missing variables are all silent — you won't
+see them, and you won't know they happened. Copy/paste may appear to
+“work” on perfectly clean data, but the first time the files differ
+even slightly, the structure is destroyed and information is lost. This
+is why merges should always be done by a statistical package like PSPP,
+not by hand. Understand your data, understand its structure, and 
+always verify your merges.</p>
+
 <h3>Appendix:  Further Reading</h3>
 
 <p>The <a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
@@ -1651,7 +1665,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue May  5 16:13:25 EDT 2026
+Last Modified: Thu May  7 14:12:04 EDT 2026
 </p>
 </footer>
 </blockquote>
