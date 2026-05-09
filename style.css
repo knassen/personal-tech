@@ -20,6 +20,13 @@ a:active  { color: #990000; }
   font-size: 130%;
 }
 
+h1 {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+}
+
 /* Horizontal rule */
 hr {
   width: 90%;
@@ -45,6 +52,11 @@ dl dd {
 .spaced-list li {
    margin-bottom: 10px; 
 }
+
+h1.skip {
+    display: none;
+}
+
 
 </style>
 
