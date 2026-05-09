@@ -892,13 +892,10 @@ tables depending on how much nesting it can format. For more flexible
 multi‑layered layouts, use <code>CTABLES</code>, which is designed for
 complex, formatted tables.</p>
 
-<p>Here is a small example of survey data that collects YEAR of the
-survey, AGEGROUP of respondent and INCCAT, the respondent's income
-category. <code>CROSSTABS</code> can display all three categories.</p>
-
-<p>The following small dataset illustrates how PSPP arranges a
-three‑way crosstab when variables represent survey year, respondent
-age group, and income category.</p>
+<p>Here is a small example of survey data that collects
+<code>YEAR</code> of the survey, <code>AGEGROUP</code> of respondent
+and <code>INCCAT</code>, the respondent's income category.
+<code>CROSSTABS</code> can display all three categories.</p>
 
 <pre>
 ** Survey data example .
@@ -1060,6 +1057,38 @@ regression statistics. Interpretation of the coefficients depends on the
 context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
+
+
+<p><strong>Computing the P-value for F</strong></p>
+
+<p>PSPP can be used to compute the p-value for the F-statistic. The
+CDF.F function returns the cumulative distribution function of the F
+distribution--that is, the probability that an F‑distributed variable
+is less than or equal to the specified value.</p>
+
+<p>The following calculates the upper tail probability for an F value of
+82.33 with 2 model and 2 error degrees of freedom, as shown in the ANOVA
+table from the regression output.</p>
+
+<pre>
+DO IF $CASENUM = 1.
+  COMPUTE p_F = 1 - CDF.F(82.33, 2, 2).
+END IF.
+FORMATS p_F (F10.6).
+LIST p_F /CASES=FROM 1 TO 1.
+
+Data List
+╭───────╮
+│  p_F  │
+├───────┤
+│.012000│
+╰───────╯
+</pre>
+
+<p>The computed p-value is 0.012000. The <code>DO IF</code> block runs
+the <code>COMPUTE</code> expression only for the first case, and the
+<code>LIST</code> command displays only that case. All remaining cases
+contain system-missing values for <code>p_F</code>.</p>
 
 <h3>Notes and Limitations</h3>
 
@@ -1765,7 +1794,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri May  8 20:26:29 EDT 2026
+Last Modified: Sat May  9 12:30:27 EDT 2026
 </p>
 </footer>
 </blockquote>
