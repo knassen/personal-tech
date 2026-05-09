@@ -787,21 +787,18 @@ values. It is often used after <code>FREQUENCIES</code> to check that the
 categories of each variable combine as expected.
 </p>
 
-<p><code>CROSSTABS</code> can include more than two variables, but
-PSPP produces a separate two‑way table for each combination. If you
-need counts arranged by nested categories in a single table—such
-as multiple variables stacked within rows or columns—use
-<code>CTABLES</code>, which is designed for multi‑layered and
-formatted tables.</p>
+<p>The simplest use of <code>CROSSTABS</code> is a two‑variable
+table. The following example shows a basic 2×2 crosstab with counts,
+percentages, and the chi‑square test.</p>
 
-<p>
-<code>CROSSTABS</code> can also produce row, column, and total
+<p><code>CROSSTABS</code> can also produce row, column, and total
 percentages, which make it easier to compare groups. The same small
 dataset is used in this example to show how the values of one variable
-are distributed within the categories of another. It also requests
-the chi‑square test, which PSPP prints below the table. </p>
+are distributed within the categories of another. It also requests the
+chi‑square test, which PSPP prints below the table.</p>
 
 <p>Output:</p>
+
 <pre>
 DATA LIST FREE /group outcome.
 BEGIN DATA
@@ -840,18 +837,27 @@ CROSSTABS
 ├───────────────┼─┼───────┼─┼───────┼─┼───────┤
 │group × outcome│5│ 100.0%│0│    .0%│5│ 100.0%│
 ╰───────────────┴─┴───────┴─┴───────┴─┴───────╯
-         group × outcome
-╭────────────────┬────────┬─────╮
-│                │ outcome│     │
-│                ├───┬────┤     │
-│                │.00│1.00│Total│
-├────────────────┼───┼────┼─────┤
-│group 1.00 Count│  1│   1│    2│
-│     ╶──────────┼───┼────┼─────┤
-│      2.00 Count│  1│   2│    3│
-├────────────────┼───┼────┼─────┤
-│Total      Count│  2│   3│    5│
-╰────────────────┴───┴────┴─────╯
+              group × outcome
+╭───────────────────┬─────────────┬──────╮
+│                   │   outcome   │      │
+│                   ├──────┬──────┤      │
+│                   │  .00 │ 1.00 │ Total│
+├───────────────────┼──────┼──────┼──────┤
+│group 1.00 Count   │     1│     1│     2│
+│           Row %   │ 50.0%│ 50.0%│100.0%│
+│           Column %│ 50.0%│ 33.3%│ 40.0%│
+│           Total % │ 20.0%│ 20.0%│ 40.0%│
+│     ╶─────────────┼──────┼──────┼──────┤
+│      2.00 Count   │     1│     2│     3│
+│           Row %   │ 33.3%│ 66.7%│100.0%│
+│           Column %│ 50.0%│ 66.7%│ 60.0%│
+│           Total % │ 20.0%│ 40.0%│ 60.0%│
+├───────────────────┼──────┼──────┼──────┤
+│Total      Count   │     2│     3│     5│
+│           Row %   │ 40.0%│ 60.0%│100.0%│
+│           Column %│100.0%│100.0%│100.0%│
+│           Total % │ 40.0%│ 60.0%│100.0%│
+╰───────────────────┴──────┴──────┴──────╯
                                                Chi-Square Tests
 ╭────────────────────────────┬─────┬──┬──────────────────────────┬─────────────────────┬─────────────────────╮
 │                            │Value│df│Asymptotic Sig. (2-tailed)│Exact Sig. (2-tailed)│Exact Sig. (1-tailed)│
@@ -869,10 +875,99 @@ CROSSTABS
 combine. This confirms that the values were read correctly and that
 all expected category combinations appear. The chi‑square test is
 printed below the table. In this example the p‑value is 0.709. Whether
-this is considered evidence against the null hypothesis depends on
-the analyst’s chosen significance level and the question being asked.
-The important point here is that the procedure ran correctly and
-produced the expected statistics.</p>
+this is considered evidence against the null hypothesis depends on the
+analyst’s chosen significance level and the question being asked. The
+important point here is that the procedure ran correctly and produced
+the expected statistics.</p>
+
+<p><code>CROSSTABS</code> can include more than two variables. When
+you specify three variables, PSPP produces a single nested table (for
+example, AGE × YEAR × SEX) with hierarchical counts and totals. If you
+include additional variables, PSPP may split the output into multiple
+tables depending on how much nesting it can format. For more flexible
+multi‑layered layouts, use <code>CTABLES</code>, which is designed for
+complex, formatted tables.</p>
+
+<p>Here is a small example of survey data that collects YEAR of the
+survey, AGEGROUP of respondent and INCCAT, the respondent's income
+category. <code>CROSSTABS</code> can display all three categories.</p>
+
+<p>The following small dataset illustrates how PSPP arranges a
+three‑way crosstab when variables represent survey year, respondent
+age group, and income category.</p>
+
+<pre>
+** Survey data example .
+
+  DATA LIST LIST /
+  YEAR (F4.0)
+  AGEGROUP (A5)
+  INCCAT (A7).
+
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│YEAR    │F4.0  │
+│AGEGROUP│A5    │
+│INCCAT  │A7    │
+╰────────┴──────╯
+
+BEGIN DATA
+2018 18-29 &lt;30k
+2018 18-29 30-60k
+2018 30-44 30-60k
+2018 45-64 60-90k
+2020 18-29 30-60k
+2020 30-44 60-90k
+2020 30-44 90k+
+2020 45-64 30-60k
+END DATA.
+
+CROSSTABS
+  /TABLES = AGEGROUP BY INCCAT BY YEAR.
+
+                         Summary
+╭────────────────────────┬─────────────────────────────╮
+│                        │            Cases            │
+│                        ├─────────┬─────────┬─────────┤
+│                        │  Valid  │ Missing │  Total  │
+│                        ├─┬───────┼─┬───────┼─┬───────┤
+│                        │N│Percent│N│Percent│N│Percent│
+├────────────────────────┼─┼───────┼─┼───────┼─┼───────┤
+│AGEGROUP × INCCAT × YEAR│8│ 100.0%│0│    .0%│8│ 100.0%│
+╰────────────────────────┴─┴───────┴─┴───────┴─┴───────╯
+
+
+                   AGEGROUP × INCCAT × YEAR
+╭──────────────────────────────┬───────────────────────┬─────╮
+│                              │         INCCAT        │     │
+│                              ├──────┬──────┬────┬────┤     │
+│                              │30-60k│60-90k│90k+│&lt;30k│Total│
+├──────────────────────────────┼──────┼──────┼────┼────┼─────┤
+│YEAR 2018 AGEGROUP 18-29 Count│     1│     0│    │   1│    2│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   30-44 Count│     1│     0│    │   0│    1│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   45-64 Count│     0│     1│    │   0│    1│
+│         ╶────────────────────┼──────┼──────┼────┼────┼─────┤
+│          Total          Count│     2│     1│    │   1│    4│
+│    ╶─────────────────────────┼──────┼──────┼────┼────┼─────┤
+│     2020 AGEGROUP 18-29 Count│     1│     0│   0│    │    1│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   30-44 Count│     0│     1│   1│    │    2│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   45-64 Count│     1│     0│   0│    │    1│
+│         ╶────────────────────┼──────┼──────┼────┼────┼─────┤
+│          Total          Count│     2│     1│   1│    │    4│
+╰──────────────────────────────┴──────┴──────┴────┴────┴─────╯
+</pre>
+
+<p>While <code>CROSSTABS</code> summarizes how categories combine, many
+analyses require modeling a quantitative outcome using one or more
+predictors. PSPP’s <code>REGRESSION</code> command performs ordinary
+least squares estimation for this purpose. The following section shows a
+simple regression example and the standard output produced by PSPP.</p>
 
 <h3>Linear Regression</h3>
 
@@ -1666,7 +1761,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu May  7 14:12:04 EDT 2026
+Last Modified: Fri May  8 11:45:11 EDT 2026
 </p>
 </footer>
 </blockquote>
