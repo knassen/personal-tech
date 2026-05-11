@@ -31,7 +31,8 @@ syntax along with output samples and notes.</p>
 <p> I've been using PSPP for many years now.  After I left college, it
 was one of the software packages that could do some of the analysis
 tasks that I needed. I generally build it from source code on one of my
-FreeBSD Unix computers. I also used SPSS in one of my jobs.</p>
+FreeBSD Unix computers. I also used SPSS in one of my jobs for data
+cleaning.</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>About This Page</h3>
@@ -979,21 +980,22 @@ squares).
 </p>
 
 <pre>
-DATA LIST FREE /y x1 x2.
+DATA LIST FREE /y x.
 BEGIN DATA
-10   1   4
-12   2   5
-13   3   6
-20   4   7
-22   5   8
+  3   1
+  4   2
+  6   3
+  8   4
+  7   5
+ 10   6
 END DATA.
 
 LIST.
 
 REGRESSION
   /DEPENDENT = y
-  /METHOD = ENTER x1 x2
-  /SAVE = PRED RESID.
+  /METHOD = ENTER x
+  /STATISTICS = COEFF R ANOVA.
 </pre>
 
 <p><strong>Output:</strong></p>
@@ -1003,45 +1005,41 @@ values) and <code>RES1</code> (residuals). These can then be examined,
 listed, or plotted using other PSPP procedures.
 </p>
 <pre>
-          Data List
-╭─────┬────┬────┬─────┬─────╮
-│  y  │ x1 │ x2 │ RES1│PRED1│
-├─────┼────┼────┼─────┼─────┤
-│10.00│1.00│4.00│ 1.00│ 9.00│
-│12.00│2.00│5.00│ -.20│12.20│
-│13.00│3.00│6.00│-2.40│15.40│
-│20.00│4.00│7.00│ 1.40│18.60│
-│22.00│5.00│8.00│  .20│21.80│
-╰─────┴────┴────┴─────┴─────╯
+    Data List
+╭─────┬────┬───╮
+│  y  │  x │ p │
+├─────┼────┼───┤
+│ 2.00│1.00│.02│
+│ 4.00│2.00│.02│
+│ 5.00│3.00│.02│
+│ 7.00│4.00│.02│
+│ 9.00│5.00│.02│
+│11.00│6.00│.02│
+╰─────┴────┴───╯
+                     Model Summary (y)
+╭───┬────────┬─────────────────┬──────────────────────────╮
+│ R │R Square│Adjusted R Square│Std. Error of the Estimate│
+├───┼────────┼─────────────────┼──────────────────────────┤
+│.95│     .91│              .88│                       .88│
+╰───┴────────┴─────────────────┴──────────────────────────╯
+                      ANOVA (y)
+╭──────────┬──────────────┬──┬───────────┬─────┬────╮
+│          │Sum of Squares│df│Mean Square│  F  │Sig.│
+├──────────┼──────────────┼──┼───────────┼─────┼────┤
+│Regression│         30.23│ 1│      30.23│38.94│.003│
+│Residual  │          3.10│ 4│        .78│     │    │
+│Total     │         33.33│ 5│           │     │    │
+╰──────────┴──────────────┴──┴───────────┴─────┴────╯
+                               Coefficients (y)
+╭──────────┬────────────────────────────┬─────────────────────────┬────┬────╮
+│          │ Unstandardized Coefficients│Standardized Coefficients│    │    │
+│          ├───────────┬────────────────┼─────────────────────────┤    │    │
+│          │     B     │   Std. Error   │           Beta          │  t │Sig.│
+├──────────┼───────────┼────────────────┼─────────────────────────┼────┼────┤
+│(Constant)│       1.73│             .82│                      .00│2.11│.088│
+│x         │       1.31│             .21│                      .95│6.24│.003│
+╰──────────┴───────────┴────────────────┴─────────────────────────┴────┴────╯
 
-REGRESSION
-/DEPENDENT = y
-/METHOD = ENTER x1 x2.
-
-Model Summary
-╭───────────────┬───────────────┬───────────────╮
-│Model          │      R        │     R-Square  │
-├───────────────┼───────────────┼───────────────┤
-│1              │     .991      │      .982     │
-╰───────────────┴───────────────┴───────────────╯
-
-ANOVA
-╭───────────────┬────────┬──────┬────────┬──────────╮
-│Model          │   SS   │  df  │   MS   │     F    │
-├───────────────┼────────┼──────┼────────┼──────────┤
-│Regression     │  96.40 │   2  │ 48.20  │  82.33   │
-│Residual       │   1.17 │   2  │  0.58  │          │
-│Total          │  97.57 │   4  │        │          │
-╰───────────────┴────────┴──────┴────────┴──────────╯
-
-Coefficients
-╭───────────────┬──────────┬──────────┬──────────┬──────────╮
-│Variable       │    B     │    SE    │    t     │    p     │
-├───────────────┼──────────┼──────────┼──────────┼──────────┤
-│(Constant)     │   1.00   │   1.02   │   0.98   │   .423   │
-│x1             │   2.00   │   0.41   │   4.86   │   .040   │
-│x2             │   1.00   │   0.41   │   2.43   │   .140   │
-╰───────────────┴──────────┴──────────┴──────────┴──────────╯
 </pre>
 
 <p>
@@ -1069,25 +1067,26 @@ table from the regression output.</p>
 
 <pre>
 DO IF $CASENUM = 1.
-  COMPUTE p_F = 1 - CDF.F(82.33, 2, 2).
+  COMPUTE p = 1 - CDF.F(38.94, 1, 4).
 END IF.
-FORMATS p_F (F10.6).
-LIST p_F /CASES=FROM 1 TO 1.
+FORMATS p (F10.6).
+LIST p /CASES=FROM 1 TO 1.
 
 Data List
 ╭───────╮
-│  p_F  │
+│   p   │
 ├───────┤
-│.012000│
+│.003361│
 ╰───────╯
 </pre>
 
-<p>The computed p-value is 0.012000. The <code>DO IF</code> block runs
-the <code>COMPUTE</code> expression only for the first case, and the
+<p>The computed p-value is 0.033610 which matches the pspp output
+within rounding error. The <code>DO IF</code> block runs the
+<code>COMPUTE</code> expression only for the first case, and the
 <code>LIST</code> command displays only that case. All remaining cases
-contain system-missing values for <code>p_F</code>.</p>
-<p>&nbsp;</p>
-<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+contain system-missing values for <code>p_F</code>.</p> <p>&nbsp;</p>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
+background-color:black">
 
 <h3>Notes and Limitations</h3>
 
@@ -1799,7 +1798,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun May 10 13:23:26 EDT 2026
+Last Modified: Sun May 10 23:11:36 EDT 2026
 </p>
 </footer>
 </blockquote>
