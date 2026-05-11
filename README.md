@@ -14,6 +14,10 @@ processing tasks, information about the old Aurora Text Editor, vi and
 vim editor pages, links to Unix/Linux sites, links related to Apple 2 
 sites, and statistical links.
 
+For a detailed PSPP syntax guide with examples (DATA
+LIST, REGRESSION, CROSSTABS, multi‑record data), see:
+https://knassen.github.io/personal-tech/pspp/pspp.html.”
+
 I have done most of things I set out to do.
 
   - I've cleaned up most of the bad links and replaced them. Thankfully, 
@@ -59,4 +63,6 @@ I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
 ways to do things in SAS, vim, or unix/linux. I still use some of these
 programs.
+
+
 
