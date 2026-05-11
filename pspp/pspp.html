@@ -20,7 +20,7 @@
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
-<h1>PSPP: Examples, Syntax, and Notes</h1>
+<h1>PSPP Syntax Guide: Examples and Notes</h1>
 
 <p>PSPP is a free, open-source alternative to SPSS. It supports many of
 the same statistical procedures, uses a similar syntax language, and is
@@ -38,29 +38,6 @@ written for SPSS users moving to PSPP and for anyone who prefers syntax
 over the GUI.</p>
 
 <h2 class="skip">&nbsp;</h2>
-<h3>Getting Started</h3>
-
-<p>PSPP is at version 2.1.1 currently and after several important
-bug fixes (file handle close, writing portable files, and reading
-multi-record data with skipped cards in <code>DATA LIST FIXED</code>,
-and other issues) and the addition of <code>GLM</code> and
-<code>CTABLES</code> commands in the last several years, PSPP is
-more capable than ever. If your version is older than 2.1.1 consider
-upgrading.</p>
-
-<p><a href="https//www.gnu.org/software/pspp/get.html">PSPP download
-page at gnu.org</a> The gnu site gives instructions for installing PSPP
-for Windows, Mac, Debian, Ubuntu, Fedora, and with Flatpak.</p>
-
-<p>PSPP source can also be obtained with git: 
-<a href="https://savannah.gnu.org/git/?group=pspp">savannah.gnu.org/git</a></p>
-
-<p>FreeBSD: PSPP is not in the FreeBSD ports collection (expired
-2025-03-01 after being marked broken). FreeBSD users can still install
-PSPP by building it from the official GNU source release. The PSPP
-build instructions work on FreeBSD. See <code>pspp/INSTALL</code> after
-cloning with Git for the details.</p>
-
 <h3>Programming with PSPP</h3>
 <p>PSPP syntax files can be created with a text editor. Save the file
 with a .sps extension. In psppire, the Syntax Editor is used to
@@ -1764,13 +1741,38 @@ is why merges should always be done by a statistical package like PSPP,
 not by hand. Understand your data, understand its structure, and always
 verify your merges.</p>
 
-<h3>Appendix:  Further Reading</h3>
+<h3>Appendix</h3>
 
+<h2>Further Reading</h2>
 <p>The <a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
 user manual</a> provides the full reference for all commands, functions,
 and procedures available in PSPP. It is worth consulting when details
 beyond the examples shown here are needed, or when exploring options 
 available in the psppire menus.</p>
+
+<h2>Getting Started</h2>
+
+<p>PSPP is at version 2.1.1 currently and after several important
+bug fixes (file handle close, writing portable files, and reading
+multi-record data with skipped cards in <code>DATA LIST FIXED</code>,
+and other issues) and the addition of <code>GLM</code> and
+<code>CTABLES</code> commands in the last several years, PSPP is
+more capable than ever. If your version is older than 2.1.1 consider
+upgrading.</p>
+
+<p><a href="https//www.gnu.org/software/pspp/get.html">PSPP download
+page at gnu.org</a> The gnu site gives instructions for installing PSPP
+for Windows, Mac, Debian, Ubuntu, Fedora, and with Flatpak.</p>
+
+<p>PSPP source can also be obtained with git: 
+<a href="https://savannah.gnu.org/git/?group=pspp">savannah.gnu.org/git</a></p>
+
+<p>FreeBSD: PSPP is not in the FreeBSD ports collection (expired
+2025-03-01 after being marked broken). FreeBSD users can still install
+PSPP by building it from the official GNU source release. The PSPP
+build instructions work on FreeBSD. See <code>pspp/INSTALL</code> after
+cloning with Git for the details.</p>
+
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
@@ -1784,7 +1786,7 @@ available in the psppire menus.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon May 11 09:06:46 EDT 2026
+Last Modified: Mon May 11 09:16:29 EDT 2026
 </p>
 </footer>
 </blockquote>
