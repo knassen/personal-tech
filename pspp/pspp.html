@@ -72,62 +72,61 @@ analysis.</p>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
 
-<p>This section covers only the basics needed to open psppire, run
-syntax, and get started. A more detailed review of psppire’s
+<p>This section covers only the basics needed to open psppire, capture
+syntax, and run syntax. A more detailed review of psppire’s
 behavior and limitations appears later in this page.</p>
-
-<p><strong>Opening psppire</strong> depends on the operating
-system. Details of OS usage are outside the scope of this page. On
-Windows the installer normally adds a desktop icon or a Start Menu
-entry. On macOS, psppire will appear in the Applications window. On
-Linux/Unix, if it does not appear in your desktop environment's
-applications window, it can be started from a terminal by running
-<code>psppire</code>. If you are unfamiliar with how to launch
-applications on your system, consult your OS documentation or ask
-someone familiar with it.</p>
 
 <p><strong>Launching psppire</strong> depends on your operating
 system. On most systems it appears in the standard applications menu; on
 Unix‑like systems it can also be started from a terminal by running
 psppire.</p>
 
-<p>In psppire, <strong>to start a new pspp program</strong>, the Syntax
-Editor, <strong>File-&gt;New-&gt;Syntax</strong> menu will open an empty
-Syntax Editor window where commands can be entered and run.  There is
-a <strong>Run</strong> menu at the top, which can be used to run the
-pasted commands. Save the file if it is to be used later.</p>
+<h3>Starting a Syntax Session</h3>
 
-<p>Dialogs in psppire often have a <strong>"Paste" button</strong>
-available. This button opens the Syntax editor and pastes the code from
-the dialog choices that have been made. This is a quick way to learn
-PSPP syntax and edit your syntax to add more commands. Save the file if
-you intend to work on it later.</p>
+<p>A new PSPP program can be created using using
+<strong>File-&gt;New-&gt;Syntax</strong> which opens an empty Syntax
+Editor window where commands can be entered and executed.  The
+<strong>Run</strong> menu executes the commands in the window.  Files
+should be saved if they will be used later.</p>
 
-<p><strong>To open existing <code>.sps</code> files</strong>, go to
-<strong>File-&gt;Open</strong>. When the Open window appears, it will
-by default, show PSPP data files and <code>.sps</code> syntax files. If
-only <code>.sps</code> files are desired, select <strong>Syntax Files
-(*sps)</strong> from the pull-down menu in the lower right, and psppire
-will list any existing <code>.sps</code> files that can be opened. To
-create a new syntax file from the File-&gt;Open menu, an empty
-<code>.sps</code> file in the directory must be created before it is
-opened. That's more work, of course, than opening a new file.</p>
+<p>Many dialogs in psppire include a <strong>"Paste" button</strong>.
+Clicking it opens the Syntax editor (if not already open) and inserts
+the syntax corresponding to the dialog choices. This is a quick way to
+learn PSPP syntax and to refine or extend the generated commands. 
+Files should be saved if further work is planned.</p>
+
+<h3>Opening Existing Files</h3>
+
+<p><strong>Existing <code>.sps</code> files</strong>, use
+<strong>File-&gt;Open</strong>. The dialog displays PSPP data files and
+<code>.sps</code> syntax files by default. To display only syntax files, 
+choose <strong>Syntax Files (*sps)</strong> from the
+filter menu in the lower right.</p>
+
+<p>Creating a new syntax file via
+<strong>File-&gt;Open</strong>, requires an
+empty <code>.sps</code> file to exist beforehand; otherwise, 
+File-&gt;New-&gt;Syntax, is simpler.</p>
+
+<h3>About PSPP Syntax</h3>
 
 <p>
-PSPP syntax files use straightforward commands terminated by
-periods. Commands can span multiple lines. Comments begin with an
-asterisk (*) or they may be written as block comments enclosed in
+PSPP syntax uses commands terminated by periods. Commands may span 
+multiple lines. Comments begin with an
+asterisk (*) or may be written as block comments enclosed in
 <code>/*</code> and <code>*/</code>. Most data management and analysis
 operations can be expressed in this format, whether run from the command
 line or from psppire’s Syntax Editor.</p>
 
-<p>With these basics in place, here is a <strong>simple
-example</strong> of data processing in PSPP using the command‑line
-<code>pspp</code>. The same syntax can be copied and run in psppire’s
-Syntax Editor window. <code>DATA LIST FREE</code> cannot be found in
-psppire’s pull‑down menus.  Psppire does not provide a GUI for this
-command, but that command can still be entered and run in the Syntax
-Editor (use the syntax, Luke).</p>
+<h3>Example: Running Syntax Not Available in psppire Menus</h3>
+
+<p>With these basics in place, the following <strong>example</strong>
+demostrates data processing in PSPP using the command‑line
+<code>pspp</code>. The same syntax can be copied into psppire’s Syntax
+Editor window and executed there. <code>DATA LIST FREE</code> does not
+appear in psppire’s pull‑down menus; psppire provides no GUI menu
+item for this command, but it can still be entered and executed in the
+Syntax Editor.</p>
 
 <p><code>BEGIN DATA</code> and <code>END DATA</code> mark the literal
 block of raw data that PSPP reads when using <code>DATA LIST</code> to
