@@ -132,23 +132,9 @@ Syntax Editor.</p>
 block of raw data that PSPP reads when using <code>DATA LIST</code> to
 read raw data.</p>
 
-<p>If there are <strong>issues reading the data</strong>, the only
-reliable method to read the data is to apply formats for all variables
-on the <code>DATA LIST FREE</code> line.</p>
-
-<p>In my own testing this simple example read space-delimited data
-perfectly for over a week with no formats at all except for SEX as a
-string. Then, without any changes to the syntax or data, PSPP suddenly
-assigned every variable an A6 format and failed to read the data. Adding
-explicit formats immediately fixed the problem and produced consistent
-results.</p>
-
-<p>This behavior was reproduced on three different computers,
-two different operating systems, and two different versions of
-pspp/psppire. If there is a choice, use <code>GET DATA</code>.
-If <code>DATA LIST FREE</code> must be used, use formats on all
-variables to ensure reliability and reproducibility. Of course,
-a few days later it started working again.</p>
+<p>If there are <strong>issues reading the data</strong> with <code>DATA
+LIST FREE</code>, the only reliable method to read the data is to apply
+formats for all variables on the <code>DATA LIST FREE</code> line.</p>
 
 <pre>
 * Read simple space‑delimited data.
@@ -1792,7 +1778,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue May 12 20:06:25 EDT 2026
+Last Modified: Tue May 12 21:20:39 EDT 2026
 </p>
 </footer>
 </blockquote>
