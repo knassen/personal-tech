@@ -1106,20 +1106,23 @@ encountered in industries where legacy reporting systems, long-running
 surveys, or fixed-width exports are produced, or where efficient storage
 is important.
 
+<p>PSPP can read this kind of multi-record data directly. This section
+shows how.</p>
+
 <p>You may hear these referred to as multi-record case files,
 multi-record data files, stacked data, or (historically) hierarchical
-data files. This format originated when data were stored on paper cards,
-which limited the width of the data. Instead of making each record
-wider, this format made it taller by spreading one case across multiple
-fixed-width cards in a defined sequence.</p>
+data files. This format originated when data were stored on punched
+paper cards, which limited the width of the data. Instead of making each
+record wider, this format made it taller by spreading one case across
+multiple fixed-width cards in a defined sequence.</p>
 
 <p>This format stores a large number of variables and values in
 a compact form, spreading each case across multiple physical
 records. However, the format is not self-documenting. <strong>External
 documentation is required to interpret the file</strong>, usually in the
 form of a codebook defining how the data were collected, what the cards
-represent, the variable names, and the column locations, 
-or PSPP code that reads the data correctly.</p>
+represent, the variable names, and the column locations, or PSPP code
+that reads the data correctly.</p>
 
 <p>Here is an example of multi-record data:</p>
 <pre>
@@ -1789,7 +1792,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu May 14 12:06:36 EDT 2026
+Last Modified: Thu May 14 12:18:07 EDT 2026
 </p>
 </footer>
 </blockquote>
