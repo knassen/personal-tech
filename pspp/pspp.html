@@ -7,8 +7,8 @@
      <link rel="stylesheet" href="pspp/psppstyle.css"> 
      <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     <meta name="description" content="Practical PSPP syntax guide with examples for DATA LIST, REGRESSION, CROSSTABS, multi-record data using / and /SKIP, and computing p-values from ANOVA.">
-     <meta name="keywords" content="PSPP Syntax programming multi-record hierarchical stacked data"> 
+     <meta name="description" content="Practical PSPP syntax guide with examples for DATA LIST, REGRESSION, CROSSTABS, multi-record data format.">
+     <meta name="keywords" content="PSPP Syntax programming multi-record data"> 
      <meta charset="utf-8">
      <title>PSPP Syntax Guide: Examples and Notes</title>  
 </head>
@@ -1095,8 +1095,8 @@ are covered in several later sections.</p>
 
 <p> Up to this point we have seen <code>DATA LIST FREE</code> and
 <code>GET DATA</code> used to read ordinary raw data files.  Another
-kind of raw data that still appears oin practice is the multi‑record
-hierarchical data format.</p>
+kind of raw data that still appears in practice is the multi‑record
+data format.</p>
 
 <h3>Multi-Record Data Format with PSPP</h3>
 
@@ -1144,7 +1144,7 @@ set of input statements for each card. It then combines the values from
 all the records into a single (wide) case.</p>
 
 <h3>Tip: Every Record Must be Read or Explicitly Skipped </h3> 
-<p>A hierarchical multi‑record file is like a stack of cards. PSPP
+<p>A multi‑record file is like a stack of cards. PSPP
 reads them in order, one record at a time. There are two safe
 options to <em>not read every data card:</em></p>
 
@@ -1157,10 +1157,10 @@ options to <em>not read every data card:</em></p>
 <p>Every card must be accounted for. Removing a card is like
 removing variables from the middle of a <code>DATA LIST FREE</code>
 statement — everything after the gap shifts left, and the data
-becomes misaligned. In hierarchical files, this misalignment appears
+becomes misaligned. In multi-record files, this misalignment appears
 vertically.</p>
 
-<p>Hierarchical multi‑record files follow a vertical, sequential
+<p>Multi‑record files follow a vertical, sequential
 pattern that is not obvious at first glance. Without understanding the data
 file structure, it is easy to make assumptions that don’t match how
 these files must be read.</p>
@@ -1211,7 +1211,7 @@ period.</p>
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
 <p>For anyone unfamiliar with the <strong>vertical, sequential
-data-reading</strong> pattern that hierarchical files depend
+data-reading</strong> pattern that multi-record files depend
 upon, the format may seem unusual at first. The structure itself is
 not the problem. It is an efficient, compact way to store data--and it
 still works well today. But because it relies on reading multiple
@@ -1789,7 +1789,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu May 14 10:48:30 EDT 2026
+Last Modified: Thu May 14 12:06:36 EDT 2026
 </p>
 </footer>
 </blockquote>
