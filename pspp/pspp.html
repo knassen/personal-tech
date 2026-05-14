@@ -1098,15 +1098,20 @@ are covered in several later sections.</p>
 kind of raw data that still appears oin practice is the multi‑record
 hierarchical data format.</p>
 
-<h3>Multi-Record Hierarchical Data Format (HDF) with PSPP</h3>
+<h3>Multi-Record Data Format with PSPP</h3>
 
-<p>Multi-record hierarchical data is an older raw data format that is
-still encountered in industries where legacy reporting systems, long-running
-surveys, or fixed-width exports are produced, or where 
-efficient storage is important. 
+<p>Multi-record data is fixed-width data where each case
+spans multiple lines in a fixed sequence. Data like this is still
+encountered in industries where legacy reporting systems, long-running
+surveys, or fixed-width exports are produced, or where efficient storage
+is important.
 
-<p>You may hear these referred to as multi-record case files, hierarchical
-data files, stacked data, or multi-record files.</p>
+<p>You may hear these referred to as multi-record case files,
+multi-record data files, stacked data, or (historically) hierarchical
+data files. This format originated when data were stored on paper cards,
+which limited the width of the data. Instead of making each record
+wider, this format made it taller by spreading one case across multiple
+fixed-width cards in a defined sequence.</p>
 
 <p>This format stores a large number of variables and values in
 a compact form, spreading each case across multiple physical
@@ -1116,7 +1121,7 @@ form of a codebook defining how the data were collected, what the cards
 represent, the variable names, and the column locations, 
 or PSPP code that reads the data correctly.</p>
 
-<p>Here is an example of multi-record hierarchical data:</p>
+<p>Here is an example of multi-record data:</p>
 <pre>
 044104101712288855439855238255785555221010000010000000005080
 805060909080808090500000708000005092543214424122111432310100
@@ -1134,9 +1139,9 @@ which value belongs to which variable. Different variables appear on
 different cards (or lines in the file), so this file cannot be read
 vertically as a simple rectangular dataset or CSV file.</p>
 <p>
-PSPP can handle this type of data by reading each record
-with a separate set of input statements for each card. It then
-combines the values from all the records into a single case.</p>
+PSPP can handle this type of data by reading each record with a separate
+set of input statements for each card. It then combines the values from
+all the records into a single (wide) case.</p>
 
 <h3>Tip: Every Record Must be Read or Explicitly Skipped </h3> 
 <p>A hierarchical multi‑record file is like a stack of cards. PSPP
