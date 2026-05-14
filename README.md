@@ -14,9 +14,9 @@ processing tasks, information about the old Aurora Text Editor, vi and
 vim editor pages, links to Unix/Linux sites, links related to Apple 2 
 sites, and statistical links.
 
-For a detailed PSPP syntax guide with examples (DATA
-LIST, REGRESSION, CROSSTABS, multi‑record data), see:
-https://knassen.github.io/personal-tech/pspp/pspp.html.”
+For a PSPP syntax guide with code examples (DATA LIST, REGRESSION, 
+CROSSTABS, multi‑record data), see: 
+https://knassen.github.io/personal-tech/pspp/pspp.html.
 
 I have done most of things I set out to do.
 
