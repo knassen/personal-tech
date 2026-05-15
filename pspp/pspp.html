@@ -1197,6 +1197,11 @@ DATA LIST FILE=studydat RECORDS=4 NOTABLE
  /
  .
 </pre>
+
+<p>To skip a card, PSPP is instructed to advance one record for
+each slash (/). To skip two cards, enter two slashes and end the
+command with a period.</p>
+
 <p>This code illustrates how <code>DATA LIST</code> reads
 multi-record data. First, the <code>RECORDS=4</code> tells PPSP that
 each case consists of four cards, even though two cards are not used 
@@ -1208,9 +1213,49 @@ locations differ across the cards because each card has its own
 layout. In this example, <code>/1</code> and <code>/2</code> define the
 two cards being read.</p>
 
-<p>To skip a card, PSPP is instructed to advance one record for
-each slash (/). To skip two cards, enter two slashes and end the
-command with a period.</p>
+<p>Output:</p>
+<pre>
+                                  Data List                                                                             
++-------+-----+-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|SUBJECT|STUDY|TRTMENT|FEEL1|FEEL2|FEEL3|LIKE1|LIKE2|LIKE3|LIKE4|LIKE5|LIKE6|
++-------+-----+-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|     44|    1|      4|    7|    1|    2|    8|    0|    5|    0|    6|    0|  
+|     87|    1|      7|    6|    8|    8|    8|    1|    0|    0|    7|    1|  
++-------+-----+-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
++-----+-----+-----+------+------+------+------+
+|LIKE7|LIKE8|LIKE9|LIKE10|ACTU11|ACTU12|ACTU13|
++-----+-----+-----+------+------+------+------+
+|    9|    0|    9|     0|     8|     0|     8|  
+|    0|    0|    8|     0|     7|     0|     5|  
++-----+-----+-----+------+------+------+------+
+
+                                   Variables
++-------+--------+---------------+-----+-----+---------+-----------+----------+
+|       |        |  Measurement  |     |     |         |   Print   |   Write  |
+|Name   |Position|     Level     | Role|Width|Alignment|   Format  |  Format  |
++-------+--------+---------------+-----+-----+---------+-----------+----------+
+|SUBJECT|       1|Scale          |Input|    8|Right    |F3.0       |F3.0      |   
+|STUDY  |       2|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|TRTMENT|       3|Nominal        |Input|    8|Right    |F2.0       |F2.0      |   
+|FEEL1  |       4|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|FEEL2  |       5|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|FEEL3  |       6|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE1  |       7|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE2  |       8|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE3  |       9|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE4  |      10|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE5  |      11|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE6  |      12|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE7  |      13|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE8  |      14|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE9  |      15|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE10 |      16|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|ACTU11 |      17|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|ACTU12 |      18|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|ACTU13 |      19|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
++-------+--------+---------------+-----+-----+---------+-----------+----------+
+</pre>
 
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
