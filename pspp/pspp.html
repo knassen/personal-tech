@@ -1205,10 +1205,10 @@ DATA LIST FILE=studydat RECORDS=4 NOTABLE
 each slash (/). To skip two cards, enter two slashes and end the
 command with a period.</p>
 
-<p>This code illustrates how <code>DATA LIST</code> reads
-multi-record data. First, the <code>RECORDS=4</code> tells PPSP that
-each case consists of four cards, even though two cards are not used 
-for analysis.</p>
+<p>This code illustrates how <code>DATA LIST</code> (and <code>DATA LIST
+FIXED</code>) reads multi-record data. First, the <code>RECORDS=4</code>
+tells PSPP that each case consists of four cards, even though two cards
+are not used for analysis.</p>
 
 <p>Each card is defined by a <code>/N</code> and followed by variable
 names and their column locations on that card. Note that the column
