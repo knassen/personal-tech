@@ -372,17 +372,19 @@ reports. Then it reads the rest of the data.
 <p>Some types of data, including government survey data such as CPS,
 NHANES in older ASCII releases, and older Census PUMS files, include
 data fields that have <strong>implied decimal places</strong>. This
-means the decimal point is not stored in the data file. For example, a
-monthly earnings value that is <code>$582.89</code> in real life would
-appear in the raw data as <code>58289</code> when two implied decimal
-places are used. Implied decimals are a legacy formatting method used
-in many long‑running surveys, and PSPP can read them directly using
-<code>DATA LIST FIXED</code> with the right setup.</p>
+means the decimal point is not stored in the data file.</p>
+
+<p>For example, a monthly earnings value that is <code>$582.89</code>
+in real life would appear in the raw data as <code>58289</code> when
+two implied decimal places are used. Implied decimals are a legacy
+formatting method used in many long‑running surveys, and PSPP can
+read them directly using <code>DATA LIST FIXED</code> with the right
+setup.</p>
 
 <p>The number of implied decimal places should be defined in the
-codebook or other documentation for the study. It is usually noted in
-the variable definition as “IMPLIED DECIMAL” along with the number
-of decimal places.</p>
+codebook or other documentation supplied for the study. It is usually
+noted in the variable definition as “IMPLIED DECIMAL” along with the
+number of decimal places.</p>
 
 <p>This section goes over a short example of implied-decimal data and 
 how to read it with PSPP.</p>
@@ -411,9 +413,9 @@ LIST.
 DISPLAY DICTIONARY.
 </pre>
 
-<p>For implied decimals only the number of decimals is specified in
-parentheses for that field. PSPP determines the width from the column
-range.</p>
+<p>For implied decimals only the number of decimals is specified
+in parentheses for that field, such as EARN in this example. PSPP
+determines the width from the column range.</p>
 
 <p>Run this in psppire (via the Run menu) and it should produce output
 similar to the following. psppire uses box-drawing charcters for tables
@@ -1186,6 +1188,7 @@ in order:</p>
 
 <p>This dataset has 4 cards per case. Two of the cards are not needed for
 analysis, so PSPP skips them using blank slash lines.</p>
+
 <pre>
 DATA LIST FILE=studydat RECORDS=4 NOTABLE 
  /1 SUBJECT 1-3  STUDY 4  TRTMENT 5-6
@@ -1256,6 +1259,15 @@ two cards being read.</p>
 |ACTU13 |      19|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
 +-------+--------+---------------+-----+-----+---------+-----------+----------+
 </pre>
+
+<p>The 2 cases that were originally 4 records of data have been turned
+into 2 cases of one row each.</p>
+
+<p>Moral to the story: <em>Yes, PSPP can read multi-record data</em> and
+anyone who says it can't is spreading misinformation. It's been able to
+do this via <code>DATA LIST</code> for many, many years, at least
+as far back as v0.82 of PSPP. Even psppire can run that code above. But
+it won't appear in any menu.</p>
 
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
@@ -1807,7 +1819,7 @@ available in the psppire menus.</p>
 
 <p>PSPP is at version 2.1.1 currently and after several important
 bug fixes (file handle close, writing portable files, and reading
-multi-record data with skipped cards in <code>DATA LIST FIXED</code>,
+multi-record data with skipped cards in <code>DATA LIST</code>,
 and other issues) and the addition of <code>GLM</code> and
 <code>CTABLES</code> commands in the last several years, PSPP is
 more capable than ever. If your version is older than 2.1.1 consider
