@@ -1265,11 +1265,17 @@ into 2 cases of one row each.</p>
 
 <p>Moral to the story: <em>Yes, PSPP <strong>can</strong> read
 multi-record data</em> and anyone who says it can't is spreading
-misinformation. It's been able to do this via <code>DATA LIST
-FIXED</code> for many, many years, at least as far back as v0.82 of
-PSPP. Even psppire can run that code above. But it won't appear in
-any GUI menu. The functionality exists and pspp can read multi-record
+misinformation. Please stop. It's been able to do this via <code>DATA
+LIST FIXED</code> for many, many years, at least as far back as v0.82 of
+PSPP or older. Even psppire can run the code above. But it doesn't appear
+in any GUI menu. The functionality exists and pspp can read multi-record
 files.</p>
+
+<p>Note: Although the PSPP user manual describes a <code>/rec#</code>
+form of <code>GET DATA</code> for multi-record fixed-column files,
+PSPP does not currently accept this syntax.  Multi-record files are
+supported, but only through <code>DATA LIST FIXED</code> using the
+RECORD= subcommand.</p>
 
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
@@ -1853,7 +1859,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu May 14 19:55:13 EDT 2026
+Last Modified: Fri May 15 18:06:01 EDT 2026
 </p>
 </footer>
 </blockquote>
