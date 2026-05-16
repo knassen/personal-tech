@@ -957,22 +957,22 @@ squares).
 </p>
 
 <pre>
-DATA LIST FREE /y x.
+DATA LIST LIST /
+    y  x1  x2.
 BEGIN DATA
-  3   1
-  4   2
-  6   3
-  8   4
-  7   5
- 10   6
+  10  1  4.1
+  12  2  5.0
+  13  3  6.2
+  15  4  7.1
+  16  5  8.0
 END DATA.
-
 LIST.
 
 REGRESSION
   /DEPENDENT = y
-  /METHOD = ENTER x
-  /STATISTICS = COEFF R ANOVA.
+  /METHOD = ENTER x1 x2
+  /STATISTICS = COEFF R ANOVA
+  /SAVE = PRED RESID.
 </pre>
 
 <p><strong>Output:</strong></p>
@@ -983,29 +983,28 @@ listed, or plotted using other PSPP procedures.
 </p>
 <pre>
     Data List
-╭─────┬────┬───╮
-│  y  │  x │ p │
-├─────┼────┼───┤
-│ 2.00│1.00│.02│
-│ 4.00│2.00│.02│
-│ 5.00│3.00│.02│
-│ 7.00│4.00│.02│
-│ 9.00│5.00│.02│
-│11.00│6.00│.02│
-╰─────┴────┴───╯
+╭─────┬────┬────╮
+│  y  │ x1 │ x2 │
+├─────┼────┼────┤
+│10.00│1.00│4.10│
+│12.00│2.00│5.00│
+│13.00│3.00│6.20│
+│15.00│4.00│7.10│
+│16.00│5.00│8.00│
+╰─────┴────┴────╯
                      Model Summary (y)
 ╭───┬────────┬─────────────────┬──────────────────────────╮
 │ R │R Square│Adjusted R Square│Std. Error of the Estimate│
 ├───┼────────┼─────────────────┼──────────────────────────┤
-│.95│     .91│              .88│                       .88│
+│.99│     .99│              .98│                       .37│
 ╰───┴────────┴─────────────────┴──────────────────────────╯
                       ANOVA (y)
 ╭──────────┬──────────────┬──┬───────────┬─────┬────╮
 │          │Sum of Squares│df│Mean Square│  F  │Sig.│
 ├──────────┼──────────────┼──┼───────────┼─────┼────┤
-│Regression│         30.23│ 1│      30.23│38.94│.003│
-│Residual  │          3.10│ 4│        .78│     │    │
-│Total     │         33.33│ 5│           │     │    │
+│Regression│         22.53│ 2│      11.27│84.50│.012│
+│Residual  │           .27│ 2│        .13│     │    │
+│Total     │         22.80│ 4│           │     │    │
 ╰──────────┴──────────────┴──┴───────────┴─────┴────╯
                                Coefficients (y)
 ╭──────────┬────────────────────────────┬─────────────────────────┬────┬────╮
@@ -1013,15 +1012,29 @@ listed, or plotted using other PSPP procedures.
 │          ├───────────┬────────────────┼─────────────────────────┤    │    │
 │          │     B     │   Std. Error   │           Beta          │  t │Sig.│
 ├──────────┼───────────┼────────────────┼─────────────────────────┼────┼────┤
-│(Constant)│       1.73│             .82│                      .00│2.11│.088│
-│x         │       1.31│             .21│                      .95│6.24│.003│
+│(Constant)│      12.16│            6.92│                      .00│1.76│.177│
+│x1        │       2.60│            2.20│                     1.72│1.18│.359│
+│x2        │      -1.11│            2.22│                     -.73│-.50│.667│
 ╰──────────┴───────────┴────────────────┴─────────────────────────┴────┴────╯
+
+LIST.
+
+          Data List
+╭─────┬────┬────┬────┬─────╮
+│  y  │ x1 │ x2 │RES1│PRED1│
+├─────┼────┼────┼────┼─────┤
+│10.00│1.00│4.10│-.20│10.20│
+│12.00│2.00│5.00│ .20│11.80│
+│13.00│3.00│6.20│-.07│13.07│
+│15.00│4.00│7.10│ .33│14.67│
+│16.00│5.00│8.00│-.27│16.27│
+╰─────┴────┴────┴────┴─────╯
 
 </pre>
 
 <p>
 The output includes the standard tables for an ordinary least squares
-model. The Model Summary shows an R of 0.91 and an R‑square of 0.88 for
+model. The Model Summary shows an R of 0.99 and an R‑square of 0.99 for
 this small example. The Coefficients table lists each predictor along with
 its estimate, standard error, t-statistic, and p‑value. These values confirm
 that the procedure ran correctly and that PSPP produced the expected
@@ -1038,25 +1051,25 @@ distribution--that is, the probability that an F‑distributed variable
 is less than or equal to the specified value.</p>
 
 <p>The following calculates the upper tail probability for an F value of
-38.94 with 1 model and 4 error degrees of freedom, as shown in the ANOVA
+84.50 with 2 model and 2 error degrees of freedom, as shown in the ANOVA
 table from the regression output.</p>
 
 <pre>
 DO IF $CASENUM = 1.
-  COMPUTE p = 1 - CDF.F(38.94, 1, 4).
+  COMPUTE p_F = 1 - CDF.F(84.50, 2, 2).
 END IF.
-FORMATS p (F10.6).
-LIST p /CASES=FROM 1 TO 1.
+FORMATS p_F (F10.6).
+LIST p_F /CASES=FROM 1 TO 1.
 
 Data List
 ╭───────╮
-│   p   │
+│  p_F  │
 ├───────┤
-│.003361│
+│.011696│
 ╰───────╯
 </pre>
 
-<p>The computed p-value is 0.033610 which matches the pspp output
+<p>The computed p-value is 0.011696 which matches the pspp output
 within rounding error. The <code>DO IF</code> block runs the
 <code>COMPUTE</code> expression only for the first case, and the
 <code>LIST</code> command displays only that case. All remaining cases
@@ -1110,10 +1123,10 @@ background-color:black">
 </ul>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 <p>&nbsp;</p>
-<p> Up to this point we have seen <code>DATA LIST FREE</code> and
-<code>GET DATA</code> used to read ordinary raw data files.  Another
-kind of raw data that still appears in practice is the multi‑record
-data format.</p>
+<p> Up to this point we have seen <code>DATA LIST FIXED</code>,
+<code>DATA LIST FREE</code> and <code>GET DATA</code> used to read
+ordinary raw data files. Another kind of raw data that still appears in
+practice is the multi‑record data format.</p>
 
 <h3>Multi-Record Data Format with PSPP</h3>
 
@@ -1124,7 +1137,7 @@ surveys, or fixed-width exports are produced, or where efficient storage
 is important.
 
 <p>PSPP can read this kind of multi-record data directly. This section
-shows how.</p>
+shows how. There is no need to preprocess this data to get it to need.</p>
 
 <p>You may hear these referred to as multi-record case files,
 multi-record data files, stacked data, or (historically) hierarchical
@@ -1873,7 +1886,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri May 15 20:57:49 EDT 2026
+Last Modified: Sat May 16 08:56:01 EDT 2026
 </p>
 </footer>
 </blockquote>
