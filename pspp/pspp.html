@@ -76,7 +76,7 @@ dialogs. Thus, psppire can be used to develop and run PSPP syntax.</p>
 <strong>automatically</strong>. If the program is closed without saving
 the syntax, any unsaved syntax entered or generated during the session
 cannot be recovered. Saving matters if you need to reproduce or debug your
-analysis.</p>
+analysis. PSPP generally prompts you to save, though, so be aware.</p>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
@@ -143,8 +143,9 @@ block of raw data that PSPP reads when using <code>DATA LIST</code> to
 read raw data.</p>
 
 <p>If there are <strong>issues reading the data</strong> with <code>DATA
-LIST FREE</code>, the only reliable method to read the data is to apply
-formats for all variables on the <code>DATA LIST FREE</code> line.</p>
+LIST FREE</code>, such as bad formats, the only reliable method to read
+the data is to apply formats for all variables on the <code>DATA LIST
+FREE</code> line.</p>
 
 <pre>
 * Read simple space‑delimited data.
@@ -205,7 +206,14 @@ above) to read the data correctly.</p>
 checks are needed. Use <code>LIST</code> when inspecting exact values,
 string variables, or formatting. Use <code>DISPLAY DICTIONARY</code> to
 see the attributes of what was imported. If the data are not being
-read correctly, add or adjust variable formats, and recheck.</p>
+read correctly, add or adjust variable formats, and recheck. It is a
+good idea to do this with every data read.</p>
+
+<p>Another good thing to do is to look at your data, really look at it.
+Look for large values, small values, values that are clumped together,
+values that are off by themselves, variables that change together, and
+the general shape of the data. This can help you to understand how your
+analysis might be affected, for example.</p>
 
 <h3>GET DATA command</h3>
 
@@ -1864,7 +1872,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri May 15 20:23:51 EDT 2026
+Last Modified: Fri May 15 20:57:49 EDT 2026
 </p>
 </footer>
 </blockquote>
