@@ -977,10 +977,14 @@ REGRESSION
 
 <p><strong>Output:</strong></p>
 <p>
-This creates two additional variables: <code>PRED1</code> (predicted
-values) and <code>RES1</code> (residuals). These can then be examined,
-listed, or plotted using other PSPP procedures.
-</p>
+This <code>/SAVE</code> option above creates two additional variables:
+<code>PRED1</code> (predicted values) and <code>RES1</code>
+(residuals). Many statistics courses require students to examine
+and plot the residuals and predicted values to check model
+assumptions. Saving these values in PSPP's regression procedure provides
+exactly what those assignments need.</p>
+
+
 <pre>
     Data List
 ╭─────┬────┬────╮
