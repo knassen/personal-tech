@@ -43,6 +43,12 @@ multi‑record or hierarchical data files. In fact, PSPP has long
 supported reading multi‑record data using DATA LIST FIXED with
 RECORDS= and slash notation.</p>
 
+<p>In this context, “multi‑record” refers to classic SPSS/PSPP
+hierarchical files where a single case spans multiple physical
+records, each with a different layout. This is <em>not</em> the modern
+usage of “multi‑record” to mean “multiple rows per ID” in a CSV or
+database table, where every row has the same structure.</p>
+
 <p>"Stacked" data handling as used here is unrelated to modern ‘data
 stacking’ (VARTOCASES), which restructures data into long format.</p>
 
@@ -1891,7 +1897,6 @@ PSPP by building it from the official GNU source release. The PSPP
 build instructions work on FreeBSD. See <code>pspp/INSTALL</code> after
 cloning with Git for the details.</p>
 
-
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
 <footer>
@@ -1904,7 +1909,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun May 17 19:30:02 EDT 2026
+Last Modified: Wed May 20 13:11:25 EDT 2026
 </p>
 </footer>
 </blockquote>
