@@ -15,7 +15,7 @@ vim editor pages, links to Unix/Linux sites, links related to Apple 2
 sites, and statistical links.
 
 For a PSPP syntax guide with code examples (DATA LIST, REGRESSION, 
-CROSSTABS, multi‑record data), see: 
+CROSSTABS, multi-record data), and see: 
 https://knassen.github.io/personal-tech/pspp/pspp.html.
 
 I have done most of things I set out to do.
@@ -32,14 +32,14 @@ I have done most of things I set out to do.
     examples, more screenshots, and maybe some Python code I've been
     working on.
 
-  - I added some additional Perl programs of general interest. For
+  - I have added some additional Perl programs of general interest. For
     example, I recently added the cklg SAS log checking program to the
     Perl page.  Obviously, if you don't use SAS it's probably not much
     use, but it could potentially be updated for log error messages from
     other languages. I also got the Vim functions for SAS programming
     page back.
 
-  - I'm done converting the site to HTML5 standards. I've fixed most of
+  - I have converted the site to HTML5 standards. I've fixed most of
     the page formatting. 
 
   - Pages are mostly updated for spacing issues and content and the
@@ -51,13 +51,14 @@ I have done most of things I set out to do.
   - I made an effort to get many of the pages indexed on google so
     they'll stand a better chance of showing up in searches.
 
-  - In 2026, I started adding Python program that do what my Perl
+  - In early 2026, I started adding Python program that do what my Perl
     programs do. There are three programs there now.
 
-  - Also in 2026, I put together a PSPP page with plenty of examples,
-    tips, and information about reading multi-record hierarchical files,
-    merging files in PSPP, general usage, issues with DATA LIST FREE,
-    and a test of GET DATA.
+  - Also in April 2026, I put up a PSPP page. PSPP is an SPSS
+    work-alike. I included plenty of examples, tips, and information.
+    Also included are reading multi-record hierarchical files, merging
+    files in PSPP, general usage, working around issues with DATA LIST
+    FREE, and using GET DATA.
 
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
