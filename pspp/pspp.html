@@ -509,10 +509,10 @@ GET DATA
 </pre>
 
 <p><strong>Note:</strong> <code>FIRSTCASE</code> tells pspp that the
-data to read begin on line 2. The variable names are often in line
-1, so that line is skipped.  FIRSTCASE is not needed if the CSV file
-is one long line of data and no header row. This example defines the
-file as <code>DELIMITED</code>, in this case <strong>comma-separated
+data to read begin on line 2. The variable names are often in line 1, so
+that line is skipped. <code>FIRSTCASE</code> is not needed if the CSV
+file is one long line of data and no header row. This example defines
+the file as <code>DELIMITED</code>, in this case <strong>comma-separated
 values</strong>, with the comma as the delimiter and double quotes as
 the text qualifier.</p>
 
@@ -1149,12 +1149,12 @@ is important.
 <p>Here are two screenshots of parts of the 1980 PUMS codebook showing
 two different record types (Person and Housing):</p>
 <p>1980 PUMS Codebook example (P Records):</p>
-<a href=gif/PUMS_1980_P_Record.png>
+<a href="gif/PUMS_1980_P_Record.png">
     <img src="gif/PUMS_1980_P_Record_small.png" alt="PUMS P Record screenshot" class="thumb-left">
 </a>
 <div style="clear:left;"></div>
 <p>1980 PUMS Codebook example (H Records):</p>
-<a href=gif/PUMS_1980_H_Record.png>
+<a href="gif/PUMS_1980_H_Record.png">
     <img src="gif/PUMS_1980_H_Record_small.png" alt="PUMS H Record screenshot" class="thumb-left">
 </a>
 <div style="clear:left;"></div>
@@ -1327,10 +1327,13 @@ files.</p>
 <p>The PSPP user manual describes a <code>/rec#</code>
 form of <code>GET DATA</code> for multi-record fixed-column files,
 and PSPP does accept this syntax. There are several things different
-about the GET DATA method of reading multi-record data:  The
-first record is not defined as /1. Second, all records must be
-read. There is no skipping of records. And last, FIXCASE defines the
-number of records, not the RECORDS subcommand of DATA LIST FIXED.</p>
+about the GET DATA method of reading multi-record data:</p>
+<ul>
+    <li>The first record is not defined as /1. </li>
+    <li>All records must be read. There is no skipping of records.</li>
+    <li>FIXCASE defines the number of records, not the RECORDS 
+        subcommand of DATA LIST FIXED.</li>
+</ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
 FreeBSD which works. I had no luck with GNU pspp 2.0.1 or GNU pspp 2.1.1
@@ -1340,7 +1343,7 @@ for windows. It ignored column locations and formats, more or less.</p>
 pspp --version
 pspp (GNU PSPP) 2.1.1
 Copyright (C) 2022 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+License GPLv3+: GNU GPL version 3 or later &lt;https://gnu.org/licenses/gpl.html&gt;.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
@@ -1981,7 +1984,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri May 22 14:27:51 EDT 2026
+Last Modified: Fri May 22 14:38:07 EDT 2026
 </p>
 </footer>
 </blockquote>
