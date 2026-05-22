@@ -762,11 +762,10 @@ formatted tables, not for quick single‑variable inspection.</p>
 <h3>Cross-Tabulation</h3>
 
 <p>
-The <code>CROSSTABS</code> command displays the relationship between two
-categorical variables by showing the joint distribution of their
-values. It is often used after <code>FREQUENCIES</code> to check that the
-categories of each variable combine as expected.
-</p>
+Crosstabs (also known as Contingency Tables) display the relationship
+between two categorical variables by showing the joint distribution of
+their values. It is often used after <code>FREQUENCIES</code> to check
+that the categories of each variable combine as expected.</p>
 
 <p><strong>Two-Variable Crosstabs with Counts and Percentages</strong></p>
 
@@ -1329,10 +1328,10 @@ form of <code>GET DATA</code> for multi-record fixed-column files,
 and PSPP does accept this syntax. There are several things different
 about the GET DATA method of reading multi-record data:</p>
 <ul>
-    <li>The first record is not defined as /1. </li>
+    <li>The first record is not defined as /1.</li>
     <li>All records must be read. There is no skipping of records.</li>
-    <li>FIXCASE defines the number of records, not the RECORDS 
-        subcommand of DATA LIST FIXED.</li>
+    <li><code>FIXCASE</code> defines the number of records, not the    
+        <code>RECORDS</code subcommand of <code>DATA LIST FIXED</code>.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
@@ -1360,7 +1359,8 @@ GET DATA
   /2 LIKE1 1 F  LIKE2 2 F  LIKE3 3 F LIKE4 4 F LIKE5 5 F LIKE6 6 F LIKE7 7 F LIKE8 8 F LIKE9 9 F  LIKE10 10 F ACTU11 11 F ACTU12 12 F ACTU13 13 F
   /3 LINE3 1-40 F LINE3B 41-60 F
   /4 LINE4 1-13 F
- .
+  .
+DELETE VARIABLES LINE3 LINE3B LINE4.
 LIST.
 DISPLAY DICTIONARY.
 </pre>
@@ -1984,7 +1984,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri May 22 14:38:07 EDT 2026
+Last Modified: Fri May 22 15:14:30 EDT 2026
 </p>
 </footer>
 </blockquote>
