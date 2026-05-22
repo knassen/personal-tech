@@ -1322,13 +1322,36 @@ PSPP or older. Even psppire can run the code above. But it doesn't appear
 in any GUI menu. The functionality exists and pspp can read multi-record
 files.</p>
 
-<p>Note: The PSPP user manual describes a <code>/rec#</code>
+<h3>Multi-record Data Reading with GET DATA</h3>
+
+<p>The PSPP user manual describes a <code>/rec#</code>
 form of <code>GET DATA</code> for multi-record fixed-column files,
 and PSPP does accept this syntax. There are several things different
 about the GET DATA method of reading multi-record data:  The
 first record is not defined as /1. Second, all records must be
 read. There is no skipping of records. And last, FIXCASE defines the
-number of records, not the RECORDS subcommand.</p>
+number of records, not the RECORDS subcommand of DATA LIST FIXED.</p>
+
+<pre>
+GET DATA 
+/TYPE=TXT
+/FILE='studydat' 
+/FIXCASE=4
+/ARRANGEMENT=FIXED
+/VARIABLES  
+  SUBJECT 1-3  F STUDY 4 F TRTMENT  5-6 F  FEEL1 10 F FEEL2 11 F FEEL3 12 F
+  /2 LIKE1 1 F  LIKE2 2 F  LIKE3 3 F LIKE4 4 F LIKE5 5 F LIKE6 6 F LIKE7 7 F LIKE8 8 F LIKE9 9 F  LIKE10 10 F ACTU11 11 F ACTU12 12 F ACTU13 13 F
+  /3 LINE3 1-40 F LINE3B 41-60 F
+  /4 LINE4 1-13 F
+ .
+LIST.
+DISPLAY DICTIONARY.
+</pre>
+
+<strong>Output:</strong>
+LIST.
+
+
 
 <h3>Prevent errors when the data don’t match the expected pattern</h3>
 
