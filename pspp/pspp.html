@@ -22,10 +22,16 @@
 
 <h1>PSPP Guide: Examples and Notes</h1>
 
-<p>PSPP is a free, open-source alternative to SPSS. It supports many of
-the same statistical procedures, uses a similar syntax language, and is
-well-suited for batch processing, scripting, reproducible analysis, as
-well as interactive use.</p>
+<p>PSPP is a free, open-source statistical software, and an alternative
+to SPSS. It supports many of the same statistical and data procedures,
+uses a similar syntax language, and is well-suited for batch processing,
+scripting, reproducible analysis, as well as interactive use.</p>
+
+<p>Compared to SPSS, PSPP costs a lot less (free) and is open-source
+while SPSS is commercial software that requires a paid license. Both PSPP
+and SPSS can read very large files. PSPP is useful for coursework,
+teaching, and many practical data-analysis tasks if the procedures it
+offers cover what you need.</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>About This Page</h3>
@@ -134,19 +140,19 @@ asterisk (*) or may be written as block comments enclosed in
 operations can be expressed in this format, whether run from the command
 line or from psppire’s Syntax Editor.</p>
 
-<h3>Example: Running Syntax Not Available in psppire Menus</h3>
+<h3>Running Syntax with pspp and the GUI (psppire)</h3>
 
 <p>With these basics in place, the following <strong>example</strong>
-demostrates data processing in PSPP using the command‑line
+demonstrates data processing in PSPP using the command‑line
 <code>pspp</code>. The same syntax can be copied into psppire’s Syntax
-Editor window and executed there. <code>DATA LIST FREE</code> does not
-appear in psppire’s pull‑down menus; psppire provides no GUI menu
-item for this command, but it can still be entered and executed in the
-Syntax Editor.</p>
+Editor window and executed there via the <em>Run</em> menu. <code>DATA
+LIST FREE</code> does not appear in psppire’s pull‑down menus;
+psppire doesen't expose <code>DATA LIST FREE</coded> in the GUI, but it
+can still be entered and executed in the Syntax Editor.</p>
 
 <p><code>BEGIN DATA</code> and <code>END DATA</code> mark the literal
 block of raw data that PSPP reads when using <code>DATA LIST</code> to
-read raw data.</p>
+read inline raw data.</p>
 
 <p>If there are <strong>issues reading the data</strong> with <code>DATA
 LIST FREE</code>, such as bad formats, the only reliable method to read
@@ -1960,7 +1966,7 @@ more capable than ever. If your version is older than 2.1.1 consider
 upgrading.</p>
 
 <p><a href="https://www.gnu.org/software/pspp/get.html">PSPP download
-page at gnu.org</a> The gnu site gives instructions for installing PSPP
+page at gnu.org</a> The GNU PSPP site gives installation instructions 
 for Windows, Mac, Debian, Ubuntu, Fedora, and with Flatpak.</p>
 
 <p>PSPP source can also be obtained with git: 
@@ -1984,7 +1990,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat May 23 20:30:38 EDT 2026
+Last Modified: Sun May 24 16:46:02 EDT 2026
 </p>
 </footer>
 </blockquote>
