@@ -14,8 +14,8 @@ processing tasks, information about the old Aurora Text Editor, vi and
 vim editor pages, links to Unix/Linux sites, links related to Apple 2 
 sites, and statistical links.
 
-For a PSPP syntax guide with code examples (DATA LIST, REGRESSION, 
-CROSSTABS, multi-record data), and see: 
+For a PSPP guide with code examples (DATA LIST, REGRESSION, 
+CROSSTABS, multi-record data) and notes, and see: 
 https://knassen.github.io/personal-tech/pspp/pspp.html.
 
 I have done most of things I set out to do.
@@ -57,7 +57,8 @@ I have done most of things I set out to do.
   - Also in April 2026, I put up a PSPP page. PSPP is an SPSS
     work-alike. I included plenty of examples, tips, and information.
     Also included are reading multi-record hierarchical files, merging
-    files in PSPP, general usage, working around issues with DATA LIST
+    files in PSPP, reading implied decimal data, computing a p-value for
+    the F statistic, general usage, working around issues with DATA LIST
     FREE, and using GET DATA.
 
 I hope you will find a few things here that are worthwhile. Maybe they
