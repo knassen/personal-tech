@@ -44,17 +44,6 @@ as using functions and computing p‑values from <code>ANOVA</code>
 output. The goal is to give clear, reproducible patterns you can adapt
 to your own work.
 
-<p>Note: A common misconception is that PSPP lacks support for
-multi‑record or hierarchical data files. In fact, PSPP has long
-supported reading multi‑record data using DATA LIST FIXED with
-RECORDS= and slash notation.</p>
-
-<p>In this context, “multi‑record” refers to classic SPSS/PSPP
-hierarchical files where a single case spans multiple physical
-records, each with a different layout. This is <em>not</em> the modern
-usage of “multi‑record” to mean “multiple rows per ID” in a CSV or
-database table, where every row has the same structure.</p>
-
 <p>"Stacked" data handling as used here is unrelated to modern ‘data
 stacking’ (VARTOCASES), which restructures data into long format.</p>
 
@@ -147,7 +136,7 @@ demonstrates data processing in PSPP using the command‑line
 <code>pspp</code>. The same syntax can be copied into psppire’s Syntax
 Editor window and executed there via the <em>Run</em> menu. <code>DATA
 LIST FREE</code> does not appear in psppire’s pull‑down menus;
-psppire doesen't expose <code>DATA LIST FREE</coded> in the GUI, but it
+psppire doesen't expose <code>DATA LIST FREE</code> in the GUI, but it
 can still be entered and executed in the Syntax Editor.</p>
 
 <p><code>BEGIN DATA</code> and <code>END DATA</code> mark the literal
@@ -1145,11 +1134,22 @@ practice is the multi‑record data format.</p>
 
 <h3>PSPP Multi-Record Raw Data Syntax</h3>
 
-<p>Multi-record data is fixed-width data where each case
-spans multiple lines in a fixed sequence. Data like this is still
-encountered in industries where legacy reporting systems, long-running
+<p>Multi-record data is fixed-width raw data where each case
+spans multiple lines in a fixed sequence. This data format still
+appears in industries where legacy reporting systems, long-running
 surveys, or fixed-width exports are produced, or where efficient storage
 is important.
+
+<p>A common misconception is that PSPP lacks support for multi‑record
+data files. In fact, PSPP has long supported reading multi‑record data
+using <code>DATA LIST FIXED</code> with <code>RECORDS=</code> and slash
+notation.</p>
+
+<p>In this context, “multi‑record” refers to classic SPSS/PSPP
+hierarchical files where a single case spans multiple physical
+records, each with a different layout. This is <em>not</em> the modern
+usage of “multi‑record” to mean “multiple rows per ID” in a CSV or
+database table, where every row has the same structure.</p>
 
 <p>Here are two screenshots of parts of the 1980 PUMS codebook showing
 two different record types (Person and Housing):</p>
@@ -1337,7 +1337,7 @@ about the GET DATA method of reading multi-record data:</p>
     <li>The first record is not defined as /1.</li>
     <li>All records must be read. There is no skipping of records.</li>
     <li><code>FIXCASE</code> defines the number of records, not the    
-        <code>RECORDS</code subcommand of <code>DATA LIST FIXED</code>.</li>
+        <code>RECORDS</code> subcommand of <code>DATA LIST FIXED</code>.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
@@ -1990,7 +1990,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun May 24 16:46:02 EDT 2026
+Last Modified: Mon May 25 09:49:57 EDT 2026
 </p>
 </footer>
 </blockquote>
