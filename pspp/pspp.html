@@ -157,97 +157,7 @@ line or from psppire’s Syntax Editor.</p>
 
 <h3>Running Syntax with pspp and the GUI (psppire)</h3>
 
-<p>With these basics in place, the following <strong>example</strong>
-demonstrates data processing in PSPP using the command‑line
-<code>pspp</code>. The same syntax can be copied into psppire’s Syntax
-Editor window and executed there via the <em>Run</em> menu. <code>DATA
-LIST FREE</code> does not appear in psppire’s pull‑down menus;
-psppire doesen't expose <code>DATA LIST FREE</code> in the GUI, but it
-can still be entered and executed in the Syntax Editor.</p>
-
-<p><code>BEGIN DATA</code> and <code>END DATA</code> mark the literal
-block of raw data that PSPP reads when using <code>DATA LIST</code> to
-read inline raw data.</p>
-
-<p>If there are <strong>issues reading the data</strong> with <code>DATA
-LIST FREE</code>, such as bad formats, the only reliable method to read
-the data is to apply formats for all variables on the <code>DATA LIST
-FREE</code> line.</p>
-
-<pre>
-* Read simple space‑delimited data.
-DATA LIST FREE 
-  /ID (F6.0)
-   AGE (F2.0)
-   YEAR (F4.0) 
-   SEX (A6) .
-BEGIN DATA.
-123456  27 1984 Male
-987654  58 1990 Female
-END DATA.
-FORMATS
-  ID   (F6.0)
-  AGE  (F2.0)
-  YEAR (F4.0)
-  SEX  (A6).
-LIST.
-DISPLAY DICTIONARY.
-</pre>
-
-<p>Output:</p>
-<pre>
-        Data List
-+------+---+----+------+
-|  ID  |AGE|YEAR|  SEX |
-+------+---+----+------+
-|123456| 27|1984|Male  |
-|987654| 58|1990|Female|
-+------+---+----+------+
-
-                                    Variables
-+----+--------+-----------------+-----+-----+---------+------------+------------+
-|Name|Position|Measurement Level| Role|Width|Alignment|Print Format|Write Format|
-+----+--------+-----------------+-----+-----+---------+------------+------------+
-|ID  |       1|Scale            |Input|    8|Right    |F6.0        |F6.0        |
-|AGE |       2|Scale            |Input|    8|Right    |F2.0        |F2.0        |
-|YEAR|       3|Scale            |Input|    8|Right    |F4.0        |F4.0        |
-|SEX |       4|Nominal          |Input|    6|Left     |A6          |A6          |
-+----+--------+-----------------+-----+-----+---------+------------+------------+
-</pre>
-
-<p><code>DATA LIST FREE</code> can behave unpredictably reading some
-data. To ensure correct and reproducible results, specify formats for
-all variables. If in doubt, verify the <code>DATA LIST FREE</code>
-read by comparing it with <code>GET DATA</code>, which always requires
-explicit formats.</p>
-
-<p><strong>Note:</strong> If psppire is preferred, rather than
-commandline syntax in an editor, setting the <strong>correct
-delimiter</strong> allows the import wizard to split the fields and
-load the data. However, its format guesses are sometimes wrong or
-missing. Variable formats may still need to be added manually (as shown
-above) to read the data correctly.</p>
-
-<p><strong>Inspecting Imported Data</strong></p> <p>Use
-<code>FREQUENCIES</code> when quick counts, ranges, and missing‑value
-checks are needed. Use <code>LIST</code> when inspecting exact values,
-string variables, or formatting. Use <code>DISPLAY DICTIONARY</code> to
-see the attributes of what was imported. If the data are not being
-read correctly, add or adjust variable formats, and recheck. It is a
-good idea to do this with every data read.</p>
-
-<p>Another good thing to do is to look at your data, really look at
-it. If the data allow, do a plot. Look for large values, small values,
-values that are clumped together, values that are off by themselves,
-variables that change together, values that don't belong, and the
-general shape of the data. This can help you to understand how your
-analysis might be affected, for example.</p>
-
-<h3>GET DATA command</h3>
-
-<p>This example uses the same dataset as the <code>DATA LIST FREE</code>
-example above so the results of <code>GET DATA</code> can be compared
-with those from <code>DATA LIST FREE</code>.</p>
+<h3>Reading Data With the GET DATA Command</h3>
 
 <p><strong>Note:</strong> psppire’s <strong>File Import</strong>
 wizard uses <code>GET DATA</code> internally; the generated command
@@ -314,6 +224,98 @@ DISPLAY DICTIONARY.
 of <code>GET DATA</code> is that it always reads data from a file, so a
 data file must exist. <code>GET DATA</code> reads the data just like the
 <code>DATA LIST FREE</code> example above. It gives the same results.</p>
+
+<h3>Reading Data in Free Format</h3>
+
+<p>The following <strong>example</strong> demonstrates data processing
+in PSPP using the command‑line <code>pspp</code>. The same syntax can
+be copied into psppire’s <strong>Syntax Editor window</strong> and
+executed there via the <em>Run</em> menu. <code>DATA LIST FREE</code>
+does not appear in psppire’s pull‑down menus; psppire doesen't
+expose <code>DATA LIST FREE</code> in the GUI, but it can still be
+entered and executed in the Syntax Editor.</p>
+
+<p>This example uses the same data as the <code>GET DATA</code> example
+above so the results should be the same.</p>
+
+<p><code>BEGIN DATA</code> and <code>END DATA</code> mark the literal
+block of raw data that PSPP reads when using <code>DATA LIST</code> to
+read inline raw data.</p>
+
+<p>If there are <strong>issues reading the data</strong> with <code>DATA
+LIST FREE</code>, such as bad formats, the only reliable method to read
+the data is to apply formats for all variables on the <code>DATA LIST
+FREE</code> line.</p>
+
+<pre>
+* Read simple space‑delimited data.
+DATA LIST FREE 
+  /ID (F6.0)
+   AGE (F2.0)
+   YEAR (F4.0) 
+   SEX (A6) .
+BEGIN DATA.
+123456  27 1984 Male
+987654  58 1990 Female
+END DATA.
+FORMATS
+  ID   (F6.0)
+  AGE  (F2.0)
+  YEAR (F4.0)
+  SEX  (A6).
+LIST.
+DISPLAY DICTIONARY.
+</pre>
+
+<p>Output:</p>
+<pre>
+        Data List
++------+---+----+------+
+|  ID  |AGE|YEAR|  SEX |
++------+---+----+------+
+|123456| 27|1984|Male  |
+|987654| 58|1990|Female|
++------+---+----+------+
+
+                                    Variables
++----+--------+-----------------+-----+-----+---------+------------+------------+
+|Name|Position|Measurement Level| Role|Width|Alignment|Print Format|Write Format|
++----+--------+-----------------+-----+-----+---------+------------+------------+
+|ID  |       1|Scale            |Input|    8|Right    |F6.0        |F6.0        |
+|AGE |       2|Scale            |Input|    8|Right    |F2.0        |F2.0        |
+|YEAR|       3|Scale            |Input|    8|Right    |F4.0        |F4.0        |
+|SEX |       4|Nominal          |Input|    6|Left     |A6          |A6          |
++----+--------+-----------------+-----+-----+---------+------------+------------+
+</pre>
+
+<p><code>DATA LIST FREE</code> can behave unpredictably reading some
+data. To ensure correct and reproducible results, specify formats for
+all variables. If in doubt, verify the <code>DATA LIST FREE</code>
+read by comparing it with <code>GET DATA</code>, which always requires
+explicit formats.</p>
+
+<p><strong>Note: If psppire is preferred</strong>, rather than
+commandline syntax in an editor, setting the <strong>correct
+delimiter</strong> allows the import wizard to split the fields and
+load the data. However, its format guesses are sometimes wrong or
+missing. Variable formats may still need to be added manually (as shown
+above) to read the data correctly.</p>
+
+<p><strong>Inspecting Imported Data</strong></p> <p>Use
+<code>FREQUENCIES</code> when quick counts, ranges, and missing‑value
+checks are needed. Use <code>LIST</code> when inspecting exact values,
+string variables, or formatting. Use <code>DISPLAY DICTIONARY</code> to
+see the attributes of what was imported. If the data are not being
+read correctly, add or adjust variable formats, and recheck. It is a
+good idea to do this with every data read.</p>
+
+<p>Another good thing to do is to look at your data, really look at
+it. If the data allow, do a plot. Look for large values, small values,
+values that are clumped together, values that are off by themselves,
+variables that change together, values that don't belong, and the
+general shape of the data. This can help you to understand how your
+analysis might be affected, for example.</p>
+
 
 <p><strong>Reading CSV Files with GET DATA:</strong> <code>GET
 DATA</code> can read CSV files by using <code>TYPE=TXT</code> and
@@ -2016,7 +2018,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Jun  3 21:18:55 EDT 2026
+Last Modified: Wed Jun  3 21:52:32 EDT 2026
 </p>
 </footer>
 </blockquote>
