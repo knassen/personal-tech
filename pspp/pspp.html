@@ -70,6 +70,17 @@ psppire Syntax Editor can open, edit, and run these files. The examples
 on this page were run using both psppire or pspp; PSPP produces the same
 results in either environment.</p>
 
+<p>Here is a short example of reading a CSV file into pspp or psppire:</p>
+<pre>
+GET DATA
+  /TYPE=TXT
+  /FILE='example.csv'
+  /DELCASE=LINE
+  /DELIMITERS=","
+  /ARRANGEMENT=DELIMITED
+  /FIRSTCASE=2.
+</pre>
+
 <a href="gif/psppire_ex1.png">
     <img src="gif/psppire_ex1_small.png" alt="psppire screenshot" class="thumb-left">
 </a>
@@ -2004,7 +2015,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon May 25 17:34:31 EDT 2026
+Last Modified: Wed Jun  3 21:18:55 EDT 2026
 </p>
 </footer>
 </blockquote>
