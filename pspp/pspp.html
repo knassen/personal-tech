@@ -24,7 +24,7 @@
 
 <p>PSPP is a free, open-source statistical software, and an alternative
 to SPSS. It supports many of the same statistical and data procedures,
-uses a similar syntax language, and is well-suited for batch processing,
+uses a similar command language, and is well-suited for batch processing,
 scripting, reproducible analysis, as well as interactive use.</p>
 
 <p>Compared to SPSS, PSPP costs a lot less (free) and is open-source
@@ -63,9 +63,9 @@ Hello, world!</pre>
 <p>Most examples on this page follow this pattern: a short block of PSPP
 code, followed by the output PSPP produces.</p>
 
-<p>PSPP uses a statistical syntax language similar to SPSS and supports
+<p>PSPP uses a statistical command language similar to SPSS and supports
 batch processing, scripting, and reproducible analysis. You can write
-syntax in any text editor and save it as .sps. If you prefer a GUI, the
+commands in any text editor and save them as .sps. If you prefer a GUI, the
 psppire Syntax Editor can open, edit, and run these files. The examples
 on this page were run using both psppire or pspp; PSPP produces the same
 results in either environment.</p>
@@ -90,18 +90,19 @@ GET DATA
 <p><strong>psppire: The Graphical Interface for pspp</strong></p>
 <p>psppire is a graphical interface for the PSPP engine. It’s useful
 for exploring data, running common procedures, and generating basic
-syntax. Many users begin in psppire and then copy the generated syntax
-into the Syntax Editor or a program file.</p>
+commands. Many users begin in psppire and then copy the generated
+commands into the Syntax Editor or a program file.</p>
 
 <p>Some PSPP commands and options are not available in the psppire
-menus. When features that the GUI doesn’t expose are needed, syntax
-can be entered directly in a syntax window or an .sps file can be run
-with pspp. psppire runs all PSPP syntax, not just what appears in the
-dialogs. Thus, psppire can be used to develop and run PSPP syntax.</p>
+menus. When features that the GUI doesn’t expose are needed, commands
+can be entered directly in a Syntax Editor window or an .sps file can
+be run with pspp. psppire runs all PSPP syntax, not just what appears
+in the dialogs. Thus, psppire can be used to develop and run all PSPP
+commands.</p>
 
-<p>psppire does not save syntax or workflow
+<p>psppire does not save commands or workflow
 <strong>automatically</strong>. If the program is closed without saving
-the syntax, any unsaved syntax entered or generated during the session
+the commands, any unsaved commands entered or generated during the session
 cannot be recovered. Saving matters if you need to reproduce or debug your
 analysis. PSPP generally prompts you to save, though, so be aware.</p>
 
@@ -109,7 +110,7 @@ analysis. PSPP generally prompts you to save, though, so be aware.</p>
 background-color:black">
 
 <p>This section covers only the basics needed to open psppire, capture
-syntax, and run syntax. A more detailed review of psppire’s
+commands, and run commands. A more detailed review of psppire’s
 behavior and limitations appears later in this page.</p>
 
 <p><strong>Launching psppire</strong> depends on your operating
@@ -128,19 +129,17 @@ they will be used later.</p>
 
 <p>Many dialogs in psppire include a <strong>"Paste" button</strong>.
 Clicking it opens the Syntax editor (if not already open) and inserts
-the syntax corresponding to the dialog choices. This is a quick way to
-learn PSPP syntax and to refine or extend the generated commands. 
 Files should be saved if further work is planned.</p>
 
 <h3>Opening Existing Files</h3>
 
 <p><strong>To Open Existing <code>.sps</code> files</strong>, use
 <strong>File-&gt;Open</strong>. The dialog displays PSPP data files and
-<code>.sps</code> syntax files by default. To display only syntax files, 
+<code>.sps</code> command files by default. To display only command files, 
 choose <strong>Syntax Files (*sps)</strong> from the
 filter menu in the lower right.</p>
 
-<p>Creating a new syntax file via
+<p>Creating a new command file via
 <strong>File-&gt;Open</strong>, requires an
 empty <code>.sps</code> file to exist beforehand; otherwise, 
 File-&gt;New-&gt;Syntax, is simpler.</p>
@@ -154,29 +153,29 @@ as block comments enclosed in <code>/*</code> and <code>*/</code>. Most
 data management and analysis operations can be expressed in this format,
 whether run from the command line or from psppire’s Syntax Editor.</p>
 
-<h3>Running Syntax with pspp and the GUI (psppire)</h3>
+<h3>Running Commands with pspp and the GUI (psppire)</h3>
 
 <p>No matter how you got it — typed, pasted, or generated — you
-are still running syntax.  Next will be a full <code>GET DATA</code>
+are still running syntax. Next will be a full <code>GET DATA</code>
 example, with output.</p>
 
 <h3>Reading Data With the GET DATA Command</h3>
 
 <p><strong>Note:</strong> psppire’s <strong>File Import</strong>
 wizard uses <code>GET DATA</code> internally; the generated command
-appears in the output window. This syntax can be edited in the syntax
-editor, for example, changing the variable names and
+appears in the output window. This command can be edited in the Syntax
+Editor, for example, changing the variable names and
 labels, without going through the import wizard repeatedly. psppire's
-data editor also allows changing variables names, types, alignment, and
+Data Editor also allows changing variables names, types, alignment, and
 widths directly.</p>
 
-<p>The <code>GET DATA</code> syntax below was edited by hand; it was
+<p>The <code>GET DATA</code> command below was edited by hand; it was
 not generated by the File Import wizard. If an analysis needs to be
-reproduced—including the data‑input step—the syntax file of
-PSPP commands must be saved and rerun. The list output shows what
+reproduced—including the data‑input step—the syntax file of PSPP
+commands must be saved and able to be rerun. The list output shows what
 happened, but it does not repeat the import. psppire’s output window
 always shows the results of your commands, while the command‑line
-<code>pspp</code> program produces output only when your syntax includes
+<code>pspp</code> program produces output only when your commands include
 procedures that generate it or when PSPP reports an error. In either
 case, the output alone is not enough to recreate the import; the syntax
 must be saved to document the data-input step.</p>
@@ -238,7 +237,7 @@ data file must exist. <code>GET DATA</code> reads the data just like the
 <h3>Reading Data in Free Format</h3>
 
 <p>The following <strong>example</strong> demonstrates data processing
-in PSPP using the command‑line <code>pspp</code>. The same syntax can
+in PSPP using the command‑line <code>pspp</code>. The same commands can
 be copied into psppire’s <strong>Syntax Editor window</strong> and
 executed there via the <em>Run</em> menu. <code>DATA LIST FREE</code>
 does not appear in psppire’s pull‑down menus; psppire doesen't
@@ -301,7 +300,7 @@ DISPLAY DICTIONARY.
 data. To ensure correct and reproducible results, specify formats for
 all variables. If in doubt, verify the <code>DATA LIST FREE</code>
 read by comparing it with <code>GET DATA</code>, which always requires
-explicit formats.</p>
+explicit formats for delimited data.</p>
 
 <p><strong>Inspecting Imported Data</strong></p> <p>Use
 <code>FREQUENCIES</code> when quick counts, ranges, and missing‑value
@@ -328,11 +327,12 @@ delimited text, so variable formats must still be specified.</p>
 
 <p><code>DATA LIST FIXED</code> reads variables from specific column
 locations in a text data file. As long as the text is aligned in
-columns, PSPP can parse it exactly as specified.</p>
+columns, PSPP can parse it exactly as specified. Column locations
+in <code>DATA LIST FIXED</code> are 1-based.</p>
 
 <p>This example was run with psppire.</p>
 
-<p><strong>Syntax</strong></p>
+<p><strong>Commands for Fixed Column</strong></p>
 <pre>
 DATA LIST FIXED
   /ID    1-5
@@ -396,21 +396,25 @@ DISPLAY DICTIONARY.
 
 <p>There are a couple of points to remember when using DATA LIST FIXED:</p>
 
-<p><strong>1. DATA LIST FIXED is brittle by design</strong></p>
-<p>If the file shifts by even one space, every variable after that point is
+<p><strong>1. DATA LIST FIXED is brittle by design</strong></p> <p>If
+the file shifts by even one space, every variable after that point is
 wrong. This is why fixed‑width files must be inspected in a monospace
 editor and each column range verified to ensure PSPP is reading the data
 correctly.</p>
 
 <p><strong>2. Strings must match their column width</strong></p> <p>PSPP
 does not infer string length in <code>DATA LIST FIXED</code>. If NAME
-spans columns 6–13, it must be (A8) or (A) with that exact column range.
-The data width must match the span of the fixed width field.</p>
+spans columns 6–13, it must be (A8) or (A) with that exact column
+range.  The data width must match the span of the fixed width field.</p>
 
 <p><strong>3. psppire states "Reading 1 record from INLINE"</strong></p>
 even though there are two lines of data. psppire reads the first
 line of the INLINE data to determine the variable formats, which it
-reports. Then it reads the rest of the data.
+reports. Then it reads the rest of the data.</p>
+
+<p><strong>4. DATA LIST FIXED uses 1-based column locations</strong>
+as opposed to <code>GET DATA</code> reading fixed data, which uses 
+0-based column locations.</p>
 
 <h3>Reading Data with Implied Decimals</h3>
 
@@ -507,16 +511,16 @@ decimal places applied.</p>
 <h3>Reading Saved Files</h3>
 
 <p>Use <code>GET FILE=</code> to read PSPP system files and portable files. Use
-<code>GET DATA</code> to read CSV files.</p>
+<code>GET DATA</code> to read CSV delimited files (see below).</p>
 
 <pre>
 * Reading those rare portable SPSS files.
 GET FILE='legacy.por'.
 
-*Reading a PSPP system file.
+* Reading a PSPP system file.
 GET FILE='mydata.sav'.
 
-*Reading a CSV file.
+* Reading a CSV file.
 GET DATA
   /TYPE=CSV
   /FILE='data.csv'
@@ -539,7 +543,7 @@ that line is skipped. <code>FIRSTCASE</code> is not needed if the CSV
 file is one long line of data and no header row. This example defines
 the file as <code>DELIMITED</code>, in this case <strong>comma-separated
 values</strong>, with the comma as the delimiter and double quotes as
-the text qualifier.</p>
+the text value qualifier.</p>
 
 <h3>File Handles in PSPP</h3>
 
@@ -576,7 +580,7 @@ CLOSE FILE HANDLE demo.
 
 <h3>Reading Less Data for Testing: N OF CASES</h3>
 
-<p>When developing syntax on a large data file, reading many thousands
+<p>When developing commands on a large data file, reading many thousands
 of cases just to test a few lines of code on a couple of values wastes
 time. <code>N OF CASES</code> tells PSPP to read only the first N cases
 in the file.  This speeds up development and makes debugging easier.</p>
@@ -597,7 +601,7 @@ working, remove <code>N OF CASES</code> and run the full analysis. This
 speeds up testing and development goes more smoothly overall. It is
 especially useful when reading large raw data files, testing recodes, 
 <code>COMPUTE</code> statements, checking variable formats, verifying
-merges, and building syntax incrementally.</p>
+merges, and building commands incrementally.</p>
 
 <h3>Selecting Data for Analysis: SELECT IF</h3>
 
@@ -616,13 +620,13 @@ EXECUTE.
 <p><code>SYSMIS</code> is used here to exclude cases with missing income
 values.</p>
 
-<h3>Descriptive Statistics</h3>
+<h3>How to Run Descriptive Statistics</h3>
 
 <p>
 The <code>DESCRIPTIVES</code> command computes means, standard
 deviations, and other summary statistics. PSPP supports variable lists,
 subcommands, and formatting options. These are specified through the
-<code>DESCRIPTIVES</code> command syntax.</p>
+<code>DESCRIPTIVES</code> command.</p>
 
 <p><code>DESCRIPTIVES</code> does not read raw data, so if no active
 dataset is available—or there is no PSPP system file to load—use
@@ -683,7 +687,7 @@ selected variables as new.”.</p>
 <p>The <code>FORMAT</code> subcommand used by <code>DESCRIPTIVES</code>
 is accepted for backward compatibility but has no effect in PSPP.</p>
 
-<h3>Frequencies</h3>
+<h3>How to Create Frequencies</h3>
 
 <p>
 The <code>FREQUENCIES</code> command produces counts and percentages for the
@@ -784,15 +788,16 @@ but it treats each variable separately. <code>CROSSTABS</code> and
 but they’re designed for examining relationships or producing
 formatted tables, not for quick single‑variable inspection.</p>
 
-<h3>Cross-Tabulation</h3>
+<h3>How to Run a Cross-Tabulation</h3>
 
 <p>
-Crosstabs (also known as Contingency Tables) display the relationship
-between two categorical variables by showing the joint distribution of
-their values. It is often used after <code>FREQUENCIES</code> to check
-that the categories of each variable combine as expected.</p>
+Cross-Tabulation or Crosstabs, also known as Contingency Tables,
+display the relationship between two categorical variables by showing
+the joint distribution of their values. It is often used after
+<code>FREQUENCIES</code> to check that the categories of each variable
+combine as expected.</p>
 
-<p><strong>Two-Variable Crosstabs with Counts and Percentages</strong></p>
+<p><strong>How to Create Two-Variable Crosstabs with Counts and Percentages</strong></p>
 
 <p>The simplest use of <code>CROSSTABS</code> is a two‑variable
 table. The following example shows a basic 2×2 crosstab with counts,
@@ -887,7 +892,7 @@ analyst’s chosen significance level and the question being asked. The
 important point here is that the procedure ran correctly and produced
 the expected statistics.</p>
 
-<p><strong>Three-Variable Crosstabs Example</strong></p>
+<p><strong>How to Create Three-Variable Crosstabs</strong></p>
 
 <p><code>CROSSTABS</code> can include more than two variables. When
 you specify three variables, PSPP produces a single nested table (for
@@ -975,7 +980,7 @@ predictors. PSPP’s <code>REGRESSION</code> command performs ordinary
 least squares estimation for this purpose. The following section shows a
 simple regression example and the standard output produced by PSPP.</p>
 
-<h3>Linear Regression</h3>
+<h3>How to Run a Linear Regression</h3>
 
 <p>
 The <code>REGRESSION</code> command fits an ordinary least squares model to a
@@ -1077,7 +1082,7 @@ context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
 
-<p><strong>Computing the P-value for F Manually</strong></p>
+<p><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
 
 <p>PSPP can be used to compute the p-value for the F-statistic. The
 CDF.F function returns the cumulative distribution function of the F
@@ -1148,7 +1153,7 @@ background-color:black">
 
       <li>Batch mode is stable and well-suited for reproducible workflows.</li>
 
-      <li>Some dialogs in the GUI correspond to syntax that is not fully 
+      <li>Some dialogs in the GUI correspond to commands that are not fully 
           implemented.</li>
 
       <li>Table and chart output can be produced in several formats: 
@@ -1157,12 +1162,12 @@ background-color:black">
 </ul>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 <p>&nbsp;</p>
-<p> Up to this point we have seen <code>DATA LIST FIXED</code>,
-<code>DATA LIST FREE</code> and <code>GET DATA</code> used to read
-ordinary raw data files. Another kind of raw data that still appears in
-practice is the multi‑record data format.</p>
+<p> Up to this point we have seen <code>GET DATA</code>, <code>DATA LIST
+FIXED</code>, and <code>DATA LIST FREE</code> used to read ordinary raw
+data files. Another kind of raw data that still appears in practice is
+the multi‑record data format.</p>
 
-<h3>PSPP Multi-Record Raw Data Syntax</h3>
+<h3>How to Read Multi-Record Raw Data with PSPP</h3>
 
 <p>Multi-record data is fixed-width raw data where each case
 spans multiple lines in a fixed sequence. This data format still
@@ -1171,9 +1176,12 @@ surveys, or fixed-width exports are produced, or where efficient storage
 is important.
 
 <p>A common misconception is that PSPP lacks support for multi‑record
-data files. In fact, PSPP has long supported reading multi‑record data
+data files. In reality, PSPP has long supported reading multi‑record data
 using <code>DATA LIST FIXED</code> with <code>RECORDS=</code> and slash
-notation.</p>
+notation. The fact that <code>DATA LIST FIXED</code> does not appear in
+the psppire graphical interface does not mean the command is missing —
+it is fully implemented in the PSPP syntax engine and can be run in
+psppire.</p>
 
 <p>In this context, “multi‑record” refers to classic SPSS/PSPP
 hierarchical files where a single case spans multiple physical
@@ -1213,7 +1221,8 @@ form of a codebook defining how the data were collected, what the cards
 represent, the variable names, and the column locations, or with existing
 PSPP code that reads the data correctly.</p>
 
-<p>Here is an example of multi-record data:</p>
+<p>Here is an example of multi-record data with 4 records of survey
+data:</p>
 <pre>
 044104101712288855439855238255785555221010000010000000005080
 805060909080808090500000708000005092543214424122111432310100
@@ -1226,7 +1235,7 @@ PSPP code that reads the data correctly.</p>
 </pre>
 <p>
 Each block in the example above consists of four records or
-"cards." Single digit responses make it nearly impossible to tell
+"cards." Single digit survey responses make it nearly impossible to tell
 which value belongs to which variable. Different variables appear on
 different cards (or lines in the file), so this file cannot be read
 vertically as a simple rectangular dataset or CSV file.</p>
@@ -1235,16 +1244,17 @@ PSPP can handle this type of data by reading each record with a separate
 set of input statements for each card. It then combines the values from
 all the records into a single (wide) case.</p>
 
-<h3>Tip: Every Record Must be Read or Explicitly Skipped </h3> 
+<h3>Tip: Every Record/Card Must be Read or Explicitly Skipped </h3> 
 <p>A multi‑record file is like a stack of cards. PSPP
 reads them in order, one record at a time. There are two safe
 options to <em>not read every data card:</em></p>
 
 <ul>
-    <li><strong>Read the card</strong> (and delete variables later if they are not needed)</li>
-    <li><strong>Skip the card</strong> using a blank record specification (for example: <code>/ / /</code>: 
-        slashes in <code>DATA LIST</code> skip cards)</li>
-</ul>
+    <li><strong>Read every card</strong> and delete variables later if
+        they are not needed.</li>
+    <li><strong>Skip the card correctly</strong> using a blank record
+        specification (for example: <code>/ / /</code>: slashes in <code>DATA
+        LIST</code> skip cards)</li> </ul>
 
 <p>Every card must be accounted for. Removing a card is like
 removing variables from the middle of a <code>DATA LIST FREE</code>
@@ -1261,9 +1271,9 @@ these files must be read.</p>
 the assembled dataset to CSV or SAV. Once in a modern format, the data
 can be used in modern analysis tools.</p>
 
-<p>Before looking at PSPP syntax, it helps to see the basic pattern of
-a multi-record file. Each card has its own layout, and PSPP reads them
-in order:</p>
+<p>Before looking at the PSPP commands, it helps to see the basic
+pattern of a multi-record file. Each card has its own layout, and PSPP
+reads them in order:</p>
 
 <pre>
 - card 1 → /1 variables (Subject IDs and Treatments)
@@ -1273,7 +1283,7 @@ in order:</p>
 </pre>
 
 <p>This dataset has 4 cards per case. Two of the cards are not needed for
-analysis, so PSPP skips them using blank slash lines.</p>
+analysis, so PSPP skips them using blank slash lines below.</p>
 
 <pre>
 DATA LIST FILE=studydat RECORDS=4 NOTABLE 
@@ -1298,9 +1308,9 @@ are not used for analysis.</p>
 
 <p>Each card is defined by a <code>/N</code> and followed by variable
 names and their column locations on that card. Note that the column
-locations differ across the cards because each card has its own
-layout. In this example, <code>/1</code> and <code>/2</code> define the
-two cards being read.</p>
+locations differ across the cards because each card has its own layout
+and contents. In this example, <code>/1</code> and <code>/2</code>
+define the two cards being read.</p>
 
 <p>Output:</p>
 <pre>
@@ -1352,27 +1362,40 @@ into 2 cases of one row each.</p>
 <p>Moral to the story: <em>Yes, PSPP <strong>can</strong> read
 multi-record data</em> and anyone who says it can't is spreading
 misinformation. Please stop. It's been able to do this via <code>DATA
-LIST FIXED</code> for many, many years, at least as far back as v0.82 of
-PSPP or older. Even psppire can run the code above. But it doesn't appear
-in any GUI menu. The functionality exists and pspp can read multi-record
+LIST FIXED</code> for many, many years, at least as far back as v0.82
+of PSPP or older. Even psppire can run the code above. But the command
+used doesn't appear in any GUI menu (use the Syntax Editor to enter 
+the code). The functionality exists and pspp can read multi-record 
 files.</p>
 
-<h3>Multi-record Data Reading with GET DATA</h3>
+<h3>Reading Multi-record Data with GET DATA</h3>
 
 <p>The PSPP user manual describes a <code>/rec#</code>
 form of <code>GET DATA</code> for multi-record fixed-column files,
-and PSPP does accept this syntax. There are several things different
+and PSPP does accept these commands. There are several things different
 about the GET DATA method of reading multi-record data:</p>
 <ul>
-    <li>The first record is not defined as /1.</li>
+    <li>The first record is defined as /1, other records continue
+        as /2, /3, etc.</li>
     <li>All records must be read. There is no skipping of records.</li>
-    <li><code>FIXCASE</code> defines the number of records, not the    
+    <li><code>FIXCASE</code> defines the number of records, not like the    
         <code>RECORDS</code> subcommand of <code>DATA LIST FIXED</code>.</li>
+    <li>Column locations in <code>GET DATA</code> are defined using 
+        0-based numbers. This is defined in the pspp user manual and
+        differs from the 1-based column locations used by DATA LIST FIXED so
+        be careful when moving code between the two commands.</li>
+    <li>SPSS uses 0-based column location to read fixed data in the GET
+        DATA procedure and so does PSPP for compatibility.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
-FreeBSD which works. I had no luck with GNU pspp 2.0.1 or GNU pspp 2.1.1
-for windows. It ignored column locations and formats, more or less.</p>
+FreeBSD 14.3, which works. The main thing to note here is that
+PSPP (which is run by psppire) <strong>requires 0-based column
+locations</strong> for fixed column data, as used here by <code>GET
+DATA</code>. It doesn't match the 1-based column locations expected 
+by other pspp programs that read data. Be aware that if you are using 
+GET DATA to read fixed columns, it uses 0-based column locations. 
+This 0-based convention also makes debugging a data read more difficult.</p>
 
 <pre> On FreeBSD 14.3-STABLE:
 pspp --version
@@ -1385,16 +1408,17 @@ There is NO WARRANTY, to the extent permitted by law.
 Written by Ben Pfaff, John Darrington, and Jason Stover.</pre>
 
 <pre>
+* Note zero-based column locations here.
 GET DATA 
 /TYPE=TXT
 /FILE='studydat' 
 /FIXCASE=4
 /ARRANGEMENT=FIXED
 /VARIABLES  
-  SUBJECT 1-3 F STUDY 4 F TRTMENT  5-6 F  FEEL1 10 F FEEL2 11 F FEEL3 12 F
-  /2 LIKE1 1 F  LIKE2 2 F  LIKE3 3 F LIKE4 4 F LIKE5 5 F LIKE6 6 F LIKE7 7 F LIKE8 8 F LIKE9 9 F  LIKE10 10 F ACTU11 11 F ACTU12 12 F ACTU13 13 F
-  /3 LINE3 1-40 F LINE3B 41-60 F
-  /4 LINE4 1-13 F
+  SUBJECT 0-2 F STUDY 3 F TRTMENT  4-5 F  FEEL1 9 F FEEL2 10 F FEEL3 11 F
+  /2 LIKE1 0 F  LIKE2 1 F  LIKE3 2 F LIKE4 3 F LIKE5 4 F LIKE6 5 F LIKE7 6 F LIKE8 7 F LIKE9 8 F  LIKE10 9 F ACTU11 10 F ACTU12 11 F ACTU13 12 F
+  /3 LINE3 0-39 F LINE3B 40-59 F
+  /4 LINE4 0-12 F
   .
 DELETE VARIABLES LINE3 LINE3B LINE4.
 LIST.
@@ -1403,20 +1427,19 @@ DISPLAY DICTIONARY.
 
 <strong>Output:</strong>
 <pre>
-LIST.
-                                  Data List
+                                  Data List                                                                             
 +-------+-----+-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 |SUBJECT|STUDY|TRTMENT|FEEL1|FEEL2|FEEL3|LIKE1|LIKE2|LIKE3|LIKE4|LIKE5|LIKE6|
 +-------+-----+-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-|     44|    1|      4|    7|    1|    2|    8|    0|    5|    0|    6|    0|
-|     87|    1|      7|    6|    8|    8|    8|    1|    0|    0|    7|    1|
+|     44|    1|      4|    7|    1|    2|    8|    0|    5|    0|    6|    0|  
+|     87|    1|      7|    6|    8|    8|    8|    1|    0|    0|    7|    1|  
 +-------+-----+-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
 +-----+-----+-----+------+------+------+------+
 |LIKE7|LIKE8|LIKE9|LIKE10|ACTU11|ACTU12|ACTU13|
 +-----+-----+-----+------+------+------+------+
-|    9|    0|    9|     0|     8|     0|     8|
-|    0|    0|    8|     0|     7|     0|     5|
+|    9|    0|    9|     0|     8|     0|     8|  
+|    0|    0|    8|     0|     7|     0|     5|  
 +-----+-----+-----+------+------+------+------+
 
                                    Variables
@@ -1424,25 +1447,25 @@ LIST.
 |       |        |  Measurement  |     |     |         |   Print   |   Write  |
 |Name   |Position|     Level     | Role|Width|Alignment|   Format  |  Format  |
 +-------+--------+---------------+-----+-----+---------+-----------+----------+
-|SUBJECT|       1|Scale          |Input|    8|Right    |F3.0       |F3.0      |
-|STUDY  |       2|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|TRTMENT|       3|Nominal        |Input|    8|Right    |F2.0       |F2.0      |
-|FEEL1  |       4|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|FEEL2  |       5|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|FEEL3  |       6|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE1  |       7|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE2  |       8|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE3  |       9|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE4  |      10|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE5  |      11|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE6  |      12|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE7  |      13|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE8  |      14|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE9  |      15|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|LIKE10 |      16|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|ACTU11 |      17|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|ACTU12 |      18|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
-|ACTU13 |      19|Nominal        |Input|    8|Right    |F1.0       |F1.0      |
+|SUBJECT|       1|Scale          |Input|    8|Right    |F3.0       |F3.0      |   
+|STUDY  |       2|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|TRTMENT|       3|Nominal        |Input|    8|Right    |F2.0       |F2.0      |   
+|FEEL1  |       4|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|FEEL2  |       5|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|FEEL3  |       6|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE1  |       7|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE2  |       8|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE3  |       9|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE4  |      10|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE5  |      11|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE6  |      12|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE7  |      13|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE8  |      14|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE9  |      15|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|LIKE10 |      16|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|ACTU11 |      17|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|ACTU12 |      18|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
+|ACTU13 |      19|Nominal        |Input|    8|Right    |F1.0       |F1.0      |   
 +-------+--------+---------------+-----+-----+---------+-----------+----------+
 </pre>
 
@@ -1626,7 +1649,7 @@ which is also linked at the end of this page.</p>
 <h3>Exporting and Saving PSPP Data (CSV, POR, SAV)</h3>
 
 <p>
-PSPP can export data in several formats using syntax, which is the most
+PSPP can export data in several formats using commands, which is the most
 reproducible way to create files for use in other software. The examples
 below show how to write datasets in common formats. psppire also
 supports exporting through its File-&gt;Export dialog; its available
@@ -1658,10 +1681,10 @@ writes a CSV file with variable names in the first row; the
 <code>SAVE TRANSLATE</code> can also write tab‑separated files by
 specifying <code>TYPE=TAB</code>. </p>
 
-<p>PSPP syntax can be run either from a shell command line or by pasting
+<p>PSPP commands can be run either from a shell command line or by pasting
 it into psppire’s Syntax Editor. psppire can also export the assembled
 data directly through its File-&gt;Export dialog, which provides a subset
-of the formats available in PSPP syntax. The following section describes
+of the formats available in PSPP commands. The following section describes
 psppire itself in more detail.</p>
 
 <h3>psppire: The PSPP Graphical Interface</h3>
@@ -1669,14 +1692,14 @@ psppire itself in more detail.</p>
 <p>Many PSPP users prefer <strong>psppire</strong>, the graphical 
 interface that resembles the SPSS Data Editor. psppire is useful for data 
 entry, quick exploration, and running common procedures without writing 
-syntax. However, it does not expose all of PSPP's capabilities, and some 
-dialogs correspond to syntax that is only partially implemented.</p>
+commands. However, it does not expose all of PSPP's capabilities, and some 
+dialogs correspond to commands that are only partially implemented.</p>
 
 <p>For reproducible analysis, batch processing, or advanced procedures,
-PSPP syntax is still the recommended approach. psppire can generate
-syntax for many commands, which can then be copied, edited, and reused
-in syntax files. But there are many more PSPP commands outside the GUI
-that may be needed from time to time.</p> 
+PSPP command language is still the recommended approach. psppire can
+generate commands for many procedures, which can then be copied, edited,
+and reused in command files. But there are many more PSPP commands
+outside the GUI that may be needed from time to time.</p>
 
 <p> For example, merging datasets (<code>MATCH FILES</code>) is a
 standard PSPP operation, but it is not currently available through
@@ -1692,7 +1715,7 @@ in psppire's Syntax Editor).</p>
 <h3>psppire and File Handles vs. Rerunning Programs</h3>
 
 <p>psppire keeps <code>FILE HANDLE</code> definitions for the duration
-of the session. If a file handle is defined in syntax and then the
+of the session. If a file handle is defined via commands and then the
 program is rerun, psppire will report that the handle is already in
 use. This does not happen when running PSPP from the command line,
 because each run starts a fresh session.</p>
@@ -1709,7 +1732,7 @@ CLOSE FILE HANDLE out.
 </pre>
 
 <p>Closing the file handles prevents the “handle already in use” error and
-allows rerunning the syntax in psppire without restarting the application.</p>
+allows rerunning the commands in psppire without restarting the application.</p>
 
 <h3>psppire Export Formats</h3>
 
@@ -1788,7 +1811,7 @@ analysis or reporting purposes.</p>
 
 <p>psppire does not currently provide dialogs for merging datasets.
 <code>MATCH FILES</code> is a standard PSPP command, but it must be run
-from PSPP syntax.</p>
+from PSPP commands.</p>
 
 <p>The following example shows how to merge two datasets that share a
 common key variable (<code>PATID</code>). One file contains demographic
@@ -1860,7 +1883,7 @@ OUTFILE='merged.sav'</code>). PSPP system files contain the data set
 with all its variable attributes.</p>
 
 <p>PSPP always has exactly one <em>active file</em>, referred to
-in syntax as <code>*</code> (asterisk). Commands such as <code>GET
+in commands as <code>*</code> (asterisk). Commands such as <code>GET
 FILE</code>, <code>MATCH FILES</code>, and <code>ADD FILES</code>
 replace the active file with their result. Because the active file is
 overwritten whenever a new dataset is read or created, save any results
