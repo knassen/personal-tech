@@ -1622,7 +1622,8 @@ COMPUTE total = SUM(item1, item2, item3).
 
 <p><strong>3. <code>DATEDIFF()</code></strong> — essential for age and
 time intervals. This one solves a real problem for archivists and anyone
-working with dates.</p>
+working with dates. $DATE contains today's date as a string, so is
+converted to a number for the calculation.</p>
 
 <pre>
 COMPUTE age = DATEDIFF(NUMBER($DATE, EDATE10), birthdate, "years").
@@ -2047,7 +2048,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jun  4 21:17:37 EDT 2026
+Last Modified: Thu Jun  4 21:21:25 EDT 2026
 </p>
 </footer>
 </blockquote>
