@@ -1216,7 +1216,7 @@ multiple fixed-width cards in a defined sequence.</p>
 a compact form, spreading each case across multiple physical
 records. However, the format is not self-documenting. <strong>External
 documentation is required to interpret the file</strong>, usually in the
-form of a codebook defining how the data were collected, what the cards
+form of a codebook defining how the data were collected, what the records
 represent, the variable names, and the column locations, or with existing
 PSPP code that reads the data correctly.</p>
 
@@ -1236,26 +1236,26 @@ data:</p>
 Each block in the example above consists of four records or
 "cards." Single digit survey responses make it nearly impossible to tell
 which value belongs to which variable. Different variables appear on
-different cards (or lines in the file), so this file cannot be read
+different records (or lines in the file), so this file cannot be read
 vertically as a simple rectangular dataset or CSV file.</p>
 <p>
 PSPP can handle this type of data by reading each record with a separate
-set of input statements for each card. It then combines the values from
-all the records into a single (wide) case.</p>
+set of input statements for each record in the case. It then combines
+the values from all the records into a single (wide) case.</p>
 
 <h3>Tip: Every Record/Card Must be Read or Explicitly Skipped </h3> 
 <p>A multi‑record file is like a stack of cards. PSPP
 reads them in order, one record at a time. There are two safe
-options to <em>not read every data card:</em></p>
+options to <em>not read every data record:</em></p>
 
 <ul>
-    <li><strong>Read every card</strong> and delete variables later if
-        they are not needed.</li>
-    <li><strong>Skip the card correctly</strong> using a blank record
+    <li><strong>Read every record</strong> and delete variables later if
+        they are not needed. (Yes, this is not not reading every record).</li>
+    <li><strong>Skip records correctly</strong> using a blank record
         specification (for example: <code>/ / /</code>: slashes in <code>DATA
-        LIST</code> skip cards)</li> </ul>
+        LIST</code> skip records)</li> </ul>
 
-<p>Every card must be accounted for. Removing a card is like
+<p>Every record must be accounted for. Removing a record is like
 removing variables from the middle of a <code>DATA LIST FREE</code>
 statement — everything after the gap shifts left, and the data
 becomes misaligned. In multi-record files, this misalignment appears
@@ -1271,17 +1271,17 @@ the assembled dataset to CSV or SAV. Once in a modern format, the data
 can be used in modern analysis tools.</p>
 
 <p>Before looking at the PSPP commands, it helps to see the basic
-pattern of a multi-record file. Each card has its own layout, and PSPP
+pattern of a multi-record file. Each record has its own layout, and PSPP
 reads them in order:</p>
 
 <pre>
-- card 1 → /1 variables (Subject IDs and Treatments)
-- card 2 → /2 variables (Attitudes, Part 1)
-- card 3 → /3 variables (Attitudes, Part 2)
+- Record 1 → /1 variables (Subject IDs and Treatments)
+- Record 2 → /2 variables (Attitudes, Part 1)
+- Record 3 → /3 variables (Attitudes, Part 2)
 - etc.
 </pre>
 
-<p>This dataset has 4 cards per case. Two of the cards are not needed for
+<p>This dataset has 4 records per case. Two of the records are not needed for
 analysis, so PSPP skips them using blank slash lines below.</p>
 
 <pre>
@@ -1296,20 +1296,21 @@ DATA LIST FILE=studydat RECORDS=4 NOTABLE
  .
 </pre>
 
-<p>To skip a card, PSPP is instructed to advance one record for
-each slash (/). To skip two cards, enter two slashes and end the
+<p>To skip a record , PSPP is instructed to advance one record for
+each slash (/). To skip two records, enter two slashes and end the
 command with a period.</p>
 
 <p>This code illustrates how <code>DATA LIST</code> (and <code>DATA LIST
 FIXED</code>) reads multi-record data. First, the <code>RECORDS=4</code>
-tells PSPP that each case consists of four cards, even though two cards
-are not used for analysis.</p>
+tells PSPP that each case consists of four records, even though two records
+are not used for analysis. The two records not being read need to be
+accounted for to keep the read in sync with the data.</p>
 
-<p>Each card is defined by a <code>/N</code> and followed by variable
-names and their column locations on that card. Note that the column
-locations differ across the cards because each card has its own layout
-and contents. In this example, <code>/1</code> and <code>/2</code>
-define the two cards being read.</p>
+<p>Each record is defined by a <code>/N</code> and followed by variable
+names and their column locations on that record. Note that the column
+locations differ across the records because each record has its
+own data layout and contents. In this example, <code>/1</code> and
+<code>/2</code> define the two records being read.</p>
 
 <p>Output:</p>
 <pre>
@@ -1359,43 +1360,43 @@ define the two cards being read.</p>
 into 2 cases of one row each.</p>
 
 <p>Moral to the story: <em>Yes, PSPP <strong>can</strong> read
-multi-record data</em> and anyone who says it can't is spreading
-misinformation. Please stop. It's been able to do this via <code>DATA
-LIST FIXED</code> for many, many years, at least as far back as v0.82
-of PSPP or older. Even psppire can run the code above. But the command
-used doesn't appear in any GUI menu (use the Syntax Editor to enter 
-the code). The functionality exists and pspp can read multi-record 
-files.</p>
+multi-record data</em> and anyone who says it can't is incorrect.  It's
+been able to do this via <code>DATA LIST FIXED</code> for many, many
+years, at least as far back as v0.82 of PSPP or older versions. Even
+psppire can run the code above. But the command used doesn't appear
+in any GUI menu (use the Syntax Editor to enter the code). The
+functionality exists and pspp can read multi-record files.</p>
 
 <h3>Reading Multi-record Data with GET DATA</h3>
 
-<p>The PSPP user manual describes a <code>/rec#</code>
-form of <code>GET DATA</code> for multi-record fixed-column files,
-and PSPP does accept these commands. There are several things to know 
-about the GET DATA method of reading multi-record data:</p>
+<p>The PSPP user manual describes a <code>/rec#</code> form of <code>GET
+DATA</code> for multi-record fixed-column files, and PSPP accepts
+this form of the command. There are several important points to
+understand about the GET DATA method of reading multi-record data:</p>
+
 <ul>
-    <li>The first record is defined as /1, other records continue
+    <li>The first record is defined as /1, subsequent records follow 
         as /2, /3, etc.</li>
-    <li>All records must be read. There is no skipping of records.</li>
-    <li><code>FIXCASE</code> defines the number of records, similar to the    
-        <code>RECORDS</code> subcommand of <code>DATA LIST FIXED</code>.</li>
+    <li>All records must be read. <code>GET DATA</code> does not support
+        skipping records.</li>
+    <li><code>FIXCASE</code> defines the number of records per case,
+        similar to the <code>RECORDS</code> subcommand of <code>DATA LIST
+        FIXED</code>.</li>
     <li>Column locations in <code>GET DATA</code> are defined using
-        <strong>0-based numbers</strong>, such as 0-5. This is defined
-        in the pspp user manual and differs from the 1-based column
+        <strong>0-based indexing</strong> (e.g. var1 0-5). This follows
+        the PSPP user manual and differs from the 1-based column
         locations used by <code>DATA LIST FIXED</code> so be careful
         when moving code between the two commands.</li>
-    <li>SPSS uses 0-based column location to read fixed data in the <code>GET
-        DATA</code> procedure and so does PSPP for compatibility.</li>
+    <li>SPSS uses 0-based column indexing for fixed-format data in <code>GET
+        DATA</code>, PSPP follows this behavior for compatibility.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
-FreeBSD 14.3, which works, as does psppire. The main thing to note here
-is that PSPP <strong>requires 0-based column locations</strong> for
-fixed column data, as used here by <code>GET DATA</code>. It doesn't
-match the 1-based column locations expected by other pspp programs
-that read data. Be aware that if you are using GET DATA to read fixed
-columns, it uses 0-based column locations.  This 0-based convention also
-makes debugging a bad data read more difficult.</p>
+FreeBSD 14.3-STABLE, which works, as does psppire on Windows. The main
+thing to note here is that PSPP <strong>requires 0-based column
+locations</strong> for fixed column data, as used here by <code>GET
+DATA</code>. It doesn't use the 1-based column locations expected
+by other pspp programs that read data.</p> 
 
 <pre> On FreeBSD 14.3-STABLE:
 pspp --version
@@ -1468,25 +1469,26 @@ DISPLAY DICTIONARY.
 +-------+--------+---------------+-----+-----+---------+-----------+----------+
 </pre>
 
-<h3>Prevent errors when the data don’t match the expected pattern</h3>
+<h3>Prevent Errors When the Data Don’t Match the Expected Pattern</h3>
 
 <p>For anyone unfamiliar with the <strong>vertical, sequential
 reading</strong> pattern that multi-record files depend
 upon, the format may seem unusual at first. The structure itself is
 not the problem. It is an efficient, compact way to store data--and it
 still works well today. But because it relies on reading multiple
-cards of data in the correct sequence, even a small slip can create
+records of data in the correct sequence, even a small slip can create
 problems that are hard to detect.</p>
 
-<p>Just because it looks okay doesn’t always mean it is.</p>
+<p><strong>Just because it looks okay doesn’t always mean it is.</strong></p>
 
-<p>If a card is missing, out of order, or removed from the read pattern,
-the software doesn't complain. It simply reads the next physical record
-as the next logical one, and everything after that is wrong. The first
-card may appear correct, but the misalignment often becomes apparent
-only on later cards. Because PSPP cannot infer what was intended, it is
-essential to run <code>FREQUENCIES</code> on a few key variables drawn
-from several cards to confirm that the data were read correctly.</p>
+<p>If a record is missing, out of order, or removed from the read
+pattern, the software doesn't complain. It simply reads the next
+physical record as the next logical one, and everything after that is
+wrong. The first record data may appear correct, but the misalignment
+often becomes apparent only on later records. Because PSPP cannot infer
+what was intended, it is essential to run <code>FREQUENCIES</code> on a
+few key variables drawn from several records to confirm that the data
+were read correctly.</p>
 
 <p>When all variables are single digits, a one‑off shift
 can still produce values that look plausible. In those cases,
@@ -1503,12 +1505,13 @@ values by hand to see where the read went wrong.</p>
 variable or create new values in a new variable.</p>
 
 <p>In the next two examples, the recoded values are strings, so PSPP
-requires creating a string variable to hold them.  Anything not recoded
+requires creating a string variable to hold them. Anything not recoded
 is given the System Missing value (<code>SYSMIS</code>) because the
 code includes <code>ELSE=SYSMIS</code>.</p>
 
 <p>This example also includes variable labels, value labels, and variable
-level definitions.</p>
+level definitions to help identify these variables, especially ones
+being created here.</p>
 
 <pre>
 /* Create  GENDERC wide enough to accept the longest value then recode.*/
@@ -1563,19 +1566,34 @@ but it only works on variables that are <strong>consecutive in the
 data set</strong>. That is why this example has a break in the variable
 list. <code>CONSIST TO KEEP_RID</code> covers one consecutive block,
 <code>UNCERT TO POWER</code> covers another, and <code>MORALITY CONTROL
-CAUS_YOU</code> are variables not part of any consecutive sequence, so
+  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.  Also string to string and numeric to
+  numeric coding.CAUS_YOU</code> are variables not part of any consecutive sequence, so
 they must be listed separately.</p>
 
 <p><code>A variable list like CONSIST TO CAUS_YOU</code> causes PSPP to
-include every variable between those names in dictionary order — often
-far more than intended.</p>
+include every variable inclusive between those names in dictionary order
+— often far more than intended.</p>
 
 <p><code>DISPLAY DICTIONARY.</code> shows the variable order, making
 it easy to confirm which variables are consecutive before using
 <code>TO</code>.</p>
 
 <p><code>RECODE</code> works on both string to numeric coding and
-numeric to string coding.</p>
+numeric to string coding.  Also string to string and numeric to
+numeric coding.</p>
 
 <h3>Using COMPUTE to Create Values</h3>
 
@@ -1676,7 +1694,7 @@ SAVE TRANSLATE
 </pre>
 
 <p> The commands above show how to write data files in several
-formats using syntax. <code>SAVE</code> creates an SPSS system file
+formats using pspp commands. <code>SAVE</code> creates an SPSS system file
 (<code>.sav</code>), and <code>EXPORT</code> writes a portable file
 (<code>.por</code>) for transferring data to other applications
 that support this format. The <code>SAVE TRANSLATE</code> command
@@ -1709,10 +1727,10 @@ outside the GUI that may be needed from time to time.</p>
 standard PSPP operation, but it is not currently available through
 psppire’s menus.</p>
 
-<p>psppire is ideal for learning the syntax by example, but complex
+<p>psppire is ideal for learning pspp commands by example, but complex
 workflows are best handled directly in syntax files where all the PSPP
 commands can be used, including commands not in psppire. psppire shows
-only the commands for which dialogs exist; PSPP syntax supports many
+only the commands for which dialogs exist; PSPP commands support many
 additional commands and options (although any PSPP commands can be used
 in psppire's Syntax Editor).</p>
 
@@ -1726,8 +1744,8 @@ because each run starts a fresh session.</p>
 
 <p>When using <code>FILE HANDLE</code>s to give files meaningful
 names, add <code>CLOSE FILE HANDLE</code> commands at the end of the
-program. This removes the handles so the syntax can be rerun without
-errors about handles in use.</p>
+program. This removes the handles so the command file can be rerun
+without errors about handles in use.</p>
 
 <pre>
 CLOSE FILE HANDLE demo.
@@ -2016,7 +2034,7 @@ available in the psppire menus.</p>
 
 <p>PSPP is at version 2.1.1 currently and after several important
 bug fixes (file handle close, writing portable files, and reading
-multi-record data with skipped cards in <code>DATA LIST</code>,
+multi-record data with skipped records in <code>DATA LIST</code>,
 and other issues) and the addition of <code>GLM</code> and
 <code>CTABLES</code> commands in the last several years, PSPP is
 more capable than ever. If your version is older than 2.1.1 consider
@@ -2047,7 +2065,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jun  5 12:19:00 EDT 2026
+Last Modified: Fri Jun  5 13:50:10 EDT 2026
 </p>
 </footer>
 </blockquote>
