@@ -1377,25 +1377,25 @@ about the GET DATA method of reading multi-record data:</p>
     <li>The first record is defined as /1, other records continue
         as /2, /3, etc.</li>
     <li>All records must be read. There is no skipping of records.</li>
-    <li><code>FIXCASE</code> defines the number of records, not like the    
+    <li><code>FIXCASE</code> defines the number of records, similar to the    
         <code>RECORDS</code> subcommand of <code>DATA LIST FIXED</code>.</li>
-    <li>Column locations in <code>GET DATA</code> are defined using 
-        <strong>0-based numbers</strong>. This is defined in the pspp user 
-        manual and differs from the 1-based column locations used by 
-        <code>DATA LIST FIXED</code> so be careful when moving code 
-        between the two commands.</li>
+    <li>Column locations in <code>GET DATA</code> are defined using
+        <strong>0-based numbers</strong>, such as 0-5. This is defined
+        in the pspp user manual and differs from the 1-based column
+        locations used by <code>DATA LIST FIXED</code> so be careful
+        when moving code between the two commands.</li>
     <li>SPSS uses 0-based column location to read fixed data in the <code>GET
         DATA</code> procedure and so does PSPP for compatibility.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
-FreeBSD 14.3, which works. The main thing to note here is that
-PSPP (which is run by psppire) <strong>requires 0-based column
-locations</strong> for fixed column data, as used here by <code>GET
-DATA</code>. It doesn't match the 1-based column locations expected 
-by other pspp programs that read data. Be aware that if you are using 
-GET DATA to read fixed columns, it uses 0-based column locations. 
-This 0-based convention also makes debugging a data read more difficult.</p>
+FreeBSD 14.3, which works, as does psppire. The main thing to note here
+is that PSPP <strong>requires 0-based column locations</strong> for
+fixed column data, as used here by <code>GET DATA</code>. It doesn't
+match the 1-based column locations expected by other pspp programs
+that read data. Be aware that if you are using GET DATA to read fixed
+columns, it uses 0-based column locations.  This 0-based convention also
+makes debugging a bad data read more difficult.</p>
 
 <pre> On FreeBSD 14.3-STABLE:
 pspp --version
@@ -2047,7 +2047,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jun  5 11:18:30 EDT 2026
+Last Modified: Fri Jun  5 12:19:00 EDT 2026
 </p>
 </footer>
 </blockquote>
