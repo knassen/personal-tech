@@ -317,12 +317,6 @@ variables that change together, values that don't belong, and the
 general shape of the data. This can help you to understand how your
 analysis might be affected, for example.</p>
 
-
-<p><strong>Reading CSV Files with GET DATA:</strong> <code>GET
-DATA</code> can read CSV files by using <code>TYPE=TXT</code> and
-<code>DELIMITERS=","</code>. CSV files are treated as ordinary
-delimited text, so variable formats must still be specified.</p>
-
 <h3>Reading Data in Fixed Column Format</h3>
 
 <p><code>DATA LIST FIXED</code> reads variables from specific column
@@ -512,6 +506,11 @@ decimal places applied.</p>
 
 <p>Use <code>GET FILE=</code> to read PSPP system files and portable files. Use
 <code>GET DATA</code> to read CSV delimited files (see below).</p>
+
+<p><strong>Reading CSV Files with GET DATA:</strong> <code>GET
+DATA</code> can read CSV files by using <code>TYPE=TXT</code> and
+<code>DELIMITERS=","</code>. CSV files are treated as ordinary
+delimited text, so variable formats must still be specified.</p>
 
 <pre>
 * Reading those rare portable SPSS files.
@@ -1372,7 +1371,7 @@ files.</p>
 
 <p>The PSPP user manual describes a <code>/rec#</code>
 form of <code>GET DATA</code> for multi-record fixed-column files,
-and PSPP does accept these commands. There are several things different
+and PSPP does accept these commands. There are several things to know 
 about the GET DATA method of reading multi-record data:</p>
 <ul>
     <li>The first record is defined as /1, other records continue
@@ -1381,11 +1380,12 @@ about the GET DATA method of reading multi-record data:</p>
     <li><code>FIXCASE</code> defines the number of records, not like the    
         <code>RECORDS</code> subcommand of <code>DATA LIST FIXED</code>.</li>
     <li>Column locations in <code>GET DATA</code> are defined using 
-        0-based numbers. This is defined in the pspp user manual and
-        differs from the 1-based column locations used by DATA LIST FIXED so
-        be careful when moving code between the two commands.</li>
-    <li>SPSS uses 0-based column location to read fixed data in the GET
-        DATA procedure and so does PSPP for compatibility.</li>
+        <strong>0-based numbers</strong>. This is defined in the pspp user 
+        manual and differs from the 1-based column locations used by 
+        <code>DATA LIST FIXED</code> so be careful when moving code 
+        between the two commands.</li>
+    <li>SPSS uses 0-based column location to read fixed data in the <code>GET
+        DATA</code> procedure and so does PSPP for compatibility.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
@@ -1408,7 +1408,7 @@ There is NO WARRANTY, to the extent permitted by law.
 Written by Ben Pfaff, John Darrington, and Jason Stover.</pre>
 
 <pre>
-* Note zero-based column locations here.
+* Note Zero-Based column locations here.
 GET DATA 
 /TYPE=TXT
 /FILE='studydat' 
@@ -1623,6 +1623,10 @@ COMPUTE total = SUM(item1, item2, item3).
 <p><strong>3. <code>DATEDIFF()</code></strong> — essential for age and
 time intervals. This one solves a real problem for archivists and anyone
 working with dates.</p>
+
+<pre>
+COMPUTE age = DATEDIFF(NUMBER($DATE, EDATE10), birthdate, "years").
+</pre>
 
 <p><strong>4. <code>LTRIM()</code> / <code>RTRIM()</code></strong> —
 string cleanup That will remove leading or trailing spaces from a string
@@ -2043,7 +2047,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Jun  3 22:16:18 EDT 2026
+Last Modified: Thu Jun  4 21:17:37 EDT 2026
 </p>
 </footer>
 </blockquote>
