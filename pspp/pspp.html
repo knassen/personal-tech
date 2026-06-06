@@ -1027,10 +1027,12 @@ REGRESSION
 <p>
 This <code>/SAVE</code> option above creates two additional variables:
 <code>PRED1</code> (predicted values) and <code>RES1</code>
-(residuals). Many statistics courses require students to examine
-and plot the residuals and predicted values to check model
-assumptions. Saving these values in PSPP's regression procedure provides
-exactly what those assignments need.</p>
+(residuals). 
+
+<p><strong>Workflow Tip:</strong> Many statistics courses require
+students to examine and plot the residuals and predicted values to check
+model assumptions. Saving these values in PSPP's regression procedure
+provides exactly what those assignments need.</p>
 
 
 <pre>
@@ -1127,6 +1129,12 @@ within rounding error. The <code>DO IF</code> block runs the
 <code>LIST</code> command displays only that case. All remaining cases
 contain system-missing values for <code>p_F</code>.</p> 
 
+<p><strong>Workflow Tip:</strong> PSPP does not have standalone scalar
+variables, so computing a single value (such as a p‑value or critical
+value) is done by attaching the calculation to the first case in the
+active dataset. Using DO IF $CASENUM = 1 and listing only that case
+prints the computed value without producing output for all other cases.</p>
+
 <p>The remaining sections cover data formats, exporting, psppire
 behavior, and file‑combining. These topics are not part of the basic
 procedures shown above, but they are useful when working with real
@@ -1215,8 +1223,8 @@ two different record types (Person and Housing):</p>
 <div style="clear:left;"></div>
 
 <p>Person records are different from Housing records because they
-collect different types of data (age vs monthly rent). They can be
-combined in a multi-record data file very easily</p>
+collect different types of data (age vs monthly rent, for example). They
+can be combined in a multi-record data file very easily</p>
 
 <p>PSPP can read this kind of multi-record data directly. This section
 shows how in two different examples. There is no need to preprocess this
@@ -1236,9 +1244,13 @@ documentation is required to interpret the file</strong>, usually in
 the form of a codebook defining how the data were collected, what the
 records represent, the variable names, special handling needed, and the
 column locations. If you have existing PSPP code that reads the data
-correctly use that. Sometimes multi-record files come with a progra
-to read the data (e.g. SPSS, PSPP, SAS). Always ask for the codebook
-because that will tell you more about the data than a program.</p>
+correctly, use that. Sometimes multi-record files come with a program
+to read the data (e.g. SPSS, PSPP, SAS). 
+
+<p><strong>Workflow Tip:</strong>Always ask for the codebook when
+working with multi-record files. These files cannot be interpreted
+reliably without the accompanying documentation, and guessing the layout
+almost always leads to errors.</p>
 
 <p>Here is an example of multi-record data with 4 records of survey
 data:</p>
@@ -1323,6 +1335,8 @@ DATA LIST FILE=studydat RECORDS=4 NOTABLE
  /
  /
  .
+
+SAVE OUTFILE='studydat_wide.sav'.
 </pre>
 
 <p>To skip a record , the user instructs PSPP to advance one record for
@@ -1391,12 +1405,12 @@ FIXED when reading the data.</p>
 into 2 cases of one row each.</p>
 
 <p>Moral to the story: <em>Yes, PSPP <strong>can</strong> read
-multi-record data</em> and anyone who says it can't is incorrect.  It's
-been able to do this via <code>DATA LIST FIXED</code> for many, many
-years, at least as far back as v0.82 of PSPP or older versions. Even
-psppire can run the code above. But the command used doesn't appear
-in any GUI menu (use the Syntax Editor to enter the code). The
-functionality exists and pspp can read multi-record files.</p>
+multi-record data</em>. PSPP has been able to do this via <code>DATA
+LIST FIXED</code> for many, many years, at least as far back as v0.82
+of PSPP or older versions. Even psppire can run the code above. But the
+command used doesn't appear in any GUI menu (use the Syntax Editor to
+enter the code). The functionality exists and pspp can read multi-record
+files.</p>
 
 <h3>Reading Multi-record Data with GET DATA</h3>
 
@@ -1414,20 +1428,21 @@ understand about the GET DATA method of reading multi-record data:</p>
         similar to the <code>RECORDS</code> subcommand of <code>DATA LIST
         FIXED</code>.</li>
     <li>Column locations in <code>GET DATA</code> are defined using
-        <strong>0-based indexing</strong> (e.g. var1 0-5). This follows
-        the PSPP user manual and differs from the 1-based column
-        locations used by <code>DATA LIST FIXED</code> so be careful
-        when moving code between the two commands.</li>
+        <strong>0-based indexing</strong> (e.g. var1 0-5). The first
+        column in the data is zero. This follows the PSPP user manual
+        and differs from the 1-based column locations used by <code>DATA
+        LIST FIXED</code> so be careful when moving code between the two
+        commands.</li>
     <li>SPSS uses 0-based column indexing for fixed-format data in <code>GET
         DATA</code>, PSPP follows this behavior for compatibility.</li>
 </ul>
 
 <p><strong>NOTE:</strong> This example was run with pspp 2.1.1 on
 FreeBSD 14.3-STABLE, which works, as does psppire on Windows. The main
-thing to note here is that PSPP <strong>requires 0-based column
-locations</strong> for fixed column data, as used here by <code>GET
-DATA</code>. It doesn't use the 1-based column locations expected
-by other pspp programs that read data.</p> 
+thing to note here is that PSPP's <code>GET DATA</code> <strong>requires
+0-based column locations</strong> for fixed column data, as used here.
+It doesn't use the 1-based column locations expected by other pspp 
+programs that read data.</p>
 
 <pre> On FreeBSD 14.3-STABLE:
 pspp --version
@@ -1591,6 +1606,11 @@ POWER</code>, and <code>MORALITY CONTROL CAUS_YOU</code>). Because those
 variables already exist, no new variables are needed. Anything not
 recoded is given the System Missing value (<code>SYSMIS</code>).</p>
 
+<p><strong>Workflow Tip</strong>: Reverse scoring is always done by
+explicitly mapping each value to its opposite (e.g. (1=9) (2=8)...).
+PSPP does not infer the scale range automatically, so you must specify
+the full mapping.</p>
+
 <p>This example also uses "TO" in the variable list. <code>TO</code>
 is useful for shortening long variable lists and reducing typing,
 but it only works on variables that are <strong>consecutive in the
@@ -1603,6 +1623,11 @@ they must be listed separately.</p>
 <p><code>A variable list like CONSIST TO CAUS_YOU</code> causes PSPP to
 include every variable inclusive between those names in dictionary order
 — often far more than intended.</p>
+
+<p><strong>Workflow Tip</strong>: When recoding a large set of
+consecutive variables, use TO in the variable list. It reduces typing,
+prevents spelling errors, and ensures the same transformation is applied
+consistently across the entire scale.</p>
 
 <p><code>DISPLAY DICTIONARY.</code> shows the variable order, making
 it easy to confirm which variables are consecutive before using
@@ -1617,6 +1642,11 @@ numeric coding.</p>
 <p><code>COMPUTE</code> creates a new variable or replaces the values
 of an existing one. It is used for simple arithmetic, scale scores, or
 system variables such as <code>$CASENUM</code>.</p>
+
+<p><code>COMPUTE</code> operates on the active dataset and runs once
+per case. If no data have been read yet, PSPP has no cases to apply the
+transformation to, and <code>COMPUTE</code> will return an error. This
+is why you must load or create data before using <code>COMPUTE</code>.
 
 <pre>
 /* Compute an index number based on current case number */
@@ -1654,11 +1684,11 @@ widely needed. Good for scales, counts, and composite scores.</p>
 COMPUTE total = SUM(item1, item2, item3).
 </pre>
 
-<p><strong>3. <code>DATEDIFF()</code></strong> — essential for age and
-time intervals. This one solves a real problem for archivists and anyone
-working with dates. $DATE contains today's date as a string, so is
-converted to a number for the calculation. birthdate is a variable in the
-active file and is formatted as MM-DD-YYYY.</p>
+<p><strong>3. <code>DATEDIFF()</code></strong> — essential for age
+and time intervals. This one solves a real problem for archivists and
+anyone working with dates. $DATE contains today's date as a string,
+so is converted to a number for the age calculation. birthdate is a
+variable in the active file and is formatted as MM-DD-YYYY.</p>
 
 <pre>
 COMPUTE age = DATEDIFF(NUMBER($DATE, EDATE10), birthdate, "years").
@@ -1680,11 +1710,11 @@ or quick diagnostics.</p>
 COMPUTE z = (score - MEAN(score)) / SD(score).
 </pre>
 
-<p>PSPP includes hundreds of functions across math,
-statistics, strings, dates, logical tests, and data
-transformations. Only a few were shown here; the full list is in the 
-<a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP manual,</a>
-which is also linked at the end of this page.</p>
+<p><strong>Workflow Tip:</strong> PSPP includes hundreds of functions
+across math, statistics, strings, dates, logical tests, and data
+transformations. Only a few were shown here; the full list is in the
+<a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
+manual,</a> which is also linked at the end of this page.</p>
 
 <h3>Exporting and Saving PSPP Data (CSV, POR, SAV)</h3>
 
