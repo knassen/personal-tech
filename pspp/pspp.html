@@ -7,10 +7,10 @@
      <link rel="stylesheet" href="pspp/psppstyle.css"> 
      <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     <meta name="description" content="Practical PSPP guide with examples for DATA LIST, REGRESSION, CROSSTABS, & reading multi-record data format.">
-     <meta name="keywords" content="PSPP Guide programming multi-record data"> 
+     <meta name="description" content="Practical PSPP guide with syntax examples for DATA LIST, REGRESSION, CROSSTABS, implied decimal, reading multi-record data format.">
+     <meta name="keywords" content="PSPP Guide Syntax"> 
      <meta charset="utf-8">
-     <title>PSPP Guide: Examples and Notes</title>  
+     <title>PSPP Syntax: Examples and Notes</title>  
 </head>
 
 <body>
@@ -20,27 +20,34 @@
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
-<h1>PSPP Guide: Examples and Notes</h1>
-<p>A practical guide to PSPP and psppire for data analysis.</p>
+<h1>PSPP Syntax: Examples and Notes</h1>
+<p>A practical guide to PSPP syntax and psppire commands for data analysis.</p>
 
 <p>PSPP is a free, open-source statistical software, and an alternative
-to SPSS. It supports many of the same statistical and data procedures,
-uses a similar command language, and is well-suited for batch processing,
-scripting, reproducible analysis, as well as interactive use.</p>
+to SPSS. It supports many of the same statistical and data-management
+procedures, uses a similar command language, and is works well for batch
+processing, scripting, reproducible analysis, as well as interactive
+use.</p>
 
-<p>Compared to SPSS, PSPP costs a lot less (free) and is open-source
-while SPSS is commercial software that requires a paid license. Both PSPP
-and SPSS can read very large files. PSPP is useful for coursework,
-teaching, and many practical data-analysis tasks if the procedures it
-offers cover what you need.</p>
+<p>Compared to SPSS, PSPP costs less (free) and is open-source while
+SPSS is commercial software that requires a paid license. Both PSPP and
+SPSS can read very large files. PSPP is useful for coursework, teaching,
+and many practical data-analysis tasks when the procedures it offers
+cover what you need.</p>
+
+<p>Much of the material on this page also applies to SPSS syntax and
+workflow habits, since PSPP follows the same command language for many
+procedures. Workflow habits are more general and still can be used
+in an SPSS workflow. Where PSPP and SPSS differ, the differences are
+noted.</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>About This Page</h3>
 
-<p>This page collects practical examples for PSPP and psppire. It
-focuses on commands people actually use and I used when I was
-programming with SPSS — <code>GET DATA</code>, <code>DATA
-LIST</code>, <code>REGRESSION</code>, <code>CROSSTABS</code>,
+<p>This page collects practical examples of PSPP syntax for PSPP
+and psppire. It focuses on commands people actually use and which
+I use when I program with SPSS and PSPP — <code>GET DATA</code>,
+<code>DATA LIST</code>, <code>REGRESSION</code>, <code>CROSSTABS</code>,
 <code>DESCRIPTIVES</code>, and specialized topics including using
 functions for data cleaning, reading special types of data, and
 computing p‑values from <code>ANOVA</code> output.</p>
@@ -49,12 +56,14 @@ computing p‑values from <code>ANOVA</code> output.</p>
 to your own work. The page also gives tips for improving your PSPP
 workflow.</p>
 
-<p>The example output here is plain text because correctness matters
-more than cosmetics. If the numbers are wrong, it doesn't matter how
-pretty the presentation is or how modern the application looks. That
-said, I do provide a screenshot of psppire in action.</p>
+<p>The example outputs on this page are mostly plain text because
+correctness matters more than cosmetics. If the numbers are wrong,
+it doesn't matter how pretty the presentation is or how modern the
+application looks. That said, I do provide a screenshot of psppire in
+action.</p>
 
-<p><strong>This page is for the curious. Run the examples. See what happens.</strong></p>
+<p><strong>This page is for the curious. Run the examples. See what
+happens.</strong></p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>Using PSPP for Data Preparation and Analysis</h3>
@@ -68,9 +77,9 @@ Editor</strong> and Run, to make sure everything works.</p>
 Hello, world!</pre>
 
 <p>Most examples on this page follow this pattern: a short block of PSPP
-commands, followed by the output PSPP produces. This shows you how PSPP
-creates output and also that the PSPP GUI is not the same as PSPP although
-they are connected.</p>
+command(s), followed by the output PSPP produces. This shows you how PSPP
+creates output and also that the PSPP GUI can operate the same as the PSPP
+commandline.</p>
 
 <p>PSPP uses a statistical command language similar to SPSS and supports
 batch processing, scripting, and reproducible analysis. You can write
@@ -93,8 +102,8 @@ GET DATA
   /FIRSTCASE=2.
 </pre>
 
-<p>This example is a PSPP command and there is no example.csv
-data set right now.  The PSPP command language is readable and
+<p>This example shows a PSPP command, even though there is no
+example.csv data set right now.  The PSPP syntax is readable and
 understandable, once you understand what the command is doing and what
 information the command needs.</p>
 
@@ -133,7 +142,7 @@ might want to see how you do things on the job, for example.</p>
 background-color:black">
 
 <p>This section covers only the basics needed to open psppire, capture
-commands, and run commands. A more detailed review of psppire’s
+syntax, and run commands. A more detailed review of psppire’s
 behavior and limitations appears later in this page.</p>
 
 <p><strong>Launching psppire</strong> depends on your operating
@@ -180,7 +189,7 @@ whether run from the command line or from psppire’s Syntax Editor.</p>
 
 <p>No matter how you got it — typed, pasted, or generated — you
 are still running syntax. Next will be a full <code>GET DATA</code>
-example, including the commands use and the output.</p>
+example, including the commands to use and the output.</p>
 
 <h3>Reading Data With the GET DATA Command</h3>
 
@@ -580,10 +589,22 @@ after that, the handle can be used to refer to the data file. Below,
 in this example, other commands can refer to the file as simply
 "survey".</p>
 
+After defining it, you can use paths like
+'handle/filename.sav' directly in GET FILE and SAVE OUTFILE. 
+</p>
+
 <pre>
 * File handle usage.
 FILE HANDLE survey /FILE='C:\path\to\survey.sav'.
 GET FILE=survey.
+</pre>
+
+<p><strong>Workflow Tip</strong>: A FILE HANDLE can point to a
+directory, not just a single file. 
+<pre>
+* File handle as a directory.
+FILE HANDLE datadir /NAME='/path/to/'.
+GET FILE='datadir/survey.sav'.
 </pre>
 
 <p><strong>Workflow Tip</strong>: When the file handle is no longer
@@ -603,6 +624,9 @@ FREQUENCIES VARIABLES=age sex income.
 
 CLOSE FILE HANDLE demo.
 </pre>
+
+<p>The CLOSE FILE HANDLE command is is an extension provided by PSPP and
+is specific to PSPP.</p>
 
 <h3>Reading Less Data for Testing: N OF CASES</h3>
 
@@ -1737,11 +1761,11 @@ manual,</a> which is also linked at the end of this page.</p>
 <h3>Exporting and Saving PSPP Data (CSV, POR, SAV)</h3>
 
 <p>
-PSPP can export data in several formats using commands, which is the most
-reproducible way to create files for use in other software. The examples
-below show how to write datasets in common formats. psppire also
-supports exporting through its File-&gt;Export dialog; its available
-formats are described in a later section. </p>
+PSPP can export data in several formats using commands, which is the
+most reproducible way to create files for use in other software. The
+examples below show how to write datasets in common formats. psppire
+also supports exporting through its <strong>File-&gt;Export</strong>
+dialog; its available formats are described in a later section. </p>
 
 <pre>
 /* Set the working directory to avoid path errors when saving files. */
@@ -1768,6 +1792,11 @@ writes a CSV file with variable names in the first row; the
 <code>REPLACE</code> option allows it to overwrite an existing file.
 <code>SAVE TRANSLATE</code> can also write tab‑separated files by
 specifying <code>TYPE=TAB</code>. </p>
+
+<p><strong>Note:</strong> <code>CD</code> is a PSPP command (change
+directory) and one way to change where files are saved or imported
+from. And alternative is to use a FILE HANDLE for the directory and then
+use the file handle as the location, e.g..</p>
 
 <p>PSPP commands can be run either from a shell command line or by pasting
 it into psppire’s Syntax Editor. psppire can also export the assembled
@@ -2131,7 +2160,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jun  6 11:33:27 EDT 2026
+Last Modified: Sun Jun  7 14:39:31 EDT 2026
 </p>
 </footer>
 </blockquote>
