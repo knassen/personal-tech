@@ -1,0 +1,25 @@
+#!/usr/local/bin/perl -w
+
+# This program is intended to produce log and lst text files for the
+# purpose of testing gvim and the ability to run SAS and open the log
+# and lst files in the editor.
+
+print "this is not SAS\n";
+
+# Create a fake log file
+
+open(SASLOG,">test.log") or die "Can't open the log file\n";
+
+for ($i=1; $i<=100; $i++) {
+   print SASLOG "WARNING: there is a problem in line number $i\n";
+}
+
+# Create a fake lst file
+
+open(SASLST,">test.lst") or die "Can't open the lst file\n";
+
+for ($i=1; $i<=100; $i++) {
+   print SASLST "This is line number $i\n";
+}
+
+
