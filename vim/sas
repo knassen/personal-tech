@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl -w
+#!/usr/bin/env perl
 
 # This program is intended to produce log and lst text files for the
 # purpose of testing gvim and the ability to run SAS and open the log

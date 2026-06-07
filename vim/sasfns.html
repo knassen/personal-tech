@@ -135,11 +135,23 @@ should load into tabs for review, if the set up is correct. You can even
 make up some files with some.sas, some.log, some.lst extensions and test
 your setup.</p>
 
-<p>I do not have access to command line SAS any longer.  However, I was
-able to get these functions to work (Sept 28, 2025) using a shell script
-for "sas" that would create dummy log and lst files in the same folder
-as my sas program. This is one way to test that the functions work even
-if you can't get them completely set up.</p>
+<p>I no longer have access to command line SAS.  However,
+I was able to get these functions to work (Sept 28, 2025) using <a
+href="vim/sas">a Perl program</a> named "sas" that would create dummy log
+and lst files in the same folder as my sas program. This is an easy way to
+test that the functions work even if you can't run real SAS.</p>
+
+<p>If your .gvimrc is set up correctly according to the instructions,
+you should be able to run "sas" from the gvim menus and produce dummy
+log and list output. Gvim should open those files into new tabs and
+start the Quickfix window on the log. If that all works, then you know
+your gvim setup is correct. If things still don't work, fix your gvim
+setup first and get that working, then check your SAS setup. </p>
+
+<p>A common mistake is not understanding the -nodms option for SAS. If
+you leave that off, SAS will launch the Display Manager System (DMS),
+capture the log and lst file, and gvim will never see them. Things will
+go sideways in a hurry.</p>
 
 <h2>Descriptions of Functions</h2>
 
@@ -461,7 +473,7 @@ and no path (but it doesn't hurt either way).</p>
 <a href="/personal-tech/vim/index.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Vim Page</a>
 
 <span style="font-size: 80%;">
-Last Modified: Tue Apr 28 15:18:45 EDT 2026
+Last Modified: Sun Jun  7 16:48:15 EDT 2026
 </span>
 
 </blockquote>
