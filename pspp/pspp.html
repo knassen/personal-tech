@@ -587,7 +587,8 @@ decimal places applied.</p>
 <p><strong>Reading CSV Files with GET DATA:</strong> <code>GET
 DATA</code> can read CSV files by using <code>TYPE=TXT</code> and
 <code>DELIMITERS=","</code>. CSV files are treated as ordinary
-delimited text, so variable formats must still be specified.</p>
+delimited text, so variable formats must still be specified.
+<code>/VARIABLES</code> is required.</p>
 
 <pre>
 * Reading those rare portable SPSS files.
@@ -618,7 +619,12 @@ that line is skipped. <code>FIRSTCASE</code> is not needed if the CSV
 file is one long line of data and no header row. This example defines
 the file as <code>DELIMITED</code>, in this case <strong>comma-separated
 values</strong>, with the comma as the delimiter and double quotes as
-the text value qualifier.</p>
+the text value qualifier. The /VARIABLES line is required.</p>
+
+<p><strong>Note:</strong> For CSV and other delimited
+files, <code>/DELCASE</code> does not work with
+<code>/ARRANGEMENT=DELIMITED</code>. It does work with
+<code>/ARRANGEMENT= FIXED</code>.</p>
 
 <h3>File Handles in PSPP</h3>
 
@@ -1837,8 +1843,9 @@ specifying <code>TYPE=TAB</code>. </p>
 
 <p><strong>Note:</strong> <code>CD</code> is a PSPP command (change
 directory) and one way to change where files are saved or imported
-from. And alternative is to use a FILE HANDLE for the directory and then
-use the file handle as the location, e.g..</p>
+from. And alternative is to use a <code>FILE HANDLE</code> for the
+directory and then use the file handle as the location of files, e.g. in
+<code>GET FILE</code>.</p>
 
 <p>PSPP commands can be run either from a shell command line or by pasting
 it into psppire’s Syntax Editor. psppire can also export the assembled
