@@ -93,19 +93,61 @@ examples, and come back later for the explanations and tips.</p>
 
 <p>Here is a short example of reading a CSV file into pspp or psppire:</p>
 <pre>
-GET DATA
+  GET DATA 
   /TYPE=TXT
   /FILE='example.csv'
-  /DELCASE=LINE
   /DELIMITERS=","
   /ARRANGEMENT=DELIMITED
-  /FIRSTCASE=2.
+  /FIRSTCASE=2
+  /VARIABLES=
+    id F8
+    age F8
+    sex A1
+    score1 F8
+    score2 F8
+  .
+
+LIST.
+DISPLAY DICTIONARY.
+
+         Data List
++---+---+---+------+------+
+| id|age|sex|score1|score2|
++---+---+---+------+------+
+|101| 27|M  |    88|    91|
+|102| 34|F  |    76|    82|
+|103| 29|F  |    90|    87|
+|104| 41|M  |    72|    78|
++---+---+---+------+------+
+
+                                   Variables
++------+--------+----------------+-----+-----+---------+----------+-----------+
+|      |        |   Measurement  |     |     |         |   Print  |   Write   |
+|Name  |Position|      Level     | Role|Width|Alignment|  Format  |   Format  |
++------+--------+----------------+-----+-----+---------+----------+-----------+
+|id    |       1|Scale           |Input|    8|Right    |F8.0      |F8.0       |
+|age   |       2|Scale           |Input|    8|Right    |F8.0      |F8.0       |
+|sex   |       3|Nominal         |Input|    1|Left     |A1        |A1         |
+|score1|       4|Scale           |Input|    8|Right    |F8.0      |F8.0       |
+|score2|       5|Scale           |Input|    8|Right    |F8.0      |F8.0       |
++------+--------+----------------+-----+-----+---------+----------+-----------+;
 </pre>
 
-<p>This example shows a PSPP command, even though there is no
-example.csv data set right now.  The PSPP syntax is readable and
-understandable, once you understand what the command is doing and what
-information the command needs.</p>
+<pre>
+Data (example.csv):
+id,age,sex,score1,score2
+101,27,M,88,91
+102,34,F,76,82
+103,29,F,90,87
+104,41,M,72,78
+</pre>
+
+<p>This example shows a PSPP command reading the example.csv data set.
+The PSPP syntax is readable and understandable. PSPP does not always
+infer the variable names from the header row of the CSV file. When
+this happens, you must supply the /VARIABLES subcommand to define the
+dictionary explicitly (copy the first like of the csv file and add the
+formats.) </p>
 
 <hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
 
@@ -2162,7 +2204,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jun  7 15:06:15 EDT 2026
+Last Modified: Sun Jun  7 21:15:30 EDT 2026
 </p>
 </footer>
 </blockquote>
