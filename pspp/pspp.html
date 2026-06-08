@@ -145,7 +145,7 @@ DISPLAY DICTIONARY.
 
 <p>This example shows a PSPP command reading the example.csv data
 set. The PSPP syntax is readable and understandable. The <code>/VARIABLES</code>
-subcommand is required to read the data (copy the first line of the csv
+subcommand is required to read the data (copy the first line of the CSV
 file and add the formats.) The <code>/FILE</code> subcommand is also required.</p>
 
 <hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
@@ -619,7 +619,8 @@ that line is skipped. <code>FIRSTCASE</code> is not needed if the CSV
 file is one long line of data and no header row. This example defines
 the file as <code>DELIMITED</code>, in this case <strong>comma-separated
 values</strong>, with the comma as the delimiter and double quotes as
-the text value qualifier. The /VARIABLES line is required.</p>
+the text value qualifier. The <code>/VARIABLES</code> line is required as is the
+<code>/FILE line</code>.</p>
 
 <p><strong>Note:</strong> For CSV and other delimited
 files, <code>/DELCASE</code> does not work with
@@ -2209,7 +2210,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jun  7 21:19:39 EDT 2026
+Last Modified: Sun Jun  7 22:00:21 EDT 2026
 </p>
 </footer>
 </blockquote>
