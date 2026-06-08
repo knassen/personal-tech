@@ -92,6 +92,16 @@ results in either environment.</p>
 examples, and come back later for the explanations and tips.</p>
 
 <p>Here is a short example of reading a CSV file into pspp or psppire:</p>
+
+<pre>
+Data (example.csv):
+id,age,sex,score1,score2
+101,27,M,88,91
+102,34,F,76,82
+103,29,F,90,87
+104,41,M,72,78
+</pre>
+
 <pre>
   GET DATA 
   /TYPE=TXT
@@ -133,21 +143,10 @@ DISPLAY DICTIONARY.
 +------+--------+----------------+-----+-----+---------+----------+-----------+;
 </pre>
 
-<pre>
-Data (example.csv):
-id,age,sex,score1,score2
-101,27,M,88,91
-102,34,F,76,82
-103,29,F,90,87
-104,41,M,72,78
-</pre>
-
-<p>This example shows a PSPP command reading the example.csv data set.
-The PSPP syntax is readable and understandable. PSPP does not always
-infer the variable names from the header row of the CSV file. When
-this happens, you must supply the /VARIABLES subcommand to define the
-dictionary explicitly (copy the first like of the csv file and add the
-formats.) </p>
+<p>This example shows a PSPP command reading the example.csv data
+set. The PSPP syntax is readable and understandable. The /VARIABLES
+subcommand is required to read the data (copy the first line of the csv
+file and add the formats.)</p>
 
 <hr style="height: 2px; width: 100%: margin-left:0px; margin-right:auto; background-color:black">
 
@@ -599,9 +598,8 @@ GET FILE='mydata.sav'.
 
 * Reading a CSV file.
 GET DATA
-  /TYPE=CSV
+  /TYPE=TXT
   /FILE='data.csv'
-  /DELCASE=LINE
   /DELIMITERS=","
   /QUALIFIER='"'
   /ARRANGEMENT=DELIMITED
@@ -631,7 +629,7 @@ after that, the handle can be used to refer to the data file. Below,
 in this example, other commands can refer to the file as simply
 "survey".</p>
 
-After defining it, you can use paths like
+<p>After defining it, you can use paths like
 'handle/filename.sav' directly in GET FILE and SAVE OUTFILE. 
 </p>
 
@@ -2204,7 +2202,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jun  7 21:15:30 EDT 2026
+Last Modified: Sun Jun  7 21:19:39 EDT 2026
 </p>
 </footer>
 </blockquote>
