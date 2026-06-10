@@ -170,10 +170,10 @@ further analysis.</p>
 
 <p>Some PSPP commands and options are not available in the psppire
 menus. When features that the GUI doesn’t expose are needed, commands
-can be entered directly in a Syntax Editor window or an .sps file can
-be run with pspp. psppire runs all PSPP syntax, not just what appears
-in the dialogs. Thus, psppire can be used to develop and run all PSPP
-commands.</p>
+can be entered directly in a <strong>Syntax Editor</strong> window or
+an .sps file can be run with pspp at the command line. psppire runs all
+PSPP syntax, not just what appears in the dialogs. Thus, psppire can be
+used to develop and run all PSPP commands.</p>
 
 <p>psppire does not save commands or workflow
 <strong>automatically</strong>. If the program is closed without saving
@@ -220,7 +220,8 @@ Files should be saved if further work is planned.</p>
 <strong>File-&gt;Open</strong>. The dialog displays PSPP data files and
 <code>.sps</code> command files by default. To display only command files, 
 choose <strong>Syntax Files (*sps)</strong> from the
-filter menu in the lower right.</p>
+filter menu in the lower right. Navigate to other directories 
+if necessary to find your files.</p>
 
 <p>Creating a new command file via
 <strong>File-&gt;Open</strong>, requires an
@@ -237,6 +238,19 @@ data management and analysis operations can be expressed in this format,
 whether run from the command line or from psppire’s Syntax Editor.</p>
 
 <h3>Running Commands with pspp and the GUI (psppire)</h3>
+
+<p>Commands can be run in the psppire <strong>Syntax Editor</strong>
+window via the <strong>Run</strong> menu there, either all the code in
+the file or only selected lines. Running a program in psppire opens the
+<strong>Output Window</strong> where you can review the results and
+confirm they match expectations.</p>
+
+<p>In Linux or Unix: &gt; <code>pspp -o example1.new2.list
+example1.sps</code> is the basic command. <code>-o</code> tells pspp
+what the output file is called, and then the .sps file is where the
+commands reside.</p> If there are no errors or warnings, the run will
+complete without a message. Check the output file on disk (list) to see
+what happened.
 
 <p>No matter how you got it — typed, pasted, or generated — you
 are still running syntax. Next will be a full <code>GET DATA</code>
@@ -325,9 +339,8 @@ the same results.</p>
 in PSPP using the command‑line <code>pspp</code>. The same commands can
 be copied into psppire’s <strong>Syntax Editor window</strong> and
 executed there via the <em>Run</em> menu. <code>DATA LIST FREE</code>
-does not appear in psppire’s pull‑down menus; psppire doesen't
-expose <code>DATA LIST FREE</code> in the GUI, but it can still be
-entered and executed in the Syntax Editor.</p>
+does not appear in psppire’s pull‑down menus, but it can still be
+entered and executed in the <strong>Syntax Editor</strong>.</p>
 
 <p>This example uses the same data as the <code>GET DATA</code> example
 above and the results should be the same.</p>
@@ -547,9 +560,10 @@ DISPLAY DICTIONARY.
 in parentheses for that field, such as EARN in this example. PSPP
 determines the width from the column range.</p>
 
-<p>Run this in psppire (via the Run menu) and it should produce output
-similar to the following. psppire uses box-drawing charcters for tables
-while the command=line pspp uses plain ASCII.</p>
+<p>Run this in psppire (via the <strong>Run</strong> menu in the
+<strong>Syntax Editor</strong>) and it should produce output similar to
+the following. psppire uses box-drawing charcters for tables while the
+command=line pspp uses plain ASCII.</p>
 
 <pre>
 ** Implied decimals example.
@@ -656,9 +670,9 @@ FILE HANDLE survey /FILE='C:\path\to\survey.sav'.
 GET FILE=survey.
 </pre>
 
-<p><strong>Workflow Tip</strong>: A FILE HANDLE can point to a
-directory, not just a single file. This makes referencing data
-files faster and keeps your syntax cleaner.</p>
+<p><strong>Workflow Tip</strong>: A FILE HANDLE can also point to a
+directory, not just a single file. This makes referencing data files
+in a common directory faster and keeps your syntax cleaner.</p>
 
 <pre>
 * File handle as a directory.
@@ -690,7 +704,7 @@ is specific to PSPP.</p>
 <h3>Reading Less Data for Testing: N OF CASES</h3>
 
 <p>When developing commands on a large data file, reading many thousands
-of cases just to test a few lines of code on a couple of values wastes
+of cases just to test a few lines of code on a couple of values can waste
 time. <code>N OF CASES</code> tells PSPP to read only the first N cases
 in the file.  This speeds up development and makes debugging easier.</p>
 
@@ -727,8 +741,8 @@ SELECT IF (age &gt;= 18) AND (NOT SYSMIS(income)).
 EXECUTE.
 </pre>
 
-<p><code>SYSMIS</code> is used here to exclude cases with missing income
-values.</p>
+<p><code>SYSMIS</code> (the pspp system level missing value) is used
+here to exclude cases with missing income values.</p>
 
 <h3>How to Run Descriptive Statistics</h3>
 
@@ -1867,7 +1881,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Jun 10 10:07:51 EDT 2026
+Last Modified: Wed Jun 10 11:16:31 EDT 2026
 </p>
 </footer>
 </blockquote>
