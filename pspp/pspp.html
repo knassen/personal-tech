@@ -77,9 +77,9 @@ and indentation does not matter after the first line. The first line
 of a command must begin in column 1; otherwise PSPP treats it as a
 continuation of the previous command. Comments begin with <code>*</code>
 (single‑line) or <code>/* … */</code> (block). Extra spaces and
-blank lines are ignored. (In older SPSS versions blank line could
-sometimes end a command, but this behavior is inconsistent and should
-not be relied on).</p>
+blank lines are ignored. (Some older SPSS syntax relied on quirks such
+as a blank lines ending commands, but PSPP does not support those
+behaviors, so always end a command with a period.</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>Using PSPP for Data Preparation and Analysis</h3>
@@ -1913,7 +1913,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jun 11 18:57:21 EDT 2026
+Last Modified: Thu Jun 11 19:11:35 EDT 2026
 </p>
 </footer>
 </blockquote>
