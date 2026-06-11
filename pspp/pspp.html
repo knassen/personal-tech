@@ -57,13 +57,29 @@ to your own work. The page also gives tips for improving your PSPP
 workflow.</p>
 
 <p>The example outputs on this page are mostly plain text because
-correctness matters more than cosmetics. If the numbers are wrong,
-it doesn't matter how pretty the presentation is or how modern the
-application looks. That said, I do provide a screenshot of psppire in
-action.</p>
+correctness matters more than cosmetics and that's what psppire and
+command line pspp produce unless you change the output format. If the
+numbers are wrong, it doesn't matter how pretty the presentation is or
+how modern the application looks. That said, I do provide a screenshot
+of psppire in action.</p>
 
 <p><strong>This page is for the curious. Run the examples. See what
 happens.</strong></p>
+
+<p>Before the next section, let's talk about how pspp commands need
+to be formatted. The psppire GUI formats them automatically when it
+generates code, but if you are editing a program yourself in the Syntax
+Editor, another editor, or you accidentally change the code that psppire
+created, you need to be aware of the rules.</p>
+
+<p>PSPP commands end with periods. Commands may span multiple lines,
+and indentation does not matter after the first line. The first line
+of a command must begin in column 1; otherwise PSPP treats it as a
+continuation of the previous command. Comments begin with <code>*</code>
+(single‑line) or <code>/* … */</code> (block). Extra spaces and
+blank lines are ignored. (In older SPSS versions blank line could
+sometimes end a command, but this behavior is inconsistent and should
+not be relied on).</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h3>Using PSPP for Data Preparation and Analysis</h3>
@@ -1897,7 +1913,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jun 11 13:47:37 EDT 2026
+Last Modified: Thu Jun 11 18:57:21 EDT 2026
 </p>
 </footer>
 </blockquote>
