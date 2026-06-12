@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+     <base href="/personal-tech/"> 
+     <link rel="stylesheet" href="pspp/psppstyle.css"> 
+     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     <meta name="description" content="Merging Data with PSPP.">
+     <meta name="keywords" content="PSPP Merging Data Combining Files">
+     <meta charset="utf-8">
+     <title>Merging Data with PSPP</title>  
+</head>
+
+<body>
+
+<main>
+<blockquote>
+
+<h1>Merging Data</h1>
+
+<p>Merging data files is a routine part of data processing and it
+refers to combining files from multiple datasets. Additional
+variables often come from a different file, for example. 
+</p>
+
+<p>psppire does not currently provide dialogs for merging
+datasets. <code>MATCH FILES</code>, <code>ADD FILES</code>, and
+<code>UPDATE</code> are standard PSPP features, but the commands must be
+run from PSPP syntax, either in the Syntax Editor or from the command
+line.</p>
+
+<p>In PSPP, merging usually means adding variables from one file to the
+cases in another file. The files must share a key variable (such as
+<code>ID</code>, <code>PATID</code>, or another unique identifier) so
+PSPP knows which records belong together. The <code>MATCH FILES</code>
+command performs this type of merge.</p>
+
+<p>Other situations involve stacking files on top of each other (adding
+more cases). This is done with <code>ADD FILES</code>. Updating existing
+cases with new values uses <code>UPDATE</code>. Each command handles a
+different kind of data combination.</p>
+
+<h2 class="skip">&nbsp;</h2>
+<h3>Merging Files (MATCH FILES)</h3>
+
+<p>The following example shows how to merge two datasets that share a
+common key variable (<code>PATID</code>). One file contains demographic
+variables; the other contains psychological measures. <code>MATCH
+FILES</code> combines them into a single dataset by matching cases on
+<code>PATID</code>.</p>
+
+<p><strong>Example datasets</strong></p>
+
+<p><strong>demo.sav</strong></p>
+<table>
+  <tr><th>PATID</th><th>AGE</th><th>SEX</th></tr>
+  <tr><td>101</td><td>34</td><td>1</td></tr>
+  <tr><td>102</td><td>29</td><td>2</td></tr>
+  <tr><td>103</td><td>41</td><td>1</td></tr>
+</table>
+
+<p><strong>psych.sav</strong></p>
+<table>
+  <tr><th>PATID</th><th>SCORE1</th><th>SCORE2</th></tr>
+  <tr><td>101</td><td>12</td><td>18</td></tr>
+  <tr><td>102</td><td>15</td><td>20</td></tr>
+  <tr><td>103</td><td>11</td><td>17</td></tr>
+</table>
+
+<p><strong>Merged Output</strong></p>
+<table>
+  <tr>
+    <th>PATID</th><th>AGE</th><th>SEX</th>
+    <th>SCORE1</th><th>SCORE2</th>
+  </tr>
+  <tr>
+    <td>101</td><td>34</td><td>1</td>
+    <td>12</td><td>18</td>
+  </tr>
+  <tr>
+    <td>102</td><td>29</td><td>2</td>
+    <td>15</td><td>20</td>
+  </tr>
+  <tr>
+    <td>103</td><td>41</td><td>1</td>
+    <td>11</td><td>17</td>
+  </tr>
+</table>
+
+<pre>
+MATCH FILES
+  /FILE='demo.sav'
+  /TABLE='psych.sav'
+  /BY PATID.
+EXECUTE.
+
+SAVE OUTFILE='merged.sav'.
+</pre>
+
+<p>PSPP matches cases from both files using
+<code>PATID</code>. Variables from <code>demo.sav</code> and
+<code>psych.sav</code> appear together in the merged dataset.  If a
+case appears in one file but not the other, <code>MATCH FILES</code>
+still produces a case, but variables from the missing file are
+system-missing.</p>
+
+<p>MATCH FILES requires that both datasets be sorted by the
+<code>BY</code> variable(s) before merging (<code>SORT CASES</code>). If
+the file aren't sorted, PSPP will stop with an error.</p>
+
+<p>The dataset named on <code>/FILE</code> becomes the active dataset
+after the merge. Variables from each <code>/TABLE</code> file are
+added to it. In this example, <code>demo.sav</code> is the base
+file. After MATCH FILES completes, the active dataset contains the
+merged result, which should be saved (for example, with <code>SAVE
+OUTFILE='merged.sav'</code>). PSPP system files contain the data set
+with all its variable attributes.</p>
+
+<p>PSPP always has exactly one <em>active file</em>, referred to
+in commands as <code>*</code> (asterisk). Commands such as <code>GET
+FILE</code>, <code>MATCH FILES</code>, and <code>ADD FILES</code>
+replace the active file with their result. Because the active file is
+overwritten whenever a new dataset is read or created, save any results
+desired to be kept <strong>before</strong> running another command that
+changes the active file.</p>
+
+<p><strong>What happens when there is not a one-to-one merge?</strong>
+Subject 104 has been added to psych.sav but not to demo.sav. In this
+case, PATID 104 is merged but that subject's demographic variables are
+all missing.</p>
+
+<p><strong>Revised psych.sav</strong></p>
+<table>
+  <tr><th>PATID</th><th>SCORE1</th><th>SCORE2</th></tr>
+  <tr><td>101</td><td>12</td><td>18</td></tr>
+  <tr><td>102</td><td>15</td><td>20</td></tr>
+  <tr><td>103</td><td>11</td><td>17</td></tr>
+  <tr><td>104</td><td>14</td><td>19</td></tr>
+</table>
+
+<p><strong>Merged Output</strong></p>
+<table>
+  <tr>
+    <th>PATID</th><th>AGE</th><th>SEX</th>
+    <th>SCORE1</th><th>SCORE2</th>
+  </tr>
+  <tr>
+    <td>101</td><td>34</td><td>1</td>
+    <td>12</td><td>18</td>
+  </tr>
+  <tr>
+    <td>102</td><td>29</td><td>2</td>
+    <td>15</td><td>20</td>
+  </tr>
+  <tr>
+    <td>103</td><td>41</td><td>1</td>
+    <td>11</td><td>17</td>
+  </tr>
+  <tr>
+    <td>104</td><td>.</td><td>.</td>
+    <td>14</td><td>19</td>
+  </tr>
+</table>
+
+<p>If a PATID value appears in one file but not the other, <code>MATCH
+FILES</code> still creates a case in the merged dataset. This is not a
+missing file or a missing variable — it is a <em>missing case</em> in
+one of the datasets. PSPP has no values to supply for that side of the
+merge, so the variables from the file where the case is absent are set
+to system-missing. This is the safest behavior: it preserves the
+case without inventing zeros or placeholder values.</p>
+
+<p>Flags created with <code>/IN=</code> <strong>track which file each
+case came from</strong>. An <code>/IN</code> variable is set to 1 if the
+case was present in that file, and 0 if it was not. This makes it easy
+to identify unmatched cases after the merge.</p>
+
+<pre>
+MATCH FILES
+  /FILE='demo.sav'  /IN=indemo
+  /TABLE='psych.sav' /IN=inpsych
+  /BY PATID.
+
+SAVE OUTFILE='merged.sav'.
+</pre>
+
+<p><strong>Merged Output with /IN= Flags</strong></p>
+<table>
+  <tr>
+    <th>PATID</th><th>AGE</th><th>SEX</th>
+    <th>SCORE1</th><th>SCORE2</th>
+    <th>indemo</th><th>inpsych</th>
+  </tr>
+  <tr>
+    <td>101</td><td>34</td><td>1</td>
+    <td>12</td><td>18</td>
+    <td>1</td><td>1</td>
+  </tr>
+  <tr>
+    <td>102</td><td>29</td><td>2</td>
+    <td>15</td><td>20</td>
+    <td>1</td><td>1</td>
+  </tr>
+  <tr>
+    <td>103</td><td>41</td><td>1</td>
+    <td>11</td><td>17</td>
+    <td>1</td><td>1</td>
+  </tr>
+  <tr>
+    <td>104</td><td>.</td><td>.</td>
+    <td>14</td><td>19</td>
+    <td>0</td><td>1</td>
+  </tr>
+</table>
+
+<p>In addition to <code>MATCH FILES</code>, PSPP also provides <code>ADD
+FILES</code> to append data from multiple files to the active data set, and
+<code>UPDATE</code>, which updates a master file with modifications from
+a transaction file.</p>
+
+<h3>ADD FILES</h3>
+
+<p>ADD FILES adds data sets vertically. It can combine multiple datasets.
+No BY statement is needed. If it is used it enforces sorting of the dataset.</p>
+
+<p>The following example shows two small data files combined into
+one larger file. It also illustrates sorting cases.
+
+<p>Files to combine.</p>
+<pre>
+GET DATA/TYPE=TXT
+ /FILE='C:\Users\file1.txt'
+ /DELIMITERS=" "
+ /ARRANGEMENT=DELIMITED
+ /VARIABLES =
+   ID F3.0
+   AGE F3.
+
+SORT CASES BY ID.
+LIST.
+Data List
+╭──┬───╮
+│ID│AGE│
+├──┼───┤
+│ 1│ 56│
+│ 2│ 62│
+│ 3│ 38│
+│ 4│ 29│
+╰──┴───╯
+
+* Save the system file before starting the next one.
+SAVE OUTFILE='C:\Users\file1.sav'.
+
+GET DATA  /TYPE=TXT
+ /FILE='C:\Users\file2.txt'
+ /DELIMITERS=" "
+ /ARRANGEMENT=DELIMITED
+ /VARIABLES =
+     ID F3
+     AGE F3
+ .
+
+SORT CASES BY ID.
+
+LIST.
+
+Data List
+╭──┬───╮
+│ID│AGE│
+├──┼───┤
+│ 5│ 25│
+│ 6│ 33│
+│ 7│ 67│
+╰──┴───╯
+
+DISPLAY DICTIONARY.
+                                    Variables
+╭────┬────────┬─────────────────┬─────┬─────┬─────────┬────────────┬────────────╮
+│Name│Position│Measurement Level│ Role│Width│Alignment│Print Format│Write Format│
+├────┼────────┼─────────────────┼─────┼─────┼─────────┼────────────┼────────────┤
+│ID  │       1│Nominal          │Input│    8│Right    │F3.0        │F3.0        │
+│AGE │       2│Scale            │Input│    8│Right    │F3.0        │F3.0        │
+╰────┴────────┴─────────────────┴─────┴─────┴─────────┴────────────┴────────────╯
+
+SAVE OUTFILE='C:\Users\file2.sav'.
+</pre>
+
+<p>Add the two files.</p>
+<pre>
+ADD FILES
+  /FILE='C:\Users\file1.sav'
+  /FILE='C:\Users\file2.sav'
+  .
+LIST.
+Data List
+╭──┬───╮
+│ID│AGE│
+├──┼───┤
+│ 1│ 56│
+│ 2│ 62│
+│ 3│ 38│
+│ 4│ 29│
+│ 5│ 25│
+│ 6│ 33│
+│ 7│ 67│
+╰──┴───╯
+display dictionary.
+                                    Variables
+╭────┬────────┬─────────────────┬─────┬─────┬─────────┬────────────┬────────────╮
+│Name│Position│Measurement Level│ Role│Width│Alignment│Print Format│Write Format│
+├────┼────────┼─────────────────┼─────┼─────┼─────────┼────────────┼────────────┤
+│ID  │       1│Nominal          │Input│    8│Right    │F3.0        │F3.0        │
+│AGE │       2│Scale            │Input│    8│Right    │F3.0        │F3.0        │
+╰────┴────────┴─────────────────┴─────┴─────┴─────────┴────────────┴────────────╯
+</pre>
+
+<p>The output shows that ADD FILES stacked file1 (4 cases) and file2 (3
+cases) into an active data set that has 7 cases.
+
+<h3>UPDATE</h3>
+
+<p>Another type of PSPP data merge is <code>UPDATE</code>. Like its name
+implies it is used to update a dataset with values in a transaction
+dataset. It won't overwrite values of cases it's not updating.</p>
+
+<p>However, testing of UPDATE revealed it was not very reliable and an
+example could not be generated.</p>
+
+<p><strong>A note about copy-and-paste merging:</strong></p>
+
+<p>The <code>/IN=</code> flags above show exactly what goes wrong when
+the data in two files doesn't match perfectly. A statistical merge
+<em>can</em> make these mismatches visible and preserve the structure
+of the data but only if you use the tools designed for that purpose. A
+copy‑and‑paste merge cannot. In a spreadsheet, unmatched cases,
+misaligned rows, and missing variables are all silent — you won't
+see them, and you won't know they happened. Copy/paste may appear to
+“work” on perfectly clean data, but the first time the files differ
+even slightly, the structure is destroyed and information is lost. This
+is why merges should always be done by a statistical package like PSPP,
+not by hand. Understand your data, understand its structure, and always
+verify your merges.</p>
+
+
+<hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+
+<footer>
+    <p>© 2026, Kent Nassen</p>
+
+<p>
+<a href="/personal-tech/pspp/pspp.html">
+    <img src="/personal-tech/gif/arrwback.gif" alt="">
+    Back to PSPP Page
+</a>
+</p>
+<p style="font-size:80%;">
+Last Modified: Fri Jun 12 11:29:54 EDT 2026
+</p>
+</footer>
+</blockquote>
+</main>
+</body>
+</html>
+
