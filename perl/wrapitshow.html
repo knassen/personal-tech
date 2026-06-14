@@ -15,23 +15,18 @@
     <h2>wrapit Perl Code List</h2>
     <div class="commentary">
     This is the Perl code for <a href="wrapit.html">wrapit</a>, a
-    small formatting program that reads SAS input or SPSS data list
+    small Perl formatting program that reads SAS input or SPSS data list
     statement and outputs them five to a line. This assumes you have
-    Perl available and that it can be found by the "env" program.  If
-    neither of those conditions are met, you can still run the program
-    as perl wrapit.pl (or perl wrapit5.pl). 
+    Perl available and that it can be found by the "env" program.  
+    Otherwise you can run the program as perl wrapit.pl (or perl wrapit5.pl). 
     <p> 
-    The basic algorithm
-    here is push the code statements onto an array, then loop through
-    the array printing them out in the format desired.  To get the code
-    statements, some processing takes place on the data coming in. It's
-    only removing leading and trailing blanks (for example, s/^\s+// for
-    removing leading blanks). Thus, not too crazy for Perl. <p> If you
-    want a different output format, just modify the printf command. Or
-    modify the "for" statement if you want a different number of columns
-    (i+=5). Since it currently does 5 columns the program was called
-    wrapit5. </div> <p> This utility is part of a collection of <a
-    href="../myperl.html">more text-processing tools</a>.
+
+    <p> If you want a different output format, just modify the printf
+    command. Or modify the "for" statement if you want a different
+    number of columns (i+=5). Since it currently does 5 columns the
+    program was called wrapit5. </div> <p> This utility is part of
+    a collection of <a href="../myperl.html">more text-processing
+    tools</a>.
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <pre>
@@ -77,7 +72,7 @@ while (&lt;&gt;) {           # read from file on commandline
 <a href="wrapit.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the wrapit Page</a><br>
 
 <span style="font-size: 80%;">
-    Last Modified: Fri Mar 20 17:12:31 EDT 2026
+    Last Modified: Sun Jun 14 11:02:46 EDT 2026
 </span>
 </blockquote>
 </body>
