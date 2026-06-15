@@ -1,0 +1,151 @@
+<!DOCTYPE HTML> 
+<html lang="en">
+
+<head>
+    <base href="/personal-tech/perl/">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="perl program compute frequencies">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>frequtils.pl -- Frequency Counts Programs</title>
+</head>
+<body>
+<br>
+<blockquote>
+<h1>Frequency Programs</h1>
+
+<p>This page documents two related Perl utilities for quick frequency analysis
+of fixed-column data. freq.pl provides basic counts and cumulative counts,
+while freq2.pl adds percentages and cumulative percentages.</p>
+
+<h2>freq.pl &mdash; Basic Frequency Counts</h2>
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<p><strong>freq.pl</strong> is a perl program for generating a 
+quick frequency table from a fixed column of data values making it useful 
+when you need a fast check on the distribution of values without running
+a full statistical package like SAS or SPSS. <i>freq.pl</i>
+can be used to answer the question "how many times do the unique values
+in columns <i>x</i> through <i>y</i> occur in this file?"</p>
+<p>
+The input file is assumed to be formatted with the data of interest in
+the same column range on each line of the input file. The data may be
+numeric and/or character. The output is reminiscent of that produced by
+SAS proc freq, consisting of the individual values in increasing order,
+plus a frequency count and cumulative frequency count for each value.</p>
+
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/freqshow.html"><strong>Show freq.pl code</strong></a></li>
+    <li><strong>Download: </strong> <a href="https://knassen.github.io/personal-tech/perl/freq.pl"><strong>freq.pl</strong></a></li>
+</ul>
+
+<h3>Usage</h3>
+<p>The commandline is: <span style="color: #000080; font-family: monospace;">freq.pl [-h] [-c[#-#][#]
+    filename]</span> where: <span style="color: #000080; font-family: monospace;">-c#-#</span> 
+<span style="font-family: monospace;">indicates starting &amp; ending column numbers of the variable and</span> <span style="color: #000080; font-family: monospace;">-c#</span>
+<span style="font-family: monospace;">indicates a single-column variable at column</span> <span style="color: #000080; font-family: monospace;">#</span>.
+
+<p>As an example, the command <span style="color: #000080; font-family: monospace;">freq.pl -c210 data.file</span>
+<span style="font-family: monospace;">might produce output like:</span>
+
+<pre><code>
+(pts/1):~&gt; freq.pl -c210 data.file
+
+   Page  1
+   Frequencies for the values in columns 210-210
+   in the file &#34;data.file&#34;
+
+                                              Cumulative
+                           Value   Frequency   Frequency
+                          -------  ---------  ----------
+                               0       2214        2214
+                               1       1009        3223
+                               2        533        3756
+                               9      15721       19477
+</code></pre>
+
+<p>If there had been many values to print out, the program would have
+output a paged listing, each page with increasing page number and header
+information as in the above table. In testing, this program was
+usually faster than a <a href="https://knassen.github.io/personal-tech/perl/freqsh.html">shell script</a> 
+that uses <i>sort</i>, <i>cut</i>, <i>uniq</i>, and <i>awk</i> to produce output
+without the cumulative frequencies.</p>
+
+<p>
+An <a href="../sasexampl.html">example of SAS output on the same
+    data</a> shows the same counts as above.</p>
+
+<p>The next program shows the addition of percentages to the report.</p>
+
+<h2>freq2.pl &mdash; Frequency Counts and Percentages</h2>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<strong>freq2.pl</strong> is a simple extension of 
+<strong>freq.pl.</strong> freq2.pl adds frequency counts,
+frequency as a percentage of total count, plus cumulative frequency, and
+cumulative percentage to the report.
+
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/freq2show.html"><strong>Show freq2.pl code</strong></a></li>
+    <li><strong>Download: </strong> <a href="freq2.pl"><strong>freq2.pl</strong></a></li>
+</ul>
+
+<p><strong>Limitations:</strong>
+
+<ul style="list-style-type: disc;">
+    <li>It reads columns of raw data. Intended for quick checks.</li>
+    <li>Can only print the first 20 characters of a value,
+       although can compute frequencies for longer values.</li>
+    <li>The order of values in the output is set by a character
+       sort rather than a numeric sort (the program knows
+       nothing of variable types like numeric or string).</li>
+    <li>If you give a column range outside the logical record
+       length of the data, you will still get output, but all
+       values will be null.</li>
+    <li>Since the program summarizes values, if you have dots
+       in the data (as SAS missing), they will be counted.  
+       And of course, values like NA and 999 but they will not
+       be labeled as missing.</li>
+</ul>
+
+<h3>Usage</h3>
+
+<p>The command line is: 
+<span style="color: #000080; font-family: monospace;">freq2.pl [-h] [-c[#-#][#] filename]</span>
+where: <span style="color: #000080; font-family: monospace;">-c#-#</span>
+indicates starting &amp; ending column numbers of the variable and 
+<span style="color: #000080; font-family: monospace;">-c#</span>
+indicates a single-column variable at column #
+<span style="color: #000080; font-family: monospace;">#</span>.
+
+<p>As an example, the command 
+<span style="color: #000080; font-family: monospace;">freq2.pl -c210 data.file</span>
+might produce output like:
+
+<pre>
+(pts/1):~&gt; freq2.pl -c210 data.file
+
+   Page  1
+   Frequencies for the values in columns 210-210
+   in the file "data.file"
+
+                                            Value  Cumulative  Cumulative
+                       Value   Frequency  Percent   Frequency     Percent
+                      -------  ---------  -------  ----------  ----------
+                           0       2214    11.37        2214       11.37
+                           1       1009     5.18        3223       16.55
+                           2        533     2.74        3756       19.28
+                           9      15721    80.72       19477      100.00
+</pre>
+
+An <a href="../sasexampl.html">example of SAS output on the same data</a> shows the same results as above.
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+<a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to the Kent's Perl Page</a><br>
+
+<span style="font-size: 80%;">Last Modified: Mon Jun 15 14:29:18 EDT 2026
+    </span>
+</blockquote>
+</body>
+</html>
