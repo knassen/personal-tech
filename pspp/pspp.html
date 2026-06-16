@@ -95,13 +95,13 @@ Hello, world!</pre>
 <p>Most examples on this page follow this pattern: a short block of PSPP
 command(s), followed by the output PSPP produces. This shows you how PSPP
 creates output and also that the PSPP GUI can operate the same as the PSPP
-commandline.</p>
+commandline pspp program.</p>
 
 <p>PSPP uses a statistical command language similar to SPSS and supports
 batch processing, scripting, and reproducible analysis. You can write
 commands in any text editor and save them as .sps. If you prefer a GUI, the
 psppire Syntax Editor can open, edit, and run these files. The examples
-on this page were run using both psppire or pspp; PSPP produces the same
+on this page were run using both psppire and pspp; PSPP produces the same
 results in either environment.</p>
 
 <p>If you learn better from examples, feel free to skip ahead, run the
@@ -160,10 +160,11 @@ DISPLAY DICTIONARY.
 </pre>
 
 <p>This example shows a PSPP command reading the example.csv
-data set. The PSPP syntax is readable and understandable. The
+data file. The PSPP syntax is readable and understandable. The
 <code>/VARIABLES</code> subcommand is required to read the data (copy
-the first line of the CSV file, the variable names, and add the
-formats.) The <code>/FILE</code> subcommand is also required.</p>
+the first line of the CSV file, the variable names, add the formats,
+and remove the commas to get a variable list.) The <code>/FILE</code>
+subcommand is also required and gives the data file to read.</p>
 
 <p><code>LIST</code> shows the data that were imported so you can check
 they are correct. <code>DISPLAY DICTIONARY</code> show the attributes
@@ -1715,7 +1716,8 @@ the build.</p>
 2025-03-01 after being marked broken). FreeBSD users can still install
 PSPP by building it from the official GNU source release. The PSPP
 build instructions work on FreeBSD. See <code>pspp/INSTALL</code> after
-cloning with Git for the details.</p>
+cloning with Git for the details. Be sure to install all prerequisite
+programs.</p>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
@@ -1729,7 +1731,7 @@ cloning with Git for the details.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jun 14 12:27:56 EDT 2026
+Last Modified: Tue Jun 16 13:43:06 EDT 2026
 </p>
 </footer>
 </blockquote>
