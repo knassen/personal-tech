@@ -1,0 +1,557 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+     <base href="/personal-tech/"> 
+     <link rel="stylesheet" href="pspp/psppstyle.css"> 
+     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     <meta name="description" content="Analyzing Data with PSPP.">
+     <meta name="keywords" content="PSPP Analyzing Data">
+     <meta charset="utf-8">
+     <title>Analyzing Data with PSPP</title>  
+</head>
+
+<body>
+
+<main>
+<blockquote>
+
+<h3>How to Run Descriptive Statistics</h3>
+
+<p>
+The <code>DESCRIPTIVES</code> command computes means, standard
+deviations, and other summary statistics. PSPP supports variable lists,
+subcommands, and formatting options. These are specified through the
+<code>DESCRIPTIVES</code> command.</p>
+
+<p><code>DESCRIPTIVES</code> does not read raw data, so if no active
+dataset is available—or there is no PSPP system file to load—use
+<code>DATA LIST</code> or <code>GET DATA</code> to read the raw data
+before running the procedure.</p>
+
+<pre>
+* Short example dataset for DESCRIPTIVES.
+DATA LIST FREE 
+  /x y z.
+BEGIN DATA
+5  24  7  
+96  8  3
+END DATA.
+LIST.
+
+DESCRIPTIVES VARIABLES = x y z
+  /STATISTICS = MEAN STDDEV MIN MAX.
+</pre>
+
+<p>Output:</p>
+<pre>
+     Data List
++-----+-----+----+
+|  x  |  y  |  z |
++-----+-----+----+
+| 5.00|24.00|7.00|
+|96.00| 8.00|3.00|
++-----+-----+----+
+
+                Descriptive Statistics
++--------------------+-+-----+-------+-------+-------+
+|                    |N| Mean|Std Dev|Minimum|Maximum|
++--------------------+-+-----+-------+-------+-------+
+|x                   |2|50.50|  64.35|   5.00|  96.00|
+|y                   |2|16.00|  11.31|   8.00|  24.00|
+|z                   |2| 5.00|   2.83|   3.00|   7.00|
+|Valid N (listwise)  |2|     |       |       |       |
+|Missing N (listwise)|0|     |       |       |       |
++--------------------+-+-----+-------+-------+-------+
+</pre>
+
+<p>This example uses a very small dataset so the results are easy to
+verify. The <code>LIST</code> command shows that the data were read
+correctly. Using <code>LIST</code> is always good practice when using
+<code>DATA LIST FREE</code>. The means and minimum/maximum values can be
+checked by inspection, and although computing the standard deviations
+requires a bit more arithmetic, the values reported are consistent with
+the data.</p>
+
+<p>If the <code>/SAVE</code> option is included,
+<code>DESCRIPTIVES</code> also computes <strong>Z‑scores</strong>
+for all variables specified and adds them to the active dataset as new
+variables. This works in PSPP, and psppire includes a checkbox
+in the <code>DESCRIPTIVES</code> dialog labeled “Save Z‑scores of
+selected variables as new.”.</p>
+
+<p>The <code>FORMAT</code> subcommand used by <code>DESCRIPTIVES</code>
+is accepted for backward compatibility but has no effect in PSPP.</p>
+
+<h3>How to Create Frequencies</h3>
+
+<p>
+The <code>FREQUENCIES</code> command produces counts and percentages for the
+values of one or more variables and is often the first procedure run
+after reading a dataset, because it quickly shows whether the values were
+read correctly and whether any unexpected categories or codes appear.
+</p>
+
+<p>
+<code>FREQUENCIES</code> can also produce summary statistics and simple
+charts, but in its basic form it is most useful as a data‑checking
+tool.</p>
+
+<pre>
+DATA LIST FREE /group score.
+BEGIN DATA
+1 10
+1 12
+2 15
+2 18
+2 18
+END DATA.
+
+LIST.
+
+FREQUENCIES VARIABLES = group score.
+</pre>
+
+<p>Output:</p>
+<pre>
+  Data List
++-----+-----+
+|group|score|
++-----+-----+
+| 1.00|10.00|
+| 1.00|12.00|
+| 2.00|15.00|
+| 2.00|18.00|
+| 2.00|18.00|
++-----+-----+
+
+       Statistics
++---------+-----+-----+
+|         |group|score|
++---------+-----+-----+
+|N Valid  |    5|    5|
+|  Missing|    0|    0|
++---------+-----+-----+
+|Mean     | 1.60|14.60|
++---------+-----+-----+
+|Std Dev  |  .55| 3.58|
++---------+-----+-----+
+|Minimum  | 1.00|10.00|
++---------+-----+-----+
+|Maximum  | 2.00|18.00|
++---------+-----+-----+
+
+                             group
++----------+---------+-------+-------------+------------------+
+|          |Frequency|Percent|Valid Percent|Cumulative Percent|
++----------+---------+-------+-------------+------------------+
+|Valid 1.00|        2|  40.0%|        40.0%|             40.0%|
+|      2.00|        3|  60.0%|        60.0%|            100.0%|
++----------+---------+-------+-------------+------------------+
+|Total     |        5| 100.0%|             |                  |
++----------+---------+-------+-------------+------------------+
+
+                              score
++-----------+---------+-------+-------------+------------------+
+|           |Frequency|Percent|Valid Percent|Cumulative Percent|
++-----------+---------+-------+-------------+------------------+
+|Valid 10.00|        1|  20.0%|        20.0%|             20.0%|
+|      12.00|        1|  20.0%|        20.0%|             40.0%|
+|      15.00|        1|  20.0%|        20.0%|             60.0%|
+|      18.00|        2|  40.0%|        40.0%|            100.0%|
++-----------+---------+-------+-------------+------------------+
+|Total      |        5| 100.0%|             |                  |
++-----------+---------+-------+-------------+------------------+
+</pre>
+
+<p>The <code>DATA LIST</code> successfully read the data, as shown
+by the <code>LIST</code> output. The statistics we requested appear
+next. Of particular interest are the counts of valid and missing
+values. In this case all values are valid and none are missing, because
+this small example was constructed to be complete.</p> 
+
+<p><strong>Workflow Tip:</strong> Real datasets often contain missing
+or unexpected values, and <code>FREQUENCIES</code> is a quick way to
+identify them.</p>
+
+<p>Following the statistics output are the frequency tables for
+<code>group</code> and <code>score</code>. There are two groups and 5
+subjects. The <code>score</code> variable shows 18 occurs twice and the
+o ther values occur once. These results can be checked directly against
+the data.</p>
+
+<p><code>FREQUENCIES</code> can summarize multiple variables at once,
+but it treats each variable separately. <code>CROSSTABS</code> and
+<code>CTABLES</code> can also produce counts for categorical variables,
+but they’re designed for examining relationships or producing
+formatted tables, not for quick single‑variable inspection.</p>
+
+<h3>How to Run a Cross-Tabulation</h3>
+
+<p>
+Cross-Tabulation or Crosstabs, also known as Contingency Tables,
+display the relationship between two categorical variables by showing
+the joint distribution of their values. It is often used after
+<code>FREQUENCIES</code> to check that the categories of each variable
+combine as expected.</p>
+
+<p><strong>How to Create Two-Variable Crosstabs with Counts and Percentages</strong></p>
+
+<p>The simplest use of <code>CROSSTABS</code> is a two‑variable
+table. The following example shows a basic 2×2 crosstab with counts,
+percentages, and the chi‑square test.</p>
+
+<p><code>CROSSTABS</code> can also produce row, column, and total
+percentages, which make it easier to compare groups. The same small
+dataset is used in this example to show how the values of one variable
+are distributed within the categories of another. It also requests the
+chi‑square test, which PSPP prints below the table.</p>
+
+<p>Output:</p>
+
+<pre>
+DATA LIST FREE /group outcome.
+BEGIN DATA
+1 0
+1 1
+2 0
+2 1
+2 1
+END DATA.
+LIST.
+CROSSTABS
+  /TABLES = group BY outcome
+  /STATISTICS = CHISQ.
+
+   Data List
+╭─────┬───────╮
+│group│outcome│
+├─────┼───────┤
+│ 1.00│    .00│
+│ 1.00│   1.00│
+│ 2.00│    .00│
+│ 2.00│   1.00│
+│ 2.00│   1.00│
+╰─────┴───────╯
+CROSSTABS
+  /TABLES = group BY outcome
+  /STATISTICS = CHISQ.
+
+                    Summary
+╭───────────────┬─────────────────────────────╮
+│               │            Cases            │
+│               ├─────────┬─────────┬─────────┤
+│               │  Valid  │ Missing │  Total  │
+│               ├─┬───────┼─┬───────┼─┬───────┤
+│               │N│Percent│N│Percent│N│Percent│
+├───────────────┼─┼───────┼─┼───────┼─┼───────┤
+│group × outcome│5│ 100.0%│0│    .0%│5│ 100.0%│
+╰───────────────┴─┴───────┴─┴───────┴─┴───────╯
+              group × outcome
+╭───────────────────┬─────────────┬──────╮
+│                   │   outcome   │      │
+│                   ├──────┬──────┤      │
+│                   │  .00 │ 1.00 │ Total│
+├───────────────────┼──────┼──────┼──────┤
+│group 1.00 Count   │     1│     1│     2│
+│           Row %   │ 50.0%│ 50.0%│100.0%│
+│           Column %│ 50.0%│ 33.3%│ 40.0%│
+│           Total % │ 20.0%│ 20.0%│ 40.0%│
+│     ╶─────────────┼──────┼──────┼──────┤
+│      2.00 Count   │     1│     2│     3│
+│           Row %   │ 33.3%│ 66.7%│100.0%│
+│           Column %│ 50.0%│ 66.7%│ 60.0%│
+│           Total % │ 20.0%│ 40.0%│ 60.0%│
+├───────────────────┼──────┼──────┼──────┤
+│Total      Count   │     2│     3│     5│
+│           Row %   │ 40.0%│ 60.0%│100.0%│
+│           Column %│100.0%│100.0%│100.0%│
+│           Total % │ 40.0%│ 60.0%│100.0%│
+╰───────────────────┴──────┴──────┴──────╯
+                                               Chi-Square Tests
+╭────────────────────────────┬─────┬──┬──────────────────────────┬─────────────────────┬─────────────────────╮
+│                            │Value│df│Asymptotic Sig. (2-tailed)│Exact Sig. (2-tailed)│Exact Sig. (1-tailed)│
+├────────────────────────────┼─────┼──┼──────────────────────────┼─────────────────────┼─────────────────────┤
+│Pearson Chi-Square          │  .14│ 1│                      .709│                     │                     │
+│Likelihood Ratio            │  .14│ 1│                      .710│                     │                     │
+│Fisher's Exact Test         │     │  │                          │                1.033│                 .700│
+│Continuity Correction       │  .00│ 1│                     1.000│                     │                     │
+│Linear-by-Linear Association│  .11│ 1│                      .739│                     │                     │
+│N of Valid Cases            │    5│  │                          │                     │                     │
+╰────────────────────────────┴─────┴──┴──────────────────────────┴─────────────────────┴─────────────────────╯
+</pre>
+
+<p>The crosstabulation shows how the categories of the two variables
+combine. This confirms that the values were read correctly and that
+all expected category combinations appear. The chi‑square test is
+printed below the table. In this example the p‑value is 0.709. Whether
+this is considered evidence against the null hypothesis depends on the
+analyst’s chosen significance level and the question being asked. The
+important point here is that the procedure ran correctly and produced
+the expected statistics.</p>
+
+<p><strong>How to Create Three-Variable Crosstabs</strong></p>
+
+<p><code>CROSSTABS</code> can include more than two variables. When
+you specify three variables, PSPP produces a single nested table (for
+example, AGE × YEAR × SEX) with hierarchical counts and totals. If you
+include additional variables, PSPP may split the output into multiple
+tables depending on how much nesting it can format. For more flexible
+multi‑layered layouts, use <code>CTABLES</code>, which is designed for
+complex, formatted tables.</p>
+
+<p>Here is a small example of survey data that collects
+<code>YEAR</code> of the survey, <code>AGEGROUP</code> of respondent
+and <code>INCCAT</code>, the respondent's income category.
+<code>CROSSTABS</code> can display all three categories.</p>
+
+<pre>
+** Survey data example .
+
+  DATA LIST LIST /
+  YEAR (F4.0)
+  AGEGROUP (A5)
+  INCCAT (A7).
+
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│YEAR    │F4.0  │
+│AGEGROUP│A5    │
+│INCCAT  │A7    │
+╰────────┴──────╯
+
+BEGIN DATA
+2018 18-29 &lt;30k
+2018 18-29 30-60k
+2018 30-44 30-60k
+2018 45-64 60-90k
+2020 18-29 30-60k
+2020 30-44 60-90k
+2020 30-44 90k+
+2020 45-64 30-60k
+END DATA.
+
+CROSSTABS
+  /TABLES = AGEGROUP BY INCCAT BY YEAR.
+
+                         Summary
+╭────────────────────────┬─────────────────────────────╮
+│                        │            Cases            │
+│                        ├─────────┬─────────┬─────────┤
+│                        │  Valid  │ Missing │  Total  │
+│                        ├─┬───────┼─┬───────┼─┬───────┤
+│                        │N│Percent│N│Percent│N│Percent│
+├────────────────────────┼─┼───────┼─┼───────┼─┼───────┤
+│AGEGROUP × INCCAT × YEAR│8│ 100.0%│0│    .0%│8│ 100.0%│
+╰────────────────────────┴─┴───────┴─┴───────┴─┴───────╯
+
+
+                   AGEGROUP × INCCAT × YEAR
+╭──────────────────────────────┬───────────────────────┬─────╮
+│                              │         INCCAT        │     │
+│                              ├──────┬──────┬────┬────┤     │
+│                              │30-60k│60-90k│90k+│&lt;30k│Total│
+├──────────────────────────────┼──────┼──────┼────┼────┼─────┤
+│YEAR 2018 AGEGROUP 18-29 Count│     1│     0│    │   1│    2│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   30-44 Count│     1│     0│    │   0│    1│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   45-64 Count│     0│     1│    │   0│    1│
+│         ╶────────────────────┼──────┼──────┼────┼────┼─────┤
+│          Total          Count│     2│     1│    │   1│    4│
+│    ╶─────────────────────────┼──────┼──────┼────┼────┼─────┤
+│     2020 AGEGROUP 18-29 Count│     1│     0│   0│    │    1│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   30-44 Count│     0│     1│   1│    │    2│
+│                  ╶───────────┼──────┼──────┼────┼────┼─────┤
+│                   45-64 Count│     1│     0│   0│    │    1│
+│         ╶────────────────────┼──────┼──────┼────┼────┼─────┤
+│          Total          Count│     2│     1│   1│    │    4│
+╰──────────────────────────────┴──────┴──────┴────┴────┴─────╯
+</pre>
+
+<p>While <code>CROSSTABS</code> summarizes how categories combine, many
+analyses require modeling a quantitative outcome using one or more
+predictors. PSPP’s <code>REGRESSION</code> command performs ordinary
+least squares estimation for this purpose. The following section shows a
+simple regression example and the standard output produced by PSPP.</p>
+
+<h3>How to Run a Linear Regression</h3>
+
+<p>
+The <code>REGRESSION</code> command fits an ordinary least squares model to a
+continuous dependent variable using one or more predictors. After checking
+the variables with <code>FREQUENCIES</code> and <code>CROSSTABS</code>,
+regression shows how the outcome relates to the predictors. PSPP provides
+the standard coefficients and model statistics used in OLS (ordinary least
+squares).
+</p>
+
+<pre>
+DATA LIST LIST /
+    y  x1  x2.
+BEGIN DATA
+  10  1  4.1
+  12  2  5.0
+  13  3  6.2
+  15  4  7.1
+  16  5  8.0
+END DATA.
+LIST.
+
+REGRESSION
+  /DEPENDENT = y
+  /METHOD = ENTER x1 x2
+  /STATISTICS = COEFF R ANOVA
+  /SAVE = PRED RESID.
+</pre>
+
+<p><strong>Output:</strong></p>
+<p>
+This <code>/SAVE</code> option above creates two additional variables:
+<code>PRED1</code> (predicted values) and <code>RES1</code>
+(residuals). 
+
+<p><strong>Workflow Tip:</strong> Many statistics courses require
+students to examine and plot the residuals and predicted values to check
+model assumptions. Saving these values in PSPP's regression procedure
+provides exactly what those assignments need.</p>
+
+
+<pre>
+    Data List
+╭─────┬────┬────╮
+│  y  │ x1 │ x2 │
+├─────┼────┼────┤
+│10.00│1.00│4.10│
+│12.00│2.00│5.00│
+│13.00│3.00│6.20│
+│15.00│4.00│7.10│
+│16.00│5.00│8.00│
+╰─────┴────┴────╯
+                     Model Summary (y)
+╭───┬────────┬─────────────────┬──────────────────────────╮
+│ R │R Square│Adjusted R Square│Std. Error of the Estimate│
+├───┼────────┼─────────────────┼──────────────────────────┤
+│.99│     .99│              .98│                       .37│
+╰───┴────────┴─────────────────┴──────────────────────────╯
+                      ANOVA (y)
+╭──────────┬──────────────┬──┬───────────┬─────┬────╮
+│          │Sum of Squares│df│Mean Square│  F  │Sig.│
+├──────────┼──────────────┼──┼───────────┼─────┼────┤
+│Regression│         22.53│ 2│      11.27│84.50│.012│
+│Residual  │           .27│ 2│        .13│     │    │
+│Total     │         22.80│ 4│           │     │    │
+╰──────────┴──────────────┴──┴───────────┴─────┴────╯
+                               Coefficients (y)
+╭──────────┬────────────────────────────┬─────────────────────────┬────┬────╮
+│          │ Unstandardized Coefficients│Standardized Coefficients│    │    │
+│          ├───────────┬────────────────┼─────────────────────────┤    │    │
+│          │     B     │   Std. Error   │           Beta          │  t │Sig.│
+├──────────┼───────────┼────────────────┼─────────────────────────┼────┼────┤
+│(Constant)│      12.16│            6.92│                      .00│1.76│.177│
+│x1        │       2.60│            2.20│                     1.72│1.18│.359│
+│x2        │      -1.11│            2.22│                     -.73│-.50│.667│
+╰──────────┴───────────┴────────────────┴─────────────────────────┴────┴────╯
+
+LIST.
+
+          Data List
+╭─────┬────┬────┬────┬─────╮
+│  y  │ x1 │ x2 │RES1│PRED1│
+├─────┼────┼────┼────┼─────┤
+│10.00│1.00│4.10│-.20│10.20│
+│12.00│2.00│5.00│ .20│11.80│
+│13.00│3.00│6.20│-.07│13.07│
+│15.00│4.00│7.10│ .33│14.67│
+│16.00│5.00│8.00│-.27│16.27│
+╰─────┴────┴────┴────┴─────╯
+
+</pre>
+
+<p>
+The output includes the standard tables for an ordinary least squares
+model. The Model Summary shows an R of 0.99 and an R‑square of 0.99 for
+this small example. The Coefficients table lists each predictor along with
+its estimate, standard error, t-statistic, and p‑value. These values confirm
+that the procedure ran correctly and that PSPP produced the expected
+regression statistics. Interpretation of the coefficients depends on the
+context and the analyst’s goals; the purpose here is simply to show how
+PSPP fits the model and reports the results.
+</p>
+
+<p><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
+
+<p>PSPP can be used to compute the p-value for the F-statistic. The
+CDF.F function returns the cumulative distribution function of the F
+distribution--that is, the probability that an F‑distributed variable
+is less than or equal to the specified value.</p>
+
+<p>The following calculates the upper tail probability for an F value of
+84.50 with 2 model and 2 error degrees of freedom, as shown in the ANOVA
+table from the regression output.</p>
+
+<pre>
+DO IF $CASENUM = 1.
+  COMPUTE p_F = 1 - CDF.F(84.50, 2, 2).
+END IF.
+FORMATS p_F (F10.6).
+LIST p_F /CASES=FROM 1 TO 1.
+
+Data List
+╭───────╮
+│  p_F  │
+├───────┤
+│.011696│
+╰───────╯
+</pre>
+
+<p>The computed p-value is 0.011696 which matches the pspp output
+within rounding error. The <code>DO IF</code> block runs the
+<code>COMPUTE</code> expression only for the first case, and the
+<code>LIST</code> command displays only that case. All remaining cases
+contain system-missing values for <code>p_F</code>.</p> 
+
+<p><strong>Workflow Tip:</strong> PSPP does not have standalone scalar
+variables, so computing a single value (such as a p‑value or critical
+value) is done by attaching the calculation to the first case in the
+active dataset. Using DO IF $CASENUM = 1 and listing only that case
+prints the computed value without producing output for all other cases.</p>
+
+<p>The remaining sections cover data formats, exporting, psppire
+behavior, and file‑combining (merging). These topics are not part of
+the basic procedures shown above, but they are useful when working with
+real datasets and larger projects. psppire is introduced briefly above
+so new users can get started; its detailed behavior and limitations are
+covered in several later sections.</p>
+
+
+
+
+
+
+
+
+<hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+
+<footer>
+    <p>© 2026, Kent Nassen</p>
+
+<p>
+<a href="/personal-tech/pspp/pspp.html">
+    <img src="/personal-tech/gif/arrwback.gif" alt="">
+    Back to PSPP Page
+</a>
+</p>
+<p style="font-size:80%;">
+Last Modified: Tue Jun 16 13:47:42 EDT 2026
+</p>
+</footer>
+</blockquote>
+</main>
+</body>
+</html>
