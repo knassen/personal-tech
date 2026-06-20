@@ -331,7 +331,13 @@ updating.</p>
 
 <p>At least two <code>/FILE</code> commands are needed. The first is
 the master file, the second and succeeding are transaction files. The
-<code>BY</code> is also required for matching cases.</p>
+<code>BY</code> is also required for matching cases. Sort cases by
+the <code>BY</code> variables to ensure proper matching.</p>
+
+<p><strong><code>UPDATE</code> differs from <code>RECODE</code></strong>.
+<code>RECODE</code> changes case values within a file.
+<code>UPDATE</codes> applies changes from another (transaction)
+file. The two commands serve different purposes.</p>
 
 <p>main2.txt master file</p>
 <pre>
@@ -362,7 +368,7 @@ GET DATA/TYPE=TXT
    ID F3.0
     GENDER A2.  
 
- SORT CASES BY ID.    
+SORT CASES BY ID.    
 LIST.
  
 DISPLAY DICTIONARY.
@@ -539,7 +545,7 @@ verify your merges.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jun 20 12:37:03 EDT 2026
+Last Modified: Sat Jun 20 13:08:47 EDT 2026
 </p>
 </footer>
 </blockquote>
