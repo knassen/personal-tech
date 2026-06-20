@@ -336,7 +336,7 @@ the <code>BY</code> variables to ensure proper matching.</p>
 
 <p><strong><code>UPDATE</code> differs from <code>RECODE</code></strong>.
 <code>RECODE</code> changes case values within a file.
-<code>UPDATE</codes> applies changes from another (transaction)
+<code>UPDATE</code> applies changes from another (transaction)
 file. The two commands serve different purposes.</p>
 
 <p>main2.txt master file</p>
@@ -348,7 +348,7 @@ file. The two commands serve different purposes.</p>
 4 F
 </pre>
 
-<p>fix2.txt transaction file<p>
+<p>fix2.txt transaction file</p>
 
 <pre>
 1 M 46
@@ -361,7 +361,7 @@ file. The two commands serve different purposes.</p>
 <p>Update example code</p>
 
 <pre>
-ECHO '===== Read &amp; Save main2.txt'.
+ECHO '===== Read and Save main2.txt'.
 
 GET DATA/TYPE=TXT
  /FILE='main2.txt'
@@ -379,7 +379,7 @@ DISPLAY DICTIONARY.
 * Save the system file before starting the next one.
 SAVE OUTFILE='main2.sav'.
      
-ECHO '===== Read &amp; Save fix2.txt'.
+ECHO '===== Read and Save fix2.txt'.
 
 **     File B (fix.sav).
 GET DATA  /TYPE=TXT
@@ -425,7 +425,7 @@ DISPLAY DICTIONARY.
 <p>Output from the run</p>
 
 <pre>
-===== Read &amp; Save main2.txt
+===== Read and Save main2.txt
 
  Data List
 +--+------+
@@ -446,7 +446,7 @@ DISPLAY DICTIONARY.
 |GENDER|       2|Nominal         |Input|    2|Left     |A2        |A2         |
 +------+--------+----------------+-----+-----+---------+----------+-----------+
 
-===== Read &amp; Save fix2.txt
+===== Read and Save fix2.txt
 
    Data List
 +--+------+---+
@@ -490,7 +490,7 @@ DISPLAY DICTIONARY.
 |ID|GENDER|AGE|
 +--+------+---+
 | 1|M     | 46|
-| 2|M     | 32| &lt;---was F in the original master data
+| 2|M     | 32| The GENDER was F in the original master data
 | 3|M     | 25|
 | 4|F     | 38|
 | 5|F     | 49|
@@ -550,7 +550,7 @@ verify your merges.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jun 20 13:08:47 EDT 2026
+Last Modified: Sat Jun 20 13:24:59 EDT 2026
 </p>
 </footer>
 </blockquote>
