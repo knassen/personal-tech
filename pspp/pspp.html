@@ -42,7 +42,7 @@ in an SPSS workflow. Where PSPP and SPSS differ, the differences are
 noted.</p>
 
 <h2 class="skip">&nbsp;</h2>
-<h3>About This Page</h3>
+<h2>About This Page</h2>
 
 <p>This page collects practical examples of PSPP syntax for PSPP
 and psppire. It focuses on commands people actually use and which
@@ -82,7 +82,7 @@ as a blank lines ending commands, but PSPP does not support those
 behaviors, so always end a command with a period.</p>
 
 <h2 class="skip">&nbsp;</h2>
-<h3>Using PSPP for Data Preparation and Analysis</h3>
+<h2>Using PSPP for Data Preparation and Analysis</h2>
 
 <p>Before we get into real data and statistical procedures, here’s
 a tiny example you can type into the <strong>psppire Syntax
@@ -215,7 +215,7 @@ system. On most systems it appears in the standard applications menu; on
 Unix‑like systems it can also be started from a terminal by running
 psppire.</p>
 
-<h3>psppire Syntax Editor - How to Open It</h3>
+<h2>psppire Syntax Editor - How to Open It</h2>
 
 <p>A new PSPP program can be created using using
 <strong>File-&gt;New-&gt;Syntax</strong> which opens an empty Syntax
@@ -235,7 +235,7 @@ Files should be saved if further work is planned.</p>
 <img src="pspp/paste_freq.png" alt="psppire paste button"> <p><strong>Paste 
     button</strong> in psppire in the <strong>Frequencies</strong> setup.</p>
 
-<h3>Opening Existing Files</h3>
+<h2>Opening Existing Files</h2>
 
 <p><strong>To Open Existing <code>.sps</code> files</strong>, use
 <strong>File-&gt;Open</strong>. The dialog displays PSPP data files and
@@ -252,7 +252,7 @@ File Menu</strong> in psppire from the File Menu in the Data Editor.</p>
 empty <code>.sps</code> file to exist beforehand; otherwise, 
 File-&gt;New-&gt;Syntax, is simpler.</p>
 
-<h3>About PSPP Syntax (Commands)</h3>
+<h2>About PSPP Syntax (Commands)</h2>
 
 <p>
 PSPP syntax uses commands terminated by periods. Commands may span
@@ -261,7 +261,7 @@ as block comments enclosed in <code>/*</code> and <code>*/</code>. Most
 data management and analysis operations can be expressed in this format,
 whether run from the command line or from psppire’s Syntax Editor.</p>
 
-<h3>Running Commands with pspp and the GUI (psppire)</h3>
+<h2>Running Commands with pspp and the GUI (psppire)</h2>
 
 <p>Commands can be run in the psppire <strong>Syntax Editor</strong>
 window via the <strong>Run</strong> menu there, either all the code in
@@ -289,7 +289,7 @@ not work for html, ps, or PDF output and will give an "unknown option
 are still running syntax. Next will be a full <code>GET DATA</code>
 example, including the commands to use and the output.</p>
 
-<h3>Reading Data With the GET DATA Command</h3>
+<h2>Reading Data With the GET DATA Command</h2>
 
 <p><strong>Note:</strong> psppire’s <strong>File Import</strong>
 wizard uses <code>GET DATA</code> internally; the generated command
@@ -366,7 +366,7 @@ data file must exist. <code>GET DATA</code> reads the data just like the
 <code>DATA LIST FREE</code> example below. <code>GET DATA</code> gives
 the same results.</p>
 
-<h3>Reading Data in Free Format</h3>
+<h2>Reading Data in Free Format</h2>
 
 <p>The following <strong>example</strong> demonstrates data processing
 in PSPP using the command‑line <code>pspp</code>. The same commands can
@@ -449,7 +449,7 @@ variables that change together, values that don't belong, and the
 general shape of the data. This can help you to understand how your
 analysis might be affected, for example.</p>
 
-<h3>Reading Data in Fixed Column Format</h3>
+<h2>Reading Data in Fixed Column Format</h2>
 
 <p><code>DATA LIST FIXED</code> reads variables from specific column
 locations in a text data file. As long as the text is aligned in
@@ -636,7 +636,7 @@ DISPLAY DICTIONARY.
 <p>The <code>LIST</code> output shows that the input values were read with two
 decimal places applied.</p>
 
-<h3>Reading Saved Files</h3>
+<h2>Reading Saved Files</h2>
 
 <p>Use <code>GET FILE=</code> to read PSPP system files and portable files. Use
 <code>GET DATA</code> to read CSV delimited files (see below).</p>
@@ -684,7 +684,7 @@ files, <code>/DELCASE</code> does not work with
 <code>/ARRANGEMENT=DELIMITED</code>. It does work with
 <code>/ARRANGEMENT= FIXED</code>.</p>
 
-<h3>File Handles in PSPP</h3>
+<h2>File Handles in PSPP</h2>
 
 <p><strong>File handles</strong> help reduce the typing of long path
 names in the program. Instead, a shorter file handle is defined and
@@ -734,7 +734,7 @@ CLOSE FILE HANDLE demo.
 <p>The CLOSE FILE HANDLE command is is an extension provided by PSPP and
 is specific to PSPP.</p>
 
-<h3>Reading Less Data for Testing: N OF CASES</h3>
+<h2>Reading Less Data for Testing: N OF CASES</h2>
 
 <p>When developing commands on a large data file, reading many thousands
 of cases just to test a few lines of code on a couple of values can waste
@@ -760,7 +760,7 @@ raw data files, testing recodes, <code>COMPUTE</code> statements,
 checking variable formats, verifying merges, and building commands
 incrementally.</p>
 
-<h3>Selecting Data for Analysis: SELECT IF</h3>
+<h2>Selecting Data for Analysis: SELECT IF</h2>
 
 <p><code>SELECT IF</code> is used to select cases for analysis or
 testing. Cases that are not selected are <strong>removed from the active
@@ -787,7 +787,7 @@ covered in several later sections.</p>
 <p>&nbsp;</p>
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
-<h3>Notes and Limitations</h3>
+<h2>Notes and Limitations</h2>
 
 <ul>
       <li>PSPP does not yet support everything SPSS does. Software should be
@@ -843,7 +843,7 @@ real datasets and larger projects. psppire is introduced briefly above
 so new users can get started; its detailed behavior and limitations are
 covered in several later sections.</p>
 
-<h3>Recoding Variables using RECODE</h3>
+<h2>Recoding Variables using RECODE</h2>
 
 <p>The <code>RECODE</code> command can be used to change values in a
 variable or create new values in a new variable.</p>
@@ -935,7 +935,7 @@ it easy to confirm which variables are consecutive before using
 numeric to string coding.  Also string to string and numeric to
 numeric coding.</p>
 
-<h3>Using COMPUTE to Create Values</h3>
+<h2>Using COMPUTE to Create Values</h2>
 
 <p><code>COMPUTE</code> creates a new variable or replaces the values
 of an existing one. It is used for simple arithmetic, scale scores, or
@@ -962,7 +962,7 @@ using system variables like $CASENUM, creating scale scores with
 arithmetic, and using functions inside a transformation. Most PSPP
 transformations follow one of these forms.</p>
 
-<h3>PSPP Function Examples</h3>
+<h2>PSPP Function Examples</h2>
 
 <p>PSPP has many functions that can be used to work on data. Here
 are five that are used frequently.</p>
@@ -1014,7 +1014,7 @@ transformations. Only a few were shown here; the full list is in the
 <a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
 manual,</a> which is also linked at the end of this page.</p>
 
-<h3>Exporting and Saving PSPP Data (CSV, POR, SAV)</h3>
+<h2>Exporting and Saving PSPP Data (CSV, POR, SAV)</h2>
 
 <p>
 PSPP can export data in several formats using commands, which is the
@@ -1061,7 +1061,7 @@ data directly through its File-&gt;Export dialog, which provides a subset
 of the formats available in PSPP commands. The following section describes
 psppire itself in more detail.</p>
 
-<h3>psppire: The PSPP Graphical Interface</h3>
+<h2>psppire: The PSPP Graphical Interface</h2>
 
 <p>Many PSPP users prefer <strong>psppire</strong>, the graphical 
 interface that resembles the SPSS Data Editor. psppire is useful for data 
@@ -1086,7 +1086,7 @@ only the commands for which dialogs exist; PSPP commands support many
 additional commands and options (although any PSPP commands can be used
 in psppire's Syntax Editor).</p>
 
-<h3>psppire and File Handles vs. Rerunning Programs</h3>
+<h2>psppire and File Handles vs. Rerunning Programs</h2>
 
 <p>psppire keeps <code>FILE HANDLE</code> definitions for the duration
 of the session. If a file handle is defined via commands and then the
@@ -1108,7 +1108,7 @@ CLOSE FILE HANDLE out.
 <p>Closing the file handles prevents the “handle already in use” error and
 allows rerunning the commands in psppire without restarting the application.</p>
 
-<h3>psppire Export Formats</h3>
+<h2>psppire Export Formats</h2>
 
 <p>psppire can export the contents of the Output window in several
 formats.  Only the formats shown in the File-&gt;Export menu are
@@ -1117,7 +1117,7 @@ export format is determined by the output file extension entered in
 the dialog. For example, entering <strong>"myfile.pdf"</strong> in the
 export dialog causes psppire to generate a PDF file.</p>
 
-<h3>Rich / Page‑Description Formats (cairo‑based)</h3>
+<h2>Rich / Page‑Description Formats (cairo‑based)</h2>
 
 <p>
 These preserve layout, fonts, borders, and the exact appearance of the
@@ -1132,7 +1132,7 @@ Output window.</p>
         format; editable in tools such as Inkscape.</li>
 </ul>
 
-<h3>Structured / Document Formats</h3>
+<h2>Structured / Document Formats</h2>
 
 <p>These formats preserve tables and structure, suitable for editing or
 further processing.</p>
@@ -1145,7 +1145,7 @@ further processing.</p>
     <li><strong>SPSS Viewer (.spv)</strong> — Compatible with SPSS Viewer applications.</li>
 </ul>
 
-<h3>Plain Data Formats</h3>
+<h2>Plain Data Formats</h2>
 
 <p>These formats provide minimal formatting and are useful for
 scripting, data interchange or raw text.</p>
@@ -1156,7 +1156,7 @@ scripting, data interchange or raw text.</p>
     <li><strong>Comma‑separated values (.csv)</strong> — For exporting data tables.</li>
 </ul>
 
-<h3>Unsupported Formats</h3>
+<h2>Unsupported Formats</h2>
 
 <p>Formats not shown in the File-&gt;Export menu are not implemented in the
 current version of psppire (or the one being used). Examples include:</p>
@@ -1176,11 +1176,13 @@ current version of psppire (or the one being used). Examples include:</p>
     <li>Use <strong>CSV</strong> when exporting tables for use in other software.</li>
 </ul>
 
-<h3>Merging Files in PSPP</h3>
+<h2>Merging Files in PSPP</h2>
 
-<p>PSPP supports several methods for combining datasets, including ADD FILES, 
-MATCH FILES, and UPDATE. A complete set of examples and notes is available on 
-the pspp merge page: <a href="pspp/pspp_merge.html">Merging Files in PSPP</a>.</p>
+<p>PSPP supports several methods for combining datasets,
+including ADD FILES, MATCH FILES, and UPDATE. A complete
+set of examples and notes is available on the pspp merge
+page: <a href="pspp/pspp_merge.html"><strong>Merging Files in
+PSPP</strong></a>.</p>
 
 <h3>Analysis of Data with PSPP</h3>
 
@@ -1190,7 +1192,7 @@ and will be used to add more analysis sections.</p>
 
 <h3>APPENDIX</h3>
 
-<h3><strong>Further Reading</strong></h3>
+<h2><strong>Further Reading</strong></h2>
 
 <p>The <a href="https://www.gnu.org/software/pspp/manual/html_node/index.html">GNU
 PSPP Web-Based Manual</a>. This is the authoritative file.  If it's
@@ -1202,7 +1204,7 @@ when exploring options available in the psppire menus.</p>
 user manual</a> provides the reference for all commands, functions, and
 procedures available in PSPP. </p>
 
-<h3><strong>Installing PSPP</strong></h3>
+<h2><strong>Installing PSPP</strong></h2>
 
 <p>PSPP is at version 2.1.1 currently and after several important
 bug fixes (file handle close, writing portable files, and reading
@@ -1240,7 +1242,7 @@ programs.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jun 19 19:29:29 EDT 2026
+Last Modified: Sat Jun 20 13:37:47 EDT 2026
 </p>
 </footer>
 </blockquote>
