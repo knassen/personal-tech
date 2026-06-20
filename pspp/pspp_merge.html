@@ -340,6 +340,7 @@ the <code>BY</code> variables to ensure proper matching.</p>
 file. The two commands serve different purposes.</p>
 
 <p>main2.txt master file</p>
+
 <pre>
 1  
 2 F
@@ -348,6 +349,7 @@ file. The two commands serve different purposes.</p>
 </pre>
 
 <p>fix2.txt transaction file<p>
+
 <pre>
 1 M 46
 2 F 32
@@ -357,6 +359,7 @@ file. The two commands serve different purposes.</p>
 </pre>
 
 <p>Update example code</p>
+
 <pre>
 ECHO '===== Read &amp; Save main2.txt'.
 
@@ -416,9 +419,11 @@ ECHO '====== List updated data'.
 LIST.
 
 DISPLAY DICTIONARY.
+
 </pre>
 
 <p>Output from the run</p>
+
 <pre>
 ===== Read &amp; Save main2.txt
 
@@ -485,7 +490,7 @@ DISPLAY DICTIONARY.
 |ID|GENDER|AGE|
 +--+------+---+
 | 1|M     | 46|
-| 2|M     | 32| &gt;---was F in the original master data
+| 2|M     | 32| &lt;---was F in the original master data
 | 3|M     | 25|
 | 4|F     | 38|
 | 5|F     | 49|
