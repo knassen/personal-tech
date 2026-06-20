@@ -225,8 +225,9 @@ a transaction file.</p>
 
 <h3>ADD FILES</h3>
 
-<p>ADD FILES adds data sets vertically. It can combine multiple datasets.
-No BY statement is needed. If it is used it enforces sorting of the dataset.</p>
+<p><code>ADD FILES</code> adds data sets vertically. It can combine
+multiple datasets.  No BY statement is needed. If it is used it enforces
+sorting of the dataset.</p>
 
 <p>The following example shows two small data files combined into
 one larger file. It also illustrates sorting cases.
@@ -319,8 +320,8 @@ display dictionary.
 ╰────┴────────┴─────────────────┴─────┴─────┴─────────┴────────────┴────────────╯
 </pre>
 
-<p>The output shows that ADD FILES stacked file1 (4 cases) and file2 (3
-cases) into an active data set that has 7 cases.
+<p>The output shows that <code>ADD FILES</code> stacked file1 (4 cases)
+and file2 (3 cases) into an active data set that has 7 cases.
 
 <h3>UPDATE</h3>
 
@@ -505,10 +506,11 @@ from the transaction file. ID number 5 was added because it appeared
 only in the transaction file, and the AGE variable was added because it
 existed only in the transaction file.</p>
 
-<p>This makes UPDATE good for keeping records of transactions that 
-change over time. For example, a club member file can be updated each
-month to add new members, update information for existing members, and 
-incorporate new variables as they are introduced.</p>
+<p>This makes <code>UPDATE</code> good for keeping records of
+transactions that change over time. For example, a club membership file
+can be updated each month to add new members, dropped members can be
+removed or flagged, and existing members can have their information
+updated.</p>
 
 <p><strong>A Note About Copy-and-Paste Merging:</strong></p>
 
@@ -538,7 +540,7 @@ verify your merges.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jun 20 12:14:04 EDT 2026
+Last Modified: Sat Jun 20 12:18:25 EDT 2026
 </p>
 </footer>
 </blockquote>
