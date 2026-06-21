@@ -555,7 +555,7 @@ BEGIN DATA
 3  88  5 3.6 1 3 22
 3  85  5 3.5 1 3 21
 END DATA.
-
+LIST.
 * Save the data.
 SAVE OUTFILE='example2.sav'.
 
@@ -567,6 +567,20 @@ ONEWAY score BY group
 
 <pre>
 Reading free-form data from INLINE.
+                 Data List
++-----+-----+-----+----+------+-----+-----+
+|group|score|hours| gpa|passed|major| age |
++-----+-----+-----+----+------+-----+-----+
+| 1.00|72.00| 3.00|2.80|  1.00| 1.00|19.00|
+| 1.00|75.00| 4.00|3.00|  1.00| 1.00|20.00|
+| 1.00|68.00| 2.00|2.50|   .00| 1.00|18.00|
+| 2.00|81.00| 5.00|3.40|  1.00| 2.00|21.00|
+| 2.00|79.00| 4.00|3.20|  1.00| 2.00|22.00|
+| 2.00|74.00| 3.00|3.00|   .00| 2.00|20.00|
+| 3.00|90.00| 6.00|3.80|  1.00| 3.00|23.00|
+| 3.00|88.00| 5.00|3.60|  1.00| 3.00|22.00|
+| 3.00|85.00| 5.00|3.50|  1.00| 3.00|21.00|
++-----+-----+-----+----+------+-----+-----+
 
 +--------+------+
 |Variable|Format|
@@ -579,7 +593,6 @@ Reading free-form data from INLINE.
 |major   |F8.0  |
 |age     |F8.0  |
 +--------+------+
-
                                   Descriptives
 +-----------+-+-----+-----------+-------+---------------------+-------+-------+
 |           | |     |           |       |    95% Confidence   |       |       |
@@ -627,6 +640,83 @@ that the group means are significantly different (p=0.003). Tukey post
 hoc comparisons indicate that family 1 and 3 differ signifcantly as do
 family 2 and 3. But family 1 and 2 do not differ significantly.</p>
 
+<h3>How to Run a Oneway Analysis of Variance (GLM)</h3>
+
+<p>Another way to run a Oneway Analysis of Variance is with the
+<code>GLM</code> procedure. <code>GLM</code> stands for <em>General Linear
+Model</em>. For a single factor the model is the same as for the <code>ONEWAY</code> command.
+<code>GLM</code> doesn't have all the extra statistics and comparisons,
+though.</p>
+
+<pre>
+DATA LIST LIST /group score hours gpa passed major age.
+BEGIN DATA
+1  72  3 2.8 1 1 19
+1  75  4 3.0 1 1 20
+1  68  2 2.5 0 1 18
+2  81  5 3.4 1 2 21
+2  79  4 3.2 1 2 22
+2  74  3 3.0 0 2 20
+3  90  6 3.8 1 3 23
+3  88  5 3.6 1 3 22
+3  85  5 3.5 1 3 21
+END DATA.
+
+LIST.
+
+* Save the data.
+SAVE OUTFILE='example2.sav'.
+
+GLM score BY group
+  /DESIGN = group.
+EXECUTE.            
+</pre>
+
+<pre>
+Reading free-form data from INLINE.                                                                                     
++--------+------+
+|Variable|Format|
++--------+------+
+|group   |F8.0  |
+|score   |F8.0  |
+|hours   |F8.0  |
+|gpa     |F8.0  |
+|passed  |F8.0  |
+|major   |F8.0  |
+|age     |F8.0  |
++--------+------+
+                 Data List
++-----+-----+-----+----+------+-----+-----+
+|group|score|hours| gpa|passed|major| age |
++-----+-----+-----+----+------+-----+-----+
+| 1.00|72.00| 3.00|2.80|  1.00| 1.00|19.00|
+| 1.00|75.00| 4.00|3.00|  1.00| 1.00|20.00|
+| 1.00|68.00| 2.00|2.50|   .00| 1.00|18.00|
+| 2.00|81.00| 5.00|3.40|  1.00| 2.00|21.00|
+| 2.00|79.00| 4.00|3.20|  1.00| 2.00|22.00|
+| 2.00|74.00| 3.00|3.00|   .00| 2.00|20.00|
+| 3.00|90.00| 6.00|3.80|  1.00| 3.00|23.00|
+| 3.00|88.00| 5.00|3.60|  1.00| 3.00|22.00|
+| 3.00|85.00| 5.00|3.50|  1.00| 3.00|21.00|
++-----+-----+-----+----+------+-----+-----+
+
+                  Tests of Between-Subjects Effects
++---------------+-----------------------+--+-----------+-------+----+
+|               |Type III Sum Of Squares|df|Mean Square|   F   |Sig.|
++---------------+-----------------------+--+-----------+-------+----+
+|Corrected Model|                 389.56| 2|     194.78|  18.45|.003|
+|Intercept      |               56327.11| 1|   56327.11|5336.25|.000|
+|group          |                 389.56| 2|     194.78|  18.45|.003|
+|Error          |                  63.33| 6|      10.56|       |    |   
+|Total          |               56780.00| 9|           |       |    |   
+|Corrected Total|                 452.89| 8|           |       |    |   
++---------------+-----------------------+--+-----------+-------+----+
+</pre>
+
+<p>GLM gives you the Intercept while ONEWAY doesn't display it. The
+results are the same as from ONEWAY on the same data.  F is 18.45 with 2
+and 6 degrees of freedom) and p=0.003.</p>
+
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
 data handling tips and more PSPP commands.</p>
 
@@ -642,7 +732,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jun 19 11:12:06 EDT 2026
+Last Modified: Sat Jun 20 20:15:52 EDT 2026
 </p>
 </footer>
 </blockquote>
