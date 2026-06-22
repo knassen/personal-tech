@@ -718,6 +718,57 @@ Reading free-form data from INLINE.
 results are the same as from ONEWAY on the same data.  F is 18.45 with 2
 and 6 degrees of freedom) and p=0.003.</p>
 
+<h3>RELIABILITY</h3>
+
+<p>The <code>RELIABILITY</code> command computes internal consistency
+statistics for a set of variables. PSPP currently supports Cronbach’s
+alpha and split‑half reliability. This example shows a simple alpha
+calculation for a group of items. The PSPP GUI does not have Reliability
+in its menus but the code can be run in the Syntax Editor or from the
+command line.</p>
+
+<p>PSPP Code:</p>
+<pre>
+SET FORMAT=F8.5.
+SET WIDTH=132
+    /LENGTH=59
+    /MXLOOPS=100
+    /RESULTS=BOTH.
+TITLE 'Reliability Analysis'.
+
+GET FILE='study.sys'.
+
+RELIABILITY /VARIABLES=FEELRUSH TO FEELSMAL.
+
+FINISH.
+</pre>
+
+<p>Output:</p>
+<pre>
+Scale: ANY                                                                                                              
+
+Case Processing Summary
++--------+--+-------+
+|Cases   | N|Percent|
++--------+--+-------+
+|Valid   |93|  93.9%|
+|Excluded| 6|   6.1%|
+|Total   |99| 100.0%|
++--------+--+-------+
+
+    Reliability Statistics
++----------------+----------+
+|Cronbach's Alpha|N of Items|
++----------------+----------+
+|          .84949|        20| 
++----------------+----------+
+</pre>
+
+<p>PSPP’s reliability procedure provides a case summary and
+Cronbach’s alpha for the specified variables. This is sufficient for
+checking basic internal consistency in most datasets.</p>
+
+
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
 data handling tips and more PSPP commands.</p>
 
@@ -733,7 +784,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jun 20 20:15:52 EDT 2026
+Last Modified: Sun Jun 21 20:19:14 EDT 2026
 </p>
 </footer>
 </blockquote>
