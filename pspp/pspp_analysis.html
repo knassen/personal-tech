@@ -766,8 +766,163 @@ Case Processing Summary
 
 <p>PSPP’s reliability procedure provides a case summary and
 Cronbach’s alpha for the specified variables. This is sufficient for
-checking basic internal consistency in most datasets.</p>
+checking basic internal consistency in most datasets. A high value
+of Cronback's alpha means the items are correlated, but not
+necessarily that the scale is valid or meaningful.
 
+</p>
+
+<p>T-TEST</p>
+
+<p>The T-TEST procedure compares means between one or two groups or
+between two related measurements. PSPP supports one-sample,
+independent samples, and paired-samples T-tests.</p>
+
+<h3>Three Examples of T-test</h3>
+
+<p>Data:
+<pre>
+group  score  pretest  posttest
+1      42     40       48
+1      55     52       58
+1      47     45       50
+2      60     58       62
+2      65     63       68
+2      70     67       72
+</pre>
+
+<p>Code:</p>
+<p><strong>One-sample T-test</strong></p>
+<pre>
+T-TEST
+  /TESTVAL = 50
+  /VARIABLES = score.
+
+T-TEST
+  /GROUPS = group(1 2)
+  /VARIABLES = score.
+
+T-TEST
+  /PAIRS = pretest WITH posttest.
+</pre>
+
+<p>Output:</p>
+<pre>
+DATA LIST LIST /group score pretest posttest.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│group   │F8.0  │
+│score   │F8.0  │
+│pretest │F8.0  │
+│posttest│F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+ 1      42     40       48
+ 1      55     52       58
+ 1      47     45       50
+ 2      60     58       62
+ 2      65     63       68
+ 2      70     67       72
+END DATA.
+LIST.
+           Data List
+╭─────┬─────┬───────┬────────╮
+│group│score│pretest│posttest│
+├─────┼─────┼───────┼────────┤
+│ 1.00│42.00│  40.00│   48.00│
+│ 1.00│55.00│  52.00│   58.00│
+│ 1.00│47.00│  45.00│   50.00│
+│ 2.00│60.00│  58.00│   62.00│
+│ 2.00│65.00│  63.00│   68.00│
+│ 2.00│70.00│  67.00│   72.00│
+╰─────┴─────┴───────┴────────╯
+
+T-TEST
+  /TESTVAL = 50
+  /VARIABLES = score.
+          One-Sample Statistics
+╭─────┬─┬─────┬──────────────┬─────────╮
+│     │N│ Mean│Std. Deviation│S.E. Mean│
+├─────┼─┼─────┼──────────────┼─────────┤
+│score│6│56.50│         10.67│     4.36│
+╰─────┴─┴─────┴──────────────┴─────────╯
+                                      One-Sample Test
+╭─────┬──────────────────────────────────────────────────────────────────────────────────╮
+│     │                                  Test Value = 50                                 │
+│     ├────┬──┬───────────────┬───────────────┬──────────────────────────────────────────┤
+│     │    │  │               │               │ 95% Confidence Interval of the Difference│
+│     │    │  │               │               ├─────────────────────┬────────────────────┤
+│     │  t │df│Sig. (2-tailed)│Mean Difference│        Lower        │        Upper       │
+├─────┼────┼──┼───────────────┼───────────────┼─────────────────────┼────────────────────┤
+│score│1.49│ 5│           .196│           6.50│                -4.70│               17.70│
+╰─────┴────┴──┴───────────────┴───────────────┴─────────────────────┴────────────────────╯
+</pre>
+
+<p><strong>Independent Samples T-Test</strong></p>
+<pre>
+T-TEST
+  /GROUPS = group(1 2)
+  /VARIABLES = score.
+
+               Group Statistics
+╭───────────┬─┬─────┬──────────────┬─────────╮
+│      Group│N│ Mean│Std. Deviation│S.E. Mean│
+├───────────┼─┼─────┼──────────────┼─────────┤
+│score 1.00 │3│48.00│          6.56│     3.79│
+│      2.00 │3│65.00│          5.00│     2.89│
+╰───────────┴─┴─────┴──────────────┴─────────╯
+                                                                                Independent Samples Test
+╭─────────────────────────────────┬────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                 │ Levene's Test for Equality of Variances│                                        T-Test for Equality of Means                                       │
+│                                 ├──────────────────┬─────────────────────┼─────┬────┬───────────────┬───────────────┬─────────────────────┬──────────────────────────────────────────┤
+│                                 │                  │                     │     │    │               │               │                     │ 95% Confidence Interval of the Difference│
+│                                 │                  │                     │     │    │               │               │                     ├─────────────────────┬────────────────────┤
+│                                 │         F        │         Sig.        │  t  │ df │Sig. (2-tailed)│Mean Difference│Std. Error Difference│        Lower        │        Upper       │
+├─────────────────────────────────┼──────────────────┼─────────────────────┼─────┼────┼───────────────┼───────────────┼─────────────────────┼─────────────────────┼────────────────────┤
+│score Equal variances assumed    │               .29│                 .621│-3.57│4.00│           .023│         -17.00│                 4.76│               -30.22│               -3.78│
+│      Equal variances not assumed│                  │                     │-3.57│3.74│           .026│         -17.00│                 4.76│               -30.59│               -3.41│
+╰─────────────────────────────────┴──────────────────┴─────────────────────┴─────┴────┴───────────────┴───────────────┴─────────────────────┴─────────────────────┴────────────────────╯
+</pre>
+<p><strong>Paired Samples T-test</strong></p>
+<pre>
+T-TEST
+  /PAIRS = pretest WITH posttest.
+
+             Paired Sample Statistics
+╭───────────────┬─┬─────┬──────────────┬─────────╮
+│               │N│ Mean│Std. Deviation│S.E. Mean│
+├───────────────┼─┼─────┼──────────────┼─────────┤
+│Pair 1 pretest │6│54.17│         10.46│     4.27│
+│       posttest│6│59.67│          9.58│     3.91│
+╰───────────────┴─┴─────┴──────────────┴─────────╯
+          Paired Samples Correlations
+╭─────────────────────────┬─┬───────────┬────╮
+│                         │N│Correlation│Sig.│
+├─────────────────────────┼─┼───────────┼────┤
+│Pair 1 pretest &amp; posttest│6│       .994│.000│
+╰─────────────────────────┴─┴───────────┴────╯
+                                                      Paired Samples Test
+╭─────────────────────────┬─────────────────────────────────────────────────────────────────────────┬─────┬──┬───────────────╮
+│                         │                            Paired Differences                           │     │  │               │
+│                         ├─────┬──────────────┬─────────┬──────────────────────────────────────────┤     │  │               │
+│                         │     │              │         │ 95% Confidence Interval of the Difference│     │  │               │
+│                         │     │              │         ├─────────────────────┬────────────────────┤     │  │               │
+│                         │ Mean│Std. Deviation│S.E. Mean│        Lower        │        Upper       │  t  │df│Sig. (2-tailed)│
+├─────────────────────────┼─────┼──────────────┼─────────┼─────────────────────┼────────────────────┼─────┼──┼───────────────┤
+│Pair 1 pretest - posttest│-5.50│          1.38│      .56│                -6.95│               -4.05│-9.77│ 5│           .000│
+╰─────────────────────────┴─────┴──────────────┴─────────┴─────────────────────┴────────────────────┴─────┴──┴───────────────╯
+</pre>
+
+<p>The T‑test compares means and reports whether the observed difference
+is larger than what would be expected by chance. PSPP reports the
+t‑value, degrees of freedom, and the two‑tailed significance
+level (p‑value). A small p‑value indicates that the difference
+between means is unlikely to be due to sampling variation alone. For
+independent‑samples tests, PSPP also reports Levene’s test for
+equality of variances; use the appropriate row based on that result. For
+paired‑samples tests, the difference is computed within subjects.</p>
 
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
 data handling tips and more PSPP commands.</p>
