@@ -941,7 +941,9 @@ paired‑samples tests, the difference is computed within subjects.</p>
 based on several rules. One of the main things about ranking values
 is how the tied values are handled.  The default method used by PSPP
 is the MEAN of the ranks that would be applied to the tied values if
-we didn't handle them another way (I'll call these the base ranks).</p>
+we didn't handle them another way. If the ranks assigned were 1, 2, 3, etc.
+without regard to tied values I'd call these the base ranks. They are
+not the final ranks, but an intermediate step to handling tied values.</p>
 
 <p>The following examples show how each tie-handling method works. Each
 method is demonstrated with the same data, and each produces a new
@@ -1107,6 +1109,15 @@ Data List
 │ 3.000│
 ╰──────╯
 </pre>
+
+<p>The <code>RANK</code> procedure is useful whenever the order of
+values matters more than their actual numeric size. Ranking is the
+foundation of many nonparametric tests (such as Mann–Whitney,
+Wilcoxon, Kruskal–Wallis, and Spearman correlations), and it is also
+helpful when the data are skewed, contain outliers, or are measured on
+an ordinal scale. By converting raw values into ranks, PSPP lets you
+analyze the relative positions of cases without assuming anything about
+the underlying distribution of the data.</p>
 
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
 data handling tips and more PSPP commands.</p>
