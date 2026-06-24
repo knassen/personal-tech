@@ -933,6 +933,176 @@ independent‑samples tests, PSPP also reports Levene’s test for
 equality of variances; use the appropriate row based on that result. For
 paired‑samples tests, the difference is computed within subjects.</p>
 
+<h2>RANK</h2>
+
+<p>The RANK procedure assigns an order number to values in a data set
+based on several rules. One of the main things about ranking values
+is how the tied values are handled.  The default method used by PSPP
+is the MEAN of the ranks that would be applied to the tied values if
+we didn't handle them another way (I'll call these the base ranks).</p>
+
+
+<p>In the first example below, the RANK procedure is run and the
+mean method is specified (it is the default if you don't specify
+any tie method).
+
+<pre>
+DATA LIST LIST /X .
+
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│X       │F8.0  │
+╰────────┴──────╯
+BEGIN DATA.
+ 0
+ 0
+ 0
+ 1
+ 1
+ 3
+END DATA.
+
+LIST.
+Data List
+╭────╮
+│  X │
+├────┤
+│ .00│
+│ .00│
+│ .00│
+│1.00│
+│1.00│
+│3.00│
+╰────╯
+RANK
+  VARIABLES = x
+  /RANK INTO r_mean
+
+  /TIES = MEAN .
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_mean      │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST /r_mean.
+  
+Data List
+╭──────╮
+│r_mean│
+├──────┤
+│ 2.000│
+│ 2.000│
+│ 2.000│
+│ 4.500│
+│ 4.500│
+│ 6.000│
+╰──────╯
+</pre>
+
+<p>0, 0, 0, 1, 1, 3 gives us base ranks of 1, 2, 3, 4, 5, 6.
+With 0, 0, 0. ranked as 1, 2, 3, the mean of the ranks is take.
+1+2+3/3=2. For the 1, 1 values the mean of the base ranks 4 and 5
+is 4.5. The resulting ranks should be 2, 2, 2, 4.5, 4.5, and 6.</p>
+
+<p>The LOW method for ties chooses the lowest base rank for a set of
+ties and applies it to the ties in that set of values.  0, 0, 0, 1, 1,
+3 with base ranks of 1, 2, 3, 4, 5, 6 gives 1, 1, 1, 4, 4, 6.  The low
+value of 1, 2, 3 is 1, and low value of 4, 5, is 4.</p>
+
+<pre>
+  RANK
+  VARIABLES = x
+  /RANK INTO r_low
+  /TIES = LOW.
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_low       │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST /r_low.
+
+Data List
+╭─────╮
+│r_low│
+├─────┤
+│1.000│
+│1.000│
+│1.000│
+│4.000│
+│4.000│
+│6.000│
+╰─────╯
+</pre>
+
+<p>The HIGH method for ties chooses the highes base rank for a set
+of ties. 0, 0, 0, 1, 1, 3 with base ranks of 1, 2, 3, 4, 5, 6 would
+result in 3, 3, 3, 5, 5, 6.</p>
+
+<pre>
+  RANK
+  VARIABLES = x
+  /RANK INTO r_high
+  /TIES = HIGH.
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_high      │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST /r_high.
+
+Data List
+╭──────╮
+│r_high│
+├──────┤
+│ 3.000│
+│ 3.000│
+│ 3.000│
+│ 5.000│
+│ 5.000│
+│ 6.000│
+╰──────╯
+</pre>
+
+<p>The CONDENSE method assigns consecutive ranks to distinct values
+ignoring base ranks entirely. All cases with the same value get the
+same rank. This results in a rank variable with no gaps in ranks
+and no fractional ranks.  0, 0, 0, 1, 1, 3 ranks to 1, 1, 1, 2, 2, 3.<p>
+
+<pre>
+  RANK
+  VARIABLES = x
+  /RANK INTO r_cond
+  /TIES = CONDENSE.
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_cond      │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST r_cond.
+
+Data List
+╭──────╮
+│r_cond│
+├──────┤
+│ 1.000│
+│ 1.000│
+│ 1.000│
+│ 2.000│
+│ 2.000│
+│ 3.000│
+╰──────╯
+</pre>
+
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
 data handling tips and more PSPP commands.</p>
 
