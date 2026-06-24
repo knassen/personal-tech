@@ -800,8 +800,10 @@ group  score  pretest  posttest
 2      70     67       72
 </pre>
 
+
+<h3><strong>One-sample T-test</strong></h3>
+
 <p>Code:</p>
-<p><h3><strong>One-sample T-test</strong></h3></p>
 <pre>
 T-TEST
   /TESTVAL = 50
@@ -869,7 +871,7 @@ T-TEST
 ╰─────┴────┴──┴───────────────┴───────────────┴─────────────────────┴────────────────────╯
 </pre>
 
-<p><h3><strong>Independent Samples T-Test</strong></h3></p>
+<h3><strong>Independent Samples T-Test</strong></h3>
 <pre>
 T-TEST
   /GROUPS = group(1 2)
@@ -894,7 +896,7 @@ T-TEST
 │      Equal variances not assumed│                  │                     │-3.57│3.74│           .026│         -17.00│                 4.76│               -30.59│               -3.41│
 ╰─────────────────────────────────┴──────────────────┴─────────────────────┴─────┴────┴───────────────┴───────────────┴─────────────────────┴─────────────────────┴────────────────────╯
 </pre>
-<p><h3><strong>Paired Samples T-test</strong></h3></p>
+<h3><strong>Paired Samples T-test</strong></h3>
 <pre>
 T-TEST
   /PAIRS = pretest WITH posttest.
@@ -1077,7 +1079,7 @@ Data List
 <p>The CONDENSE method assigns consecutive ranks to distinct values
 ignoring base ranks entirely. All cases with the same value get the
 same rank. This results in a rank variable with no gaps in ranks
-and no fractional ranks.  0, 0, 0, 1, 1, 3 ranks to 1, 1, 1, 2, 2, 3.<p>
+and no fractional ranks.  0, 0, 0, 1, 1, 3 ranks to 1, 1, 1, 2, 2, 3.</p>
 
 <pre>
   RANK
@@ -1127,7 +1129,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue Jun 23 19:57:17 EDT 2026
+Last Modified: Wed Jun 24 14:33:27 EDT 2026
 </p>
 </footer>
 </blockquote>
