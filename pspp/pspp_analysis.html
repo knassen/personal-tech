@@ -979,6 +979,11 @@ not the final ranks, but an intermediate step to handling tied values.</p>
 method is demonstrated with the same data, and each produces a new
 variable containing the ranks assigned under that method.</p>
 
+<p><strong>Workflow tip:</strong> PSPP does not allow multiple output
+variables in a single <code>/RANK INTO</code> clause. To produce ranks
+using different tie methods, run the RANK command multiple times, each
+with its own <code>/TIES=</code> setting.</p>
+
 <p>In the first example below, the RANK procedure is run and the
 mean method is specified (it is the default if you don't specify
 any tie method).</p>
@@ -1172,8 +1177,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jun 25 09:41:38 EDT 2026
-</p>
+Last Modified: Thu Jun 25 09:55:01 EDT 2026
 </footer>
 </blockquote>
 </main>
