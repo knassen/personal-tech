@@ -510,6 +510,26 @@ context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
 
+<h2>>Scatterplot of predicted vs residuals.</h2>
+<pre>
+** Use regression output variables (pred and resid) to check data.
+GRAPH
+  /SCATTERPLOT = pred1 WITH res1.
+</pre>
+<img src="pspp/scatterplot1.png" width="350"> 
+
+<p>All we see is a cloud of points and there is no trend or pattern
+This is what we'd like to see from residuals.</p>
+
+<p><strong>Note:</strong> psppire exports the entire output window, not
+individual plots. To save a plot for documentation or reports, use your
+system’s screenshot tool to capture just the graphic from the Output
+window.</p>
+
+<p><strong>Note:</strong> PSPP accepts the SPSS BIVAR keyword in
+scatterplots for compatibility, but it has no effect on the plot. PSPP
+always produces a simple bivariate scatterplot.</p>
+
 <p><a href="#top">Back to top</a></p>
 
 <p id="fstatistic"><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
@@ -1177,7 +1197,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jun 25 09:55:01 EDT 2026
+Last Modified: Thu Jun 25 11:19:44 EDT 2026
 </footer>
 </blockquote>
 </main>
