@@ -20,11 +20,28 @@
 
 <h1>Analyzing Data with PSPP</h1>
 <h2 class="skip">&nbsp;</h2>
+<hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+
+<h2 id="Top">INDEX</H2>
+<ul>
+  <li><a href="#descriptives">DESCRIPTIVES</a></li>
+  <li><a href="#frequencies">FREQUENCIES</a></li>
+  <li><a href="#crosstabs">CROSSTABS</a></li>
+  <li><a href="#regression">LINEAR REGRESSION</a></li>
+  <li><a href="#fstatistic">P-VALUE FOR F</a></li>
+  <li><a href="#oneway">ONEWAY</a></li>
+  <li><a href="#onewayglm">ONEWAY IN GLM</a></li>
+  <li><a href="#t-test">T‑TEST</a></li>
+  <li><a href="#reliability">RELIABILITY</a></li>
+  <li><a href="#rank">RANK</a></li>
+  <!--li><a href="#correlations">CORRELATIONS</a></li-->
+  <!--li><a href="#npar-tests">NPAR TESTS</a></li-->
+</ul>
 
 <p>Running descriptive statistics in one way to see the shape of your
 data.</p>
 
-<h3>How to Run Descriptive Statistics</h3>
+<h3 id="descriptives">DESCRIPTIVES>How to Run Descriptive Statistics</h3>
 
 <p>
 The <code>DESCRIPTIVES</code> command computes means, standard
@@ -91,7 +108,9 @@ selected variables as new.”.</p>
 <p>The <code>FORMAT</code> subcommand used by <code>DESCRIPTIVES</code>
 is accepted for backward compatibility but has no effect in PSPP.</p>
 
-<h3>How to Create Frequencies</h3>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="frequencies">How to Create Frequencies</h3>
 
 <p>
 The <code>FREQUENCIES</code> command produces counts and percentages for the
@@ -194,7 +213,9 @@ but it treats each variable separately. <code>CROSSTABS</code> and
 but they’re designed for examining relationships or producing
 formatted tables, not for quick single‑variable inspection.</p>
 
-<h3>How to Run a Cross-Tabulation</h3>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="crosstabs">How to Run a Cross-Tabulation</h3>
 
 <p>
 Cross-Tabulation or Crosstabs, also known as Contingency Tables,
@@ -386,7 +407,9 @@ predictors. PSPP’s <code>REGRESSION</code> command performs ordinary
 least squares estimation for this purpose. The following section shows a
 simple regression example and the standard output produced by PSPP.</p>
 
-<h3>How to Run a Linear Regression</h3>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="regression">How to Run a Linear Regression</h3>
 
 <p>
 The <code>REGRESSION</code> command fits an ordinary least squares model to a
@@ -490,7 +513,9 @@ context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
 
-<p><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
+<p><a href="#top">Back to top</a></p>
+
+<p id="fstatistic"><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
 
 <p>PSPP can be used to compute the p-value for the F-statistic. The
 CDF.F function returns the cumulative distribution function of the F
@@ -529,7 +554,9 @@ active dataset. Using <code>DO IF $CASENUM = 1</code> and listing only
 that case prints the computed value without producing output for all
 other cases.</p>
 
-<h3>How to Run a Oneway Analysis of Variance (ONEWAY)</h3>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="oneway">How to Run a Oneway Analysis of Variance (ONEWAY)</h3>
 
 <p>The <code>ONEWAY</code> procedure tests whether the mean of a
 numeric variable differs across two or more independent groups. It
@@ -650,7 +677,9 @@ that the group means are significantly different (p=0.003). Tukey post
 hoc comparisons indicate that family 1 and 3 differ signifcantly as do
 family 2 and 3. But family 1 and 2 do not differ significantly.</p>
 
-<h3>How to Run a Oneway Analysis of Variance (GLM)</h3>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="onewayglm">How to Run a Oneway Analysis of Variance (GLM)</h3>
 
 <p>Another way to run a Oneway Analysis of Variance is with the
 <code>GLM</code> procedure. <code>GLM</code> stands for <em>General Linear
@@ -727,7 +756,9 @@ Reading free-form data from INLINE.
 results are the same as from ONEWAY on the same data.  F is 18.45 with 2
 and 6 degrees of freedom) and p=0.003.</p>
 
-<h3>How to Run a RELIABILITY Analysis</h3>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="reliability">How to Run a RELIABILITY Analysis</h3>
 
 <p>The <code>RELIABILITY</code> command computes internal consistency
 statistics for a set of variables. PSPP currently supports Cronbach’s
@@ -777,11 +808,11 @@ Case Processing Summary
 Cronbach’s alpha for the specified variables. This is sufficient for
 checking basic internal consistency in most datasets. A high value
 of Cronback's alpha means the items are correlated, but not
-necessarily that the scale is valid or meaningful.
+necessarily that the scale is valid or meaningful.</p>
 
-</p>
+<p><a href="#top">Back to top</a></p>
 
-<h2>T-TEST</h2>
+<h2 id="t-test">T-TEST</h2>
 
 <p>The T-TEST procedure compares means between one or two groups or
 between two related measurements. PSPP supports one-sample,
@@ -935,7 +966,9 @@ independent‑samples tests, PSPP also reports Levene’s test for
 equality of variances; use the appropriate row based on that result. For
 paired‑samples tests, the difference is computed within subjects.</p>
 
-<h2>RANK</h2>
+<p><a href="#top">Back to top</a></p>
+
+<h2 id="rand">RANK</h2>
 
 <p>The RANK procedure assigns an order number to values in a data set
 based on several rules. One of the main things about ranking values
@@ -1121,6 +1154,8 @@ the underlying distribution of the data.</p>
 
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
 data handling tips and more PSPP commands.</p>
+
+<p><a href="#top">Back to top</a></p>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 <div class="pspp-index">   
