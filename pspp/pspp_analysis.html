@@ -510,12 +510,17 @@ context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
 
-<h2>>Scatterplot of predicted vs residuals.</h2>
+<h2>Scatterplot of predicted vs residuals.</h2>
+
+<p>Code:</p>
 <pre>
 ** Use regression output variables (pred and resid) to check data.
 GRAPH
   /SCATTERPLOT = pred1 WITH res1.
 </pre>
+
+<p>Output:</p>
+
 <img src="pspp/scatterplot1.png" alt="scatterplot of predicted vs residual" width="350"> 
 
 <p>All we see is a cloud of points and there is no trend or pattern
