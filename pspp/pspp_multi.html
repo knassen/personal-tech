@@ -22,13 +22,14 @@
 <h2 class="skip">&nbsp;</h2>
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
-<h3>How to Read Multi-Record Raw Data with PSPP</h3>
+<h3>What Are We Talking About Here?</h3>
 
 <p>Multi-record data is fixed-width raw data where each case
-spans multiple lines in a fixed sequence. This data format still
+spans multiple lines in a fixed sequence, potentially of different lengths,
+but always with different contents. This data format still
 appears in industries where legacy reporting systems, long-running
 surveys, or fixed-width exports are produced, or where efficient storage
-is important.
+is important.</p>
 
 <p>A common misconception is that PSPP lacks support for multi‑record
 data files. In reality, PSPP has long supported reading multi‑record data
@@ -38,11 +39,11 @@ the psppire graphical interface means users need to rely on the PSPP
 syntax engine. The code can be run in psppire in the Syntax Editor.</p>
 
 <p>In this context, “multi‑record” refers to classic SPSS/PSPP
-hierarchical files -- sometimes call multi-record case files or
+hierarchical files -- sometimes called multi-record case files or
 multi-type record files -- where a single case spans multiple physical
 records, each with a different layout. This is <em>not</em> the modern
 usage of “multi‑record” to mean “multiple rows per ID” in a CSV or
-database table, where every row has the same structure.</p>
+database table, where every row has the same structure or schema.</p>
 
 <p>Here are two screenshots of parts of the 1980 PUMS codebook showing
 two different record types (Person and Housing):</p>
@@ -61,7 +62,7 @@ two different record types (Person and Housing):</p>
 collect different types of data (age vs monthly rent, for example). They
 can be combined in a multi-record data file very easily</p>
 
-<p>PSPP can read this kind of multi-record data directly. This section
+<p>PSPP can read this kind of multi-record data directly. This page 
 shows how in two different examples. There is no need to preprocess this
 data to get it into a dataset.</p>
 
@@ -72,6 +73,42 @@ paper cards, which limited the width of the data. Instead of making each
 record wider, this format made it taller by spreading one case across
 multiple fixed-width cards in a defined sequence.</p>
 
+<h3>Comparing Rectangular and Multi-line Data Used Today</h3>
+<p>Here is what modern data looks like most of the time:</p>
+<pre>
+id,age,income,married
+101,34,55000,1
+102,29,48000,0
+103,41,72000,1
+</pre>
+
+<p>Or, if the data are multiple files by ID it might look like this:</p>
+<pre>
+id,visit,weight
+101,1,180
+101,2,178
+101,3,176
+</pre>
+
+<p>Multi-record hierarchical data (in the SPSS/PSPP meaning)</p>
+<pre>
+1John Smith      1985M
+2  55000  1
+3  2  1  0  3
+1Mary Johnson    1990F
+2  48000  0
+3  1  0  0  2
+</pre>
+
+<p>Record 1 = demographics</p>
+<p>Record 2 = income + marital status</p>
+<p>Record 3 = responses to 4 items</p>
+
+<p>This is not long format.</p>
+<p>This is not multiple rows per ID.</p>
+<p>This is hierarchical fixed-width data.</p>
+
+<h3>How to Read Multi-Record Raw Data with PSPP</h3>
 <p>This format stores a large number of variables and values in
 a compact form, spreading each case across multiple physical
 records. However, the format is not self-documenting. <strong>External
@@ -178,11 +215,11 @@ SAVE OUTFILE='studydat_wide.sav'.
 each slash (/). To skip two records, enter two slashes and end the
 command with a period.</p>
 
-<p>This code illustrates how <code>DATA LIST</code> (and <code>DATA LIST
-FIXED</code>) reads multi-record data. First, the <code>RECORDS=4</code>
-tells PSPP that each case consists of four records, even though in this
-case, two records are not used for analysis. The two records not being 
-read still need to be accounted for to keep the read in sync with the data.</p>
+<p>This code illustrates how <code>DATA LIST FIXED</code>) reads
+multi-record data. First, the <code>RECORDS=4</code> tells PSPP that
+each case consists of four records, even though in this case, two
+records are not used for analysis. The two records not being read still
+need to be accounted for to keep the read in sync with the data.</p>
 
 <p>Each record is defined by a <code>/N</code> and followed by variable
 names and their column locations on that record. Note that the column
@@ -237,7 +274,8 @@ FIXED when reading the data.</p>
 </pre>
 
 <p>The 2 cases that were originally 4 records of data have been turned
-into 2 cases of one row each.</p>
+into 2 cases of one row each. And you can see all the F1.0 formats that
+read them. One column for many variables.</p>
 
 <p>Moral to the story: <em>Yes, PSPP <strong>can</strong> read
 multi-record data</em>. PSPP has been able to do this via <code>DATA
