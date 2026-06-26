@@ -544,8 +544,11 @@ line of the INLINE data to determine the variable formats, which it
 reports. Then it reads the rest of the data.</p>
 
 <p><strong>4. DATA LIST FIXED uses 1-based column locations</strong>
-as opposed to <code>GET DATA</code> reading fixed data, which uses 
-0-based column locations.</p>
+as opposed to <code>GET DATA</code> reading fixed data, which uses
+0-based column locations. PSPP follows this convention internally, so
+the <code>DATA LIST FIXED</code> and <code>GET DATA</code> commands
+will not read the same bytes unless the column ranges are adjusted
+accordingly.</p>
 
 <h3>Reading Data with Implied Decimals</h3>
 
@@ -1182,9 +1185,9 @@ current version of psppire (or the one being used). Examples include:</p>
 
 <h2>Merging Files in PSPP</h2>
 
-<p>PSPP supports several methods for combining datasets,
-including ADD FILES, MATCH FILES, and UPDATE. A complete
-set of examples and notes is available on the pspp merge
+<p>PSPP supports several methods for combining or merging
+datasets, including ADD FILES, MATCH FILES, and UPDATE. A
+complete set of examples and notes is available on the pspp merge
 page: <a href="pspp/pspp_merge.html"><strong>Merging Files in
 PSPP</strong></a>.</p>
 
@@ -1192,7 +1195,8 @@ PSPP</strong></a>.</p>
 
 <p><a href="pspp/pspp_analysis.html">PSPP Analysis Commands</a> This
 page contains DESCRIPTIVES, FREQUENCIES, CROSSTABS, LINEAR REGRESSION,
-and ONEWAY. The plan is to add more analysis sections.</p>
+ONEWAY, and other pspp analysis commands. The plan is to add more
+analysis sections.</p>
 
 <h2>APPENDIX</h2>
 
