@@ -1026,11 +1026,130 @@ or quick diagnostics.</p>
 COMPUTE z = (score - MEAN(score)) / SD(score).
 </pre>
 
+<p><strong>6. <code>LAG()</code></strong> — The LAG function returns
+the value of a variable from the previous case.  It is commonly used for
+detecting group boundaries, computing running totals, and performing
+transformations that depend on earlier rows.</p>
+
+<pre>
+COMPUTE prev = LAG(variable).
+</pre>
+
+<p>LAG only works correctly when the data is sorted in the order you intend 
+to reference. It cannot be used after TEMPORARY.</p>
+
 <p><strong>Workflow Tip:</strong> PSPP includes hundreds of functions
 across math, statistics, strings, dates, logical tests, and data
 transformations. Only a few were shown here; the full list is in the
 <a href="https://www.gnu.org/software/pspp/manual/pspp.pdf">PSPP
 manual,</a> which is also linked at the end of this page.</p>
+
+<h2>Converting Stacked Data to Wide Format (Using LAG and AGGREGATE)</h2>
+
+<p>PSPP does not fully implement SPSS's <code>INPUT PROGRAM</code> for
+multi-record or stacked-record processing. In particular, <code>END
+CASE</code> does not reliably flush cases at group boundaries, and
+PSPP retains only the last flushed case. As a result, stacked to wide
+conversion cannot be done inside <code>INPUT PROGRAM</code>.</p>
+
+<p>However, PSPP can reshape stacked data using a combination of:</p>
+
+<ul>
+    <li>SORT CASES</li>
+    <li>LAG</li>
+    <li>AGGREGATE</li>
+</ul>
+
+<p>This method works for any number of stacked rows per conceptual
+case. The example below shows the basic pattern using two stacked rows
+per case.</p>
+
+<p>Example: Stacked Data (Two Rows Per Case)</p>
+<p>Suppose the stacked file contains two rows per case:</p>
+
+<p><strong>Data:</strong></p>
+<pre>
+  16 A 1
+  18 A 1
+  14 B 2
+  13 B 2
+</pre>
+  
+<p>The goal is to produce:</p>
+  
+<p><strong>Example Output:</strong></p>
+<pre> 
+  value1 value2 group groupn
+  16     18     A     1
+  14     13     B     2
+</pre>
+
+<p>Now the example will be run in pspp to show the real output.</p>
+  
+<p>Step 1 - Read the stacked data normally</p>
+  
+<p><strong>Code:</strong></p>
+  DATA LIST FILE='stacked.txt'
+   /value 1-3 group 4-5 (A) groupn 6-7.
+
+<p>Step 2 - Assign row numbers within each group</p>
+
+<code>rownum</code> identifies the position of each stacked row using
+the LAG() function.
+  
+<p><strong>Code:</strong></p>
+<pre>
+  SORT CASES BY groupn.
+  COMPUTE rownum = 1.
+  DO IF groupn = LAG(groupn).
+  COMPUTE rownum = LAG(rownum) + 1.
+  END IF.
+</pre>  
+
+<p>After this step, the data looks like:</p>
+  
+<p><strong>Output Data</strong></p>
+<pre>
+       value group groupn rownum
+       16    A     1      1
+       18    A     1      2
+       14    B     2      1
+       13    B     2      2
+</pre>
+  
+<p>Step 3 - Use AGGREGATE to pivot to wide format</p>
+<p>Define one output variable per stacked row:</p>
+  
+<p><strong>Code:</strong></p>
+<pre>
+   AGGREGATE
+      /OUTFILE='wide.sav'
+      /BREAK=groupn
+      /value1 = MAX(value) WHERE rownum = 1
+      /value2 = MAX(value) WHERE rownum = 2.
+</pre>
+          
+<p>This produces one wide case per group.</p>
+
+<p>For stacked schemas with more than two rows, add additional expressions:</p>
+  
+<p><strong>Code:</strong></p>
+<pre>
+    /value3 = MAX(value) WHERE rownum = 3
+    /value4 = MAX(value) WHERE rownum = 4
+    ...
+</pre>
+  
+<p><strong>Why this works</strong></p>
+<p><code>AGGREGATE</code> evaluates each expression once per group:</p>
+<p> &ndash; value1 gets the first stacked row
+<p> &ndash; value2 gets the second stacked row
+  
+<p>No temporary files are needed, there are no no MATCH FILES, and no
+INPUT PROGRAM code are required.</p>
+
+<p>This method scales cleanly and only needs to be done once; after the
+data is wide, you can proceed with analysis normally.</p>
 
 <h2>Exporting and Saving PSPP Data (CSV, POR, SAV)</h2>
 
