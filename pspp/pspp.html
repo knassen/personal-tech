@@ -1077,7 +1077,7 @@ per case.</p>
   
 <p>The goal is to produce:</p>
   
-<p><strong>Example Output:</strong></p>
+<p><strong>Expected Output:</strong></p>
 <pre> 
   value1 value2 group groupn
   16     18     A     1
@@ -1110,35 +1110,73 @@ the LAG() function.
   
 <p><strong>Output Data</strong></p>
 <pre>
-       value group groupn rownum
-       16    A     1      1
-       18    A     1      2
-       14    B     2      1
-       13    B     2      2
+         Data List
++-----+-----+------+------+
+|value|group|groupn|rownum|
++-----+-----+------+------+
+|   16| A   |     1|  1.00|
+|   18| A   |     1|  2.00|
+|   14| B   |     2|  1.00|
+|   13| B   |     2|  2.00|
++-----+-----+------+------+
 </pre>
   
 <p>Step 3 - Use AGGREGATE to pivot to wide format</p>
+
+<p><strong>Note:</strong> PSPP does not support SPSS’s
+<code>WHERE</code> clause inside <code>AGGREGATE</code> expressions.
+To aggregate conditionally, first filter the cases using <code>SELECT
+IF</code>, then run <code>AGGREGATE</code> on the filtered
+subset. Repeat as needed and combine results using <code>MATCH
+FILES</code>.</p>
+
 <p>Define one output variable per stacked row:</p>
   
 <p><strong>Code:</strong></p>
 <pre>
-   AGGREGATE
-      /OUTFILE='wide.sav'
-      /BREAK=groupn
-      /value1 = MAX(value) WHERE rownum = 1
-      /value2 = MAX(value) WHERE rownum = 2.
+TEMPORARY.
+SELECT IF rownum = 1.
+AGGREGATE
+ /OUTFILE='first.sav'
+ /BREAK=groupn
+ /value1 = MAX(value).
+
+LIST.
+
+TEMPORARY.
+SELECT IF rownum = 2.
+AGGREGATE
+ /OUTFILE='second.sav'
+ /BREAK=groupn
+ /value2 = MAX(value).
+
+LIST.
+
+MATCH FILES
+ /FILE='first.sav'
+ /FILE='second.sav'
+ /BY groupn.
+EXECUTE.
+
+LIST.
 </pre>
           
 <p>This produces one wide case per group.</p>
 
-<p>For stacked schemas with more than two rows, add additional expressions:</p>
-  
-<p><strong>Code:</strong></p>
+<p><strong>Output:</strong>
 <pre>
-    /value3 = MAX(value) WHERE rownum = 3
-    /value4 = MAX(value) WHERE rownum = 4
-    ...
+       Data List
++------+------+------+
+|groupn|value1|value2|
++------+------+------+
+|     1|    16|    18|
+|     2|    14|    13|
++------+------+------+
 </pre>
+
+<p>For stacked schemas with more than two rows, add additional expressions
+to select additional rownum values and more temporary data sets to use
+with <code>MATCH FILES</code>.</p>
   
 <p><strong>Why this works</strong></p>
 <p><code>AGGREGATE</code> evaluates each expression once per group:</p>
