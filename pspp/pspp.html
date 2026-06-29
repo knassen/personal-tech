@@ -1052,7 +1052,12 @@ CASE</code> does not reliably flush cases at group boundaries, and
 PSPP retains only the last flushed case. As a result, stacked to wide
 conversion cannot be done inside <code>INPUT PROGRAM</code>.</p>
 
-<p>However, PSPP can reshape stacked data using a combination of:</p>
+<p><strong>Note:</strong> Stacked data is <em>not</em> multi-record
+data. PSPP's RECORDS= and DATA LIST FIXED cannot process this data because
+ech record repeats the same variables. This section details another method
+for using pspp to convert this stacked data to wide format.</p>
+
+<p>PSPP can reshape stacked data using a combination of:</p>
 
 <ul>
     <li>SORT CASES</li>
@@ -1419,7 +1424,7 @@ programs.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jun 28 13:47:21 EDT 2026
+Last Modified: Mon Jun 29 10:25:18 EDT 2026
 </p>
 </footer>
 </blockquote>
