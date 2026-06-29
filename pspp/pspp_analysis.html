@@ -23,6 +23,7 @@
   <li><a href="#descriptives">DESCRIPTIVES</a></li>
   <li><a href="#frequencies">FREQUENCIES</a></li>
   <li><a href="#crosstabs">CROSSTABS</a></li>
+  <li><a href="#examine">EXAMINE</a></li>
   <li><a href="#regression">LINEAR REGRESSION</a></li>
   <li><a href="#fstatistic">P-VALUE FOR F</a></li>
   <li><a href="#oneway">ONEWAY</a></li>
@@ -402,7 +403,118 @@ CROSSTABS
 
 <p>While <code>CROSSTABS</code> summarizes how categories combine, many
 analyses require modeling a quantitative outcome using one or more
-predictors. PSPP’s <code>REGRESSION</code> command performs ordinary
+predictors. 
+
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="examine">EXAMINE - Checking Distribution Shape and Outliers</h3>
+
+<p>EXAMINE is PSPP's procedure for looking at the distribution of a
+variable before running an analysis. It provides summary statistics,
+normality tests, and optional plots such as boxplots. This is useful for
+deciding whether a parametric test (like a t-test) is appropriate or
+whether a nonparametric test might be better.</p>
+
+<h3>EXAMINE Notes</h3>
+
+<p>EXAMINE only analyzes numeric variables. String variables are
+ignored, and if not enough numeric values are supplied, EXAMINE produces
+only the N/Valid/Missing table.</p>
+
+<h3>EXAMINE Example</h3>
+
+<p>This example uses a data set created from a pspp function
+called code RV.NORMAL(mean,sd)</code> created in an <code>INPUT
+PROGRAM</code>. This should produce test data that is normally
+distributed with the defined mean and SD.</p>
+
+<p><code>EXAMINE</code> includes the Shapiro-Wilk normality test in
+its output. A small p-value indicates the variable is not normally
+distributed.</p>
+
+<pre>
+INPUT PROGRAM.
+    LOOP #i = 1 TO 50.
+        COMPUTE score = RV.NORMAL(50, 10).
+        END CASE.
+    END LOOP.
+END FILE.
+END INPUT PROGRAM.
+
+EXAMINE VARIABLES = score
+  /STATISTICS = DESCRIPTIVES
+  /PLOT = ALL.
+</pre>
+<pre>
+        Case Processing Summary
++-----+-------------------------------+
+|     |             Cases             |   
+|     +----------+---------+----------+
+|     |   Valid  | Missing |   Total  |
+|     +--+-------+-+-------+--+-------+
+|     | N|Percent|N|Percent| N|Percent|
++-----+--+-------+-+-------+--+-------+
+|score|50| 100.0%|0|    .0%|50| 100.0%|
++-----+--+-------+-+-------+--+-------+
+</pre>
+
+<p>
+See <img src="examine4-1.png" alt="Boxplot of Score" width="350"> for a chart.</p>
+
+<p>See <img src="examine4-2.png" alt="Histogram of Score" width="350"> for a chart.</p>
+
+<p>See <img src="examine4-3.png" alt="Normal Q-Q Plot for Score" width="350"> for a chart.</p>
+
+<p>See <img src="examine4-4.png" alt="Detrended Normal Q-Q Plot for Score" width="350"> for a chart.</p>
+
+<pre>
+                               Descriptives
++--------------------------------------------------+---------+----------+
+|                                                  |Statistic|Std. Error|
++--------------------------------------------------+---------+----------+
+|score Mean                                        |    50.22|      1.34|
+|     ---------------------------------------------+---------+----------+
+|      95% Confidence Interval for Mean Lower Bound|    47.53|          |   
+|                                       Upper Bound|    52.91|          |   
+|     ---------------------------------------------+---------+----------+
+|      5% Trimmed Mean                             |    50.60|          |   
+|     ---------------------------------------------+---------+----------+
+|      Median                                      |    52.22|          |   
+|     ---------------------------------------------+---------+----------+
+|      Variance                                    |    89.49|          |   
+|     ---------------------------------------------+---------+----------+
+|      Std. Deviation                              |     9.46|          |   
+|     ---------------------------------------------+---------+----------+
+|      Minimum                                     |    22.93|          |   
+|     ---------------------------------------------+---------+----------+
+|      Maximum                                     |    68.30|          |   
+|     ---------------------------------------------+---------+----------+
+|      Range                                       |    45.38|          |   
+|     ---------------------------------------------+---------+----------+
+|      Interquartile Range                         |    11.41|          |   
+|     ---------------------------------------------+---------+----------+
+|      Skewness                                    |     -.69|       .34|
+|     ---------------------------------------------+---------+----------+
+|      Kurtosis                                    |      .44|       .66|
++--------------------------------------------------+---------+----------+
+
+    Tests of Normality
++-----+-----------------+
+|     |   Shapiro-Wilk  |
+|     +---------+--+----+
+|     |Statistic|df|Sig.|
++-----+---------+--+----+
+|score|      .97|50| .19|
++-----+---------+--+----+
+</pre>
+
+<p>EXAMINE provides descriptive statistics and several diagnostic plots
+for the variable. The output includes the mean, standard deviation,
+normality test, and the associated charts. This example demonstrates the
+typical results when using /STATISTICS = DESCRIPTIVES and /PLOT = ALL on
+a reasonably sized dataset.</p>
+
+<p>Next, PSPP’s <code>REGRESSION</code> command performs ordinary
 least squares estimation for this purpose. The following section shows a
 simple regression example and the standard output produced by PSPP.</p>
 
@@ -1328,7 +1440,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jun 27 12:46:33 EDT 2026
+Last Modified: Mon Jun 29 15:52:07 EDT 2026
 </footer>
 </blockquote>
 </main>
