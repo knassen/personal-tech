@@ -419,7 +419,10 @@ whether a nonparametric test might be better.</p>
 
 <p>EXAMINE only analyzes numeric variables. String variables are
 ignored, and if not enough numeric values are supplied, EXAMINE produces
-only the N/Valid/Missing table.</p>
+only the N/Valid/Missing table. You may see "NaN" which stands for
+"Not a Number". That means the calculation could not be completed or
+came to a result that could not be displayed, for example, as a result
+of division by zero.</p>
 
 <h3>EXAMINE Example</h3>
 
@@ -459,13 +462,13 @@ EXAMINE VARIABLES = score
 </pre>
 
 <p>
-See <img src="examine4-1.png" alt="Boxplot of Score" width="350"> for a chart.</p>
+See examine4-1.png <img src="examine4-1.png" alt="Boxplot of Score" width="350"> for a chart.</p>
 
-<p>See <img src="examine4-2.png" alt="Histogram of Score" width="350"> for a chart.</p>
+<p>See examine4-2.png <img src="examine4-2.png" alt="Histogram of Score" width="350"> for a chart.</p>
 
-<p>See <img src="examine4-3.png" alt="Normal Q-Q Plot for Score" width="350"> for a chart.</p>
+<p>See examine4-3.png <img src="examine4-3.png" alt="Normal Q-Q Plot for Score" width="350"> for a chart.</p>
 
-<p>See <img src="examine4-4.png" alt="Detrended Normal Q-Q Plot for Score" width="350"> for a chart.</p>
+<p>See examine4-4.png <img src="examine4-4.png" alt="Detrended Normal Q-Q Plot for Score" width="350"> for a chart.</p>
 
 <pre>
                                Descriptives
@@ -508,11 +511,12 @@ See <img src="examine4-1.png" alt="Boxplot of Score" width="350"> for a chart.</
 +-----+---------+--+----+
 </pre>
 
-<p>EXAMINE provides descriptive statistics and several diagnostic plots
-for the variable. The output includes the mean, standard deviation,
-normality test, and the associated charts. This example demonstrates the
-typical results when using /STATISTICS = DESCRIPTIVES and /PLOT = ALL on
-a reasonably sized dataset.</p>
+<p><code>EXAMINE</code> provides descriptive statistics and several
+diagnostic plots for the variable. The output includes the mean,
+standard deviation, normality test, and the associated charts. This
+example demonstrates typical results when using <code>/STATISTICS =
+DESCRIPTIVES</code> and <code>/PLOT = ALL</code> on a reasonably sized
+dataset.</p>
 
 <p>Next, PSPP’s <code>REGRESSION</code> command performs ordinary
 least squares estimation for this purpose. The following section shows a
@@ -1440,7 +1444,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Jun 29 15:52:07 EDT 2026
+Last Modified: Mon Jun 29 16:32:36 EDT 2026
 </footer>
 </blockquote>
 </main>
