@@ -7,35 +7,35 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" 
          content="text/html; charset=utf-8">
-   <meta name="description" content="perl program cktb check for trailing blanks in text files">
-   <title>cktb -- Check files for trailing blanks (spaces, tabs) in a file</title>
+   <meta name="description" content="perl program cktb check for trailing whitespace in text files">
+   <title>cktb -- Check files for trailing whitespace (spaces, tabs) in a file</title>
 </head>
 <body>
 
 <blockquote>
-<h2>cktb -- Check for trailing blanks (spaces, tabs) in a file</h2>
+<h2>cktb -- Check for trailing whitespace (spaces, tabs) in a file</h2>
 <hr style="height: 2px; width: 100%; margin-left: 0px; margin-right: auto;">
 
 <a href="cktb.pl"><strong>cktb.pl</strong></a> is a Perl program which
-checks for trailing blanks (space or tabs) in a text file and reports
-the number found and the longest string of blanks found. This is useful
+checks for trailing whitespace (space or tabs) in a text file and reports
+the number found and the longest string of whitespace found. This is useful
 for data prep, scripting, and version control where you want clean copies
 of files.
 <p>
 This program was written because one place I worked didn't want any
 programs with spaces or tabs at the end of any line. So this program
 checks for that issue. It's easier to get a report where this issue is
-found than trying do it in your editor (although some editors can 
-find spaces at the end of the lines, like vim). If you can do that,
-more power to you. And if anyone thinks they've gotten rid of them 
-you can show them a report from this program.</p>
+found than trying do it in your editor (although some editors can find
+spaces at the end of the lines, like vim). If you can do that, more
+power to you. And if anyone thinks they've gotten rid of them you can
+show them a report from this program.</p>
 <p>
-Yes, it's a relatively simple program but you would not believe the number
-of times it proved that even though people did their best to get rid of
-trailing white space in their programs, there was still some there. A
-program like this makes all the difference in proving it. If you're a 
-programmer, that's something worth writing a program for! And others can
-use it to check their programs for trailing white space.</p>
+Yes, it's a relatively simple program but you would not believe the
+number of times it proved that even though people did their best to get
+rid of trailing white space in their programs, there was still some
+there. A program like this makes all the difference in proving it. If
+you're a programmer, that's something worth writing a program for! And
+others can use it to check their programs for trailing white space.</p>
 
 <ul>
     <li><a href="https://knassen.github.io/personal-tech/perl/cktbshow.html"><strong>Show cktb.pl code</strong></a></li>
@@ -49,7 +49,7 @@ use it to check their programs for trailing white space.</p>
         have run it under Cygwin on Windows, too).</li>
     <li>It is intended to scan through text files, in particular, programs, but
         could be used for other purposes.</li>
-    <li>The program only reports the locations of trailing blanks. It is left to
+    <li>The program only reports the locations of trailing whitespace. It is left to
         the user to remove them, if desired. (In theory, there shouldn't be many. If
         there are many lines like that, tell the programmer to go back and fix it 
         again)</li>
@@ -61,7 +61,7 @@ use it to check their programs for trailing white space.</p>
 where: <span style="color: #000080; font-family: monospace;"> -l </span>gives long output, 
 instead of a summary. If no filename is given, the help screen is provided.
 <p>
-For example, here is a file with some trailing white space and what the
+For example, here is a file with some trailing whitespace and what the
 report will show. I've marked the end of the lines with the vertical
 bars ("|") so you can see there is some white space of varying lengths
 on a few of the lines.</p>
