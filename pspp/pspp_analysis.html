@@ -25,7 +25,7 @@
   <li><a href="#crosstabs">CROSSTABS</a></li>
   <li><a href="#examine">EXAMINE</a></li>
   <li><a href="#regression">LINEAR REGRESSION</a></li>
-  <!--li><a href="#logistic">LOGISTIC REGRESSION</a></li--->
+  <!--li><a href="#logistic">LOGISTIC REGRESSION</a></li-->
   <li><a href="#fstatistic">P-VALUE FOR F</a></li>
   <li><a href="#oneway">ONEWAY</a></li>
   <li><a href="#onewayglm">ONEWAY IN GLM</a></li>
@@ -34,7 +34,7 @@
   <li><a href="#reliability">RELIABILITY</a></li>
   <li><a href="#rank">RANK</a></li>
   <li><a href="#correlations">CORRELATIONS</a></li>
-  <!--li><a href="#npar-tests">NPAR TESTS</a></li-->
+  <li><a href="#npar-tests">NPAR TESTS</a></li>
 </ul>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
@@ -529,7 +529,7 @@ regression example and the standard output produced by PSPP.</p>
 
 <p>
 The <code>REGRESSION</code> command fits an ordinary least squares model to a
-continuous dependent variable using one or more predictors. After checking
+continuous dependent variable using one or more numeric predictors. After checking
 the variables with <code>FREQUENCIES</code> and <code>CROSSTABS</code>,
 regression shows how the outcome relates to the predictors. PSPP provides
 the standard coefficients and model statistics used in OLS (ordinary least
@@ -1423,6 +1423,320 @@ during warmer months, so the relationship is driven by a third factor
 
 <p><a href="#top">Back to top</a></p>
 
+<h3 id="#npar-tests">NPAR TESTS</h3>
+
+<p>Nonparametric tests generally work on ranks rather than raw values,
+although some nonparametric procedures operate on counts, medians, or
+signs (such as the median or signs tests) instead. They make few 
+assumptions about the data distributions.</p>
+
+<p>PSPP includes exact methods for nonparametric tests when exact
+computation is feasible. Exact tests are useful for small samples where
+asymptotic approximations may not be reliable.</p>
+
+<p>The following examples show several commonly used nonparametric tests
+available in PSPP, including the Mann–Whitney, Wilcoxon signed‑rank,
+Kruskal–Wallis, and Median tests.</p>
+
+<h2>MANN-WHITNEY (M-W) Test (Two Independent Groups)</h2>
+
+<p><strong>Code:</strong></p>
+<pre>
+DATA LIST LIST /score group.
+BEGIN DATA
+12 1
+15 1
+18 1
+20 1
+14 2
+17 2
+19 2
+22 2
+END DATA.
+
+NPAR TESTS
+  /MANN-WHITNEY = score BY group(1, 2).
+</pre>
+
+<p><strong>Output:</strong></p>
+
+<pre>
+DATA LIST LIST /score group.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│score   │F8.0  │
+│group   │F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+12 1
+15 1
+18 1
+20 1
+14 2
+17 2
+19 2
+22 2
+END DATA.
+
+NPAR TESTS
+  /MANN-WHITNEY = score BY group(1, 2).
+                 Ranks
+╭───────────┬─┬─────────┬────────────╮
+│           │N│Mean Rank│Sum of Ranks│
+├───────────┼─┼─────────┼────────────┤
+│score 1.00 │4│     4.00│       16.00│
+│      2.00 │4│     5.00│       20.00│
+│      Total│8│         │            │
+╰───────────┴─┴─────────┴────────────╯
+                       Test Statistics
+╭─────┬──────────────┬──────────┬────┬──────────────────────╮
+│     │Mann-Whitney U│Wilcoxon W│  Z │Asymp. Sig. (2-tailed)│
+├─────┼──────────────┼──────────┼────┼──────────────────────┤
+│score│          6.00│     16.00│-.58│                  .564│
+╰─────┴──────────────┴──────────┴────┴──────────────────────╯
+</pre>
+
+<p>PSPP will report:</p>
+
+<p>The U statistic, the Z value, the asymptotic significance and,
+when requested using the <code>/EXACT</code> subcommand, the exact
+significance.</p>
+
+<p>A small p‑value indicates that the two groups differ in their
+distributions.</p>
+
+<h2>WILCOXON SIGNED-RANK (Matched Pairs)</h2>
+
+<p>The Wilcoxon signed‑rank test compares two related measurements
+from the same subjects. It is a nonparametric alternative to the
+paired‑samples t‑test.</p>
+
+<p><strong>Code:</strong></p>
+
+<pre>
+DATA LIST LIST /before after.
+BEGIN DATA
+12 15
+18 20
+14 17
+19 21
+16 18
+END DATA.
+
+NPAR TESTS
+  /WILCOXON = before WITH after (PAIRED).
+</pre>
+
+<p><strong>Output:</strong></p>
+
+<pre>
+DATA LIST LIST /before after.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│before  │F8.0  │
+│after   │F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+12 15
+18 20
+14 17
+19 21
+16 18
+END DATA.
+
+NPAR TESTS
+  /WILCOXON = before WITH after (PAIRED).
+                          Ranks
+╭─────────────────────────────┬─┬─────────┬────────────╮
+│                             │N│Mean Rank│Sum of Ranks│
+├─────────────────────────────┼─┼─────────┼────────────┤
+│before - after Negative Ranks│5│     3.00│       15.00│
+│               Positive Ranks│0│      NaN│         .00│
+│               Ties          │0│         │            │
+│               Total         │5│         │            │
+╰─────────────────────────────┴─┴─────────┴────────────╯
+            Test Statistics
+╭──────────────────────┬──────────────╮
+│                      │before - after│
+├──────────────────────┼──────────────┤
+│Z                     │         -2.07│
+│Asymp. Sig. (2-tailed)│          .038│
+╰──────────────────────┴──────────────╯
+</pre>
+
+<p>PSPP reports: </p>
+<ul>
+    <li>the Z statistic</li>
+    <li>the number of positive ranks, negative ranks, and ties</li>
+    <li>the sum of ranks and mean ranks for each direction</li>
+</ul>
+
+<p>PSPP reports the Z value, along with the mean ranks and sum of
+ranks for positive and negative differences.  In this example all
+differences are negative, so PSPP will show zero positive ranks and a
+nonzero sum of negative ranks. Exact significance values are available when
+requested using the /EXACT subcommand.</p>
+
+<p>A small p‑value indicates that the paired measurements differ
+systematically.</p>
+
+<h2>KRUSKAL-WALLIS</h2>
+
+<p>The Kruskal–Wallis test compares three or more independent groups
+using ranked data. It is a nonparametric alternative to one‑way ANOVA.</p>
+
+<pre>
+DATA LIST LIST /score group.
+BEGIN DATA
+12 1
+15 1
+18 1
+14 2
+17 2
+19 2
+20 3
+22 3
+24 3
+END DATA.
+</pre>
+
+<p><strong>Output:</strong></p>
+<pre>
+NPAR TESTS
+  /KRUSKAL-WALLIS = score BY group(1, 3).
+
+DATA LIST LIST /score group.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│score   │F8.0  │
+│group   │F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+12 1
+15 1
+18 1
+14 2
+17 2
+19 2
+20 3
+22 3
+24 3
+END DATA.
+
+NPAR TESTS
+  /KRUSKAL-WALLIS = score BY group(1, 3).
+            Ranks
+╭──────────────┬─┬─────────╮
+│              │N│Mean Rank│
+├──────────────┼─┼─────────┤
+│score     1.00│3│     3.00│
+│          2.00│3│     4.00│
+│          3.00│3│     8.00│
+│      Total   │9│         │
+╰──────────────┴─┴─────────╯
+  Test Statistics
+╭───────────┬─────╮
+│           │score│
+├───────────┼─────┤
+│Chi-Square │ 5.60│
+│df         │    2│
+│Asymp. Sig.│ .061│
+╰───────────┴─────╯
+</pre>
+
+<p>PSPP reports the Chi‑square statistic, the mean ranks for each
+group, and the asymptotic significance.  Exact significance values are
+available only when requested using the /EXACT subcommand.</p>
+
+<p>A small p‑value indicates that at least one group differs from the
+others in its distribution.</p>
+
+
+<h2>MEDIAN TEST</h2>
+
+<p>The Median test compares two independent groups by splitting the
+combined data at the overall median and testing whether the groups
+differ in how many observations fall above or below that median. It is a
+simple nonparametric alternative to the independent‑samples t‑test.</p>
+
+<p><strong>Code:</strong></p>
+<pre>
+DATA LIST LIST /score group.
+BEGIN DATA
+12 1
+15 1
+18 1
+20 1
+14 2
+17 2
+16 2
+16 2
+END DATA.
+NPAR TESTS
+  /MEDIAN = score BY group(1, 2).
+</pre>
+
+<p><strong>Output:</strong></p>
+<pre>
+DATA LIST LIST /score group.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│score   │F8.0  │
+│group   │F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+12 1
+15 1
+18 1
+20 1
+14 2
+17 2
+16 2
+16 2
+END DATA.
+NPAR TESTS
+  /MEDIAN = score BY group(1, 2).
+        Frequencies
+╭──────────────┬─────────╮
+│              │  group  │
+│              ├────┬────┤
+│              │1.00│2.00│
+├──────────────┼────┼────┤
+│score &gt; Median│   2│   1│
+│      ≤ Median│   2│   3│
+╰──────────────┴────┴────╯
+              Test Statistics
+╭─────┬─┬──────┬──────────┬──┬───────────╮
+│     │N│Median│Chi-Square│df│Asymp. Sig.│
+├─────┼─┼──────┼──────────┼──┼───────────┤
+│score│8│ 16.00│       .53│ 1│       .465│
+╰─────┴─┴──────┴──────────┴──┴───────────╯
+</pre>
+
+<p>PSPP reports:</p>
+<ul>
+    <li> the overall median</li>
+    <li> the counts above and below the median for each group</li>
+    <li> the Chi‑square statistic</li>
+    <li> the asymptotic significance</li>
+</ul>
+
+<p>Exact significance values are available only when requested using the
+/EXACT subcommand.</p>
+
+<p>A small p‑value indicates that the groups differ in how their
+values are distributed relative to the median.</p>
+
+<p><a href="#top">Back to top</a></p>
+
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
@@ -1446,7 +1760,7 @@ data handling tips and more PSPP commands.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Jul  1 10:38:10 EDT 2026
+Last Modified: Wed Jul  1 19:02:43 EDT 2026
 </footer>
 </blockquote>
 </main>
