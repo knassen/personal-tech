@@ -25,11 +25,12 @@
 <h3>What Are We Talking About Here?</h3>
 
 <p>Multi-record data is fixed-width raw data where each case
-spans multiple lines in a fixed sequence, potentially of different lengths,
-but always with different contents. This data format still
+spans MULTIPLE LINES in a fixed sequence, potentially of different lengths,
+but always WITH DIFFERENT CONTENTS. This data format still
 appears in industries where legacy reporting systems, long-running
 surveys, or fixed-width exports are produced, or where efficient storage
-is important.</p>
+is important. It's an ancient format used in the days of punched paper
+cards.</p>
 
 <p>A common misconception is that PSPP lacks support for multi‑record
 data files. In reality, PSPP has long supported reading multi‑record data
@@ -40,8 +41,8 @@ syntax engine. The code can be run in psppire in the Syntax Editor.</p>
 
 <p>In this context, “multi‑record” refers to classic SPSS/PSPP
 hierarchical files -- sometimes called multi-record case files or
-multi-type record files -- where a single case spans multiple physical
-records, each with a different layout. This is <em>not</em> the modern
+multi-type record files -- where a single case spans MULTIPLE PHYSICAL
+RECORDS, EACH WITH A DIFFERENT LAYOUT. This is <em>not</em> the modern
 usage of “multi‑record” to mean “multiple rows per ID” in a CSV or
 database table, where every row has the same structure or schema.
 It also has nothing to do with multiple response sets (MRSETS) which
@@ -441,7 +442,7 @@ values by hand to see where the read went wrong.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jun 28 13:21:50 EDT 2026
+Last Modified: Fri Jul  3 11:36:14 EDT 2026
 </p>
 </footer>
 </blockquote>
