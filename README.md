@@ -51,20 +51,25 @@ I have done most of things I set out to do.
   - I made an effort to get many of the pages indexed on google so
     they'll stand a better chance of showing up in searches.
 
-  - In early 2026, I started adding Python program that do what my Perl
+  - In early 2026, I started adding Python programs that do what my Perl
     programs do. There are three programs there now.
 
-  - Also in April 2026, I put up a PSPP page. PSPP is an SPSS
+  - Also in April 2026, I put up a PSPP page. PSPP is a free SPSS
     work-alike. I included plenty of examples, tips, and information.
     Also included are reading multi-record hierarchical files, merging
     files in PSPP, reading implied decimal data, computing a p-value for
     the F statistic, general usage, working around issues with DATA LIST
     FREE, and using GET DATA.
 
+    In June 2026, I split the main PSPP Page into 3 other pages:
+    pspp_analysis for analysis procedures, pspp_merge for showing how
+    to merge data files in pspp, pspp_multi for the multi-record
+    hierarchical data read information. This helped unconfuse google.
+
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
-ways to do things in SAS, vim, or unix/linux. I still use some of these
-programs.
+ways to do things in SAS, vim, pspp, python, perl, or unix/linux. 
+I still use some of these programs.
 
 
 
