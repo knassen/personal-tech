@@ -18,7 +18,11 @@ For a PSPP guide with code examples (DATA LIST, REGRESSION,
 CROSSTABS, multi-record data) and notes, and see: 
 https://knassen.github.io/personal-tech/pspp/pspp.html.
 
-I have done most of things I set out to do.
+### Feedback
+If you have ideas or corrections for any of the pages in this repository, please open an issue:
+https://github.com/knassen/personal-tech/issues
+
+Progress: I have done most of things I set out to do.
 
   - I've cleaned up most of the bad links and replaced them. Thankfully, 
     some of the old sites still exist in new locations.
