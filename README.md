@@ -22,7 +22,9 @@ https://knassen.github.io/personal-tech/pspp/pspp.html.
 If you have ideas or corrections for any of the pages in this repository, please open an issue:
 https://github.com/knassen/personal-tech/issues
 
-Progress: I have done most of things I set out to do.
+### Progress  
+
+I have done most of things I set out to do.
 
   - I've cleaned up most of the bad links and replaced them. Thankfully, 
     some of the old sites still exist in new locations.
