@@ -1081,12 +1081,14 @@ PSPP retains only the last flushed case. As a result, stacked to wide
 conversion cannot be done inside <code>INPUT PROGRAM</code>.</p>
 
 <p><strong>Note:</strong> Stacked data is <em>not</em> multi-record
-data. PSPP's RECORDS= and DATA LIST FIXED cannot process this data because
-each record repeats the same variables. This section details another method
-for using pspp to convert this stacked data format to wide format.</p>
+data. PSPP's <code>RECORDS=</code> and <code>DATA LIST FIXED</code>
+cannot process this data because each record repeats the same
+variables. This section details another method for using pspp to convert
+this stacked data format to wide format.</p>
 
-<p>For processing multi-record data, see <a
-href="https://knassen.github.io/personal-tech/pspp/pspp_multi.html">
+<p>For processing multi-record data with <code>DATA
+LIST FIXED</code> and <code>RECORDS=</code>, see 
+<a href="https://knassen.github.io/personal-tech/pspp/pspp_multi.html">
 pspp_multi.html on this site.</a>
 
 <p>PSPP can reshape stacked data using a combination of:</p>
@@ -1459,7 +1461,7 @@ programs. Use gmake in the build.</p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jul  3 11:45:46 EDT 2026
+Last Modified: Sat Jul  4 11:53:33 EDT 2026
 </p>
 </footer>
 </blockquote>
