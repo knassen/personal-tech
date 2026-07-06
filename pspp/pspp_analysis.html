@@ -23,21 +23,23 @@
   <li><a href="#descriptives">DESCRIPTIVES</a></li>
   <li><a href="#frequencies">FREQUENCIES</a></li>
   <li><a href="#crosstabs">CROSSTABS</a></li>
+  <li><a href="#correlations">CORRELATIONS</a></li>
   <li><a href="#examine">EXAMINE</a></li>
-  <li><a href="#regression">LINEAR REGRESSION</a></li>
-  <!--li><a href="#logistic">LOGISTIC REGRESSION</a></li-->
-  <li><a href="#fstatistic">P-VALUE FOR F</a></li>
+  <li><a href="#rank">RANK</a></li>
+  <li><a href="#t-test">T‑TEST</a></li>
   <li><a href="#oneway">ONEWAY</a></li>
   <li><a href="#onewayglm">ONEWAY IN GLM</a></li>
-  <!--li><a href="#ancova">ANCOVA IN GLM</a></li-->
-  <li><a href="#t-test">T‑TEST</a></li>
-  <li><a href="#reliability">RELIABILITY</a></li>
-  <li><a href="#rank">RANK</a></li>
-  <li><a href="#correlations">CORRELATIONS</a></li>
+  <li><a href="#fstatistic">P-VALUE FOR F</a></li>
   <li><a href="#npar-tests">NPAR TESTS</a></li>
+  <!--li><a href="#ancova">ANCOVA IN GLM</a></li-->
+  <li><a href="#regression">LINEAR REGRESSION</a></li>
+  <!--li><a href="#logistic">LOGISTIC REGRESSION</a></li-->
+  <li><a href="#reliability">RELIABILITY</a></li>
 </ul>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+
+<h3 class="category">Exploratory Procedures</h3>
 
 <h2 id="descriptives">DESCRIPTIVES</h2>
 <h3>How to Run Descriptive Statistics</h3>
@@ -525,177 +527,472 @@ regression example and the standard output produced by PSPP.</p>
 
 <p><a href="#top">Back to top</a></p>
 
-<h3 id="regression">How to Run a Linear Regression</h3>
+<h3 id="correlations">CORRELATIONS</h3>
 
-<p>
-The <code>REGRESSION</code> command fits an ordinary least squares model to a
-continuous dependent variable using one or more numeric predictors. After checking
-the variables with <code>FREQUENCIES</code> and <code>CROSSTABS</code>,
-regression shows how the outcome relates to the predictors. PSPP provides
-the standard coefficients and model statistics used in OLS (ordinary least
-squares).
-</p>
+<p>PSPP currently supports only Pearson product–moment correlations.
+This <code>CORRELATIONS</code> procedure is intended for exploratory
+analysis — inspecting linear relationships between variables and
+checking whether variables tend to move together.</p>
 
+<p>PSPP does not provide:</p>
+<ul>
+    <li>Spearman or Kendall correlations</li>
+    <li>Partial correlations</li>
+    <li>Options to save the correlation matrix to a file</li>
+    <li>Export of the matrix for use in other procedures</li>
+    </ul>
+
+<p>The output is for inspection only.</p>
+
+<p>Two options for <code>CORRELATIONS</code> are how missing
+data are to be handled. They are <code>LISTWISE</code> and
+<code>PAIRWISE</code>. With LISTWISE, a case is included only if it has
+valid data for <em>all</em> variables. PAIRWISE tells the procedure to
+use all cases valid for each pair of variables. PAIRWISE is the default
+setting.</p>
+
+<p><strong>Code:</strong></p>
 <pre>
-DATA LIST LIST /
-    y  x1  x2.
+DATA LIST LIST /group score hours gpa passed major age.
 BEGIN DATA
-  10  1  4.1
-  12  2  5.0
-  13  3  6.2
-  15  4  7.1
-  16  5  8.0
+1  72  3 2.8 1 1 19
+1  75  4 3.0 1 1 20
+1  68  2 2.5 0 1 18
+2  81  5 3.4 1 2 21
+2  79  4 3.2 1 2 22
+2  74  3 3.0 0 2 20
+3  90  6 3.8 1 3 23
+3  88  5 3.6 1 3 22
+3  85  5 3.5 1 3 21
 END DATA.
 LIST.
 
-REGRESSION
-  /DEPENDENT = y
-  /METHOD = ENTER x1 x2
-  /STATISTICS = COEFF R ANOVA
-  /SAVE = PRED RESID.
+CORRELATIONS
+  /VARIABLES = score hours 
+  /MISSING = LISTWISE.
+EXECUTE.
 </pre>
 
 <p><strong>Output:</strong></p>
-<p>
-This <code>/SAVE</code> option above creates two additional variables:
-<code>PRED1</code> (predicted values) and <code>RES1</code>
-(residuals). 
-
-<p><strong>Workflow Tip:</strong> Many statistics courses require
-students to examine and plot the residuals and predicted values to check
-model assumptions. Saving these values in PSPP's regression procedure
-provides exactly what those assignments need.</p>
-
-
 <pre>
-    Data List
-╭─────┬────┬────╮
-│  y  │ x1 │ x2 │
-├─────┼────┼────┤
-│10.00│1.00│4.10│
-│12.00│2.00│5.00│
-│13.00│3.00│6.20│
-│15.00│4.00│7.10│
-│16.00│5.00│8.00│
-╰─────┴────┴────╯
-                     Model Summary (y)
-╭───┬────────┬─────────────────┬──────────────────────────╮
-│ R │R Square│Adjusted R Square│Std. Error of the Estimate│
-├───┼────────┼─────────────────┼──────────────────────────┤
-│.99│     .99│              .98│                       .37│
-╰───┴────────┴─────────────────┴──────────────────────────╯
-                      ANOVA (y)
-╭──────────┬──────────────┬──┬───────────┬─────┬────╮
-│          │Sum of Squares│df│Mean Square│  F  │Sig.│
-├──────────┼──────────────┼──┼───────────┼─────┼────┤
-│Regression│         22.53│ 2│      11.27│84.50│.012│
-│Residual  │           .27│ 2│        .13│     │    │
-│Total     │         22.80│ 4│           │     │    │
-╰──────────┴──────────────┴──┴───────────┴─────┴────╯
-                               Coefficients (y)
-╭──────────┬────────────────────────────┬─────────────────────────┬────┬────╮
-│          │ Unstandardized Coefficients│Standardized Coefficients│    │    │
-│          ├───────────┬────────────────┼─────────────────────────┤    │    │
-│          │     B     │   Std. Error   │           Beta          │  t │Sig.│
-├──────────┼───────────┼────────────────┼─────────────────────────┼────┼────┤
-│(Constant)│      12.16│            6.92│                      .00│1.76│.177│
-│x1        │       2.60│            2.20│                     1.72│1.18│.359│
-│x2        │      -1.11│            2.22│                     -.73│-.50│.667│
-╰──────────┴───────────┴────────────────┴─────────────────────────┴────┴────╯
+ DATA LIST LIST /group score hours gpa passed major age.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│group   │F8.0  │
+│score   │F8.0  │
+│hours   │F8.0  │
+│gpa     │F8.0  │
+│passed  │F8.0  │
+│major   │F8.0  │
+│age     │F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+1  72  3 2.8 1 1 19
+1  75  4 3.0 1 1 20
+1  68  2 2.5 0 1 18
+2  81  5 3.4 1 2 21
+2  79  4 3.2 1 2 22
+2  74  3 3.0 0 2 20
+3  90  6 3.8 1 3 23
+3  88  5 3.6 1 3 22
+3  85  5 3.5 1 3 21
+END DATA.
+                 Data List
+╭─────┬─────┬─────┬────┬──────┬─────┬─────╮
+│group│score│hours│ gpa│passed│major│ age │
+├─────┼─────┼─────┼────┼──────┼─────┼─────┤
+│ 1.00│72.00│ 3.00│2.80│  1.00│ 1.00│19.00│
+│ 1.00│75.00│ 4.00│3.00│  1.00│ 1.00│20.00│
+│ 1.00│68.00│ 2.00│2.50│   .00│ 1.00│18.00│
+│ 2.00│81.00│ 5.00│3.40│  1.00│ 2.00│21.00│
+│ 2.00│79.00│ 4.00│3.20│  1.00│ 2.00│22.00│
+│ 2.00│74.00│ 3.00│3.00│   .00│ 2.00│20.00│
+│ 3.00│90.00│ 6.00│3.80│  1.00│ 3.00│23.00│
+│ 3.00│88.00│ 5.00│3.60│  1.00│ 3.00│22.00│
+│ 3.00│85.00│ 5.00│3.50│  1.00│ 3.00│21.00│
+╰─────┴─────┴─────┴────┴──────┴─────┴─────╯
 
-LIST.
-
-          Data List
-╭─────┬────┬────┬────┬─────╮
-│  y  │ x1 │ x2 │RES1│PRED1│
-├─────┼────┼────┼────┼─────┤
-│10.00│1.00│4.10│-.20│10.20│
-│12.00│2.00│5.00│ .20│11.80│
-│13.00│3.00│6.20│-.07│13.07│
-│15.00│4.00│7.10│ .33│14.67│
-│16.00│5.00│8.00│-.27│16.27│
-╰─────┴────┴────┴────┴─────╯
-
+CORRELATIONS
+  /VARIABLES = score hours
+  /MISSING = LISTWISE.
+              Correlations
+╭─────────────────────────┬─────┬─────╮
+│                         │score│hours│
+├─────────────────────────┼─────┼─────┤
+│score Pearson Correlation│1.000│ .954│
+│      Sig. (2-tailed)    │     │ .000│
+├─────────────────────────┼─────┼─────┤
+│hours Pearson Correlation│ .954│1.000│
+│      Sig. (2-tailed)    │ .000│     │
+╰─────────────────────────┴─────┴─────╯
 </pre>
 
-<p>
-The output includes the standard tables for an ordinary least squares
-model. The Model Summary shows an R of 0.99 and an R‑square of 0.99 for
-this small example. The Coefficients table lists each predictor along with
-its estimate, standard error, t-statistic, and p‑value. These values confirm
-that the procedure ran correctly and that PSPP produced the expected
-regression statistics. Interpretation of the coefficients depends on the
-context and the analyst’s goals; the purpose here is simply to show how
-PSPP fits the model and reports the results.
-</p>
+<p>Interpretation: </p> 
 
-<h3>Scatterplot of predicted vs residuals.</h3>
+<p>Score and hours are strongly positively correlated (r = .954).  This
+means that cases with higher hours tend to have higher scores, and cases
+with lower hours tend to have lower scores. The relationship is strong
+and consistent.</p>
 
-<p>Code:</p>
-<pre>
-** Use regression output variables (pred and resid) to check data.
-GRAPH
-  /SCATTERPLOT = pred1 WITH res1.
-</pre>
+<p><strong>Important: Correlation does not necessarily imply causation</strong>
 
-<p>Output:</p>
-<img src="scatter1.png" alt="scatterplot of predicted vs residual" width="350"> 
+<p>A classic example is that suicide rates and ice cream sales are strongly
+correlated, but neither one causes the other. Both tend to rise
+during warmer months, so the relationship is driven by a third factor
+(seasonality), not a direct causal link.</p>
 
-<p>All we see is a cloud of points and there is no trend or pattern.
-This is what we'd like to see from residuals: a random scatter with no
-pattern. With only 5 points, the plot is naturally sparse, but it still 
-shows no systematic pattern (but note it's easy to be fooled by a few
-points).</p> 
-
-<p><strong>Note:</strong> psppire exports the entire output window, not
-individual plots. To save a plot for documentation or reports, use your
-system’s screenshot tool to capture just the graphic from the Output
-window.</p>
-
-<p><strong>Note:</strong> PSPP accepts the SPSS BIVAR keyword in
-scatterplots for compatibility, but it has no effect on the plot. PSPP
-always produces a simple bivariate scatterplot.</p>
+<p>Correlation describes how variables move together — not why.</p>
 
 <p><a href="#top">Back to top</a></p>
 
-<p id="fstatistic"><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
+<h2 id="rank">RANK</h2>
 
-<p>PSPP can be used to compute the p-value for the F-statistic. The
-CDF.F function returns the cumulative distribution function of the F
-distribution--that is, the probability that an F‑distributed variable
-is less than or equal to the specified value.</p>
+<p>The RANK procedure assigns an order number to values in a data set
+based on several rules. One of the main things about ranking values
+is how the tied values are handled.  The default method used by PSPP
+is the MEAN of the ranks that would be applied to the tied values if
+we didn't handle them another way. If the ranks assigned were 1, 2, 3, etc.
+without regard to tied values I'd call these the base ranks. They are
+not the final ranks, but an intermediate step to handling tied values.</p>
 
-<p>The following calculates the upper tail probability for an F value of
-84.50 with 2 model and 2 error degrees of freedom, as shown in the ANOVA
-table from the regression output.</p>
+<p>The following examples show how each tie-handling method works. Each
+method is demonstrated with the same data, and each produces a new
+variable containing the ranks assigned under that method.</p>
+
+<p><strong>Workflow tip:</strong> PSPP does not allow multiple output
+variables in a single <code>/RANK INTO</code> clause. To produce ranks
+using different tie methods, run the RANK command multiple times, each
+with its own <code>/TIES=</code> setting.</p>
+
+<p>In the first example below, the RANK procedure is run and the
+mean method is specified (it is the default if you don't specify
+any tie method).</p>
 
 <pre>
-DO IF $CASENUM = 1.
-  COMPUTE p_F = 1 - CDF.F(84.50, 2, 2).
-END IF.
-FORMATS p_F (F10.6).
-LIST p_F /CASES=FROM 1 TO 1.
+DATA LIST LIST /X .
 
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│X       │F8.0  │
+╰────────┴──────╯
+BEGIN DATA.
+ 0
+ 0
+ 0
+ 1
+ 1
+ 3
+END DATA.
+
+LIST.
 Data List
-╭───────╮
-│  p_F  │
-├───────┤
-│.011696│
-╰───────╯
+╭────╮
+│  X │
+├────┤
+│ .00│
+│ .00│
+│ .00│
+│1.00│
+│1.00│
+│3.00│
+╰────╯
+RANK
+  VARIABLES = x
+  /RANK INTO r_mean
+
+  /TIES = MEAN .
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_mean      │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST /r_mean.
+  
+Data List
+╭──────╮
+│r_mean│
+├──────┤
+│ 2.000│
+│ 2.000│
+│ 2.000│
+│ 4.500│
+│ 4.500│
+│ 6.000│
+╰──────╯
 </pre>
 
-<p>The computed p-value is 0.011696 which matches the pspp output
-within rounding error. The <code>DO IF</code> block runs the
-<code>COMPUTE</code> expression only for the first case, and the
-<code>LIST</code> command displays only that case. All remaining cases
-contain system-missing values for <code>p_F</code>.</p> 
+<p>0, 0, 0, 1, 1, 3 gives us base ranks of 1, 2, 3, 4, 5, 6.
+With 0, 0, 0. ranked as 1, 2, 3, the mean of the ranks is taken from
+1+2+3/3=2. For the 1, 1 values the mean of the base ranks of 4 and 5
+becomes ranks of 4.5. The resulting ranks should be 2, 2, 2, 4.5, 4.5, 
+and 6, which is how they came out.</p>
 
-<p><strong>Workflow Tip:</strong> PSPP does not have standalone scalar
-variables, so computing a single value (such as a p‑value or critical
-value) is done by attaching the calculation to the first case in the
-active dataset. Using <code>DO IF $CASENUM = 1</code> and listing only
-that case prints the computed value without producing output for all
-other cases.</p>
+<p>The LOW method for ties chooses the lowest base rank for a set of
+ties and applies it to the ties in that set of values.  0, 0, 0, 1, 1,
+3 with base ranks of 1, 2, 3, 4, 5, 6 gives 1, 1, 1, 4, 4, 6.  The low
+value of 1, 2, 3 is 1, and low value of 4, 5, is 4.</p>
+
+<pre>
+  RANK
+  VARIABLES = x
+  /RANK INTO r_low
+  /TIES = LOW.
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_low       │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST /r_low.
+
+Data List
+╭─────╮
+│r_low│
+├─────┤
+│1.000│
+│1.000│
+│1.000│
+│4.000│
+│4.000│
+│6.000│
+╰─────╯
+</pre>
+
+<p>The HIGH method for ties chooses the highest base rank for a set
+of ties. 0, 0, 0, 1, 1, 3 with base ranks of 1, 2, 3, 4, 5, 6 would
+result in 3, 3, 3, 5, 5, 6.</p>
+
+<pre>
+  RANK
+  VARIABLES = x
+  /RANK INTO r_high
+  /TIES = HIGH.
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_high      │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST /r_high.
+
+Data List
+╭──────╮
+│r_high│
+├──────┤
+│ 3.000│
+│ 3.000│
+│ 3.000│
+│ 5.000│
+│ 5.000│
+│ 6.000│
+╰──────╯
+</pre>
+
+<p>The CONDENSE method assigns consecutive ranks to distinct values
+ignoring base ranks entirely. All cases with the same value get the
+same rank. This results in a rank variable with no gaps in ranks
+and no fractional ranks.  0, 0, 0, 1, 1, 3 ranks to 1, 1, 1, 2, 2, 3.</p>
+
+<pre>
+  RANK
+  VARIABLES = x
+  /RANK INTO r_cond
+  /TIES = CONDENSE.
+        Variables Created by RANK
+╭─────────────────┬────────────┬────────╮
+│Existing Variable│New Variable│Function│
+├─────────────────┼────────────┼────────┤
+│X                │r_cond      │RANK    │
+╰─────────────────┴────────────┴────────╯
+
+  LIST r_cond.
+
+Data List
+╭──────╮
+│r_cond│
+├──────┤
+│ 1.000│
+│ 1.000│
+│ 1.000│
+│ 2.000│
+│ 2.000│
+│ 3.000│
+╰──────╯
+</pre>
+
+<p>The <code>RANK</code> procedure is useful whenever the order of
+values matters more than their actual numeric size. Ranking is the
+foundation of many nonparametric tests (such as Mann–Whitney,
+Wilcoxon, Kruskal–Wallis, and Spearman correlations), and it is also
+helpful when the data are skewed, contain outliers, or are measured on
+an ordinal scale. By converting raw values into ranks, PSPP lets you
+analyze the relative positions of cases without assuming anything about
+the underlying distribution of the data.</p>
+
+<p><a href="#top">Back to top</a></p>
+
+<h3 class="category">Inferential Procedures</h3>
+
+<h2 id="t-test">T-TEST</h2>
+
+<p>The T-TEST procedure compares means between one or two groups or
+between two related measurements. PSPP supports one-sample,
+independent samples, and paired-samples T-tests.</p>
+
+<h3>Three Examples of T-test</h3>
+
+<p>Data:
+<pre>
+group  score  pretest  posttest
+1      42     40       48
+1      55     52       58
+1      47     45       50
+2      60     58       62
+2      65     63       68
+2      70     67       72
+</pre>
+
+<h3><strong>One-sample T-test</strong></h3>
+
+<p>Code:</p>
+<pre>
+T-TEST
+  /TESTVAL = 50
+  /VARIABLES = score.
+
+T-TEST
+  /GROUPS = group(1 2)
+  /VARIABLES = score.
+
+T-TEST
+  /PAIRS = pretest WITH posttest.
+</pre>
+
+<p>Output:</p>
+<pre>
+DATA LIST LIST /group score pretest posttest.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│group   │F8.0  │
+│score   │F8.0  │
+│pretest │F8.0  │
+│posttest│F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+ 1      42     40       48
+ 1      55     52       58
+ 1      47     45       50
+ 2      60     58       62
+ 2      65     63       68
+ 2      70     67       72
+END DATA.
+LIST.
+           Data List
+╭─────┬─────┬───────┬────────╮
+│group│score│pretest│posttest│
+├─────┼─────┼───────┼────────┤
+│ 1.00│42.00│  40.00│   48.00│
+│ 1.00│55.00│  52.00│   58.00│
+│ 1.00│47.00│  45.00│   50.00│
+│ 2.00│60.00│  58.00│   62.00│
+│ 2.00│65.00│  63.00│   68.00│
+│ 2.00│70.00│  67.00│   72.00│
+╰─────┴─────┴───────┴────────╯
+
+T-TEST
+  /TESTVAL = 50
+  /VARIABLES = score.
+          One-Sample Statistics
+╭─────┬─┬─────┬──────────────┬─────────╮
+│     │N│ Mean│Std. Deviation│S.E. Mean│
+├─────┼─┼─────┼──────────────┼─────────┤
+│score│6│56.50│         10.67│     4.36│
+╰─────┴─┴─────┴──────────────┴─────────╯
+                                      One-Sample Test
+╭─────┬──────────────────────────────────────────────────────────────────────────────────╮
+│     │                                  Test Value = 50                                 │
+│     ├────┬──┬───────────────┬───────────────┬──────────────────────────────────────────┤
+│     │    │  │               │               │ 95% Confidence Interval of the Difference│
+│     │    │  │               │               ├─────────────────────┬────────────────────┤
+│     │  t │df│Sig. (2-tailed)│Mean Difference│        Lower        │        Upper       │
+├─────┼────┼──┼───────────────┼───────────────┼─────────────────────┼────────────────────┤
+│score│1.49│ 5│           .196│           6.50│                -4.70│               17.70│
+╰─────┴────┴──┴───────────────┴───────────────┴─────────────────────┴────────────────────╯
+</pre>
+
+<h3><strong>Independent Samples T-Test</strong></h3>
+<pre>
+T-TEST
+  /GROUPS = group(1 2)
+  /VARIABLES = score.
+
+               Group Statistics
+╭───────────┬─┬─────┬──────────────┬─────────╮
+│      Group│N│ Mean│Std. Deviation│S.E. Mean│
+├───────────┼─┼─────┼──────────────┼─────────┤
+│score 1.00 │3│48.00│          6.56│     3.79│
+│      2.00 │3│65.00│          5.00│     2.89│
+╰───────────┴─┴─────┴──────────────┴─────────╯
+                                                                                Independent Samples Test
+╭─────────────────────────────────┬────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                 │ Levene's Test for Equality of Variances│                                        T-Test for Equality of Means                                       │
+│                                 ├──────────────────┬─────────────────────┼─────┬────┬───────────────┬───────────────┬─────────────────────┬──────────────────────────────────────────┤
+│                                 │                  │                     │     │    │               │               │                     │ 95% Confidence Interval of the Difference│
+│                                 │                  │                     │     │    │               │               │                     ├─────────────────────┬────────────────────┤
+│                                 │         F        │         Sig.        │  t  │ df │Sig. (2-tailed)│Mean Difference│Std. Error Difference│        Lower        │        Upper       │
+├─────────────────────────────────┼──────────────────┼─────────────────────┼─────┼────┼───────────────┼───────────────┼─────────────────────┼─────────────────────┼────────────────────┤
+│score Equal variances assumed    │               .29│                 .621│-3.57│4.00│           .023│         -17.00│                 4.76│               -30.22│               -3.78│
+│      Equal variances not assumed│                  │                     │-3.57│3.74│           .026│         -17.00│                 4.76│               -30.59│               -3.41│
+╰─────────────────────────────────┴──────────────────┴─────────────────────┴─────┴────┴───────────────┴───────────────┴─────────────────────┴─────────────────────┴────────────────────╯
+</pre>
+<h3><strong>Paired Samples T-test</strong></h3>
+<pre>
+T-TEST
+  /PAIRS = pretest WITH posttest.
+
+             Paired Sample Statistics
+╭───────────────┬─┬─────┬──────────────┬─────────╮
+│               │N│ Mean│Std. Deviation│S.E. Mean│
+├───────────────┼─┼─────┼──────────────┼─────────┤
+│Pair 1 pretest │6│54.17│         10.46│     4.27│
+│       posttest│6│59.67│          9.58│     3.91│
+╰───────────────┴─┴─────┴──────────────┴─────────╯
+          Paired Samples Correlations
+╭─────────────────────────┬─┬───────────┬────╮
+│                         │N│Correlation│Sig.│
+├─────────────────────────┼─┼───────────┼────┤
+│Pair 1 pretest &amp; posttest│6│       .994│.000│
+╰─────────────────────────┴─┴───────────┴────╯
+                                                      Paired Samples Test
+╭─────────────────────────┬─────────────────────────────────────────────────────────────────────────┬─────┬──┬───────────────╮
+│                         │                            Paired Differences                           │     │  │               │
+│                         ├─────┬──────────────┬─────────┬──────────────────────────────────────────┤     │  │               │
+│                         │     │              │         │ 95% Confidence Interval of the Difference│     │  │               │
+│                         │     │              │         ├─────────────────────┬────────────────────┤     │  │               │
+│                         │ Mean│Std. Deviation│S.E. Mean│        Lower        │        Upper       │  t  │df│Sig. (2-tailed)│
+├─────────────────────────┼─────┼──────────────┼─────────┼─────────────────────┼────────────────────┼─────┼──┼───────────────┤
+│Pair 1 pretest - posttest│-5.50│          1.38│      .56│                -6.95│               -4.05│-9.77│ 5│           .000│
+╰─────────────────────────┴─────┴──────────────┴─────────┴─────────────────────┴────────────────────┴─────┴──┴───────────────╯
+</pre>
+
+<p>The T‑test compares means and reports whether the observed difference
+is larger than what would be expected by chance. PSPP reports the
+t‑value, degrees of freedom, and the two‑tailed significance
+level (p‑value). A small p‑value indicates that the difference
+between means is unlikely to be due to sampling variation alone. For
+independent‑samples tests, PSPP also reports Levene’s test for
+equality of variances; use the appropriate row based on that result. For
+paired‑samples tests, the difference is computed within subjects.</p>
 
 <p><a href="#top">Back to top</a></p>
 
@@ -901,525 +1198,44 @@ and 6 degrees of freedom) and p=0.003.</p>
 
 <p><a href="#top">Back to top</a></p>
 
-<h3 id="reliability">How to Run a RELIABILITY Analysis</h3>
+<p id="fstatistic"><strong>How to Compute the P-value for the F-statistic Manually</strong></p>
 
-<p>The <code>RELIABILITY</code> command computes internal consistency
-statistics for a set of variables. PSPP currently supports Cronbach’s
-alpha and split‑half reliability. This example shows a simple alpha
-calculation for a group of items. The PSPP GUI does not have Reliability
-in its menus but the code can be run in the Syntax Editor or from the
-command line.</p>
+<p>PSPP can be used to compute the p-value for the F-statistic. The
+CDF.F function returns the cumulative distribution function of the F
+distribution--that is, the probability that an F‑distributed variable
+is less than or equal to the specified value.</p>
 
-<p>PSPP Code:</p>
-<pre>
-SET FORMAT=F8.5.
-SET WIDTH=132
-    /LENGTH=59
-    /MXLOOPS=100
-    /RESULTS=BOTH.
-TITLE 'Reliability Analysis'.
-
-GET FILE='study.sys'.
-
-RELIABILITY /VARIABLES=FEELRUSH TO FEELSMAL.
-
-FINISH.
-</pre>
-
-<p>Output:</p>
-<pre>
-Scale: ANY                                                                                                              
-
-Case Processing Summary
-+--------+--+-------+
-|Cases   | N|Percent|
-+--------+--+-------+
-|Valid   |93|  93.9%|
-|Excluded| 6|   6.1%|
-|Total   |99| 100.0%|
-+--------+--+-------+
-
-    Reliability Statistics
-+----------------+----------+
-|Cronbach's Alpha|N of Items|
-+----------------+----------+
-|          .84949|        20| 
-+----------------+----------+
-</pre>
-
-<p>PSPP’s reliability procedure provides a case summary and
-Cronbach’s alpha for the specified variables. This is sufficient for
-checking basic internal consistency in most datasets. A high value
-of Cronback's alpha means the items are correlated, but not
-necessarily that the scale is valid or meaningful.</p>
-
-<p><a href="#top">Back to top</a></p>
-
-<h2 id="t-test">T-TEST</h2>
-
-<p>The T-TEST procedure compares means between one or two groups or
-between two related measurements. PSPP supports one-sample,
-independent samples, and paired-samples T-tests.</p>
-
-<h3>Three Examples of T-test</h3>
-
-<p>Data:
-<pre>
-group  score  pretest  posttest
-1      42     40       48
-1      55     52       58
-1      47     45       50
-2      60     58       62
-2      65     63       68
-2      70     67       72
-</pre>
-
-
-<h3><strong>One-sample T-test</strong></h3>
-
-<p>Code:</p>
-<pre>
-T-TEST
-  /TESTVAL = 50
-  /VARIABLES = score.
-
-T-TEST
-  /GROUPS = group(1 2)
-  /VARIABLES = score.
-
-T-TEST
-  /PAIRS = pretest WITH posttest.
-</pre>
-
-<p>Output:</p>
-<pre>
-DATA LIST LIST /group score pretest posttest.
-Reading free-form data from INLINE.
-╭────────┬──────╮
-│Variable│Format│
-├────────┼──────┤
-│group   │F8.0  │
-│score   │F8.0  │
-│pretest │F8.0  │
-│posttest│F8.0  │
-╰────────┴──────╯
-BEGIN DATA
- 1      42     40       48
- 1      55     52       58
- 1      47     45       50
- 2      60     58       62
- 2      65     63       68
- 2      70     67       72
-END DATA.
-LIST.
-           Data List
-╭─────┬─────┬───────┬────────╮
-│group│score│pretest│posttest│
-├─────┼─────┼───────┼────────┤
-│ 1.00│42.00│  40.00│   48.00│
-│ 1.00│55.00│  52.00│   58.00│
-│ 1.00│47.00│  45.00│   50.00│
-│ 2.00│60.00│  58.00│   62.00│
-│ 2.00│65.00│  63.00│   68.00│
-│ 2.00│70.00│  67.00│   72.00│
-╰─────┴─────┴───────┴────────╯
-
-T-TEST
-  /TESTVAL = 50
-  /VARIABLES = score.
-          One-Sample Statistics
-╭─────┬─┬─────┬──────────────┬─────────╮
-│     │N│ Mean│Std. Deviation│S.E. Mean│
-├─────┼─┼─────┼──────────────┼─────────┤
-│score│6│56.50│         10.67│     4.36│
-╰─────┴─┴─────┴──────────────┴─────────╯
-                                      One-Sample Test
-╭─────┬──────────────────────────────────────────────────────────────────────────────────╮
-│     │                                  Test Value = 50                                 │
-│     ├────┬──┬───────────────┬───────────────┬──────────────────────────────────────────┤
-│     │    │  │               │               │ 95% Confidence Interval of the Difference│
-│     │    │  │               │               ├─────────────────────┬────────────────────┤
-│     │  t │df│Sig. (2-tailed)│Mean Difference│        Lower        │        Upper       │
-├─────┼────┼──┼───────────────┼───────────────┼─────────────────────┼────────────────────┤
-│score│1.49│ 5│           .196│           6.50│                -4.70│               17.70│
-╰─────┴────┴──┴───────────────┴───────────────┴─────────────────────┴────────────────────╯
-</pre>
-
-<h3><strong>Independent Samples T-Test</strong></h3>
-<pre>
-T-TEST
-  /GROUPS = group(1 2)
-  /VARIABLES = score.
-
-               Group Statistics
-╭───────────┬─┬─────┬──────────────┬─────────╮
-│      Group│N│ Mean│Std. Deviation│S.E. Mean│
-├───────────┼─┼─────┼──────────────┼─────────┤
-│score 1.00 │3│48.00│          6.56│     3.79│
-│      2.00 │3│65.00│          5.00│     2.89│
-╰───────────┴─┴─────┴──────────────┴─────────╯
-                                                                                Independent Samples Test
-╭─────────────────────────────────┬────────────────────────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                                 │ Levene's Test for Equality of Variances│                                        T-Test for Equality of Means                                       │
-│                                 ├──────────────────┬─────────────────────┼─────┬────┬───────────────┬───────────────┬─────────────────────┬──────────────────────────────────────────┤
-│                                 │                  │                     │     │    │               │               │                     │ 95% Confidence Interval of the Difference│
-│                                 │                  │                     │     │    │               │               │                     ├─────────────────────┬────────────────────┤
-│                                 │         F        │         Sig.        │  t  │ df │Sig. (2-tailed)│Mean Difference│Std. Error Difference│        Lower        │        Upper       │
-├─────────────────────────────────┼──────────────────┼─────────────────────┼─────┼────┼───────────────┼───────────────┼─────────────────────┼─────────────────────┼────────────────────┤
-│score Equal variances assumed    │               .29│                 .621│-3.57│4.00│           .023│         -17.00│                 4.76│               -30.22│               -3.78│
-│      Equal variances not assumed│                  │                     │-3.57│3.74│           .026│         -17.00│                 4.76│               -30.59│               -3.41│
-╰─────────────────────────────────┴──────────────────┴─────────────────────┴─────┴────┴───────────────┴───────────────┴─────────────────────┴─────────────────────┴────────────────────╯
-</pre>
-<h3><strong>Paired Samples T-test</strong></h3>
-<pre>
-T-TEST
-  /PAIRS = pretest WITH posttest.
-
-             Paired Sample Statistics
-╭───────────────┬─┬─────┬──────────────┬─────────╮
-│               │N│ Mean│Std. Deviation│S.E. Mean│
-├───────────────┼─┼─────┼──────────────┼─────────┤
-│Pair 1 pretest │6│54.17│         10.46│     4.27│
-│       posttest│6│59.67│          9.58│     3.91│
-╰───────────────┴─┴─────┴──────────────┴─────────╯
-          Paired Samples Correlations
-╭─────────────────────────┬─┬───────────┬────╮
-│                         │N│Correlation│Sig.│
-├─────────────────────────┼─┼───────────┼────┤
-│Pair 1 pretest &amp; posttest│6│       .994│.000│
-╰─────────────────────────┴─┴───────────┴────╯
-                                                      Paired Samples Test
-╭─────────────────────────┬─────────────────────────────────────────────────────────────────────────┬─────┬──┬───────────────╮
-│                         │                            Paired Differences                           │     │  │               │
-│                         ├─────┬──────────────┬─────────┬──────────────────────────────────────────┤     │  │               │
-│                         │     │              │         │ 95% Confidence Interval of the Difference│     │  │               │
-│                         │     │              │         ├─────────────────────┬────────────────────┤     │  │               │
-│                         │ Mean│Std. Deviation│S.E. Mean│        Lower        │        Upper       │  t  │df│Sig. (2-tailed)│
-├─────────────────────────┼─────┼──────────────┼─────────┼─────────────────────┼────────────────────┼─────┼──┼───────────────┤
-│Pair 1 pretest - posttest│-5.50│          1.38│      .56│                -6.95│               -4.05│-9.77│ 5│           .000│
-╰─────────────────────────┴─────┴──────────────┴─────────┴─────────────────────┴────────────────────┴─────┴──┴───────────────╯
-</pre>
-
-<p>The T‑test compares means and reports whether the observed difference
-is larger than what would be expected by chance. PSPP reports the
-t‑value, degrees of freedom, and the two‑tailed significance
-level (p‑value). A small p‑value indicates that the difference
-between means is unlikely to be due to sampling variation alone. For
-independent‑samples tests, PSPP also reports Levene’s test for
-equality of variances; use the appropriate row based on that result. For
-paired‑samples tests, the difference is computed within subjects.</p>
-
-<p><a href="#top">Back to top</a></p>
-
-<h2 id="rank">RANK</h2>
-
-<p>The RANK procedure assigns an order number to values in a data set
-based on several rules. One of the main things about ranking values
-is how the tied values are handled.  The default method used by PSPP
-is the MEAN of the ranks that would be applied to the tied values if
-we didn't handle them another way. If the ranks assigned were 1, 2, 3, etc.
-without regard to tied values I'd call these the base ranks. They are
-not the final ranks, but an intermediate step to handling tied values.</p>
-
-<p>The following examples show how each tie-handling method works. Each
-method is demonstrated with the same data, and each produces a new
-variable containing the ranks assigned under that method.</p>
-
-<p><strong>Workflow tip:</strong> PSPP does not allow multiple output
-variables in a single <code>/RANK INTO</code> clause. To produce ranks
-using different tie methods, run the RANK command multiple times, each
-with its own <code>/TIES=</code> setting.</p>
-
-<p>In the first example below, the RANK procedure is run and the
-mean method is specified (it is the default if you don't specify
-any tie method).</p>
+<p>The following calculates the upper tail probability for an F value of
+84.50 with 2 model and 2 error degrees of freedom, as shown in the ANOVA
+table from the regression output.</p>
 
 <pre>
-DATA LIST LIST /X .
-
-Reading free-form data from INLINE.
-╭────────┬──────╮
-│Variable│Format│
-├────────┼──────┤
-│X       │F8.0  │
-╰────────┴──────╯
-BEGIN DATA.
- 0
- 0
- 0
- 1
- 1
- 3
-END DATA.
-
-LIST.
-Data List
-╭────╮
-│  X │
-├────┤
-│ .00│
-│ .00│
-│ .00│
-│1.00│
-│1.00│
-│3.00│
-╰────╯
-RANK
-  VARIABLES = x
-  /RANK INTO r_mean
-
-  /TIES = MEAN .
-        Variables Created by RANK
-╭─────────────────┬────────────┬────────╮
-│Existing Variable│New Variable│Function│
-├─────────────────┼────────────┼────────┤
-│X                │r_mean      │RANK    │
-╰─────────────────┴────────────┴────────╯
-
-  LIST /r_mean.
-  
-Data List
-╭──────╮
-│r_mean│
-├──────┤
-│ 2.000│
-│ 2.000│
-│ 2.000│
-│ 4.500│
-│ 4.500│
-│ 6.000│
-╰──────╯
-</pre>
-
-<p>0, 0, 0, 1, 1, 3 gives us base ranks of 1, 2, 3, 4, 5, 6.
-With 0, 0, 0. ranked as 1, 2, 3, the mean of the ranks is taken from
-1+2+3/3=2. For the 1, 1 values the mean of the base ranks of 4 and 5
-becomes ranks of 4.5. The resulting ranks should be 2, 2, 2, 4.5, 4.5, 
-and 6, which is how they came out.</p>
-
-<p>The LOW method for ties chooses the lowest base rank for a set of
-ties and applies it to the ties in that set of values.  0, 0, 0, 1, 1,
-3 with base ranks of 1, 2, 3, 4, 5, 6 gives 1, 1, 1, 4, 4, 6.  The low
-value of 1, 2, 3 is 1, and low value of 4, 5, is 4.</p>
-
-<pre>
-  RANK
-  VARIABLES = x
-  /RANK INTO r_low
-  /TIES = LOW.
-        Variables Created by RANK
-╭─────────────────┬────────────┬────────╮
-│Existing Variable│New Variable│Function│
-├─────────────────┼────────────┼────────┤
-│X                │r_low       │RANK    │
-╰─────────────────┴────────────┴────────╯
-
-  LIST /r_low.
+DO IF $CASENUM = 1.
+  COMPUTE p_F = 1 - CDF.F(84.50, 2, 2).
+END IF.
+FORMATS p_F (F10.6).
+LIST p_F /CASES=FROM 1 TO 1.
 
 Data List
-╭─────╮
-│r_low│
-├─────┤
-│1.000│
-│1.000│
-│1.000│
-│4.000│
-│4.000│
-│6.000│
-╰─────╯
+╭───────╮
+│  p_F  │
+├───────┤
+│.011696│
+╰───────╯
 </pre>
 
-<p>The HIGH method for ties chooses the highest base rank for a set
-of ties. 0, 0, 0, 1, 1, 3 with base ranks of 1, 2, 3, 4, 5, 6 would
-result in 3, 3, 3, 5, 5, 6.</p>
+<p>The computed p-value is 0.011696 which matches the pspp output
+within rounding error. The <code>DO IF</code> block runs the
+<code>COMPUTE</code> expression only for the first case, and the
+<code>LIST</code> command displays only that case. All remaining cases
+contain system-missing values for <code>p_F</code>.</p> 
 
-<pre>
-  RANK
-  VARIABLES = x
-  /RANK INTO r_high
-  /TIES = HIGH.
-        Variables Created by RANK
-╭─────────────────┬────────────┬────────╮
-│Existing Variable│New Variable│Function│
-├─────────────────┼────────────┼────────┤
-│X                │r_high      │RANK    │
-╰─────────────────┴────────────┴────────╯
-
-  LIST /r_high.
-
-Data List
-╭──────╮
-│r_high│
-├──────┤
-│ 3.000│
-│ 3.000│
-│ 3.000│
-│ 5.000│
-│ 5.000│
-│ 6.000│
-╰──────╯
-</pre>
-
-<p>The CONDENSE method assigns consecutive ranks to distinct values
-ignoring base ranks entirely. All cases with the same value get the
-same rank. This results in a rank variable with no gaps in ranks
-and no fractional ranks.  0, 0, 0, 1, 1, 3 ranks to 1, 1, 1, 2, 2, 3.</p>
-
-<pre>
-  RANK
-  VARIABLES = x
-  /RANK INTO r_cond
-  /TIES = CONDENSE.
-        Variables Created by RANK
-╭─────────────────┬────────────┬────────╮
-│Existing Variable│New Variable│Function│
-├─────────────────┼────────────┼────────┤
-│X                │r_cond      │RANK    │
-╰─────────────────┴────────────┴────────╯
-
-  LIST r_cond.
-
-Data List
-╭──────╮
-│r_cond│
-├──────┤
-│ 1.000│
-│ 1.000│
-│ 1.000│
-│ 2.000│
-│ 2.000│
-│ 3.000│
-╰──────╯
-</pre>
-
-<p>The <code>RANK</code> procedure is useful whenever the order of
-values matters more than their actual numeric size. Ranking is the
-foundation of many nonparametric tests (such as Mann–Whitney,
-Wilcoxon, Kruskal–Wallis, and Spearman correlations), and it is also
-helpful when the data are skewed, contain outliers, or are measured on
-an ordinal scale. By converting raw values into ranks, PSPP lets you
-analyze the relative positions of cases without assuming anything about
-the underlying distribution of the data.</p>
-
-<p><a href="#top">Back to top</a></p>
-
-<h3 id="correlations">CORRELATIONS</h3>
-
-<p>PSPP currently supports only Pearson product–moment correlations.
-This <code>CORRELATIONS</code> procedure is intended for exploratory
-analysis — inspecting linear relationships between variables and
-checking whether variables tend to move together.</p>
-
-<p>PSPP does not provide:</p>
-<ul>
-    <li>Spearman or Kendall correlations</li>
-    <li>Partial correlations</li>
-    <li>Options to save the correlation matrix to a file</li>
-    <li>Export of the matrix for use in other procedures</li>
-    </ul>
-
-<p>The output is for inspection only.</p>
-
-<p>Two options for <code>CORRELATIONS</code> are how missing
-data are to be handled. They are <code>LISTWISE</code> and
-<code>PAIRWISE</code>. With LISTWISE, a case is included only if it has
-valid data for <em>all</em> variables. PAIRWISE tells the procedure to
-use all cases valid for each pair of variables. PAIRWISE is the default
-setting.</p>
-
-<p><strong>Code:</strong></p>
-<pre>
-DATA LIST LIST /group score hours gpa passed major age.
-BEGIN DATA
-1  72  3 2.8 1 1 19
-1  75  4 3.0 1 1 20
-1  68  2 2.5 0 1 18
-2  81  5 3.4 1 2 21
-2  79  4 3.2 1 2 22
-2  74  3 3.0 0 2 20
-3  90  6 3.8 1 3 23
-3  88  5 3.6 1 3 22
-3  85  5 3.5 1 3 21
-END DATA.
-LIST.
-
-CORRELATIONS
-  /VARIABLES = score hours 
-  /MISSING = LISTWISE.
-EXECUTE.
-</pre>
-
-<p><strong>Output:</strong></p>
-<pre>
- DATA LIST LIST /group score hours gpa passed major age.
-Reading free-form data from INLINE.
-╭────────┬──────╮
-│Variable│Format│
-├────────┼──────┤
-│group   │F8.0  │
-│score   │F8.0  │
-│hours   │F8.0  │
-│gpa     │F8.0  │
-│passed  │F8.0  │
-│major   │F8.0  │
-│age     │F8.0  │
-╰────────┴──────╯
-BEGIN DATA
-1  72  3 2.8 1 1 19
-1  75  4 3.0 1 1 20
-1  68  2 2.5 0 1 18
-2  81  5 3.4 1 2 21
-2  79  4 3.2 1 2 22
-2  74  3 3.0 0 2 20
-3  90  6 3.8 1 3 23
-3  88  5 3.6 1 3 22
-3  85  5 3.5 1 3 21
-END DATA.
-                 Data List
-╭─────┬─────┬─────┬────┬──────┬─────┬─────╮
-│group│score│hours│ gpa│passed│major│ age │
-├─────┼─────┼─────┼────┼──────┼─────┼─────┤
-│ 1.00│72.00│ 3.00│2.80│  1.00│ 1.00│19.00│
-│ 1.00│75.00│ 4.00│3.00│  1.00│ 1.00│20.00│
-│ 1.00│68.00│ 2.00│2.50│   .00│ 1.00│18.00│
-│ 2.00│81.00│ 5.00│3.40│  1.00│ 2.00│21.00│
-│ 2.00│79.00│ 4.00│3.20│  1.00│ 2.00│22.00│
-│ 2.00│74.00│ 3.00│3.00│   .00│ 2.00│20.00│
-│ 3.00│90.00│ 6.00│3.80│  1.00│ 3.00│23.00│
-│ 3.00│88.00│ 5.00│3.60│  1.00│ 3.00│22.00│
-│ 3.00│85.00│ 5.00│3.50│  1.00│ 3.00│21.00│
-╰─────┴─────┴─────┴────┴──────┴─────┴─────╯
-
-CORRELATIONS
-  /VARIABLES = score hours
-  /MISSING = LISTWISE.
-              Correlations
-╭─────────────────────────┬─────┬─────╮
-│                         │score│hours│
-├─────────────────────────┼─────┼─────┤
-│score Pearson Correlation│1.000│ .954│
-│      Sig. (2-tailed)    │     │ .000│
-├─────────────────────────┼─────┼─────┤
-│hours Pearson Correlation│ .954│1.000│
-│      Sig. (2-tailed)    │ .000│     │
-╰─────────────────────────┴─────┴─────╯
-</pre>
-
-<p>Interpretation: </p> 
-
-<p>Score and hours are strongly positively correlated (r = .954).  This
-means that cases with higher hours tend to have higher scores, and cases
-with lower hours tend to have lower scores. The relationship is strong
-and consistent.</p>
-
-<p><strong>Important: Correlation does not necessarily imply causation</strong>
-
-<p>A classic example is that suicide rates and ice cream sales are strongly
-correlated, but neither one causes the other. Both tend to rise
-during warmer months, so the relationship is driven by a third factor
-(seasonality), not a direct causal link.</p>
-
-<p>Correlation describes how variables move together — not why.</p>
+<p><strong>Workflow Tip:</strong> PSPP does not have standalone scalar
+variables, so computing a single value (such as a p‑value or critical
+value) is done by attaching the calculation to the first case in the
+active dataset. Using <code>DO IF $CASENUM = 1</code> and listing only
+that case prints the computed value without producing output for all
+other cases.</p>
 
 <p><a href="#top">Back to top</a></p>
 
@@ -1657,7 +1473,6 @@ available only when requested using the /EXACT subcommand.</p>
 <p>A small p‑value indicates that at least one group differs from the
 others in its distribution.</p>
 
-
 <h2>MEDIAN TEST</h2>
 
 <p>The Median test compares two independent groups by splitting the
@@ -1737,6 +1552,194 @@ values are distributed relative to the median.</p>
 
 <p><a href="#top">Back to top</a></p>
 
+<h3 class="category">Modeling Procedures</h3>
+
+<h3 id="regression">How to Run a Linear Regression</h3>
+
+<p>
+The <code>REGRESSION</code> command fits an ordinary least squares model to a
+continuous dependent variable using one or more numeric predictors. After checking
+the variables with <code>FREQUENCIES</code> and <code>CROSSTABS</code>,
+regression shows how the outcome relates to the predictors. PSPP provides
+the standard coefficients and model statistics used in OLS (ordinary least
+squares).
+</p>
+
+<pre>
+DATA LIST LIST /
+    y  x1  x2.
+BEGIN DATA
+  10  1  4.1
+  12  2  5.0
+  13  3  6.2
+  15  4  7.1
+  16  5  8.0
+END DATA.
+LIST.
+
+REGRESSION
+  /DEPENDENT = y
+  /METHOD = ENTER x1 x2
+  /STATISTICS = COEFF R ANOVA
+  /SAVE = PRED RESID.
+</pre>
+
+<p><strong>Output:</strong></p>
+<p>
+This <code>/SAVE</code> option above creates two additional variables:
+<code>PRED1</code> (predicted values) and <code>RES1</code>
+(residuals). 
+
+<p><strong>Workflow Tip:</strong> Many statistics courses require
+students to examine and plot the residuals and predicted values to check
+model assumptions. Saving these values in PSPP's regression procedure
+provides exactly what those assignments need.</p>
+
+
+<pre>
+    Data List
+╭─────┬────┬────╮
+│  y  │ x1 │ x2 │
+├─────┼────┼────┤
+│10.00│1.00│4.10│
+│12.00│2.00│5.00│
+│13.00│3.00│6.20│
+│15.00│4.00│7.10│
+│16.00│5.00│8.00│
+╰─────┴────┴────╯
+                     Model Summary (y)
+╭───┬────────┬─────────────────┬──────────────────────────╮
+│ R │R Square│Adjusted R Square│Std. Error of the Estimate│
+├───┼────────┼─────────────────┼──────────────────────────┤
+│.99│     .99│              .98│                       .37│
+╰───┴────────┴─────────────────┴──────────────────────────╯
+                      ANOVA (y)
+╭──────────┬──────────────┬──┬───────────┬─────┬────╮
+│          │Sum of Squares│df│Mean Square│  F  │Sig.│
+├──────────┼──────────────┼──┼───────────┼─────┼────┤
+│Regression│         22.53│ 2│      11.27│84.50│.012│
+│Residual  │           .27│ 2│        .13│     │    │
+│Total     │         22.80│ 4│           │     │    │
+╰──────────┴──────────────┴──┴───────────┴─────┴────╯
+                               Coefficients (y)
+╭──────────┬────────────────────────────┬─────────────────────────┬────┬────╮
+│          │ Unstandardized Coefficients│Standardized Coefficients│    │    │
+│          ├───────────┬────────────────┼─────────────────────────┤    │    │
+│          │     B     │   Std. Error   │           Beta          │  t │Sig.│
+├──────────┼───────────┼────────────────┼─────────────────────────┼────┼────┤
+│(Constant)│      12.16│            6.92│                      .00│1.76│.177│
+│x1        │       2.60│            2.20│                     1.72│1.18│.359│
+│x2        │      -1.11│            2.22│                     -.73│-.50│.667│
+╰──────────┴───────────┴────────────────┴─────────────────────────┴────┴────╯
+
+LIST.
+
+          Data List
+╭─────┬────┬────┬────┬─────╮
+│  y  │ x1 │ x2 │RES1│PRED1│
+├─────┼────┼────┼────┼─────┤
+│10.00│1.00│4.10│-.20│10.20│
+│12.00│2.00│5.00│ .20│11.80│
+│13.00│3.00│6.20│-.07│13.07│
+│15.00│4.00│7.10│ .33│14.67│
+│16.00│5.00│8.00│-.27│16.27│
+╰─────┴────┴────┴────┴─────╯
+
+</pre>
+
+<p>
+The output includes the standard tables for an ordinary least squares
+model. The Model Summary shows an R of 0.99 and an R‑square of 0.99 for
+this small example. The Coefficients table lists each predictor along with
+its estimate, standard error, t-statistic, and p‑value. These values confirm
+that the procedure ran correctly and that PSPP produced the expected
+regression statistics. Interpretation of the coefficients depends on the
+context and the analyst’s goals; the purpose here is simply to show how
+PSPP fits the model and reports the results.
+</p>
+
+<h3>Scatterplot of predicted vs residuals.</h3>
+
+<p>Code:</p>
+<pre>
+** Use regression output variables (pred and resid) to check data.
+GRAPH
+  /SCATTERPLOT = pred1 WITH res1.
+</pre>
+
+<p>Output:</p>
+<img src="scatter1.png" alt="scatterplot of predicted vs residual" width="350"> 
+
+<p>All we see is a cloud of points and there is no trend or pattern.
+This is what we'd like to see from residuals: a random scatter with no
+pattern. With only 5 points, the plot is naturally sparse, but it still 
+shows no systematic pattern (but note it's easy to be fooled by a few
+points).</p> 
+
+<p><strong>Note:</strong> psppire exports the entire output window, not
+individual plots. To save a plot for documentation or reports, use your
+system’s screenshot tool to capture just the graphic from the Output
+window.</p>
+
+<p><strong>Note:</strong> PSPP accepts the SPSS BIVAR keyword in
+scatterplots for compatibility, but it has no effect on the plot. PSPP
+always produces a simple bivariate scatterplot.</p>
+<p><a href="#top">Back to top</a></p>
+
+<h3 id="reliability">How to Run a RELIABILITY Analysis</h3>
+
+<p>The <code>RELIABILITY</code> command computes internal consistency
+statistics for a set of variables. PSPP currently supports Cronbach’s
+alpha and split‑half reliability. This example shows a simple alpha
+calculation for a group of items. The PSPP GUI does not have Reliability
+in its menus but the code can be run in the Syntax Editor or from the
+command line.</p>
+
+<p>PSPP Code:</p>
+<pre>
+SET FORMAT=F8.5.
+SET WIDTH=132
+    /LENGTH=59
+    /MXLOOPS=100
+    /RESULTS=BOTH.
+TITLE 'Reliability Analysis'.
+
+GET FILE='study.sys'.
+
+RELIABILITY /VARIABLES=FEELRUSH TO FEELSMAL.
+
+FINISH.
+</pre>
+
+<p>Output:</p>
+<pre>
+Scale: ANY                                                                                                              
+
+Case Processing Summary
++--------+--+-------+
+|Cases   | N|Percent|
++--------+--+-------+
+|Valid   |93|  93.9%|
+|Excluded| 6|   6.1%|
+|Total   |99| 100.0%|
++--------+--+-------+
+
+    Reliability Statistics
++----------------+----------+
+|Cronbach's Alpha|N of Items|
++----------------+----------+
+|          .84949|        20| 
++----------------+----------+
+</pre>
+
+<p>PSPP’s reliability procedure provides a case summary and
+Cronbach’s alpha for the specified variables. This is sufficient for
+checking basic internal consistency in most datasets. A high value
+of Cronback's alpha means the items are correlated, but not
+necessarily that the scale is valid or meaningful.</p>
+
+<p><a href="#top">Back to top</a></p>
+
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
 <p>See <a href="pspp/pspp.html"> the main pspp page on this site</a> for
@@ -1767,7 +1770,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Jul  1 19:02:43 EDT 2026
+Last Modified: Mon Jul  6 14:54:27 EDT 2026
 </footer>
 </blockquote>
 </main>
