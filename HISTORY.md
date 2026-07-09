@@ -1,4 +1,4 @@
-## My Former WebSite
+## My Former Umich.edu WebSite
 
 **This is my former website at umich.edu**. As of sometime in 2024, they
 decided to remove the AFS system, so it got deleted when that system
@@ -22,31 +22,32 @@ letters from ASCII characters**. There is an area of this site devoted
 to FIGlet fonts, including ones I either created or converted. When
 USENET was a busy place, there were ASCII-art groups. Occasionally,
 someone would post a font they had created, but didn't have the time
-or knowledge to convert to a FIGlet font, often I'd take on the
+or experience to convert to a FIGlet font, often I'd take on the
 conversion. Some fonts came from email signatures that included ASCII
 art letters. Those would take more effort because they were often
 missing most of the alphabet.
 
 **July 6, 2025**: Since uploading it to GitHub, I've been going through
-all the 404 errors and trying to find if the site relocated to a
-different server or if they just disappeared into the ether. Some sites
+all the 404 errors and trying to find if the sites relocated to 
+different servers or if they just disappeared into the ether. Some sites
 are still out there, so I linked to their new locations. Other sites are
 gone. I initially marked them in the HTML as "bad link" while I searched
 for replacements. If I couldn't find a replacement link, the link was
-deleted.
+deleted, and I tried to find newer, existing links.
 
 Many projects that used to be accessible from personal servers,
 university accounts, or commercial server accounts have moved to
 SourceForge and GitHub in the past 10-20 years. If I can find them, I've
-been updating my links.
+been updating my links. The Internet Archive was also a big help in
+finding old material.
 
 Some the of software archives are completely gone, but some had mirrors
 that are still available, so I've added those mirror links. How long
 they'll continue to work is anyone's guess. Currently there are only
-two archive links so this page needs more help.
+two archive links, so this page needs more help.
 
 It is interesting to see how links and information degrade over the
-decades. As we all know, the WWW is very often impermanent. Even
+decades. As we all know, the WWW is often very impermanent. Even
 when this site was being managed regularly, links would turn up not
 working after a few months and need to be replaced. Also interesting
 is that some websites still operate after all this time with similar
@@ -146,7 +147,8 @@ cktb.pl was originally difficult to get working even though it is short.
 And I do remember working on this 25 years ago. This was due to using
 Perl's format facility on one of the two outputs from the program. I
 distinctly remember the amount of experimentation with the timing of
-write statements it took to get it working at all.
+write statements it took to get it working at all. It would be easier
+without the output formats.
 
 So...this time I decided just use print and printf statements instead of
 Perl formats. This program produces two reports: a summary report of a
@@ -173,8 +175,39 @@ on the site starting Feb 24, 2026. I'm still working on them. The latest
 one is detab.py (see detabpy.html).
 
 **April 11, 2026** Today I uploaded a new page, pspp.html which is about
-the free statistical software PSPP. I'm still adding to it but it's
-in a readable and usable condition already. The main things about it is
-it covers multi-record hierarchical files, merging files in PSPP, and
-I run GET DATA and compare the results to DATA LIST FREE.
+the free statistical software PSPP. I'm still adding to it but it's in
+a readable and usable condition already. The main things about it is it
+covers multi-record hierarchical files, merging files in PSPP, and I run
+GET DATA and compare the results to DATA LIST FREE.
+
+**June 1, 2026** I've continued to work on the pspp area. Google's
+search responses were not good initially. Too many topics and no clear
+purpose to the page. So, I split out the multi-record material to a
+new page. That was the most complicated part of the pspp.html page
+and different from almost everything else. Results on Google search
+improved for a while, then went down again. I determined that having
+statistical procedures was confusing Google so I moved those to a new
+page, pspp_analysis.html.
+
+**June 7, 2026** I split pspp_analysis into two pages: Exporatory
+commands and Inferential + Modeling commands. Now I have
+pspp_analysis.html and pspp_analysis2.html (leaving room for other
+analysis pages, if needed). That helped Google's classification a
+little. Then I changed the titles and header information from "Analysis"
+to "Methods" since "Analysis" is an ambiguous term, while "Methods" is
+not so much. I've spent a lot of time lately trying to get Google to
+recognize my pages and classify them correctly.
+
+At this point I'm hoping Google can figure these pspp pages out correctly.
+I'd rather not put each topic in a separate page.
+
+It does little good for me to put these pages up, to help people, if no
+one can find them in a search. Hence, I'm spending way too much time
+trying to teach google what the pages are all about.
+
+**June 9, 2026** At this point, things are settling down again. New
+pages take time to get recognized by Google, and it takes time to get
+them tweaked so they show up reliably in searches. It's all a process.
+
+
 
