@@ -8,9 +8,9 @@
      <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
      <meta name="description" content="Practical PSPP reading multi-record data format.">
-     <meta name="keywords" content="PSPP Syntax multiple records hierarchical data"> 
+     <meta name="keywords" content="PSPP Syntax multiple records multi-record case structure hierarchical data"> 
      <meta charset="utf-8">
-     <title>Reading Multi-Record Hierarchical Raw Data with PSPP</title>  
+     <title>Reading Multi-Record Case Structure Raw Data with PSPP</title>  
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 <main>
 <blockquote>
 
-<h1>Multi-Record Hierarchical Hierarchical Data</h1>
+<h1>Multi-Record Case Structure Data</h1>
 <h2 class="skip">&nbsp;</h2>
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
@@ -33,7 +33,7 @@ is important. It's an ancient format used in the days of punched paper
 cards.</p>
 
 <p>A common misconception is that PSPP lacks support for multi‑record
-or hierarchical fixed-width data files. In reality, PSPP has long
+or case structure fixed-width data files. In reality, PSPP has long
 supported reading multi‑record data using <code>DATA LIST FIXED</code>
 with <code>RECORDS=</code> and slash notation. The fact that <code>DATA
 LIST FIXED</code> does not appear in the psppire graphical interface
@@ -41,14 +41,14 @@ menus means users need to rely on the PSPP syntax engine. The code can
 be run in psppire in the Syntax Editor.</p>
 
 <p>In this context, “multi‑record” refers to classic SPSS/PSPP
-hierarchical files -- sometimes called multi-record case files or
-multi-type record files -- where a single case spans MULTIPLE PHYSICAL
-RECORDS, EACH WITH A DIFFERENT LAYOUT. SPSS also can read this type of
-data. This is <em>not</em> the modern usage of “multi‑record”
-to mean “multiple rows per ID” in a CSV or database table, where
-every row has the same structure or schema.  It also has nothing to do
-with multiple response sets (MRSETS) which are a completely different
-SPSS/PSPP feature.</p>
+case structure files -- sometimes called multi-record case files or
+multi-type record files, or multi-record hierarchical files, -- where
+a single case spans MULTIPLE PHYSICAL RECORDS, EACH WITH A DIFFERENT
+LAYOUT. SPSS also can read this type of data. This is <em>not</em> the
+modern usage of “multi‑record” to mean “multiple rows per ID”
+in a CSV or database table, where every row has the same structure or
+schema.  It also has nothing to do with multiple response sets (MRSETS)
+which are a completely different SPSS/PSPP feature.</p>
 
 <p>Here are two screenshots of parts of the 1980 PUMS codebook showing
 two different record types (Person and Housing):</p>
@@ -96,7 +96,7 @@ id,visit,weight
 101,3,176
 </pre>
 
-<p>Multi-record hierarchical data (in the SPSS/PSPP meaning) looks like this:</p>
+<p>Multi-record case structure data (in the SPSS/PSPP meaning) looks like this:</p>
 <pre>
 1John Smith      1985M
 2  55000  1
@@ -113,10 +113,10 @@ id,visit,weight
 <ul>
 <li>This is not long format.</li>
 <li>This is not multiple rows per ID.</li>
-<li>This is hierarchical fixed-width data.</li>
+<li>This is multi-record case structure fixed-width data.</li>
 </ul>
 
-<h3>How to Read Multi-Record Raw Data with PSPP</h3>
+<h3>How to Read Multi-Record Case Structure Raw Data with PSPP</h3>
 <p>This format stores a large number of variables and values in
 a compact form, spreading each case across multiple physical
 records. However, the format is not self-documenting. <strong>External
@@ -451,7 +451,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jul 10 14:16:58 EDT 2026
+Last Modified: Fri Jul 10 21:44:12 EDT 2026
 </p>
 </footer>
 </blockquote>
