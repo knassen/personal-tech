@@ -72,6 +72,9 @@ group  score  pretest  posttest
 
 <h3><strong>One-sample T-test</strong></h3>
 
+<p>This command can be found in the PSPPIRE GUI Data Editor menu at
+Analyze-&gt;Compare Means-&gt;One Sample T Test.</p>
+
 <p>Code:</p>
 <pre>
 T-TEST
@@ -141,6 +144,10 @@ T-TEST
 </pre>
 
 <h3><strong>Independent Samples T-Test</strong></h3>
+
+<p>This command can be found in the PSPPIRE Data Editor menus at Analyze-&gt;
+Compare Means-&gt;Independent Samples T Test.</p>
+
 <pre>
 T-TEST
   /GROUPS = group(1 2)
@@ -166,6 +173,10 @@ T-TEST
 ╰─────────────────────────────────┴──────────────────┴─────────────────────┴─────┴────┴───────────────┴───────────────┴─────────────────────┴─────────────────────┴────────────────────╯
 </pre>
 <h3><strong>Paired Samples T-test</strong></h3>
+
+<p>This command can be found in the PSPPIRE Data Editor menus at Analyze-&gt;
+Compare Means-&gt;Paired Samples T Test.</p>
+
 <pre>
 T-TEST
   /PAIRS = pretest WITH posttest.
@@ -220,12 +231,13 @@ data into PSPP before running the procedure. Once the data is loaded,
 <code>ONEWAY</code> provides a quick way to compare group means and
 determine whether any differences are statistically significant.
 
-<p>Using psppire for Oneway: Run a one-way ANOVA through Analyze -&gt; 
-Compare Means -&gt; One-Way ANOVA.</p>
+<p>Using psppire for Oneway: Run a one-way ANOVA through Analyze-&gt; 
+Compare Means -&gt;One-Way ANOVA.</p>
+
 <p>PSPPIRE supports selecting the dependent variable and factor,
 requesting descriptive statistics, and choosing post‑hoc
 tests. Options not available in the GUI can still be added using PSPP
-syntax.</p>
+syntax in the Syntax Editor.</p>
 
 <p>psppire displays the same tables as the syntax version.</p>
 
@@ -337,6 +349,9 @@ Model</em>. For a single factor the model is the same as for the <code>ONEWAY</c
 <code>GLM</code> doesn't have all the extra statistics and comparisons,
 though.</p>
 
+<p>PSPPIRE does not have a menu for GLM. Thus in order to run this command
+it needs to be entered in the Syntax Editor and Run from there.</p>
+
 <pre>
 DATA LIST LIST /group score hours gpa passed major age.
 BEGIN DATA
@@ -419,6 +434,8 @@ is less than or equal to the specified value.</p>
 84.50 with 2 model and 2 error degrees of freedom, as shown in the ANOVA
 table from the regression output.</p>
 
+<p>This example was run in the PSPPIRE Syntax Editor.</p>
+
 <pre>
 DO IF $CASENUM = 1.
   COMPUTE p_F = 1 - CDF.F(84.50, 2, 2).
@@ -454,7 +471,8 @@ other cases.</p>
 <p>Nonparametric tests generally work on ranks rather than raw values,
 although some nonparametric procedures operate on counts, medians, or
 signs (such as the median or signs tests) instead. They make few 
-assumptions about the data distributions.</p>
+assumptions about the data distributions, so if you have data that is
+not normally-distributed, consider a nonparametric test.</p>
 
 <p>PSPP includes exact methods for nonparametric tests when exact
 computation is feasible. Exact tests are useful for small samples where
@@ -463,6 +481,10 @@ asymptotic approximations may not be reliable.</p>
 <p>The following examples show several commonly used nonparametric tests
 available in PSPP, including the Mann–Whitney, Wilcoxon signed‑rank,
 Kruskal–Wallis, and Median tests.</p>
+
+<p>This command cannot be found in the PSPPIRE Data Editor menus at 
+Analyze-&gt;Non-Parametric Statistic. It is syntax only, but can be
+run in the Syntax Editor.</p>
 
 <h3>MANN-WHITNEY (M-W) Test (Two Independent Groups)</h3>
 
@@ -538,6 +560,9 @@ distributions.</p>
 <p>The Wilcoxon signed‑rank test compares two related measurements
 from the same subjects. It is a nonparametric alternative to the
 paired‑samples t‑test.</p>
+
+<p>This command appears in the PSPPIRE Data Editor menus at Analyze-&gt;
+Non-Parametric Statistics-&gt;2 Related Samples and select Wilcoxon.</p>
 
 <p><strong>Code:</strong></p>
 
@@ -615,6 +640,10 @@ systematically.</p>
 <p>The Kruskal–Wallis test compares three or more independent groups
 using ranked data. It is a nonparametric alternative to one‑way ANOVA.</p>
 
+<p>This command can be found in the PSPPIRE Data Editor menus at
+Analyze-&gt; Non-Parametric Statistics-&gt;K Independent Samples and
+select Kruskal-Wallis H.</p>
+
 <pre>
 DATA LIST LIST /score group.
 BEGIN DATA
@@ -689,6 +718,10 @@ others in its distribution.</p>
 combined data at the overall median and testing whether the groups
 differ in how many observations fall above or below that median. It is a
 simple nonparametric alternative to the independent‑samples t‑test.</p>
+
+<p>This command can be found in the PSPPIRE Data Editor menus at
+Analyze-&gt;Non-Parametric Statistics-&gt;K Independent Samples and
+select Median.</p>
 
 <p><strong>Code:</strong></p>
 <pre>
@@ -786,6 +819,9 @@ the standard coefficients and model statistics used in OLS (ordinary least
 squares).
 </p>
 
+<p>This command can be found in the PSPPIRE Data Editor menus at Analyze-&gt;
+Regression-&gt;Linear.</p>
+
 <pre>
 DATA LIST LIST /
     y  x1  x2.
@@ -881,6 +917,9 @@ PSPP fits the model and reports the results.
 
 <h3>Scatterplot of predicted vs residuals.</h3>
 
+<p>Scatterplots can be found in the PSPPIRE Data Editor menu Graphs-&gt;
+Scatterplot.</p>
+
 <p>Code:</p>
 <pre>
 ** Use regression output variables (pred and resid) to check data.
@@ -915,6 +954,9 @@ alpha and split‑half reliability. This example shows a simple alpha
 calculation for a group of items. The PSPP GUI does not have Reliability
 in its menus but the code can be run in the Syntax Editor or from the
 command line.</p>
+
+<p>This command can be found in the PSPPIRE Data Editor menus at 
+Analyze-&gt;Reliability. </p>
 
 <p>PSPP Code:</p>
 <pre>
@@ -985,7 +1027,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jul 10 20:01:51 EDT 2026
+Last Modified: Sat Jul 11 19:37:09 EDT 2026
 </footer>
 </blockquote>
 </main>
