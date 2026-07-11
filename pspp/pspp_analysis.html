@@ -62,6 +62,10 @@ dataset is available—or there is no PSPP system file to load—use
 <code>DATA LIST</code> or <code>GET DATA</code> to read the raw data
 before running the procedure.</p>
 
+<p><code>DESCRIPTIVES</code> can be found in PSPPIRE (GUI
+pspp) from the PSPPIRE Data Editor menus. Analyze-&gt;Descriptive
+Statistics-&gt;Descriptives.</p>
+
 <pre>
 * Short example dataset for DESCRIPTIVES.
 DATA LIST FREE 
@@ -131,6 +135,9 @@ read correctly and whether any unexpected categories or codes appear.
 <code>FREQUENCIES</code> can also produce summary statistics and simple
 charts, but in its basic form it is most useful as a data‑checking
 tool.</p>
+
+<p><code>FREQUENCIES</code> can be found in the PSPPIRE GUI menus at
+Analyze-&gt;Descriptive Statistics-&gt;Frequencies. </p>
 
 <pre>
 DATA LIST FREE /group score.
@@ -231,6 +238,10 @@ display the relationship between two categorical variables by showing
 the joint distribution of their values. It is often used after
 <code>FREQUENCIES</code> to check that the categories of each variable
 combine as expected.</p>
+
+<p>The <core>CROSSTABS</core> command can be found in the
+PSPPIRE GUI Data Editor menus at Analyze-&gt;Descriptive
+Statistics-&gt;Crosstabs.</p>
 
 <p><strong>How to Create Two-Variable Crosstabs with Counts and Percentages</strong></p>
 
@@ -419,6 +430,10 @@ normality tests, and optional plots such as boxplots. This is useful for
 deciding whether a parametric test (like a t-test) is appropriate or
 whether a nonparametric test might be better.</p>
 
+<p>The EXAMINE command can be found in the Data Editor menu Analyze-&gt;Descriptive
+Statistics-&gt;Explore.  Note that PSPPIRE calls the EXAMINE command Explore
+in the menus, but when it writes the pspp commands, you'll see it is EXAMINE.</p>
+
 <h3>EXAMINE Notes</h3>
 
 <p>EXAMINE only analyzes numeric variables. String variables are
@@ -529,6 +544,9 @@ dataset.</p>
 This <code>CORRELATIONS</code> procedure is intended for exploratory
 analysis — inspecting linear relationships between variables and
 checking whether variables tend to move together.</p>
+
+<p>You can find Correlations in the Data Editor Analyze menu: Analyze-&gt;
+Bivariate Correlation.</p>
 
 <p>PSPP does not provide:</p>
 <ul>
@@ -863,7 +881,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Jul 10 19:56:50 EDT 2026
+Last Modified: Sat Jul 11 17:00:01 EDT 2026
 </footer>
 </blockquote>
 </main>
