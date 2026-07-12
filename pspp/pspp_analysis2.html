@@ -26,6 +26,7 @@
   <li><a href="pspp_analysis.html#correlations">CORRELATIONS</a></li>
   <li><a href="pspp_analysis.html#examine">EXAMINE</a></li>
   <li><a href="pspp_analysis.html#rank">RANK</a></li>
+<hr style="height: 2px; width: 50%; margin-left:0px; margin-right:auto; background-color:black">
   <li><a href="pspp_analysis2.html#t-test">T‑TEST</a></li>
   <li><a href="pspp_analysis2.html#oneway">ONEWAY</a></li>
   <li><a href="pspp_analysis2.html#onewayglm">ONEWAY IN GLM</a></li>
@@ -37,7 +38,7 @@
   <li><a href="pspp_analysis2#reliability">RELIABILITY</a></li>
 </ul>
 
-<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+<hr style="height: 2px; width: 100%; margin-left:10px; margin-right:auto; background-color:black">
 
 <h2 class="category">PSPP Syntax - Inferential Analysis Procedures</h2>
 
@@ -49,7 +50,14 @@ the p-value for an F-statistic, and an overview of PSPP’s
 nonparametric tests. Each section provides minimal, practical syntax and
 output so you can apply these methods directly to your own data.</p>
 
-<p>First, Inferential procedures are introduced.</p>
+<p>A short example of PSPP syntax for running a t-test is:</p>
+
+<pre>
+T-TEST /TESTVAL=0 /VARIABLES=score.
+</pre>
+
+<p>First, Inferential procedures are introduced, starting with the
+T-TEST procedure.</p>
 
 <h2 id="t-test">T-TEST</h2>
 
@@ -1029,7 +1037,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jul 11 21:50:03 EDT 2026
+Last Modified: Sun Jul 12 11:32:09 EDT 2026
 </footer>
 </blockquote>
 </main>
