@@ -302,6 +302,12 @@ DATA</code> for multi-record fixed-column files, and PSPP accepts
 this form of the command. There are several important points to
 understand about the GET DATA method of reading multi-record data:</p>
 
+<p><code>GET DATA</code> is not shown in psppire's menus. It is used
+internally in the File-&gt;Import Data function but the dialog does
+not provide any controls for defining multi-record layouts. To use
+<code>GET DATA</code> with multi-record data, you must enter the command
+manually psppire's Syntax Editor and Run it from there.</p>
+
 <ul>
     <li>The first record is defined as /1, subsequent records follow 
         as /2, /3, etc.</li>
