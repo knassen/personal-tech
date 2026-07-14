@@ -10,7 +10,7 @@
      <meta name="description" content="Practical PSPP reading multi-record data format.">
      <meta name="keywords" content="PSPP Syntax multiple records multi-record case structure hierarchical data"> 
      <meta charset="utf-8">
-     <title>Reading Multi-Record Case Structure Raw Data with PSPP</title>  
+     <title>Reading Data with Multiple Lines per Case in PSPP</title>  
 </head>
 
 <body>
@@ -18,38 +18,61 @@
 <main>
 <blockquote>
 
-<h1>Multi-Record Case Structure Data</h1>
+<h1>Reading Data with Multiple Lines per Case in PSPP</h1>
 <h2 class="skip">&nbsp;</h2>
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
 <h3>What Are We Talking About Here?</h3>
 
-<p>Multi-record data case structure data is fixed-width raw data where
-each case spans MULTIPLE LINES in a fixed sequence, potentially of
-different lengths, but always WITH DIFFERENT CONTENTS. This data format
-still appears in industries where legacy reporting systems, long-running
-surveys, or fixed-width exports are produced, or where efficient storage
-is important. It's an ancient format used in the days of punched paper
+<p>Data where each case spans multiple physical lines is a fixed‑width
+format in which the lines appear in a defined order and contain
+different kinds of information. This data format still appears in
+industries where legacy reporting systems, long-running surveys,
+or fixed-width exports are produced, or where efficient storage is
+important. It's a very old format used in the days of punched paper
 cards.</p>
+
+<p>An example of such data is this:</p>
+<pre>
+1John Smith      1985M
+2  55000  1
+3  2  1  0  3
+1Mary Johnson    1990F
+2  48000  0
+3  1  0  0  2
+</pre>
+
+<p>Each line has different record type with different kinds of information.
+This example has three lines of data for each subject.</p>
+
+<p>In this context, “multi‑record” refers to classic SPSS/PSPP
+case‑structure files — sometimes called multi‑record or
+multi‑type record files — where a single case spans multiple
+physical records in the file, each with a different layout.</p>
+
+<p>In this context, “multi‑record” refers to classic SPSS/PSPP
+case‑structure files — sometimes called multi‑record, 
+multi-type record files, or multi-record hierarchical files 
+— where a single case spans MULTIPLE PHYSICAL RECORDS in the file, EACH
+WITH A DIFFERENT LAYOUT. PSPP can read this data with <code>DATA
+LIST FIXED</code> and <code>RECORDS=</code>.</p>
+
+<p>This is <em>not</em> the modern usage of “multi‑record” to
+mean “multiple rows per ID” in a CSV or database table, where
+every row has the same structure or schema.  It also has nothing to do
+with multiple response sets (MRSETS) which are a completely different
+SPSS/PSPP feature.</p>
 
 <p>A common misconception is that PSPP lacks support for multi‑record
 or case structure fixed-width data files. In reality, PSPP has long
 supported reading multi‑record data using <code>DATA LIST FIXED</code>
 with <code>RECORDS=</code> and slash notation. <code>DATA LIST
-FIXED</code> does not appear in the any psppire graphical interface
+FIXED</code> does not appear in the psppire graphical interface
 menu. Because psppire provides no dialog or wizard for defining
 multi-record layouts, users must rely on the PSPP syntax engine. The
 pspp code can be entered and run in psppire in the Syntax Editor.</p>
 
-<p>In this context, “multi‑record” refers to classic SPSS/PSPP
-case structure files -- sometimes called multi-record case files or
-multi-type record files, or multi-record hierarchical files, -- where
-a single case spans MULTIPLE PHYSICAL RECORDS, EACH WITH A DIFFERENT
-LAYOUT. SPSS also can read this type of data. This is <em>not</em> the
-modern usage of “multi‑record” to mean “multiple rows per ID”
-in a CSV or database table, where every row has the same structure or
-schema.  It also has nothing to do with multiple response sets (MRSETS)
-which are a completely different SPSS/PSPP feature.</p>
+<p>SPSS also can read this type of data.</p>
 
 <p>Here are two screenshots of parts of the 1980 PUMS codebook showing
 two different record types (Person and Housing):</p>
@@ -458,7 +481,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Jul 12 13:37:11 EDT 2026
+Last Modified: Tue Jul 14 09:05:02 EDT 2026
 </p>
 </footer>
 </blockquote>
