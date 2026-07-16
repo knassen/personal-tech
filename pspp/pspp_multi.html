@@ -253,6 +253,38 @@ each case consists of four records, even though in this case, two
 records are not used for analysis. The two records not being read still
 need to be accounted for to keep the read in sync with the data.</p>
 
+<a href="gif/multirecord.png">
+    <img src="gif/multirecord_small.png" alt="psppire running multidata read screenshot" class="thumb-left">
+</a>
+
+<p><strong>psppire: The Graphical Interface for pspp</strong></p>
+<p>psppire is a graphical interface for the PSPP engine. It’s useful
+for exploring data, running common procedures, and generating basic
+commands. Many users begin in psppire and use the generated commands
+in the Syntax Editor as a basis for modifying their program file for
+further analysis.</p>
+
+<p>Some PSPP commands and options are not available in the psppire
+menus. When features that the GUI doesn’t expose are needed, commands
+can be entered directly in a <strong>Syntax Editor</strong> window or
+an .sps file can be run with pspp at the command line. psppire runs all
+PSPP syntax, not just what appears in the dialogs. Thus, psppire can be
+used to develop and run all PSPP commands.</p>
+
+<p>psppire does not save commands or workflow
+<strong>automatically</strong>. If the program is closed without saving
+the commands, any unsaved commands entered or generated during the session
+cannot be recovered. Saving matters if you need to reproduce or debug your
+analysis. PSPP generally prompts you to save, though, be sure to save
+your work.</p>
+
+<p>And you will need to <em>reproduce your work</em> more often than you
+think. Schools want to see how you did your assignments, and your boss
+might want to see how you do things on the job, for example.</p>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
+background-color:black">
+
 <p>Each record is defined by a <code>/N</code> and followed by variable
 names and their column locations on that record. Note that the column
 locations differ across the records because each record has its
@@ -481,7 +513,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue Jul 14 09:05:02 EDT 2026
+Last Modified: Thu Jul 16 13:25:24 EDT 2026
 </p>
 </footer>
 </blockquote>
