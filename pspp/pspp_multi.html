@@ -243,6 +243,10 @@ DATA LIST FILE=studydat RECORDS=4 NOTABLE
 SAVE OUTFILE='studydat_wide.sav'.
 </pre>
 
+<a href="gif/multirecord.png">
+    <img src="gif/multirecord_small.png" alt="psppire running multidata read screenshot" class="thumb-left">
+</a>
+
 <p>To skip a record , the user instructs PSPP to advance one record for
 each slash (/). To skip two records, enter two slashes and end the
 command with a period.</p>
@@ -252,10 +256,6 @@ multi-record data. First, the <code>RECORDS=4</code> tells PSPP that
 each case consists of four records, even though in this case, two
 records are not used for analysis. The two records not being read still
 need to be accounted for to keep the read in sync with the data.</p>
-
-<a href="gif/multirecord.png">
-    <img src="gif/multirecord_small.png" alt="psppire running multidata read screenshot" class="thumb-left">
-</a>
 
 <p>Each record is defined by a <code>/N</code> and followed by variable
 names and their column locations on that record. Note that the column
@@ -485,7 +485,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jul 16 13:28:44 EDT 2026
+Last Modified: Thu Jul 16 13:33:01 EDT 2026
 </p>
 </footer>
 </blockquote>
