@@ -151,7 +151,7 @@ column locations. If you have existing PSPP code that reads the data
 correctly, use that. Sometimes multi-record files come with a program
 to read the data (e.g. SPSS, PSPP, SAS). 
 
-<p><strong>Workflow Tip:Always ask for the codebook</strong> when
+<p><strong>Workflow Tip: Always ask for the codebook</strong> when
 working with multi-record files. These files cannot be interpreted
 reliably without the accompanying documentation, and guessing the layout
 almost always leads to errors.</p>
@@ -180,7 +180,7 @@ of records to be read the same way.</p>
 PSPP can handle this type of data by reading each record with a separate
 set of input statements for each record in the case. It then combines
 the values from all the records into a single (wide) case which can
-be exported to a format other programs can read. Exporting to CSV
+be exported to a format which other programs can read. Exporting to CSV
 format, for example makes the data readable by many programs.</p>
 
 <h3>Tip: Every Record/Card Must be Read or Explicitly Skipped </h3> 
@@ -226,7 +226,7 @@ reads them in order:</p>
 records are not needed for analysis, so PSPP skips them using blank
 slash lines below. This technique works well for reading multi-record
 files. Later I'll show how <code>GET DATA</code> reads the same data.
-Thus there are two ways to read multi-record data in PSPP.</p>
+Thus, there are two ways to read multi-record data in PSPP.</p>
 
 <pre>
 * Read multi-record data and skip two records.
@@ -330,7 +330,7 @@ the code above. But the command used doesn't appear in any GUI menu
 Run menu). The functionality exists and pspp can read multi-record
 files.</p>
 
-<h3>Reading Multi-record Data with GET DATA</h3>
+<h3>Reading Multi-Record Data with GET DATA</h3>
 
 <p>The PSPP user manual describes a <code>/rec#</code> form of <code>GET
 DATA</code> for multi-record fixed-column files, and PSPP accepts
