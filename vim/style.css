@@ -26,3 +26,7 @@ hr {
   border: none;
   margin: 20px auto;
 }
+h1.skip {
+    display: none;
+}
+
