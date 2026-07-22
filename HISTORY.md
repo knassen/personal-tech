@@ -209,5 +209,9 @@ trying to teach google what the pages are all about.
 pages take time to get recognized by Google, and it takes time to get
 them tweaked so they show up reliably in searches. It's all a process.
 
+**July 22, 2026** I started working on a pspp matrix page. I'm hoping
+to create a program that can create statistics from pspp output.
+
+
 
 
