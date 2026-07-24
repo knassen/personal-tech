@@ -124,8 +124,7 @@ pre {
 .pspp-index a {
   display: block;
   white-space: normal;
-  flex-shrink: 0;
-  width 10em;
+  width 8em;
   text-align: center;
 }
 
