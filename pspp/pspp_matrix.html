@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+     <base href="/personal-tech/pspp/"> 
+     <link rel="stylesheet" href="pspp/psppstyle.css"> 
+     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     <meta name="description" content="Using MATRIX in PSPP.">
+     <meta name="keywords" content="PSPP MATRIX computing statistics">
+     <meta charset="utf-8">
+     <title>Exploring the MATRIX Sub-Language in PSPP</title>  
+</head>
+
+<body>
+
+<main>
+<blockquote>
+
+<h1>Exploring the MATRIX Sub-Language in PSPP</h1>
+
+<p>PSPP includes a matrix sub-language that operates independently
+of the active dataset. Instead of working with variables and cases,
+<code>MATRIX</code> works directly with matrices, including row
+vectors, column vectors, and scalars. Only short strings (8 bytes) are
+supported. In <code>MATRIX</code>, a "variable" is simply a matrix
+object created with <code>COMPUTE</code>, and indexing uses parentheses
+rather than square brackets.</p>
+
+<p>Matrices can be created in several ways. The most common is using
+<code>GET</code> to pull variables from the active dataset into
+MATRIX. Matrices can also be created directly inside the MATRIX
+block using <code>COMPUTE</code>, or read from external files using
+<code>READ</code>. PSPP also provides a separate <code>MATRIX
+DATA</code> procedure that defines a matrix using inline numeric data
+between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
+<code>COMPUTE</code> or <code>READ</code>, <code>MATRIX DATA</code> is
+a top-level command and cannot be placed inside a <code>MATRIX</code>
+block.</p>
+
+<p>The <code>MATRIX</code> facility is available in psppire's Syntax
+Window and at the command line. It provides a compact environment
+for numerical computation, making it useful for implementing custom
+statistics that PSPP does not provide directly.</p>
+
+<p>Although <code>MATRIX</code> is designed for matrix algebra,
+many programs use it primarily for scalar arithmetic. PSPP treats
+scalars as 1x1 matrices, so functions such as <code>NROW()</code>,
+<code>MOD()</code>, <code>ABS()</code>, arithmetic operators, relational
+operators, and branching constructs all work naturally on scalar
+values. In practice, MATRIX often serves as a compact procedural
+language for computing custom statistics, even when the calculations
+involve only simple scalars rather than full matrix operations.</p>
+
+<p>Here, I'll do two short PSPP matrix examples, a trimmed mean program
+and a median absolute deviation (MAD) program. They are not very long,
+but make good examples and allow hand computation.</p>
+
+<p>In the trimmed-mean and MAD examples below, MATRIX is used mainly for
+scalar computations: determining indices, computing medians, evaluating
+conditions, and performing loops. The only true matrix operations are
+reading a column vector with <code>GET</code>, slicing it with indexing, and
+summing it with <code>CSUM()</code>. This illustrates how MATRIX can be used
+effectively even when the underlying computation is not inherently
+matrix-based.</p>
+
+<h2>Trimmed Mean</h2>
+
+<p>The trimmed mean is a robust measure of central tendency. Instead of
+using all values, a trimmed mean removes a fixed percentage of the
+smallest and largest observations and computes the mean of the remaining
+data. This reduces the influence of outliers and produces a more stable
+estimate of the "typical" value when the dataset contains extreme
+observations.</p>
+
+<p>In this example, 20% of the values are trimmed&ndash;10% from the low end
+and 10% from the high end. The MATRIX program sorts the data, determines
+how many values to trim, slices the vector accordingly, and computes the
+mean of the trimmed subset.</p>
+
+<strong>Output:</strong>
+<pre>
+Reading free-form data from INLINE.
++--------+------+
+|Variable|Format|
++--------+------+
+|x       |F8.0  |
++--------+------+
+
+Value of k
+  1
+
+Value of start
+  2
+
+Value of end 
+  8
+
+Sorted data                                                                                                             
+   10  
+   12  
+   13  
+   14  
+   15  
+   16  
+   17  
+   18  
+  100 
+
+Trimmed data
+  12  
+  13  
+  14  
+  15  
+  16  
+  17  
+  18  
+
+Trimmed mean
+  15  
+</pre>
+
+<p>Here, k determines the 20% number of values to remove, start
+gives the starting index in the vector, and end gives the ending
+index.  Thus we remove the 10 and the 100 from the data and then
+compute the mean.</p>
+
+<strong>Program:</strong>
+<pre>
+DATA LIST LIST /x .
+BEGIN DATA
+10
+12
+13
+14
+14
+16
+17
+19
+100
+END DATA.
+
+SORT CASES BY x.
+
+MATRIX.
+    GET x.
+
+    COMPUTE k = TRUNC(0.20 * NROW(x)).
+    COMPUTE start = k + {1}.
+    COMPUTE end = NROW(x) - k.
+    PRINT k /TITLE="Value of k".
+    PRINT start /TITLE="Value of start".
+    PRINT end /TITLE="Value of end".
+
+    COMPUTE x_trim = x(start:end) .
+
+    COMPUTE tmean = CSUM(x_trim) / NROW(x_trim).
+
+    PRINT x /TITLE="Sorted data".
+    PRINT x_trim /TITLE="Trimmed data".
+    PRINT tmean /TITLE="Trimmed mean".
+END MATRIX.
+</pre>
+
+<p>This program shows several things: 1. DATA LIST LIST was used
+to read the data and make it available to the matrix language. 2.
+selecting values from a matrix uses parentheses for indexing instead of
+square brackets. 3. To sum data in pspp matrix, you use RSUM, CSUM, or
+MSUM. Since we are reading a vertical vector of values, CSUM was used. 
+4. To create "variables" use COMPUTE. You can't just assign to a
+variable names directly. 5. The NROW() matrix function is used to count
+the rows. 6. 0.20 is used as the percentage of values to trim from
+the data.</p>
+
+
+<h2>Median Absolute Deviation (MAD)</h2>
+
+<p>The data represent wait times at a customer service desk. Most issues
+appear to be solved in a few minutes, but one person spent over half an
+hour at the desk.  Thus our data has a big outlier and computing a mean
+would be influenced by that value.</p>
+
+<p>This example computes the strict definition of MAD and not the
+SD-scaled version, which uses 1.4826 as factor to scale the MAD
+value.</p>
+
+<p>This uses DATA LIST FREE to read the data.  And after it is read
+the values that we don't need (like -1) are removed. The the cases are
+sorted for computing the median value. This program checks to see if
+we have and even number of row or odd numbers of row values and then
+computes the median based on that with basic math. Function used include
+MOD(), NROW(), and ABS().  There is no matrix sort that we can use so a
+bubble sort is added to the program.</p>
+
+<strong>Output:</strong>
+<pre>
+Median Wait Time (6+4/2 = 5 for 9 values once the -1 is removed)
+  5
+
+Median Absolute Deviation (MAD)
+  1
+</pre>
+
+<strong>Program:</strong>
+<pre>
+DATA LIST FREE /wait.
+BEGIN DATA
+4 5 6 5 4 6 5 5 -1 32
+END DATA.
+
+* Remove walk-offs (-1).
+SELECT IF wait &lt;&gt; -1.
+
+* Sort wait times.
+SORT CASES BY wait.
+
+MATRIX.
+    GET wait /VARIABLES=wait.
+
+    COMPUTE n = NROW(wait).
+
+    * Determine odd/even sample size.
+    COMPUTE is_even = (MOD(n,2) = 0).
+
+    * Median calculation.
+    DO IF is_even = 1.
+        COMPUTE med = (wait(n/2) + wait(n/2 + 1)) / 2.
+    ELSE.
+        COMPUTE med = wait((n+1)/2).
+    END IF.
+
+    * Absolute deviations.
+    COMPUTE dev = ABS(wait - med).
+
+    * Bubble sort deviations.
+    LOOP i = 1 TO n-1.
+        LOOP j = 1 TO n-i.
+            DO IF dev(j) &gt; dev(j+1).
+                COMPUTE temp = dev(j).
+                COMPUTE dev(j) = dev(j+1).
+                COMPUTE dev(j+1) = temp.
+            END IF.
+        END LOOP.
+    END LOOP.
+
+    * MAD calculation with odd/even branching.
+    COMPUTE is_even_dev = (MOD(n,2) = 0).
+
+    DO IF is_even_dev = 1.
+        COMPUTE mad = (dev(n/2) + dev(n/2 + 1)) / 2.
+    ELSE.
+        COMPUTE mad = dev((n+1)/2).
+    END IF.
+
+    PRINT med /TITLE="Median Wait Time".
+    PRINT mad /TITLE="Median Absolute Deviation (MAD)".
+END MATRIX.
+</pre>
+
+<p>The results above were validated using SAS, Python, and R, all
+using the strict definition of MAD.  And all produced the same MAD=1
+value.</p>
+
+<p>These examples demonstrated how PSPP's MATRIX facility can be used to
+compute custom statistics using scalar arithmetic, branching, and matrix
+operations. Users can adapt these patterns to implement trimmed means,
+percentiles, quartiles, and other robust statistics like median absolute
+deviation (MAD).</p>
+
+<hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
+
+<footer>
+    <p>© 2026, Kent Nassen</p>
+
+<p>
+<a href="/personal-tech/pspp/pspp.html">
+    <img src="/personal-tech/gif/arrwback.gif" alt="">
+    Back to Syntax PSPP Page
+</a>
+</p>
+<p style="font-size:80%;">
+Last Modified: Fri Jul 24 15:07:53 EDT 2026
+</p>
+</footer>
+</blockquote>
+</main>
+</body>
+</html>
