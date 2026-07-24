@@ -110,6 +110,7 @@ pre {
 /* Index line
  * -----------------------------------------*/
 .pspp-index {
+  all: revert;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
