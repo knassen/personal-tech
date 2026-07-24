@@ -112,12 +112,18 @@ pre {
 .pspp-index {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 2.5em;
   width: 100%;
   text-align: center;
   font-size: 120%;
   font-weight: bold;
   margin: 0.5em 0;
+}
+.pspp-index a {
+  display: block;
+  white-space: normal;
+  width 10em;
+  text-align: center;
 }
 
