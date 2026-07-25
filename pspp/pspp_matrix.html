@@ -10,7 +10,7 @@
      <meta name="description" content="Using MATRIX in PSPP.">
      <meta name="keywords" content="PSPP MATRIX computing statistics">
      <meta charset="utf-8">
-     <title>Exploring the MATRIX Sub-Language in PSPP</title>  
+     <title>Exploring the PSPP MATRIX Sub-Language</title>  
 </head>
 
 <body>
@@ -330,7 +330,7 @@ proc sql noprint;
   select median(absdev) into :mad from dev;
   quit;
 
-  %put Strict MAD = &mad;
+  %put Strict MAD = &amp;mad;
 </pre>
 
 <p>These examples demonstrated how PSPP's MATRIX facility can be used to
@@ -364,7 +364,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jul 25 12:09:45 EDT 2026
+Last Modified: Sat Jul 25 12:19:24 EDT 2026
 </p>
 </footer>
 </blockquote>
