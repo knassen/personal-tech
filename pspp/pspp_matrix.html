@@ -270,9 +270,68 @@ MATRIX.
 END MATRIX.
 </pre>
 
+<h3>Validation</h3>
 <p>The results above were validated using SAS, Python, and R, all
 using the strict definition of MAD.  And all produced the same MAD=1
 value.</p>
+
+<p>These short R, Python, and SAS examples were used only to validate
+that the PSPP MATRIX implementation produces the correct strict MAD
+value. They are included here for completeness and transparency. PSPP
+users do not need these external tools—the MATRIX program shown above
+computes the strict MAD directly.</p>
+
+<p>R verification code:</p>
+<pre>
+mad(c(4,4,5,5,5,5,6,6,32))
+x &lt;- c(4, 4, 5, 5, 5, 5, 6, 6, 32)
+median(abs(x - median(x)))
+</pre>
+
+<p>Python verification code:</p>
+<pre>
+import numpy as np
+
+x = np.array([4, 4, 5, 5, 5, 5, 6, 6, 32])
+mad_strict = np.median(np.abs(x - np.median(x)))
+print(mad_strict)
+</pre>
+
+<p>SAS verificaiton code:</p>
+<pre>
+data x;
+  input value;
+  datalines;
+  4
+  4
+  5
+  5
+  5
+  5
+  6
+  6
+  32
+  ;
+run;
+
+/* Compute median */
+proc sql noprint;
+  select median(value) into :med from x;
+  quit;
+
+  /* Compute absolute deviations */
+data dev;
+  set x;
+  absdev = abs(value - &amp;med);
+run;
+
+/* Compute strict MAD (median of abs deviations) */
+proc sql noprint;
+  select median(absdev) into :mad from dev;
+  quit;
+
+  %put Strict MAD = &mad;
+</pre>
 
 <p>These examples demonstrated how PSPP's MATRIX facility can be used to
 compute custom statistics using scalar arithmetic, branching, and matrix
@@ -305,7 +364,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jul 25 10:34:46 EDT 2026
+Last Modified: Sat Jul 25 11:25:37 EDT 2026
 </p>
 </footer>
 </blockquote>
