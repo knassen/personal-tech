@@ -68,6 +68,8 @@ between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
 a top-level command and cannot be placed inside a <code>MATRIX</code>
 block.</p>
 
+<h2>Examples of MATRIX Usage</h2>
+
 <p>Although <code>MATRIX</code> is designed for matrix algebra,
 many programs use it primarily for scalar arithmetic. PSPP treats
 scalars as 1x1 matrices, so functions such as <code>NROW()</code>,
@@ -76,8 +78,6 @@ operators, and branching constructs all work naturally on scalar
 values. In practice, MATRIX often serves as a compact procedural
 language for computing custom statistics, even when the calculations
 involve only simple scalars rather than full matrix operations.</p>
-
-<h2>Examples of MATRIX Usage</h2>
 
 <p>Here, I'll do two short PSPP matrix examples, a trimmed mean program
 and a median absolute deviation (MAD) program. They are not very long,
@@ -388,7 +388,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jul 25 16:53:29 EDT 2026
+Last Modified: Sat Jul 25 16:56:24 EDT 2026
 </p>
 </footer>
 </blockquote>
