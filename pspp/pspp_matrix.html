@@ -190,15 +190,18 @@ MATRIX.
 END MATRIX.
 </pre>
 
-<p>This program shows several things: 1. DATA LIST LIST was used
-to read the data and make it available to the matrix language. 2.
-selecting values from a matrix uses parentheses for indexing instead of
-square brackets. 3. To sum data in pspp matrix, you use RSUM, CSUM, or
-MSUM. Since we are reading a vertical vector of values, CSUM was used. 
-4. To create "variables" use COMPUTE. You can't just assign to a
-variable names directly. 5. The NROW() matrix function is used to count
-the rows. 6. 0.20 is used as the percentage of values to trim from
-the data.</p>
+<p>This program shows several things: 
+<ol type="1">
+    <li>DATA LIST LIST was used to read the data and make it available to the matrix language. 
+    <li>Selecting values from a matrix uses parentheses for indexing instead of square brackets. 
+    <li>To sum data in pspp matrix, you use RSUM, CSUM, or MSUM. Since we are reading a vertical vector of values, CSUM was used. 
+    <li>To create "variables" use COMPUTE. You can't just assign to a variable names directly. 
+    <li>The NROW() matrix function is used to count the rows. 
+    <li>0.20 is used as the percentage of values to trim from the data.
+</ol>
+</p>
+
+<p>Next, a MATRIX program for computing Median Absolute Deviation is shown.</p>
 
 <h2>Median Absolute Deviation (MAD)</h2>
 
@@ -290,7 +293,7 @@ MATRIX.
 END MATRIX.
 </pre>
 
-<h3>Validation</h3>
+<h3>Validation of MAD Output</h3>
 <p>The results above were validated using SAS, Python, and R, all
 using the strict definition of MAD.  And all produced the same MAD=1
 value.</p>
@@ -388,7 +391,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jul 25 18:31:58 EDT 2026
+Last Modified: Sat Jul 25 18:43:07 EDT 2026
 </p>
 </footer>
 </blockquote>
