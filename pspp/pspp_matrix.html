@@ -28,6 +28,24 @@ supported. In <code>MATRIX</code>, a "variable" is simply a matrix
 object created with <code>COMPUTE</code>, and indexing uses parentheses
 rather than square brackets.</p>
 
+<h2>General Notes on Matrix Capabilities</h2>
+
+<p>PSPP’s <code>MATRIX</code> sub‑language is a general matrix
+computation and programming environment. <code>MATRIX</code>
+supports control flow (<code>DO IF, ELSE IF, ELSE, END IF, LOOP,
+BREAK</code>) and numerical operations such as modular arithmetic
+(<code>MOD</code>). It provides matrix algebra (addition, subtraction,
+multiplication, transposition, inversion via <code>INV</code>
+and <code>GINV</code>) and advanced linear‑algebra routines
+including singular value decomposition (<code>CALL SVD</code>),
+Cholesky factorization (<code>CHOL</code>), solving linear systems
+(<code>SOLVE</code>), and computing eigenvectors and eigenvalues
+(<code>CALL EIGEN</code>). These capabilities place <code>MATRIX</code>
+in the same general category as matrix facilities found in SAS IML, R,
+MATLAB, and similar numerical environments.
+
+<h2>Creating Matrices</h2>
+
 <p>Matrices can be created in several ways. The most common is using
 <code>GET</code> to pull variables from the active dataset into
 MATRIX. Matrices can also be created directly inside the MATRIX
@@ -178,7 +196,6 @@ MSUM. Since we are reading a vertical vector of values, CSUM was used.
 variable names directly. 5. The NROW() matrix function is used to count
 the rows. 6. 0.20 is used as the percentage of values to trim from
 the data.</p>
-
 
 <h2>Median Absolute Deviation (MAD)</h2>
 
@@ -368,7 +385,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Jul 25 13:51:55 EDT 2026
+Last Modified: Sat Jul 25 14:40:29 EDT 2026
 </p>
 </footer>
 </blockquote>
