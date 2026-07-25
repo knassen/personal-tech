@@ -53,9 +53,15 @@ values. In practice, MATRIX often serves as a compact procedural
 language for computing custom statistics, even when the calculations
 involve only simple scalars rather than full matrix operations.</p>
 
+<p>This page is not a full <code>MATRIX</code> tutorial, not a
+linear algebra tutorial, and not a comprehensive statistical guide.
+<code>MATRIX</code> is useful when PSPP lacks a statistics or when you
+need to compute something manually.</p>
+
 <p>Here, I'll do two short PSPP matrix examples, a trimmed mean program
 and a median absolute deviation (MAD) program. They are not very long,
-but make good examples and allow hand computation.</p>
+but make good examples and allow hand computation. They are intended to
+introduce you to the MATRIX sub-language and show some useful computation.</p>
 
 <p>In the trimmed-mean and MAD examples below, MATRIX is used mainly for
 scalar computations: determining indices, computing medians, evaluating
@@ -181,13 +187,15 @@ that uses absolute deviations from the median, making it resistant to
 outliers.</p>
 
 <p>The data represent wait times at a customer service desk. Most issues
-appear to be solved in a few minutes, but one person spent over half an
-hour at the desk.  Thus our data has a big outlier and computing a mean
-would be influenced by that value.</p>
+appear to be solved in a few minutes, but one person spent over half
+an hour at the desk. Thus our data has a large outlier which would
+influence the computation of mean.</p>
 
 <p>This example computes the strict definition of MAD and not the
-SD-scaled version, which uses 1.4826 as factor to scale the MAD
-value.</p>
+SD-scaled version, which multiplies the MAD value by 1.4826 to make
+it consistent with the standard deviation under normality. The
+program as shown outputs the unscaled MAD value; modifying it for
+the SD-scaled version should be easy if you need it.</p>
 
 <p>This uses DATA LIST FREE to read the data.  And after it is read
 the values that we don't need (like -1) are removed. The the cases are
