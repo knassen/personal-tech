@@ -38,7 +38,7 @@ linear algebra tutorial, and not a comprehensive statistical guide.
 <code>MATRIX</code> is useful when PSPP lacks a statistic or when you
 need to compute something manually.</p>
 
-<h2>Notes on PSPP Matrix Capabilities</h2>
+<h2>PSPP Matrix Capabilities</h2>
 
 <p>PSPP's <code>MATRIX</code> sub-language is a general matrix
 computation and programming environment. <code>MATRIX</code>
@@ -67,7 +67,7 @@ between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
 a top-level command and cannot be placed inside a <code>MATRIX</code>
 block.</p>
 
-<h2>Examples of MATRIX Usage</h2>
+<h2>MATRIX Usage Examples</h2>
 
 <p>Although <code>MATRIX</code> is designed for matrix algebra,
 many programs use it primarily for scalar arithmetic. PSPP treats
@@ -92,7 +92,7 @@ summing it with <code>CSUM()</code>. This illustrates how MATRIX can be used
 effectively even when the underlying computation is not inherently
 matrix-based.</p>
 
-<h2>Trimmed Mean</h2>
+<h2>Computing a Trimmed Mean</h2>
 
 <p>The trimmed mean is a robust measure of central tendency. Instead of
 using all values, a trimmed mean removes a fixed percentage of the
@@ -106,7 +106,7 @@ and 10% from the high end. The MATRIX program sorts the data, determines
 how many values to trim, slices the vector accordingly, and computes the
 mean of the trimmed subset.</p>
 
-<strong>Output:</strong>
+<strong>Results:</strong>
 <pre>
 Reading free-form data from INLINE.
 +--------+------+
@@ -153,7 +153,7 @@ gives the starting index in the vector, and end gives the ending
 index.  Thus we remove the 10 and the 100 from the data and then
 compute the mean.</p>
 
-<strong>Program:</strong>
+<strong>Matrix Syntax:</strong>
 <pre>
 DATA LIST LIST /x .
 BEGIN DATA
@@ -202,7 +202,7 @@ END MATRIX.
 
 <p>Next, a MATRIX program for computing Median Absolute Deviation is shown.</p>
 
-<h2>Median Absolute Deviation (MAD)</h2>
+<h2>Computing Median Absolute Deviation (MAD)</h2>
 
 <p>The median absolute deviation (MAD) is a robust measure of spread
 that uses absolute deviations from the median, making it resistant to
@@ -227,7 +227,7 @@ computes the median based on that with basic math. Function used include
 MOD(), NROW(), and ABS().  There is no matrix sort that we can use so a
 bubble sort is added to the program.</p>
 
-<strong>Output:</strong>
+<strong>Results:</strong>
 <pre>
 Median Wait Time (6+4/2 = 5 for 9 values once the -1 is removed)
   5
@@ -236,7 +236,7 @@ Median Absolute Deviation (MAD)
   1
 </pre>
 
-<strong>Program:</strong>
+<strong>Matrix Syntax:</strong>
 <pre>
 DATA LIST FREE /wait.
 BEGIN DATA
@@ -292,7 +292,7 @@ MATRIX.
 END MATRIX.
 </pre>
 
-<h3>Validation of MAD Output</h3>
+<h3>Validation of MAD Results</h3>
 <p>The results above were validated using SAS, Python, and R, all
 using the strict definition of MAD.  And all produced the same MAD=1
 value.</p>
@@ -363,7 +363,7 @@ you probably expected (inverse). Note that to create B below the
 <code>COMPUTE</code> command is needed. The following was run in
 the psppire GUI on Windows 11.</p>
 
-<p><strong>Program:</strong></p>
+<p><strong>Matrix Syntax:</strong></p>
 <pre>
 DATA LIST LIST /x y.
 BEGIN DATA
@@ -378,7 +378,7 @@ MATRIX.
 END MATRIX.
 </pre>
 
-<p><strong>Output:</strong></p>
+<p><strong>Results:</strong></p>
 <pre>
 DATA LIST LIST /x y.
 Reading free-form data from INLINE.
@@ -409,7 +409,8 @@ C
 END MATRIX.
 </pre>
 
-<p>Note that we get back the original matrix if invert the first inversion.</p>
+<p>Note that we get back the original matrix if the first inversion is
+inverted.</p>
 
 <p>These examples demonstrated how PSPP's MATRIX facility can be used to
 compute custom statistics using scalar arithmetic, branching, and matrix
@@ -446,7 +447,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Aug  3 15:42:18 EDT 2026
+Last Modified: Mon Aug  3 15:56:24 EDT 2026
 </p>
 </footer>
 </blockquote>
