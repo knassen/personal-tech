@@ -355,6 +355,54 @@ proc sql noprint;
   %put Strict MAD = &amp;mad;
 </pre>
 
+<h3>A Full Matrix Example</h3>
+
+<p>Up to this point the examples have been run from vector data. Now
+we try a small full matrix example with a matrix operation that
+you probably expected (inverse). Note that to create B below the
+<code>COMPUTE</code> command is needed. The following was run in
+the psppire GUI on Windows 11.</p>
+
+<p><strong>Program:</strong></p>
+<pre>
+DATA LIST LIST /x y.
+BEGIN DATA
+1 2
+3 4
+END DATA.
+
+MATRIX.
+    GET A /VARIABLES=x y.
+    COMPUTE B = INV(A).
+    PRINT B.
+END MATRIX.
+</pre>
+
+<p><strong>Output:</strong></p>
+<pre>
+DATA LIST LIST /x y.
+Reading free-form data from INLINE.
+╭────────┬──────╮
+│Variable│Format│
+├────────┼──────┤
+│x       │F8.0  │
+│y       │F8.0  │
+╰────────┴──────╯
+BEGIN DATA
+1 2
+3 4
+END DATA.
+
+MATRIX.
+    GET A /VARIABLES=x y.
+    COMPUTE B = INV(A).
+    PRINT B.
+B
+ -2.0000000000  1.0000000000
+  1.5000000000  -.5000000000
+END MATRIX.
+</pre>
+
 <p>These examples demonstrated how PSPP's MATRIX facility can be used to
 compute custom statistics using scalar arithmetic, branching, and matrix
 operations. Users can adapt these patterns to implement trimmed means,
@@ -390,7 +438,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Jul 30 10:29:08 EDT 2026
+Last Modified: Sun Aug  2 21:00:03 EDT 2026
 </p>
 </footer>
 </blockquote>
