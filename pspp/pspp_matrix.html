@@ -7,7 +7,7 @@
      <link rel="stylesheet" href="pspp/psppstyle.css"> 
      <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     <meta name="description" content="Using MATRIX in PSPP.">
+     <meta name="description" content="Using PSPP MATRIX language.">
      <meta name="keywords" content="PSPP MATRIX computing statistics">
      <meta charset="utf-8">
      <title>Exploring the PSPP MATRIX Sub-Language</title>  
@@ -22,9 +22,9 @@
 <h1>Exploring the PSPP MATRIX Sub-Language</h1>
 
 <p>PSPP includes a matrix sub-language. It is available in psppire's
-Syntax Editor window and at the command line. It provides a compact
-environment for numerical computation, making it useful for implementing
-custom statistics that PSPP does not provide directly.</p>
+Syntax Editor window and from the command line pspp program. It provides
+a compact environment for numerical computation, making it useful for
+implementing custom statistics that PSPP does not provide directly.</p>
 
 <p>It operates independently of the active dataset. Instead of working
 with variables and cases, <code>MATRIX</code> works directly with
@@ -36,7 +36,9 @@ uses parentheses rather than square brackets.</p>
 <p>This page is not a full <code>MATRIX</code> tutorial, not a
 linear algebra tutorial, and not a comprehensive statistical guide.
 <code>MATRIX</code> is useful when PSPP lacks a statistic or when you
-need to compute something manually.</p>
+need to compute something manually. Here you will find a few simple
+examples of using <code>MATRIX</code> for computing statistics and
+that <code>MATRIX</code> operate on full matrices.</p>
 
 <h2>PSPP Matrix Capabilities</h2>
 
@@ -447,7 +449,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Aug  3 15:56:24 EDT 2026
+Last Modified: Mon Aug  3 17:26:21 EDT 2026
 </p>
 </footer>
 </blockquote>
