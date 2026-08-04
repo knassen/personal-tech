@@ -80,19 +80,19 @@ values. In practice, MATRIX often serves as a compact procedural
 language for computing custom statistics, even when the calculations
 involve only simple scalars rather than full matrix operations.</p>
 
-<p>Here, I'll do two short PSPP matrix examples, a trimmed mean program
-and a median absolute deviation (MAD) program. They are not very long,
-but make good examples and allow hand computation. They are intended
-to introduce you to the PSPP MATRIX sub-language and show some useful
-computation.</p>
+<p>Here, I'll do three short PSPP matrix examples, a trimmed mean
+program, a median absolute deviation (MAD) program, and operating on a
+full matrix. They are not very long, but make good examples and allow
+hand computation. They are intended to introduce you to the PSPP MATRIX
+sub-language and show some useful computation.</p>
 
-<p>In the trimmed-mean and MAD examples below, MATRIX is used mainly for
-scalar computations: determining indices, computing medians, evaluating
-conditions, and performing loops. The only true matrix operations are
-reading a column vector with <code>GET</code>, slicing it with indexing, and
-summing it with <code>CSUM()</code>. This illustrates how MATRIX can be used
-effectively even when the underlying computation is not inherently
-matrix-based.</p>
+<p>In the trimmed-mean and MAD examples below, <code>MATRIX</code> is
+used mainly for scalar computations: determining indices, computing
+medians, evaluating conditions, and performing loops. The only true
+matrix operations are reading a column vector with <code>GET</code>,
+slicing it with indexing, and summing it with <code>CSUM()</code>. This
+illustrates how MATRIX can be used effectively even when the underlying
+computation is not inherently matrix-based.</p>
 
 <h2>Computing a Trimmed Mean</h2>
 
@@ -103,10 +103,10 @@ data. This reduces the influence of outliers and produces a more stable
 estimate of the "typical" value when the dataset contains extreme
 observations.</p>
 
-<p>In this example, 20% of the values are trimmed&ndash;10% from the low end
-and 10% from the high end. The MATRIX program sorts the data, determines
-how many values to trim, slices the vector accordingly, and computes the
-mean of the trimmed subset.</p>
+<p>In this example, 20% of the values are trimmed&ndash;10% from the low
+end and 10% from the high end. The <code>MATRIX</code> program sorts the
+data, determines how many values to trim, slices the vector accordingly,
+and computes the mean of the trimmed subset.</p>
 
 <strong>Results:</strong>
 <pre>
@@ -155,7 +155,7 @@ gives the starting index in the vector, and end gives the ending
 index.  Thus we remove the 10 and the 100 from the data and then
 compute the mean.</p>
 
-<strong>Matrix Syntax:</strong>
+<strong>MATRIX Syntax:</strong>
 <pre>
 DATA LIST LIST /x .
 BEGIN DATA
@@ -202,7 +202,8 @@ END MATRIX.
     <li>0.20 is used as the percentage of values to trim from the data, split equally between beginning and end of the data.</li>
 </ol>
 
-<p>Next, a MATRIX program for computing Median Absolute Deviation is shown.</p>
+<p>Next, a <code>MATRIX</code> program for computing Median Absolute
+Deviation is shown.</p>
 
 <h2>Computing Median Absolute Deviation (MAD)</h2>
 
@@ -238,7 +239,7 @@ Median Absolute Deviation (MAD)
   1
 </pre>
 
-<strong>Matrix Syntax:</strong>
+<strong>MATRIX Syntax:</strong>
 <pre>
 DATA LIST FREE /wait.
 BEGIN DATA
@@ -300,10 +301,10 @@ using the strict definition of MAD.  And all produced the same MAD=1
 value.</p>
 
 <p>These short R, Python, and SAS examples were used only to validate
-that the PSPP MATRIX implementation produces the correct strict MAD
-value. They are included here for completeness and transparency. PSPP
-users do not need these external tools&mdash;the MATRIX program shown above
-computes the strict MAD directly.</p>
+that the PSPP <code>MATRIX</code> implementation produces the correct
+strict MAD value. They are included here for completeness and
+transparency. PSPP users do not need these external tools&mdash;the
+<code>MATRIX</code> program shown above computes the strict MAD directly.</p>
 
 <p>R verification code:</p>
 <pre>
@@ -365,7 +366,7 @@ you probably expected (inverse). Note that to create B below the
 <code>COMPUTE</code> command is needed. The following was run in
 the psppire GUI on Windows 11.</p>
 
-<p><strong>Matrix Syntax:</strong></p>
+<p><strong>MATRIX Syntax:</strong></p>
 <pre>
 DATA LIST LIST /x y.
 BEGIN DATA
@@ -449,7 +450,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Aug  3 19:50:10 EDT 2026
+Last Modified: Mon Aug  3 20:09:13 EDT 2026
 </p>
 </footer>
 </blockquote>
