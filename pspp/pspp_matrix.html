@@ -7,8 +7,8 @@
      <link rel="stylesheet" href="pspp/psppstyle.css"> 
      <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     <meta name="description" content="Using PSPP MATRIX language.">
-     <meta name="keywords" content="PSPP MATRIX computing statistics">
+     <meta name="description" content="Using PSPP MATRIX sub-language.">
+     <meta name="keywords" content="PSPP computing statistics MATRIX ">
      <meta charset="utf-8">
      <title>Exploring the PSPP MATRIX Sub-Language</title>  
 </head>
@@ -21,10 +21,11 @@
 
 <h1>Exploring the PSPP MATRIX Sub-Language</h1>
 
-<p>PSPP includes a matrix sub-language. It is available in psppire's
-Syntax Editor window and from the command line pspp program. It provides
-a compact environment for numerical computation, making it useful for
-implementing custom statistics that PSPP does not provide directly.</p>
+<p>The PSPP application includes a matrix sub-language. It is available
+in psppire's Syntax Editor window and from the command line pspp
+program. It provides a compact environment for numerical computation,
+making it useful for implementing custom statistics that PSPP does not
+provide directly.</p>
 
 <p>It operates independently of the active dataset. Instead of working
 with variables and cases, <code>MATRIX</code> works directly with
@@ -55,8 +56,8 @@ including singular value decomposition (<code>CALL SVD</code>),
 Cholesky factorization (<code>CHOL</code>), solving linear systems
 (<code>SOLVE</code>), and computing eigenvectors and eigenvalues
 (<code>CALL EIGEN</code>). These capabilities place <code>MATRIX</code>
-in the same general category as matrix facilities found in SAS IML, R,
-MATLAB, and similar numerical environments.
+in the same general category of numeric programming environments used
+for matrix-based computation.</p>
 
 <p>Note: <code>PSPP</code> has the <code>FLIP</code> command that transposes
 variables and cases but that works on the active data set. It is
@@ -77,7 +78,7 @@ between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
 a top-level command and cannot be placed inside a <code>MATRIX</code>
 block.</p>
 
-<h2>MATRIX Usage Examples</h2>
+<h2>Using MATRIX Inside PSPP</h2>
 
 <p>Although <code>MATRIX</code> is designed for matrix algebra,
 many programs use it primarily for scalar arithmetic. PSPP treats
@@ -303,10 +304,7 @@ MATRIX.
 END MATRIX.
 </pre>
 
-<h3>Validation of MAD Results</h3>
-<p>The results above were validated using SAS, Python, and R, all
-using the strict definition of MAD.  And all produced the same MAD=1
-value.</p>
+<h3>Verifying PSPP MAD Results</h3>
 
 <p>These short R, Python, and SAS examples were used only to validate
 that the PSPP <code>MATRIX</code> implementation produces the correct
@@ -458,7 +456,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Aug  5 09:51:10 EDT 2026
+Last Modified: Wed Aug  5 10:30:27 EDT 2026
 </p>
 </footer>
 </blockquote>
