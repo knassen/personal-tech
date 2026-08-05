@@ -475,11 +475,12 @@ Data List
 ╰───────╯
 </pre>
 
-<p>The computed p-value is 0.002736 which matches the pspp output
-within rounding error. The <code>DO IF</code> block runs the
-<code>COMPUTE</code> expression only for the first case, and the
-<code>LIST</code> command displays only that case. All remaining cases
-contain system-missing values for <code>p_F</code>.</p> 
+<p>The computed p-value is 0.002736 which matches the pspp
+<code>ONEWAY</code> and <code>GLM</code> output within rounding
+error. The <code>DO IF</code> block runs the <code>COMPUTE</code>
+expression only for the first case, and the <code>LIST</code> command
+displays only that case. All remaining cases contain system-missing
+values for <code>p_F</code>.</p>
 
 <p><strong>Workflow Tip:</strong> PSPP does not have standalone scalar
 variables, so computing a single value (such as a p‑value or critical
