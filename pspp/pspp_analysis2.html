@@ -460,8 +460,8 @@ table from the regression output.</p>
 <p>This example was run in the PSPPIRE Syntax Editor.</p>
 
 <pre>
-DO IF $CASENUM = 1.
-  COMPUTE p_F = 1 - CDF.F(84.50, 2, 2).
+DO IF $CASENUM = 1
+  COMPUTE p_F = 1 - CDF.F(18.45, 2, 6).
 END IF.
 FORMATS p_F (F10.6).
 LIST p_F /CASES=FROM 1 TO 1.
@@ -470,11 +470,11 @@ Data List
 ╭───────╮
 │  p_F  │
 ├───────┤
-│.011696│
+│.002736│
 ╰───────╯
 </pre>
 
-<p>The computed p-value is 0.011696 which matches the pspp output
+<p>The computed p-value is 0.002736 which matches the pspp output
 within rounding error. The <code>DO IF</code> block runs the
 <code>COMPUTE</code> expression only for the first case, and the
 <code>LIST</code> command displays only that case. All remaining cases
@@ -1063,7 +1063,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Jul 29 20:16:03 EDT 2026
+Last Modified: Wed Aug  5 15:18:33 EDT 2026
 </footer>
 </blockquote>
 </main>
