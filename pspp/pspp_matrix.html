@@ -33,21 +33,23 @@ strings (8 bytes) are supported. In <code>MATRIX</code>, a "variable" is
 simply a matrix object created with <code>COMPUTE</code>, and indexing
 uses parentheses rather than square brackets.</p>
 
+<h2>About This Page</h2>
+
 <p>This page is not a full <code>MATRIX</code> tutorial, not a
 linear algebra tutorial, and not a comprehensive statistical guide.
-<code>MATRIX</code> is useful when PSPP lacks a statistic or when you
-need to compute something manually. The examples below show basic uses
+Instead, it introduces how <code>MATRIX</code> can help when PSPP lacks a statistic or 
+a manual computation is needed. The examples below show basic uses
 of <code>MATRIX</code> for computing statistics and illustrate that
 <code>MATRIX</code> can operate on full matrices, not just vectors.</p>
 
 <h2>PSPP Matrix Capabilities</h2>
 
 <p>PSPP's <code>MATRIX</code> sub-language is a general matrix
-computation and programming environment. <code>MATRIX</code>
-supports control flow (<code>DO IF, ELSE IF, ELSE, END IF, LOOP,
-BREAK</code>) and numerical operations such as modular arithmetic
-(<code>MOD</code>). It provides matrix algebra (addition, subtraction,
-multiplication, transposition, inversion via <code>INV</code>
+computation and programming environment.  It supports control
+flow (<code>DO IF, ELSE IF, ELSE, END IF, LOOP, BREAK</code>) and
+numerical operations such as modular arithmetic (<code>MOD</code>). It
+provides matrix algebra (addition, subtraction, multiplication,
+transposition via <code>TRANSPOS</code>, inversion via <code>INV</code>
 and <code>GINV</code>) and advanced linear-algebra routines
 including singular value decomposition (<code>CALL SVD</code>),
 Cholesky factorization (<code>CHOL</code>), solving linear systems
@@ -55,6 +57,12 @@ Cholesky factorization (<code>CHOL</code>), solving linear systems
 (<code>CALL EIGEN</code>). These capabilities place <code>MATRIX</code>
 in the same general category as matrix facilities found in SAS IML, R,
 MATLAB, and similar numerical environments.
+
+<p>Note: <code>PSPP</code> has the <code>FLIP</code> command that transposes
+variables and cases but that works on the active data set. It is
+not a <code>MATRIX</code> command like <code>TRANSPOS</code> or
+<code>T</code>, which switche rows and columns and operate in the
+<code>MATRIX</code> environment.</p>
 
 <h2>Creating Matrices</h2>
 
@@ -450,7 +458,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Aug  3 20:09:13 EDT 2026
+Last Modified: Wed Aug  5 09:51:10 EDT 2026
 </p>
 </footer>
 </blockquote>
