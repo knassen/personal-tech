@@ -7,10 +7,10 @@
      <link rel="stylesheet" href="pspp/psppstyle.css"> 
      <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp_matrix.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     <meta name="description" content="Using PSPP MATRIX sub-language.">
-     <meta name="keywords" content="PSPP computing statistics MATRIX ">
+     <meta name="description" content="Using PSPP matrix sub-language.">
+     <meta name="keywords" content="PSPP computing statistics">
      <meta charset="utf-8">
-     <title>Exploring the PSPP MATRIX Sub-Language</title>  
+     <title>Adding New Statistics to PSPP Output</title>  
 </head>
 
 <body>
@@ -19,28 +19,31 @@
 <blockquote>
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
-<h1>Exploring the PSPP MATRIX Sub-Language</h1>
+<h1>Adding New Statistics to PSPP Output</h1>
 
-<p>The PSPP application includes a matrix sub-language. It is available
-in psppire's Syntax Editor window and from the command line pspp
-program. It provides a compact environment for numerical computation,
-making it useful for implementing custom statistics that PSPP does not
-provide directly.</p>
+<p>If you need a new statistic from PSPP, there is a way to compute them.
+This page shows how to do that.</p>
+
+<p>The PSPP application includes a sub-language that can use matrix
+commands. It is available in psppire's Syntax Editor window and from
+the command line pspp program. It provides a compact environment
+for numerical computation, making it useful for implementing custom
+statistics that PSPP does not provide directly.</p>
 
 <p>It operates independently of the active dataset. Instead of working
-with variables and cases, <code>MATRIX</code> works directly with
-matrices, including row vectors, column vectors, and scalars. Only short
-strings (8 bytes) are supported. In <code>MATRIX</code>, a "variable" is
-simply a matrix object created with <code>COMPUTE</code>, and indexing
-uses parentheses rather than square brackets.</p>
+with variables and cases, it works directly with matrices, including
+row vectors, column vectors, and scalars. Only short strings (8
+bytes) are supported. A "variable" is simply an object created with
+<code>COMPUTE</code>, and indexing uses parentheses rather than square
+brackets.</p>
 
 <h2>About This Page</h2>
 
-<p>This page introduces how PSPP's <code>MATRIX</code> command can help
-when PSPP lacks a built-in statistic or when a manual computation is
+<p>This page introduces how PSPP can help
+when it lacks a built-in statistic or when a manual computation is
 required. The examples demonstrate basic statistical calculations in
-<code>MATRIX</code> and highlight that <code>MATRIX</code> works with
-full matrices, in addition to vectors.</p>
+matrix code and highlight that it works with full matrices, in 
+addition to vectors.</p>
 
 <h2>PSPP Matrix Capabilities</h2>
 
@@ -460,7 +463,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Aug  5 19:49:18 EDT 2026
+Last Modified: Thu Aug  6 11:19:59 EDT 2026
 </p>
 </footer>
 </blockquote>
