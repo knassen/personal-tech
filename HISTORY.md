@@ -221,7 +221,8 @@ to modify pages to meet Google's idea of what is indexable.
 
 **August 9, 2026** I added a new section to pspp_analysis2, the Wilcoxon
 Signed Rank section was extended to add the One-Sample Wilcoxon test,
-which is a special case of paired samples.
+which is a special case of paired samples. pspp_matrix.html has been
+denied indexing 5 times now. I've been submitting it once a week.
 
 
 
