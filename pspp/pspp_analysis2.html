@@ -662,6 +662,90 @@ requested using the /EXACT subcommand.</p>
 <p>A small p‑value indicates that the paired measurements differ
 systematically.</p>
 
+<h3>One-Sample Wilcoxon (Special Case of Paired Samples)</h3>
+
+<p>PSPP does not provide a separate one‑sample Wilcoxon command.
+However, the one‑sample test is a special case of the paired Wilcoxon
+signed‑rank test (Conover, Practical Nonparametric Statistics, 1971).</p>
+
+<p>To test whether the median of a single variable equals a hypothesized
+value, compute a constant variable equal to the hypothesized value and
+use the paired form of the test:</p>
+
+<strong>PSPP Syntax:</strong>
+<pre>
+DATA LIST LIST /score.
+BEGIN DATA
+12
+15
+18
+14
+17
+END DATA.
+
+COMPUTE null = 15.
+NPAR TESTS
+  /WILCOXON = score WITH null (PAIRED).
+</pre>
+
+<strong>PSPP Output:</strong>
+<pre>
+Reading free-form data from INLINE.                                                                                     
++--------+------+
+|Variable|Format|
++--------+------+
+|score   |F8.0  |
++--------+------+
+
+                         Ranks
++---------------------------+-+---------+------------+
+|                           |N|Mean Rank|Sum of Ranks|
++---------------------------+-+---------+------------+
+|score - null Negative Ranks|2|     2.25|        4.50|
+|             Positive Ranks|2|     2.75|        5.50|
+|             Ties          |1|         |            |   
+|             Total         |5|         |            |   
++---------------------------+-+---------+------------+
+
+           Test Statistics
++----------------------+------------+
+|                      |score - null|
++----------------------+------------+
+|Z                     |        -.18|
+|Asymp. Sig. (2-tailed)|        .854|
++----------------------+------------+
+</pre>
+
+<p>This produces the same signed‑rank statistics as the one‑sample Wilcoxon test.</p>
+
+<h3>Verifying PSPP One-Sample Wilcoxon Results</h3>
+
+<p>R verification code:</p>
+<pre>
+&gt; 
+&gt; x &lt;- c(12, 15, 18, 14, 17) 
+&gt; wilcox.test(x, mu = 15, exact = FALSE, correct = FALSE)
+
+    Wilcoxon signed rank test
+
+data:  x
+V = 5.5, p-value = 0.8539
+alternative hypothesis: true location is not equal to 15
+
+&gt;
+&gt; proc.time()
+   user  system elapsed 
+  0.089   0.049   0.127 
+</pre>
+
+<p>SAS and Python do not compute the Wilcoxon Signed‑Rank test for
+very small samples containing zero differences. PSPP and R both compute
+the test and produce identical results, confirming the correctness of
+PSPP’s paired‑with‑constant method.</p>
+
+<p>Fortunately R, with some convincing, does produce the results that
+PSPP produces.</p>
+
 <h3>KRUSKAL-WALLIS</h3>
 
 <p>The Kruskal–Wallis test compares three or more independent groups
@@ -1063,7 +1147,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Aug  6 21:08:42 EDT 2026
+Last Modified: Sun Aug  9 16:50:01 EDT 2026
 </footer>
 </blockquote>
 </main>
