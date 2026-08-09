@@ -67,10 +67,16 @@ I have done most of things I set out to do.
     the F statistic, general usage, working around issues with DATA LIST
     FREE, and using GET DATA.
 
-    In June 2026, I split the main PSPP Page into 3 other pages:
+  - In June 2026, I split the main PSPP Page into 3 other pages:
     pspp_analysis for analysis procedures, pspp_merge for showing how
     to merge data files in pspp, pspp_multi for the multi-record
     hierarchical data read information. This helped unconfuse google.
+
+  - August 2026: I tried a pspp_matrix page which covered creating
+    statistics which pspp doesn't have from data. Unfortunately, in 3
+    weeks, Google would not index it so it can't be searched. If you
+    want to look at it, you can find the links in any of the pspp pages
+    in the index at the end of the page.
 
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
