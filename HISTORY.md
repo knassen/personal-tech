@@ -165,10 +165,10 @@ for web sites, even new ones ("tweaking").
 
 **March 22, 2026** I've spent the last several weeks running every html
 file through the w3.org html validator. This led to many minor fixes,
-but it also found some missing end tags and issues like that. Some
-of these pages are over 20 years have suffered through many changes
-(though the content and links have been updated). I had to fix some
-pages because they got un-indexed by Google. 
+but it also found some missing end tags and issues like that. Some of
+these pages are over 20 years old and have suffered through many changes
+(content and links have been updated over the years). I had to fix some
+pages because they got un-indexed by Google.
 
 All html files pass the w3.org validator now.  My python pages have been
 on the site starting Feb 24, 2026. I'm still working on them. The latest
@@ -203,7 +203,8 @@ I'd rather not put each topic in a separate page.
 
 It does little good for me to put these pages up, to help people, if no
 one can find them in a search. Hence, I'm spending way too much time
-trying to teach google what the pages are all about.
+trying to teach google what the pages are all about and trying to get 
+them indexed.
 
 **June 9, 2026** At this point, things are settling down again. New
 pages take time to get recognized by Google, and it takes time to get
@@ -217,6 +218,10 @@ to index on Google.  It has been denied 4 times in the last 3 weeks.
 I re-submitted it today after changing it significantly to have more
 "How To" headers. I really wish I could write like I like and not have
 to modify pages to meet Google's idea of what is indexable.
+
+**August 9, 2026: I added a new section to pspp_analysis2, the Wilcoxon
+Signed Rank section was extended to add the One-Sample Wilcoxon test,
+which is a special case of paired samples.
 
 
 
