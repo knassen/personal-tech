@@ -219,7 +219,7 @@ I re-submitted it today after changing it significantly to have more
 "How To" headers. I really wish I could write like I like and not have
 to modify pages to meet Google's idea of what is indexable.
 
-**August 9, 2026: I added a new section to pspp_analysis2, the Wilcoxon
+**August 9, 2026** I added a new section to pspp_analysis2, the Wilcoxon
 Signed Rank section was extended to add the One-Sample Wilcoxon test,
 which is a special case of paired samples.
 
