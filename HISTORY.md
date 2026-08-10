@@ -223,6 +223,9 @@ to modify pages to meet Google's idea of what is indexable.
 Signed Rank section was extended to add the One-Sample Wilcoxon test,
 which is a special case of paired samples. pspp_matrix.html has been
 denied indexing 5 times now. I've been submitting it once a week.
+I also got my style sheet set to wrap the menu at the bottom of the page
+when it's viewed on cellphones, so the menu should be completely visible
+now.
 
 
 
