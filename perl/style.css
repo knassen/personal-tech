@@ -14,6 +14,11 @@ a:visited { color: #663399; }
 a:hover   { color: #cc6600; }
 a:active  { color: #990000; }
 
+a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 /* Replacing <font> size "+1" */
 .up1 {
   font-size: 130%;
