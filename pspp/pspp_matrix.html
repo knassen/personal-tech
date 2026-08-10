@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html lang="en">
 
 <head>
@@ -59,9 +58,7 @@ and <code>GINV</code>) and advanced linear-algebra routines
 including singular value decomposition (<code>CALL SVD</code>),
 Cholesky factorization (<code>CHOL</code>), solving linear systems
 (<code>SOLVE</code>), and computing eigenvectors and eigenvalues
-(<code>CALL EIGEN</code>). These capabilities place <code>MATRIX</code>
-in the same general category of numeric programming environments used
-for matrix-based computation.</p>
+(<code>CALL EIGEN</code>). 
 
 <p>Note: <code>PSPP</code> has the <code>FLIP</code> command that
 transposes variables and cases but that works on the active data
@@ -310,13 +307,14 @@ END MATRIX.
 
 <h3>Verifying PSPP MAD Results</h3>
 
-<p>These short R, Python, and SAS examples were used only to validate
-that the PSPP <code>MATRIX</code> implementation produces the correct
-strict MAD value. They are included here for completeness and
-transparency. PSPP users do not need these external tools&mdash;the
-<code>MATRIX</code> program shown above computes the strict MAD directly.</p>
+<p>Independent numberical tools or external calculations were used
+only to validate that the PSPP <code>MATRIX</code> implementation
+produces the correct strict MAD value. They are included here for
+completeness and transparency. PSPP users do not need these external
+tools&mdash;the <code>MATRIX</code> program shown above computes the
+strict MAD directly.</p>
 
-<p>R verification code:</p>
+<p>Independent verification code:</p>
 <pre>
 mad(c(4,4,5,5,5,5,6,6,32))
 x &lt;- c(4, 4, 5, 5, 5, 5, 6, 6, 32)
@@ -329,7 +327,7 @@ median(abs(x - median(x)))
 [1] 1
 </pre>
 
-<p>Python verification code:</p>
+<p>Independent verification code:</p>
 <pre>
 import numpy as np
 
@@ -343,7 +341,7 @@ print(mad_strict)
 1.0
 </pre>
 
-<p>SAS verification code:</p>
+<p>Independent verification code:</p>
 <pre>
 data x;
   input value;
