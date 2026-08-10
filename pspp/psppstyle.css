@@ -126,8 +126,15 @@ pre {
   display: block;
   white-space: normal;
   flex-shrink: 1;
-  width auto;
+  width: auto;
   max-width: 8em;
   text-align: center;
 }
+@media (max-width: 600px) {
+  .pspp-index {
+    flex-wrap: wrap;      /* only phones wrap */
+    gap: 1.2em;           /* optional: tighter spacing */
+  }
+}
+
 
