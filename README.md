@@ -76,7 +76,9 @@ I have done most of things I set out to do.
     statistics which pspp doesn't have from data. Unfortunately, in 3
     weeks, Google would not index it so it can't be searched. If you
     want to look at it, you can find the links in any of the pspp pages
-    in the index at the end of the page.
+    in the index at the end of the page. 
+
+    It's https://knassen.github.io/personal-tech/pspp/pspp_matrix.html
 
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
