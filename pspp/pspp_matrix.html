@@ -33,13 +33,6 @@ and linear algebra. It provides enough functionality needed to compute
 many college-level assignments and for experimenting with algorithms
 step-by-step.</p>
 
-<p>It operates independently of the active dataset. Instead of working
-with variables and cases, it works directly with matrices, including
-row vectors, column vectors, and scalars. Only short strings (8
-bytes) are supported. A "variable" is simply an object created with
-<code>COMPUTE</code>, and indexing uses parentheses rather than square
-brackets.</p>
-
 <h2>PSPP Matrix Capabilities</h2>
 
 <p>The PSPP <code>MATRIX</code> sub-language is a general matrix
@@ -53,6 +46,13 @@ including singular value decomposition (<code>CALL SVD</code>),
 Cholesky factorization (<code>CHOL</code>), solving linear systems
 (<code>SOLVE</code>), and computing eigenvectors and eigenvalues
 (<code>CALL EIGEN</code>). 
+
+<p>It operates independently of the active dataset. Instead of working
+with variables and cases, it works directly with matrices, including
+row vectors, column vectors, and scalars. Only short strings (8
+bytes) are supported. A "variable" is simply an object created with
+<code>COMPUTE</code>, and indexing uses parentheses rather than square
+brackets.</p>
 
 <p>Note: <code>PSPP</code> has the <code>FLIP</code> command that
 transposes variables and cases but that works on the active data
@@ -470,7 +470,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Aug 12 22:02:00 EDT 2026
+Last Modified: Thu Aug 13 09:39:49 EDT 2026
 </p>
 </footer>
 </blockquote>
