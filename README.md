@@ -80,6 +80,9 @@ I have done most of things I set out to do.
 
     It's https://knassen.github.io/personal-tech/pspp/pspp_matrix.html
 
+  - August 16, 2026: Google finally indexed pspp_matrix.html so it's
+    searchable now.
+
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
 ways to do things in SAS, vim, pspp, python, perl, or unix/linux. 

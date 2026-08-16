@@ -227,5 +227,8 @@ I also got my style sheet set to wrap the menu at the bottom of the page
 when it's viewed on cellphones, so the menu should be completely visible
 now.
 
+**August 16, 2026** pspp_matrix.html finally got indexed, so it's 
+searchable on Google now.
+
 
 
