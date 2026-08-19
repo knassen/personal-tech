@@ -1086,9 +1086,10 @@ set title "Residuals vs Predicted Values"
 plot "C:/pspp/regression.csv" using 5:4 every ::1 with points pt 7 ps 1.2 lc rgb "#3366cc" title "Residuals"
 </pre>
 
-<p>This reads the 3rd and 4th variables from the CSV file. The rgb
-setting sets the color for the plot points. "set title" sets the plot
-title. You can adjust the plot size on the "set terminal" line. The
+<p>This reads the 4th and 5th variables from the CSV file (4th variable,
+Residuals on the Y-axis and 5th variable on the X-axis, Predicted). The
+rgb setting sets the color for the plot points. "set title" sets the
+plot title. You can adjust the plot size on the "set terminal" line. The
 "every ::1" means skip the first line/block. The rest of the command
 sets the font point size and the color of the plot points.</p>
 
@@ -1189,7 +1190,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Aug 19 17:34:25 EDT 2026
+Last Modified: Wed Aug 19 19:13:25 EDT 2026
 </footer>
 </blockquote>
 </main>
