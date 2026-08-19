@@ -1089,6 +1089,9 @@ plot "C:/pspp/regression.csv" using 3:4 with points pt 7 ps 1.2 lc rgb "#3366cc"
 setting sets the color for the plot points. "set title" sets the plot
 title. You can adjust the plot size on the "set terminal" line.</p>
 
+<p>Note, by default, gnuplot puts in an extra plot point to show what
+the plot symbol is. <code>unset key</code> will remove that point.
+
 <p><strong>The resulting plot looks like this:</strong></p>
 <img src="pspp/residuals2.png" alt="scatterplot of predicted vs residual from gnuplot" width="350"> 
 
@@ -1183,7 +1186,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Aug 19 13:02:30 EDT 2026
+Last Modified: Wed Aug 19 13:05:19 EDT 2026
 </footer>
 </blockquote>
 </main>
