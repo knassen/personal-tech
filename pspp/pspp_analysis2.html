@@ -1090,8 +1090,9 @@ plot "C:/pspp/regression.csv" using 5:4 every ::1 with points pt 7 ps 1.2 lc rgb
 Residuals on the Y-axis and 5th variable on the X-axis, Predicted). The
 rgb setting sets the color for the plot points. "set title" sets the
 plot title. You can adjust the plot size on the "set terminal" line. The
-"every ::1" means skip the first line/block. The rest of the command
-sets the font point size and the color of the plot points.</p>
+"every ::1" means skip the first line/block. every is a row selector. The 
+rest of the command sets the font point size and the color of the plot 
+points.</p>
 
 <p>Note, by default, gnuplot puts in an extra plot point to show what
 the plot symbol is. <code>unset key</code> will remove that point.</p>
