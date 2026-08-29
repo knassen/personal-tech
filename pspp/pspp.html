@@ -953,12 +953,13 @@ they must be listed separately.</p>
 
 <p><code>A variable list like CONSIST TO CAUS_YOU</code> causes PSPP to
 include every variable inclusive between those names in dictionary order
-— often far more than intended.</p>
+— often far more than intended. Note: these variables were consecutive
+in the data set.</p>
 
 <p><strong>Workflow Tip</strong>: When recoding a large set of
-consecutive variables, use TO in the variable list. It reduces typing,
-prevents spelling errors, and ensures the same transformation is applied
-consistently across the entire scale.</p>
+consecutive variables which have the same scale, use TO in the variable
+list. It reduces typing, prevents spelling errors, and ensures the same
+transformation is applied consistently across all variables.</p>
 
 <p><code>DISPLAY DICTIONARY.</code> shows the variable order, making
 it easy to confirm which variables are consecutive before using
@@ -1477,7 +1478,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Aug 28 21:05:07 EDT 2026
+Last Modified: Sat Aug 29 10:03:21 EDT 2026
 </p>
 </footer>
 </blockquote>
