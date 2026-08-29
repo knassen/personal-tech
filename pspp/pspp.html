@@ -930,11 +930,12 @@ RECODE
    (ELSE=SYSMIS).
 </pre>
 
-<p>This scale-reversing recode is changing the numeric values in the
-same variables it reads from (<code>CONSIST TO KEEP_RID UNCERT TO
-POWER</code>, and <code>MORALITY CONTROL CAUS_YOU</code>). Because those
-variables already exist, no new variables are needed. Anything not
-recoded is given the System Missing value (<code>SYSMIS</code>).</p>
+<p>This scale-reversing <code>RECODE</code> is changing the
+numeric values in the same variables it reads from (<code>CONSIST
+TO KEEP_RID UNCERT TO POWER</code>, and <code>MORALITY CONTROL
+CAUS_YOU</code>). Because those variables already exist, no new
+variables are needed. Anything not recoded is given the System Missing
+value (<code>SYSMIS</code>).</p>
 
 <p><strong>Workflow Tip</strong>: Reverse scoring is always done by
 explicitly mapping each value to its opposite (e.g. (1=9) (2=8)...).
@@ -1476,7 +1477,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Aug 28 20:33:41 EDT 2026
+Last Modified: Fri Aug 28 21:05:07 EDT 2026
 </p>
 </footer>
 </blockquote>
