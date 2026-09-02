@@ -72,6 +72,16 @@ FILES</code> combines them into a single dataset by matching cases on
   <tr><td>103</td><td>11</td><td>17</td></tr>
 </table>
 
+<pre>
+MATCH FILES
+  /FILE='demo.sav'
+  /TABLE='psych.sav'
+  /BY PATID.
+EXECUTE.
+
+SAVE OUTFILE='merged.sav'.
+</pre>
+
 <p><strong>Merged Output</strong></p>
 <table>
   <tr>
@@ -91,16 +101,6 @@ FILES</code> combines them into a single dataset by matching cases on
     <td>11</td><td>17</td>
   </tr>
 </table>
-
-<pre>
-MATCH FILES
-  /FILE='demo.sav'
-  /TABLE='psych.sav'
-  /BY PATID.
-EXECUTE.
-
-SAVE OUTFILE='merged.sav'.
-</pre>
 
 <p>PSPP matches cases from both files using
 <code>PATID</code>. Variables from <code>demo.sav</code> and
@@ -564,7 +564,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Aug 30 11:57:14 EDT 2026
+Last Modified: Tue Sep  1 20:37:32 EDT 2026
 </p>
 </footer>
 </blockquote>
