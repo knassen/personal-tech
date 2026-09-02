@@ -1,3 +1,6 @@
+.skip {                                                                                                                
+   display: none;
+}
 /* Body styling */
 body {
   background-color: #ffffff;
