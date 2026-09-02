@@ -87,7 +87,7 @@ group  score  pretest  posttest
 2      70     67       72
 </pre>
 
-<h3><strong>One-sample T-test</strong></h3>
+<h3><strong>How to Run the One-sample T-test</strong></h3>
 
 <p>This command can be found in the PSPPIRE GUI Data Editor menu at
 <strong>Analyze-&gt;Compare Means-&gt;One Sample T Test</strong>.</p>
@@ -160,7 +160,7 @@ T-TEST
 ╰─────┴────┴──┴───────────────┴───────────────┴─────────────────────┴────────────────────╯
 </pre>
 
-<h3><strong>Independent Samples T-Test</strong></h3>
+<h3><strong>How to Do the Independent Samples T-Test</strong></h3>
 
 <p>This command can be found in the PSPPIRE Data Editor menus at <strong>Analyze-&gt;
 Compare Means-&gt;Independent Samples T Test</strong>.</p>
@@ -189,7 +189,7 @@ T-TEST
 │      Equal variances not assumed│                  │                     │-3.57│3.74│           .026│         -17.00│                 4.76│               -30.59│               -3.41│
 ╰─────────────────────────────────┴──────────────────┴─────────────────────┴─────┴────┴───────────────┴───────────────┴─────────────────────┴─────────────────────┴────────────────────╯
 </pre>
-<h3><strong>Paired Samples T-test</strong></h3>
+<h3><strong>How to Do the Paired Samples T-test</strong></h3>
 
 <p>This command can be found in the PSPPIRE Data Editor menus at <strong>Analyze-&gt;
 Compare Means-&gt;Paired Samples T Test</strong>.</p>
@@ -358,13 +358,13 @@ family 2 and 3. But family 1 and 2 do not differ significantly.</p>
 
 <a href="pspp/pspp_analysis2.html#top">Back to top</a>
 
-<h2 id="onewayglm">How to Run a Oneway Analysis of Variance (GLM)</h2>
+<h2 id="onewayglm">How to Run a Oneway Analysis of Variance with GLM</h2>
 
 <p>Another way to run a Oneway Analysis of Variance is with the
-<code>GLM</code> procedure. <code>GLM</code> stands for <em>General Linear
-Model</em>. For a single factor the model is the same as for the <code>ONEWAY</code> command.
-<code>GLM</code> doesn't have all the extra statistics and comparisons,
-though.</p>
+<code>GLM</code> procedure. <code>GLM</code> stands for <em>General
+Linear Model</em>. For a single factor the model is the same as for the
+<code>ONEWAY</code> command. <code>GLM</code> doesn't have all the extra
+statistics and comparisons, though.</p>
 
 <p>PSPPIRE does not have a menu for GLM. Thus in order to run this command
 it needs to be entered in the Syntax Editor and Run from there.</p>
@@ -489,7 +489,7 @@ MATRIX sub-language. <a href="pspp/pspp_matrix.html"> <strong>See
 
 <a href="pspp/pspp_analysis2.html#top">Back to top</a>
 
-<h2 id="npar-tests">NPAR TESTS</h2>
+<h2 id="npar-tests">How to Run NPAR TESTS</h2>
 
 <p>Nonparametric tests generally work on ranks rather than raw values,
 although some nonparametric procedures operate on counts, medians, or
@@ -509,7 +509,7 @@ Kruskal–Wallis, and Median tests.</p>
 <strong>Analyze-&gt;Non-Parametric Statistic. It is syntax only, but can be
 run in the Syntax Editor</strong>.</p>
 
-<h3>MANN-WHITNEY (M-W) Test (Two Independent Groups)</h3>
+<h3>How to Compute the MANN-WHITNEY (M-W) Test (Two Independent Groups)</h3>
 
 <p><strong>Code:</strong></p>
 <pre>
@@ -578,7 +578,7 @@ significance.</p>
 <p>A small p‑value indicates that the two groups differ in their
 distributions.</p>
 
-<h3>WILCOXON SIGNED-RANK (Matched Pairs)</h3>
+<h3>How to Compute the WILCOXON SIGNED-RANK (Matched Pairs)</h3>
 
 <p>The Wilcoxon signed‑rank test compares two related measurements
 from the same subjects. It is a nonparametric alternative to the
@@ -658,7 +658,7 @@ requested using the /EXACT subcommand.</p>
 <p>A small p‑value indicates that the paired measurements differ
 systematically.</p>
 
-<h3>One-Sample Wilcoxon (Special Case of Paired Samples)</h3>
+<h3>How to Compute a One-Sample Wilcoxon Test (Special Case of Paired Samples)</h3>
 
 <p>PSPP does not provide a separate one‑sample Wilcoxon command.
 However, the one‑sample test is a special case of the paired Wilcoxon
@@ -746,7 +746,7 @@ PSPP produces.</p>
 statistics, and both SAS and Python complain if the sample size is
 small.</p>
 
-<h3>KRUSKAL-WALLIS</h3>
+<h3>How to Run the KRUSKAL-WALLIS Test</h3>
 
 <p>The Kruskal–Wallis test compares three or more independent groups
 using ranked data. It is a nonparametric alternative to one‑way ANOVA.</p>
@@ -823,7 +823,7 @@ available only when requested using the /EXACT subcommand.</p>
 <p>A small p‑value indicates that at least one group differs from the
 others in its distribution.</p>
 
-<h3>MEDIAN TEST</h3>
+<h3>How to Compute the MEDIAN TEST</h3>
 
 <p>The Median test compares two independent groups by splitting the
 combined data at the overall median and testing whether the groups
@@ -1026,7 +1026,7 @@ context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
 
-<h3>Scatterplot of predicted vs residuals.</h3>
+<h3>How to Make a Scatterplot of predicted vs residuals.</h3>
 
 <p>Scatterplots can be found in the PSPPIRE Data Editor menu Graphs-&gt;
 Scatterplot.</p>
@@ -1056,7 +1056,7 @@ window.</p>
 scatterplots for compatibility, but it has no effect on the plot. PSPP
 always produces a simple bivariate scatterplot.</p>
 
-<h3>Further Graphing with GNUPLOT from PSPP Data</h3>
+<h3>Further Graphing with GNUPLOT using PSPP Data</h3>
 
 <p>Gnuplot is a free plotting program. It can be used
 on Windows and Linux/Unix to produce plots. See: 
@@ -1187,7 +1187,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Sep  2 12:45:24 EDT 2026
+Last Modified: Wed Sep  2 13:26:14 EDT 2026
 </footer>
 </blockquote>
 </main>
