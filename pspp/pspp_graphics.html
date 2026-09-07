@@ -18,7 +18,6 @@
 <main>
 <blockquote>
 
-
 <h1>PSPP Graphics: Examples and Notes</h1>
 
 <p>PSPP has limited built‑in graphics, so this page shows how to create
@@ -88,7 +87,7 @@ Documentation.</a></p>
 <p>Saving the linear regression residuals and predicted values as CSV 
 data allows us to get the data into gnuplot easily.</p>
 
-<p><strong>Gnuplot Program</strong></p>
+<p><strong>Gnuplot Residuals Plot Program</strong></p>
 
 <p><strong>Raw Data</strong></p>
 <pre>
@@ -143,12 +142,43 @@ the plot symbol is. <code>unset key</code> will remove that point.</p>
 <p><strong>The resulting plot looks like this:</strong></p>
 <img src="pspp/residuals2.png" alt="scatterplot of predicted vs residual from gnuplot" width="350"> 
 
+<p>A Q–Q plot compares the sample residuals to the theoretical normal
+distribution.  If the residuals follow a straight line, they are
+approximately normal.  Curvature or S‑shapes indicate departures from
+normality.</p>
 
+<p>Gnuplot Code</p>
+<pre>
+set datafile separator ","
+set terminal pngcairo size 800,600
+set output "C:/pspp/qqplot.png"
+unset key
+
+set xlabel "Theoretical Quantiles"
+set ylabel "Sample Residuals"
+set title "Normal Q-Q Plot of Residuals"
+
+stats "C:/pspp/regression.csv" using 4 nooutput
+
+# Safe row number function for CSV files
+row(n) = n + 1
+
+plot "C:/pspp/regression.csv" using \
+    (invnorm((row($0) - 0.5) / STATS_records)):4 every ::1 \
+    with points pt 7 ps 1.2 lc rgb "#3366cc"
+</pre>
+
+<p>Output</p>
+
+<img src="/personal-tech/pspp/qqplot.png" alt="Q-Q plot for small regression example">
+
+<p>See Also: <a href="pspp/pspp_analysis2">PSPP Inferential and Modeling 
+Procedures</a> which has the Linear Regression that produced this plot data.</p>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
 <div class="pspp-index">   
-    <a href="https://knassen.github.io/personal-tech/pspp/pspp.html">[[PSPP Syntax]]</a>
+    <a href="https://knassen.github.io/personal-tech/pspp/pspp.html">[PSPP Syntax]</a>
     <a href="https://knassen.github.io/personal-tech/pspp/pspp_analysis.html">[PSPP Analysis-Exploratory]</a>
     <a href="https://knassen.github.io/personal-tech/pspp/pspp_analysis2.html">[PSPP Analysis-Inferential &amp; Modeling]</a>
     <a href="https://knassen.github.io/personal-tech/pspp/pspp_merge.html">[PSPP Merging]</a>                                    
@@ -171,7 +201,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep  7 15:12:31 EDT 2026
+Last Modified: Mon Sep  7 18:56:37 EDT 2026
 </p>
 </footer>
 </blockquote>
