@@ -38,6 +38,25 @@ There should not be patterns in residuals. That's what you are looking for.</p>
 <p>Scatterplots can be found in the PSPPIRE Data Editor menu
 <strong>Graphs-&gt; Scatterplot.</strong></p>
 
+<p>Data:</p>
+<pre>
+DATA LIST LIST /
+    y  x1  x2.
+BEGIN DATA
+  10  1  4.1
+  12  2  5.0
+  13  3  6.2
+  15  4  7.1
+  16  5  8.0
+END DATA.
+</pre>
+y,x1,x2,RES1,PRED1
+10,1,4.1,-0.20000000000000284,10.200000000000003
+12,2,5,0.20000000000027285,11.799999999999727
+13,3,6.2,-0.06666666666703058,13.06666666666703
+15,4,7.1,0.33333333333324333,14.666666666666757
+16,5,8,-0.266666666666481,16.26666666666648
+
 <p>Code:</p>
 <pre>
 ** Use regression output variables (pred and resid) to check data.
@@ -75,6 +94,33 @@ Documentation.</a></p>
 data allows us to get the data into gnuplot easily.</p>
 
 <p><strong>Gnuplot Program</strong></p>
+
+<p>Data</p>
+<p>Raw Data</p>
+<pre>
+          Data List
++-----+----+----+----+-----+
+|  y  | x1 | x2 |RES1|PRED1|
++-----+----+----+----+-----+
+|10.00|1.00|4.10|-.20|10.20|
+|12.00|2.00|5.00| .20|11.80|
+|13.00|3.00|6.20|-.07|13.07|
+|15.00|4.00|7.10| .33|14.67|
+|16.00|5.00|8.00|-.27|16.27|
++-----+----+----+----+-----+
+</pre>
+
+<p>CSV file used by gnuplot</p>
+<pre>
+y,x1,x2,RES1,PRED1
+10,1,4.1,-0.20000000000000284,10.200000000000003
+12,2,5,0.20000000000027285,11.799999999999727
+13,3,6.2,-0.06666666666703058,13.06666666666703
+15,4,7.1,0.33333333333324333,14.666666666666757
+16,5,8,-0.266666666666481,16.26666666666648
+</pre>
+
+<p>Program</p>
 <pre>
 set datafile separator ","                                                                                              
 
