@@ -982,77 +982,9 @@ context and the analyst’s goals; the purpose here is simply to show how
 PSPP fits the model and reports the results.
 </p>
 
-<h3>How to Make a Scatterplot of predicted vs residuals.</h3>
-
-<p>Scatterplots can be found in the PSPPIRE Data Editor menu Graphs-&gt;
-Scatterplot.</p>
-
-<p>Code:</p>
-<pre>
-** Use regression output variables (pred and resid) to check data.
-GRAPH
-  /SCATTERPLOT = pred1 WITH res1.
-</pre>
-
-<p>Output:</p>
-<img src="pspp/scatter1.png" alt="scatterplot of predicted vs residual" width="350"> 
-
-<p>All we see is a cloud of points and there is no trend or pattern.
-This is what we'd like to see from residuals: a random scatter with no
-pattern. With only 5 points, the plot is naturally sparse, but it still 
-shows no systematic pattern (but note it's easy to be fooled by a few
-points).</p> 
-
-<p><strong>Note:</strong> psppire exports the entire output window, not
-individual plots. To save a plot for documentation or reports, use your
-system’s screenshot tool to capture just the graphic from the Output
-window.</p>
-
-<p><strong>Note:</strong> PSPP accepts the SPSS BIVAR keyword in
-scatterplots for compatibility, but it has no effect on the plot. PSPP
-always produces a simple bivariate scatterplot.</p>
-
-<h3>Further Graphing with GNUPLOT using PSPP Data</h3>
-
-<p>Gnuplot is a free plotting program. It can be used
-on Windows and Linux/Unix to produce plots. See: 
-<a href="http://gnuplot.info/demos/">Gnuplot Demos</a> and
-<a href="http://www.gnuplot.info/documentation.html">Gnuplot
-Documentation.</a></p>
-
-<p>Saving the linear regression residuals and predicted values as CSV 
-data allows us to get the data into gnuplot easily.</p>
-
-<p><strong>Gnuplot Program</strong></p>
-<pre>
-set datafile separator ","                                                                                              
-
-set terminal pngcairo size 400,400
-set output "C:/pspp/residuals2.png"
-unset key
-
-set xlabel "Predicted"
-set ylabel "Residuals"
-set title "Residuals vs Predicted Values"
-
-plot "C:/pspp/regression.csv" using 5:4 every ::1 with points pt 7 ps 1.2 lc rgb "#3366cc" title "Residuals"
-</pre>
-
-<p>This reads the 4th and 5th variables from the CSV file (Residuals
-on the Y-axis and Predicted on the X-axis). The <code>rgb</code>
-setting sets the point color, and <code>set title</code> sets the plot
-title. You can adjust the plot size on the <code>set terminal</code>
-line. The <code>every ::1</code> option skips the first line of the CSV
-file. <code>every</code> is a row selector. The remaining options set
-the point size, point type, color.</p>
-
-<p>Note, by default, gnuplot puts in an extra plot point to show what
-the plot symbol is. <code>unset key</code> will remove that point.</p>
-
-<p><strong>The resulting plot looks like this:</strong></p>
-<img src="pspp/residuals2.png" alt="scatterplot of predicted vs residual from gnuplot" width="350"> 
-
-<a href="pspp/pspp_analysis2.html#top">Back to top</a>
+<p>Code and Examples of residual plots appear in the <a
+href="pspp/pspp_graphics.html"><strong>PSPP Graphics: Examples and
+Notes page</strong></a>
 
 <h2 id="reliability">How to Run a RELIABILITY Analysis</h2>
 
@@ -1124,6 +1056,7 @@ statistics that are not in pspp.</p>
 <a href="https://knassen.github.io/personal-tech/pspp/pspp_merge.html">[PSPP Merging]</a>                                    
 <a href="https://knassen.github.io/personal-tech/pspp/pspp_multi.html">[PSPP Multi-Record]</a>
 <a href="https://knassen.github.io/personal-tech/pspp/pspp_matrix.html">[PSPP Matrix Language]</a>
+<a href="https://knassen.github.io/personal-tech/pspp/pspp_graphics.html">[PSPP Graphics]</a>
 </div>
 
 <p><strong>Feedback</strong></p>
@@ -1143,7 +1076,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep  7 13:25:08 EDT 2026
+Last Modified: Mon Sep  7 15:44:47 EDT 2026
 </footer>
 </blockquote>
 </main>
