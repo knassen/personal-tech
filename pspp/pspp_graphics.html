@@ -175,6 +175,64 @@ plot "C:/pspp/regression.csv" using \
 
 <img src="/personal-tech/pspp/qqplot.png" alt="Q-Q plot for small regression example">
 
+<h2>Three Panel Gnuplot Diagnostics</h2>
+
+<p>This example creates 3 diagnostic plots and then combines them into
+a three-panel layout. The tree plots are a normal Q-Q plot, a plot of
+residuals vs. predicted values, and a scale-location plot.</p>
+
+<p><strong>Code</strong></p>
+<pre>
+set datafile separator ","
+set terminal pngcairo size 1200,900
+set output "diagnostics3.png"
+
+set multiplot layout 3,1 title "Regression Diagnostics"
+
+##############################
+# 1. Normal Q-Q Plot
+##############################
+set xlabel "Theoretical Quantiles"
+set ylabel "Sample Residuals"
+set title "Normal Q-Q Plot"
+unset key
+
+stats "regression2.csv" using 10 nooutput
+row(n) = n + 1
+
+plot "regression2.csv" using \
+    (invnorm((row($0) - 0.5) / STATS_records)):10 every ::1 \
+    with points pt 7 ps 1.2 lc rgb "#3366cc"
+
+##############################
+# 2. Residuals vs Predicted
+##############################
+set xlabel "Predicted Values"
+set ylabel "Residuals"
+set title "Residuals vs Predicted"
+unset key
+
+plot "regression2.csv" using 11:10 \
+    with points pt 7 ps 1 lc rgb "#cc6633"
+
+##############################
+# 3. Scale-Location Plot
+##############################
+set xlabel "Predicted Values"
+set ylabel "Sqrt(|Residual|)"
+set title "Scale-Location Plot"
+unset key
+
+plot "regression2.csv" using 11:(sqrt(abs($10))) \
+    with points pt 7 ps 1 lc rgb "#669933"
+
+unset multiplot
+</pre>
+
+<p><strong>Output</strong></p>
+<strong>3-panel Diagnostics</strong>
+<img src="pspp/diagnostics3.png">
+
 <h2>Using PSPP's EXAMINE command for normality plots</h2>
 <p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can do several
 data plots, include a Normal Q-Q plot and a detrended normal Q-Q plot. It also
