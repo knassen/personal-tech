@@ -87,8 +87,9 @@ on Windows and Linux/Unix to produce plots. See:
 <a href="http://www.gnuplot.info/documentation.html">Gnuplot
 Documentation.</a></p>
 
-<p>Saving the linear regression residuals and predicted values as CSV 
-data allows us to get the data into gnuplot easily.</p>
+<p>Saving the linear regression residuals and predicted values as CSV
+data from the PSPP REGRESSION procedure allows us to get the data into
+gnuplot easily.</p>
 
 <p><strong>Gnuplot Residuals Plot Program</strong></p>
 
@@ -175,11 +176,85 @@ plot "C:/pspp/regression.csv" using \
 
 <img src="/personal-tech/pspp/qqplot.png" alt="Q-Q plot for small regression example">
 
+Since this was a small regression example, the plot doesn't show many points.
+
+<h2>Using PSPP's EXAMINE Command for Normality Diagnostic Plots</h2>
+<p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can do several
+data plots, include a Normal Q-Q plot and a detrended normal Q-Q plot. It also
+includes the Shapiro-Wilk statistic.
+
+<p>This example will use the same Auto-MPG data used for the above example(s).
+
+<p><strong>Code</strong></p>
+
+<pre>
+GET FILE="regression2.sav".
+
+LIST.
+
+EXAMINE 
+  /VARIABLES=res1
+  /PLOT NPPLOT.
+</pre>
+
+<p>Note: because I wanted to save the plots for use in this page, I
+ran this example from a unix command line using command line pspp.
+psppire will also work, but getting the graphics out is a few more
+steps. EXAMINE gives a case summary first. This program is reading the
+residuals (RES1) from the regression model. n=392 is correct and there
+are no missing values, which is expected. </p>
+
+<p><strong>Output</strong></p>
+<pre>
+         Case Processing Summary
++----+---------------------------------+
+|    |              Cases              |   
+|    +-----------+---------+-----------+
+|    |   Valid   | Missing |   Total   |   
+|    +---+-------+-+-------+---+-------+
+|    | N |Percent|N|Percent| N |Percent|
++----+---+-------+-+-------+---+-------+
+|RES1|392| 100.0%|0|    .0%|392| 100.0%|
++----+---+-------+-+-------+---+-------+
+</pre>
+
+<p>The two plots produced are noted next. They are the Q-Q plot and the
+detrended Q-Q plot.</p>
+
+<strong>Q-Q plot of the residuals.</strong>
+<p><img src="pspp/examine5-1.png" alt="examine5-1.png"></p>
+
+<strong>De-trended Q-Q plot of the residuals.</strong>
+<p><img src="pspp/examine5-2.png" alt="examine5-2.png"></p> 
+
+<p>The de-trended Q-Q plot shows an issue with normality. The data
+are obviously skewed. Whether this is enough to bias your model is a
+judgement you'll need to make, and that gets easier as you get more
+experience with data.</p>
+
+<p>Finally, the Shapiro-Wilk test of normality result is given. In this
+case, the test statistic is .97 and p-value is 1.72E-006, which is
+tiny and much less then .05. Therefore we rejected the null hypothesis
+that the residuals are normally-distributed. Statistically this indicates
+non-normality.</p>
+
+<pre>
+      Tests of Normality
++----+-----------------------+
+|    |      Shapiro-Wilk     |   
+|    +---------+---+---------+
+|    |Statistic| df|   Sig.  |
++----+---------+---+---------+
+|RES1|      .97|392|1.72E-006|
++----+---------+---+---------+
+</pre>
+
 <h2>Three Panel Gnuplot Diagnostics</h2>
 
 <p>This example creates 3 diagnostic plots and then combines them into
 a three-panel layout. The three plots are: a normal Q-Q plot, a plot of
-residuals vs. predicted values, and a scale-location plot.</p>
+residuals vs. predicted values, and a scale-location plot. It also uses
+the Auto-MPG data set which gives us 392 points to plot.</p>
 
 <p><strong>Code</strong></p>
 <pre>
@@ -233,72 +308,6 @@ unset multiplot
 <strong>3-panel Diagnostics</strong>
 <img src="pspp/diagnostics3.png" alt="3 panel diagnostics">
 
-<h2>Using PSPP's EXAMINE Command for Normality Diagnostic Plots</h2>
-<p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can do several
-data plots, include a Normal Q-Q plot and a detrended normal Q-Q plot. It also
-includes the Shapiro-Wilk statistic.
-
-<p>This example will use the same Auto-MPG data used for the above example(s).
-
-<p><strong>Code</strong></p>
-
-<pre>
-GET FILE="regression2.sav".
-
-LIST.
-
-EXAMINE 
-  /VARIABLES=res1
-  /PLOT NPPLOT.
-</pre>
-
-<p>Note: because I wanted to save the plots for use in this page, I ran this
-example from a unix command line using pspp. psppire will also work, but
-getting the graphics out is a few more steps. EXAMINE gives a case summary
-first. This program is reading the residuals (RES1) from the regression model.
-n=392 is correct and there are no missing values, which is expected. </p>
-
-<p><strong>Output</strong></p>
-<pre>
-         Case Processing Summary
-+----+---------------------------------+
-|    |              Cases              |   
-|    +-----------+---------+-----------+
-|    |   Valid   | Missing |   Total   |   
-|    +---+-------+-+-------+---+-------+
-|    | N |Percent|N|Percent| N |Percent|
-+----+---+-------+-+-------+---+-------+
-|RES1|392| 100.0%|0|    .0%|392| 100.0%|
-+----+---+-------+-+-------+---+-------+
-</pre>
-
-<p>The two plots produced are noted next. They are the Q-Q plot and the
-detrended Q-Q plot.</p>
-
-<strong>Q-Q plot of the residuals.</strong>
-<p><img src="pspp/examine5-1.png" alt="examine5-1.png"></p>
-
-<strong>De-trended Q-Q plot of the residuals.</strong>
-<p><img src="pspp/examine5-2.png" alt="examine5-2.png"></p> 
-
-<p>Finally, the Shapiro-Wilk test of normality result is given. In this
-case, the test statistic is .97 and p-value is 1.72E-006, which is
-tiny and much less then .05. Therefore we rejected the null hypothesis
-that the residuals are normally-distributed. Statistically this indicates
-non-normality.  However, the plots show only small deviations from the
-theoretical line, and the residuals appear approximately normal in
-practic.</p>
-
-<pre>
-      Tests of Normality
-+----+-----------------------+
-|    |      Shapiro-Wilk     |   
-|    +---------+---+---------+
-|    |Statistic| df|   Sig.  |
-+----+---------+---+---------+
-|RES1|      .97|392|1.72E-006|
-+----+---------+---+---------+
-</pre>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
