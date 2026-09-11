@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="pspp/psppstyle.css"> 
     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp_graphics.html">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <meta name="description" content="PSPP graphics and plot examples with syntax.">
-    <meta name="keywords" content="PSPP Graphics plots gnuplot regression diagnostics"> 
+    <meta name="description" content="PSPP graphics and plot examples Q-Q de-trended scale-location with syntax.">
+    <meta name="keywords" content="PSPP Graphics plots gnuplot regression diagnostics Q-Q de-trended scale-location"> 
     <meta charset="utf-8">
     <title>PSPP Graphics: Examples and Notes</title>  
 </head>
@@ -79,13 +79,13 @@ always produces a simple bivariate scatterplot.</p>
 <p>See Also: <a href="pspp/pspp_analysis2">PSPP Inferential and Modeling 
 Procedures</a> which has the Linear Regression that produced this plot data.</p>
 
-<h2>Producing a Histogram with PSPP</h2>
+<h2>How to Make a Histogram with PSPP</h2>
 
 <p>PSPP produces other types of plots, including histograms and bar charts.
 The next example is the histogram. This will be produced with a normal curve
 superimposed on the histogram. While this feature is not given in the
 documentation as an option to the HISTOGRAM graph subcommand, it nonetheless
-produces the desired result.</p>
+produces the desired result. This uses the Auto-MPG dataset.</p>
 
 <p><strong>Code</strong>
 <pre>
@@ -98,6 +98,14 @@ GRAPH /HISTOGRAM (NORMAL) = mpg.
 
 <p>To produce the plot without the normal curve, remove the
 "<core>(NORMAL)</core>" from the <core>GRAPH</core> command.</p>
+
+<p>The PSPP GUI (psppire) can do histograms. There is a checkbox
+for the normal curve on the Histogram input screen. See
+<strong>Graphs-&gt;Histogram</strong>.
+
+<h2>How to Make a Bar Chart with PSPP</h2>
+
+<p>This next example will be a bar chart as produced by pspp.
 
 <h2>Further Graphing with GNUPLOT using PSPP Data</h2>
 
