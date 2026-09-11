@@ -436,9 +436,11 @@ Reading free-form data from INLINE.
 +---------------+-----------------------+--+-----------+-------+----+
 </pre>
 
-<p>GLM gives you the Intercept while ONEWAY doesn't display it. The
+<p>GLM gives you the Intercept while <code>ONEWAY</code> doesn't display it. The
 results are the same as from ONEWAY on the same data.  F is 18.45 with 2
-and 6 degrees of freedom) and p=0.003.</p>
+and 6 degrees of freedom) and p=0.003. Yes, there is a subcommand to
+remove the intercept, but then the results change a lot. Leaving the
+intercept in gives results that match <code>ONEWAY</code>.</p>
 
 <a href="pspp/pspp_analysis2.html#top">Back to top</a>
 
