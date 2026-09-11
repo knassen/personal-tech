@@ -436,11 +436,14 @@ Reading free-form data from INLINE.
 +---------------+-----------------------+--+-----------+-------+----+
 </pre>
 
-<p>GLM gives you the Intercept while <code>ONEWAY</code> doesn't display it. The
-results are the same as from ONEWAY on the same data.  F is 18.45 with 2
-and 6 degrees of freedom) and p=0.003. Yes, there is a subcommand to
-remove the intercept, but then the results change a lot. Leaving the
-intercept in gives results that match <code>ONEWAY</code>.</p>
+<p>GLM includes an Intercept term that <code>ONEWAY</code> does not
+display, but ANOVA results are identical when the intercept is left in.
+On this dataset both procedures give F = 18.45 with 2 and 6 degrees of
+freedom) and p=0.003.</p>
+
+<p>Yes, GLM has a subcommand to remove the intercept, but doing so
+changes the model and the results dramatically. Keeping the intercept
+produces output that matches <code>ONEWAY</code>.</p>
 
 <a href="pspp/pspp_analysis2.html#top">Back to top</a>
 
@@ -1089,7 +1092,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep  7 15:51:53 EDT 2026
+Last Modified: Fri Sep 11 18:35:26 EDT 2026
 </footer>
 </blockquote>
 </main>
