@@ -79,6 +79,23 @@ always produces a simple bivariate scatterplot.</p>
 <p>See Also: <a href="pspp/pspp_analysis2">PSPP Inferential and Modeling 
 Procedures</a> which has the Linear Regression that produced this plot data.</p>
 
+<h2>Producing a Histogram with PSPP</h2>
+
+<p>PSPP produces other types of plots, including histograms and bar charts.
+The next example is the histogram. This will be produced with a normal curve
+superimposed on the histogram. While this feature is not given in the
+documentation as an option to the HISTOGRAM graph subcommand, it nonetheless
+produces the desired result.</p>
+
+<p><strong>Code</strong>
+<pre>
+GET FILE="regression2.sav".
+GRAPH /HISTOGRAM (NORMAL) = mpg.
+</pre>
+
+<p><strong>Output</strong></p>
+<img src="pspp/histogram-1.png" alt="histogram with normal curve">
+
 <h2>Further Graphing with GNUPLOT using PSPP Data</h2>
 
 <p>Gnuplot is a free plotting program. It can be used
@@ -340,7 +357,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Sep 10 21:15:13 EDT 2026
+Last Modified: Fri Sep 11 19:10:19 EDT 2026
 </p>
 </footer>
 </blockquote>
