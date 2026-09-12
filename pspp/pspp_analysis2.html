@@ -999,8 +999,127 @@ set from the <a href="https://archive.ics.uci.edu/dataset/9/auto+mpg">
 UC Irvine Machine Learning Repository</a> Auto MPG data set. This data
 set has a few corrections including the removal of 8 mpg values that
 were missing. See the UC Irvine Machine Learning Repository page for
-all details, if you curious.</p>
+all details, if you are curious.</p>
 
+<p><strong>Code</strong></p>
+<pre>
+DATA LIST FIXED FILE="auto-mpg2.data"
+ /
+  mpg         1-4 
+  cylinders    8-8 
+  displacement 12-17
+  horsepower   24-28
+  weight       35-39
+  acceleration 46-49
+  modelyear    53-54
+  origin       57-57
+  carname      59-102 (A).
+
+*DISPLAY DICTIONARY.
+*LIST.
+
+REGRESSION
+  /DEPENDENT mpg 
+  /METHOD=ENTER cylinders displacement horsepower weight acceleration modelyear origin
+  /STATISTICS = COEFF R ANOVA
+  /SAVE PRED RESID.
+
+DISPLAY DICTIONARY.
+*LIST.
+
+SAVE OUTFILE='regression2.sav'.
+
+SAVE TRANSLATE
+  /OUTFILE="regression2.csv"
+  /TYPE=CSV
+  /FIELDNAMES
+  /REPLACE
+  /CELLS=VALUES.
+</pre>
+
+<p>Since there are over 300 cases in this data file, doing LISTs tends
+to be a bit tedious unless you are checking values.</p>
+
+<p><strong>Output</strong></p>
+Reading 1 record from `auto-mpg2.data'.
++------------+------+-------+------+
+|Variable    |Record|Columns|Format|
++------------+------+-------+------+
+|mpg         |     1|1-4    |F4.0  |
+|cylinders   |     1|8-8    |F1.0  |
+|displacement|     1|12-17  |F6.0  |
+|horsepower  |     1|24-28  |F5.0  |
+|weight      |     1|35-39  |F5.0  |
+|acceleration|     1|46-49  |F4.0  |
+|modelyear   |     1|53-54  |F2.0  |
+|origin      |     1|57-57  |F1.0  |
+|carname     |     1|59-102 |A44   |
++------------+------+-------+------+
+
+                    Model Summary (mpg)
++---+--------+-----------------+--------------------------+
+| R |R Square|Adjusted R Square|Std. Error of the Estimate|
++---+--------+-----------------+--------------------------+
+|.81|     .66|              .65|                      4.63|
++---+--------+-----------------+--------------------------+
+
+                      ANOVA (mpg)
++----------+--------------+---+-----------+------+----+
+|          |Sum of Squares| df|Mean Square|   F  |Sig.|
++----------+--------------+---+-----------+------+----+
+|Regression|      15588.72|  7|    2226.96|104.01|.000|
+|Residual  |       8200.54|383|      21.41|      |    |   
+|Total     |      23789.26|390|           |      |    |   
++----------+--------------+---+-----------+------+----+
+
+                               Coefficients (mpg)
++------------+----------------------------+------------------------+-----+----+
+|            |                            |      Standardized      |     |    |   
+|            | Unstandardized Coefficients|      Coefficients      |     |    |   
+|            +-----------+----------------+------------------------+     |    |   
+|            |     B     |   Std. Error   |          Beta          |  t  |Sig.|
++------------+-----------+----------------+------------------------+-----+----+
+|(Constant)  |      37.90|            1.48|                     .00|25.64|.000|
+|cylinders   |       -.51|             .46|                    -.11|-1.10|.273|
+|displacement|       -.06|             .01|                    -.74|-7.38|.000|
+|horsepower  |        .01|             .02|                     .04|  .83|.409|
+|weight      |        .00|             .00|                    -.02| -.66|.510|
+|acceleration|       -.07|             .11|                    -.02| -.61|.545|
+|modelyear   |       -.16|             .08|                    -.06|-2.00|.046|
+|origin      |        .00|             .00|                     .00|  NaN| NaN|
++------------+-----------+----------------+------------------------+-----+----+
+       Statistics                                                                                                       
++---------+-----+------+
+|         |PRED1| RES1 |
++---------+-----+------+
+|N Valid  |  392|   392|
+|  Missing|    0|     0|
++---------+-----+------+
+|Mean     |23.44|   .00|
++---------+-----+------+
+|Std Dev  | 6.32|  4.58|
++---------+-----+------+
+|Minimum  | 8.10|-13.74|
++---------+-----+------+
+|Maximum  |32.15| 18.30|
++---------+-----+------+
+
+<p>Ordinary least squares regression is a BLUE (best linear unbiased)
+estimator, meaning the fitted line remains unbiased even when the
+residuals have different scatter or variance from high to low values.
+In such cases the standard errors and p‑values may not be trustworthy,
+but predictions from the model remain unbiased.</p>
+
+<p>Another thing to watch out for is multicollinearity in variables.
+This data set has several highly correlated variables (horsepower,
+displacement, weight) which can produce an overall significant model that is
+while leaving the individual coefficients non-significant.</p>
+
+<p>Because the data are skewed, this model is a candidate for a
+transformation (ln, Box-Cox, etc.). Transformations could be applied to
+the dependent variable and to horsepower, displacement, and weight. The
+origin variable explains nothing of the variation in the model and thus
+adds nothing for predictions.</p>
 
 <h2 id="reliability">How to Run a RELIABILITY Analysis</h2>
 
@@ -1092,7 +1211,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Sep 11 18:35:26 EDT 2026
+Last Modified: Sat Sep 12 11:04:35 EDT 2026
 </footer>
 </blockquote>
 </main>
