@@ -97,7 +97,7 @@ GRAPH /HISTOGRAM (NORMAL) = mpg.
 <img src="pspp/histogram-1.png" alt="histogram with normal curve">
 
 <p>To produce the plot without the normal curve, remove the
-"<core>(NORMAL)</core>" from the <core>GRAPH</core> command.</p>
+"<code>(NORMAL)</code>" from the <code>GRAPH</code> command.</p>
 
 <p>The PSPP GUI (psppire) can do histograms. There is a checkbox
 for the normal curve on the Histogram input screen. See
@@ -105,7 +105,26 @@ for the normal curve on the Histogram input screen. See
 
 <h2>How to Make a Bar Chart with PSPP</h2>
 
-<p>This next example will be a bar chart as produced by pspp.
+<p>Here is an example of a bar chart of the number of cylinders in
+the engines of the cars from the auto-mpg dataset. You can see that
+4-cylinder engines are the most popular. 3-cylinder engines are used
+by American automakers including Chevrolet, Buick, and Ford, as well
+as Nissan and Toyota even in 2026. 5-cylinder engines are also still
+used by some manufacturers such as Acura, Audi, Ford, Toyota, Fiat,
+Chevrolet, and others. 6- and 8-cylinder cars follow 4-cylinder cars
+in popularity.</p>
+
+<p><strong>Code</strong></p>
+<pre>
+GRAPH
+  /BAR = COUNT by cylinders.
+</pre>
+
+<p><strong>Output</strong></p>
+<img src="pspp/barchart-1.png" alt="bar chart of cylinder counts in cars">
+
+<p>Other ways of doing bar charts with PSPP are by using FREQUENCIES or
+CROSSTABS which have options to output bar charts.</p>
 
 <h2>Further Graphing with GNUPLOT using PSPP Data</h2>
 
@@ -368,8 +387,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Sep 11 19:17:47 EDT 2026
-</p>
+Last Modified: Fri Sep 11 20:21:32 EDT 2026 </p>
 </footer>
 </blockquote>
 </main>
