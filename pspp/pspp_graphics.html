@@ -360,6 +360,28 @@ unset multiplot
 <strong>3-panel Diagnostics</strong>
 <img src="pspp/diagnostics3.png" alt="3 panel diagnostics">
 
+<h2>Residuals vs Predicted Values with a Smoothed Bezier Line</h2>
+
+<p>This uses the auto-mpg data set with residuals and
+predicted values from the regression example in <a
+href="pspp/pspp_analysis2.html">pspp_analysis2.html</a></p>
+
+<p><strong>Code</strong></p>
+<pre>
+set datafile separator ","
+set xlabel "Predicted (PRED1)"
+set ylabel "Residuals (RES1)"
+set title "Residuals vs Predicted (with Smooth Bezier smooth)"
+set terminal pngcairo size 1200,900
+set output "respred2.png"
+unset key
+plot "regression2.csv" using 11:10 with points pt 7 lc rgb "blue", \
+     "" using 11:10 smooth sbezier lc rgb "red" lw 2
+</pre>
+
+<p><strong>Output</strong></p>
+<p><strong>Residuals vs Predicted with Smoothed Bezier Line</strong></p>
+<img src="pspp/respred2.png" alt="residuals vs predicted with smooth bezier line">
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
