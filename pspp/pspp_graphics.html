@@ -126,6 +126,102 @@ GRAPH
 <p>Other ways of doing bar charts with PSPP are by using FREQUENCIES or
 CROSSTABS which have options to output bar charts.</p>
 
+<p>And those are all the plots you can do from psppire's Graphs
+menu. Other plots are available in other procedures, as noted in the
+previous paragraph.</p>
+
+<h2>Creating a Pie Chart with PSPP's FREQUENCIES Procedure</h2>
+
+<p>This example will use the auto-mpg data set again. For the pie chart
+the cylinders variable will be plotted.  Cylinders are limited, so make
+a good choice for a pie chart. If there had been many values, the pie
+chart would get very crowded with small wedges and not be very useful.</p>
+
+<p><strong>Code</strong>
+<pre>
+GET FILE="regression2.sav".
+
+DISPLAY DICTIONARY.
+
+FREQUENCIES VARIABLES = cylinders
+   /PIECHART. 
+</pre>   
+
+      Statistics
++---------+---------+
+|         |cylinders|
++---------+---------+
+|N Valid  |      392|
+|  Missing|        0|
++---------+---------+
+|Mean     |     5.47|
++---------+---------+
+|Std Dev  |     1.71|
++---------+---------+
+|Minimum  |        3|
++---------+---------+
+|Maximum  |        8|
++---------+---------+
+
+                          cylinders
++-------+---------+-------+-------------+------------------+
+|       |Frequency|Percent|Valid Percent|Cumulative Percent|
++-------+---------+-------+-------------+------------------+
+|Valid 3|        4|   1.0%|         1.0%|              1.0%|
+|      4|      199|  50.8%|        50.8%|             51.8%|
+|      5|        3|    .8%|          .8%|             52.6%|
+|      6|       83|  21.2%|        21.2%|             73.7%|
+|      8|      103|  26.3%|        26.3%|            100.0%|
++-------+---------+-------+-------------+------------------+
+|Total  |      392| 100.0%|             |                  |
++-------+---------+-------+-------------+------------------+
+
+See piechart-1.png for a chart.
+<p><strong>Output</strong></p>
+<img src="pspp/piechart-1.png" alt="piechart from pspp frequencies procedure">
+
+<h2>Creating a Boxplot with PSPP's EXAMINE Procedure</h2>
+<p>This example will again use the auto-mpg data. The box plot will
+be done for the mpg variable, which is the dependent variable in the
+regression we did earlier with the auto-mpg data.</p>
+
+<p><strong>Code</strong></p>
+<pre>
+GET FILE="regression2.sav".
+
+DISPLAY DICTIONARY.
+
+EXAMINE VARIABLES = mpg
+   /PLOT BOXPLOT.
+</pre>
+
+<p><strong>Output</strong></p>
+<pre>
+        Case Processing Summary
++---+---------------------------------+
+|   |              Cases              |
+|   +-----------+---------+-----------+
+|   |   Valid   | Missing |   Total   |
+|   +---+-------+-+-------+---+-------+
+|   | N |Percent|N|Percent| N |Percent|
++---+---+-------+-+-------+---+-------+
+|mpg|392| 100.0%|0|    .0%|392| 100.0%|
++---+---+-------+-+-------+---+-------+
+
+See boxplot-1.png for a chart.
+
+      Tests of Normality
++---+-----------------------+
+|   |      Shapiro-Wilk     |
+|   +---------+---+---------+
+|   |Statistic| df|   Sig.  |
++---+---------+---+---------+
+|mpg|      .97|392|1.05E-007|
++---+---------+---+---------+
+</pre>
+<p><strong>Boxplot of MPG</strong></p>
+<img src="pspp/boxplot-1.png" alt="boxplot via pspp EXAMINE procedure">
+
 <h2>Further Graphing with GNUPLOT using PSPP Data</h2>
 
 <p>Gnuplot is a free plotting program. It can be used
