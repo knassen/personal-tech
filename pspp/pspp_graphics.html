@@ -366,10 +366,11 @@ plot "C:/pspp/regression.csv" using \
 Since this was a small regression example, the plot doesn't show many points.
 
 <h2>Using PSPP's EXAMINE Command for Normality Diagnostic Plots</h2>
-<p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can generate several
-diagnostic graphs, include a Normal Q-Q plot and a spreadlevel plot that pspp calls a 
-detrended normal Q-Q plot. It also includes the Shapiro-Wilk statistic, which is
-commonly used to test normality.</p>
+<p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can
+generate several diagnostic graphs, including a Normal Q-Q plot and a
+spread-level plot which PSPP labels as a detrended normal Q-Q plot by
+pspp. It also includes Shapiro-Wilk statistic output, which is commonly
+used to test normality.</p>
 
 <p>This example will use the Auto-MPG data with n=392 to provide enough observations
 for clear disagnostic plots.</p>
@@ -426,11 +427,11 @@ pspp calls this the spreadlevel plot in EXAMINE.</p>
 
 <p>The de-trended Q-Q plot above shows an issue with normality. The data
 are obviously skewed. Whether this is enough to bias your model is a
-judgement you'll need to make, and that judgement gets easier as you get
+judgment you'll need to make, and that judgment gets easier as you get
 more experience with data.</p>
 
-<p>If your dependent variable is strongly skewed, your instructor may
-recommend a transformation (for example, a log or Box–Cox). PSPP can
+<p>If your dependent variable is strongly skewed, your instructor or boss 
+may recommend a transformation (for example, a log or Box–Cox). PSPP can
 compute transformed variables using <code>COMPUTE</code> before running
 the analysis.</p>
 
@@ -561,7 +562,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Sep 13 16:07:33 EDT 2026
+Last Modified: Sun Sep 13 16:20:35 EDT 2026
 </footer>
 </blockquote>
 </main>
