@@ -366,12 +366,13 @@ plot "C:/pspp/regression.csv" using \
 Since this was a small regression example, the plot doesn't show many points.
 
 <h2>Using PSPP's EXAMINE Command for Normality Diagnostic Plots</h2>
-<p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can do several
-data plots, include a Normal Q-Q plot and a detrended normal Q-Q plot. It also
-includes the Shapiro-Wilk statistic.
+<p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can generate several
+diagnostic graphs, include a Normal Q-Q plot and a spreadlevel plot that pspp calls a 
+detrended normal Q-Q plot. It also includes the Shapiro-Wilk statistic, which is
+commonly used to test normality.</p>
 
-<p>This example will use the Auto-MPG data with n=392 to give more data for
-the plots.</p>
+<p>This example will use the Auto-MPG data with n=392 to provide enough observations
+for clear disagnostic plots.</p>
 
 <p><strong>Code</strong></p>
 
@@ -560,7 +561,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Sep 13 15:32:04 EDT 2026
+Last Modified: Sun Sep 13 16:07:33 EDT 2026
 </footer>
 </blockquote>
 </main>
