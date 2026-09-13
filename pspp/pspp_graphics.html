@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="pspp/psppstyle.css"> 
     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp_graphics.html">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <meta name="description" content="PSPP graphics and plot examples Q-Q de-trended scale-location with syntax.">
-    <meta name="keywords" content="PSPP Graphics plots gnuplot regression diagnostics Q-Q de-trended scale-location"> 
+    <meta name="description" content="PSPP graphics and plot examples histogram barchart scatterplot boxplot piechart Q-Q de-trended scale-location with syntax.">
+    <meta name="keywords" content="PSPP Graphics histogram barchart scatterplot boxplot piechart plots gnuplot regression diagnostics Q-Q de-trended scale-location"> 
     <meta charset="utf-8">
     <title>PSPP Graphics: Examples and Notes</title>  
 </head>
@@ -94,6 +94,38 @@ GRAPH /HISTOGRAM (NORMAL) = mpg.
 </pre>
 
 <p><strong>Output</strong></p>
+      Statistics
++---------+---------+
+|         |cylinders|
++---------+---------+
+|N Valid  |      392|
+|  Missing|        0|  
++---------+---------+
+|Mean     |     5.47|
++---------+---------+
+|Std Dev  |     1.71|
++---------+---------+
+|Minimum  |        3|  
++---------+---------+
+|Maximum  |        8|  
++---------+---------+
+
+                          cylinders
++-------+---------+-------+-------------+------------------+
+|       |Frequency|Percent|Valid Percent|Cumulative Percent|
++-------+---------+-------+-------------+------------------+
+|Valid 3|        4|   1.0%|         1.0%|              1.0%|
+|      4|      199|  50.8%|        50.8%|             51.8%|
+|      5|        3|    .8%|          .8%|             52.6%|
+|      6|       83|  21.2%|        21.2%|             73.7%|
+|      8|      103|  26.3%|        26.3%|            100.0%|
++-------+---------+-------+-------------+------------------+
+|Total  |      392| 100.0%|             |                  |   
++-------+---------+-------+-------------+------------------+
+
+See piechart-1.png for a chart.                               
+
+
 <img src="pspp/histogram-1.png" alt="histogram with normal curve">
 
 <p>To produce the plot without the normal curve, remove the
@@ -513,7 +545,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Sep 12 21:49:40 EDT 2026
+Last Modified: Sat Sep 12 22:01:14 EDT 2026
 </footer>
 </blockquote>
 </main>
