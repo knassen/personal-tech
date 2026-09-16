@@ -75,7 +75,7 @@ from the Output window. </p>
 scatterplots for compatibility, but it has no effect on the plot. PSPP
 always produces a simple bivariate scatterplot.</p>
 
-<p>See Also: <a href="pspp/pspp_analysis2">PSPP Inferential and Modeling 
+<p>See Also: <a href="pspp/pspp_analysis2#regression2">PSPP Inferential and Modeling 
 Procedures</a> which has the Linear Regression that produced this plot data.</p>
 
 <h2>How to Make a Histogram with PSPP</h2>
@@ -214,6 +214,9 @@ See piechart-1.png for a chart.
 <p><strong>Output</strong></p>
 <img src="pspp/piechart-1.png" alt="piechart from pspp frequencies procedure">
 
+<p>4-cylinder cars outnumber 6- and 8-cylinder cars in this dataset.
+This is plain from looking at the pie chart.</p>
+
 <h2>Creating a Boxplot with PSPP's EXAMINE Procedure</h2>
 <p>This example will again use the auto-mpg data. The box plot will
 be done for the mpg variable, which is the dependent variable in the
@@ -262,7 +265,10 @@ values without being excessively long, suggesting a moderate spread. The
 Shapiro–Wilk test confirms that mpg is not normally distributed, which
 is typical for real‑world fuel economy data.</p>
 
-<p>The horsepower boxplot shows how pspp plots outliers in a variable.</p>
+<p>The horsepower boxplot shows how pspp plots outliers in a variable.
+This variable has many outliers that should be investigated. Perhaps
+a transformation is needed. Or maybe the data need correction (e.g.
+data entry error).</p>
 
 <p><strong>Boxplot of MPG</strong></p>
 <img src="pspp/boxplot-1.png" alt="boxplot of mpg via pspp EXAMINE procedure">
@@ -569,7 +575,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Sep 16 15:54:34 EDT 2026
+Last Modified: Wed Sep 16 19:46:58 EDT 2026
 </footer>
 </blockquote>
 </main>
