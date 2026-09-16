@@ -1007,8 +1007,10 @@ diagnostics are somewhat ambiguous. This example uses the Auto-MPG data
 set from the <a href="https://archive.ics.uci.edu/dataset/9/auto+mpg">
 UC Irvine Machine Learning Repository</a> Auto MPG data set. This data
 set has a few corrections including the removal of 8 mpg values that
-were missing. See the UC Irvine Machine Learning Repository page for
-all details, if you are curious.</p>
+were missing. See the UC Irvine Machine Learning Repository page for all
+details, if you are curious. Note: some auto-mpg data sets contain tab
+characters, which will cause issues for pspp's <code>DATA LIST</code>
+command.</p>
 
 <p><strong>Code</strong></p>
 <pre>
@@ -1017,12 +1019,12 @@ DATA LIST FIXED FILE="auto-mpg2.data"
   mpg         1-4 
   cylinders    8-8 
   displacement 12-17
-  horsepower   24-28
-  weight       35-39
-  acceleration 46-49
-  modelyear    53-54
-  origin       57-57
-  carname      59-102 (A).
+  horsepower   23-28
+  weight       34-39
+  acceleration 45-49
+  modelyear    52-54
+  origin       56-57 
+  carname      61-102 (A).
 
 *DISPLAY DICTIONARY.
 *LIST.
@@ -1056,68 +1058,70 @@ make the output harder to navigate.</p>
 
 <p><strong>Output</strong></p>
 <pre>
-Reading 1 record from `auto-mpg2.data'.
+    Reading 1 record from INLINE.
 +------------+------+-------+------+
 |Variable    |Record|Columns|Format|
 +------------+------+-------+------+
-|mpg         |     1|1-4    |F4.0  |
-|cylinders   |     1|8-8    |F1.0  |
-|displacement|     1|12-17  |F6.0  |
-|horsepower  |     1|24-28  |F5.0  |
-|weight      |     1|35-39  |F5.0  |
-|acceleration|     1|46-49  |F4.0  |
-|modelyear   |     1|53-54  |F2.0  |
-|origin      |     1|57-57  |F1.0  |
-|carname     |     1|59-102 |A44   |
+|MPG         |     1|1-4    |F4.0  |
+|CYLINDERS   |     1|8-8    |F1.0  |
+|DISPLACEMENT|     1|12-16  |F5.0  |
+|HORSEPOWER  |     1|23-27  |F5.0  |
+|WEIGHT      |     1|34-38  |F5.0  |
+|ACCELERATION|     1|45-48  |F4.0  |
+|MODEL_YEAR  |     1|52-53  |F2.0  |
+|ORIGIN      |     1|56-56  |F1.0  |
+|CAR_NAME    |     1|57-95  |A39   |
 +------------+------+-------+------+
 
-                    Model Summary (mpg)
+
+                    Model Summary (MPG)
 +---+--------+-----------------+--------------------------+
 | R |R Square|Adjusted R Square|Std. Error of the Estimate|
 +---+--------+-----------------+--------------------------+
-|.81|     .66|              .65|                      4.63|
+|.91|     .82|              .82|                      3.33|
 +---+--------+-----------------+--------------------------+
 
-                      ANOVA (mpg)
+                      ANOVA (MPG)
 +----------+--------------+---+-----------+------+----+
 |          |Sum of Squares| df|Mean Square|   F  |Sig.|
 +----------+--------------+---+-----------+------+----+
-|Regression|      15588.72|  7|    2226.96|104.01|.000|
-|Residual  |       8200.54|383|      21.41|      |    |   
-|Total     |      23789.26|390|           |      |    |   
+|Regression|      19566.78|  7|    2795.25|252.43|.000|
+|Residual  |       4252.21|384|      11.07|      |    |
+|Total     |      23818.99|391|           |      |    |
 +----------+--------------+---+-----------+------+----+
-
-                               Coefficients (mpg)
+                                                                                                                        
+                               Coefficients (MPG)
 +------------+----------------------------+------------------------+-----+----+
-|            |                            |      Standardized      |     |    |   
-|            | Unstandardized Coefficients|      Coefficients      |     |    |   
-|            +-----------+----------------+------------------------+     |    |   
-|            |     B     |   Std. Error   |          Beta          |  t  |Sig.|
-+------------+-----------+----------------+------------------------+-----+----+
-|(Constant)  |      37.90|            1.48|                     .00|25.64|.000|
-|cylinders   |       -.51|             .46|                    -.11|-1.10|.273|
-|displacement|       -.06|             .01|                    -.74|-7.38|.000|
-|horsepower  |        .01|             .02|                     .04|  .83|.409|
-|weight      |        .00|             .00|                    -.02| -.66|.510|
-|acceleration|       -.07|             .11|                    -.02| -.61|.545|
-|modelyear   |       -.16|             .08|                    -.06|-2.00|.046|
-|origin      |        .00|             .00|                     .00|  NaN| NaN|
-+------------+-----------+----------------+------------------------+-----+----+
-       Statistics                                                                                                       
-+---------+-----+------+
-|         |PRED1| RES1 |
-+---------+-----+------+
-|N Valid  |  392|   392|
-|  Missing|    0|     0|
-+---------+-----+------+
-|Mean     |23.44|   .00|
-+---------+-----+------+
-|Std Dev  | 6.32|  4.58|
-+---------+-----+------+
-|Minimum  | 8.10|-13.74|
-+---------+-----+------+
-|Maximum  |32.15| 18.30|
-+---------+-----+------+
+|            |                            |      Standardized      |     |    |
+|            | Unstandardized Coefficients|      Coefficients      |     |    |
+|            +------------+---------------+------------------------+     |    |
+|            |      B     |   Std. Error  |          Beta          |  t  |Sig.|
++------------+------------+---------------+------------------------+-----+----+
+|(Constant)  |      -17.22|           4.64|                     .00|-3.71|.000|
+|CYLINDERS   |        -.49|            .32|                    -.11|-1.53|.128|
+|DISPLACEMENT|         .02|            .01|                     .27| 2.65|.008|
+|HORSEPOWER  |        -.02|            .01|                    -.08|-1.23|.220|
+|WEIGHT      |        -.01|            .00|                    -.70|-9.93|.000|
+|ACCELERATION|         .08|            .10|                     .03|  .82|.415|
+|MODEL_YEAR  |         .75|            .05|                     .35|14.73|.000|
+|ORIGIN      |        1.43|            .28|                     .15| 5.13|.000|
++------------+------------+---------------+------------------------+-----+----+
+
+         Statistics
++---------+-----+----------+
+|         |PRED1|   RES1   |   
++---------+-----+----------+
+|N Valid  |  392|       392|
+|  Missing|    0|         0|  
++---------+-----+----------+
+|Mean     |23.45|-1.72E-015|
++---------+-----+----------+
+|Std Dev  | 7.07|      3.30|
++---------+-----+----------+
+|Minimum  | 6.25|     -9.59|
++---------+-----+----------+
+|Maximum  |36.49|     13.06|
++---------+-----+----------+
 </pre>
 
 <p>Ordinary least squares regression is a BLUE (best linear unbiased)
@@ -1223,7 +1227,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Sep 13 21:04:05 EDT 2026
+Last Modified: Wed Sep 16 15:42:11 EDT 2026
 </footer>
 </blockquote>
 </main>
