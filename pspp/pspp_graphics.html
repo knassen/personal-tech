@@ -136,34 +136,8 @@ See piechart-1.png for a chart.
 
 <p>The PSPP GUI (psppire) can do histograms. There is a checkbox
 for the normal curve on the Histogram input screen. See
-<strong>Graphs-<&gt;>Histogram</strong> and the <strong>psppire
-Analyze-<&gt;>Descriptive Statistics-<&gt;>Frequencies-<&gt;>Charts</strong> 
-options menu.</p> 
-<img src="pspp/freq_graphs.png" alt="psppire Frequencies Charts menu"> 
-
-<h2>How to Make a Bar Chart with PSPP</h2>
-
-<p>Here is an example of a bar chart of the number of cylinders in
-the engines of the cars from the auto-mpg dataset. You can see that
-4-cylinder engines are the most popular. 3-cylinder engines are used
-by American automakers including Chevrolet, Buick, and Ford, as well
-as Nissan and Toyota even in 2026. 5-cylinder engines are also still
-used by some manufacturers such as Acura, Audi, Ford, Toyota, Fiat,
-Chevrolet, and others. 6- and 8-cylinder cars follow 4-cylinder cars
-in popularity.</p>
-
-<p><strong>Code</strong></p>
-<pre>
-GRAPH
-  /BAR = COUNT by cylinders.
-</pre>
-
-<p><strong>Output</strong></p>
-<img src="pspp/barchart-1.png" alt="bar chart of cylinder counts in cars">
-
-<p>In psppire, the barchart settings can be found in the  
-<strong>Graphs-<&gt;>Histogram</strong> and the <strong>psppire
-Analyze-<&gt;>Descriptive Statistics-<&gt;>Frequencies-<&gt;>Charts</strong> 
+<strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
+Analyze-&gt;Descriptive Statistics-&gt;Frequencies-&gt;Charts</strong> 
 options menu.</p> 
 <img src="pspp/freq_graphs.png" alt="psppire Frequencies Charts menu"> 
 
@@ -189,7 +163,33 @@ GRAPH
 
 <p>In psppire, the barchart settings can be found in the  
 <strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
-Analyze-<&gt;>Descriptive Statistics-<&gt;>Frequencies-<&gt;>Charts</strong> 
+Analyze-&gt;Descriptive Statistics-&gt;Frequencies-&gt;Charts</strong> 
+options menu.</p> 
+<img src="pspp/freq_graphs.png" alt="psppire Frequencies Charts menu"> 
+
+<h2>How to Make a Bar Chart with PSPP</h2>
+
+<p>Here is an example of a bar chart of the number of cylinders in
+the engines of the cars from the auto-mpg dataset. You can see that
+4-cylinder engines are the most popular. 3-cylinder engines are used
+by American automakers including Chevrolet, Buick, and Ford, as well
+as Nissan and Toyota even in 2026. 5-cylinder engines are also still
+used by some manufacturers such as Acura, Audi, Ford, Toyota, Fiat,
+Chevrolet, and others. 6- and 8-cylinder cars follow 4-cylinder cars
+in popularity.</p>
+
+<p><strong>Code</strong></p>
+<pre>
+GRAPH
+  /BAR = COUNT by cylinders.
+</pre>
+
+<p><strong>Output</strong></p>
+<img src="pspp/barchart-1.png" alt="bar chart of cylinder counts in cars">
+
+<p>In psppire, the barchart settings can be found in the  
+<strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
+Analyze-&gt;Descriptive Statistics-&gt;Frequencies-&gt;Charts</strong> 
 options menu.</p> 
 <img src="pspp/graph_histogram.png" alt="psppire Graphs Histogram menu"> 
 
@@ -213,8 +213,8 @@ the cylinders variable will be plotted.  Cylinders are limited, so make
 a good choice for a pie chart. If there had been many values, the pie
 chart would get very crowded with small wedges and not be very useful.</p>
 
-In psppire, the Piechart can be found at Analyze-<&gt;>Descriptive
-Statistics-<&gt;>Frequencies-<&gt;>Charts.
+In psppire, the Piechart can be found at Analyze-&gt;Descriptive
+Statistics-&gt;Frequencies-&gt;Charts.
 
 <p><strong>Code</strong>
 <pre>
