@@ -34,8 +34,8 @@ a linear regression. Residuals should be more or less randomly distributed.
 There should not be patterns in residuals. That's what you are looking for.</p>
 
 <p>Scatterplots can be found in the PSPPIRE Data Editor menu
-<strong>Graphs-&gt; Scatterplot.</strong> and the psppire Scatterplot
-options window</p>
+<strong>Graphs-&gt; Scatterplot</strong> and the psppire Scatterplot
+options window.</p>
 <img src="pspp/scatter_psppire.png" alt="scatter plot menu in psppire">
 
 <p>Data:</p>
@@ -137,8 +137,9 @@ See piechart-1.png for a chart.
 <p>The PSPP GUI (psppire) can do histograms. There is a checkbox
 for the normal curve on the Histogram input screen. See
 <strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
-Frequencies Charts menu</strong>.</p> <img src="pspp/freq_graphs.png"
-alt="psppire Frequncies Charts menu"> 
+Analyze-<&gt;>Descriptive Statistics-<&gt;>Frequencies-<&gt;>Charts</strong> 
+options menu.</p> 
+<img src="pspp/freq_graphs.png" alt="psppire Frequencies Charts menu"> 
 
 <h2>How to Make a Bar Chart with PSPP</h2>
 
@@ -160,6 +161,44 @@ GRAPH
 <p><strong>Output</strong></p>
 <img src="pspp/barchart-1.png" alt="bar chart of cylinder counts in cars">
 
+<p>In psppire, the barchart settings can be found in the  
+<strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
+Analyze-<&gt;>Descriptive Statistics-<&gt;>Frequencies-<&gt;>Charts</strong> 
+options menu.</p> 
+<img src="pspp/freq_graphs.png" alt="psppire Frequencies Charts menu"> 
+
+<h2>How to Make a Bar Chart with PSPP</h2>
+
+<p>Here is an example of a bar chart of the number of cylinders in
+the engines of the cars from the auto-mpg dataset. You can see that
+4-cylinder engines are the most popular. 3-cylinder engines are used
+by American automakers including Chevrolet, Buick, and Ford, as well
+as Nissan and Toyota even in 2026. 5-cylinder engines are also still
+used by some manufacturers such as Acura, Audi, Ford, Toyota, Fiat,
+Chevrolet, and others. 6- and 8-cylinder cars follow 4-cylinder cars
+in popularity.</p>
+
+<p><strong>Code</strong></p>
+<pre>
+GRAPH
+  /BAR = COUNT by cylinders.
+</pre>
+
+<p><strong>Output</strong></p>
+<img src="pspp/barchart-1.png" alt="bar chart of cylinder counts in cars">
+
+<p>In psppire, the barchart settings can be found in the  
+<strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
+Analyze-<&gt;>Descriptive Statistics-<&gt;>Frequencies-<&gt;>Charts</strong> 
+options menu.</p> 
+<img src="pspp/graph_histogram.png" alt="psppire Graphs Histogram menu"> 
+
+<p>Other ways of doing bar charts with PSPP are by using FREQUENCIES or
+CROSSTABS which have options to output bar charts.</p>
+
+<p>And those are all the plots you can do from psppire's Graphs
+menu. Other plots are available in other procedures, as noted in the
+
 <p>Other ways of doing bar charts with PSPP are by using FREQUENCIES or
 CROSSTABS which have options to output bar charts.</p>
 
@@ -173,6 +212,9 @@ previous paragraph.</p>
 the cylinders variable will be plotted.  Cylinders are limited, so make
 a good choice for a pie chart. If there had been many values, the pie
 chart would get very crowded with small wedges and not be very useful.</p>
+
+In psppire, the Piechart can be found at Analyze-<&gt;>Descriptive
+Statistics-<&gt;>Frequencies-<&gt;>Charts.
 
 <p><strong>Code</strong>
 <pre>
@@ -587,7 +629,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Sep 19 14:24:08 EDT 2026
+Last Modified: Sat Sep 19 14:42:09 EDT 2026
 </footer>
 </blockquote>
 </main>
