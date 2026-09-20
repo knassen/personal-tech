@@ -517,24 +517,30 @@ CTABLES
 
 <h2 id="examine">How to Check Data Distribution Shape and Outliers with EXAMINE </h2>
 
-<p>EXAMINE is PSPP's procedure for looking at the distribution of a
-variable before running an analysis. It provides summary statistics,
-normality tests, and optional plots such as boxplots. This is useful for
-deciding whether a parametric test (like a t-test) is appropriate or
-whether a nonparametric test might be better.</p>
+<p><code>EXAMINE</code> is PSPP's procedure for looking at the
+distribution of a variable before running an analysis. It provides
+summary statistics, normality tests, and optional plots such as
+boxplots. This is useful for deciding whether a parametric test (like
+a t-test) is appropriate or whether a nonparametric test might be
+better.</p>
 
-<p>The EXAMINE command can be found in the Data Editor menu <strong>Analyze-&gt;Descriptive
-Statistics-&gt;Explore</strong>.  Note that PSPPIRE calls the EXAMINE command Explore
-in the menus, but when it writes the pspp commands, you'll see it is EXAMINE.</p>
+<p>The <code>EXAMINE</code> command can be found in the Data Editor menu
+<strong>Analyze-&gt;Descriptive Statistics-&gt;Explore</strong>.  Note
+that PSPPIRE calls the EXAMINE command Explore in the menus, but when it
+writes the pspp commands, you'll see it is EXAMINE.</p>
 
 <h3>EXAMINE Notes</h3>
 
-<p>EXAMINE only analyzes numeric variables. String variables are
-ignored, and if not enough numeric values are supplied, EXAMINE produces
-only the N/Valid/Missing table. You may see "NaN" which stands for
-"Not a Number". That means the calculation could not be completed or
-came to a result that could not be displayed, for example, as a result
-of division by zero.</p>
+<p><code>EXAMINE</code> only analyzes numeric variables. String
+variables are ignored, and if not enough numeric values are supplied,
+EXAMINE produces only the N/Valid/Missing table. You may see "NaN" which
+stands for "Not a Number". That means the calculation could not be
+completed or came to a result that could not be displayed, for example,
+as a result of division by zero.</p>
+
+<p><code>EXAMINE</code> can also provide a table of extreme high and low
+values. These can be generate with <code>/STATISTICS = ALL</code> or
+<code>/STATISTICS = EXTREME(5)</code> or however many values you want.
 
 <h3>EXAMINE Example</h3>
 
@@ -985,7 +991,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Sep 17 08:50:28 EDT 2026
+Last Modified: Sun Sep 20 13:05:10 EDT 2026
 </footer>
 </blockquote>
 </main>
