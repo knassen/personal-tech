@@ -283,6 +283,10 @@ alpha
      .978
 </pre>
 
+<p>For Cronbach's Alpha values on 0.90 and higher are considered evidence
+of strong internal consistency among the items, though extremely high values
+sometimes reflect item redundancy.</p>
+
 <p>Results were verified with other programming languages, for example a
 SAS program:</p>
 
@@ -294,6 +298,24 @@ run;
 
 <p>This pspp MATRIX program matched the SAS output.</p>
 
+<p>Also note that the RELIABILITY pspp procedure provides Cronbach's
+Alpha:</p>
+
+<p><strong>PSPP Output:</strong></p>
+<pre>
+    Reliability Statistics
+╭────────────────┬──────────╮
+│Cronbach's Alpha│N of Items│
+├────────────────┼──────────┤
+│             .98│         4│
+╰────────────────┴──────────╯
+</pre>
+
+<p>This <code>MATRIX</code> example is included as a demonstration of a
+complete, working <code>MATRIX</code> program. Even though PSPP provides
+Cronbach's Alpha, the example show how to compute it manually and
+illustrates how <code>MATRIX</code> handles the underlying statistical
+operations.</p>
 
 <p>Next, a <code>MATRIX</code> program for computing Median Absolute
 Deviation is shown.</p>
@@ -558,7 +580,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Sep 20 10:23:06 EDT 2026
+Last Modified: Sun Sep 20 15:22:39 EDT 2026
 </p>
 </footer>
 </blockquote>
