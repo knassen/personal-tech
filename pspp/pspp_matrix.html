@@ -212,6 +212,87 @@ END MATRIX.
     <li>0.20 is used as the percentage of values to trim from the data, split equally between beginning and end of the data.</li>
 </ol>
 
+<h2>Chronbach's Alpha in PSPP MATRIX Code</h2>
+<p>This statistic is used with survey or scale variables to assess the
+internal consistency of the items and whether they represent a single
+concept. The statistic usually is between zero and one. First, create
+some test data.</p>
+
+<strong>Test Data</strong>
+<p>This illustrates using <code>INPUT PROGRAM</code> and a
+<code>LOOP</code> to create random data for testing the Cronbach's
+Alpha <code>MATRIX</code> code. This data will change with each new
+session.</p>
+
+<pre>
+INPUT PROGRAM.
+  LOOP id = 1 TO 200.
+    COMPUTE base = RV.NORMAL(50,10).
+    COMPUTE item1 = base + RV.NORMAL(0,3).
+    COMPUTE item2 = base + RV.NORMAL(0,3).
+    COMPUTE item3 = base + RV.NORMAL(0,3).
+    COMPUTE item4 = base + RV.NORMAL(0,3).
+    END CASE.
+  END LOOP.
+END FILE.
+END INPUT PROGRAM.
+EXECUTE.
+</pre>
+
+<strong>MATRIX Syntax</strong>
+<pre>
+MATRIX.
+  GET x /VARIABLES=item1 item2 item3 item4.
+
+  * Number of cases and variables.
+  COMPUTE n = NROW(x).
+  COMPUTE k = NCOL(x).
+
+  * Column means.
+  COMPUTE ones_n = MAKE(n,1,1).
+  COMPUTE mu = (T(ones_n) * x) / n.
+
+  * Expand mean row to nÃ. 
+  COMPUTE mu_expanded = ones_n * mu. 
+
+  * Center the data.
+  COMPUTE xc = x - mu_expanded.
+
+  * Covariance matrix.
+  COMPUTE S = (T(xc) * xc) / (n - 1). 
+
+  * Item variances (diagonal).
+  COMPUTE itemvars = DIAG(S).
+
+  * Sum of item variances.
+  COMPUTE ones_k = MAKE(k,1,1).
+  COMPUTE sumvars = T(ones_k) * itemvars.
+
+  * Total variance (sum of all elements in S). 
+  COMPUTE totalvar = T(ones_k) * S * ones_k.
+
+  * Cronbach alpha.
+  COMPUTE alpha = (k/(k-1)) * (1 - (sumvars/totalvar)).
+  PRINT alpha /FORMAT=F8.3.
+END MATRIX.
+</pre>
+
+<strong>Results</strong>
+<pre>
+alpha
+     .978
+</pre>
+
+<p>Results were verified with other programming languages, for example a
+SAS program:</p>
+
+<pre>
+proc corr data=dataset_name alpha;
+    var item1 item2 item3 item4;
+run;
+</pre>
+
+
 <p>Next, a <code>MATRIX</code> program for computing Median Absolute
 Deviation is shown.</p>
 
