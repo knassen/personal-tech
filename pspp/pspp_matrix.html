@@ -212,7 +212,7 @@ END MATRIX.
     <li>0.20 is used as the percentage of values to trim from the data, split equally between beginning and end of the data.</li>
 </ol>
 
-<h2>Chronbach's Alpha in PSPP MATRIX Code</h2>
+<h2>Cronbach's Alpha in PSPP MATRIX Code</h2>
 <p>This statistic is used with survey or scale variables to assess the
 internal consistency of the items and whether they represent a single
 concept. The statistic usually is between zero and one. First, create
@@ -252,7 +252,7 @@ MATRIX.
   COMPUTE ones_n = MAKE(n,1,1).
   COMPUTE mu = (T(ones_n) * x) / n.
 
-  * Expand mean row to nÃ. 
+  * Expand mean row to n rows. 
   COMPUTE mu_expanded = ones_n * mu. 
 
   * Center the data.
@@ -291,6 +291,8 @@ proc corr data=dataset_name alpha;
     var item1 item2 item3 item4;
 run;
 </pre>
+
+<p>This pspp MATRIX program matched the SAS output.</p>
 
 
 <p>Next, a <code>MATRIX</code> program for computing Median Absolute
@@ -556,7 +558,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Aug 22 20:48:59 EDT 2026
+Last Modified: Sun Sep 20 10:23:06 EDT 2026
 </p>
 </footer>
 </blockquote>
