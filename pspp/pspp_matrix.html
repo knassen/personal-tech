@@ -287,8 +287,15 @@ MATRIX.
 END MATRIX.
 </pre>
 
+<p>This example shows several things about pspp's MATRIX. First, it
+doesn't have a MEAN function, so that had to be done as CSUM(x)/NROW(x).
+PSPP MATRIX also lacks a COV() function for the the covariance. That
+was also done using matrix commands.  Finally, the data were
+standardized.</p>
+
 <strong>Output</strong>
-<p>Mahalanobis distances for the 150 iris cases, wrapped for readability.</p>
+<p>Mahalanobis distances for the 150 iris cases, wrapped into coumns 
+for readability.</p>
 <pre>
 D2All
    2.152          2.810          2.078          2.447          2.509
@@ -701,7 +708,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Sep 20 21:34:09 EDT 2026
+Last Modified: Mon Sep 21 09:31:45 EDT 2026
 </p>
 </footer>
 </blockquote>
