@@ -212,6 +212,124 @@ END MATRIX.
     <li>0.20 is used as the percentage of values to trim from the data, split equally between beginning and end of the data.</li>
 </ol>
 
+<h2>Mahalanobis Distance in MATRIX</h2>
+
+<p>Mahalanobis distance measures how far an observation is from the center
+of a multivariate dataset, taking into account the scale and correlation
+of the variables. It’s useful when your variables move together —
+for example, petal length and petal width in the Iris data.</p>
+
+<p>People use it to:</p>
+
+<ul>
+    <li>spot multivariate outliers</li>
+    <li>compare how typical or atypical a case is</li>
+    <li>evaluate cluster separation</li>
+    <li>monitor processes where several measurements vary together</li>
+</ul>
+
+<p>Unlike ordinary Euclidean distance, Mahalanobis distance adjusts for
+covariance, so it gives a more realistic measure of “how unusual” a
+point is in the context of all variables at once.</p>
+
+<p>This example uses the Iris data set. String variables cannot be
+used in MATRIX, so the Species variable has been dropped.  Also the ID
+variable has been dropped since it doesn't represent iris data. To make
+getting the data into the MATRIX subsystem easier, the iris.csv file has
+been converted to a pspp system data file.</p>
+
+<strong>Matrix Syntax</strong>
+<pre>
+GET FILE="Iris.sav".
+
+MATRIX.
+
+  GET x /VARIABLES=SepalLengthCm SepalWidthCm PetalLengthCm PetalWidthCm .
+
+  COMPUTE n = NROW(x).
+  COMPUTE k = NCOL(x).
+
+  * Column means.
+  COMPUTE mu = CSUM(x) / n.
+
+  * Center.
+  COMPUTE one = MAKE(n,1,1).
+  COMPUTE Xc = x - one * mu.
+
+  * Column variances.
+  COMPUTE var = MAKE(1,k,0).
+
+  LOOP j = 1 TO k.
+    COMPUTE col = Xc(:,j).
+    COMPUTE var(1,j) = (T(col)*col) / (n - 1).
+  END LOOP.
+
+  COMPUTE sd = SQRT(var).
+
+  * Standardize.
+  COMPUTE denom = one * sd.
+  COMPUTE z = MAKE(n,k,0).
+
+  LOOP j = 1 TO k.
+    COMPUTE z(:,j) = Xc(:,j) / sd(1,j).
+  END LOOP.
+
+  * Covariance of standardized data.
+  COMPUTE S = T(z) * z / (n - 1).
+
+  COMPUTE Sinv = INV(S).
+
+  COMPUTE M = z * Sinv * T(z).
+  COMPUTE D2all = DIAG(M).
+
+  PRINT D2all /FORMAT=F8.3.
+
+END MATRIX.
+</pre>
+
+<strong>Output</strong>
+<pre>
+D2All
+   2.152          2.810          2.078          2.447          2.509
+   3.957          2.907          1.846          3.359          2.338
+   3.314          2.816          2.566          3.588          8.769
+   9.836          5.806          2.339          4.530          3.518
+   2.622          2.980          3.674          2.244          5.373
+   2.399          1.784          2.210          2.496          2.473
+   1.966          4.590          8.537          7.346          2.338
+   3.398          5.326          2.338          3.143          1.897
+   2.570          11.394         3.337          3.737          4.595
+   2.956          4.535          2.368          3.049          1.921
+   4.446          .630           3.014          3.608          2.043
+   3.324          1.290          4.286          2.725          3.168
+   7.647          .434           7.512          1.548          1.040
+   2.784          3.496          3.296          7.441          2.154
+   3.269          1.358          2.379          4.495          1.599
+   2.334          4.186          1.423          .319           2.086
+   2.786          3.093          .845           2.517          6.254
+   2.817          1.795          6.557          1.682          1.996
+   4.951          1.188          1.353          4.545          1.485
+   2.705          1.190          .648           4.831          .629
+   8.888          2.967          2.447          3.568          2.342
+   6.066          10.141         7.588          3.327          7.285
+   2.249          1.241          2.432          4.769          11.387
+   5.843          1.981          12.860         7.211          4.381
+   4.018          5.350          8.799          1.811          2.880
+   5.899          1.455          1.134          1.667          7.066
+   5.698          13.140         2.542          2.404          12.887
+   9.696          8.146          3.277          1.467          3.492
+   5.947          12.466         2.967          3.083          7.401
+   9.079          4.078          1.764          7.637          3.491
+</pre>
+
+<p>Interpreting Mahalanobis distance: </p>
+
+<p>For k variables, compare D² to a chi‑square distribution with k
+degrees of freedom.  For 4 variables (as in the Iris example), values
+above 9.5 are unusual, above 13 are strong outliers, and above 18 are
+extreme. The iris data set has several values that are considered
+unusual, bordering on strong outliers, based on this.</p>
+
 <h2>Cronbach's Alpha in PSPP MATRIX Code</h2>
 <p>This statistic is used with survey or scale variables to assess the
 internal consistency of the items and whether they represent a single
@@ -580,7 +698,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Sep 20 15:22:39 EDT 2026
+Last Modified: Sun Sep 20 21:27:26 EDT 2026
 </p>
 </footer>
 </blockquote>
