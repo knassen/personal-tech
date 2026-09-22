@@ -1012,6 +1012,17 @@ details, if you are curious. Note: some auto-mpg data sets contain tab
 characters, which will cause issues for pspp's <code>DATA LIST</code>
 command.</p>
 
+<p>In psppire, again the path is Analysis-&gt;Regression-&gt;Linear.
+Here is the regression menu where you select the dependent and
+independent variables for the regression.  In this case MPG is the
+dependent variable (what we are trying to predict) and CYLINDERS, 
+DISPLACEMENT, HORSEPOWER, WEIGHT, ACCELERAION, MODELYEAR, and
+ORIGIN are the independent variables (what we measured and hope will
+predict mpg).
+
+<img src="pspp/regression_menu.png" alt="pspp regression menu">
+<p><strong>Regression Menu</strong></p>
+
 <p><strong>Code</strong></p>
 <pre>
 DATA LIST FIXED FILE="auto-mpg2.data"
