@@ -1076,30 +1076,45 @@ make the output harder to navigate.</p>
 
 <p><strong>Output</strong></p>
 <pre>
-    Reading 1 record from INLINE.
+Reading 1 record from `auto-mpg2.data'.
 +------------+------+-------+------+
 |Variable    |Record|Columns|Format|
 +------------+------+-------+------+
-|MPG         |     1|1-4    |F4.0  |
-|CYLINDERS   |     1|8-8    |F1.0  |
-|DISPLACEMENT|     1|12-16  |F5.0  |
-|HORSEPOWER  |     1|23-27  |F5.0  |
-|WEIGHT      |     1|34-38  |F5.0  |
-|ACCELERATION|     1|45-48  |F4.0  |
-|MODEL_YEAR  |     1|52-53  |F2.0  |
-|ORIGIN      |     1|56-56  |F1.0  |
-|CAR_NAME    |     1|57-95  |A39   |
+|mpg         |     1|1-4    |F4.0  |
+|cylinders   |     1|8-8    |F1.0  |
+|displacement|     1|12-17  |F6.0  |
+|horsepower  |     1|23-28  |F6.0  |
+|weight      |     1|34-39  |F6.0  |
+|acceleration|     1|45-49  |F5.0  |
+|modelyear   |     1|52-54  |F3.0  |
+|origin      |     1|56-57  |F2.0  |
+|carname     |     1|61-102 |A42   |
 +------------+------+-------+------+
 
+                                   Variables
++------------+--------+--------------+-----+-----+---------+--------+---------+
+|            |        |  Measurement |     |     |         |  Print |  Write  |
+|Name        |Position|     Level    | Role|Width|Alignment| Format |  Format |
++------------+--------+--------------+-----+-----+---------+--------+---------+
+|mpg         |       1|Unknown       |Input|    8|Right    |F4.0    |F4.0     |
+|cylinders   |       2|Unknown       |Input|    8|Right    |F1.0    |F1.0     |
+|displacement|       3|Unknown       |Input|    8|Right    |F6.0    |F6.0     |
+|horsepower  |       4|Unknown       |Input|    8|Right    |F6.0    |F6.0     |
+|weight      |       5|Unknown       |Input|    8|Right    |F6.0    |F6.0     |
+|acceleration|       6|Unknown       |Input|    8|Right    |F5.0    |F5.0     |
+|modelyear   |       7|Unknown       |Input|    8|Right    |F3.0    |F3.0     |
+|origin      |       8|Unknown       |Input|    8|Right    |F2.0    |F2.0     |
+|carname     |       9|Nominal       |Input|   32|Left     |A42     |A42      |
++------------+--------+--------------+-----+-----+---------+--------+---------+
 
-                    Model Summary (MPG)
+                    Model Summary (mpg)
 +---+--------+-----------------+--------------------------+
 | R |R Square|Adjusted R Square|Std. Error of the Estimate|
 +---+--------+-----------------+--------------------------+
 |.91|     .82|              .82|                      3.33|
 +---+--------+-----------------+--------------------------+
 
-                      ANOVA (MPG)
+                      ANOVA (mpg)    
 +----------+--------------+---+-----------+------+----+
 |          |Sum of Squares| df|Mean Square|   F  |Sig.|
 +----------+--------------+---+-----------+------+----+
@@ -1107,39 +1122,24 @@ make the output harder to navigate.</p>
 |Residual  |       4252.21|384|      11.07|      |    |
 |Total     |      23818.99|391|           |      |    |
 +----------+--------------+---+-----------+------+----+
-                                                                                                                        
-                               Coefficients (MPG)
-+------------+----------------------------+------------------------+-----+----+
-|            |                            |      Standardized      |     |    |
-|            | Unstandardized Coefficients|      Coefficients      |     |    |
-|            +------------+---------------+------------------------+     |    |
-|            |      B     |   Std. Error  |          Beta          |  t  |Sig.|
-+------------+------------+---------------+------------------------+-----+----+
-|(Constant)  |      -17.22|           4.64|                     .00|-3.71|.000|
-|CYLINDERS   |        -.49|            .32|                    -.11|-1.53|.128|
-|DISPLACEMENT|         .02|            .01|                     .27| 2.65|.008|
-|HORSEPOWER  |        -.02|            .01|                    -.08|-1.23|.220|
-|WEIGHT      |        -.01|            .00|                    -.70|-9.93|.000|
-|ACCELERATION|         .08|            .10|                     .03|  .82|.415|
-|MODEL_YEAR  |         .75|            .05|                     .35|14.73|.000|
-|ORIGIN      |        1.43|            .28|                     .15| 5.13|.000|
-+------------+------------+---------------+------------------------+-----+----+
 
-         Statistics
-+---------+-----+----------+
-|         |PRED1|   RES1   |   
-+---------+-----+----------+
-|N Valid  |  392|       392|
-|  Missing|    0|         0|  
-+---------+-----+----------+
-|Mean     |23.45|-1.72E-015|
-+---------+-----+----------+
-|Std Dev  | 7.07|      3.30|
-+---------+-----+----------+
-|Minimum  | 6.25|     -9.59|
-+---------+-----+----------+
-|Maximum  |36.49|     13.06|
-+---------+-----+----------+
+                               Coefficients (mpg)
++------------+------------------+----------------+-----+----+-----------------+
+|            |  Unstandardized  |  Standardized  |     |    |   Collinearity  |
+|            |   Coefficients   |  Coefficients  |     |    |    Statistics   |
+|            +--------+---------+----------------+     |    +----------+------+
+|            |        |   Std.  |                |     |    |          |      |
+|            |    B   |  Error  |      Beta      |  t  |Sig.| Tolerance|  VIF |
++------------+--------+---------+----------------+-----+----+----------+------+
+|(Constant)  |  -17.22|     4.64|             .00|-3.71|.000|          |      |
+|cylinders   |    -.49|      .32|            -.11|-1.53|.128|       .09| 10.74|
+|displacement|     .02|      .01|             .27| 2.65|.008|       .05| 21.84|
+|horsepower  |    -.02|      .01|            -.08|-1.23|.220|       .10|  9.94|
+|weight      |    -.01|      .00|            -.70|-9.93|.000|       .09| 10.83|
+|acceleration|     .08|      .10|             .03|  .82|.415|       .38|  2.63|
+|modelyear   |     .75|      .05|             .35|14.73|.000|       .80|  1.24|
+|origin      |    1.43|      .28|             .15| 5.13|.000|       .56|  1.77|
++------------+--------+---------+----------------+-----+----+----------+------+
 </pre>
 
 <p>Ordinary least squares regression is a BLUE (best linear unbiased)
@@ -1159,6 +1159,14 @@ the dependent variable and to horsepower, displacement, and weight. The
 origin variable explains nothing of the variation in the model and thus
 adds nothing for predictions. Origin can be dropped from the model, in
 other words.</p>
+
+<p><strong>Workflow Tip:</strong> Looking for the variance inflation
+factor (VIF) in your regression output? PSPP computes both values called
+TOL (tolerance) and VIF now. VIF is related to TOL: VIF=1/TOL. For
+psppire, you need to tell PSPP you want the COEFF and TOL values
+reported in your REGRESSION /STATISTICS command. The example output
+above in the example now shows both Tolerance and VIF in the
+Coefficients table.</p>
 
 <h2 id="reliability">How to Run a RELIABILITY Analysis</h2>
 
@@ -1251,7 +1259,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep 21 22:40:07 EDT 2026
+Last Modified: Fri Sep 25 17:33:56 EDT 2026
 </footer>
 </blockquote>
 </main>
