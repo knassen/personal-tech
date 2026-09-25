@@ -1050,7 +1050,7 @@ DATA LIST FIXED FILE="auto-mpg2.data"
 REGRESSION
   /DEPENDENT mpg 
   /METHOD=ENTER cylinders displacement horsepower weight acceleration modelyear origin
-  /STATISTICS = COEFF R ANOVA
+  /STATISTICS = COEFF R ANOVA TOL                                                                                       
   /SAVE PRED RESID.
 
 DISPLAY DICTIONARY.
@@ -1259,7 +1259,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Sep 25 17:33:56 EDT 2026
+Last Modified: Fri Sep 25 17:58:29 EDT 2026
 </footer>
 </blockquote>
 </main>
