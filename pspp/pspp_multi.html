@@ -468,6 +468,14 @@ values by hand to see where the read went wrong.</p>
 
 <h2 id="mrsets">How to Save MRSETS Data</h2> 
 
+<p>PSPP’s system file format includes support for multiple response
+sets (<code>MRSETS</code>) as metadata, and the manual documents
+<code>MRSETS</code> commands. However, current PSPP builds do not
+provide a documented way to analyze MRSETS via syntax (other than
+to look at it). <code>MRSETS</code> are primarily intended for
+compatibility with third‑party software that can read and use
+them.</p>
+
 <p>The following tiny dataset illustrates how multiple‑response sets
 are defined. Each variable is coded 1/0 to indicate whether the item was
 selected. PSPP can store this MRSET definition in a system file, but
@@ -491,6 +499,9 @@ END DATA.
 
 DISPLAY DICTIONARY.
 LIST.
+
+* Save the before MRSETS data.
+SAVE OUTFILE="snacks.sav".
 </pre>
 
 <pre>
@@ -530,25 +541,39 @@ ECHO "End of MRSETS command.".
 
 <p id="mrsets"><strong>Save the MRSETS Data</strong>
 <pre>
-SAVE OUTFILE='snacks.sav'.
-GET FILE='snacks.sav'.
+SAVE OUTFILE='snacks_after.sav'.
 </pre>
 
-<p>PSPP’s system file format includes support for multiple
-response sets (<code>MRSETS</code>) as metadata, and the manual
-documents <code>MRSETS</code> commands. However, current PSPP builds
-do not provide a documented way to analyze MRSETS via syntax.
-<code>MRSETS</code> are primarily intended for compatibility with
-third‑party software that can read and use them.</p>
+<p>
+<strong>Test the MRSETS Output File</strong>
+<pre>
+GET FILE="snacks_after.sav".
 
-<p>Adding /DISPLAY NAME=ALL gave output like this. So pspp does do something
-to the data set if you ask for the information. Since you need another
-program to read this data it's not clear how useful it is to pspp. Note
-that the name requested ($snacks) and the counted value of 1 along with
-the member variables are present in the response set.</p>
+MRSETS /DISPLAY NAME=ALL.
+</pre>
 
-<p><Workflow tip>If you omit /DISPLAY NAME=ALL you get no output so always
-add that command to see what MRSETS did.</p>
+<strong>Output</strong>
+<pre>
+               Multiple Response Sets
++-------+-----------+-------------+----------------+
+|Name   |  Encoding |Counted Value|Member Variables|
++-------+-----------+-------------+----------------+
+|$snacks|Dichotomies|            1|chips           |
+|       |           |             |cookies         |
+|       |           |             |fruit           |
+|       |           |             |nuts            |
++-------+-----------+-------------+----------------+
+</pre>
+
+<p>Thus, pspp is saving the <code>MRSETS</code> information in the pspp
+.sav data.  It's just not obvious. <code>DISPLAY DICTIONARY</code> does
+not show any indication that this is an MRSETS data file. I'd be curious
+to see what this data looks like in a third-party app that understands
+<code>MRSETS</code> data.</p>
+
+<p><Workflow tip>If you omit /DISPLAY NAME=ALL you get no output (it is
+like pspp did nothing) so always add that command to see what MRSETS
+did.</p>
 
 <pre>
 Starting MRSETS command.
@@ -592,7 +617,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Sep 26 11:20:55 EDT 2026
+Last Modified: Sat Sep 26 11:39:45 EDT 2026
 </p>
 </footer>
 </blockquote>
