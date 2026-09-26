@@ -55,9 +55,9 @@ LIST FIXED</code> and <code>RECORDS=</code>.</p>
 <p>This is <em>not</em> the modern usage of “multi‑record”
 to mean “multiple rows per ID” in a CSV or database table,
 where every row has the same structure or schema. It also has
-nothing to do with multiple response sets (<code>MRSETS</code></a>)
-which are a completely different SPSS/PSPP feature. <a
-href="pspp/pspp_multi.html#mrsets"><strong>A brief test of
+nothing to do with multiple response sets (<code>MRSETS</code>)
+which are a completely different SPSS/PSPP feature. 
+<a href="pspp/pspp_multi.html#mrsets"><strong>A brief test of
 <code>MRSETS</code> is included below</strong></a>.</p>
 
 <p>A common misconception is that PSPP lacks support for multi‑record
@@ -539,7 +539,7 @@ MRSETS
 ECHO "End of MRSETS command.".
 </pre>
 
-<p id="mrsets"><strong>Save the MRSETS Data</strong>
+<p><strong>Save the MRSETS Data</strong>
 <pre>
 SAVE OUTFILE='snacks_after.sav'.
 </pre>
@@ -587,7 +587,7 @@ Starting MRSETS command.
 End of MRSETS command.
 </pre>
 
-<p><strong><Workflow tip></strong> If you omit /DISPLAY NAME=ALL you get
+<p><strong>Workflow Tip: </strong> If you omit /DISPLAY NAME=ALL you get
 no output (it looks like pspp did nothing) so always use that command to
 if you want to see what MRSETS did.</p>
 
