@@ -554,24 +554,6 @@ MRSETS /DISPLAY NAME=ALL.
 
 <strong>Output</strong>
 <pre>
-               Multiple Response Sets
-+-------+-----------+-------------+----------------+
-|Name   |  Encoding |Counted Value|Member Variables|
-+-------+-----------+-------------+----------------+
-|$snacks|Dichotomies|            1|chips           |
-|       |           |             |cookies         |
-|       |           |             |fruit           |
-|       |           |             |nuts            |
-+-------+-----------+-------------+----------------+
-</pre>
-
-<p>Thus, pspp is saving the <code>MRSETS</code> information in the pspp
-.sav data.  It's just not obvious. <code>DISPLAY DICTIONARY</code> does
-not show any indication that this is an MRSETS data file. I'd be curious
-to see what this data looks like in a third-party app that understands
-<code>MRSETS</code> data.</p>
-
-<pre>
 Starting MRSETS command.
 
                Multiple Response Sets
@@ -586,6 +568,12 @@ Starting MRSETS command.
 
 End of MRSETS command.
 </pre>
+
+<p>Thus, pspp is saving the <code>MRSETS</code> information in the pspp
+.sav data.  It's just not obvious. <code>DISPLAY DICTIONARY</code> does
+not show any indication that this is an MRSETS data file. I'd be curious
+to see what this data looks like in a third-party app that understands
+<code>MRSETS</code> data. Right now that seems to be SPSS.</p>
 
 <p><strong>Workflow Tip: </strong> If you omit /DISPLAY NAME=ALL you get
 no output (it looks like pspp did nothing) so always use that command to
@@ -617,7 +605,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Sep 26 11:59:11 EDT 2026
+Last Modified: Sat Sep 26 13:14:06 EDT 2026
 </p>
 </footer>
 </blockquote>
