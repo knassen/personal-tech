@@ -55,8 +55,8 @@ LIST FIXED</code> and <code>RECORDS=</code>.</p>
 <p>This is <em>not</em> the modern usage of “multi‑record”
 to mean “multiple rows per ID” in a CSV or database
 table, where every row has the same structure or schema. It
-also has nothing to do with multiple response sets <a
-href="pspp/pspp_multi.html#mrsets">(<code>MRSETS</code>) which
+also has nothing to do with multiple response sets 
+<a href="pspp/pspp_multi.html#mrsets">(<code>MRSETS</code></a>) which
 are a completely different SPSS/PSPP feature. A brief test of
 <code>MRSETS</code> is included below for completeness.</p>
 
@@ -466,7 +466,7 @@ is essential. When <code>FREQUENCIES</code> cannot be trusted to expose
 a misread due to complexity, the only dependable method is to check the
 values by hand to see where the read went wrong.</p>
 
-<h2>How to Save MRSETS Data</h2> 
+<h2 id="mrsets">How to Save MRSETS Data</h2> 
 
 <p>The following tiny dataset illustrates how multiple‑response sets
 are defined. Each variable is coded 1/0 to indicate whether the item was
@@ -517,7 +517,7 @@ LIST.
 ╰────┴─────┴───────┴─────┴────╯
 </pre>
 
-<p><strong>Run MRSETS</strong>
+<p><strong> Run MRSETS</strong>
 <pre>
 MRSETS
   /MDGROUP NAME=$snacks
@@ -571,7 +571,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Sep 25 09:32:24 EDT 2026
+Last Modified: Sat Sep 26 10:19:26 EDT 2026
 </p>
 </footer>
 </blockquote>
