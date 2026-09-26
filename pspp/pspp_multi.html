@@ -519,10 +519,13 @@ LIST.
 
 <p><strong> Run MRSETS</strong>
 <pre>
+ECHO "Starting MRSETS command."
 MRSETS
   /MDGROUP NAME=$snacks
            VARIABLES=chips cookies fruit nuts
-           VALUE=1.
+           VALUE=1
+  /DISPLAY NAME=ALL.
+ECHO "End of MRSETS command.".
 </pre>
 
 <p id="mrsets"><strong>Save the MRSETS Data</strong>
@@ -538,12 +541,30 @@ do not provide a documented way to analyze MRSETS via syntax.
 <code>MRSETS</code> are primarily intended for compatibility with
 third‑party software that can read and use them.</p>
 
-<p>The results of this test were: PSPP accepts the MRSETS command and
-lists it on Windows, but does not list it on Unix. If you make an
-error in syntax, PSPP does issue an error. In this example, PSPP does
-not display or save any metadata. It is unclear whether this behavior
-reflects a limitation of the command, the syntax used, the dataset, or
-the current PSPP build.</p>
+<p>Adding /DISPLAY NAME=ALL gave output like this. So pspp does do something
+to the data set if you ask for the information. Since you need another
+program to read this data it's not clear how useful it is to pspp. Note
+that the name requested ($snacks) and the counted value of 1 along with
+the member variables are present in the response set.</p>
+
+<p><Workflow tip>If you omit /DISPLAY NAME=ALL you get no output so always
+add that command to see what MRSETS did.</p>
+
+<pre>
+Starting MRSETS command.
+
+               Multiple Response Sets
++-------+-----------+-------------+----------------+
+|Name   |  Encoding |Counted Value|Member Variables|
++-------+-----------+-------------+----------------+
+|$snacks|Dichotomies|            1|chips           |   
+|       |           |             |cookies         |   
+|       |           |             |fruit           |   
+|       |           |             |nuts            |   
++-------+-----------+-------------+----------------+
+
+End of MRSETS command.
+</pre>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 <div class="pspp-index">
@@ -571,7 +592,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Sep 26 10:27:09 EDT 2026
+Last Modified: Sat Sep 26 11:20:55 EDT 2026
 </p>
 </footer>
 </blockquote>
