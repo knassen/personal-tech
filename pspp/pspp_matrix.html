@@ -291,7 +291,8 @@ END MATRIX.
 doesn't have a MEAN function, so that had to be done as CSUM(x)/NROW(x).
 PSPP MATRIX also lacks a COV() function for the the covariance. That
 was also done using matrix commands.  Finally, the data were
-standardized.</p>
+standardized. (Note: SPSS's MATRIX implementation doesn't have MEAN
+or COV functions, either, according to the manual.)</p>
 
 <p>To use the the Mahalanobis distance matrix program yourself, add
 your own data set where Iris.sav is, before the <code>MATRIX</code>
@@ -713,7 +714,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep 28 11:28:38 EDT 2026
+Last Modified: Mon Sep 28 14:22:25 EDT 2026
 </p>
 </footer>
 </blockquote>
