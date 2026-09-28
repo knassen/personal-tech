@@ -232,9 +232,9 @@ for example, petal length and petal width in the Iris data (Fisher, 1936).</p>
 covariance, so it gives a more realistic measure of “how unusual” a
 point is in the context of all variables at once.</p>
 
-<p>This example uses the Iris data set. String variables cannot be used
-in MATRIX, so the long Species variable has been dropped.  Also the ID
-variable has been dropped since it doesn't represent iris data. To more 
+<p>This example uses the Fisher Iris data set. String variables cannot
+be used in MATRIX, so the long Species variable is ignored. Also the ID
+variable has not been used since it doesn't represent iris data. To more
 easily get the data into the MATRIX subsystem, the iris.csv file has
 been converted to a pspp system data file.</p>
 
@@ -293,10 +293,10 @@ PSPP MATRIX also lacks a COV() function for the the covariance. That
 was also done using matrix commands.  Finally, the data were
 standardized.</p>
 
-<p>To use the the Mahalnobis distance matrix program yourself, add
+<p>To use the the Mahalanobis distance matrix program yourself, add
 your own data set where Iris.sav is, before the <code>MATRIX</code>
-command. Put your (numeric) variable names in place of the ones there
-(SepalLengthcm, etc.). Then run the program with pspp.</p>
+command. Put your (numeric) variable names in place of the ones there in
+the example (SepalLengthcm, etc.). Then run the program with pspp.</p>
 
 <strong>Output</strong>
 <p>Mahalanobis distances for the 150 iris cases, wrapped into columns 
