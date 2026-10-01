@@ -294,6 +294,15 @@ was also done using matrix commands.  Finally, the data were
 standardized. (Note: SPSS's MATRIX implementation doesn't have MEAN
 or COV functions, either, according to the manual.)</p>
 
+<p>By performing all computations inside MATRIX, the same missing‑data
+rules apply consistently to both the mean vector and the covariance
+matrix. MATRIX uses strict listwise deletion: any case with a missing
+value in any variable is excluded entirely from the analysis. This
+produces a covariance matrix based on a single, coherent set of complete
+cases, which is numerically more stable and reliably invertible than
+matrices constructed using pairwise deletion or AGGREGATE‑based
+macros.</p>
+
 <p>To use the the Mahalanobis distance matrix program yourself, add
 your own data set where Iris.sav is, before the <code>MATRIX</code>
 command. Put your (numeric) variable names in place of the ones there in
@@ -714,7 +723,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep 28 14:22:25 EDT 2026
+Last Modified: Thu Oct  1 12:14:10 EDT 2026
 </p>
 </footer>
 </blockquote>
