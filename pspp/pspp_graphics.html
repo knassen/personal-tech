@@ -167,39 +167,6 @@ Analyze-&gt;Descriptive Statistics-&gt;Frequencies-&gt;Charts</strong>
 options menu.</p> 
 <img src="pspp/freq_graphs.png" alt="psppire Frequencies Charts menu"> 
 
-<h2>How to Make a Bar Chart with PSPP</h2>
-
-<p>Here is an example of a bar chart of the number of cylinders in
-the engines of the cars from the auto-mpg dataset. You can see that
-4-cylinder engines are the most popular. 3-cylinder engines are used
-by American automakers including Chevrolet, Buick, and Ford, as well
-as Nissan and Toyota even in 2026. 5-cylinder engines are also still
-used by some manufacturers such as Acura, Audi, Ford, Toyota, Fiat,
-Chevrolet, and others. 6- and 8-cylinder cars follow 4-cylinder cars
-in popularity.</p>
-
-<p><strong>Code</strong></p>
-<pre>
-GRAPH
-  /BAR = COUNT by cylinders.
-</pre>
-
-<p><strong>Output</strong></p>
-<img src="pspp/barchart-1.png" alt="bar chart of cylinder counts in cars">
-
-<p>In psppire, the barchart settings can be found in the  
-<strong>Graphs-&gt;Histogram</strong> and the <strong>psppire
-Analyze-&gt;Descriptive Statistics-&gt;Frequencies-&gt;Charts</strong> 
-options menu.</p> 
-<img src="pspp/graph_histogram.png" alt="psppire Graph Histogram menu"> 
-
-<p>Other ways of doing bar charts with PSPP are by using FREQUENCIES or
-CROSSTABS which have options to output bar charts.</p>
-
-<p>And those are all the plots you can do from psppire's Graphs
-menu. Other plots are available in other procedures, as noted in the
-previous paragraph.</p>
-
 <h2>Creating a Pie Chart with PSPP's FREQUENCIES Procedure</h2>
 
 <p>This example will use the auto-mpg data set again. For the pie chart
@@ -335,7 +302,7 @@ See boxplot-2.png for a chart.
 <p><strong>Boxplot of MPG</strong></p>
 <img src="pspp/boxplot-1.png" alt="boxplot of mpg via pspp EXAMINE procedure">
 
-<p><strong>Boxplot of MPG by Cylinders</strong>
+<p><strong>Boxplot of MPG by Cylinders</strong></p>
 <img src="pspp/boxplot-4.png" alt="boxplot of mpg by cylinders via pspp EXAMINE procedure">
 
 <p>The boxplot of mpg shows that the mpg variable has no outliers, since
@@ -667,7 +634,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Oct  2 20:23:58 EDT 2026
+Last Modified: Sat Oct  3 09:57:05 EDT 2026
 </footer>
 </blockquote>
 </main>
