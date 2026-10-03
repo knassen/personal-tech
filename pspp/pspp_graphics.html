@@ -272,6 +272,9 @@ DISPLAY DICTIONARY.
 
 EXAMINE VARIABLES = mpg
    /PLOT BOXPLOT.
+
+EXAMINE VARIABLES = mpg by cylinders
+   /PLOT BOXPLOT.
 </pre>
 
 <p><strong>Output</strong></p>
@@ -297,10 +300,43 @@ See boxplot-1.png for a chart.
 +---+---------+---+---------+
 |mpg|      .97|392|1.05E-007|
 +---+---------+---+---------+
+
+             Case Processing Summary
++-------------+---------------------------------+
+|             |              Cases              |
+|             +-----------+---------+-----------+
+|             |   Valid   | Missing |   Total   |
+|             +---+-------+-+-------+---+-------+
+|    cylinders| N |Percent|N|Percent| N |Percent|
++-------------+---+-------+-+-------+---+-------+
+|mpg 3        |  4| 100.0%|0|    .0%|  4| 100.0%|
+|    4        |199| 100.0%|0|    .0%|199| 100.0%|
+|    5        |  3| 100.0%|0|    .0%|  3| 100.0%|
+|    6        | 83| 100.0%|0|    .0%| 83| 100.0%|
+|    8        |103| 100.0%|0|    .0%|103| 100.0%|
++-------------+---+-------+-+-------+---+-------+
+
+See boxplot-2.png for a chart.
+
+           Tests of Normality
++-------------+-----------------------+
+|             |      Shapiro-Wilk     |
+|             +---------+---+---------+
+|    cylinders|Statistic| df|   Sig.  |
++-------------+---------+---+---------+
+|mpg 3        | 1.4E+012|  4|      NaN|
+|    4        |      .98|199|      .00|
+|    5        |      .92|  3|      .44|
+|    6        |      .82| 83|1.37E-008|
+|    8        |      .92|103|1.90E-005|
++-------------+---------+---+---------+
 </pre>
 
 <p><strong>Boxplot of MPG</strong></p>
 <img src="pspp/boxplot-1.png" alt="boxplot of mpg via pspp EXAMINE procedure">
+
+<p><strong>Boxplot of MPG by Cylinders</strong>
+<img src="pspp/boxplot-2.png" alt="boxplot of mpg by cylinders via pspp EXAMINE procedure">
 
 <p>The boxplot of mpg shows that the mpg variable has no outliers, since
 PSPP marks outliers with circles and none appear. The median line is
@@ -309,6 +345,8 @@ is fairly symmetric. The whiskers extend to the minimum and maximum
 values without being excessively long, suggesting a moderate spread. The
 Shapiro–Wilk test confirms that mpg is not normally distributed, which
 is typical for real‑world fuel economy data.</p>
+
+<p>However, the cylinders data does have outliers.</p>
 
 <p><strong>Boxplot of Horsepower</strong></p>
 <img src="pspp/boxplot-3.png" alt="boxplot of horsepower via pspp EXAMINE procedure">
@@ -629,7 +667,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Sep 30 16:06:10 EDT 2026
+Last Modified: Fri Oct  2 20:23:58 EDT 2026
 </footer>
 </blockquote>
 </main>
