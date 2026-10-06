@@ -11,6 +11,8 @@
 </head>
 <body> 
 <blockquote>
+
+    <h1 class="skip">&nbsp; </h1>
     <h2>Perl Code for 40scan.pl</h2>
     <div class="commentary">
     Here is the Perl code for 40scan.pl, including all the comments over
@@ -105,15 +107,15 @@ sub process {
 		if ( $line =~ m/".*?".*(".*?")/ ) {
             $line=$1;
 			$testcount=length($1) - 2;
-			if ( $testcount > $checklen ) { $longlines++; write; }
-            if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
+			if ( $testcount &gt; $checklen ) { $longlines++; write; }
+            if ($testcount &gt; $maxcount) { $maxcount=$testcount; $maxline=$.; }
 		next;
 		}
 		if ( $line =~ m/(".*?")/ ) {
             $line=$1;
 			$testcount=length($1) - 2;
-			if ( $testcount > $checklen ) {	$longlines++; write; }
-            if ($testcount > $maxcount) { $maxcount=$testcount; $maxline=$.; }
+			if ( $testcount &gt; $checklen ) {	$longlines++; write; }
+            if ($testcount &gt; $maxcount) { $maxcount=$testcount; $maxline=$.; }
 		next;
 		}
 	}
