@@ -7,21 +7,23 @@
    <link rel="stylesheet" type="text/css" href="style.css">
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="perl program wrapit SAS SPSS convert single column to multiple columns">
-   <title>wrapit5.pl -- Wrap SAS or SPPS Variable Input Statements to Multiple Columns</title>
+   <meta name="description" content="perl program wrapit splitit SAS SPSS convert single column to multiple columns">
+   <title>wrapit or splitit -- Wrap or Split SAS or SPPS Variable Input Statements.</title>
 </head>
 
 <body> 
 
 <br>
 <blockquote>
+
+<p><strong>Note: this page contains both wrapit and splitit macro information</strong></p>
     
-<h1 class="skip">&nbsp; </h1>
-<h2>wrapit5.pl -- Wrap SAS or SPSS Variable Input Statements to Multiple Columns</h2>
+<h1 class="skip">&nbsp;</h1>
+<h2 id="wrapit">wrapit -- Wrap SAS or SPSS Variable Input Statements to Multiple Columns</h2>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 
-<p>This Perl script reads a file containing a single column of SAS Input or
+<p>This first Perl script reads a file containing a single column of SAS Input or
 SPSS Data List statements and changes them into a wrapped format with
 multiple fields per line--defaulting to five columns wide.  Handy for
 making long, single-column SAS or SPSS input declarations more compact
@@ -36,9 +38,9 @@ Thus, I wrote this small program to do the job and it has been a time-saver.</p>
 <ul style="list-style-type: disc;">
     <li>Output is sent to STDOUT, so redirect it to a file to save it.</li>
     <li>Output is five fields per line, using fixed-width spacing for readability.</li>
-    <li>The number of fields can be changed in the program in the for statement.
+    <li>The number of fields can be changed in the program in the for statement.</li>
     <li>Developed for quick formatting of long variable lists during SAS/SPSS prep,
-    especially when transforming the output from the <a href="splitit.html"><strong>splitit
+    especially when transforming the output from the <a href="#splitit"><strong>splitit
         </strong></a>utility.</li>
 </ul>
 
@@ -89,10 +91,95 @@ The command <span style="color: #000080; font-family: monospace;">perl wrapit5.p
 </pre>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<h1 class="skip">&nbsp; </h1>
+<h2 id="splitit">splitit.pl -- Convert Multi-column Variable Statements into Single Column</h2>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
+
+<p>splitit is the inverse operation of wrapit. It takes a wrapped multi-column
+layout and splits it into a single column. wrapit does the opposite.</p>
+
+<p>This second Perl script reads a file containing multi-column
+SAS Input or SPSS Data List statements and converts them into a
+single-column format with one statement per line. It is good for
+checking your input declarations when preparing your code or for
+modifying the statements with scripts since you can loop over a single
+column easily.</p>
+
+<p> Intended for larger lists of variables, this program will process
+many statements very quickly. I used to use it for SAS and SPSS input
+statements for large social sciences studies with hundreds or thousands
+of variables. It saved a lot of time. If you'd rather use a text editor
+to do this manually, it gets boring quickly.</p>
+
+<p> See also <a href="#wrapit"><strong>wrapit</strong></a> which
+creates a multi-column format from the single column output of
+splitit.</p>
+
+<ul style="list-style-type: disc;">
+    <li>Output is sent to STDOUT. To save it, redirect STDOUT to a file.</LI>
+    <li>Output is one field per line allowing easy review, scripting, 
+        and duplicates removal.</li>
+    <li>Developed for quick formatting of SAS/SPSS variable lists.
+    especially when transforming the output from the <strong>wrapit
+        </strong>utility.</li>
+</ul>
+
+<ul>
+    <li><a href="https://knassen.github.io/personal-tech/perl/splititshow.html"><strong>Show splitit.pl code</strong></a></li>
+    <li><strong>Download: </strong><a href="splitit.pl"><strong>splitit.pl</strong></a> 
+</ul>
+
+<p>
+This utility is part of my collection of <a href="../myperl.html">text-processing tools.</a></p>
+
+<h3>Usage</h3>
+<p>The command line is: 
+<span style="color: #000080; font-family: monospace;"> perl splitit.pl filename >filename.out</span></p>
+<p>Here is an example.  Consider this input data:</p>
+
+<pre>
+Sample input (cards):
+
+   V1 1-4         V2 5-8         V3 9-9         V4 10-13 (A)   V5 14-14
+   V6 15-16       V7 17-17       V8 18-19       V9 20-21      V10 22-23
+  V11 24-25      V12 26-26      V13 27-28      V14 29-33 (A)  V15 34-35
+  V16 36-37      V17 38-39      V18 40-41      V19 42-46 (A)  V20 47-47
+
+The command 
+<span style="color: #000080; font-family: monospace;">perl splitit.pl cards &gt; cards.split</span> produces this:
+
+Sample output (cards.split)
+
+   V1 1-4         
+   V2 5-8         
+   V3 9-9         
+   V4 10-13 (A)   
+   V5 14-14 
+   V6 15-16       
+   V7 17-17       
+   V8 18-19       
+   V9 20-21      
+   V10 22-23 
+   V11 24-25      
+   V12 26-26      
+   V13 27-28      
+   V14 29-33 (A)  
+   V15 34-35 
+   V16 36-37      
+   V17 38-39      
+   V18 40-41      
+   V19 42-46 (A)  
+   V20 47-47 
+
+</pre>
+
+<hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;">
 <a href="../myperl.html"><img src="/personal-tech/gif/arrwback.gif" alt="">  Back to Kent's Perl Page</a>
 
 <span style="font-size: 80%;">
-    Last modified: Tue Oct  6 16:06:55 EDT 2026
+    Last modified: Wed Oct  7 17:58:49 EDT 2026
 </span>
 
 </blockquote>
