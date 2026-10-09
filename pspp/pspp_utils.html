@@ -4,12 +4,12 @@
 <head>
      <base href="/personal-tech/"> 
      <link rel="stylesheet" href="pspp/psppstyle.css"> 
-     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp_matrix.html">
+     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp_utils.html">
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     <meta name="description" content="Using PSPP MATRIX sub-language MEAN COV Mahalanobis">
-     <meta name="keywords" content="PSPP MATRIX computing statistics MEAN COV Mahalanobis">
+     <meta name="description" content="PSPP Utilities using MATRIX sub-language Mahalanobis">
+     <meta name="keywords" content="PSPP Utilities using MATRIX computing statistics Mahalanobis">
      <meta charset="utf-8">
-     <title>Using PSPP MATRIX to Compute Statistics</title>  
+     <title>PSPP Utilities</title>  
 </head>
 
 <body>
@@ -18,18 +18,21 @@
 <blockquote>
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
-<h1>Using PSPP MATRIX to Compute Statistics</h1>
+<h1>PSPP Utilities </h1>
 
-<p>PSPP is a free statistical program that can do matrix math.</p>
+<h2>About this Page</h2>
+
+<p>This pages shows how to develop utilities for PSPP using the Matrix
+sub-language.  You don't need to know linear algebra to use it.</p>
 
 <p>PSPP includes a <code>MATRIX</code> sub-language
 available in psppire's Syntax Editor window and in the command line
 pspp program. <code>MATRIX</code> provides a compact environment for
 numerical computation, making it useful for deriving statistics
-directly from matrix operations.</p>
+and utilities directly from matrix operations.</p>
 
 <p>This sub-language is also useful for learning matrix math
-and linear algebra. It provides enough functionality needed to compute
+and linear algebra. It provides enough functionality to compute
 many college-level assignments and for experimenting with algorithms
 step-by-step.</p>
 
@@ -48,7 +51,7 @@ Cholesky factorization (<code>CHOL</code>), solving linear systems
 (<code>CALL EIGEN</code>). 
 
 <p>It operates independently of the active dataset. Instead of working
-with variables and cases, it works directly with matrices, including
+with variables and cases, it works directly with matrix files, including
 row vectors, column vectors, and scalars. Only short strings (8
 bytes) are supported. A "variable" is simply an object created with
 <code>COMPUTE</code>, and indexing uses parentheses rather than square
@@ -60,11 +63,11 @@ set. It is not a <code>MATRIX</code> command like <code>TRANSPOS</code>
 or <code>T</code>, which switch rows and columns within the
 <code>MATRIX</code> environment.</p>
 
-<h2>How to Create Matrices</h2>
+<h2>How to Create Matrix Files</h2>
 
-<p>Matrices can be created in several ways. The most common is using
-<code>GET</code> to pull variables from the active dataset into
-MATRIX. Matrices can also be created directly inside the MATRIX
+<p>Matrix files can be created in several ways. The most common is
+using <code>GET</code> to pull variables from the active dataset
+into MATRIX. Matrix files can also be created directly inside the MATRIX
 block using <code>COMPUTE</code>, or read from external files using
 <code>READ</code>. PSPP also provides a separate <code>MATRIX
 DATA</code> procedure that defines a matrix using inline numeric data
@@ -77,7 +80,7 @@ block.</p>
 
 <p>Although <code>MATRIX</code> is designed for matrix algebra,
 some programs use it primarily for scalar arithmetic. PSPP treats
-scalars as 1x1 matrices, so functions such as <code>NROW()</code>,
+scalars as 1x1 matrix files, so functions such as <code>NROW()</code>,
 <code>MOD()</code>, <code>ABS()</code>, arithmetic operators, relational
 operators, and branching constructs all work naturally on scalar
 values. In practice, <code>MATRIX</code> often serves as a compact
@@ -89,12 +92,12 @@ operations.</p>
 
 <img src="pspp/matrix_process.png" alt="matrix process">
 
-<p>Here, I'll do three short PSPP <code>MATRIX</code> examples: a
-trimmed mean program, a median absolute deviation (MAD) program, and
-operating on a full matrix. They are not very long, but make good
-examples and allow hand computation. They are intended to introduce
-you to the PSPP <code>MATRIX</code> sub-language and show some useful
-computation.</p>
+<p>Here, I'll do three short PSPP <code>MATRIX</code> utility examples:
+a trimmed mean program, a median absolute deviation (MAD) program,
+and operating on a full matrix. They are not very long, but make good
+examples and allow hand computation to see how things work. They are
+intended to introduce you to the PSPP <code>MATRIX</code> sub-language
+and show some useful computation.</p>
 
 <p>In the trimmed-mean and MAD examples below, <code>MATRIX</code> is
 used mainly for scalar computations: determining indices, computing
@@ -300,7 +303,7 @@ matrix. MATRIX uses strict listwise deletion: any case with a missing
 value in any variable is excluded entirely from the analysis. This
 produces a covariance matrix based on a single, coherent set of complete
 cases, which is numerically more stable and reliably invertible than
-matrices constructed using pairwise deletion or AGGREGATE‑based
+matrix files constructed using pairwise deletion or AGGREGATE‑based
 macros.</p>
 
 <p>To use the the Mahalanobis distance matrix program yourself, add
@@ -636,7 +639,7 @@ proc sql noprint;
  Strict MAD =        1
 </pre>
 
-<h3>How to Use Full Matrices -- Example</h3>
+<h3>How to Use Full Matrix Files -- Example</h3>
 
 <p>Up to this point the examples have been run from vector data. Now
 we try a small full matrix example with a matrix operation that
@@ -691,7 +694,7 @@ END MATRIX.
 </pre>
 
 <p>Note that we get back the original matrix if the first inversion is
-inverted.</p>
+inverted (invert the inversion).</p>
 
 <p>These examples demonstrated how PSPP's MATRIX facility can be used to
 compute custom statistics using scalar arithmetic, branching, and matrix
@@ -729,7 +732,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Oct  1 16:44:37 EDT 2026
+Last Modified: Fri Oct  9 13:46:50 EDT 2026
 </p>
 </footer>
 </blockquote>
