@@ -41,6 +41,7 @@
   <!--li><a href="#ancova">ANCOVA IN GLM</a></li-->
   <li><a href="https://knassen.github.io/personal-tech/pspp/pspp_analysis2#regression">LINEAR REGRESSION</a></li>
   <!--li><a href="#logistic">LOGISTIC REGRESSION</a></li-->
+  <li><a href="https://knassen.github.io/personal-tech/pspp/pspp_analysis2#factor">FACTOR ANALYSIS</a></li>
   <li><a href="https://knassen.github.io/personal-tech/pspp/pspp_analysis2#reliability">RELIABILITY</a></li>
 </ul>
 
@@ -1168,6 +1169,91 @@ reported in your REGRESSION /STATISTICS command. The example output
 above in the example now shows both Tolerance and VIF in the
 Coefficients table.</p>
 
+<h2 id="factor">How to Run a FACTOR Analysis</h2>
+
+<p>This example uses the Fisher Iris data. The <code>PLOT=EIGEN</code>
+subcommand produces a scree plot of the eigenvalues.</p>
+
+<p><strong>Code</strong></p>
+<pre>
+GET FILE="Iris.sav".
+
+FACTOR
+  /VARIABLES = sepallengthcm sepalwidthcm petallengthcm petalwidthcm
+  /CRITERIA = FACTORS(2)
+  /EXTRACTION = PC
+  /ROTATION = VARIMAX
+  /PLOT=EIGEN.
+</pre>  
+
+<p><strong>Output</strong></p>
+<pre>
+           Communalities
++-------------+-------+----------+
+|             |Initial|Extraction|
++-------------+-------+----------+
+|SepalLengthCm|   1.00|       .92|
+|SepalWidthCm |   1.00|       .99|
+|PetalLengthCm|   1.00|       .98|
+|PetalWidthCm |   1.00|       .94|
++-------------+-------+----------+
+
+                       Total Variance Explained
++-+-------------------------+-------------------------+---------------
+| |                         |    Extraction Sums of   | Rotation Sums
+| |   Initial Eigenvalues   |     Squared Loadings    |         Loadin
+| +-----+--------+----------+-----+--------+----------+-----+--------+
+| |     |  % of  |Cumulative|     |  % of  |Cumulative|     |  % of  |
+| |Total|Variance|     %    |Total|Variance|     %    |Total|Variance|
++-+-----+--------+----------+-----+--------+----------+-----+--------+
+|1| 2.91|   72.8%|     72.8%| 2.91|   72.8%|     72.8%| 2.70|   67.6%|
+|2|  .92|   23.0%|     95.8%|  .92|   23.0%|     95.8%| 1.13|   28.2%|
+|3|  .15|    3.7%|     99.5%|     |        |          |     |        |
+|4|  .02|     .5%|    100.0%|     |        |          |     |        |
++-+-----+--------+----------+-----+--------+----------+-----+--------+
+
++-+----------+
+| |of Squared|
+| |gs        |
+| +----------+
+| |Cumulative|
+| |     %    |
++-+----------+
+|1|     67.6%|
+|2|     95.8%|
+|3|          |
+|4|          |
++-+----------+
+
+See factor-1.png for a chart.
+
+     Component Matrix
++-------------+----------+
+|             | Component|
+|             +-----+----+
+|             |  1  |  2 |
++-------------+-----+----+
+|SepalLengthCm| -.89| .36|
+|SepalWidthCm |  .45| .89|
+|PetalLengthCm| -.99| .02|
+|PetalWidthCm | -.96| .06|
++-------------+-----+----+
+
+ Rotated Component Matrix
++-------------+---------+
+|             |Component|
+|             +----+----+
+|             |  1 |  2 |
++-------------+----+----+
+|SepalLengthCm| .96| .05|
+|SepalWidthCm |-.14| .99|
+|PetalLengthCm| .95|-.30|
+|PetalWidthCm | .93|-.25|
++-------------+----+----+
+</pre>
+
+<img src="pspp/factor-1.png" alt="scree plot">SCREE plot of Eigenvalues.
+
 <h2 id="reliability">How to Run a RELIABILITY Analysis</h2>
 
 <p>The <code>RELIABILITY</code> command computes internal consistency
@@ -1259,7 +1345,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Sep 26 08:46:50 EDT 2026
+Last Modified: Fri Oct  9 09:25:26 EDT 2026
 </footer>
 </blockquote>
 </main>
