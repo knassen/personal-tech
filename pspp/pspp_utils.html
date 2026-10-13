@@ -22,73 +22,24 @@
 
 <h2>About this Page</h2>
 
-<p>This pages shows how to develop utilities for PSPP using the
-Matrix sub-language. You'll find programs for Mahalanobis Distance,
+<p>This pages shows how to develop utilities for PSPP using its 
+Matrix sub-language. Included are programs for Mahalanobis Distance,
 Trimmed Mean, Cronbach's Alpha, and Median Absolute Distance here,
 currently.</p>
 
-<p>PSPP includes a <code>MATRIX</code> sub-language available in
-psppire's Syntax Editor window and in the command line pspp program.
-<code>MATRIX</code> provides a compact environment for numerical
-computation and creating matrix files, making it useful for deriving
-statistics and utilities directly.</p>
+<p>PSPP includes a sub-language that can do matrix calculations. It is
+available in psppire's Syntax Editor window and in the command line pspp
+program. It is a compact environment for numerical computation and for
+creating matrix files, making it useful for deriving statistics and
+utilities directly.</p>
 
-<p>This sub-language is also useful for learning matrix math
-and linear algebra. It provides enough functionality to compute
-many college-level assignments and for experimenting with algorithms
-step-by-step.</p>
+<p>This sub-language is also useful for learning matrix math and linear
+algebra. It provides enough functionality to compute many college-level
+assignments and for experimenting with algorithms step-by-step.</p>
 
-<h2>PSPP Matrix Capabilities</h2>
-
-<p>The PSPP <code>MATRIX</code> sub-language is a general matrix
-computation and programming environment.  It supports control
-flow (<code>DO IF, ELSE IF, ELSE, END IF, LOOP, BREAK</code>) and
-numerical operations such as modular arithmetic (<code>MOD</code>). It
-provides matrix algebra (addition, subtraction, multiplication,
-transposition via <code>TRANSPOS</code>, inversion via <code>INV</code>
-and <code>GINV</code>) and advanced linear-algebra routines
-including singular value decomposition (<code>CALL SVD</code>),
-Cholesky factorization (<code>CHOL</code>), solving linear systems
-(<code>SOLVE</code>), and computing eigenvectors and eigenvalues
-(<code>CALL EIGEN</code>). 
-
-<p>It operates independently of the active dataset. Instead of working
-with variables and cases, it works directly with matrix files, including
-row vectors, column vectors, and scalars. Only short strings (8
-bytes) are supported. A "variable" is simply an object created with
-<code>COMPUTE</code>, and indexing uses parentheses rather than square
-brackets.</p>
-
-<p>Note: <code>PSPP</code> has the <code>FLIP</code> command that
-transposes variables and cases but that works on the active data
-set. It is not a <code>MATRIX</code> command like <code>TRANSPOS</code>
-or <code>T</code>, which switch rows and columns within the
-<code>MATRIX</code> environment.</p>
-
-<h2>How to Create Matrix Files</h2>
-
-<p>Matrix files can be created in several ways. The most common is
-using <code>GET</code> to pull variables from the active dataset
-into MATRIX. Matrix files can also be created directly inside the MATRIX
-block using <code>COMPUTE</code>, or read from external files using
-<code>READ</code>. PSPP also provides a separate <code>MATRIX
-DATA</code> procedure that defines a matrix using inline numeric data
-between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
-<code>COMPUTE</code> or <code>READ</code>, <code>MATRIX DATA</code> is
-a top-level command and cannot be placed inside a <code>MATRIX</code>
-block. Matrix files are a PSPP file format.</p>
-
-<h2>How to Use MATRIX Inside PSPP</h2>
-
-<p>Although <code>MATRIX</code> is designed for matrix algebra,
-some programs use it primarily for scalar arithmetic. PSPP treats
-scalars as 1x1 matrix files, so functions such as <code>NROW()</code>,
-<code>MOD()</code>, <code>ABS()</code>, arithmetic operators, relational
-operators, and branching constructs all work naturally on scalar
-values. In practice, <code>MATRIX</code> often serves as a compact
-procedural language for computing custom statistics, even when the
-calculations involve only simple scalars rather than full matrix
-operations.</p>
+<p>The examples use PSPP's matrix sub-language, but the programs are
+short and self-contained. You don't need prior matrix programming
+experience to follow them.</p>
 
 <p>This is the process we'll use:</p>
 
@@ -642,6 +593,66 @@ proc sql noprint;
  Strict MAD =        1
 </pre>
 
+<p>These examples demonstrated how PSPP's MATRIX facility can be used to
+compute custom statistics using scalar arithmetic, branching, and matrix
+operations. Users can adapt these patterns to implement trimmed means,
+percentiles, quartiles, and other robust statistics like median absolute
+deviation (MAD).</p>
+
+<h2><strong>Appendix: Matrix Sub-Language Reference</strong></h2>
+
+<h2>How to Use MATRIX Inside PSPP</h2>
+
+<p>Although <code>MATRIX</code> is designed for matrix algebra,
+some programs use it primarily for scalar arithmetic. PSPP treats
+scalars as 1x1 matrix files, so functions such as <code>NROW()</code>,
+<code>MOD()</code>, <code>ABS()</code>, arithmetic operators, relational
+operators, and branching constructs all work naturally on scalar
+values. In practice, <code>MATRIX</code> often serves as a compact
+procedural language for computing custom statistics, even when the
+calculations involve only simple scalars rather than full matrix
+operations.</p>
+
+<h2>PSPP Matrix Capabilities</h2>
+
+<p>The PSPP <code>MATRIX</code> sub-language is a general matrix
+computation and programming environment.  It supports control
+flow (<code>DO IF, ELSE IF, ELSE, END IF, LOOP, BREAK</code>) and
+numerical operations such as modular arithmetic (<code>MOD</code>). It
+provides matrix algebra (addition, subtraction, multiplication,
+transposition via <code>TRANSPOS</code>, inversion via <code>INV</code>
+and <code>GINV</code>) and advanced linear-algebra routines
+including singular value decomposition (<code>CALL SVD</code>),
+Cholesky factorization (<code>CHOL</code>), solving linear systems
+(<code>SOLVE</code>), and computing eigenvectors and eigenvalues
+(<code>CALL EIGEN</code>). 
+
+<p>It operates independently of the active dataset. Instead of working
+with variables and cases, it works directly with matrix files, including
+row vectors, column vectors, and scalars. Only short strings (8
+bytes) are supported. A "variable" is simply an object created with
+<code>COMPUTE</code>, and indexing uses parentheses rather than square
+brackets.</p>
+
+<p>Note: <code>PSPP</code> has the <code>FLIP</code> command that
+transposes variables and cases but that works on the active data
+set. It is not a <code>MATRIX</code> command like <code>TRANSPOS</code>
+or <code>T</code>, which switch rows and columns within the
+<code>MATRIX</code> environment.</p>
+
+<h2>How to Create Matrix Files</h2>
+
+<p>Matrix files can be created in several ways. The most common is
+using <code>GET</code> to pull variables from the active dataset
+into MATRIX. Matrix files can also be created directly inside the MATRIX
+block using <code>COMPUTE</code>, or read from external files using
+<code>READ</code>. PSPP also provides a separate <code>MATRIX
+DATA</code> procedure that defines a matrix using inline numeric data
+between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
+<code>COMPUTE</code> or <code>READ</code>, <code>MATRIX DATA</code> is
+a top-level command and cannot be placed inside a <code>MATRIX</code>
+block. Matrix files are a PSPP file format.</p>
+
 <h3>How to Use Full Matrix Files -- Example</h3>
 
 <p>Up to this point the examples have been run from vector data. Now
@@ -699,11 +710,6 @@ END MATRIX.
 <p>Note that we get back the original matrix if the first inversion is
 inverted (invert the inversion).</p>
 
-<p>These examples demonstrated how PSPP's MATRIX facility can be used to
-compute custom statistics using scalar arithmetic, branching, and matrix
-operations. Users can adapt these patterns to implement trimmed means,
-percentiles, quartiles, and other robust statistics like median absolute
-deviation (MAD).</p>
 
 <p>For additional reference, 
 <a href="https://pspp.benpfaff.org/~blp/pspp-master/20260306085203/source/user-manual/pspp.html#Matrices">
