@@ -45,20 +45,20 @@ experience to follow them.</p>
 
 <img src="pspp/matrix_process.png" alt="matrix process">
 
-<p>Here, I'll do four short PSPP <code>MATRIX</code> utility examples: a
+<p>Here, I'll do four short PSPP <code>Matrix</code> utility examples: a
 trimmed mean program, a Mahalanobis Distance program, Cronbach's Alpha
 probram, a median absolute deviation (MAD) program, and operating on a
 full matrix. They are not very long, but make good examples and allow
 hand computation to see how things work. They are intended to introduce
-you to the PSPP <code>MATRIX</code> sub-language and show some useful
+you to the PSPP <code>Matrix</code> sub-language and show some useful
 computation.</p>
 
-<p>In the trimmed-mean and MAD examples below, <code>MATRIX</code> is
+<p>In the trimmed-mean and MAD examples below, <code>Matrix</code> is
 used mainly for scalar computations: determining indices, computing
 medians, evaluating conditions, and performing loops. The only true
 matrix operations are reading a column vector with <code>GET</code>,
 slicing it with indexing, and summing it with <code>CSUM()</code>. This
-illustrates how <code>MATRIX</code> can be used effectively even when
+illustrates how <code>Matrix</code> can be used effectively even when
 the underlying computation is not inherently matrix-based.</p>
 
 <h2>How to Compute a Trimmed Mean</h2>
@@ -71,7 +71,7 @@ estimate of the "typical" value when the dataset contains extreme
 observations.</p>
 
 <p>In this example, 20% of the values are trimmed&ndash;10% from the low
-end and 10% from the high end. The <code>MATRIX</code> program sorts the
+end and 10% from the high end. The <code>Matrix</code> program sorts the
 data, determines how many values to trim, slices the vector accordingly,
 and computes the mean of the trimmed subset.</p>
 
@@ -122,7 +122,7 @@ gives the starting index in the vector, and end gives the ending
 index.  Thus we remove the 10 and the 100 from the data and then
 compute the mean.</p>
 
-<strong>MATRIX Syntax:</strong>
+<strong>Matrix Syntax:</strong>
 <pre>
 DATA LIST LIST /x .
 BEGIN DATA
@@ -169,7 +169,7 @@ END MATRIX.
     <li>0.20 is used as the percentage of values to trim from the data, split equally between beginning and end of the data.</li>
 </ol>
 
-<h2>Mahalanobis Distance in MATRIX</h2>
+<h2>Mahalanobis Distance</h2>
 
 <p>Mahalanobis distance measures how far an observation is from the center
 of a multivariate dataset, taking into account the scale and correlation
@@ -190,9 +190,9 @@ covariance, so it gives a more realistic measure of “how unusual” a
 point is in the context of all variables at once.</p>
 
 <p>This example uses the Fisher Iris data set. String variables cannot
-be used in MATRIX, so the long Species variable is ignored. Also the ID
+be used in Matrix, so the long Species variable is ignored. Also the ID
 variable has not been used since it doesn't represent iris data. To more
-easily get the data into the MATRIX subsystem, the iris.csv file has
+easily get the data into the Matrix subsystem, the iris.csv file has
 been converted to a pspp system data file.</p>
 
 <strong>Matrix Syntax</strong>
@@ -244,16 +244,16 @@ MATRIX.
 END MATRIX.
 </pre>
 
-<p>This example shows several things about pspp's MATRIX. First, it
-doesn't have a MEAN function, so that had to be done as CSUM(x)/NROW(x).
-PSPP MATRIX also lacks a COV() function for the the covariance. That
-was also done using matrix commands.  Finally, the data were
-standardized. (Note: SPSS's MATRIX implementation doesn't have MEAN
-or COV functions, either, according to the manual.)</p>
+<p>This example shows several things about pspp's Matrix
+sub-language. First, it doesn't have a MEAN function, so that had to be
+done as CSUM(x)/NROW(x).  PSPP Matrix also lacks a COV() function for
+the the covariance. That was also done using matrix commands.  Finally,
+the data were standardized. (Note: SPSS's Matrix implementation doesn't
+have MEAN or COV functions, either, according to the manual.)</p>
 
-<p>By performing all computations inside MATRIX, the same missing‑data
+<p>By performing all computations inside Matrix, the same missing‑data
 rules apply consistently to both the mean vector and the covariance
-matrix. MATRIX uses strict listwise deletion: any case with a missing
+matrix. Matrix uses strict listwise deletion: any case with a missing
 value in any variable is excluded entirely from the analysis. This
 produces a covariance matrix based on a single, coherent set of complete
 cases, which is numerically more stable and reliably invertible than
@@ -261,7 +261,7 @@ matrix files constructed using pairwise deletion or AGGREGATE‑based
 macros.</p>
 
 <p>To use the the Mahalanobis distance matrix program yourself, add
-your own data set where Iris.sav is, before the <code>MATRIX</code>
+your own data set where Iris.sav is, before the <code>Matrix</code>
 command. Put your (numeric) variable names in place of the ones there in
 the example (SepalLengthcm, etc.). Then run the program with pspp.</p>
 
@@ -318,7 +318,7 @@ match the standard textbook definition used in R or this program.</p>
 <p>See Johnson &amp; Wichern, Applied Multivariate Statistical Analysis for
 the formula used here.</p>
 
-<h2>Cronbach's Alpha in PSPP MATRIX Code</h2>
+<h2>Cronbach's Alpha</h2>
 <p>This statistic is used with survey or scale variables to assess the
 internal consistency of the items and whether they represent a single
 concept. The statistic usually is between zero and one. First, create
@@ -327,7 +327,7 @@ some test data.</p>
 <strong>Test Data</strong>
 <p>This illustrates using <code>INPUT PROGRAM</code> and a
 <code>LOOP</code> to create random data for testing the Cronbach's
-Alpha <code>MATRIX</code> code. This data will change with each new
+Alpha <code>Matrix</code> code. This data will change with each new
 session.</p>
 
 <pre>
@@ -345,7 +345,7 @@ END INPUT PROGRAM.
 EXECUTE.
 </pre>
 
-<strong>MATRIX Syntax</strong>
+<strong>Matrix Syntax</strong>
 <pre>
 MATRIX.
   GET x /VARIABLES=item1 item2 item3 item4.
@@ -402,7 +402,7 @@ proc corr data=dataset_name alpha;
 run;
 </pre>
 
-<p>This pspp MATRIX program matched the SAS output.</p>
+<p>This pspp Matrix program matched the SAS output.</p>
 
 <p>Also note that the RELIABILITY pspp procedure provides Cronbach's
 Alpha:</p>
@@ -417,13 +417,13 @@ Alpha:</p>
 ╰────────────────┴──────────╯
 </pre>
 
-<p>This <code>MATRIX</code> example is included as a demonstration of a
-complete, working <code>MATRIX</code> program. Even though PSPP provides
+<p>This <code>Matrix</code> example is included as a demonstration of a
+complete, working <code>Matrix</code> program. Even though PSPP provides
 Cronbach's Alpha, the example show how to compute it manually and
-illustrates how <code>MATRIX</code> handles the underlying statistical
+illustrates how <code>Matrix</code> handles the underlying statistical
 operations.</p>
 
-<p>Next, a <code>MATRIX</code> program for computing Median Absolute
+<p>Next, a <code>Matrix</code> program for computing Median Absolute
 Deviation is shown.</p>
 
 <h2>How to Compute Median Absolute Deviation (MAD)</h2>
@@ -460,7 +460,7 @@ Median Absolute Deviation (MAD)
   1
 </pre>
 
-<strong>MATRIX Syntax:</strong>
+<strong>Matrix Syntax:</strong>
 <pre>
 DATA LIST FREE /wait.
 BEGIN DATA
@@ -519,10 +519,10 @@ END MATRIX.
 <h3>Verifying PSPP MAD Results</h3>
 
 <p>Independent numberical tools or external calculations were used
-only to validate that the PSPP <code>MATRIX</code> implementation
+only to validate that the PSPP <code>Matrix</code> implementation
 produces the correct strict MAD value. They are included here for
 completeness and transparency. PSPP users do not need these external
-tools&mdash;the <code>MATRIX</code> program shown above computes the
+tools&mdash;the <code>Matrix</code> program shown above computes the
 strict MAD directly.</p>
 
 <p>I. Independent verification code:</p>
@@ -593,7 +593,7 @@ proc sql noprint;
  Strict MAD =        1
 </pre>
 
-<p>These examples demonstrated how PSPP's MATRIX facility can be used to
+<p>These examples demonstrated how PSPP's Matrix facility can be used to
 compute custom statistics using scalar arithmetic, branching, and matrix
 operations. Users can adapt these patterns to implement trimmed means,
 percentiles, quartiles, and other robust statistics like median absolute
@@ -601,21 +601,21 @@ deviation (MAD).</p>
 
 <h2><strong>Appendix: Matrix Sub-Language Reference</strong></h2>
 
-<h2>How to Use MATRIX Inside PSPP</h2>
+<h2>How to Use Matrix Inside PSPP</h2>
 
-<p>Although <code>MATRIX</code> is designed for matrix algebra,
+<p>Although <code>Matrix</code> is designed for matrix algebra,
 some programs use it primarily for scalar arithmetic. PSPP treats
 scalars as 1x1 matrix files, so functions such as <code>NROW()</code>,
 <code>MOD()</code>, <code>ABS()</code>, arithmetic operators, relational
 operators, and branching constructs all work naturally on scalar
-values. In practice, <code>MATRIX</code> often serves as a compact
+values. In practice, <code>Matrix</code> often serves as a compact
 procedural language for computing custom statistics, even when the
 calculations involve only simple scalars rather than full matrix
 operations.</p>
 
 <h2>PSPP Matrix Capabilities</h2>
 
-<p>The PSPP <code>MATRIX</code> sub-language is a general matrix
+<p>The PSPP <code>Matrix</code> sub-language is a general matrix
 computation and programming environment.  It supports control
 flow (<code>DO IF, ELSE IF, ELSE, END IF, LOOP, BREAK</code>) and
 numerical operations such as modular arithmetic (<code>MOD</code>). It
@@ -636,17 +636,17 @@ brackets.</p>
 
 <p>Note: <code>PSPP</code> has the <code>FLIP</code> command that
 transposes variables and cases but that works on the active data
-set. It is not a <code>MATRIX</code> command like <code>TRANSPOS</code>
+set. It is not a <code>Matrix</code> command like <code>TRANSPOS</code>
 or <code>T</code>, which switch rows and columns within the
-<code>MATRIX</code> environment.</p>
+<code>Matrix</code> environment.</p>
 
 <h2>How to Create Matrix Files</h2>
 
 <p>Matrix files can be created in several ways. The most common is
 using <code>GET</code> to pull variables from the active dataset
-into MATRIX. Matrix files can also be created directly inside the MATRIX
+into Matrix. Matrix files can also be created directly inside the Matrix
 block using <code>COMPUTE</code>, or read from external files using
-<code>READ</code>. PSPP also provides a separate <code>MATRIX
+<code>READ</code>. PSPP also provides a separate <code>Matrix
 DATA</code> procedure that defines a matrix using inline numeric data
 between <code>BEGIN DATA</code> and <code>END DATA</code>.  Unlike
 <code>COMPUTE</code> or <code>READ</code>, <code>MATRIX DATA</code> is
@@ -661,7 +661,7 @@ you probably expected (inverse). Note that to create B below the
 <code>COMPUTE</code> command is needed. The following was run in
 the psppire GUI on Windows 11.</p>
 
-<p><strong>MATRIX Syntax:</strong></p>
+<p><strong>Matrix Syntax:</strong></p>
 <pre>
 DATA LIST LIST /x y.
 BEGIN DATA
@@ -713,7 +713,7 @@ inverted (invert the inversion).</p>
 
 <p>For additional reference, 
 <a href="https://pspp.benpfaff.org/~blp/pspp-master/20260306085203/source/user-manual/pspp.html#Matrices">
-the PSPP User Manual</a> includes a full section on the <code>MATRIX</code> sub-language, covering matrix, matrix data, matrix files, and mconvert.</p>
+the PSPP User Manual</a> includes a full section on the <code>Matrix</code> sub-language, covering matrix, matrix data, matrix files, and mconvert.</p>
 
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 <div class="pspp-index">   
@@ -741,7 +741,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Oct 10 20:23:38 EDT 2026
+Last Modified: Tue Oct 13 10:28:28 EDT 2026
 </p>
 </footer>
 </blockquote>
