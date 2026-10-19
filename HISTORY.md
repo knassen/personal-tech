@@ -230,5 +230,8 @@ now.
 **August 16, 2026** pspp_matrix.html finally got indexed, so it's 
 searchable on Google now.
 
+**October 13, 2026** pspp_matrix is renamed to pspp_utils. It's been
+updated to make it easier to read and move most of the matrix and math 
+to an appendix.  It starts with utilities now.
 
 
