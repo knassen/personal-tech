@@ -15,7 +15,7 @@ vim editor pages, links to Unix/Linux sites, links related to Apple 2
 sites, and statistical links.
 
 For a PSPP guide with code examples (DATA LIST, REGRESSION, 
-CROSSTABS, multi-record data) and notes, and see: 
+CROSSTABS, graphics, multi-record data) and notes, and see: 
 https://knassen.github.io/personal-tech/pspp/pspp.html.
 
 ### Feedback
@@ -57,11 +57,11 @@ I have done most of things I set out to do.
   - I made an effort to get many of the pages indexed on google so
     they'll stand a better chance of showing up in searches.
 
-  - In early 2026, I started adding Python programs that do what my Perl
-    programs do. There are three programs there now.
+  - In early 2026, I started adding Python programs that do what some of
+  - my Perl programs do. There are three programs there now.
 
   - Also in April 2026, I put up a PSPP page. PSPP is a free SPSS
-    work-alike. I included plenty of examples, tips, and information.
+    work-alike application. I included plenty of examples, tips, and information.
     Also included are reading multi-record hierarchical files, merging
     files in PSPP, reading implied decimal data, computing a p-value for
     the F statistic, general usage, working around issues with DATA LIST
@@ -70,19 +70,23 @@ I have done most of things I set out to do.
   - In June 2026, I split the main PSPP Page into 3 other pages:
     pspp_analysis for analysis procedures, pspp_merge for showing how
     to merge data files in pspp, pspp_multi for the multi-record
-    hierarchical data read information. This helped unconfuse google.
+    hierarchical data read information. This helped un-confuse google.
 
   - August 2026: I tried a pspp_matrix page which covered creating
     statistics which pspp doesn't have from data. Unfortunately, in 3
     weeks, Google would not index it so it can't be searched. If you
     want to look at it, you can find the links in any of the pspp pages
-    in the index at the end of the page. 
-
-    It's https://knassen.github.io/personal-tech/pspp/pspp_matrix.html
+    in the index at the end of the page.
 
   - August 16, 2026: Google finally indexed pspp_matrix.html so it's
     searchable now.
 
+  - October 2026: I renamed pspp_matrix to pspp_utils since it was
+    more descriptive of what is was about. The pspp area is now
+    up to seven pages.
+
+    It's https://knassen.github.io/personal-tech/pspp/pspp_utils.html
+  
 I hope you will find a few things here that are worthwhile. Maybe they
 will give you some ideas for utilities of your own or remind you of
 ways to do things in SAS, vim, pspp, python, perl, or unix/linux. 
