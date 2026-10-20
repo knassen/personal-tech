@@ -254,6 +254,15 @@ is the simplest form of ANOVA and is useful when you have one factor
 the standard ANOVA table along with optional descriptive statistics,
 homogeneity tests, and post‑hoc comparisons.</p>
 
+<p>The PSPP GUI (psppire) does not allow the setting of the alpha
+value for Tukey's HSD. It always defaults to alpha = .05. If you
+use the command line, you can set it manually, or if you paste the
+code into the Syntax Editor in the GUI, you can modify it there (add
+<code>ALPHA(.05)</code>).</p>
+
+<p>This shows that the PSPP GUI can run all PSPP commands, including
+those not in the GUI menus. You run them in the Syntax Editor, though.</p>
+
 <code>ONEWAY</code> operates on the active dataset, so you must read
 data into PSPP before running the procedure. Once the data is loaded,
 <code>ONEWAY</code> provides a quick way to compare group means and
@@ -292,7 +301,6 @@ ONEWAY score BY group
   /STATISTICS DESCRIPTIVES
   /POSTHOC = TUKEY ALPHA(.05).
 </pre>
-
 
 <pre>
 Reading free-form data from INLINE.
@@ -1357,7 +1365,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Oct 18 20:52:27 EDT 2026
+Last Modified: Sun Oct 18 21:17:04 EDT 2026
 </footer>
 </blockquote>
 </main>
