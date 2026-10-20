@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://knassen.github.io/personal-tech/pspp/pspp_graphics.html">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="PSPP graphics and plot examples histogram barchart scatterplot boxplot piechart Q-Q de-trended scale-location with syntax.">
-    <meta name="keywords" content="PSPP Graphics histogram barchart scatterplot boxplot piechart plots gnuplot regression diagnostics Q-Q de-trended scale-location"> 
+    <meta name="keywords" content="PSPP Graphics histogram barchart scatterplot boxplot piechart plots regression diagnostics Q-Q de-trended scale-location"> 
     <meta charset="utf-8">
     <title>PSPP Graphics: Examples and Notes</title>  
 </head>
@@ -20,8 +20,8 @@
 <h1>PSPP Graphics: Examples and Notes</h1>
 
 <p>PSPP appears to have limited built‑in graphics, so this page shows
-how to create plots from PSPP data using both PSPP syntax and external
-tools such as GNUPLOT. These examples include residual plots and other
+how to create plots from PSPP data using both PSPP syntax and multiple
+PSPP procedures.  These examples include residual plots and other
 diagnostics commonly used in regression analysis. Also other types of
 plots PSPP can make for other purposes.</p>
 
@@ -344,113 +344,6 @@ procedure. The Not Implemented list in the manual explicity states that
 the <code>STEMLEAF</code> command &ndash; used to plot a stem and leaf
 display &ndash; is not implemented.</p>
 
-<h2>Further Graphing with GNUPLOT using PSPP Data</h2>
-
-<p>Gnuplot is a free plotting program. It can be used
-on Windows and Linux/Unix to produce plots. See: 
-<a href="http://gnuplot.info/demos/">Gnuplot Demos</a> and
-<a href="http://www.gnuplot.info/documentation.html">Gnuplot
-Documentation.</a></p>
-
-<p>Gnuplot began in 1986, and is under current development. It is very
-good if you need to reproduce a plot regularly because the plotting can
-be scripted and rerun.</p>
-
-<p>You don't need gnuplot specially. It's an example of using
-PSPP-generated data in another application. Use whatever graphing
-program you prefer. Most can read CSV data.</p>
-
-<p>Saving the linear regression residuals and predicted values as CSV
-data from the PSPP <code>REGRESSION</code> procedure allows us to get
-the data into gnuplot easily as a CSV file.</p>
-
-<p><strong>Gnuplot Residuals Plot Program</strong></p>
-
-<p><strong>Raw Data</strong></p>
-<pre>
-          Data List
-╭─────┬────┬────┬────┬─────╮
-│  y  │ x1 │ x2 │RES1│PRED1│
-├─────┼────┼────┼────┼─────┤
-│10.00│1.00│4.10│-.20│10.20│
-│12.00│2.00│5.00│ .20│11.80│
-│13.00│3.00│6.20│-.07│13.07│
-│15.00│4.00│7.10│ .33│14.67│
-│16.00│5.00│8.00│-.27│16.27│
-╰─────┴────┴────┴────┴─────╯
-</pre>
-
-<p><strong>CSV file used by gnuplot</strong></p>
-<pre>
-y,x1,x2,RES1,PRED1
-10,1,4.1,-0.20000000000000284,10.200000000000003
-12,2,5,0.20000000000027285,11.799999999999727
-13,3,6.2,-0.06666666666703058,13.06666666666703
-15,4,7.1,0.33333333333324333,14.666666666666757
-16,5,8,-0.266666666666481,16.26666666666648
-</pre>
-
-<p>Program</p>
-<pre>
-set datafile separator ","                                                                                              
-
-set terminal pngcairo size 400,400
-set output "C:/pspp/residuals2.png"
-unset key
-
-set xlabel "Predicted"
-set ylabel "Residuals"
-set title "Residuals vs Predicted Values"
-
-plot "C:/pspp/regression.csv" using 5:4 every ::1 with points pt 7 ps 1.2 lc rgb "#3366cc" title "Residuals"
-</pre>
-
-<p>This reads the 4th and 5th variables from the CSV file (Residuals
-on the Y-axis and Predicted on the X-axis). The <code>rgb</code>
-setting sets the point color, and <code>set title</code> sets the plot
-title. You can adjust the plot size on the <code>set terminal</code>
-line. The <code>every ::1</code> option skips the first line of the CSV
-file. <code>every</code> is a row selector. The remaining options set
-the point size, point type, color.</p>
-
-<p>Note, by default, gnuplot puts in an extra plot point to show what
-the plot symbol is. <code>unset key</code> will remove that point.</p>
-
-<p><strong>The resulting plot looks like this:</strong></p>
-<img src="pspp/residuals2.png" alt="scatterplot of predicted vs residual from gnuplot" width="350"> 
-
-<p>A Q–Q plot compares the sample residuals to the theoretical normal
-distribution.  If the residuals follow a straight line, they are
-approximately normal.  Curvature or S‑shapes indicate departures from
-normality.</p>
-
-<p>Gnuplot Code</p>
-<pre>
-set datafile separator ","
-set terminal pngcairo size 800,600
-set output "C:/pspp/qqplot.png"
-unset key
-
-set xlabel "Theoretical Quantiles"
-set ylabel "Sample Residuals"
-set title "Normal Q-Q Plot of Residuals"
-
-stats "C:/pspp/regression.csv" using 4 nooutput
-
-# Safe row number function for CSV files
-row(n) = n + 1
-
-plot "C:/pspp/regression.csv" using \
-    (invnorm((row($0) - 0.5) / STATS_records)):4 every ::1 \
-    with points pt 7 ps 1.2 lc rgb "#3366cc"
-</pre>
-
-<p>Output</p>
-
-<img src="/personal-tech/pspp/qqplot.png" alt="Q-Q plot for small regression example">
-
-Since this was a small regression example, the plot doesn't show many points.
-
 <h2>Using PSPP's EXAMINE Command for Normality Diagnostic Plots</h2>
 <p>PSPP's <code>EXAMINE</code> command has a /PLOT subcommand that can
 generate several diagnostic graphs, including a Normal Q-Q plot and a
@@ -538,90 +431,6 @@ non-normality.</p>
 +----+---------+---+---------+
 </pre>
 
-<h2>Three Panel Gnuplot Diagnostics</h2>
-
-<p>This example creates 3 diagnostic plots and then combines them into
-a three-panel layout. The three plots are: a normal Q-Q plot, a plot of
-residuals vs. predicted values, and a scale-location plot. It also uses
-the Auto-MPG data set which gives us 392 points to plot.</p>
-
-<p><strong>Code</strong></p>
-<pre>
-set datafile separator ","
-set terminal pngcairo size 1200,900
-set output "diagnostics3.png"
-
-set multiplot layout 3,1 title "Regression Diagnostics"
-
-##############################
-# 1. Normal Q-Q Plot
-##############################
-set xlabel "Theoretical Quantiles"
-set ylabel "Sample Residuals"
-set title "Normal Q-Q Plot"
-unset key
-
-stats "regression2.csv" using 10 nooutput
-row(n) = n + 1
-
-plot "regression2.csv" using \
-    (invnorm((row($0) - 0.5) / STATS_records)):10 every ::1 \
-    with points pt 7 ps 1.2 lc rgb "#3366cc"
-
-##############################
-# 2. Residuals vs Predicted
-##############################
-set xlabel "Predicted Values"
-set ylabel "Residuals"
-set title "Residuals vs Predicted"
-unset key
-
-plot "regression2.csv" using 11:10 \
-    with points pt 7 ps 1 lc rgb "#cc6633"
-
-##############################
-# 3. Scale-Location Plot
-##############################
-set xlabel "Predicted Values"
-set ylabel "Sqrt(|Residual|)"
-set title "Scale-Location Plot"
-unset key
-
-plot "regression2.csv" using 11:(sqrt(abs($10))) \
-    with points pt 7 ps 1 lc rgb "#669933"
-
-unset multiplot
-</pre>
-
-<p><strong>Output</strong></p>
-<strong>3-panel Diagnostics</strong>
-<img src="pspp/diagnostics3.png" alt="3 panel diagnostics">
-
-<h2>Residuals vs Predicted Values with a Smoothed Bezier Line</h2>
-
-<p>This uses the auto-mpg data set with residuals and
-predicted values from the regression example in <a
-href="pspp/pspp_analysis2.html#regression2">pspp_analysis2.html</a></p>
-
-<p><strong>Code</strong></p>
-<pre>
-set datafile separator ","
-set xlabel "Predicted (PRED1)"
-set ylabel "Residuals (RES1)"
-set title "Residuals vs Predicted (with Smooth Bezier smooth)"
-set terminal pngcairo size 1200,900
-set output "respred2.png"
-unset key
-plot "regression2.csv" using 11:10 with points pt 7 lc rgb "blue", \
-     "" using 11:10 smooth sbezier lc rgb "red" lw 2
-</pre>
-
-<p><strong>Output</strong></p>
-<p><strong>Residuals vs Predicted with Smoothed Bezier Line</strong></p>
-<img src="pspp/respred2.png" alt="residuals vs predicted with smooth bezier line">
-
-<p>The smooth bezier line shows the skew in the data.</p>
-
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 
 <div class="pspp-index">   
@@ -648,7 +457,7 @@ Back to Kent's Page
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Oct 16 16:39:05 EDT 2026
+Last Modified: Tue Oct 20 17:28:27 EDT 2026
 </footer>
 </blockquote>
 </main>
