@@ -378,7 +378,10 @@ complex, formatted tables.</p>
 <p>Here is a small example of survey data that collects
 <code>YEAR</code> of the survey, <code>AGEGROUP</code> of respondent
 and <code>INCCAT</code>, the respondent's income category.
-<code>CROSSTABS</code> can display all three categories.</p>
+<code>CROSSTABS</code> can display all three categories but only if
+the variables are separated by BY (AGEGROUP BY INCCAT BY YEAR).
+Unfortunately, psppire can't do this from the menus. But you can
+edit it in the syntax window.</p>
 
 <pre>
 ** Survey data example .
@@ -998,7 +1001,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Oct 19 21:27:54 EDT 2026
+Last Modified: Mon Oct 19 21:53:38 EDT 2026
 </footer>
 </blockquote>
 </main>
