@@ -563,6 +563,9 @@ MRSETS /DISPLAY NAME=ALL.
 <pre>
 Starting MRSETS command.
 
+note: MRSETS is implemented but no other commands support multiple response
+sets yet.
+
                Multiple Response Sets
 +-------+-----------+-------------+----------------+
 |Name   |  Encoding |Counted Value|Member Variables|
@@ -577,10 +580,10 @@ End of MRSETS command.
 </pre>
 
 <p>Thus, pspp is saving the <code>MRSETS</code> information in the pspp
-.sav data.  It's just not obvious. <code>DISPLAY DICTIONARY</code> does
+.sav data. It's just not always obvious. <code>DISPLAY DICTIONARY</code> does
 not show any indication that this is an MRSETS data file. I'd be curious
 to see what this data looks like in a third-party app that understands
-<code>MRSETS</code> data. Right now that seems to be SPSS.</p>
+<code>MRSETS</code> data.</p>
 
 <p><strong>Workflow Tip: </strong> If you omit /DISPLAY NAME=ALL there is
 no output (it looks like pspp did nothing) so always use that command to
@@ -612,7 +615,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Oct  9 13:53:43 EDT 2026
+Last Modified: Thu Oct 22 15:13:09 EDT 2026
 </p>
 </footer>
 </blockquote>
