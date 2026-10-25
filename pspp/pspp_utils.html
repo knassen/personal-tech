@@ -22,8 +22,8 @@
 
 <h2>About this Page</h2>
 
-<p>This page shows how to develop utilities for PSPP using its 
-matrix sub-language. It currently includes programs for Mahalanobis Distance,
+<p>This page shows how to develop utilities for PSPP. 
+It currently includes programs for Mahalanobis Distance,
 Trimmed Mean, Cronbach's Alpha, and Median Absolute Distance.
 </p>
 
@@ -47,13 +47,13 @@ experience to follow them.</p>
 a trimmed mean program, a Mahalanobis Distance program, Cronbach's
 Alpha probram, and a median absolute deviation (MAD) program. They are
 not very long, but make good examples and allow hand computation to
-see how things work. They are intended to introduce you to the PSPP
-matrix sub-language and show some useful computation.</p>
+see how things work. They are intended to introduce you to some useful 
+computations.</p>
 
-<p>In the trimmed-mean and MAD examples below, the matrix sub-language is
-used mainly for scalar computations: determining indices, computing
+<p>In the trimmed-mean and MAD examples below, 
+mainly scalar computations are done: determining indices, computing
 medians, evaluating conditions, and performing loops. The only true
-matrix operations are reading a column vector with <code>GET</code>,
+complex operations are reading a column vector with <code>GET</code>,
 slicing it with indexing, and summing it with <code>CSUM()</code>. This
 illustrates how <code>Matrix</code> can be used effectively even when
 the underlying computation is not inherently matrix-based.</p>
@@ -242,11 +242,15 @@ END MATRIX.
 </pre>
 
 <p>This example shows several things about pspp's Matrix
-sub-language. First, it doesn't have a MEAN function, so that had to be
-done as CSUM(x)/NROW(x).  PSPP Matrix also lacks a COV() function for
-the the covariance. That was also done using matrix commands.  Finally,
-the data were standardized. (Note: SPSS's Matrix implementation doesn't
-have MEAN or COV functions, either, according to the manual.)</p>
+sub-language. First, it didn't have a MEAN function when this was
+written, so that had to be done as CSUM(x)/NROW(x). PSPP Matrix also
+lacked a COV() function for the the covariance. That was also done using
+matrix commands.  Finally, the data were standardized. (Note: SPSS's
+Matrix implementation doesn't have MEAN or COV functions, either,
+according to the manual.)</p>
+
+<p>October 2026: The MEAN and COV functions were added to pspp recently
+(pspp 2.1.3).</p>
 
 <p>By performing all computations inside Matrix, the same missing‑data
 rules apply consistently to both the mean vector and the covariance
@@ -601,7 +605,7 @@ deviation (MAD).</p>
 <p>This is the process used for the utilities:</p>
 <img src="pspp/matrix_process.png" alt="matrix process">
 
-<h2>How to Use Matrix Inside PSPP</h2>
+<h2>How to Use Matrix Code Inside PSPP</h2>
 
 <p>Although <code>Matrix</code> is designed for matrix algebra,
 some programs use it primarily for scalar arithmetic. PSPP treats
@@ -710,6 +714,52 @@ END MATRIX.
 <p>Note that we get back the original matrix if the first inversion is
 inverted (invert the inversion).</p>
 
+<p>New MEAN and COV functions</p>
+
+<p>MEAN() computes the arithmetic mean of the column values in the
+matrix the function is analyzing. COV creates a covariance matrix using
+the sample divisor, n - 1. Each diagonal element contains the variance
+of a column, and the off-diagnoal elements contain the covariances
+between the columns. Also shown below are NROW and NCOL functions, which
+give the number of row and number of columns of the matrix.</p>
+
+<p><strong>Matrix Syntax:</strong></p>
+
+<pre>
+MATRIX.
+
+COMPUTE m={1,2;3,5;5,4;7,8}.
+PRINT m.
+PRINT MEAN(m).
+
+PRINT NROW(m).
+PRINT NCOL(m).
+PRINT COV(m).
+
+END MATRIX.
+</pre>
+
+<p><strong>Results:</strong></p>
+<pre>
+m
+  1  2
+  3  5
+  5  4
+  7  8
+
+MEAN(m)
+  4.0000000000  4.7500000000
+
+NROW(m)
+  4
+
+NCOL(m)
+  2
+
+COV(m)
+  6.6666666667  5.6666666667
+  5.6666666667  6.2500000000
+</pre>
 
 <p>For additional reference, 
 <a href="https://pspp.benpfaff.org/~blp/pspp-master/20260306085203/source/user-manual/pspp.html#Matrices">
@@ -741,7 +791,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Oct 22 10:17:11 EDT 2026
+Last Modified: Sat Oct 24 20:32:16 EDT 2026
 </p>
 </footer>
 </blockquote>
