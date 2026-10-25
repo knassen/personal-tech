@@ -1141,15 +1141,22 @@ Reading 1 record from `auto-mpg2.data'.
 |Total     |      23818.99|391|           |      |    |
 +----------+--------------+---+-----------+------+----+
 
+
                                Coefficients (mpg)
 +------------+------------------+----------------+-----+----+-----------------+
 |            |  Unstandardized  |  Standardized  |     |    |   Collinearity  |
 |            |   Coefficients   |  Coefficients  |     |    |    Statistics   |
 |            +--------+---------+----------------+     |    +----------+------+
 |            |        |   Std.  |                |     |    |          |      |
+|            |    B   |  Error  |      Beta      |  t                                Coefficients (mpg)
++------------+------------------+----------------+-----+----+-----------------+
+|            |  Unstandardized  |  Standardized  |     |    |   Collinearity  |
+|            |   Coefficients   |  Coefficients  |     |    |    Statistics   |   
+|            +--------+---------+----------------+     |    +----------+------+
+|            |        |   Std.  |                |     |    |          |      |   
 |            |    B   |  Error  |      Beta      |  t  |Sig.| Tolerance|  VIF |
 +------------+--------+---------+----------------+-----+----+----------+------+
-|(Constant)  |  -17.22|     4.64|             .00|-3.71|.000|          |      |
+|(Constant)  |  -17.22|     4.64|                |-3.71|.000|          |      |   
 |cylinders   |    -.49|      .32|            -.11|-1.53|.128|       .09| 10.74|
 |displacement|     .02|      .01|             .27| 2.65|.008|       .05| 21.84|
 |horsepower  |    -.02|      .01|            -.08|-1.23|.220|       .10|  9.94|
@@ -1157,7 +1164,7 @@ Reading 1 record from `auto-mpg2.data'.
 |acceleration|     .08|      .10|             .03|  .82|.415|       .38|  2.63|
 |modelyear   |     .75|      .05|             .35|14.73|.000|       .80|  1.24|
 |origin      |    1.43|      .28|             .15| 5.13|.000|       .56|  1.77|
-+------------+--------+---------+----------------+-----+----+----------+------+
++------------+--------+---------+----------------+-----+----+----------+------+ 
 </pre>
 
 <p>Ordinary least squares regression is a BLUE (best linear unbiased)
@@ -1365,7 +1372,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sun Oct 18 21:17:04 EDT 2026
+Last Modified: Sat Oct 24 21:12:08 EDT 2026
 </footer>
 </blockquote>
 </main>

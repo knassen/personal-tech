@@ -569,6 +569,8 @@ its output. A small p-value indicates the variable is not normally
 distributed.</p>
 
 <pre>
+SET SEED = 1234567.
+
 INPUT PROGRAM.
     LOOP #i = 1 TO 50.
         COMPUTE score = RV.NORMAL(50, 10).
@@ -578,7 +580,7 @@ END FILE.
 END INPUT PROGRAM.
 
 EXAMINE VARIABLES = score
-  /STATISTICS = DESCRIPTIVES
+  /STATISTICS = DESCRIPTIVES EXTREME(5)
   /PLOT = ALL.
 </pre>
 <pre>
@@ -611,30 +613,30 @@ EXAMINE VARIABLES = score
 +--------------------------------------------------+---------+----------+
 |                                                  |Statistic|Std. Error|
 +--------------------------------------------------+---------+----------+
-|score Mean                                        |    50.22|      1.34|
+|score Mean                                        |    49.95|      1.23|
 |     ---------------------------------------------+---------+----------+
-|      95% Confidence Interval for Mean Lower Bound|    47.53|          |   
-|                                       Upper Bound|    52.91|          |   
+|      95% Confidence Interval for Mean Lower Bound|    47.48|          |
+|                                       Upper Bound|    52.43|          |
 |     ---------------------------------------------+---------+----------+
-|      5% Trimmed Mean                             |    50.60|          |   
+|      5% Trimmed Mean                             |    50.21|          |
 |     ---------------------------------------------+---------+----------+
-|      Median                                      |    52.22|          |   
+|      Median                                      |    51.26|          |
 |     ---------------------------------------------+---------+----------+
-|      Variance                                    |    89.49|          |   
+|      Variance                                    |    75.85|          |
 |     ---------------------------------------------+---------+----------+
-|      Std. Deviation                              |     9.46|          |   
+|      Std. Deviation                              |     8.71|          |
 |     ---------------------------------------------+---------+----------+
-|      Minimum                                     |    22.93|          |   
+|      Minimum                                     |    26.81|          |
 |     ---------------------------------------------+---------+----------+
-|      Maximum                                     |    68.30|          |   
+|      Maximum                                     |    66.98|          |
 |     ---------------------------------------------+---------+----------+
-|      Range                                       |    45.38|          |   
+|      Range                                       |    40.16|          |
 |     ---------------------------------------------+---------+----------+
-|      Interquartile Range                         |    11.41|          |   
+|      Interquartile Range                         |    11.25|          |
 |     ---------------------------------------------+---------+----------+
-|      Skewness                                    |     -.69|       .34|
+|      Skewness                                    |     -.51|       .34|
 |     ---------------------------------------------+---------+----------+
-|      Kurtosis                                    |      .44|       .66|
+|      Kurtosis                                    |      .21|       .66|
 +--------------------------------------------------+---------+----------+
 
     Tests of Normality
@@ -643,7 +645,7 @@ EXAMINE VARIABLES = score
 |     +---------+--+----+
 |     |Statistic|df|Sig.|
 +-----+---------+--+----+
-|score|      .97|50| .19|
+|score|      .98|50| .42|
 +-----+---------+--+----+
 </pre>
 
@@ -1006,7 +1008,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue Oct 20 09:17:35 EDT 2026
+Last Modified: Sat Oct 24 22:01:42 EDT 2026
 </footer>
 </blockquote>
 </main>
