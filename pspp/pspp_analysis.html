@@ -539,10 +539,11 @@ boxplots. This is useful for deciding whether a parametric test (like
 a t-test) is appropriate or whether a nonparametric test might be
 better.</p>
 
-<p>The <code>EXAMINE</code> command can be found in the Data Editor menu
-<strong>Analyze-&gt;Descriptive Statistics-&gt;Explore</strong>.  Note
-that PSPPIRE calls the EXAMINE command Explore in the menus, but when it
-writes the pspp commands, you'll see it is EXAMINE.</p>
+<p>The <code>EXAMINE</code> command can be found in the Data Editor
+menu <strong>Analyze-&gt;Descriptive Statistics-&gt;Explore</strong>.
+Note that PSPPIRE calls the <code>EXAMINE</code> command "Explore"
+in the menus, but when it writes the pspp commands, you'll see it is
+EXAMINE.</p>
 
 <h3>EXAMINE Notes</h3>
 
@@ -594,6 +595,23 @@ EXAMINE VARIABLES = score
 +-----+--+-------+-+-------+--+-------+
 |score|50| 100.0%|0|    .0%|50| 100.0%|
 +-----+--+-------+-+-------+--+-------+
+
+           Extreme Values
++---------------+-----------+-----+
+|               |Case Number|Value|
++---------------+-----------+-----+
+|score Highest 1|         32|73.82|
+|              2|         45|66.42|
+|              3|         36|65.25|
+|              4|         19|63.77|
+|              5|         25|63.20|
+|     ----------+-----------+-----+
+|      Lowest  1|          2|35.45|
+|              2|         43|35.64|
+|              3|         13|36.51|
+|              4|         24|36.63|
+|              5|          9|39.21|
++---------------+-----------+-----+
 </pre>
 
 <pre>See examine4-1.png for a chart.</pre>
@@ -658,7 +676,9 @@ and choose "Normality plots with tests."</p>
 
 <p>This example demonstrates typical results when using
 <code>/STATISTICS = DESCRIPTIVES</code> and <code>/PLOT = ALL</code> on
-a reasonably sized dataset.</p>
+a reasonably sized dataset. The <code>EXTREME(5)</code> tells the
+EXAMINE procedure to list the highest five values and the lowest five
+values.</p>
 
 <p><a href="pspp/pspp_analysis.html#top">Back to top</a></p>
 
@@ -1008,7 +1028,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Oct 24 22:01:42 EDT 2026
+Last Modified: Sat Oct 24 22:20:35 EDT 2026
 </footer>
 </blockquote>
 </main>
