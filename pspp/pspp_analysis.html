@@ -571,11 +571,13 @@ CTABLES
 <p><a href="pspp/ctable.pdf">Custom Table in PDF format.</a></p>
 
 <p>Here, CTABLES requires combining the year and agegroup variables
-into one section of the tahle, and leaving inccat (income category)
+into one section of the table, and leaving inccat (income category)
 across the top. This is accomplished by putting "&gt;" between
-year and agegroup. The other thing is that year is considered by
-CTABLES to already be in a category, so it gives an error. Changing 
-year from a SCALE to a NOMINAL variable gets rid of the error.</p>
+year and agegroup. The issue was that year was considered by
+CTABLES to already be a category, so it gave an error. Changing 
+year from a SCALE to a NOMINAL variable gets rid of the error. That's
+the VARIABLE LEVEL command above. The CATEGORIES VARIABLES lines add 
+the totals to the relevant variables.</p>
 
 <p>The output is very similar to the crosstabs output.</p>
 
