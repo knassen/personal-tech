@@ -526,8 +526,8 @@ CTABLES
 +-------------------------------------------------------+
 </pre>
 
-<p><img src="pspp/ctables2.png" alt="ctables pdf output" width="550"></p>
 <p>CTABLES output in pdf format</p>
+<p><img src="pspp/ctables2.png" alt="ctables pdf output" width="550"></p>
 
 <h2>3-Variable Custom Table with CTABLES</h2>
 
@@ -568,6 +568,8 @@ CTABLES
 |                   Total|     2|     1|    1|     |    4|
 +------------------------+------+------+-----+-----+-----+
 </pre>
+
+<p>Output in PDF Format</p>
 <p><img src="pspp/ctables_3varcrosstab.png" alt="3var crosstab in ctables"></p>
 
 <p>Here, CTABLES requires combining the year and agegroup variables
@@ -585,6 +587,62 @@ above. </p>
 variables.</p>
 
 <p>The output is very similar to the crosstabs output.</p>
+
+<h2>Multi-Variable Custom Table with CTABLES</h2>
+
+<p>This demonstrate the use of variable and value lables as well as
+titles in CTABLES. It also shows CTABLES can do descriptived statistics
+in the table.</p>
+
+<pre>
+GET FILE="mydata.sav".
+
+VALUE LABELS
+  /group
+    1 "A"
+    2 "B"
+    3 "C"
+  /major
+    1 "Biology"
+    2 "Business"
+    3 "English"
+  /passed
+    0 "Fail"
+    1 "Pass".
+
+VARIABLE LABELS
+  group "Group"
+  major "Major"
+  passed "Outcome"
+  score "Exam Score"
+  age "Age"
+  .
+
+CTABLES
+  /TABLE = group &gt; major &gt; passed BY score [MEAN] + age
+  /TITLES TITLE="Student Performance by Group, Major, and Exam Status".
+</pre>
+
+<p><strong>Output</strong></p>
+<pre>
+ Student Performance by Group, Major, and Exam Status                                                                   
++-----------------------------------+----------+-----+
+|                                   |Exam Score| Age |
+|                                   +----------+-----+
+|                                   |   Mean   | Mean|
++-----------------------------------+----------+-----+
+|Group A Major Biology  Outcome Fail|     68.00|18.00|
+|                               Pass|     73.50|19.50|
+|     ------------------------------+----------+-----+
+|      B Major Business Outcome Fail|     74.00|20.00|
+|                               Pass|     80.00|21.50|
+|     ------------------------------+----------+-----+
+|      C Major English  Outcome Pass|     87.67|22.00|
++-----------------------------------+----------+-----+
+</pre>
+
+<p>Output in PDF Format</p>
+<p><img src="pspp/ctables_multi.png" alt="crosstab with multiple variables in ctables"></p>
 
 <p><a href="pspp/pspp_analysis.html#top">Back to top</a></p>
 
@@ -1092,7 +1150,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Oct 29 12:00:38 EDT 2026
+Last Modified: Thu Oct 29 15:47:46 EDT 2026
 </footer>
 </blockquote>
 </main>
