@@ -596,6 +596,8 @@ adding titles in the <code>CTABLES</code> command. It also shows
 example nests Group, Major, and Outcome on the row axis and displays the
 mean Exam Score and mean Age for each category combination.</p>
 
+<p>The result is a nicer-looking table more suitable for publication.</p>
+
 <p><strong>Code</strong></p>
 
 <pre>
@@ -623,30 +625,30 @@ VARIABLE LABELS
   .
 
 CTABLES
-  /TABLE = group &gt; major &gt; passed BY score [MEAN] + age
+  /TABLE = group &gt; major &gt; passed BY score [TOTALN, MEAN] + age
   /TITLES TITLE="Student Performance by Group, Major, and Exam Status".
 </pre>
 
 <p><strong>Output</strong></p>
 <pre>
- Student Performance by Group, Major, and Exam Status                                                                   
-+-----------------------------------+----------+-----+
-|                                   |Exam Score| Age |
-|                                   +----------+-----+
-|                                   |   Mean   | Mean|
-+-----------------------------------+----------+-----+
-|Group A Major Biology  Outcome Fail|     68.00|18.00|
-|                               Pass|     73.50|19.50|
-|     ------------------------------+----------+-----+
-|      B Major Business Outcome Fail|     74.00|20.00|
-|                               Pass|     80.00|21.50|
-|     ------------------------------+----------+-----+
-|      C Major English  Outcome Pass|     87.67|22.00|
-+-----------------------------------+----------+-----+
+   Student Performance by Group, Major, and Exam Status
++-----------------------------------+-------------+-----+
+|                                   |  Exam Score | Age |
+|                                   +-------+-----+-----+
+|                                   |Total N| Mean| Mean|
++-----------------------------------+-------+-----+-----+
+|Group A Major Biology  Outcome Fail|      1|68.00|18.00|
+|                               Pass|      2|73.50|19.50|
+|     ------------------------------+-------+-----+-----+
+|      B Major Business Outcome Fail|      1|74.00|20.00|
+|                               Pass|      2|80.00|21.50|
+|     ------------------------------+-------+-----+-----+
+|      C Major English  Outcome Pass|      3|87.67|22.00|
++-----------------------------------+-------+-----+-----+
 </pre>
 
 <p>Output in PDF Format</p>
-<p><img src="pspp/ctables_multi.png" alt="crosstab with multiple variables in ctables"></p>
+<p><img src="pspp/ctables_multi2.png" alt="crosstab with multiple variables in ctables"></p>
 
 <p><a href="pspp/pspp_analysis.html#top">Back to top</a></p>
 
@@ -1154,7 +1156,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Oct 29 15:54:20 EDT 2026
+Last Modified: Thu Oct 29 16:18:45 EDT 2026
 </footer>
 </blockquote>
 </main>
