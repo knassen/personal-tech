@@ -1016,6 +1016,14 @@ using system variables like $CASENUM, creating scale scores with
 arithmetic, and using functions inside a transformation. Most PSPP
 transformations follow one of these forms.</p>
 
+<h2>How to DELETE VARIABLES</h2>
+<p>The DELETE VARIABLES var_list command will delete a pspp variable.</p>
+
+<p>A potential issue with running this command is it causes temporary
+transformations of data to become permanent. Running the command before
+defining a temporary transformation but before you run a procedure may
+not have the effect you expect.</p>
+
 <h2>PSPP Function Examples</h2>
 
 <p>PSPP has many functions that can be used to work on data. Here
@@ -1566,7 +1574,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Thu Oct 29 17:06:56 EDT 2026
+Last Modified: Sat Oct 31 12:10:25 EDT 2026
 </p>
 </footer>
 </blockquote>
