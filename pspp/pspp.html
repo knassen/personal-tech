@@ -1019,14 +1019,14 @@ transformations follow one of these forms.</p>
 <h2>How to DELETE VARIABLES</h2>
 <p>The DELETE VARIABLES var_list command will delete a pspp variable.</p>
 
-<p><strong>Workflow Tip</strong>Two potential issues related to
-this command is it causes temporary transformations of data to
-become permanent. Running the command before defining a temporary
-transformation but before you run a procedure may not have the effect
-you expect. DELETE VARIABLES causes the data to be read, also.</p>
+<p><strong>Workflow Tip</strong>DELETE VARIABLES causes the active
+dataset to be read and temporary transformations of data to become
+permanent. If you are using TEMPORARY or have pending transformations be
+aware that DELETE VARIABLES may not have the effect you expect.</p>
 
 <p>DELETE VARIABLES is useful for removing variables you no longer need,
-such as intermediate variables to a calculation.</p>
+such as intermediate variables to a calculation or for cleaning up a 
+dataset (such as removing variables with proprietary information).</p>
 
 <h2>PSPP Function Examples</h2>
 
@@ -1578,7 +1578,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Oct 31 12:10:25 EDT 2026
+Last Modified: Sat Oct 31 12:27:12 EDT 2026
 </p>
 </footer>
 </blockquote>
