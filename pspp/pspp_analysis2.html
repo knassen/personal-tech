@@ -390,6 +390,11 @@ statistics and comparisons, though.</p>
 <p>PSPPIRE does not have a menu for GLM. Thus in order to run this command
 it needs to be entered in the Syntax Editor and Run from there.</p>
 
+<p>Also note that pspp's GLM procedure only handles categorical fixed
+effect factors, so it works fine for factorial ANOVA, but not for a
+regression using scalar factors. If you need that, pspp's regression
+procedure works.</p>
+
 <pre>
 DATA LIST LIST /group score hours gpa passed major age.
 BEGIN DATA
@@ -1377,7 +1382,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue Oct 27 11:05:43 EDT 2026
+Last Modified: Sat Oct 31 11:14:45 EDT 2026
 </footer>
 </blockquote>
 </main>
