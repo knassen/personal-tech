@@ -234,4 +234,9 @@ searchable on Google now.
 updated to make it easier to read and move most of the matrix and math 
 to an appendix.  It starts with utilities now.
 
+**October 30, 2026** pspp_graphics.html has been indexed and on the
+site for about a month now and is starting to get clicks and impressions
+finally. pspp has lots of plots, graphs, and charts but they are often
+part of a procedure rather than in a Graphs menu.
+
 
