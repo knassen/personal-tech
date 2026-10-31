@@ -1017,16 +1017,20 @@ arithmetic, and using functions inside a transformation. Most PSPP
 transformations follow one of these forms.</p>
 
 <h2>How to DELETE VARIABLES</h2>
-<p>The DELETE VARIABLES var_list command will delete a pspp variable.</p>
 
-<p><strong>Workflow Tip</strong>DELETE VARIABLES causes the active
-dataset to be read and temporary transformations of data to become
-permanent. If you are using TEMPORARY or have pending transformations be
-aware that DELETE VARIABLES may not have the effect you expect.</p>
+<p>The DELETE VARIABLES var_list command deletes one or more pspp
+variables.</p>
 
-<p>DELETE VARIABLES is useful for removing variables you no longer need,
-such as intermediate variables to a calculation or for cleaning up a 
-dataset (such as removing variables with proprietary information).</p>
+<p><code>DELETE VARIABLES</code> is useful for removing variables you
+no longer need, such as intermediate variables used in a calculation or
+for cleaning up a dataset by removing variables containing proprietary
+information.</p>
+
+<p><strong>Workflow Tip:</strong> <code>DELETE VARIABLES</code> causes
+the active dataset to be read and temporary transformations of data
+to become permanent. If you are using <code>TEMPORARY</code> or have
+pending transformations, be aware that <code>DELETE VARIABLES</code> may
+not have the effect you expect.</p>
 
 <h2>PSPP Function Examples</h2>
 
