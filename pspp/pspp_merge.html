@@ -46,6 +46,32 @@ different kind of data combination.</p>
 
 <h2 class="skip">&nbsp;</h2>
 
+<h2>SORT CASES</h2>
+
+<p>Before merging or combining data, be sure to check that your data are
+in the order needed for matching. The examples below all start with
+data that are sorted into ID order so matching ID numbers is not an
+issue. However, to be sure, the data should be sorted before merging.</p>
+
+<p>The basic command is SORT CASES BY var_list, which sorts the active
+data set. The default sort order is ascending. To do a descending sort,
+add "(D)" after the variable name. If you want to keep the sorted data, 
+save it.</p>
+
+<p>For example, to sort a data set by PATID, GET the system file, SORT it,
+and SAVE the sorted system file (rename it if you want to keep the original
+file).</p>
+
+<pre>
+GET FILE="demo.sav".
+SORT CASES BY PATID.
+SAVE OUTFILE="demo.sav".
+
+GET FILE="psych.sav".
+SORT CASES BY PATID.
+SAVE OUTFILE="psych.sav".
+</pre>
+
 <h2>MATCH FILES</h2>
 
 <p>The following example shows how to merge two datasets that share a
@@ -53,6 +79,9 @@ common key variable (<code>PATID</code>). One file contains demographic
 variables; the other contains psychological measures. <code>MATCH
 FILES</code> combines them into a single dataset by matching cases on
 <code>PATID</code>.</p>
+
+<p>As shown above, I've sorted the to system files by PATID and saved
+them.  This ensures they are in PATID order.</p>
 
 <p><strong>Example datasets</strong></p>
 
@@ -565,7 +594,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Mon Sep  7 15:39:12 EDT 2026
+Last Modified: Mon Nov  2 20:51:12 EST 2026
 </p>
 </footer>
 </blockquote>
