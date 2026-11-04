@@ -163,6 +163,14 @@ new dataset is read or created, save any results desired to be kept
 <strong>before</strong> running another command that changes the active
 file.</p>
 
+<p><strong>Workflow Tip:</strong> The order of the files on the MATCH
+FILES command makes a difference to the output dataset when you have
+more cases in one of the files.  The /FILE command defines the primary
+data file and cases are stepped through sequentially. The /TABLE command
+defines a lookup table from which data is applied to the /FILE data
+set. If you don't get the results expected, make sure you are using
+/FILE and /TABLE correctly.</p>
+
 <p><strong>What happens when there is not a one-to-one merge?</strong>
 Subject 104 has been added to psych.sav but not to demo.sav. In this
 case, PATID 104 is merged but that subject's demographic variables are
@@ -211,41 +219,25 @@ to identify unmatched cases after the merge.</p>
 
 <pre>
 MATCH FILES
-  /FILE='demo.sav'  /IN=indemo
-  /TABLE='psych.sav' /IN=inpsych
+  /FILE='psych.sav' /IN=inpsych
+  /TABLE='demo.sav'  /IN=indemo
   /BY PATID.
 
 SAVE OUTFILE='merged.sav'.
 </pre>
 
 <p><strong>Merged Output with /IN= Flags</strong></p>
-<table>
-  <tr>
-    <th>PATID</th><th>AGE</th><th>SEX</th>
-    <th>SCORE1</th><th>SCORE2</th>
-    <th>indemo</th><th>inpsych</th>
-  </tr>
-  <tr>
-    <td>101</td><td>34</td><td>1</td>
-    <td>12</td><td>18</td>
-    <td>1</td><td>1</td>
-  </tr>
-  <tr>
-    <td>102</td><td>29</td><td>2</td>
-    <td>15</td><td>20</td>
-    <td>1</td><td>1</td>
-  </tr>
-  <tr>
-    <td>103</td><td>41</td><td>1</td>
-    <td>11</td><td>17</td>
-    <td>1</td><td>1</td>
-  </tr>
-  <tr>
-    <td>104</td><td>.</td><td>.</td>
-    <td>14</td><td>19</td>
-    <td>0</td><td>1</td>
-  </tr>
-</table>
+<pre>
+                    Data List
+╭──────┬──────┬──────┬─────┬────┬───────┬──────╮
+│ PATID│SCORE1│SCORE2│ AGE │ SEX│inpsych│indemo│
+├──────┼──────┼──────┼─────┼────┼───────┼──────┤
+│101.00│ 12.00│ 18.00│34.00│1.00│      1│     1│
+│102.00│ 15.00│ 20.00│29.00│2.00│      1│     1│
+│103.00│ 11.00│ 17.00│41.00│1.00│      1│     1│
+│104.00│ 14.00│ 19.00│    .│   .│      1│     0│
+╰──────┴──────┴──────┴─────┴────┴───────┴──────╯
+</pre>
 
 <p>In addition to <code>MATCH FILES</code>, PSPP also provides <code>ADD
 FILES</code> to append data from multiple files to the active data set, and
