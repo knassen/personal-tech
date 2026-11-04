@@ -73,6 +73,34 @@ SORT CASES BY PATID.
 SAVE OUTFILE="psych.sav".
 </pre>
 
+<p>Or, read the raw data, sort it, and save it.</p>
+
+<pre>
+DATA LIST FREE /PATID AGE SEX
+BEGIN DATA
+101	34	1
+102	29	2
+103	41	1
+END DATA.
+
+LIST.
+
+SORT CASES BY PATID.
+SAVE OUTFILE="C:\pspp\demo.sav".
+
+DATA LIST FREE /PATID SCORE1 SCORE2
+BEGIN DATA
+101	12	18
+102	15	20
+103	11	17
+END DATA.
+
+LIST.
+
+SORT CASES BY PATID.
+SAVE OUTFILE="C:\pspp\psych.sav". 
+</pre>
+
 <h2>MATCH FILES</h2>
 
 <p>The following example shows how to merge two datasets that share a
@@ -596,7 +624,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Tue Nov  3 09:39:26 EST 2026
+Last Modified: Wed Nov  4 11:38:11 EST 2026
 </p>
 </footer>
 </blockquote>
