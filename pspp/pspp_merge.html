@@ -114,8 +114,8 @@ them.  This ensures they are in PATID order.</p>
 
 <pre>
 MATCH FILES
-  /FILE='demo.sav'
-  /TABLE='psych.sav'
+  /FILE='psych.sav'
+  /TABLE='demo.sav'
   /BY PATID.
 EXECUTE.
 
@@ -124,21 +124,22 @@ SAVE OUTFILE='merged.sav'.
 
 <pre>
             Data List
-╭──────┬─────┬────┬──────┬──────╮
-│ PATID│ AGE │ SEX│SCORE1│SCORE2│
-├──────┼─────┼────┼──────┼──────┤
-│101.00│34.00│1.00│ 12.00│ 18.00│
-│102.00│29.00│2.00│ 15.00│ 20.00│
-│103.00│41.00│1.00│ 11.00│ 17.00│
-╰──────┴─────┴────┴──────┴──────╯
+╭──────┬──────┬──────┬─────┬────╮
+│ PATID│SCORE1│SCORE2│ AGE │ SEX│
+├──────┼──────┼──────┼─────┼────┤
+│101.00│ 12.00│ 18.00│34.00│1.00│
+│102.00│ 15.00│ 20.00│29.00│2.00│
+│103.00│ 11.00│ 17.00│41.00│1.00│
+│104.00│ 14.00│ 19.00│    .│   .│
+╰──────┴──────┴──────┴─────┴────╯
 </pre>
 
 <p>PSPP matches cases from both files using
 <code>PATID</code>. Variables from <code>demo.sav</code> and
-<code>psych.sav</code> appear together in the merged dataset.  If a
-case appears in one file but not the other, <code>MATCH FILES</code>
-still produces a case, but variables from the missing data are set to
-system-missing.</p>
+<code>psych.sav</code> appear together in the merged dataset.  If a case
+appears in the /FILE file but not one of the /TABLE files, <code>MATCH
+FILES</code> still produces a case, but variables from the missing data
+are set to system-missing.</p>
 
 <p>MATCH FILES requires that both datasets be sorted by the
 <code>BY</code> variable(s) before merging (<code>SORT CASES</code>). If
@@ -167,46 +168,41 @@ Subject 104 has been added to psych.sav but not to demo.sav. In this
 case, PATID 104 is merged but that subject's demographic variables are
 all missing.</p>
 
-<p><strong>Revised psych.sav</strong></p>
-<table>
-  <tr><th>PATID</th><th>SCORE1</th><th>SCORE2</th></tr>
-  <tr><td>101</td><td>12</td><td>18</td></tr>
-  <tr><td>102</td><td>15</td><td>20</td></tr>
-  <tr><td>103</td><td>11</td><td>17</td></tr>
-  <tr><td>104</td><td>14</td><td>19</td></tr>
-</table>
+<p><strong>Revised Psych Data</strong>
+<br>A fourth case has been added.</p>
+<pre>
+       Data List
+╭──────┬──────┬──────╮
+│ PATID│SCORE1│SCORE2│
+├──────┼──────┼──────┤
+│101.00│ 12.00│ 18.00│
+│102.00│ 15.00│ 20.00│
+│103.00│ 11.00│ 17.00│
+│104.00│ 14.00│ 19.00│
+╰──────┴──────┴──────╯
+</pre>
 
-<p><strong>Merged Output</strong></p>
-<table>
-  <tr>
-    <th>PATID</th><th>AGE</th><th>SEX</th>
-    <th>SCORE1</th><th>SCORE2</th>
-  </tr>
-  <tr>
-    <td>101</td><td>34</td><td>1</td>
-    <td>12</td><td>18</td>
-  </tr>
-  <tr>
-    <td>102</td><td>29</td><td>2</td>
-    <td>15</td><td>20</td>
-  </tr>
-  <tr>
-    <td>103</td><td>41</td><td>1</td>
-    <td>11</td><td>17</td>
-  </tr>
-  <tr>
-    <td>104</td><td>.</td><td>.</td>
-    <td>14</td><td>19</td>
-  </tr>
-</table>
+<p><strong>Merged Data</strong></p>
+<pre>
+            Data List
+╭──────┬──────┬──────┬─────┬────╮
+│ PATID│SCORE1│SCORE2│ AGE │ SEX│
+├──────┼──────┼──────┼─────┼────┤
+│101.00│ 12.00│ 18.00│34.00│1.00│
+│102.00│ 15.00│ 20.00│29.00│2.00│
+│103.00│ 11.00│ 17.00│41.00│1.00│
+│104.00│ 14.00│ 19.00│    .│   .│
+╰──────┴──────┴──────┴─────┴────╯
+</pre>
 
-<p>If a PATID value appears in one file but not the other, <code>MATCH
-FILES</code> still creates a case in the merged dataset. This is not a
-missing file or a missing variable — it is a <em>missing case</em> in
-one of the datasets. PSPP has no values to supply for that side of the
-merge, so the variables from the file where the case is absent are set
-to system-missing. This is the safest behavior: it preserves the
-case without inventing zeros or placeholder values.</p>
+<p>If a PATID value appears in the /FILE file but not one of the /TABLE
+files, <code>MATCH FILES</code> still creates a case in the merged
+dataset. This is not a missing file or a missing variable — it is
+a <em>missing case</em> in one of the datasets. PSPP has no values
+to supply for that side of the merge, so the variables from the file
+where the case is absent are set to system-missing. This is the safest
+behavior: it preserves the case without inventing zeros or placeholder
+values.</p>
 
 <p>Flags created with <code>/IN=</code> <strong>track which file each
 case came from</strong>. An <code>/IN</code> variable is set to 1 if the
