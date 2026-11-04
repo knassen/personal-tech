@@ -122,25 +122,16 @@ EXECUTE.
 SAVE OUTFILE='merged.sav'.
 </pre>
 
-<p><strong>Merged Output</strong></p>
-<table>
-  <tr>
-    <th>PATID</th><th>AGE</th><th>SEX</th>
-    <th>SCORE1</th><th>SCORE2</th>
-  </tr>
-  <tr>
-    <td>101</td><td>34</td><td>1</td>
-    <td>12</td><td>18</td>
-  </tr>
-  <tr>
-    <td>102</td><td>29</td><td>2</td>
-    <td>15</td><td>20</td>
-  </tr>
-  <tr>
-    <td>103</td><td>41</td><td>1</td>
-    <td>11</td><td>17</td>
-  </tr>
-</table>
+<pre>
+            Data List
+╭──────┬─────┬────┬──────┬──────╮
+│ PATID│ AGE │ SEX│SCORE1│SCORE2│
+├──────┼─────┼────┼──────┼──────┤
+│101.00│34.00│1.00│ 12.00│ 18.00│
+│102.00│29.00│2.00│ 15.00│ 20.00│
+│103.00│41.00│1.00│ 11.00│ 17.00│
+╰──────┴─────┴────┴──────┴──────╯
+</pre>
 
 <p>PSPP matches cases from both files using
 <code>PATID</code>. Variables from <code>demo.sav</code> and
@@ -162,13 +153,14 @@ merged result, which should be saved (for example, with <code>SAVE
 OUTFILE='merged.sav'</code>). PSPP system files contain the data set
 with all its variable attributes.</p>
 
-<p>PSPP always has exactly one <em>active file</em>, referred to
-in commands as <code>*</code> (asterisk). Commands such as <code>GET
-FILE</code>, <code>MATCH FILES</code>, and <code>ADD FILES</code>
-replace the active file with their result. Because the active file is
-overwritten whenever a new dataset is read or created, save any results
-desired to be kept <strong>before</strong> running another command that
-changes the active file.</p>
+<p><strong>Workflow Tip:</strong> PSPP always has exactly one
+<em>active file</em>, referred to in commands as <code>*</code>
+(asterisk). Commands such as <code>GET FILE</code>, <code>MATCH
+FILES</code>, and <code>ADD FILES</code> replace the active file
+with their result. Because the active file is overwritten whenever a
+new dataset is read or created, save any results desired to be kept
+<strong>before</strong> running another command that changes the active
+file.</p>
 
 <p><strong>What happens when there is not a one-to-one merge?</strong>
 Subject 104 has been added to psych.sav but not to demo.sav. In this
@@ -606,7 +598,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Wed Nov  4 11:38:11 EST 2026
+Last Modified: Wed Nov  4 12:25:55 EST 2026
 </p>
 </footer>
 </blockquote>
