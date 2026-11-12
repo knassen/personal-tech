@@ -81,14 +81,15 @@ generates code, but if you are editing a program yourself in the Syntax
 Editor, another editor, or you accidentally change the code that psppire
 created, you need to be aware of the rules.</p>
 
-<p>PSPP commands end with periods. Commands may span multiple lines,
-and indentation does not matter after the first line. The first line
-of a command must begin in column 1; otherwise PSPP treats it as a
-continuation of the previous command. Comments begin with <code>*</code>
-(single‑line) or <code>/* … */</code> (block). Extra spaces and
-blank lines are ignored. (Some older SPSS syntax relied on quirks such
-as a blank lines ending commands, but PSPP does not support those
-behaviors, so always end a command with a period.)</p>
+<p><strong>PSPP commands end with periods.</strong> Commands may
+span multiple lines, and indentation does not matter after the first
+line. The first line of each command must begin in column 1; otherwise
+PSPP treats it as a continuation of the previous command. Comments
+begin with <code>*</code> (single‑line) or <code>/* … */</code>
+(block). Extra spaces and blank lines are ignored. (Some older SPSS
+syntax relied on quirks such as a blank lines ending commands, but
+PSPP does not support those behaviors, so always end a command with a
+period.)</p>
 
 <h2 class="skip">&nbsp;</h2>
 <h2>Using PSPP for Data Preparation and Analysis</h2>
@@ -187,8 +188,9 @@ worked correctly.</p>
 <p>If pspp gives an error here are a few tips for getting things going
 again:</p>
 <ol>
-    <li>Fix the first error and rerun.</li>
-    <li>Read the error message and make sure you are using the correct syntax.</li>
+    <li>Read the error message and make sure you are using the correct syntax
+        including the correct command and command options.</li>
+    <li>If multiple errors, fix the first error and rerun.</li>
     <li>PSPP's syntax is strict. A "syntax error" often means a misspelled command,
         a misuse of syntax, or a missing period.</li>
     <li>When all else fails, read the PSPP user manual.</li>
@@ -1583,7 +1585,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Fri Nov  6 14:18:36 EST 2026
+Last Modified: Thu Nov 12 15:06:55 EST 2026
 </p>
 </footer>
 </blockquote>
