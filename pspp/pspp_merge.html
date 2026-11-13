@@ -48,7 +48,7 @@ command. Each command handles a different kind of data combination.</p>
 
 <h2 class="skip">&nbsp;</h2>
 
-<h2>SORT CASES</h2>
+<h2>FIRST, SORT CASES</h2>
 
 <p>Before merging or combining data, be sure to check that your data
 are in the order needed for matching variables. The examples below all
@@ -103,7 +103,7 @@ SORT CASES BY PATID.
 SAVE OUTFILE="C:\pspp\psych.sav". 
 </pre>
 
-<h2>MATCH FILES</h2>
+<h2>How to MATCH FILES</h2>
 
 <p>The following example shows how to merge two datasets that share a
 common key variable (<code>PATID</code>). One file contains demographic
@@ -245,7 +245,7 @@ FILES</code> to append data from multiple files to the active data set, and
 <code>UPDATE</code>, which updates a master file with modifications from
 a transaction file.</p>
 
-<h2>ADD FILES</h2>
+<h2>How to ADD FILES</h2>
 
 <p><code>ADD FILES</code> adds data sets vertically. It can combine
 multiple datasets.  No BY statement is needed. If it is used it enforces
@@ -345,7 +345,7 @@ display dictionary.
 <p>The output shows that <code>ADD FILES</code> stacked file1 (4 cases)
 and file2 (3 cases) into an active data set that has 7 cases.
 
-<h2>UPDATE Files</h2>
+<h2>How to UPDATE Files</h2>
 
 <p>Another type of PSPP data merge is <code>UPDATE</code>. Like its
 name implies it is used to update a master dataset with values in
@@ -560,7 +560,6 @@ is why merges should always be done by a statistical package like PSPP,
 not by hand. Understand your data, understand its structure, and always
 verify your merges.</p>
 
-
 <hr style="height: 4px; width: 100%; margin-left:0px; margin-right:auto; background-color:black">
 <div class="pspp-index">
 <a href="https://knassen.github.io/personal-tech/pspp/pspp.html">[PSPP Syntax]</a>
@@ -587,7 +586,7 @@ list</a></p>
 </a>
 </p>
 <p style="font-size:80%;">
-Last Modified: Sat Nov  7 14:48:00 EST 2026
+Last Modified: Thu Nov 12 19:38:11 EST 2026
 </p>
 </footer>
 </blockquote>
