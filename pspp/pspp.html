@@ -130,6 +130,7 @@ id,age,sex,score1,score2
 104,41,M,72,78
 </pre>
 
+<p><strong>pspp Code</strong>
 <pre>
   GET DATA 
   /TYPE=TXT
@@ -147,7 +148,17 @@ id,age,sex,score1,score2
 
 LIST.
 DISPLAY DICTIONARY.
+</pre>
 
+<p>Since the data in CSV files begins on line 2, the subcommand
+/FIRSTCASE=2 tells pspp to start reading the data at line 2.</p>
+
+<p>The Print and Write Formats in the /VARIABLES subcommand show the
+formats pspp is using to read those variables.  F8 means a numeric
+format of width 8, and A1 means a string/text format of width 1.</p>
+
+<p><strong>pspp Output</strong>
+<pre>
          Data List
 +---+---+---+------+------+
 | id|age|sex|score1|score2|
@@ -178,26 +189,23 @@ the first line of the CSV file, the variable names, add the formats,
 and remove the commas to get a variable list.) The <code>/FILE</code>
 subcommand is also required and gives the data file to read.</p>
 
-<p><code>LIST</code> shows the data that were imported so you can check
-they are correct. <code>DISPLAY DICTIONARY</code> show the attributes
-assigned to the variables so you can check they are correct. These
-are good commands to run after every data import to check that it
-worked correctly.</p>
+<p><code>LIST</code> shows the data that were imported. <code>DISPLAY 
+DICTIONARY</code> shows the attributes assigned to the variables. These
+are good commands to run after every data import to check that the
+data import worked correctly.</p>
 
 <strong>Troubleshooting Basics</strong>
 
 <p>If pspp gives an error here are a few tips for getting things going
 again:</p>
 <ol>
-    <li>Read the error message and make sure you are using the correct syntax
-        including the correct command and command options.</li>
-    <li>If multiple errors, fix the first error and rerun.</li>
-    <li>PSPP's syntax is strict. A "syntax error" often means a misspelled command,
-        a misuse of syntax, or a missing period.</li>
+    <li>Read the error message and verify the command name command options.</li>
+    <li>If multiple errors, fix the first one and rerun--later errors often
+        cascade from the first.</li>
+    <li>Check for typos, misplaced commands, or a missing period at the end of
+        the command.</li>
     <li>When all else fails, read the PSPP user manual.</li>
 </ol>
-<p>Unfortunately, general tips are all I can give here. There are too many
-possible syntax errors for me to be more specific.</p>
 
 <p><strong>PSPPIRE Note:</strong> The psppire GUI also shows the list
 of loaded data and the data dictionary in the Data Editor on the Data View
@@ -216,7 +224,7 @@ and Variable View tabs at the bottom left of the window, respectively.</p>
 <p><strong>psppire: The Graphical Interface for pspp</strong></p>
 <p>psppire is a graphical interface for the PSPP engine. It’s useful
 for exploring data, running common procedures, and generating basic
-commands. Many users begin in psppire and use the generated commands
+commands (using the Paste button). Many users begin in psppire and use the generated commands
 in the Syntax Editor as a basis for modifying their program file for
 further analysis.</p>
 
@@ -235,8 +243,8 @@ analysis. PSPP generally prompts you to save, though, be sure to save
 your work.</p>
 
 <p>And you will need to <em>reproduce your work</em> more often than you
-think. Schools want to see how you did your assignments, and your boss
-might want to see how you do things on the job, for example.</p>
+think. Schools will want to see how you did your assignments, and 
+employers often need to verify or rerun your analysis later.</p>
 
 <hr style="height: 2px; width: 100%; margin-left:0px; margin-right:auto;
 background-color:black">
