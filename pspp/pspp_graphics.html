@@ -239,10 +239,21 @@ be done for the mpg variable, which is the dependent variable in the
 regression we did earlier with the auto-mpg data.</p>
 
 <p>PSPP's EXAMINE command supports boxplot, histograms, and normality
-plots, but not stem-and-leaf displays</p>
+plots. Stem-and-leaf displays are not currently implements in pspp.</p>
 
 <p>In psppire, the Boxplots can be found at <strong>Analyze-&gt;Descriptive
 Statistics-&gt;Explore-&gt;Plot Button</strong> on the Analyze menu.</p>
+
+<p>The resulting boxplot depends on the variables assigned in the
+Explore dialog:</p>
+
+<ul>
+    <li>With only a dependent variable selected, PSPP produces
+        a single boxplot.</li>
+    <li>With a dependent variable and a factor variable selected, PSPP
+        produces a boxplot that displays the dependent variable for each
+        category of the factor variable.</li>
+</ul> 
 
 <p><strong>PSPPIRE Menu for Examine/Explore Single variable</strong></p>
 
