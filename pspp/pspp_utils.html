@@ -43,20 +43,20 @@ experience to follow them.</p>
 
 <p>An Appendix with more detail is provided at the end of this page.</p>
 
-<p>Here, I'll do four short PSPP  utility examples:
-a trimmed mean program, a Mahalanobis Distance program, Cronbach's
-Alpha probram, and a median absolute deviation (MAD) program. They are
-not very long, but make good examples and allow hand computation to
-see how things work. They are intended to introduce you to some useful 
-computations.</p>
+<p>Here, I'll do four short PSPP utility examples: a trimmed mean
+program, a Mahalanobis Distance program, Cronbach's Alpha probram, and
+a median absolute deviation (MAD) program. They are not very long,
+but make good examples and allow hand computation to see how things
+work. They are intended to introduce you to some useful computations and
+show the <code>PSPP</code> can do more that most people expect.</p>
 
-<p>In the trimmed-mean and MAD examples below, 
-mainly scalar computations are done: determining indices, computing
-medians, evaluating conditions, and performing loops. The only true
-complex operations are reading a column vector with <code>GET</code>,
-slicing it with indexing, and summing it with <code>CSUM()</code>. This
-illustrates how <code>Matrix</code> can be used effectively even when
-the underlying computation is not inherently matrix-based.</p>
+<p>In the trimmed-mean and MAD examples below, mainly scalar
+computations are done: determining indices, computing medians,
+evaluating conditions, and performing loops. The only true complex
+operations are reading a column vector with <code>GET</code>, slicing it
+with indexing, and summing it with <code>CSUM()</code>. This illustrates
+how <code>Matrix</code> can be used effectively even when the underlying
+computation is not inherently matrix-based.</p>
 
 <h2>How to Compute a Trimmed Mean</h2>
 
